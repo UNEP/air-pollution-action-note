@@ -1,0 +1,818 @@
+[
+   {
+      "id": "AFG",
+      "population": 38277536.32
+   },
+   {
+      "id": "ALB",
+      "population": 2720353.061
+   },
+   {
+      "id": "DZA",
+      "population": 41847289.68
+   },
+   {
+      "id": "ASM",
+      "population": 55504.9458
+   },
+   {
+      "id": "AND",
+      "population": 83064.2114
+   },
+   {
+      "id": "AGO",
+      "population": 30138521.38
+   },
+   {
+      "id": "ATG",
+      "population": 88489.3489
+   },
+   {
+      "id": "ARG",
+      "population": 45115284.36
+   },
+   {
+      "id": "ARM",
+      "population": 3019674.304
+   },
+   {
+      "id": "AUS",
+      "population": 24568113.49
+   },
+   {
+      "id": "AUT",
+      "population": 8916185.491
+   },
+   {
+      "id": "AZE",
+      "population": 10278673.96
+   },
+   {
+      "id": "BHS",
+      "population": 376940.2792
+   },
+   {
+      "id": "BHR",
+      "population": 1442691.321
+   },
+   {
+      "id": "BGD",
+      "population": 159259849.5
+   },
+   {
+      "id": "BRB",
+      "population": 297770.801
+   },
+   {
+      "id": "BLR",
+      "population": 9500785.272
+   },
+   {
+      "id": "BEL",
+      "population": 11419165.53
+   },
+   {
+      "id": "BLZ",
+      "population": 410093.5229
+   },
+   {
+      "id": "BEN",
+      "population": 12665751.05
+   },
+   {
+      "id": "BMU",
+      "population": 64030.4726
+   },
+   {
+      "id": "BTN",
+      "population": 754249.8614
+   },
+   {
+      "id": "BOL",
+      "population": 12011749.54
+   },
+   {
+      "id": "BIH",
+      "population": 3299982.326
+   },
+   {
+      "id": "BWA",
+      "population": 2338721.303
+   },
+   {
+      "id": "BRA",
+      "population": 216664813.7
+   },
+   {
+      "id": "BRN",
+      "population": 437118.5713
+   },
+   {
+      "id": "BGR",
+      "population": 6934624.606
+   },
+   {
+      "id": "BFA",
+      "population": 22691773.25
+   },
+   {
+      "id": "BDI",
+      "population": 11934360.75
+   },
+   {
+      "id": "CPV",
+      "population": 563563.0874
+   },
+   {
+      "id": "KHM",
+      "population": 16603117.7
+   },
+   {
+      "id": "CMR",
+      "population": 29101868.38
+   },
+   {
+      "id": "CAN",
+      "population": 36519840.27
+   },
+   {
+      "id": "CAF",
+      "population": 5299863.147
+   },
+   {
+      "id": "TCD",
+      "population": 16398859.74
+   },
+   {
+      "id": "CHL",
+      "population": 18198359.04
+   },
+   {
+      "id": "CHN",
+      "population": 1422350422.0
+   },
+   {
+      "id": "COL",
+      "population": 47776679.01
+   },
+   {
+      "id": "COM",
+      "population": 714351.0703
+   },
+   {
+      "id": "COG",
+      "population": 5265846.276
+   },
+   {
+      "id": "#N/A",
+      "population": 17986.6743
+   },
+   {
+      "id": "CRI",
+      "population": 4716743.813
+   },
+   {
+      "id": "CIV",
+      "population": 26171531.6
+   },
+   {
+      "id": "HRV",
+      "population": 4247902.462
+   },
+   {
+      "id": "CUB",
+      "population": 11358510.25
+   },
+   {
+      "id": "CYP",
+      "population": 1313477.209
+   },
+   {
+      "id": "CZE",
+      "population": 10643486.52
+   },
+   {
+      "id": "PRK",
+      "population": 26232860.94
+   },
+   {
+      "id": "COD",
+      "population": 87670443.78
+   },
+   {
+      "id": "DNK",
+      "population": 5802733.424
+   },
+   {
+      "id": "DJI",
+      "population": 1202796.732
+   },
+   {
+      "id": "DMA",
+      "population": 68681.447
+   },
+   {
+      "id": "DOM",
+      "population": 10881854.5
+   },
+   {
+      "id": "ECU",
+      "population": 17588392.32
+   },
+   {
+      "id": "EGY",
+      "population": 99069551.17
+   },
+   {
+      "id": "SLV",
+      "population": 6256142.856
+   },
+   {
+      "id": "GNQ",
+      "population": 1419839.102
+   },
+   {
+      "id": "ERI",
+      "population": 6711213.332
+   },
+   {
+      "id": "EST",
+      "population": 1312361.121
+   },
+   {
+      "id": "SWZ",
+      "population": 1142108.626
+   },
+   {
+      "id": "ETH",
+      "population": 107591163.7
+   },
+   {
+      "id": "FJI",
+      "population": 911248.4572
+   },
+   {
+      "id": "FIN",
+      "population": 5534094.633
+   },
+   {
+      "id": "FRA",
+      "population": 66204314.96
+   },
+   {
+      "id": "GAB",
+      "population": 1750038.039
+   },
+   {
+      "id": "GMB",
+      "population": 2245865.707
+   },
+   {
+      "id": "GEO",
+      "population": 3664751.935
+   },
+   {
+      "id": "DEU",
+      "population": 84914055.85
+   },
+   {
+      "id": "GHA",
+      "population": 31536231.95
+   },
+   {
+      "id": "GRC",
+      "population": 10337171.62
+   },
+   {
+      "id": "GRL",
+      "population": 56188.3948
+   },
+   {
+      "id": "GRD",
+      "population": 103215.2663
+   },
+   {
+      "id": "GUM",
+      "population": 170627.5313
+   },
+   {
+      "id": "GTM",
+      "population": 17776489.98
+   },
+   {
+      "id": "GIN",
+      "population": 12643148.93
+   },
+   {
+      "id": "GNB",
+      "population": 1901191.442
+   },
+   {
+      "id": "GUY",
+      "population": 770705.2213
+   },
+   {
+      "id": "HTI",
+      "population": 12402098.71
+   },
+   {
+      "id": "HND",
+      "population": 9814395.703
+   },
+   {
+      "id": "HUN",
+      "population": 9674412.776
+   },
+   {
+      "id": "ISL",
+      "population": 344876.258
+   },
+   {
+      "id": "IND",
+      "population": 1390706968.0
+   },
+   {
+      "id": "IDN",
+      "population": 259465835.5
+   },
+   {
+      "id": "IRN",
+      "population": 84297882.14
+   },
+   {
+      "id": "IRQ",
+      "population": 42119489.94
+   },
+   {
+      "id": "IRL",
+      "population": 4910357.386
+   },
+   {
+      "id": "ISR",
+      "population": 9309583.139
+   },
+   {
+      "id": "ITA",
+      "population": 60313169.95
+   },
+   {
+      "id": "JAM",
+      "population": 2810753.784
+   },
+   {
+      "id": "JPN",
+      "population": 127788411.1
+   },
+   {
+      "id": "JOR",
+      "population": 11636716.67
+   },
+   {
+      "id": "KAZ",
+      "population": 18392068.15
+   },
+   {
+      "id": "KEN",
+      "population": 50227709.45
+   },
+   {
+      "id": "KIR",
+      "population": 118620.9421
+   },
+   {
+      "id": "KWT",
+      "population": 4426561.238
+   },
+   {
+      "id": "KGZ",
+      "population": 6535458.86
+   },
+   {
+      "id": "LAO",
+      "population": 7158249.726
+   },
+   {
+      "id": "LVA",
+      "population": 1915292.092
+   },
+   {
+      "id": "LBN",
+      "population": 5177068.9
+   },
+   {
+      "id": "LSO",
+      "population": 2091587.941
+   },
+   {
+      "id": "LBR",
+      "population": 4789906.937
+   },
+   {
+      "id": "LBY",
+      "population": 6735543.07
+   },
+   {
+      "id": "LTU",
+      "population": 2794222.637
+   },
+   {
+      "id": "LUX",
+      "population": 618550.0596
+   },
+   {
+      "id": "MDG",
+      "population": 26690344.0
+   },
+   {
+      "id": "MWI",
+      "population": 18442238.48
+   },
+   {
+      "id": "MYS",
+      "population": 31301402.28
+   },
+   {
+      "id": "MDV",
+      "population": 498414.0689
+   },
+   {
+      "id": "MLI",
+      "population": 21917466.99
+   },
+   {
+      "id": "MLT",
+      "population": 439220.7495
+   },
+   {
+      "id": "MHL",
+      "population": 56842.2485
+   },
+   {
+      "id": "MRT",
+      "population": 4014273.45
+   },
+   {
+      "id": "MUS",
+      "population": 1276662.671
+   },
+   {
+      "id": "MEX",
+      "population": 124940174.7
+   },
+   {
+      "id": "FSM",
+      "population": 102115.6027
+   },
+   {
+      "id": "MCO",
+      "population": 37572.1198
+   },
+   {
+      "id": "MNG",
+      "population": 3387589.157
+   },
+   {
+      "id": "MNE",
+      "population": 620339.572
+   },
+   {
+      "id": "MAR",
+      "population": 35952185.54
+   },
+   {
+      "id": "MOZ",
+      "population": 29528036.87
+   },
+   {
+      "id": "MMR",
+      "population": 54676900.9
+   },
+   {
+      "id": "NAM",
+      "population": 2403123.925
+   },
+   {
+      "id": "NRU",
+      "population": 10551.2994
+   },
+   {
+      "id": "NPL",
+      "population": 30416382.4
+   },
+   {
+      "id": "NLD",
+      "population": 17156788.07
+   },
+   {
+      "id": "NZL",
+      "population": 4495667.097
+   },
+   {
+      "id": "NIC",
+      "population": 6510364.642
+   },
+   {
+      "id": "NER",
+      "population": 23295352.88
+   },
+   {
+      "id": "NGA",
+      "population": 214823785.7
+   },
+   {
+      "id": "NIU",
+      "population": 1671.5453
+   },
+   {
+      "id": "MKD",
+      "population": 2152731.063
+   },
+   {
+      "id": "#N/A",
+      "population": 42494.4771
+   },
+   {
+      "id": "NOR",
+      "population": 5348846.985
+   },
+   {
+      "id": "OMN",
+      "population": 4583998.577
+   },
+   {
+      "id": "PAK",
+      "population": 224062846.8
+   },
+   {
+      "id": "PLW",
+      "population": 18007.4343
+   },
+   {
+      "id": "PSE",
+      "population": 4956596.668
+   },
+   {
+      "id": "PAN",
+      "population": 4160456.851
+   },
+   {
+      "id": "PNG",
+      "population": 9866614.402
+   },
+   {
+      "id": "PRY",
+      "population": 6930455.029
+   },
+   {
+      "id": "PER",
+      "population": 33995397.38
+   },
+   {
+      "id": "PHL",
+      "population": 112142764.3
+   },
+   {
+      "id": "POL",
+      "population": 38434444.92
+   },
+   {
+      "id": "PRT",
+      "population": 10651262.92
+   },
+   {
+      "id": "#N/A",
+      "population": 3521431.422
+   },
+   {
+      "id": "QAT",
+      "population": 2864548.179
+   },
+   {
+      "id": "KOR",
+      "population": 53398251.98
+   },
+   {
+      "id": "MDA",
+      "population": 3688191.085
+   },
+   {
+      "id": "ROU",
+      "population": 19237066.4
+   },
+   {
+      "id": "RUS",
+      "population": 146717427.5
+   },
+   {
+      "id": "RWA",
+      "population": 12688117.31
+   },
+   {
+      "id": "KNA",
+      "population": 59508.1653
+   },
+   {
+      "id": "LCA",
+      "population": 174625.7404
+   },
+   {
+      "id": "VCT",
+      "population": 113143.665
+   },
+   {
+      "id": "WSM",
+      "population": 211353.8612
+   },
+   {
+      "id": "SMR",
+      "population": 33099.7639
+   },
+   {
+      "id": "STP",
+      "population": 205385.1395
+   },
+   {
+      "id": "SAU",
+      "population": 35731972.4
+   },
+   {
+      "id": "SEN",
+      "population": 15134067.15
+   },
+   {
+      "id": "SRB",
+      "population": 8746784.806
+   },
+   {
+      "id": "SYC",
+      "population": 102145.2965
+   },
+   {
+      "id": "SLE",
+      "population": 8284755.476
+   },
+   {
+      "id": "SGP",
+      "population": 5667451.464
+   },
+   {
+      "id": "SVK",
+      "population": 5437222.747
+   },
+   {
+      "id": "SVN",
+      "population": 2074270.565
+   },
+   {
+      "id": "SLB",
+      "population": 655631.9367
+   },
+   {
+      "id": "SOM",
+      "population": 20343111.95
+   },
+   {
+      "id": "ZAF",
+      "population": 55588424.52
+   },
+   {
+      "id": "SSD",
+      "population": 9282963.047
+   },
+   {
+      "id": "ESP",
+      "population": 46021217.74
+   },
+   {
+      "id": "LKA",
+      "population": 21854451.85
+   },
+   {
+      "id": "SDN",
+      "population": 40808424.84
+   },
+   {
+      "id": "SUR",
+      "population": 575887.9168
+   },
+   {
+      "id": "SWE",
+      "population": 10222545.75
+   },
+   {
+      "id": "CHE",
+      "population": 8775203.811
+   },
+   {
+      "id": "SYR",
+      "population": 14491246.78
+   },
+   {
+      "id": "#N/A",
+      "population": 23620242.5
+   },
+   {
+      "id": "TJK",
+      "population": 9492413.686
+   },
+   {
+      "id": "THA",
+      "population": 70111586.24
+   },
+   {
+      "id": "TLS",
+      "population": 1334823.337
+   },
+   {
+      "id": "TGO",
+      "population": 7921526.585
+   },
+   {
+      "id": "TKL",
+      "population": 1410.7913
+   },
+   {
+      "id": "TON",
+      "population": 102350.0844
+   },
+   {
+      "id": "TTO",
+      "population": 1387457.083
+   },
+   {
+      "id": "TUN",
+      "population": 11571604.49
+   },
+   {
+      "id": "TUR",
+      "population": 81359692.93
+   },
+   {
+      "id": "TKM",
+      "population": 5083080.255
+   },
+   {
+      "id": "TUV",
+      "population": 11797.8345
+   },
+   {
+      "id": "UGA",
+      "population": 41117856.24
+   },
+   {
+      "id": "UKR",
+      "population": 44042430.65
+   },
+   {
+      "id": "ARE",
+      "population": 9241703.994
+   },
+   {
+      "id": "GBR",
+      "population": 67220446.94
+   },
+   {
+      "id": "TZA",
+      "population": 56736116.17
+   },
+   {
+      "id": "USA",
+      "population": 327978729.9
+   },
+   {
+      "id": "VIR",
+      "population": 103985.3275
+   },
+   {
+      "id": "URY",
+      "population": 3436136.699
+   },
+   {
+      "id": "UZB",
+      "population": 33677096.35
+   },
+   {
+      "id": "VUT",
+      "population": 294550.4576
+   },
+   {
+      "id": "VEN",
+      "population": 28068985.78
+   },
+   {
+      "id": "VNM",
+      "population": 96372928.24
+   },
+   {
+      "id": "YEM",
+      "population": 31502896.33
+   },
+   {
+      "id": "ZMB",
+      "population": 18237682.67
+   },
+   {
+      "id": "ZWE",
+      "population": 15010852.06
+   }
+]

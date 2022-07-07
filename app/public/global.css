@@ -1,0 +1,215 @@
+html, body {
+  width: 100%;
+  font-size: 90%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: #f9f9f9;
+  color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-style: normal;
+}
+
+article, .page-header, .footer-content {
+  max-width: 75rem;
+  margin: 0 1rem;
+}
+
+.margin-breakout-mobile {
+  margin: 0 -1rem;
+}
+
+@media (min-width: 400px) {
+  article, .page-header, .footer-content {
+    margin: 0 2rem;
+  }
+  .margin-breakout-mobile {
+    margin: 0 -2rem;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .margin-breakout-mobile {
+    margin: initial;
+  }
+}
+
+.inner-nav { margin: 0; }
+
+article, section { position:relative; }
+
+.viz { padding: 2rem 0;}
+
+p, h1, h2, h3, h4, select, ul {
+  text-align: left;
+}
+
+p, h1, h2 {
+  padding-bottom:1.5rem;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  transition: opacity .3s;
+}
+
+p a:hover {
+  opacity: .7;
+}
+
+h1 {
+  font-size: 2.25rem;
+  margin: 1rem auto;
+}
+h1 { line-height: 1.1;}
+h2 { line-height: 1.875rem;}
+h3, select { line-height: 1.35; }
+h4, p { line-height: 1.5; }
+h2, h3, select { font-weight: 300; }
+
+h2 {font-size: 1.4rem; }
+h3 { font-size: 1.25rem; }
+h4 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+p, ul {
+  font-size: 1.1125rem;
+  line-height: 1.667rem;
+  font-weight: 300;
+}
+.note { font-size: .9rem; }
+
+.text,.label, .help-text {
+  font-size: 1rem;
+  line-height: 1.35rem;
+  font-weight: 300;
+  color:#1e1e1e;
+}
+
+.col, .wide, .col-text, .narrow {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.narrow {
+  max-width: 40rem;
+  margin-left: 0;
+}
+
+.right-narrow {
+  width:100%;
+  max-width: 40rem;
+  display: block;
+  margin: 1rem 0;
+}
+
+.fs {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 6.2rem;
+}
+
+.page-header {
+  margin-top: 1.5rem;
+}
+
+.hidden {
+    position: absolute!important;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    width: 1px;
+    height: 1px;
+    word-wrap: normal;
+}
+
+sup, sub { line-height: 0; }
+
+@media screen and (min-width: 58rem) {
+
+  html, body { font-size: 100%;}
+
+  p, h1, h2, h3, h4, select {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  p, ul {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+
+  h2 {font-size: 1.5rem; }
+
+  article, .page-header, .footer-content {
+    margin-left: 3.75rem;
+    margin-right: 1.5rem;
+  }
+
+  h1 { font-size: 3rem; }
+  h3 { font-size: 1.25rem; }
+
+  .narrow {
+    max-width: none;
+    width: 30rem;
+    margin-left: 0;
+    margin-right: 3rem;
+    display: inline-block;
+    padding-right: 0;
+  }
+  .right-narrow {
+    width: calc(100% - 34rem);
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+  }
+  .col {
+    width: 48rem;
+    padding-right: calc(100% - 48rem);
+  }
+  .col-text {
+    width: 52rem;
+    padding-right: calc(100% - 52rem);
+  }
+
+  .wide {
+    max-width: 72rem;
+    margin-left: 0;
+  }
+
+  .logo { width: 11rem; }
+  .page-header { margin-top: 2rem; }
+}
+
+@media screen and (min-width: 95.25rem) {
+  .wide {
+    width: 72rem;
+    padding-right: calc(100% - 72rem);
+  }
+}
+
+@media (min-width: 1200px){
+  article, .page-header, .footer-content {
+    padding-right: 220px;
+  }
+}
+
+@media (min-width: 1560px){
+  article {
+    margin: 0 auto;
+  }
+  .page-header, .footer-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
