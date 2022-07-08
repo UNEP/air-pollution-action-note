@@ -1,4 +1,8 @@
-# UNEP-corals
+# Air Pollution Action Note interactive
+![Poster image for the Air Pollution Action Note interactive](https://github.com/UNEP/air-pollution-action-note/blob/cae2006e24023f7e583cc8a2a2b6ac253639982f/app/public/img/poster-2.jpg)
+
+The interactive is live at [Pollution Action Note – Data you need to know: https://www.unep.org/interactive/air-pollution-note/](https://www.unep.org/interactive/air-pollution-note/)
+
 ## Get started
 
 Install the dependencies...
