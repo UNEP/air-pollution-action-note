@@ -1,6 +1,6 @@
 <script>
-  import UNEPLogoBlue from 'src/assets/unep50.svg';
-  import UNEPLogoWhite from 'src/assets/unep50white.svg';
+  import UNEPLogoBlue from 'src/assets/unep.svg';
+  import UNEPLogoWhite from 'src/assets/unepwhite.svg';
 
   export let color = undefined;
 </script>
