@@ -9,10 +9,11 @@
 <h3 class="note title">{@html title}</h3>
 
 {#if type === 'sequential'}
-<ol class="seq info" role="menu" aria-label="menu">
+<ol class="seq info" role="menu" aria-label="Legend">
   {#each colors as c,i}
   <li
     role="menuitem"
+    aria-label="Legend item #{i + 1}"
     tabindex="0"
     style="width: { 100 / colors.length }%; background-color: {c};"
     class:selected-seq={selected === i}
@@ -29,9 +30,10 @@
 </ol>
 
 {:else if type === 'categorical'}
-<ul class="cat info" role="menu" aria-label="menu">
+<ul class="cat info" role="menu" aria-label="Legend">
   {#each colors as c,i}
     <li role="menuitem"
+    aria-label="{labels[i]}"
     tabindex="0"
     class="cat-item note"
     class:selected-cat="{selected === i}"
