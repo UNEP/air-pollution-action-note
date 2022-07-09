@@ -47,6 +47,7 @@
   {#each options as option, i}
     <button
       class={i === 0 ? "active" : ""}
+      aria-label={option.title}
       on:click=
       {
         animateScroll.scrollTo({

@@ -6712,18 +6712,18 @@ var app = (function () {
 
     function get_each_context$a(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[54] = list[i];
+    	child_ctx[57] = list[i];
     	return child_ctx;
     }
 
-    // (157:2) {#if loaded}
+    // (162:2) {#if loaded}
     function create_if_block_1$7(ctx) {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let each_value = /*cartogramData*/ ctx[7];
+    	let each_value = /*cartogramData*/ ctx[8];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*d*/ ctx[54].code;
+    	const get_key = ctx => /*d*/ ctx[57].code;
     	validate_each_keys(ctx, each_value, get_each_context$a, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -6741,7 +6741,9 @@ var app = (function () {
     			}
 
     			attr_dev(div, "class", "countries svelte-sdm8di");
-    			add_location(div, file$i, 157, 4, 5228);
+    			attr_dev(div, "role", "graphics-document");
+    			attr_dev(div, "aria-label", /*title*/ ctx[16]);
+    			add_location(div, file$i, 162, 4, 5348);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6751,8 +6753,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, hideLabels*/ 245891) {
-    				each_value = /*cartogramData*/ ctx[7];
+    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, slug, hideLabels*/ 950535) {
+    				each_value = /*cartogramData*/ ctx[8];
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context$a, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$a, null, get_each_context$a);
@@ -6771,14 +6773,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$7.name,
     		type: "if",
-    		source: "(157:2) {#if loaded}",
+    		source: "(162:2) {#if loaded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (160:8) {#if d.x && d.y}
+    // (167:8) {#if d.x && d.y}
     function create_if_block_2$4(ctx) {
     	let div;
     	let t;
@@ -6787,14 +6789,14 @@ var app = (function () {
     	let div_data_code_value;
     	let mounted;
     	let dispose;
-    	let if_block = !/*hideLabels*/ ctx[1] && /*d*/ ctx[54].width > 100 && create_if_block_3$1(ctx);
+    	let if_block = !/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
 
     	function mouseenter_handler(...args) {
-    		return /*mouseenter_handler*/ ctx[39](/*d*/ ctx[54], ...args);
+    		return /*mouseenter_handler*/ ctx[42](/*d*/ ctx[57], ...args);
     	}
 
     	function focus_handler() {
-    		return /*focus_handler*/ ctx[41](/*d*/ ctx[54]);
+    		return /*focus_handler*/ ctx[44](/*d*/ ctx[57]);
     	}
 
     	const block = {
@@ -6802,11 +6804,13 @@ var app = (function () {
     			div = element("div");
     			if (if_block) if_block.c();
     			t = space();
-    			attr_dev(div, "class", div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[54]).join(' ') + " svelte-sdm8di");
-    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[14](/*d*/ ctx[54]));
-    			attr_dev(div, "data-code", div_data_code_value = /*d*/ ctx[54].code);
+    			attr_dev(div, "class", div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di");
+    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]));
+    			attr_dev(div, "data-code", div_data_code_value = /*d*/ ctx[57].code);
     			attr_dev(div, "tabindex", "0");
-    			add_location(div, file$i, 160, 10, 5329);
+    			attr_dev(div, "role", "graphics-symbol");
+    			attr_dev(div, "aria-labelledby", "country-annotation");
+    			add_location(div, file$i, 167, 10, 5505);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6816,9 +6820,9 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(div, "mouseenter", mouseenter_handler, false, false, false),
-    					listen_dev(div, "mouseleave", /*mouseleave_handler*/ ctx[40], false, false, false),
+    					listen_dev(div, "mouseleave", /*mouseleave_handler*/ ctx[43], false, false, false),
     					listen_dev(div, "focus", focus_handler, false, false, false),
-    					listen_dev(div, "blur", /*blur_handler*/ ctx[42], false, false, false)
+    					listen_dev(div, "blur", /*blur_handler*/ ctx[45], false, false, false)
     				];
 
     				mounted = true;
@@ -6827,7 +6831,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (!/*hideLabels*/ ctx[1] && /*d*/ ctx[54].width > 100) {
+    			if (!/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -6840,15 +6844,15 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (dirty[0] & /*classesFn, cartogramData*/ 129 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[54]).join(' ') + " svelte-sdm8di")) {
+    			if (dirty[0] & /*classesFn, cartogramData*/ 257 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
-    			if (dirty[0] & /*calcStyle, cartogramData*/ 16512 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[14](/*d*/ ctx[54]))) {
+    			if (dirty[0] & /*calcStyle, cartogramData*/ 33024 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]))) {
     				attr_dev(div, "style", div_style_value);
     			}
 
-    			if (dirty[0] & /*cartogramData*/ 128 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[54].code)) {
+    			if (dirty[0] & /*cartogramData*/ 256 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[57].code)) {
     				attr_dev(div, "data-code", div_data_code_value);
     			}
     		},
@@ -6864,32 +6868,38 @@ var app = (function () {
     		block,
     		id: create_if_block_2$4.name,
     		type: "if",
-    		source: "(160:8) {#if d.x && d.y}",
+    		source: "(167:8) {#if d.x && d.y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (171:10) {#if !hideLabels && d.width > 100}
+    // (180:10) {#if !hideLabels && d.width > 100}
     function create_if_block_3$1(ctx) {
     	let span;
-    	let t_value = /*d*/ ctx[54].short + "";
+    	let t_value = /*d*/ ctx[57].short + "";
     	let t;
+    	let span_id_value;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t = text$1(t_value);
+    			attr_dev(span, "id", span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"));
     			attr_dev(span, "class", "country-text svelte-sdm8di");
-    			add_location(span, file$i, 171, 12, 5761);
+    			add_location(span, file$i, 180, 12, 6021);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
     			append_dev(span, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*cartogramData*/ 128 && t_value !== (t_value = /*d*/ ctx[54].short + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*cartogramData*/ 256 && t_value !== (t_value = /*d*/ ctx[57].short + "")) set_data_dev(t, t_value);
+
+    			if (dirty[0] & /*slug*/ 4 && span_id_value !== (span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"))) {
+    				attr_dev(span, "id", span_id_value);
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -6900,18 +6910,18 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(171:10) {#if !hideLabels && d.width > 100}",
+    		source: "(180:10) {#if !hideLabels && d.width > 100}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (159:6) {#each cartogramData as d (d.code)}
+    // (166:6) {#each cartogramData as d (d.code)}
     function create_each_block$a(key_1, ctx) {
     	let first;
     	let if_block_anchor;
-    	let if_block = /*d*/ ctx[54].x && /*d*/ ctx[54].y && create_if_block_2$4(ctx);
+    	let if_block = /*d*/ ctx[57].x && /*d*/ ctx[57].y && create_if_block_2$4(ctx);
 
     	const block = {
     		key: key_1,
@@ -6930,7 +6940,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (/*d*/ ctx[54].x && /*d*/ ctx[54].y) {
+    			if (/*d*/ ctx[57].x && /*d*/ ctx[57].y) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -6954,14 +6964,14 @@ var app = (function () {
     		block,
     		id: create_each_block$a.name,
     		type: "each",
-    		source: "(159:6) {#each cartogramData as d (d.code)}",
+    		source: "(166:6) {#each cartogramData as d (d.code)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (181:2) {#if annotation}
+    // (190:2) {#if annotation}
     function create_if_block$a(ctx) {
     	let div;
     	let annotation_1;
@@ -6969,16 +6979,16 @@ var app = (function () {
 
     	annotation_1 = new Annotation({
     			props: {
-    				x: /*annotation*/ ctx[3].x,
-    				y: /*annotation*/ ctx[3].y,
-    				text: /*annotation*/ ctx[3].html,
-    				radius: /*annotation*/ ctx[3].radius,
-    				forceTopWherePossible: /*annotation*/ ctx[3] === /*helpAnnotation*/ ctx[8],
-    				topClamp: /*annotation*/ ctx[3] === /*helpAnnotation*/ ctx[8]
+    				x: /*annotation*/ ctx[4].x,
+    				y: /*annotation*/ ctx[4].y,
+    				text: /*annotation*/ ctx[4].html,
+    				radius: /*annotation*/ ctx[4].radius,
+    				forceTopWherePossible: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9],
+    				topClamp: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
     				? 0
-    				: /*pxAboveScreenTop*/ ctx[13],
-    				canvasWidth: /*containerWidth*/ ctx[5],
-    				canvasHeight: /*containerHeight*/ ctx[6]
+    				: /*pxAboveScreenTop*/ ctx[14],
+    				canvasWidth: /*containerWidth*/ ctx[6],
+    				canvasHeight: /*containerHeight*/ ctx[7]
     			},
     			$$inline: true
     		});
@@ -6988,9 +6998,9 @@ var app = (function () {
     			div = element("div");
     			create_component(annotation_1.$$.fragment);
     			attr_dev(div, "class", "annotation-container svelte-sdm8di");
-    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[9]);
-    			toggle_class(div, "annotation-help", /*annotation*/ ctx[3].class === "help");
-    			add_location(div, file$i, 181, 4, 5910);
+    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
+    			toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
+    			add_location(div, file$i, 190, 4, 6193);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6999,26 +7009,26 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const annotation_1_changes = {};
-    			if (dirty[0] & /*annotation*/ 8) annotation_1_changes.x = /*annotation*/ ctx[3].x;
-    			if (dirty[0] & /*annotation*/ 8) annotation_1_changes.y = /*annotation*/ ctx[3].y;
-    			if (dirty[0] & /*annotation*/ 8) annotation_1_changes.text = /*annotation*/ ctx[3].html;
-    			if (dirty[0] & /*annotation*/ 8) annotation_1_changes.radius = /*annotation*/ ctx[3].radius;
-    			if (dirty[0] & /*annotation, helpAnnotation*/ 264) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[3] === /*helpAnnotation*/ ctx[8];
+    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.x = /*annotation*/ ctx[4].x;
+    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.y = /*annotation*/ ctx[4].y;
+    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.text = /*annotation*/ ctx[4].html;
+    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.radius = /*annotation*/ ctx[4].radius;
+    			if (dirty[0] & /*annotation, helpAnnotation*/ 528) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9];
 
-    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 8456) annotation_1_changes.topClamp = /*annotation*/ ctx[3] === /*helpAnnotation*/ ctx[8]
+    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 16912) annotation_1_changes.topClamp = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
     			? 0
-    			: /*pxAboveScreenTop*/ ctx[13];
+    			: /*pxAboveScreenTop*/ ctx[14];
 
-    			if (dirty[0] & /*containerWidth*/ 32) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[5];
-    			if (dirty[0] & /*containerHeight*/ 64) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[6];
+    			if (dirty[0] & /*containerWidth*/ 64) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[6];
+    			if (dirty[0] & /*containerHeight*/ 128) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[7];
     			annotation_1.$set(annotation_1_changes);
 
-    			if (dirty[0] & /*hideAnnotation*/ 512) {
-    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[9]);
+    			if (dirty[0] & /*hideAnnotation*/ 1024) {
+    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
     			}
 
-    			if (dirty[0] & /*annotation*/ 8) {
-    				toggle_class(div, "annotation-help", /*annotation*/ ctx[3].class === "help");
+    			if (dirty[0] & /*annotation*/ 16) {
+    				toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
     			}
     		},
     		i: function intro(local) {
@@ -7040,7 +7050,7 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(181:2) {#if annotation}",
+    		source: "(190:2) {#if annotation}",
     		ctx
     	});
 
@@ -7057,8 +7067,8 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*loaded*/ ctx[11] && create_if_block_1$7(ctx);
-    	let if_block1 = /*annotation*/ ctx[3] && create_if_block$a(ctx);
+    	let if_block0 = /*loaded*/ ctx[12] && create_if_block_1$7(ctx);
+    	let if_block1 = /*annotation*/ ctx[4] && create_if_block$a(ctx);
 
     	const block = {
     		c: function create() {
@@ -7073,15 +7083,15 @@ var app = (function () {
     			attr_dev(feDropShadow, "dy", "0");
     			attr_dev(feDropShadow, "stdDeviation", "4");
     			attr_dev(feDropShadow, "flood-opacity", "0.9");
-    			add_location(feDropShadow, file$i, 154, 2, 5118);
+    			add_location(feDropShadow, file$i, 159, 2, 5238);
     			attr_dev(filter, "id", "shadow");
     			attr_dev(filter, "x", "+100px");
-    			add_location(filter, file$i, 153, 0, 5084);
+    			add_location(filter, file$i, 158, 0, 5204);
     			attr_dev(div, "class", "cartogram svelte-sdm8di");
-    			add_render_callback(() => /*div_elementresize_handler*/ ctx[44].call(div));
-    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[2]);
-    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[12]);
-    			add_location(div, file$i, 148, 0, 4920);
+    			add_render_callback(() => /*div_elementresize_handler*/ ctx[47].call(div));
+    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
+    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
+    			add_location(div, file$i, 153, 0, 5040);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7094,17 +7104,17 @@ var app = (function () {
     			if (if_block0) if_block0.m(div, null);
     			append_dev(div, t1);
     			if (if_block1) if_block1.m(div, null);
-    			/*div_binding*/ ctx[43](div);
-    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler*/ ctx[44].bind(div));
+    			/*div_binding*/ ctx[46](div);
+    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler*/ ctx[47].bind(div));
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[18], false, false, false);
+    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[20], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*loaded*/ ctx[11]) {
+    			if (/*loaded*/ ctx[12]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
@@ -7117,11 +7127,11 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (/*annotation*/ ctx[3]) {
+    			if (/*annotation*/ ctx[4]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*annotation*/ 8) {
+    					if (dirty[0] & /*annotation*/ 16) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -7140,12 +7150,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*hoverData*/ 4) {
-    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[2]);
+    			if (dirty[0] & /*hoverData*/ 8) {
+    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
     			}
 
-    			if (dirty[0] & /*resizing*/ 4096) {
-    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[12]);
+    			if (dirty[0] & /*resizing*/ 8192) {
+    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
     			}
     		},
     		i: function intro(local) {
@@ -7161,7 +7171,7 @@ var app = (function () {
     			if (detaching) detach_dev(div);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
-    			/*div_binding*/ ctx[43](null);
+    			/*div_binding*/ ctx[46](null);
     			div_resize_listener();
     			mounted = false;
     			dispose();
@@ -7202,8 +7212,11 @@ var app = (function () {
     	let { hoverTextFn } = $$props;
     	let { onHoverFn = () => null } = $$props;
     	let { hideLabels = false } = $$props;
-    	const rerenderFn = () => (((((((((($$invalidate(7, cartogramData), $$invalidate(20, data)), $$invalidate(37, radius)), $$invalidate(24, categoryFn)), $$invalidate(36, xScale)), $$invalidate(35, yScale)), $$invalidate(38, largestVal)), $$invalidate(21, nodeSize)), $$invalidate(22, domain)), $$invalidate(29, targetWidth)), $$invalidate(30, targetHeight));
+    	const rerenderFn = () => (((((((((($$invalidate(8, cartogramData), $$invalidate(22, data)), $$invalidate(40, radius)), $$invalidate(26, categoryFn)), $$invalidate(39, xScale)), $$invalidate(38, yScale)), $$invalidate(41, largestVal)), $$invalidate(23, nodeSize)), $$invalidate(24, domain)), $$invalidate(32, targetWidth)), $$invalidate(33, targetHeight));
     	let { annotationShowing = false } = $$props;
+    	let { legendTitle } = $$props;
+    	let { slug } = $$props;
+    	const title = legendTitle.replaceAll("\\<.*?\\>", "").toLowerCase();
     	let containerEl;
     	let loaded = false;
 
@@ -7225,16 +7238,16 @@ var app = (function () {
 
     	function resize() {
     		if (containerEl) {
-    			$$invalidate(12, resizing = true);
+    			$$invalidate(13, resizing = true);
     			const ctrStyle = getComputedStyle(containerEl);
     			const xPadding = parseFloat(ctrStyle.paddingLeft) + parseFloat(ctrStyle.paddingRight);
     			const yPadding = parseFloat(ctrStyle.paddingTop) - parseFloat(ctrStyle.paddingBottom);
-    			$$invalidate(5, containerWidth = containerEl.clientWidth - xPadding);
-    			$$invalidate(6, containerHeight = containerEl.clientHeight - yPadding);
+    			$$invalidate(6, containerWidth = containerEl.clientWidth - xPadding);
+    			$$invalidate(7, containerHeight = containerEl.clientHeight - yPadding);
     			const scale = Math.min(containerWidth / originalWidth, containerHeight / originalHeight);
-    			$$invalidate(29, targetWidth = originalWidth * scale);
-    			$$invalidate(30, targetHeight = originalHeight * scale);
-    			window.setTimeout(() => $$invalidate(12, resizing = false));
+    			$$invalidate(32, targetWidth = originalWidth * scale);
+    			$$invalidate(33, targetHeight = originalHeight * scale);
+    			window.setTimeout(() => $$invalidate(13, resizing = false));
     		}
     	}
 
@@ -7244,19 +7257,19 @@ var app = (function () {
     	window.setTimeout(
     		() => {
     			resize();
-    			$$invalidate(11, loaded = true);
+    			$$invalidate(12, loaded = true);
     		},
     		0
     	);
 
-    	const _debouncedShowHelpText = trailingDebounce(() => $$invalidate(31, helpTextFade = false), 200);
+    	const _debouncedShowHelpText = trailingDebounce(() => $$invalidate(34, helpTextFade = false), 200);
 
     	function onMouseEnterCountry(evt, country) {
     		onHoverFn(country);
-    		$$invalidate(31, helpTextFade = false);
+    		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(2, hoverData = {
+    		$$invalidate(3, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7267,10 +7280,10 @@ var app = (function () {
 
     	function onMouseClick(country) {
     		onHoverFn(country);
-    		$$invalidate(31, helpTextFade = false);
+    		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(2, hoverData = {
+    		$$invalidate(3, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7285,7 +7298,7 @@ var app = (function () {
     	}
 
     	function clearHoverState() {
-    		$$invalidate(2, hoverData = null);
+    		$$invalidate(3, hoverData = null);
     		hoveredForX = false;
     		window.clearTimeout(hoverTimeout);
     		hoverTimeout = null;
@@ -7293,7 +7306,7 @@ var app = (function () {
     	}
 
     	function fadeInHelpText() {
-    		$$invalidate(31, helpTextFade = true);
+    		$$invalidate(34, helpTextFade = true);
     		_debouncedShowHelpText();
     	}
 
@@ -7301,7 +7314,7 @@ var app = (function () {
 
     	const onWindowScroll = () => {
     		const top = containerEl.getBoundingClientRect().top - 50;
-    		$$invalidate(13, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
+    		$$invalidate(14, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
     	};
 
     	const writable_props = [
@@ -7315,7 +7328,9 @@ var app = (function () {
     		'hoverTextFn',
     		'onHoverFn',
     		'hideLabels',
-    		'annotationShowing'
+    		'annotationShowing',
+    		'legendTitle',
+    		'slug'
     	];
 
     	Object_1.keys($$props).forEach(key => {
@@ -7330,27 +7345,29 @@ var app = (function () {
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			containerEl = $$value;
-    			$$invalidate(10, containerEl);
+    			$$invalidate(11, containerEl);
     		});
     	}
 
     	function div_elementresize_handler() {
     		clientWidth = this.clientWidth;
-    		$$invalidate(4, clientWidth);
+    		$$invalidate(5, clientWidth);
     	}
 
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(20, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(21, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(22, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(23, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(24, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(25, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(26, hoverTextFn = $$props.hoverTextFn);
-    		if ('onHoverFn' in $$props) $$invalidate(27, onHoverFn = $$props.onHoverFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
     		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(19, annotationShowing = $$props.annotationShowing);
+    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
+    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
     	};
 
     	$$self.$capture_state = () => ({
@@ -7370,6 +7387,9 @@ var app = (function () {
     		hideLabels,
     		rerenderFn,
     		annotationShowing,
+    		legendTitle,
+    		slug,
+    		title,
     		containerEl,
     		loaded,
     		originalWidth,
@@ -7409,42 +7429,44 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(20, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(21, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(22, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(23, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(24, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(25, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(26, hoverTextFn = $$props.hoverTextFn);
-    		if ('onHoverFn' in $$props) $$invalidate(27, onHoverFn = $$props.onHoverFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
     		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(19, annotationShowing = $$props.annotationShowing);
-    		if ('containerEl' in $$props) $$invalidate(10, containerEl = $$props.containerEl);
-    		if ('loaded' in $$props) $$invalidate(11, loaded = $$props.loaded);
-    		if ('targetWidth' in $$props) $$invalidate(29, targetWidth = $$props.targetWidth);
-    		if ('targetHeight' in $$props) $$invalidate(30, targetHeight = $$props.targetHeight);
-    		if ('resizing' in $$props) $$invalidate(12, resizing = $$props.resizing);
+    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
+    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
+    		if ('containerEl' in $$props) $$invalidate(11, containerEl = $$props.containerEl);
+    		if ('loaded' in $$props) $$invalidate(12, loaded = $$props.loaded);
+    		if ('targetWidth' in $$props) $$invalidate(32, targetWidth = $$props.targetWidth);
+    		if ('targetHeight' in $$props) $$invalidate(33, targetHeight = $$props.targetHeight);
+    		if ('resizing' in $$props) $$invalidate(13, resizing = $$props.resizing);
     		if ('hoverTimeout' in $$props) hoverTimeout = $$props.hoverTimeout;
-    		if ('hoverData' in $$props) $$invalidate(2, hoverData = $$props.hoverData);
-    		if ('helpTextFade' in $$props) $$invalidate(31, helpTextFade = $$props.helpTextFade);
-    		if ('annotation' in $$props) $$invalidate(3, annotation = $$props.annotation);
+    		if ('hoverData' in $$props) $$invalidate(3, hoverData = $$props.hoverData);
+    		if ('helpTextFade' in $$props) $$invalidate(34, helpTextFade = $$props.helpTextFade);
+    		if ('annotation' in $$props) $$invalidate(4, annotation = $$props.annotation);
     		if ('hoveredForX' in $$props) hoveredForX = $$props.hoveredForX;
-    		if ('clientWidth' in $$props) $$invalidate(4, clientWidth = $$props.clientWidth);
-    		if ('containerWidth' in $$props) $$invalidate(5, containerWidth = $$props.containerWidth);
-    		if ('containerHeight' in $$props) $$invalidate(6, containerHeight = $$props.containerHeight);
-    		if ('cartogramData' in $$props) $$invalidate(7, cartogramData = $$props.cartogramData);
-    		if ('pxAboveScreenTop' in $$props) $$invalidate(13, pxAboveScreenTop = $$props.pxAboveScreenTop);
-    		if ('helpAnnotation' in $$props) $$invalidate(8, helpAnnotation = $$props.helpAnnotation);
-    		if ('hideAnnotation' in $$props) $$invalidate(9, hideAnnotation = $$props.hideAnnotation);
-    		if ('countryAnnotation' in $$props) $$invalidate(32, countryAnnotation = $$props.countryAnnotation);
-    		if ('haveContainerDims' in $$props) $$invalidate(33, haveContainerDims = $$props.haveContainerDims);
-    		if ('helpCountry' in $$props) $$invalidate(34, helpCountry = $$props.helpCountry);
-    		if ('calcStyle' in $$props) $$invalidate(14, calcStyle = $$props.calcStyle);
-    		if ('yScale' in $$props) $$invalidate(35, yScale = $$props.yScale);
-    		if ('xScale' in $$props) $$invalidate(36, xScale = $$props.xScale);
-    		if ('radius' in $$props) $$invalidate(37, radius = $$props.radius);
-    		if ('largestVal' in $$props) $$invalidate(38, largestVal = $$props.largestVal);
+    		if ('clientWidth' in $$props) $$invalidate(5, clientWidth = $$props.clientWidth);
+    		if ('containerWidth' in $$props) $$invalidate(6, containerWidth = $$props.containerWidth);
+    		if ('containerHeight' in $$props) $$invalidate(7, containerHeight = $$props.containerHeight);
+    		if ('cartogramData' in $$props) $$invalidate(8, cartogramData = $$props.cartogramData);
+    		if ('pxAboveScreenTop' in $$props) $$invalidate(14, pxAboveScreenTop = $$props.pxAboveScreenTop);
+    		if ('helpAnnotation' in $$props) $$invalidate(9, helpAnnotation = $$props.helpAnnotation);
+    		if ('hideAnnotation' in $$props) $$invalidate(10, hideAnnotation = $$props.hideAnnotation);
+    		if ('countryAnnotation' in $$props) $$invalidate(35, countryAnnotation = $$props.countryAnnotation);
+    		if ('haveContainerDims' in $$props) $$invalidate(36, haveContainerDims = $$props.haveContainerDims);
+    		if ('helpCountry' in $$props) $$invalidate(37, helpCountry = $$props.helpCountry);
+    		if ('calcStyle' in $$props) $$invalidate(15, calcStyle = $$props.calcStyle);
+    		if ('yScale' in $$props) $$invalidate(38, yScale = $$props.yScale);
+    		if ('xScale' in $$props) $$invalidate(39, xScale = $$props.xScale);
+    		if ('radius' in $$props) $$invalidate(40, radius = $$props.radius);
+    		if ('largestVal' in $$props) $$invalidate(41, largestVal = $$props.largestVal);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -7452,28 +7474,28 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*data*/ 1048576) {
-    			$$invalidate(38, largestVal = Math.max(...data.map(d => d.value)));
+    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
+    			$$invalidate(41, largestVal = Math.max(...data.map(d => d.value)));
     		}
 
-    		if ($$self.$$.dirty[0] & /*clientWidth*/ 16) {
+    		if ($$self.$$.dirty[0] & /*clientWidth*/ 32) {
     			clientWidth && throttledResize();
     		}
 
-    		if ($$self.$$.dirty[0] & /*nodeSize*/ 2097152 | $$self.$$.dirty[1] & /*largestVal*/ 128) {
-    			$$invalidate(37, radius = sqrt().domain([0, largestVal]).range([0, nodeSize]));
+    		if ($$self.$$.dirty[0] & /*nodeSize*/ 8388608 | $$self.$$.dirty[1] & /*largestVal*/ 1024) {
+    			$$invalidate(40, radius = sqrt().domain([0, largestVal]).range([0, nodeSize]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain, targetWidth*/ 541065216) {
-    			$$invalidate(36, xScale = linear().domain([0, domain[0]]).range([0, targetWidth]));
+    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetWidth*/ 2) {
+    			$$invalidate(39, xScale = linear().domain([0, domain[0]]).range([0, targetWidth]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain, targetHeight*/ 1077936128) {
-    			$$invalidate(35, yScale = linear().domain([0, domain[1]]).range([0, targetHeight]));
+    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetHeight*/ 4) {
+    			$$invalidate(38, yScale = linear().domain([0, domain[1]]).range([0, targetHeight]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 17825792 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 112) {
-    			$$invalidate(7, cartogramData = data.map(d => {
+    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 71303168 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 896) {
+    			$$invalidate(8, cartogramData = data.map(d => {
     				const r = radius(d.value);
 
     				return Object.assign(Object.assign({}, d), {
@@ -7487,12 +7509,12 @@ var app = (function () {
     			}));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cartogramData*/ 128) {
+    		if ($$self.$$.dirty[0] & /*cartogramData*/ 256) {
     			cartogramData.sort((a, b) => a.y - b.y);
     		}
 
-    		if ($$self.$$.dirty[0] & /*colorFn*/ 33554432) {
-    			$$invalidate(14, calcStyle = d => {
+    		if ($$self.$$.dirty[0] & /*colorFn*/ 134217728) {
+    			$$invalidate(15, calcStyle = d => {
     				const styles = [
     					`left: ${d.left}px`,
     					`top: ${d.top}px`,
@@ -7505,14 +7527,14 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 8388736) {
-    			$$invalidate(34, helpCountry = helpText
+    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 33554688) {
+    			$$invalidate(37, helpCountry = helpText
     			? cartogramData.find(d => d.code === helpText.code)
     			: null);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText*/ 8388608 | $$self.$$.dirty[1] & /*helpCountry*/ 8) {
-    			$$invalidate(8, helpAnnotation = helpCountry && {
+    		if ($$self.$$.dirty[0] & /*helpText*/ 33554432 | $$self.$$.dirty[1] & /*helpCountry*/ 64) {
+    			$$invalidate(9, helpAnnotation = helpCountry && {
     				x: helpCountry.left + helpCountry.width / 2,
     				y: helpCountry.top + helpCountry.height / 2,
     				radius: 2 + helpCountry.width / 2,
@@ -7521,8 +7543,8 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 67108868) {
-    			$$invalidate(32, countryAnnotation = hoverTextFn && hoverData && {
+    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 268435464) {
+    			$$invalidate(35, countryAnnotation = hoverTextFn && hoverData && {
     				x: hoverData.x,
     				y: hoverData.y,
     				radius: 2 + hoverData.country.width / 2,
@@ -7530,25 +7552,25 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 96) {
-    			$$invalidate(33, haveContainerDims = containerWidth > 0 && containerHeight > 0);
+    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 192) {
+    			$$invalidate(36, haveContainerDims = containerWidth > 0 && containerHeight > 0);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 256 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 6) {
-    			$$invalidate(3, annotation = haveContainerDims
+    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 512 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 48) {
+    			$$invalidate(4, annotation = haveContainerDims
     			? countryAnnotation || helpAnnotation
     			: undefined);
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverData*/ 4 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 3) {
-    			$$invalidate(9, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
+    		if ($$self.$$.dirty[0] & /*hoverData*/ 8 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 24) {
+    			$$invalidate(10, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
     		}
 
-    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 776) {
-    			$$invalidate(19, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
+    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 1552) {
+    			$$invalidate(21, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
     		}
 
-    		if ($$self.$$.dirty[0] & /*data*/ 1048576) {
+    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
     			data && fadeInHelpText();
     		}
     	};
@@ -7556,6 +7578,7 @@ var app = (function () {
     	return [
     		classesFn,
     		hideLabels,
+    		slug,
     		hoverData,
     		annotation,
     		clientWidth,
@@ -7569,6 +7592,7 @@ var app = (function () {
     		resizing,
     		pxAboveScreenTop,
     		calcStyle,
+    		title,
     		onMouseEnterCountry,
     		onMouseClick,
     		onMouseLeaveCountry,
@@ -7583,6 +7607,7 @@ var app = (function () {
     		hoverTextFn,
     		onHoverFn,
     		rerenderFn,
+    		legendTitle,
     		targetWidth,
     		targetHeight,
     		helpTextFade,
@@ -7613,18 +7638,20 @@ var app = (function () {
     			create_fragment$i,
     			safe_not_equal,
     			{
-    				data: 20,
-    				nodeSize: 21,
-    				domain: 22,
-    				helpText: 23,
-    				categoryFn: 24,
-    				colorFn: 25,
+    				data: 22,
+    				nodeSize: 23,
+    				domain: 24,
+    				helpText: 25,
+    				categoryFn: 26,
+    				colorFn: 27,
     				classesFn: 0,
-    				hoverTextFn: 26,
-    				onHoverFn: 27,
+    				hoverTextFn: 28,
+    				onHoverFn: 29,
     				hideLabels: 1,
-    				rerenderFn: 28,
-    				annotationShowing: 19
+    				rerenderFn: 30,
+    				annotationShowing: 21,
+    				legendTitle: 31,
+    				slug: 2
     			},
     			null,
     			[-1, -1]
@@ -7640,16 +7667,24 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[20] === undefined && !('data' in props)) {
+    		if (/*data*/ ctx[22] === undefined && !('data' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'data'");
     		}
 
-    		if (/*domain*/ ctx[22] === undefined && !('domain' in props)) {
+    		if (/*domain*/ ctx[24] === undefined && !('domain' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'domain'");
     		}
 
-    		if (/*hoverTextFn*/ ctx[26] === undefined && !('hoverTextFn' in props)) {
+    		if (/*hoverTextFn*/ ctx[28] === undefined && !('hoverTextFn' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'hoverTextFn'");
+    		}
+
+    		if (/*legendTitle*/ ctx[31] === undefined && !('legendTitle' in props)) {
+    			console.warn("<Cartogram> was created without expected prop 'legendTitle'");
+    		}
+
+    		if (/*slug*/ ctx[2] === undefined && !('slug' in props)) {
+    			console.warn("<Cartogram> was created without expected prop 'slug'");
     		}
     	}
 
@@ -7734,7 +7769,7 @@ var app = (function () {
     	}
 
     	get rerenderFn() {
-    		return this.$$.ctx[28];
+    		return this.$$.ctx[30];
     	}
 
     	set rerenderFn(value) {
@@ -7746,6 +7781,22 @@ var app = (function () {
     	}
 
     	set annotationShowing(value) {
+    		throw new Error("<Cartogram>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get legendTitle() {
+    		throw new Error("<Cartogram>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set legendTitle(value) {
+    		throw new Error("<Cartogram>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get slug() {
+    		throw new Error("<Cartogram>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set slug(value) {
     		throw new Error("<Cartogram>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -9984,40 +10035,49 @@ var app = (function () {
     		name: "Afghanistan",
     		id: "AFG",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 22.22222222222222
     	},
     	{
     		name: "Albania",
     		id: "ALB",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 83.33333333333334,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Algeria",
     		id: "DZA",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
     		pYes: 66.66666666666667,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Andorra",
@@ -10028,6 +10088,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10036,27 +10099,33 @@ var app = (function () {
     		name: "Angola",
     		id: "AGO",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Antigua and Barbuda",
     		id: "ATG",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Argentina",
@@ -10064,23 +10133,29 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		pNo: 100,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Armenia",
     		id: "ARM",
     		"ind-1": 2,
     		"tra-1": 1,
-    		"tra-2": 3,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 66.66666666666667,
     		pNo: 100,
     		pAlmost: 66.66666666666667
     	},
@@ -10093,6 +10168,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10106,9 +10184,12 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 66.66666666666667,
+    		pNo: 77.77777777777779,
+    		pAlmost: 77.77777777777779
     	},
     	{
     		name: "Azerbaijan",
@@ -10119,74 +10200,92 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Bahamas",
     		id: "BHS",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Bahrain",
     		id: "BHR",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Bangladesh",
-    		id: "BGD",
-    		"ind-1": 1,
     		"tra-1": 3,
     		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
+    	},
+    	{
+    		name: "Bangladesh",
+    		id: "BGD",
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Barbados",
     		id: "BRB",
     		"ind-1": 1,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Belarus",
     		id: "BLR",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
-    		pYes: 33.333333333333336,
-    		pNo: 33.333333333333336,
-    		pAlmost: 33.333333333333336
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Belgium",
@@ -10194,12 +10293,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Belize",
@@ -10207,181 +10309,223 @@ var app = (function () {
     		"ind-1": 2,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
     		pYes: 33.333333333333336,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Benin",
     		id: "BEN",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Bhutan",
     		id: "BTN",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Bolivia",
     		id: "BOL",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Bosnia and Herzegovina",
     		id: "BIH",
-    		"ind-1": 4,
-    		"tra-1": 3,
+    		"ind-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 50,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Botswana",
     		id: "BWA",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Brazil",
     		id: "BRA",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 3,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
     		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		pNo: 100,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Brunei Darussalam",
     		id: "BRN",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		pNo: 88.88888888888889,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Bulgaria",
     		id: "BGR",
     		"ind-1": 2,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		pNo: 100,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Burkina Faso",
     		id: "BFA",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Burundi",
     		id: "BDI",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Cabo Verde",
     		id: "CPV",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Cambodia",
     		id: "KHM",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Cameroon",
     		id: "CMR",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
     		pYes: 0,
     		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Canada",
@@ -10389,38 +10533,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Central African Rep.",
     		id: "CAF",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Chad",
     		id: "TCD",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Chile",
@@ -10431,6 +10584,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10441,12 +10597,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777777,
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Colombia",
@@ -10454,38 +10613,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		pNo: 100,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Comoros",
     		id: "COM",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Dem. Rep. of the Congo",
     		id: "COD",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 3,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Cook Isl.",
@@ -10493,12 +10661,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
-    		"aq-1": 4,
-    		pYes: 16.666666666666668,
-    		pNo: 50,
-    		pAlmost: 33.333333333333336
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 55.55555555555555,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Costa Rica",
@@ -10506,12 +10677,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		pNo: 100,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Côte d’Ivoire",
@@ -10519,12 +10693,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
     		pYes: 66.66666666666667,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 77.77777777777779
     	},
     	{
     		name: "Croatia",
@@ -10532,25 +10709,31 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777779,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Cuba",
     		id: "CUB",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Cyprus",
@@ -10561,9 +10744,12 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 66.66666666666667,
+    		pNo: 77.77777777777779,
+    		pAlmost: 77.77777777777779
     	},
     	{
     		name: "Czechia",
@@ -10571,12 +10757,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777779,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Denmark",
@@ -10587,6 +10776,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10595,105 +10787,129 @@ var app = (function () {
     		name: "Djibouti",
     		id: "DJI",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Dominica",
     		id: "DMA",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Dominican Rep.",
     		id: "DOM",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Ecuador",
     		id: "ECU",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 88.88888888888889,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Egypt",
     		id: "EGY",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "El Salvador",
     		id: "SLV",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Equatorial Guinea",
     		id: "GNQ",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Eritrea",
     		id: "ERI",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Estonia",
@@ -10704,35 +10920,44 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Ethiopia",
     		id: "ETH",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 88.88888888888889,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Fiji",
     		id: "FJI",
     		"ind-1": 1,
     		"tra-1": 4,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555555,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Finland",
@@ -10743,6 +10968,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10750,41 +10978,50 @@ var app = (function () {
     	{
     		name: "France",
     		id: "FRA",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 66.66666666666666,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Gabon",
     		id: "GAB",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Gambia",
     		id: "GMB",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Georgia",
@@ -10795,6 +11032,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10808,22 +11048,28 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 83.33333333333333,
-    		pAlmost: 83.33333333333333
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 66.66666666666667,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Ghana",
     		id: "GHA",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 55.55555555555556,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Greece",
@@ -10834,100 +11080,124 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 83.33333333333334,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 66.66666666666667,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Grenada",
     		id: "GRD",
     		"ind-1": 1,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Guatemala",
     		id: "GTM",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Guinea",
     		id: "GIN",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Guinea-Bissau",
     		id: "GNB",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Guyana",
     		id: "GUY",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Haiti",
     		id: "HTI",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 0,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 11.11111111111111,
     		pNo: 100,
-    		pAlmost: 0
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Honduras",
     		id: "HND",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Hungary",
@@ -10935,12 +11205,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Iceland",
@@ -10951,22 +11224,28 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 50,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "India",
     		id: "IND",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Indonesia",
@@ -10977,6 +11256,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -10986,11 +11268,14 @@ var app = (function () {
     		id: "IRN",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
     		pNo: 100,
     		pAlmost: 66.66666666666667
     	},
@@ -10998,14 +11283,17 @@ var app = (function () {
     		name: "Iraq",
     		id: "IRQ",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Ireland",
@@ -11016,9 +11304,12 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 83.33333333333333,
-    		pAlmost: 83.33333333333333
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 66.66666666666667,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Israel",
@@ -11026,12 +11317,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 88.88888888888889,
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Italy",
@@ -11042,22 +11336,28 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 83.33333333333334,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 66.66666666666667,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Jamaica",
     		id: "JAM",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Japan",
@@ -11068,48 +11368,60 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777779,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Jordan",
     		id: "JOR",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Kazakhstan",
     		id: "KAZ",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Kenya",
     		id: "KEN",
     		"ind-1": 1,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 44.44444444444444,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Kiribati",
@@ -11117,12 +11429,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 4,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 33.333333333333336,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Dem. People’s Rep. of Korea",
@@ -11130,116 +11445,143 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 4,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
-    		"aq-1": 4,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666667,
-    		pAlmost: 50
+    		"aq-1": 3,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 88.88888888888889,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Kuwait",
     		id: "KWT",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Kyrgyzstan",
     		id: "KGZ",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Lao People’s Dem. Rep.",
     		id: "LAO",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Latvia",
     		id: "LVA",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 50,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
+    		pNo: 55.55555555555556,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Lebanon",
     		id: "LBN",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Lesotho",
     		id: "LSO",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
     		pYes: 0,
     		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Liberia",
     		id: "LBR",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Libya",
     		id: "LBY",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 83.33333333333334,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Liechtenstein",
@@ -11250,9 +11592,12 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 66.66666666666667,
+    		pNo: 77.77777777777779,
+    		pAlmost: 77.77777777777779
     	},
     	{
     		name: "Lithuania",
@@ -11263,6 +11608,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11270,80 +11618,98 @@ var app = (function () {
     	{
     		name: "Luxembourg",
     		id: "LUX",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
-    		"aq-1": 4,
-    		pYes: 50,
-    		pNo: 50,
-    		pAlmost: 50
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
+    		pNo: 66.66666666666667,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Madagascar",
     		id: "MDG",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Malawi",
     		id: "MWI",
     		"ind-1": 2,
     		"tra-1": 1,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Malaysia",
     		id: "MYS",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 100,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Maldives",
     		id: "MDV",
     		"ind-1": 1,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
+    		pNo: 88.88888888888889,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Mali",
     		id: "MLI",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 88.88888888888889,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Malta",
@@ -11354,48 +11720,60 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 55.55555555555556,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Marshall Islands",
     		id: "MHL",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 4,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
     		pNo: 66.66666666666667,
-    		pAlmost: 16.666666666666668
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Mauritania",
     		id: "MRT",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Mauritius",
     		id: "MUS",
     		"ind-1": 1,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Mexico",
@@ -11403,12 +11781,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Fed. States of Micronesia",
@@ -11416,25 +11797,31 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 4,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 33.333333333333336,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Rep. of Moldova",
     		id: "MDA",
-    		"ind-1": 4,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"ind-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 33.333333333333336,
-    		pAlmost: 0
+    		pNo: 55.55555555555556,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Monaco",
@@ -11445,22 +11832,28 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 66.66666666666667,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Mongolia",
     		id: "MNG",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Montenegro",
@@ -11468,12 +11861,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Morocco",
@@ -11481,51 +11877,63 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 50,
-    		pNo: 83.33333333333334,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Mozambique",
     		id: "MOZ",
     		"ind-1": 1,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Myanmar",
     		id: "MMR",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
     		pYes: 33.333333333333336,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Namibia",
     		id: "NAM",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 88.88888888888889,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Nauru",
@@ -11536,22 +11944,28 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 50,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 22.22222222222222
     	},
     	{
     		name: "Nepal",
     		id: "NPL",
     		"ind-1": 1,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Netherlands",
@@ -11562,6 +11976,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11575,61 +11992,76 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777779,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "Nicaragua",
     		id: "NIC",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 44.44444444444444,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Niger",
     		id: "NER",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
     		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Nigeria",
     		id: "NGA",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Niue",
     		id: "NIU",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 1,
-    		"aq-1": 4,
-    		pYes: 16.666666666666668,
-    		pNo: 16.666666666666668,
-    		pAlmost: 16.666666666666668
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "North Macedonia",
@@ -11637,12 +12069,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Norway",
@@ -11653,6 +12088,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11661,27 +12099,33 @@ var app = (function () {
     		name: "Oman",
     		id: "OMN",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Pakistan",
     		id: "PAK",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 11.11111111111111,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 11.11111111111111
     	},
     	{
     		name: "Palau",
@@ -11692,48 +12136,60 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 50,
-    		pAlmost: 0
+    		pNo: 44.44444444444444,
+    		pAlmost: 11.11111111111111
     	},
     	{
     		name: "Panama",
     		id: "PAN",
     		"ind-1": 1,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		pYes: 33.333333333333336,
+    		pNo: 88.88888888888889,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Papua New Guinea",
     		id: "PNG",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 0
+    		pNo: 55.55555555555556,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Paraguay",
     		id: "PRY",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
+    		pNo: 77.77777777777777,
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Peru",
@@ -11741,12 +12197,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Philippines",
@@ -11754,12 +12213,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Poland",
@@ -11770,6 +12232,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11777,41 +12242,50 @@ var app = (function () {
     	{
     		name: "Portugal",
     		id: "PRT",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 66.66666666666666,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Qatar",
     		id: "QAT",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 3,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Congo",
     		id: "COG",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 2,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
     		pYes: 0,
     		pNo: 100,
-    		pAlmost: 0
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Romania",
@@ -11822,6 +12296,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11835,9 +12312,12 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Rwanda",
@@ -11848,6 +12328,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -11858,12 +12341,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 50,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "San Marino",
@@ -11874,48 +12360,60 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 50,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 22.22222222222222
     	},
     	{
     		name: "Sao Tome and Principe",
     		id: "STP",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Saudi Arabia",
     		id: "SAU",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Senegal",
     		id: "SEN",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Serbia",
@@ -11923,38 +12421,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 100,
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Seychelles",
     		id: "SYC",
     		"ind-1": 2,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 0,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 22.22222222222222
     	},
     	{
     		name: "Sierra Leone",
     		id: "SLE",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
     		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Singapore",
@@ -11965,22 +12472,28 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Slovakia",
     		id: "SVK",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 33.333333333333336,
     		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Slovenia",
@@ -11988,51 +12501,63 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 83.33333333333334,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 44.44444444444444,
+    		pNo: 66.66666666666667,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Solomon Islands",
     		id: "SLB",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Somalia",
     		id: "SOM",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "South Africa",
     		id: "ZAF",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
+    		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Rep. of Korea",
@@ -12043,22 +12568,28 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 66.66666666666667,
+    		pNo: 77.77777777777779,
+    		pAlmost: 77.77777777777779
     	},
     	{
     		name: "South Sudan",
     		id: "SSD",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Spain",
@@ -12066,103 +12597,127 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 100,
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Sri Lanka",
     		id: "LKA",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 55.55555555555556,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Saint Vincent and the Grenadines",
     		id: "VCT",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 0,
-    		pAlmost: 0
+    		pNo: 33.333333333333336,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Saint Kitts and Nevis",
     		id: "KNA",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Saint Lucia",
     		id: "LCA",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pNo: 77.77777777777777,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Sudan",
     		id: "SDN",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Suriname",
     		id: "SUR",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 2,
-    		pYes: 0,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 11.11111111111111,
     		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Eswatini",
     		id: "SWZ",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 88.88888888888889,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Sweden",
@@ -12173,6 +12728,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -12186,6 +12744,9 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
     		pYes: 100,
     		pNo: 100,
     		pAlmost: 100
@@ -12194,38 +12755,47 @@ var app = (function () {
     		name: "Syrian Arab Rep.",
     		id: "SYR",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Tajikistan",
     		id: "TJK",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 3,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666667,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555555,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "United Rep. of Tanzania",
     		id: "TZA",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 50,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 55.55555555555556,
     		pNo: 100,
     		pAlmost: 66.66666666666667
     	},
@@ -12235,38 +12805,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Timor-Leste",
     		id: "TLS",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Togo",
     		id: "TGO",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 0
+    		pNo: 77.77777777777777,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Tonga",
@@ -12274,38 +12853,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 4,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 50,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Trinidad and Tobago",
     		id: "TTO",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100,
-    		pAlmost: 50
-    	},
-    	{
-    		name: "Tunisia",
-    		id: "TUN",
     		"ind-1": 1,
     		"tra-1": 3,
     		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 50,
-    		pNo: 100.00000000000001,
-    		pAlmost: 83.33333333333334
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 100,
+    		pAlmost: 77.77777777777777
+    	},
+    	{
+    		name: "Tunisia",
+    		id: "TUN",
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"aq-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 100,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Turkey",
@@ -12313,25 +12901,31 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Turkmenistan",
     		id: "TKM",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Tuvalu",
@@ -12339,38 +12933,47 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 4,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
     		pYes: 33.333333333333336,
-    		pNo: 50,
-    		pAlmost: 33.333333333333336
+    		pNo: 77.77777777777777,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Uganda",
     		id: "UGA",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		pYes: 33.333333333333336,
     		pNo: 100,
-    		pAlmost: 50
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Ukraine",
     		id: "UKR",
-    		"ind-1": 4,
+    		"ind-1": 3,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 4,
-    		"aq-1": 4,
-    		pYes: 33.333333333333336,
-    		pNo: 50,
-    		pAlmost: 50
+    		"aq-1": 3,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 66.66666666666667,
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "United Arab Emirates",
@@ -12381,9 +12984,12 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 100,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "United Kingdom",
@@ -12391,12 +12997,15 @@ var app = (function () {
     		"ind-1": 1,
     		"tra-1": 1,
     		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
-    		pNo: 100,
-    		pAlmost: 100
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 55.55555555555556,
+    		pNo: 77.77777777777779,
+    		pAlmost: 66.66666666666667
     	},
     	{
     		name: "United States of America",
@@ -12407,113 +13016,140 @@ var app = (function () {
     		"waste-1": 1,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		pYes: 88.88888888888889,
     		pNo: 100,
-    		pAlmost: 83.33333333333333
+    		pAlmost: 88.88888888888889
     	},
     	{
     		name: "Uruguay",
     		id: "URY",
     		"ind-1": 1,
-    		"tra-1": 3,
+    		"tra-1": 2,
     		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"aq-1": 1,
-    		pYes: 83.33333333333333,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 77.77777777777777,
     		pNo: 100,
-    		pAlmost: 100
+    		pAlmost: 77.77777777777777
     	},
     	{
     		name: "Uzbekistan",
     		id: "UZB",
     		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 4,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Vanuatu",
     		id: "VUT",
     		"ind-1": 2,
-    		"tra-1": 2,
+    		"tra-1": 3,
     		"tra-2": 4,
-    		"waste-1": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
     		pYes: 0,
-    		pNo: 83.33333333333333,
-    		pAlmost: 0
+    		pNo: 66.66666666666667,
+    		pAlmost: 33.333333333333336
     	},
     	{
     		name: "Venezuela",
     		id: "VEN",
     		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
+    		"tra-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 2,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 2,
+    		pYes: 44.44444444444444,
     		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pAlmost: 55.55555555555556
     	},
     	{
     		name: "Viet Nam",
     		id: "VNM",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 3,
     		"res-1": 2,
     		"aq-1": 1,
-    		pYes: 16.666666666666668,
-    		pNo: 100,
-    		pAlmost: 50
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 33.33333333333333
     	},
     	{
     		name: "Yemen",
     		id: "YEM",
     		"ind-1": 2,
     		"tra-1": 4,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 16.666666666666668,
-    		pNo: 83.33333333333334,
-    		pAlmost: 16.666666666666668
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666666,
+    		pAlmost: 44.44444444444444
     	},
     	{
     		name: "Zambia",
     		id: "ZMB",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "Zimbabwe",
     		id: "ZWE",
     		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
+    		"tra-1": 3,
+    		"tra-2": 3,
+    		"waste-1": 3,
     		"res-1": 1,
     		"aq-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 3,
+    		pYes: 22.22222222222222,
+    		pNo: 77.77777777777777,
+    		pAlmost: 66.66666666666666
     	},
     	{
     		name: "American Samoa",
@@ -12524,6 +13160,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12537,6 +13176,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12550,6 +13192,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12563,6 +13208,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12576,6 +13224,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12589,6 +13240,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -12602,6 +13256,9 @@ var app = (function () {
     		"waste-1": 4,
     		"res-1": 4,
     		"aq-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		pYes: 0,
     		pNo: 0,
     		pAlmost: 0
@@ -14996,7 +15653,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (30:33) 
+    // (31:33) 
     function create_if_block_2$3(ctx) {
     	let ul;
     	let each_value_1 = /*colors*/ ctx[2];
@@ -15017,8 +15674,8 @@ var app = (function () {
 
     			attr_dev(ul, "class", "cat info svelte-1l0yzdf");
     			attr_dev(ul, "role", "menu");
-    			attr_dev(ul, "aria-label", "menu");
-    			add_location(ul, file$h, 30, 0, 734);
+    			attr_dev(ul, "aria-label", "Legend");
+    			add_location(ul, file$h, 31, 0, 774);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -15028,7 +15685,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*selected, labels, colors*/ 13) {
+    			if (dirty & /*labels, selected, colors*/ 13) {
     				each_value_1 = /*colors*/ ctx[2];
     				validate_each_argument(each_value_1);
     				let i;
@@ -15062,7 +15719,7 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(30:33) ",
+    		source: "(31:33) ",
     		ctx
     	});
 
@@ -15090,7 +15747,7 @@ var app = (function () {
 
     			attr_dev(ol, "class", "seq info svelte-1l0yzdf");
     			attr_dev(ol, "role", "menu");
-    			attr_dev(ol, "aria-label", "menu");
+    			attr_dev(ol, "aria-label", "Legend");
     			add_location(ol, file$h, 10, 0, 214);
     		},
     		m: function mount(target, anchor) {
@@ -15142,13 +15799,14 @@ var app = (function () {
     	return block;
     }
 
-    // (32:2) {#each colors as c,i}
+    // (33:2) {#each colors as c,i}
     function create_each_block_1$3(ctx) {
     	let li;
     	let div;
     	let t0_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "";
     	let t0;
     	let t1;
+    	let li_aria_label_value;
     	let mounted;
     	let dispose;
 
@@ -15189,12 +15847,13 @@ var app = (function () {
               #f9f9f9 100%
             )`);
 
-    			add_location(div, file$h, 41, 6, 1077);
+    			add_location(div, file$h, 43, 6, 1148);
     			attr_dev(li, "role", "menuitem");
+    			attr_dev(li, "aria-label", li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[15]]);
     			attr_dev(li, "tabindex", "0");
     			attr_dev(li, "class", "cat-item note svelte-1l0yzdf");
     			toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[15]);
-    			add_location(li, file$h, 32, 4, 814);
+    			add_location(li, file$h, 33, 4, 856);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -15245,6 +15904,10 @@ var app = (function () {
 
     			if (dirty & /*labels*/ 8 && t0_value !== (t0_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "")) set_data_dev(t0, t0_value);
 
+    			if (dirty & /*labels*/ 8 && li_aria_label_value !== (li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[15]])) {
+    				attr_dev(li, "aria-label", li_aria_label_value);
+    			}
+
     			if (dirty & /*selected*/ 1) {
     				toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[15]);
     			}
@@ -15260,14 +15923,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$3.name,
     		type: "each",
-    		source: "(32:2) {#each colors as c,i}",
+    		source: "(33:2) {#each colors as c,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (23:4) {#if labels[i] !== undefined}
+    // (24:4) {#if labels[i] !== undefined}
     function create_if_block_1$6(ctx) {
     	let p;
     	let t_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "";
@@ -15278,7 +15941,7 @@ var app = (function () {
     			p = element("p");
     			t = text$1(t_value);
     			attr_dev(p, "class", "note svelte-1l0yzdf");
-    			add_location(p, file$h, 23, 6, 633);
+    			add_location(p, file$h, 24, 6, 673);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -15296,7 +15959,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$6.name,
     		type: "if",
-    		source: "(23:4) {#if labels[i] !== undefined}",
+    		source: "(24:4) {#if labels[i] !== undefined}",
     		ctx
     	});
 
@@ -15325,12 +15988,13 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t = space();
     			attr_dev(li, "role", "menuitem");
+    			attr_dev(li, "aria-label", "Legend item #" + (/*i*/ ctx[15] + 1));
     			attr_dev(li, "tabindex", "0");
     			set_style(li, "width", 100 / /*colors*/ ctx[2].length + "%");
     			set_style(li, "background-color", /*c*/ ctx[13]);
     			attr_dev(li, "class", "svelte-1l0yzdf");
     			toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[15]);
-    			add_location(li, file$h, 12, 2, 292);
+    			add_location(li, file$h, 12, 2, 294);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -15611,8 +16275,8 @@ var app = (function () {
         'waste', 'solvents', 'energy', 'windblowndust'
     ])
         .range([
-        '#407aa9', '#811494', '#9b7ccc', '#ab4867', '#ff9c9c', '#b3b3b3', '#8c8c8c',
-        '#666666', '#333333', '#62b048', '#1b6e29', '#bd8e71', '#854f38', '#ff8a18', 'url(#hash--windblown)'
+        '#007dc8', '#811494', '#9b7ccc', '#ab4867', '#ff9c9c', '#b3b3b3', '#8c8c8c', '#666666',
+        '#333333', '#62b048', '#1b6e29', '#dcae89', '#854f38', '#ff8a18', 'url(#hash--windblown)'
     ]);
     const colorFuels = ordinal()
         .domain(['process', 'liquid', 'solidbio', 'coal'])
@@ -15623,10 +16287,10 @@ var app = (function () {
         '#912787', '#800080']);
     const colorHealth = threshold()
         .domain([20, 40, 60, 80, 100, 120])
-        .range(['#facc6e', '#e5a774', '#ca8679', '#aa677c', '#854b7f', '#583382']);
+        .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
     const colorPolices = ordinal()
         .domain(['Target met', 'On track', 'Not met', 'No data'])
-        .range(['#0074B2', '#5A93B4', '#ffcf61', '#cacaca']);
+        .range(['#004982', '#5A93B4', '#ffcb5b', '#cacaca']);
 
     var arrowRight = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path d=\"M15.244 11.767L8.39 18.672a1.12 1.12 0 11-1.59-1.579l6.064-6.11-6.11-6.064a1.12 1.12 0 011.58-1.59l6.904 6.854a1.117 1.117 0 01.006 1.584\"/></svg>";
 
@@ -16737,7 +17401,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (250:2) {#if !isEmbed}
+    // (275:2) {#if !isEmbed}
     function create_if_block_3(ctx) {
     	let sectiontitle;
     	let current;
@@ -16778,14 +17442,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(250:2) {#if !isEmbed}",
+    		source: "(275:2) {#if !isEmbed}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (266:2) {#if isEmbed && embed !== "policies"}
+    // (291:2) {#if isEmbed && embed !== "policies"}
     function create_if_block_2$2(ctx) {
     	let div;
     	let p;
@@ -16797,18 +17461,18 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			p = element("p");
-    			t0 = text$1("To explore more about the climate emergency and\n        the effects on the planet visit\n        ");
+    			t0 = text$1("To explore more about the climate emergency and the effects on the\n        planet visit\n        ");
     			b = element("b");
     			a = element("a");
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 270, 11, 10992);
-    			add_location(b, file$c, 270, 8, 10989);
-    			add_location(p, file$c, 267, 6, 10881);
-    			attr_dev(div, "class", "embed-additional-text-desktop svelte-cvec4n");
+    			add_location(a, file$c, 295, 11, 12107);
+    			add_location(b, file$c, 295, 8, 12104);
+    			add_location(p, file$c, 292, 6, 11996);
+    			attr_dev(div, "class", "embed-additional-text-desktop svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
-    			add_location(div, file$c, 266, 4, 10798);
+    			add_location(div, file$c, 291, 4, 11913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -16831,21 +17495,21 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(266:2) {#if isEmbed && embed !== \\\"policies\\\"}",
+    		source: "(291:2) {#if isEmbed && embed !== \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (277:4) <ScrollableX>
+    // (302:4) <ScrollableX>
     function create_default_slot$2(ctx) {
     	let div;
     	let cartogram;
     	let updating_rerenderFn;
     	let updating_annotationShowing;
     	let current;
-    	const cartogram_spread_levels = [/*datasetParams*/ ctx[13][/*data*/ ctx[0]]];
+    	const cartogram_spread_levels = [/*datasetParams*/ ctx[13][/*data*/ ctx[0]], { slug: /*data*/ ctx[0] }];
 
     	function cartogram_rerenderFn_binding(value) {
     		/*cartogram_rerenderFn_binding*/ ctx[15](value);
@@ -16879,8 +17543,8 @@ var app = (function () {
     			create_component(cartogram.$$.fragment);
     			set_style(div, "width", /*width*/ ctx[9] + "px");
     			set_style(div, "height", /*height*/ ctx[11] + "px");
-    			attr_dev(div, "class", "cartogram-container svelte-cvec4n");
-    			add_location(div, file$c, 277, 6, 11182);
+    			attr_dev(div, "class", "cartogram-container svelte-8n8gc5");
+    			add_location(div, file$c, 302, 6, 12283);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -16889,7 +17553,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const cartogram_changes = (dirty & /*datasetParams, data*/ 8193)
-    			? get_spread_update(cartogram_spread_levels, [get_spread_object(/*datasetParams*/ ctx[13][/*data*/ ctx[0]])])
+    			? get_spread_update(cartogram_spread_levels, [
+    					get_spread_object(/*datasetParams*/ ctx[13][/*data*/ ctx[0]]),
+    					dirty & /*data*/ 1 && { slug: /*data*/ ctx[0] }
+    				])
     			: {};
 
     			if (!updating_rerenderFn && dirty & /*rerender*/ 1024) {
@@ -16933,14 +17600,14 @@ var app = (function () {
     		block: block_1,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(277:4) <ScrollableX>",
+    		source: "(302:4) <ScrollableX>",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (291:2) {#if isEmbed && embed === "policies"}
+    // (317:2) {#if isEmbed && embed === "policies"}
     function create_if_block_1$5(ctx) {
     	let div;
     	let p;
@@ -16952,18 +17619,18 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			p = element("p");
-    			t0 = text$1("To explore more about the climate emergency and\n        the effects on the planet visit\n        ");
+    			t0 = text$1("To explore more about the climate emergency and the effects on the\n        planet visit\n        ");
     			b = element("b");
     			a = element("a");
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 295, 11, 11730);
-    			add_location(b, file$c, 295, 8, 11727);
-    			add_location(p, file$c, 292, 6, 11619);
-    			attr_dev(div, "class", "embed-additional-text-desktop-policies svelte-cvec4n");
+    			add_location(a, file$c, 324, 11, 12868);
+    			add_location(b, file$c, 324, 8, 12865);
+    			add_location(p, file$c, 321, 6, 12757);
+    			attr_dev(div, "class", "embed-additional-text-desktop-policies svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
-    			add_location(div, file$c, 291, 4, 11527);
+    			add_location(div, file$c, 317, 4, 12648);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -16986,14 +17653,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(291:2) {#if isEmbed && embed === \\\"policies\\\"}",
+    		source: "(317:2) {#if isEmbed && embed === \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (301:2) {#if !isEmbed}
+    // (330:2) {#if !isEmbed}
     function create_if_block$6(ctx) {
     	let div;
     	let embedfooter;
@@ -17025,8 +17692,8 @@ var app = (function () {
     			}
 
     			each_1_anchor = empty$1();
-    			attr_dev(div, "class", "footer svelte-cvec4n");
-    			add_location(div, file$c, 302, 4, 11848);
+    			attr_dev(div, "class", "footer svelte-8n8gc5");
+    			add_location(div, file$c, 330, 4, 12985);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17091,14 +17758,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(301:2) {#if !isEmbed}",
+    		source: "(330:2) {#if !isEmbed}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (307:4) {#each text as t}
+    // (335:4) {#each text as t}
     function create_each_block$8(ctx) {
     	let p;
     	let raw_value = /*t*/ ctx[23].p + "";
@@ -17107,7 +17774,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$c, 307, 6, 11939);
+    			add_location(p, file$c, 335, 6, 13076);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -17124,7 +17791,7 @@ var app = (function () {
     		block: block_1,
     		id: create_each_block$8.name,
     		type: "each",
-    		source: "(307:4) {#each text as t}",
+    		source: "(335:4) {#each text as t}",
     		ctx
     	});
 
@@ -17198,15 +17865,15 @@ var app = (function () {
     			t5 = space();
     			if (if_block3) if_block3.c();
     			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$c, 253, 2, 10411);
+    			add_location(h2, file$c, 278, 2, 11537);
     			attr_dev(div0, "class", "right-narrow");
-    			add_location(div0, file$c, 255, 2, 10451);
+    			add_location(div0, file$c, 280, 2, 11577);
     			attr_dev(div1, "class", "margin-breakout-mobile");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[17].call(div1));
-    			add_location(div1, file$c, 275, 2, 11090);
+    			add_location(div1, file$c, 300, 2, 12205);
     			attr_dev(section, "id", /*id*/ ctx[1]);
     			attr_dev(section, "class", "viz wide");
-    			add_location(section, file$c, 247, 0, 10321);
+    			add_location(section, file$c, 273, 0, 11448);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -17405,36 +18072,39 @@ var app = (function () {
     		let onTrack = [];
     		let noMet = [];
     		let hoverText = "";
-    		if (data['ind-1'] === PoliciesStatus.Yes) hasMet.push(`Clean production incentives`); else if (data['ind-1'] === PoliciesStatus.Almost) onTrack.push(`Clean production incentives`); else if (data['ind-1'] === PoliciesStatus.No) noMet.push(`Clean production incentives`);
-    		if (data['tra-1'] === PoliciesStatus.Yes) hasMet.push(`Vehicle emissions standards`); else if (data['tra-1'] === PoliciesStatus.Almost) onTrack.push(`Vehicle emissions standards`); else if (data['tra-1'] === PoliciesStatus.No) noMet.push(`Vehicle emissions standards`);
-    		if (data['tra-2'] === PoliciesStatus.Yes) hasMet.push(`Fuel Sulphur content`); else if (data['tra-2'] === PoliciesStatus.Almost) onTrack.push(`Fuel Sulphur content`); else if (data['tra-2'] === PoliciesStatus.No) noMet.push(`Fuel Sulphur content`);
-    		if (data['waste-1'] === PoliciesStatus.Yes) hasMet.push(`Solid Waste Burning`); else if (data['waste-1'] === PoliciesStatus.Almost) onTrack.push(`Solid Waste Burning`); else if (data['waste-1'] === PoliciesStatus.No) noMet.push(`Solid Waste Burning`);
-    		if (data['res-1'] === PoliciesStatus.Yes) hasMet.push(`Incentives for residential cooking and heating`); else if (data['res-1'] === PoliciesStatus.Almost) onTrack.push(`Incentives for residential cooking and heating`); else if (data['res-1'] === PoliciesStatus.No) noMet.push(`Incentives for residential cooking and heating`);
-    		if (data['aq-1'] === PoliciesStatus.Yes) hasMet.push(`Air quality standards`); else if (data['aq-1'] === PoliciesStatus.Almost) onTrack.push(`Air quality standards`); else if (data['aq-1'] === PoliciesStatus.No) noMet.push(`Air quality standards`);
+    		if (data["ind-1"] === PoliciesStatus.Yes) hasMet.push(`Clean production incentives`); else if (data["ind-1"] === PoliciesStatus.Almost) onTrack.push(`Clean production incentives`); else if (data["ind-1"] === PoliciesStatus.No) noMet.push(`Clean production incentives`);
+    		if (data["tra-1"] === PoliciesStatus.Yes) hasMet.push(`Vehicle emissions standards`); else if (data["tra-1"] === PoliciesStatus.Almost) onTrack.push(`Vehicle emissions standards`); else if (data["tra-1"] === PoliciesStatus.No) noMet.push(`Vehicle emissions standards`);
+    		if (data["tra-2"] === PoliciesStatus.Yes) hasMet.push(`Fuel Sulphur content`); else if (data["tra-2"] === PoliciesStatus.Almost) onTrack.push(`Fuel Sulphur content`); else if (data["tra-2"] === PoliciesStatus.No) noMet.push(`Fuel Sulphur content`);
+    		if (data["waste-1"] === PoliciesStatus.Yes) hasMet.push(`Solid Waste Burning`); else if (data["waste-1"] === PoliciesStatus.Almost) onTrack.push(`Solid Waste Burning`); else if (data["waste-1"] === PoliciesStatus.No) noMet.push(`Solid Waste Burning`);
+    		if (data["res-1"] === PoliciesStatus.Yes) hasMet.push(`Incentives for residential cooking and heating`); else if (data["res-1"] === PoliciesStatus.Almost) onTrack.push(`Incentives for residential cooking and heating`); else if (data["res-1"] === PoliciesStatus.No) noMet.push(`Incentives for residential cooking and heating`);
+    		if (data["aq-1"] === PoliciesStatus.Yes) hasMet.push(`Air quality standards`); else if (data["aq-1"] === PoliciesStatus.Almost) onTrack.push(`Air quality standards`); else if (data["aq-1"] === PoliciesStatus.No) noMet.push(`Air quality standards`);
+    		if (data["agri-1"] === PoliciesStatus.Yes) hasMet.push(`Sustainable agricultural practices`); else if (data["agri-1"] === PoliciesStatus.Almost) onTrack.push(`Sustainable agricultural practices`); else if (data["agri-1"] === PoliciesStatus.No) noMet.push(`Sustainable agricultural practices`);
+    		if (data["aqms-1"] === PoliciesStatus.Yes) hasMet.push(`Air quality management strategies`); else if (data["aqms-1"] === PoliciesStatus.Almost) onTrack.push(`Air quality management strategies`); else if (data["aqms-1"] === PoliciesStatus.No) noMet.push(`Air quality management strategies`);
+    		if (data["aqm-1"] === PoliciesStatus.Yes) hasMet.push(`Air quality monitoring`); else if (data["aqm-1"] === PoliciesStatus.Almost) onTrack.push(`Air quality monitoring`); else if (data["aqm-1"] === PoliciesStatus.No) noMet.push(`Air quality monitoring`);
 
     		if (hasMet.length > 0) {
     			hoverText += `<strong>${data.name}</strong> has met <strong>
                     ${hasMet.length === 1 ? "this target" : "these targets"}</strong>: `;
 
-    			hoverText += hasMet.join(', ');
+    			hoverText += hasMet.join(", ");
 
     			if (onTrack.length > 0) {
     				hoverText += `<br>And it's on track to meet <strong>
                       ${onTrack.length === 1 ? "this" : "these"}</strong>: `;
 
-    				hoverText += onTrack.join(', ');
+    				hoverText += onTrack.join(", ");
     			}
     		} else if (onTrack.length > 0) {
     			hoverText += `<strong>${data.name}</strong> has on track to met <strong>
                     ${onTrack.length === 1 ? "this target" : "these targets"}</strong>: `;
 
-    			hoverText += onTrack.join(', ');
+    			hoverText += onTrack.join(", ");
     		} else if (noMet.length === 0) hoverText += `No data for <strong>${data.name}</strong>`; else {
     			if (noMet.length === 6) hoverText += `<strong>${data.name}</strong> hasn't met any targets`; else {
     				hoverText += `<strong>${data.name}</strong>
                       hasn't met any of the target for which we have data: `;
 
-    				hoverText += noMet.join(', ');
+    				hoverText += noMet.join(", ");
     			}
     		}
 
@@ -17469,13 +18139,13 @@ var app = (function () {
     					return [];
     				} else {
     					const isSelected = colorPM25.range().indexOf(d.color) === legendElementSelectedIndex;
-    					return [isSelected ? 'country--shadow' : 'country--hide'];
+    					return [isSelected ? "country--shadow" : "country--hide"];
     				}
     			},
     			color: colorPM25,
     			legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (10 µg/m<sup>3</sup>)`,
     			legendDomain: ["x1", "2", "3", "4", "5", "6", "7", "8"],
-    			legendType: 'sequential',
+    			legendType: "sequential",
     			domain: [700, 400],
     			hoverText: d => `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
@@ -17502,20 +18172,20 @@ var app = (function () {
         caused by fine particle pollution</strong>.`
     			},
     			hoverTextFn: d => `In <strong>${d.name}</strong>, fine particle
-      pollution caused <strong>${d.value.toLocaleString('en-US')} deaths</strong>
+      pollution caused <strong>${d.value.toLocaleString("en-US")} deaths</strong>
       in 2019 — or <strong>${d.rate} per 100,000 people</strong>.`,
     			classesFn: d => {
     				if (!legendIsHovered) {
     					return [];
     				} else {
     					const isSelected = colorHealth.range().indexOf(d.color) === legendElementSelectedIndex;
-    					return [isSelected ? 'country--shadow' : 'country--hide'];
+    					return [isSelected ? "country--shadow" : "country--hide"];
     				}
     			},
     			color: colorHealth,
     			legendTitle: `<strong>Deaths per 100,000 people</strong> caused by fine particle pollution`,
     			legendDomain: ["20", "40", "60", "80", "100"],
-    			legendType: 'sequential',
+    			legendType: "sequential",
     			domain: [700, 400]
     		},
     		policies: {
@@ -17566,10 +18236,10 @@ var app = (function () {
 
     				const gradientStrs = gradients.map((g, i) => {
     					const hide = legendIsHovered && legendElementSelectedIndex !== i;
-    					return `${g.color}${hide ? '00' : 'ff'} ${g.start}% ${g.end}%`;
+    					return `${g.color}${hide ? "00" : "ff"} ${g.start}% ${g.end}%`;
     				});
 
-    				return `linear-gradient(to bottom, ${gradientStrs.join(', ')})`;
+    				return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
     			},
     			classesFn: d => {
     				let policiesData = d.data;
@@ -17582,12 +18252,12 @@ var app = (function () {
     				];
 
     				const hasValue = legendIsHovered && policiesCont[legendElementSelectedIndex] > 0;
-    				return hasValue ? ['country--shadow'] : [];
+    				return hasValue ? ["country--shadow"] : [];
     			},
     			color: colorPolices,
     			legendTitle: `<strong>Actions taken towards cleaner air</strong>`,
     			legendDomain: colorPolices.domain(),
-    			legendType: 'categorical',
+    			legendType: "categorical",
     			domain: [1300, 1300 / (740 / 420)]
     		}
     	};
@@ -17703,7 +18373,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*width, data*/ 513) {
-    			$$invalidate(11, height = width * (data === 'pm25' ? .55 : .62));
+    			$$invalidate(11, height = width * (data === "pm25" ? 0.55 : 0.62));
     		}
     	};
 
@@ -22533,16 +23203,17 @@ var app = (function () {
     			t2 = space();
     			attr_dev(div0, "class", "icon svelte-drj2ih");
     			attr_dev(div0, "style", alignment[/*option*/ ctx[11].icon] || '');
-    			add_location(div0, file$4, 56, 8, 1430);
+    			add_location(div0, file$4, 57, 8, 1462);
     			attr_dev(div1, "class", "text svelte-drj2ih");
-    			add_location(div1, file$4, 58, 10, 1568);
+    			add_location(div1, file$4, 59, 10, 1600);
     			attr_dev(div2, "class", "text-container svelte-drj2ih");
-    			add_location(div2, file$4, 57, 8, 1529);
+    			add_location(div2, file$4, 58, 8, 1561);
     			attr_dev(div3, "class", "buttoncontent svelte-drj2ih");
     			attr_dev(div3, "href", "#" + /*option*/ ctx[11].id);
     			attr_dev(div3, "id", "" + (/*option*/ ctx[11].id + "div"));
-    			add_location(div3, file$4, 55, 6, 1354);
+    			add_location(div3, file$4, 56, 6, 1386);
     			attr_dev(button, "class", "" + (null_to_empty(/*i*/ ctx[13] === 0 ? "active" : "") + " svelte-drj2ih"));
+    			attr_dev(button, "aria-label", /*option*/ ctx[11].title);
     			add_location(button, file$4, 40, 4, 963);
     		},
     		m: function mount(target, anchor) {
@@ -22647,7 +23318,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*animateScroll, options, smallScreen, ms, alignment, svg*/ 13) {
+    			if (dirty & /*options, animateScroll, smallScreen, ms, alignment, svg*/ 13) {
     				each_value = /*options*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;

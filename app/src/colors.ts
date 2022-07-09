@@ -7,8 +7,8 @@ export const colorSectors = scaleOrdinal<string>()
     'waste','solvents','energy','windblowndust'
   ])
   .range([
-    '#407aa9','#811494','#9b7ccc','#ab4867','#ff9c9c','#b3b3b3','#8c8c8c',
-    '#666666','#333333','#62b048','#1b6e29','#bd8e71','#854f38','#ff8a18','url(#hash--windblown)'
+    '#007dc8','#811494','#9b7ccc','#ab4867','#ff9c9c','#b3b3b3','#8c8c8c','#666666',
+    '#333333','#62b048','#1b6e29','#dcae89','#854f38','#ff8a18','url(#hash--windblown)'
   ]);
 
 export const colorFuels = scaleOrdinal<string>()
@@ -22,9 +22,9 @@ export const colorPM25 = scaleThreshold<number, string>()
 
 export const colorHealth = scaleThreshold<number, string>()
   .domain([20,40,60,80,100,120])
-  .range(['#facc6e', '#e5a774', '#ca8679', '#aa677c', '#854b7f', '#583382']);
+  .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
 
 
 export const colorPolices = scaleOrdinal<string>()
   .domain(['Target met', 'On track', 'Not met', 'No data'])
-  .range(['#0074B2', '#5A93B4', '#ffcf61', '#cacaca']);
+  .range(['#004982', '#5A93B4', '#ffcb5b', '#cacaca']);

@@ -203,7 +203,6 @@
       color: colorPM25,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (10 µg/m<sup>3</sup>)`,
       legendDomain: ["x1", "2", "3", "4", "5", "6", "7", "8"],
-
       legendType: "sequential",
       domain: [700, 400] as [number, number],
       hoverText: (d: CountryDataPoint) =>
@@ -362,6 +361,7 @@
       >
         <Cartogram
           {...datasetParams[data]}
+          slug={data}
           bind:rerenderFn={rerender}
           bind:annotationShowing={cartogramAnnotation}
         />
@@ -414,7 +414,7 @@
     overflow: hidden;
   }
 
-  .cartogram-container :global(.annotation .text) {
+  :global(.annotation .text) {
     background: #f9f9f9e0;
     border-radius: 4px;
     padding: 0 10px 5px;

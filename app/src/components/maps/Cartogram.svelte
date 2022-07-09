@@ -40,6 +40,12 @@
   export var hideLabels = false;
   export const rerenderFn: () => void = () => cartogramData = cartogramData;
   export var annotationShowing: boolean = false;
+  export var legendTitle: string;
+  export var slug: string;
+
+  const title = legendTitle
+    .replaceAll("\\<.*?\\>", "")
+    .toLowerCase();
 
   let containerEl: Element;
   let loaded = false;
@@ -226,7 +232,9 @@
   <feDropShadow dx="0" dy="0" stdDeviation="4" flood-opacity="0.9"></feDropShadow>
 </filter>
   {#if loaded}
-    <div class="countries">
+    <div class="countries"
+      role="graphics-document"
+      aria-label={title}>
       {#each cartogramData as d (d.code)}
         {#if d.x && d.y}
           <div
@@ -234,13 +242,15 @@
             style={calcStyle(d)}
             data-code={d.code}
             tabindex="0"
+            role="graphics-symbol"
+            aria-labelledby="country-annotation"
             on:mouseenter={(evt) => onMouseEnterCountry(evt, d)}
             on:mouseleave={() => onMouseLeaveCountry()}
             on:focus={() => onMouseClick(d)}
             on:blur={() => onMouseLeaveCountry()}
           >
           {#if !hideLabels && d.width > 100}
-            <span class="country-text">{d.short}</span>
+            <span id="{slug}-annotation" class="country-text">{d.short}</span>
           {/if}
           </div>
         {/if}
