@@ -8,17 +8,17 @@
     import IconsTblc from "src/svg/icons_tblc.svelte";
     import IconsLri from "src/svg/icons_lri.svelte";
   
-    export let percentage: number = 1;
-    export let cause: string = '494';
+    export let percentage: number;
+    export let cause: string;
   
     const causes = {
-      '494': {component: IconsStroke, name: 'Stroke'},
-      '493': {component: IconsIhd, name: 'Ischemic heart disease'},
-      '426': {component: IconsTblc, name: 'Tracheal, bronchus, and lung cancer'},
-      '322': {component: IconsLri, name: 'Lower respiratory infections'},
-      '509': {component: IconsCopd, name: 'Chronic obstructive pulmonary disease'},
-      '976': {component: IconsDmt2, name: 'Diabetes mellitus type 2'},
-      '380': {component: IconsNd, name: 'Neonatal disorders'},
+      'stroke': {component: IconsStroke, name: 'Stroke'},
+      'ischemic': {component: IconsIhd, name: 'Ischemic heart disease'},
+      'lungcancer': {component: IconsTblc, name: 'Tracheal, bronchus, and lung cancer'},
+      'lri': {component: IconsLri, name: 'Lower respiratory infections'},
+      'copd': {component: IconsCopd, name: 'Chronic obstructive pulmonary disease'},
+      'diabetes': {component: IconsDmt2, name: 'Diabetes mellitus type 2'},
+      'nd': {component: IconsNd, name: 'Neonatal disorders'},
     };
   
   </script>
@@ -31,11 +31,11 @@
   
     <div class="waffle-container">
       {#each Array(100) as _, i}
-        <div class="circle" class:highlight={i < Math.round(percentage)}/>
+        <div class="circle" class:highlight={i < Math.round(percentage * 100)}/>
       {/each}
     </div>
   
-    <div class="percent-text">{percentage}<span class="symbol">%</span></div>
+    <div class="percent-text">{(percentage * 100).toFixed(2)}<span class="symbol">%</span></div>
   
     <div class="cause-text">{causes[cause].name}</div>
   </div>

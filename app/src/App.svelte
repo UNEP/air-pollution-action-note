@@ -12,6 +12,7 @@
   import MethodologySourcesText from 'src/components/MethodologySourcesText.svelte';
   import DeathCauses from './components/DeathCauses.svelte';
   import { strToId } from './util';
+  import CountrySearch from './components/CountrySearch.svelte';
 
   const content: Content[] = text.article;
   
@@ -25,7 +26,8 @@
     'text': Text,
     "menu": Menu,
     'methodology': MethodologySourcesText,
-    "death-causes": DeathCauses
+    "death-causes": DeathCauses,
+    "country-search": CountrySearch
   };
 </script>
 {#if embedBlock}

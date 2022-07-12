@@ -1,15 +1,34 @@
+<script lang="ts" context="module">
+
+  export type DeathsData = {
+    copd: number,
+    diabetes: number,
+    ischemic: number,
+    lungcancer: number,
+    lri: number,
+    stroke: number,
+    nd: number
+  }
+
+</script>
+
+
 <script lang="ts">
-    import WaffleChart from "./WaffleChart.svelte";
-  </script>
+  import WaffleChart from "./WaffleChart.svelte";
+  import WorldMeanDeaths from "../data/worldMean_deaths.json"
+
+  export let data: DeathsData = WorldMeanDeaths;
+
+</script>
   
   <div class="flex-container">
-    <WaffleChart percentage={34.64} cause={'494'}></WaffleChart>
-    <WaffleChart percentage={2.64} cause={'493'}></WaffleChart>
-    <WaffleChart percentage={71.64} cause={'426'}></WaffleChart>
-    <WaffleChart percentage={9.77} cause={'322'}></WaffleChart>
-    <WaffleChart percentage={32.64} cause={'509'}></WaffleChart>
-    <WaffleChart percentage={64.64} cause={'976'}></WaffleChart>
-    <WaffleChart percentage={38.64} cause={'380'}></WaffleChart>
+    <WaffleChart percentage={data.stroke} cause={'stroke'}/>
+    <WaffleChart percentage={data.ischemic} cause={'ischemic'}/>
+    <WaffleChart percentage={data.lungcancer} cause={'lungcancer'}/>
+    <WaffleChart percentage={data.lri} cause={'lri'}/>
+    <WaffleChart percentage={data.copd} cause={'copd'}/>
+    <WaffleChart percentage={data.diabetes} cause={'diabetes'}/>
+    <WaffleChart percentage={data.nd} cause={'nd'}/>
   </div>
   
   <style>
@@ -18,6 +37,7 @@
       display: flex;
       flex-direction: row;
       gap: 10px;
+      flex-wrap: nowrap;
     }
   
   </style>

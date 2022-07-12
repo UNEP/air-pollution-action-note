@@ -83,6 +83,9 @@
       ]
     },
     {
+      "type": "death-causes"
+    },
+    {
       "type": "carto-world",
       "anchor": "policies",
       "menu": "Policy actions",
@@ -101,6 +104,9 @@
           "p": "As the world starts to emerge from the pandemic, governments must prioritise policies that lay the foundations for a green, inclusive recovery. This will not be possible without tackling air pollution. Countries need to work together on sustainable transport, renewable energy production and use, and waste management. Businesses need to innovate and we must all reduce our carbon footprints."
         }
       ]
+    },
+    {
+      "type": "country-search"
     },
     {
       "type": "methodology",
