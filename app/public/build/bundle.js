@@ -22800,8 +22800,7 @@ var app = (function () {
     	{
     		type: "country-search",
     		menu: "By country",
-    		icon: "search",
-    		data: "pm25"
+    		icon: "search"
     	},
     	{
     		type: "methodology",
@@ -26461,7 +26460,7 @@ var app = (function () {
     			create_component(wafflechart5.$$.fragment);
     			t5 = space();
     			create_component(wafflechart6.$$.fragment);
-    			attr_dev(div, "class", "flex-container svelte-1jq8r1m");
+    			attr_dev(div, "class", "flex-container svelte-1wy5y97");
     			add_location(div, file$5, 9, 2, 244);
     		},
     		l: function claim(nodes) {
@@ -37883,13 +37882,13 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\components\\CountrySearch.svelte";
 
-    // (156:4) {#if countrySelected}
+    // (154:4) {#if countrySelected}
     function create_if_block$1(ctx) {
     	let div2;
     	let div0;
     	let p0;
     	let span0;
-    	let t0_value = /*currentCountry*/ ctx[2].PM25country + "";
+    	let t0_value = /*currentCountry*/ ctx[3].PM25country + "";
     	let t0;
     	let html_tag;
     	let t1;
@@ -37898,7 +37897,7 @@ var app = (function () {
     	let div1;
     	let p1;
     	let span1;
-    	let t3_value = /*currentCountry*/ ctx[2].deathRatio + "";
+    	let t3_value = /*currentCountry*/ ctx[3].deathRatio + "";
     	let t3;
     	let html_tag_1;
     	let t4;
@@ -37911,26 +37910,26 @@ var app = (function () {
 
     	lineardistribution0 = new LinearDistribution({
     			props: {
-    				data: /*countryPM25Data*/ ctx[8],
-    				selectedCountry: /*currentCountry*/ ctx[2].id,
+    				data: /*countryPM25Data*/ ctx[9],
+    				selectedCountry: /*currentCountry*/ ctx[3].id,
     				selectedDataset: "pm25",
-    				width: /*clamp*/ ctx[14](/*width*/ ctx[4], minSize, maxSize)
+    				width: /*clamp*/ ctx[14](/*linearDistributionsWidth*/ ctx[5], minSize, maxSize)
     			},
     			$$inline: true
     		});
 
     	lineardistribution1 = new LinearDistribution({
     			props: {
-    				data: /*countryHealthData*/ ctx[9],
-    				selectedCountry: /*currentCountry*/ ctx[2].id,
+    				data: /*countryHealthData*/ ctx[10],
+    				selectedCountry: /*currentCountry*/ ctx[3].id,
     				selectedDataset: "health",
-    				width: /*clamp*/ ctx[14](/*width*/ ctx[4], minSize, maxSize)
+    				width: /*clamp*/ ctx[14](/*linearDistributionsWidth*/ ctx[5], minSize, maxSize)
     			},
     			$$inline: true
     		});
 
     	deathcauses = new DeathCauses({
-    			props: { data: /*countryDeathsData*/ ctx[7] },
+    			props: { data: /*countryDeathsData*/ ctx[8] },
     			$$inline: true
     		});
 
@@ -37955,22 +37954,23 @@ var app = (function () {
     			t5 = space();
     			div3 = element("div");
     			create_component(deathcauses.$$.fragment);
-    			attr_dev(span0, "class", "bigger-text svelte-v315aa");
-    			add_location(span0, file$1, 158, 13, 5442);
+    			attr_dev(span0, "class", "bigger-text svelte-1kd8u99");
+    			add_location(span0, file$1, 156, 13, 5494);
     			html_tag.a = null;
-    			add_location(p0, file$1, 158, 10, 5439);
+    			add_location(p0, file$1, 156, 10, 5491);
     			attr_dev(div0, "class", "distribution");
-    			add_location(div0, file$1, 157, 8, 5401);
-    			attr_dev(span1, "class", "bigger-text svelte-v315aa");
-    			add_location(span1, file$1, 167, 13, 5834);
+    			add_location(div0, file$1, 155, 8, 5453);
+    			attr_dev(span1, "class", "bigger-text svelte-1kd8u99");
+    			add_location(span1, file$1, 165, 13, 5905);
     			html_tag_1.a = null;
-    			add_location(p1, file$1, 167, 10, 5831);
+    			add_location(p1, file$1, 165, 10, 5902);
     			attr_dev(div1, "class", "distribution");
-    			add_location(div1, file$1, 166, 8, 5793);
-    			attr_dev(div2, "class", "distributions-container svelte-v315aa");
+    			add_location(div1, file$1, 164, 8, 5864);
+    			attr_dev(div2, "class", "distributions-container svelte-1kd8u99");
     			add_render_callback(() => /*div2_elementresize_handler*/ ctx[17].call(div2));
-    			add_location(div2, file$1, 156, 6, 5329);
-    			add_location(div3, file$1, 177, 6, 6205);
+    			add_location(div2, file$1, 154, 6, 5362);
+    			attr_dev(div3, "class", "death-causes-container");
+    			add_location(div3, file$1, 175, 6, 6295);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -37978,7 +37978,7 @@ var app = (function () {
     			append_dev(div0, p0);
     			append_dev(p0, span0);
     			append_dev(span0, t0);
-    			html_tag.m(/*PM25commentary*/ ctx[6], p0);
+    			html_tag.m(/*PM25commentary*/ ctx[7], p0);
     			append_dev(div0, t1);
     			mount_component(lineardistribution0, div0, null);
     			append_dev(div2, t2);
@@ -37986,7 +37986,7 @@ var app = (function () {
     			append_dev(div1, p1);
     			append_dev(p1, span1);
     			append_dev(span1, t3);
-    			html_tag_1.m(/*PMtimesCommentary*/ ctx[5], p1);
+    			html_tag_1.m(/*PMtimesCommentary*/ ctx[6], p1);
     			append_dev(div1, t4);
     			mount_component(lineardistribution1, div1, null);
     			div2_resize_listener = add_resize_listener(div2, /*div2_elementresize_handler*/ ctx[17].bind(div2));
@@ -37996,20 +37996,20 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*currentCountry*/ 4) && t0_value !== (t0_value = /*currentCountry*/ ctx[2].PM25country + "")) set_data_dev(t0, t0_value);
-    			if (!current || dirty & /*PM25commentary*/ 64) html_tag.p(/*PM25commentary*/ ctx[6]);
+    			if ((!current || dirty & /*currentCountry*/ 8) && t0_value !== (t0_value = /*currentCountry*/ ctx[3].PM25country + "")) set_data_dev(t0, t0_value);
+    			if (!current || dirty & /*PM25commentary*/ 128) html_tag.p(/*PM25commentary*/ ctx[7]);
     			const lineardistribution0_changes = {};
-    			if (dirty & /*currentCountry*/ 4) lineardistribution0_changes.selectedCountry = /*currentCountry*/ ctx[2].id;
-    			if (dirty & /*width*/ 16) lineardistribution0_changes.width = /*clamp*/ ctx[14](/*width*/ ctx[4], minSize, maxSize);
+    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.selectedCountry = /*currentCountry*/ ctx[3].id;
+    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution0_changes.width = /*clamp*/ ctx[14](/*linearDistributionsWidth*/ ctx[5], minSize, maxSize);
     			lineardistribution0.$set(lineardistribution0_changes);
-    			if ((!current || dirty & /*currentCountry*/ 4) && t3_value !== (t3_value = /*currentCountry*/ ctx[2].deathRatio + "")) set_data_dev(t3, t3_value);
-    			if (!current || dirty & /*PMtimesCommentary*/ 32) html_tag_1.p(/*PMtimesCommentary*/ ctx[5]);
+    			if ((!current || dirty & /*currentCountry*/ 8) && t3_value !== (t3_value = /*currentCountry*/ ctx[3].deathRatio + "")) set_data_dev(t3, t3_value);
+    			if (!current || dirty & /*PMtimesCommentary*/ 64) html_tag_1.p(/*PMtimesCommentary*/ ctx[6]);
     			const lineardistribution1_changes = {};
-    			if (dirty & /*currentCountry*/ 4) lineardistribution1_changes.selectedCountry = /*currentCountry*/ ctx[2].id;
-    			if (dirty & /*width*/ 16) lineardistribution1_changes.width = /*clamp*/ ctx[14](/*width*/ ctx[4], minSize, maxSize);
+    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.selectedCountry = /*currentCountry*/ ctx[3].id;
+    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution1_changes.width = /*clamp*/ ctx[14](/*linearDistributionsWidth*/ ctx[5], minSize, maxSize);
     			lineardistribution1.$set(lineardistribution1_changes);
     			const deathcauses_changes = {};
-    			if (dirty & /*countryDeathsData*/ 128) deathcauses_changes.data = /*countryDeathsData*/ ctx[7];
+    			if (dirty & /*countryDeathsData*/ 256) deathcauses_changes.data = /*countryDeathsData*/ ctx[8];
     			deathcauses.$set(deathcauses_changes);
     		},
     		i: function intro(local) {
@@ -38040,7 +38040,7 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(156:4) {#if countrySelected}",
+    		source: "(154:4) {#if countrySelected}",
     		ctx
     	});
 
@@ -38059,15 +38059,15 @@ var app = (function () {
     	let current;
 
     	sectiontitle = new SectionTitle({
-    			props: { block: /*block*/ ctx[1] },
+    			props: { block: /*block*/ ctx[2] },
     			$$inline: true
     		});
 
     	typeahead = new Typeahead({
     			props: {
     				data: countries,
-    				extract: /*extract*/ ctx[10],
-    				filter: /*filter*/ ctx[11],
+    				extract: /*extract*/ ctx[11],
+    				filter: /*filter*/ ctx[12],
     				limit: maxNumSearchResults,
     				placeholder: `Search a country`,
     				hideLabel: true
@@ -38077,7 +38077,7 @@ var app = (function () {
 
     	typeahead.$on("select", /*select_handler*/ ctx[15]);
     	typeahead.$on("clear", /*clear_handler*/ ctx[16]);
-    	let if_block = /*countrySelected*/ ctx[3] && create_if_block$1(ctx);
+    	let if_block = /*countrySelected*/ ctx[4] && create_if_block$1(ctx);
 
     	const block_1 = {
     		c: function create() {
@@ -38091,12 +38091,12 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$1, 140, 4, 4866);
-    			attr_dev(div, "class", "search-bar svelte-v315aa");
-    			add_location(div, file$1, 142, 4, 4912);
+    			add_location(h2, file$1, 138, 4, 4899);
+    			attr_dev(div, "class", "search-bar svelte-1kd8u99");
+    			add_location(div, file$1, 140, 4, 4945);
     			attr_dev(section, "id", /*id*/ ctx[0]);
-    			attr_dev(section, "class", "viz wide");
-    			add_location(section, file$1, 136, 2, 4793);
+    			attr_dev(section, "class", "viz wide country-search svelte-1kd8u99");
+    			add_location(section, file$1, 134, 2, 4811);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38106,7 +38106,7 @@ var app = (function () {
     			mount_component(sectiontitle, section, null);
     			append_dev(section, t0);
     			append_dev(section, h2);
-    			h2.innerHTML = /*head*/ ctx[12];
+    			h2.innerHTML = /*head*/ ctx[1];
     			append_dev(section, t1);
     			append_dev(section, div);
     			mount_component(typeahead, div, null);
@@ -38116,14 +38116,14 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			const sectiontitle_changes = {};
-    			if (dirty & /*block*/ 2) sectiontitle_changes.block = /*block*/ ctx[1];
+    			if (dirty & /*block*/ 4) sectiontitle_changes.block = /*block*/ ctx[2];
     			sectiontitle.$set(sectiontitle_changes);
-
-    			if (/*countrySelected*/ ctx[3]) {
+    			if (!current || dirty & /*head*/ 2) h2.innerHTML = /*head*/ ctx[1];
+    			if (/*countrySelected*/ ctx[4]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty & /*countrySelected*/ 8) {
+    					if (dirty & /*countrySelected*/ 16) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -38194,6 +38194,7 @@ var app = (function () {
     	
     	
     	let { id } = $$props;
+    	let { head = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.` } = $$props;
     	let { block } = $$props;
 
     	const countriesToBeFiltered = [
@@ -38301,36 +38302,32 @@ var app = (function () {
 
     	const extract = item => item.name;
     	const filter = item => toFilter(item.id);
-
-    	const head = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit.
-        Mauris mattis posuere faucibus.`;
-
-    	let events = [];
+    	let events = []; // this needs to be removed
 
     	function updateSelectedCountry(event, detail) {
-    		events = [...events, { event, detail }];
+    		events = [...events, { event, detail }]; // this needs to be removed
 
     		if (event === "select") {
     			let newID = detail.original.id;
-    			$$invalidate(2, currentCountry.id = newID, currentCountry);
-    			$$invalidate(2, currentCountry.PM25country = pm25LookUp[newID].pm25, currentCountry);
-    			$$invalidate(2, currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1)), currentCountry);
-    			$$invalidate(2, currentCountry.totalDeaths = healthLookUp[newID].deaths, currentCountry);
-    			$$invalidate(2, currentCountry.deathRatio = healthLookUp[newID].rate, currentCountry);
-    			$$invalidate(3, countrySelected = true);
+    			$$invalidate(3, currentCountry.id = newID, currentCountry);
+    			$$invalidate(3, currentCountry.PM25country = pm25LookUp[newID].pm25, currentCountry);
+    			$$invalidate(3, currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1)), currentCountry);
+    			$$invalidate(3, currentCountry.totalDeaths = healthLookUp[newID].deaths, currentCountry);
+    			$$invalidate(3, currentCountry.deathRatio = healthLookUp[newID].rate, currentCountry);
+    			$$invalidate(4, countrySelected = true);
     		} else {
-    			$$invalidate(2, currentCountry.id = "", currentCountry);
-    			$$invalidate(2, currentCountry.PM25country = 0, currentCountry);
-    			$$invalidate(2, currentCountry.timesPM25 = 0, currentCountry);
-    			$$invalidate(2, currentCountry.totalDeaths = 0, currentCountry);
-    			$$invalidate(2, currentCountry.deathRatio = 0, currentCountry);
-    			$$invalidate(3, countrySelected = false);
+    			$$invalidate(3, currentCountry.id = "", currentCountry);
+    			$$invalidate(3, currentCountry.PM25country = 0, currentCountry);
+    			$$invalidate(3, currentCountry.timesPM25 = 0, currentCountry);
+    			$$invalidate(3, currentCountry.totalDeaths = 0, currentCountry);
+    			$$invalidate(3, currentCountry.deathRatio = 0, currentCountry);
+    			$$invalidate(4, countrySelected = false);
     		}
     	}
 
-    	let width;
+    	let linearDistributionsWidth;
     	const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
-    	const writable_props = ['id', 'block'];
+    	const writable_props = ['id', 'head', 'block'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<CountrySearch> was created with unknown prop '${key}'`);
@@ -38340,13 +38337,14 @@ var app = (function () {
     	const clear_handler = e => updateSelectedCountry("clear", e.detail);
 
     	function div2_elementresize_handler() {
-    		width = this.clientWidth;
-    		$$invalidate(4, width);
+    		linearDistributionsWidth = this.clientWidth;
+    		$$invalidate(5, linearDistributionsWidth);
     	}
 
     	$$self.$$set = $$props => {
     		if ('id' in $$props) $$invalidate(0, id = $$props.id);
-    		if ('block' in $$props) $$invalidate(1, block = $$props.block);
+    		if ('head' in $$props) $$invalidate(1, head = $$props.head);
+    		if ('block' in $$props) $$invalidate(2, block = $$props.block);
     	};
 
     	$$self.$capture_state = () => ({
@@ -38361,8 +38359,8 @@ var app = (function () {
     		healthData,
     		createLookup,
     		SectionTitle,
-    		CountrySearch: CountrySearch_1,
     		id,
+    		head,
     		block,
     		countriesToBeFiltered,
     		CTBF_lookUp,
@@ -38380,10 +38378,9 @@ var app = (function () {
     		toFilter,
     		extract,
     		filter,
-    		head,
     		events,
     		updateSelectedCountry,
-    		width,
+    		linearDistributionsWidth,
     		minSize,
     		maxSize,
     		clamp,
@@ -38397,16 +38394,17 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('id' in $$props) $$invalidate(0, id = $$props.id);
-    		if ('block' in $$props) $$invalidate(1, block = $$props.block);
-    		if ('countryPM25Data' in $$props) $$invalidate(8, countryPM25Data = $$props.countryPM25Data);
-    		if ('countryHealthData' in $$props) $$invalidate(9, countryHealthData = $$props.countryHealthData);
-    		if ('countrySelected' in $$props) $$invalidate(3, countrySelected = $$props.countrySelected);
+    		if ('head' in $$props) $$invalidate(1, head = $$props.head);
+    		if ('block' in $$props) $$invalidate(2, block = $$props.block);
+    		if ('countryPM25Data' in $$props) $$invalidate(9, countryPM25Data = $$props.countryPM25Data);
+    		if ('countryHealthData' in $$props) $$invalidate(10, countryHealthData = $$props.countryHealthData);
+    		if ('countrySelected' in $$props) $$invalidate(4, countrySelected = $$props.countrySelected);
     		if ('events' in $$props) events = $$props.events;
-    		if ('width' in $$props) $$invalidate(4, width = $$props.width);
-    		if ('currentCountry' in $$props) $$invalidate(2, currentCountry = $$props.currentCountry);
-    		if ('PMtimesCommentary' in $$props) $$invalidate(5, PMtimesCommentary = $$props.PMtimesCommentary);
-    		if ('PM25commentary' in $$props) $$invalidate(6, PM25commentary = $$props.PM25commentary);
-    		if ('countryDeathsData' in $$props) $$invalidate(7, countryDeathsData = $$props.countryDeathsData);
+    		if ('linearDistributionsWidth' in $$props) $$invalidate(5, linearDistributionsWidth = $$props.linearDistributionsWidth);
+    		if ('currentCountry' in $$props) $$invalidate(3, currentCountry = $$props.currentCountry);
+    		if ('PMtimesCommentary' in $$props) $$invalidate(6, PMtimesCommentary = $$props.PMtimesCommentary);
+    		if ('PM25commentary' in $$props) $$invalidate(7, PM25commentary = $$props.PM25commentary);
+    		if ('countryDeathsData' in $$props) $$invalidate(8, countryDeathsData = $$props.countryDeathsData);
     		if ('countryFuelsData' in $$props) countryFuelsData = $$props.countryFuelsData;
     		if ('countrySectorsData' in $$props) countrySectorsData = $$props.countrySectorsData;
     	};
@@ -38416,29 +38414,29 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*currentCountry*/ 4) {
+    		if ($$self.$$.dirty & /*currentCountry*/ 8) {
     			countrySectorsData = generateData(currentCountry.id, "sectors");
     		}
 
-    		if ($$self.$$.dirty & /*currentCountry*/ 4) {
+    		if ($$self.$$.dirty & /*currentCountry*/ 8) {
     			countryFuelsData = generateData(currentCountry.id, "fuels");
     		}
 
-    		if ($$self.$$.dirty & /*currentCountry*/ 4) {
-    			$$invalidate(7, countryDeathsData = generateDeathsData(currentCountry.id));
+    		if ($$self.$$.dirty & /*currentCountry*/ 8) {
+    			$$invalidate(8, countryDeathsData = generateDeathsData(currentCountry.id));
     		}
 
-    		if ($$self.$$.dirty & /*currentCountry*/ 4) {
-    			$$invalidate(6, PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` + currentCountry.timesPM25 + ` times WHO's guideline.`);
+    		if ($$self.$$.dirty & /*currentCountry*/ 8) {
+    			$$invalidate(7, PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` + currentCountry.timesPM25 + ` times WHO's guideline.`);
     		}
 
-    		if ($$self.$$.dirty & /*currentCountry*/ 4) {
-    			$$invalidate(5, PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
+    		if ($$self.$$.dirty & /*currentCountry*/ 8) {
+    			$$invalidate(6, PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
     pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US') + ` in total in the country).`);
     		}
     	};
 
-    	$$invalidate(2, currentCountry = {
+    	$$invalidate(3, currentCountry = {
     		id: "",
     		PM25country: 0,
     		timesPM25: 0,
@@ -38448,10 +38446,11 @@ var app = (function () {
 
     	return [
     		id,
+    		head,
     		block,
     		currentCountry,
     		countrySelected,
-    		width,
+    		linearDistributionsWidth,
     		PMtimesCommentary,
     		PM25commentary,
     		countryDeathsData,
@@ -38459,7 +38458,6 @@ var app = (function () {
     		countryHealthData,
     		extract,
     		filter,
-    		head,
     		updateSelectedCountry,
     		clamp,
     		select_handler,
@@ -38468,14 +38466,14 @@ var app = (function () {
     	];
     }
 
-    class CountrySearch_1 extends SvelteComponentDev {
+    class CountrySearch extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$1, create_fragment$1, safe_not_equal, { id: 0, block: 1 });
+    		init$1(this, options, instance$1, create_fragment$1, safe_not_equal, { id: 0, head: 1, block: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "CountrySearch_1",
+    			tagName: "CountrySearch",
     			options,
     			id: create_fragment$1.name
     		});
@@ -38487,7 +38485,7 @@ var app = (function () {
     			console_1.warn("<CountrySearch> was created without expected prop 'id'");
     		}
 
-    		if (/*block*/ ctx[1] === undefined && !('block' in props)) {
+    		if (/*block*/ ctx[2] === undefined && !('block' in props)) {
     			console_1.warn("<CountrySearch> was created without expected prop 'block'");
     		}
     	}
@@ -38497,6 +38495,14 @@ var app = (function () {
     	}
 
     	set id(value) {
+    		throw new Error("<CountrySearch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get head() {
+    		throw new Error("<CountrySearch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set head(value) {
     		throw new Error("<CountrySearch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -39092,7 +39098,7 @@ var app = (function () {
     		"menu": Menu,
     		'methodology': MethodologySourcesText,
     		"death-causes": DeathCauses,
-    		"country-search": CountrySearch_1
+    		"country-search": CountrySearch
     	};
 
     	const writable_props = ['embed'];
@@ -39118,7 +39124,7 @@ var app = (function () {
     		MethodologySourcesText,
     		DeathCauses,
     		strToId,
-    		CountrySearch: CountrySearch_1,
+    		CountrySearch,
     		content,
     		embed,
     		embedBlock,

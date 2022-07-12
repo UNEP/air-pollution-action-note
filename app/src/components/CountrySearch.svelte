@@ -21,9 +21,9 @@
     import type { DeathsData } from "./DeathCauses.svelte";
     import type { Content } from "src/types";
     import SectionTitle from "./SectionTitle.svelte";
-    import CountrySearch from "./CountrySearch.svelte";
 
     export var id: string;
+    export var head: string = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.`;
     export var block: Content;
 
     const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
@@ -117,13 +117,11 @@
 
     const extract = (item) => item.name;
     const filter = (item) => toFilter(item.id);
-    const head = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit.
-        Mauris mattis posuere faucibus.`;
 
-    let events = [];
+    let events = []; // this needs to be removed
 
     function updateSelectedCountry(event, detail) {
-        events = [...events, { event, detail }];
+        events = [...events, { event, detail }]; // this needs to be removed
         if (event === "select"){
         let newID = detail.original.id;
         currentCountry.id = newID;
@@ -150,7 +148,7 @@
     pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
     + ` in total in the country).`;
 
-    let width: number;
+    let linearDistributionsWidth: number;
 
     const minSize = 150;
     const maxSize = 400;
@@ -158,7 +156,7 @@
 
 </script>
   
-  <section {id} class="viz wide">
+  <section {id} class="viz wide country-search">
 
     <SectionTitle {block} />
   
@@ -178,14 +176,14 @@
     </div>
   
     {#if countrySelected}
-      <div class="distributions-container" bind:clientWidth={width}>
+      <div class="distributions-container" bind:clientWidth={linearDistributionsWidth}>
         <div class="distribution">
           <p><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
             <LinearDistribution
               data = {countryPM25Data}
               selectedCountry = {currentCountry.id}
               selectedDataset = "pm25"
-              width = {clamp(width, minSize, maxSize)}
+              width = {clamp(linearDistributionsWidth, minSize, maxSize)}
             />
         </div>
         <div class="distribution">
@@ -194,12 +192,12 @@
               data = {countryHealthData}
               selectedCountry = {currentCountry.id}
               selectedDataset = "health"
-              width = {clamp(width, minSize, maxSize)}
+              width = {clamp(linearDistributionsWidth, minSize, maxSize)}
             />
         </div>
       </div>
 
-      <div>
+      <div class="death-causes-container">
         <DeathCauses data={countryDeathsData}/>
       </div>
 
@@ -207,6 +205,10 @@
   </section>
   
   <style>
+
+    .country-search {
+      margin-bottom: 10rem;
+    }
   
     .distributions-container {
       display: flex;

@@ -108,8 +108,7 @@
     {
       "type": "country-search",
       "menu": "By country",
-      "icon": "search",
-      "data": "pm25"
+      "icon": "search"
     },
     {
       "type": "methodology",

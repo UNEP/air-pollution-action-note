@@ -37,7 +37,8 @@
       display: flex;
       flex-direction: row;
       gap: 10px;
-      flex-wrap: nowrap;
+      row-gap: 20px;
+      flex-wrap: wrap;
     }
   
   </style>
