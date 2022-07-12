@@ -42,6 +42,7 @@
       on:click={selectAll}
       on:blur={reset}
       class:visible={showEmbedCode}
+      title='{embed}'
       value="<script async src='{embedScript}' data-embed='{embed}'></script>" />
   </div>
 </ChartFooter>

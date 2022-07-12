@@ -242,15 +242,15 @@
             style={calcStyle(d)}
             data-code={d.code}
             tabindex="0"
-            role="graphics-symbol"
-            aria-labelledby="country-annotation"
+            role="graphics-object"
             on:mouseenter={(evt) => onMouseEnterCountry(evt, d)}
             on:mouseleave={() => onMouseLeaveCountry()}
             on:focus={() => onMouseClick(d)}
             on:blur={() => onMouseLeaveCountry()}
           >
+          <desc>{hoverTextFn(d)}</desc>
           {#if !hideLabels && d.width > 100}
-            <span id="{slug}-annotation" class="country-text">{d.short}</span>
+            <span class="country-text">{d.short}</span>
           {/if}
           </div>
         {/if}
@@ -260,7 +260,7 @@
   {/if}
 
   {#if annotation}
-    <div class="annotation-container"
+    <div id="{slug}-annotation" class="annotation-container"
       class:annotation-hide={hideAnnotation} class:annotation-help={annotation.class === "help"}
     >
     <Annotation x={annotation.x} y={annotation.y} text={annotation.html}
