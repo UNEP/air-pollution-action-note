@@ -106,7 +106,10 @@
       ]
     },
     {
-      "type": "country-search"
+      "type": "country-search",
+      "menu": "By country",
+      "icon": "search",
+      "data": "pm25"
     },
     {
       "type": "methodology",

@@ -10,6 +10,7 @@ import fuels from './icons_fuels.svg';
 import pm25 from './icons_pm25.svg';
 import sectors from './icons_sectors.svg';
 import policies from './icons_policies.svg';
+import search from './icons_search-table.svg';
 
 export const alignment = {
   pm25: 'transform: translateY(-7%)',
@@ -25,6 +26,7 @@ export default {
   },
   menu : {
     data,
+    search,
     deaths,
     fuels,
     pm25,

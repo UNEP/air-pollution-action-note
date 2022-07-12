@@ -19,6 +19,12 @@
     import healthData from 'src/data/health.json';
     import { createLookup } from "src/util";
     import type { DeathsData } from "./DeathCauses.svelte";
+    import type { Content } from "src/types";
+    import SectionTitle from "./SectionTitle.svelte";
+    import CountrySearch from "./CountrySearch.svelte";
+
+    export var id: string;
+    export var block: Content;
 
     const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
       "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
@@ -152,7 +158,9 @@
 
 </script>
   
-  <section class="viz wide">
+  <section {id} class="viz wide">
+
+    <SectionTitle {block} />
   
     <h2 class='narrow'>{@html head}</h2>
   
