@@ -59,6 +59,6 @@ You can also see us [talking about it at the SIGLibre conference](http://diobma.
     {/if}
   {/each}
 </div>
-‘‘‘
+````
 
 ## References
