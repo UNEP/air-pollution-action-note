@@ -21,7 +21,7 @@
   import type { DeathsData } from "./DeathCauses.svelte";
   import type { Content } from "src/types";
   import SectionTitle from "./SectionTitle.svelte";
-import PolicyGrid from "./PolicyGrid.svelte";
+  import PolicyGrid from "./PolicyGrid.svelte";
 
   export var id: string;
   export var head: string = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.`;
@@ -257,13 +257,13 @@ import PolicyGrid from "./PolicyGrid.svelte";
   
     .search-bar :global([data-svelte-search] input) {
       width: 100%;
-      padding: 0.5rem 0rem;
+      padding: 0.5rem 10px;
       background: #f9f9f9;
       font-size: 1.25rem;
       border: 0;
       border-radius: 0;
-      border: 0px solid #e5e5e5;
-      border-bottom-width: 2px;
+      border-bottom: 1px solid #808080;
+      border-radius: 6px;
       font-family: Roboto;
       font-weight: 300;
     }

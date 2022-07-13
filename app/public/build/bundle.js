@@ -38203,13 +38203,13 @@ var app = (function () {
     			t2 = space();
     			div3 = element("div");
     			create_component(targetbars3.$$.fragment);
-    			attr_dev(div0, "class", "policies-container svelte-m224bc");
+    			attr_dev(div0, "class", "policies-container svelte-ta9w4z");
     			add_location(div0, file$2, 3, 0, 78);
-    			attr_dev(div1, "class", "policies-container svelte-m224bc");
+    			attr_dev(div1, "class", "policies-container svelte-ta9w4z");
     			add_location(div1, file$2, 7, 0, 149);
-    			attr_dev(div2, "class", "policies-container svelte-m224bc");
+    			attr_dev(div2, "class", "policies-container svelte-ta9w4z");
     			add_location(div2, file$2, 11, 0, 220);
-    			attr_dev(div3, "class", "policies-container svelte-m224bc");
+    			attr_dev(div3, "class", "policies-container svelte-ta9w4z");
     			add_location(div3, file$2, 15, 0, 291);
     		},
     		l: function claim(nodes) {
@@ -38383,19 +38383,19 @@ var app = (function () {
     			t6 = space();
     			div4 = element("div");
     			create_component(policygrid.$$.fragment);
-    			attr_dev(span0, "class", "bigger-text svelte-1kd8u99");
+    			attr_dev(span0, "class", "bigger-text svelte-2lms1h");
     			add_location(span0, file$1, 157, 13, 5539);
     			html_tag.a = null;
     			add_location(p0, file$1, 157, 10, 5536);
     			attr_dev(div0, "class", "distribution");
     			add_location(div0, file$1, 156, 8, 5498);
-    			attr_dev(span1, "class", "bigger-text svelte-1kd8u99");
+    			attr_dev(span1, "class", "bigger-text svelte-2lms1h");
     			add_location(span1, file$1, 166, 13, 5950);
     			html_tag_1.a = null;
     			add_location(p1, file$1, 166, 10, 5947);
     			attr_dev(div1, "class", "distribution");
     			add_location(div1, file$1, 165, 8, 5909);
-    			attr_dev(div2, "class", "distributions-container svelte-1kd8u99");
+    			attr_dev(div2, "class", "distributions-container svelte-2lms1h");
     			add_render_callback(() => /*div2_elementresize_handler*/ ctx[17].call(div2));
     			add_location(div2, file$1, 155, 6, 5407);
     			attr_dev(div3, "class", "death-causes-container");
@@ -38531,10 +38531,10 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
     			add_location(h2, file$1, 139, 4, 4944);
-    			attr_dev(div, "class", "search-bar svelte-1kd8u99");
+    			attr_dev(div, "class", "search-bar svelte-2lms1h");
     			add_location(div, file$1, 141, 4, 4990);
     			attr_dev(section, "id", /*id*/ ctx[0]);
-    			attr_dev(section, "class", "viz wide country-search svelte-1kd8u99");
+    			attr_dev(section, "class", "viz wide country-search svelte-2lms1h");
     			add_location(section, file$1, 135, 2, 4856);
     		},
     		l: function claim(nodes) {
