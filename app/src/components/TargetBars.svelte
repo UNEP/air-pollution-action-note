@@ -24,28 +24,42 @@
 
   {#each Array(4) as _, i}
     <svg width="80" height="24">
-      {#if !(value === 4 && i !== 0)}
-        <rect 
-          fill= "#E5E5E5"
-          class:highlight2={value===indexToCategory[i]} 
-          style="--bg-color: {ColorFn(categories[value])};" 
-          width="80" 
-          height="24" 
-          rx="4"
+      {#if value===indexToCategory[i]}
+        <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" 
+          class:no-data={value===4} 
+          class:not-met={value===3} 
+          class:on-track={value===2} 
+          class:target-met={value===1}
         />
       {:else}
-        <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" stroke="#BDBDBD" fill="none"/>
+        <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" stroke="#999999" fill="none"/>
       {/if}
     </svg>
-  {/each} 
+  {/each}  
     
 </div>
-  
+
 
 <style>
 
-  .highlight2 {
-    fill: var(--bg-color);
+  .target-met {
+    fill: #1C477E;
+    stroke: #163863;
+  }
+
+  .on-track {
+    fill: #6791B1;
+    stroke: #1C477E;
+  }
+
+  .not-met {
+    fill: #F7CD6E;
+    stroke: #BF8603;
+  }
+
+  .no-data {
+    fill: #BDBDBD;
+    stroke: #999999;
   }
 
   .grid-bars-container {

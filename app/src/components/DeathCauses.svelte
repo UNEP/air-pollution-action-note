@@ -19,7 +19,17 @@
 
   export let data: DeathsData = WorldMeanDeaths;
 
+  let text: string;
+
+  $: data === WorldMeanDeaths ? 
+    text = null : 
+    text = "Most deaths are due to stroke. Other significant causes are ischemic heart disease, and tracheal, bronchus and lung cancer.";
+
 </script>
+
+  {#if text}
+    <p class="col-text">{@html text}</p>
+  {/if}
   
   <div class="flex-container">
     <WaffleChart percentage={data.stroke} cause={'stroke'}/>

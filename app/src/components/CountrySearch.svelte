@@ -12,11 +12,10 @@
   import LinearDistribution from "./charts/LinearDistribution.svelte";
   import DeathCauses from "./DeathCauses.svelte";
   import countries from 'src/data/countryDictionary.json';
-  import fuels from 'src/data/fuels.json';
-  import sectors from 'src/data/sectors.json';
   import deathsdata from 'src/data/deathDatabase.json';
   import pm25data from 'src/data/pm25.json';
   import healthData from 'src/data/health.json';
+  import policiesData from 'src/data/policiesData.json';
   import { createLookup } from "src/util";
   import type { DeathsData } from "./DeathCauses.svelte";
   import type { Content } from "src/types";
@@ -34,8 +33,7 @@
   const pm25LookUp = createLookup(pm25data, p => p.id, p => p);
   const healthLookUp = createLookup(healthData, h => h.id, h => h);
   const deathsLookUp = createLookup(deathsdata, d => d.id, d => d);
-  const fuelsLookUp = createLookup(fuels, f => f.id, f => f);
-  const sectorsLookUp = createLookup(sectors, s => s.id, s => s);
+  const policiesLookUp = createLookup(policiesData, p => p.id, p => p);
 
   const maxNumSearchResults = 5;
 
@@ -54,11 +52,6 @@
   let countryHealthData: CountryDataSquare[] = healthData.map(d => {
     return { id: d.id, value: d.rate };
   });
-
-  $: countrySectorsData = generateData(currentCountry.id, "sectors");
-  $: countryFuelsData = generateData(currentCountry.id, "fuels");
-  $: countryDeathsData = generateDeathsData(currentCountry.id);
-
 
   const generateDeathsData = (countryID: string) => {
     let countryInfo = deathsLookUp[countryID];
@@ -87,29 +80,14 @@
     }
   }
 
-  let countrySelected = false;
-
-  function generateData(countryID: string, selectedDB: string){
-    let countryInfo;
-    if (selectedDB === "sectors"){
-      countryInfo = sectorsLookUp[countryID];
+  const generatePoliciesData = (countryID: string) => {
+    let countryInfo = policiesLookUp[countryID];
+    if (countryInfo) {
+      return countryInfo;
     }
-    else if (selectedDB === "fuels"){
-      countryInfo = fuelsLookUp[countryID];
-    }
-    else {
-      countryInfo = deathsLookUp[countryID];
-    }
-    let array = [];
-    for (const Attribute in countryInfo){
-      if (Attribute !== "id"){
-        let tile = {categoryName : Attribute, value: countryInfo[Attribute]};
-        array.push(tile);
-      }  
-    }
-    console.log(array);
-    return array;
   }
+  
+  let countrySelected = false;
 
   function toFilter(countryID:string){
     if (CTBF_lookUp[countryID] !== null){ return false; }
@@ -122,25 +100,28 @@
   let events = []; // this needs to be removed
 
   function updateSelectedCountry(event, detail) {
-      events = [...events, { event, detail }]; // this needs to be removed
-      if (event === "select"){
-      let newID = detail.original.id;
-      currentCountry.id = newID;
-      currentCountry.PM25country = pm25LookUp[newID].pm25;
-      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
-      currentCountry.totalDeaths = healthLookUp[newID].deaths;
-      currentCountry.deathRatio = healthLookUp[newID].rate;
-      countrySelected = true;
-      }
-      else{
-      currentCountry.id = "";
-      currentCountry.PM25country = 0;
-      currentCountry.timesPM25 = 0;
-      currentCountry.totalDeaths = 0;
-      currentCountry.deathRatio = 0;
-      countrySelected = false;
-      }
+    events = [...events, { event, detail }]; // this needs to be removed
+    if (event === "select"){
+    let newID = detail.original.id;
+    currentCountry.id = newID;
+    currentCountry.PM25country = pm25LookUp[newID].pm25;
+    currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
+    currentCountry.totalDeaths = healthLookUp[newID].deaths;
+    currentCountry.deathRatio = healthLookUp[newID].rate;
+    countrySelected = true;
+    }
+    else{
+    currentCountry.id = "";
+    currentCountry.PM25country = 0;
+    currentCountry.timesPM25 = 0;
+    currentCountry.totalDeaths = 0;
+    currentCountry.deathRatio = 0;
+    countrySelected = false;
+    }
   }
+
+  $: countryDeathsData = generateDeathsData(currentCountry.id);
+  $: countryPoliciesData = generatePoliciesData(currentCountry.id);
 
   $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
   + currentCountry.timesPM25 + ` times WHO's guideline.`;
@@ -203,7 +184,7 @@
       </div>
 
       <div class="policy-grid-container">
-        <PolicyGrid/>
+        <PolicyGrid data={countryPoliciesData}/>
       </div>
 
     {/if}
@@ -238,7 +219,7 @@
   
     .search-bar :global([data-svelte-typeahead]) {
       margin: 0rem;
-      max-width: 450px;
+      max-width: 333px;
       margin-top: 30px;
       background-color: #f9f9f9;
       z-index: 5;

@@ -10,7 +10,6 @@
     const relevantTileHeight = 34;
     const xBorderRadius = 10;
     const yBorderRadius = 2;
-    const endingTileMargin = 10;
   
     export let selectedCountry: string;
     export let data: CountryDataSquare[];

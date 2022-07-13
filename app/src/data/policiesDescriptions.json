@@ -1,0 +1,81 @@
+[
+  {
+    "id": "ind-1",
+    "name": "Clean production incentives",
+    "1": "Yes",
+    "2": "",
+    "3": "No",
+    "4": "No data"
+  },
+  {
+    "id": "tra-1",
+    "name": "Vehicle emission standards",
+    "1": "Euro 4 or higher",
+    "2": "Less than Euro 4",
+    "3": "No standards",
+    "4": "No data"
+  },
+
+  {
+    "id": "tra-2",
+    "name": "Sulphur level in diesel",
+    "1": "Less than 50ppm",
+    "2": "Between 51 and 500ppm",
+    "3": "Greater than 500ppm",
+    "4": "No data"
+  },
+
+  {
+    "id": "waste-1",
+    "name": "Solid Waste Burning",
+    "1": "Yes, burning of solid waste is strictly regulated",
+    "2": "Partially controlled",
+    "3": "No controlls",
+    "4": "No data"
+  },
+
+  {
+    "id": "res-1",
+    "name": "Incentives for residential cooking and heating",
+    "1": "Yes",
+    "2": "",
+    "3": "No",
+    "4": "No data"
+  },
+
+  {
+    "id": "agri-1",
+    "name": "Sustainable agricultural practices",
+    "1": "Yes",
+    "2": "",
+    "3": "No",
+    "4": "No data"
+  },
+
+  {
+    "id": "aqms-1",
+    "name": "Air quality management strategies",
+    "1": "Yes",
+    "2": "",
+    "3": "No",
+    "4": "No data"
+  },
+
+  {
+    "id": "aqm-1",
+    "name": "Air quality monitoring",
+    "1": "Yes, continuous monitoring at multiple sites",
+    "2": "Yes, a monitoring network exists but is not operational --- Yes, monitoring done periodically at a few sites",
+    "3": "No monitoring",
+    "4": "No data"
+  },
+
+  {
+    "id": "aq-1",
+    "name": "Air quality standards",
+    "1": "Yes",
+    "2": "",
+    "3": "No",
+    "4": "No data"
+  }
+]
