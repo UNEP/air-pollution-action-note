@@ -1,158 +1,159 @@
 <script lang="ts" context="module">
 
-    export interface CountryDataSquare {
-      id: string,
-      value: number
-    }
+  export interface CountryDataSquare {
+    id: string,
+    value: number
+  }
 
 </script>
   
 <script lang="ts">
-    import Typeahead from "svelte-typeahead";
-    import LinearDistribution from "./charts/LinearDistribution.svelte";
-    import DeathCauses from "./DeathCauses.svelte";
-    import countries from 'src/data/countryDictionary.json';
-    import fuels from 'src/data/fuels.json';
-    import sectors from 'src/data/sectors.json';
-    import deathsdata from 'src/data/deathDatabase.json';
-    import pm25data from 'src/data/pm25.json';
-    import healthData from 'src/data/health.json';
-    import { createLookup } from "src/util";
-    import type { DeathsData } from "./DeathCauses.svelte";
-    import type { Content } from "src/types";
-    import SectionTitle from "./SectionTitle.svelte";
+  import Typeahead from "svelte-typeahead";
+  import LinearDistribution from "./charts/LinearDistribution.svelte";
+  import DeathCauses from "./DeathCauses.svelte";
+  import countries from 'src/data/countryDictionary.json';
+  import fuels from 'src/data/fuels.json';
+  import sectors from 'src/data/sectors.json';
+  import deathsdata from 'src/data/deathDatabase.json';
+  import pm25data from 'src/data/pm25.json';
+  import healthData from 'src/data/health.json';
+  import { createLookup } from "src/util";
+  import type { DeathsData } from "./DeathCauses.svelte";
+  import type { Content } from "src/types";
+  import SectionTitle from "./SectionTitle.svelte";
+import PolicyGrid from "./PolicyGrid.svelte";
 
-    export var id: string;
-    export var head: string = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.`;
-    export var block: Content;
+  export var id: string;
+  export var head: string = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.`;
+  export var block: Content;
 
-    const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
-      "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
+  const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
+    "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
 
-    const CTBF_lookUp = createLookup(countriesToBeFiltered, c => c, c => c);
-    const pm25LookUp = createLookup(pm25data, p => p.id, p => p);
-    const healthLookUp = createLookup(healthData, h => h.id, h => h);
-    const deathsLookUp = createLookup(deathsdata, d => d.id, d => d);
-    const fuelsLookUp = createLookup(fuels, f => f.id, f => f);
-    const sectorsLookUp = createLookup(sectors, s => s.id, s => s);
+  const CTBF_lookUp = createLookup(countriesToBeFiltered, c => c, c => c);
+  const pm25LookUp = createLookup(pm25data, p => p.id, p => p);
+  const healthLookUp = createLookup(healthData, h => h.id, h => h);
+  const deathsLookUp = createLookup(deathsdata, d => d.id, d => d);
+  const fuelsLookUp = createLookup(fuels, f => f.id, f => f);
+  const sectorsLookUp = createLookup(sectors, s => s.id, s => s);
 
-    const maxNumSearchResults = 5;
+  const maxNumSearchResults = 5;
 
-    $: currentCountry = {
-      id: "",
-      PM25country: 0,
-      timesPM25: 0,
-      totalDeaths: 0,
-      deathRatio: 0
-    };
+  $: currentCountry = {
+    id: "",
+    PM25country: 0,
+    timesPM25: 0,
+    totalDeaths: 0,
+    deathRatio: 0
+  };
 
-    let countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
-        return { id: d.id, value: d.pm25 };
-    });
+  let countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
+    return { id: d.id, value: d.pm25 };
+  });
 
-    let countryHealthData: CountryDataSquare[] = healthData.map(d => {
-        return { id: d.id, value: d.rate };
-    });
+  let countryHealthData: CountryDataSquare[] = healthData.map(d => {
+    return { id: d.id, value: d.rate };
+  });
 
-    $: countrySectorsData = generateData(currentCountry.id, "sectors");
-    $: countryFuelsData = generateData(currentCountry.id, "fuels");
-    $: countryDeathsData = generateDeathsData(currentCountry.id);
+  $: countrySectorsData = generateData(currentCountry.id, "sectors");
+  $: countryFuelsData = generateData(currentCountry.id, "fuels");
+  $: countryDeathsData = generateDeathsData(currentCountry.id);
 
 
-    const generateDeathsData = (countryID: string) => {
-      let countryInfo = deathsLookUp[countryID];
-      if (countryInfo) {
-        let deathsData: DeathsData = {
-          copd: countryInfo.copd,
-          diabetes: countryInfo.diabetes,
-          ischemic: countryInfo.ischemic,
-          lungcancer: countryInfo.lungcancer,
-          lri: countryInfo.lri,
-          stroke: countryInfo.stroke,
-          nd: countryInfo.nd
-        }
-        return deathsData;
+  const generateDeathsData = (countryID: string) => {
+    let countryInfo = deathsLookUp[countryID];
+    if (countryInfo) {
+      let deathsData: DeathsData = {
+        copd: countryInfo.copd,
+        diabetes: countryInfo.diabetes,
+        ischemic: countryInfo.ischemic,
+        lungcancer: countryInfo.lungcancer,
+        lri: countryInfo.lri,
+        stroke: countryInfo.stroke,
+        nd: countryInfo.nd
       }
-      else {
-        return {
-          copd: 0,
-          diabetes: 0,
-          ischemic: 0,
-          lungcancer: 0,
-          lri: 0,
-          stroke: 0,
-          nd: 0
-        }
+      return deathsData;
+    }
+    else {
+      return {
+        copd: 0,
+        diabetes: 0,
+        ischemic: 0,
+        lungcancer: 0,
+        lri: 0,
+        stroke: 0,
+        nd: 0
       }
     }
+  }
 
-    let countrySelected = false;
+  let countrySelected = false;
 
-    function generateData(countryID: string, selectedDB: string){
-      let countryInfo;
-      if (selectedDB === "sectors"){
-        countryInfo = sectorsLookUp[countryID];
-      }
-      else if (selectedDB === "fuels"){
-        countryInfo = fuelsLookUp[countryID];
-      }
-      else {
-        countryInfo = deathsLookUp[countryID];
-      }
-      let array = [];
-      for (const Attribute in countryInfo){
-        if (Attribute !== "id"){
-          let tile = {categoryName : Attribute, value: countryInfo[Attribute]};
-          array.push(tile);
-       }  
-      }
-      console.log(array);
-      return array;
+  function generateData(countryID: string, selectedDB: string){
+    let countryInfo;
+    if (selectedDB === "sectors"){
+      countryInfo = sectorsLookUp[countryID];
     }
-
-    function toFilter(countryID:string){
-      if (CTBF_lookUp[countryID] !== null){ return false; }
-      else { return true; }
+    else if (selectedDB === "fuels"){
+      countryInfo = fuelsLookUp[countryID];
     }
-
-    const extract = (item) => item.name;
-    const filter = (item) => toFilter(item.id);
-
-    let events = []; // this needs to be removed
-
-    function updateSelectedCountry(event, detail) {
-        events = [...events, { event, detail }]; // this needs to be removed
-        if (event === "select"){
-        let newID = detail.original.id;
-        currentCountry.id = newID;
-        currentCountry.PM25country = pm25LookUp[newID].pm25;
-        currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
-        currentCountry.totalDeaths = healthLookUp[newID].deaths;
-        currentCountry.deathRatio = healthLookUp[newID].rate;
-        countrySelected = true;
-        }
-        else{
-        currentCountry.id = "";
-        currentCountry.PM25country = 0;
-        currentCountry.timesPM25 = 0;
-        currentCountry.totalDeaths = 0;
-        currentCountry.deathRatio = 0;
-        countrySelected = false;
-        }
+    else {
+      countryInfo = deathsLookUp[countryID];
     }
+    let array = [];
+    for (const Attribute in countryInfo){
+      if (Attribute !== "id"){
+        let tile = {categoryName : Attribute, value: countryInfo[Attribute]};
+        array.push(tile);
+      }  
+    }
+    console.log(array);
+    return array;
+  }
 
-    $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
-    + currentCountry.timesPM25 + ` times WHO's guideline.`;
+  function toFilter(countryID:string){
+    if (CTBF_lookUp[countryID] !== null){ return false; }
+    else { return true; }
+  }
 
-    $: PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
-    pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
-    + ` in total in the country).`;
+  const extract = (item) => item.name;
+  const filter = (item) => toFilter(item.id);
 
-    let linearDistributionsWidth: number;
+  let events = []; // this needs to be removed
 
-    const minSize = 150;
-    const maxSize = 400;
-    const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
+  function updateSelectedCountry(event, detail) {
+      events = [...events, { event, detail }]; // this needs to be removed
+      if (event === "select"){
+      let newID = detail.original.id;
+      currentCountry.id = newID;
+      currentCountry.PM25country = pm25LookUp[newID].pm25;
+      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
+      currentCountry.totalDeaths = healthLookUp[newID].deaths;
+      currentCountry.deathRatio = healthLookUp[newID].rate;
+      countrySelected = true;
+      }
+      else{
+      currentCountry.id = "";
+      currentCountry.PM25country = 0;
+      currentCountry.timesPM25 = 0;
+      currentCountry.totalDeaths = 0;
+      currentCountry.deathRatio = 0;
+      countrySelected = false;
+      }
+  }
+
+  $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
+  + currentCountry.timesPM25 + ` times WHO's guideline.`;
+
+  $: PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
+  pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
+  + ` in total in the country).`;
+
+  let linearDistributionsWidth: number;
+
+  const minSize = 150;
+  const maxSize = 400;
+  const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
 
 </script>
   
@@ -199,6 +200,10 @@
 
       <div class="death-causes-container">
         <DeathCauses data={countryDeathsData}/>
+      </div>
+
+      <div class="policy-grid-container">
+        <PolicyGrid/>
       </div>
 
     {/if}
