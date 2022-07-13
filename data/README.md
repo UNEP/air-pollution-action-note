@@ -4,6 +4,7 @@ TK TK Data comes from
 * [Ambient particulate matter pollution exposure summary estimates](https://ghdx.healthdata.org/sites/default/files/record-attached-files/IHME_GBD_2019_AIR_POLLUTION_1990_2019_PM.zip)
 * [Total deaths and deaths per 100,000 people attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results?params=gbd-api-2019-permalink/6e3468190433cfde61c4d81616db6945) (You need to register)
 * [Percent of deaths from a selected set of illnesses attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results/?params=gbd-api-2019-permalink/0e754a60c0fefcbbe6801c994e9ab274) (You need to register)
+* TK TK Sectors
 
 TK TK Links to methodologies on the resources themselves
 
