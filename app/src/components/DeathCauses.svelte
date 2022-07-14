@@ -29,7 +29,7 @@
   const names = {
     'stroke': 'stroke',
     'ischemic': 'ischemic heart disease',
-    'lungcancer': 'lung cancer',
+    'lungcancer': 'tracheal, bronchus and lung cancer',
     'lri': 'lower respiratory infections',
     'copd': 'chronic obstructive pulmonary disease',
     'diabetes': 'type 2 diabetes',
@@ -52,7 +52,7 @@
       firstSentenceDiseases.push(s[0]);
     });
 
-    if (firstSentenceDiseases.length > 0) { //theres some diseases with >20%
+    if (firstSentenceDiseases.length > 0) {
       let n = 0;
       let groupLength = firstSentenceDiseases.length;
       text = sentence + ` <b>` + names[firstSentenceDiseases[n]] + `</b>`;
@@ -65,7 +65,7 @@
           text += ` and <b>` + names[firstSentenceDiseases[n]] + `</b>`;
         }
         else {
-          text += `, <b>` + names[firstSentenceDiseases[n]] + `</b>`
+          text += `, <b>` + names[firstSentenceDiseases[n]] + `</b>`;
         }
         n++;
       }
@@ -94,7 +94,7 @@
         text += ` and <b>` + names[serializedData[n][0]] + `</b>`;
       }
       else {
-        text += `, <b>` + names[serializedData[n][0]] + `</b>`
+        text += `, <b>` + names[serializedData[n][0]] + `</b>`;
       }
       n++;
     }

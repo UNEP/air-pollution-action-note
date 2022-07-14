@@ -160,7 +160,7 @@
     {#if countrySelected}
       <div class="distributions-container" bind:clientWidth={linearDistributionsWidth}>
         <div class="distribution">
-          <p><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
+          <p class="primary-text"><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
             <LinearDistribution
               data = {countryPM25Data}
               selectedCountry = {currentCountry.id}
@@ -169,7 +169,7 @@
             />
         </div>
         <div class="distribution">
-          <p><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
+          <p class="primary-text"><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
             <LinearDistribution
               data = {countryHealthData}
               selectedCountry = {currentCountry.id}
@@ -183,14 +183,23 @@
         <DeathCauses data={countryDeathsData}/>
       </div>
 
-      <!--<div class="policy-grid-container">
+      <div class="policy-grid-container">
         <PolicyGrid data={countryPoliciesData}/>
-      </div>-->
+      </div>
 
     {/if}
   </section>
   
   <style>
+
+    .death-causes-container {
+      margin-bottom: 50px;
+    }
+
+    .primary-text {
+      margin-bottom: 0;
+      padding-bottom: 10px;
+    }
 
     .country-search {
       margin-bottom: 10rem;

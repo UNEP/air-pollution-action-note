@@ -17,7 +17,7 @@
       'lungcancer': {component: IconsTblc, name: 'Tracheal, bronchus, and lung cancer'},
       'lri': {component: IconsLri, name: 'Lower respiratory infections'},
       'copd': {component: IconsCopd, name: 'Chronic obstructive pulmonary disease'},
-      'diabetes': {component: IconsDmt2, name: 'Diabetes mellitus type 2'},
+      'diabetes': {component: IconsDmt2, name: 'Type 2 diabetes'},
       'nd': {component: IconsNd, name: 'Neonatal disorders'},
     };
   
