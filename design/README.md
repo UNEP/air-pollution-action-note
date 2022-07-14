@@ -16,7 +16,7 @@ But I guess it's important to confess that we love cartograms. We're biased here
 
 We've even gotten as far as to fight a hero of ours on twitter:
 
-[![Tweet defending about cartograms](tweet_carto.png|width=480px)](https://twitter.com/xocasgv/status/747784201412370432)
+[![Tweet defending about cartograms](tweet_carto.png | width=480px)](https://twitter.com/xocasgv/status/747784201412370432)
 
 Full thread here: [1](https://twitter.com/xocasgv/status/747784201412370432), [2](https://twitter.com/xocasgv/status/747784391909269506), [3](https://twitter.com/xocasgv/status/747784639440248832), [4](https://twitter.com/xocasgv/status/747784881908776960), [5](https://twitter.com/xocasgv/status/747785136951857152), [6](https://twitter.com/xocasgv/status/747785410273652737), [7](https://twitter.com/xocasgv/status/747785637554577409), [8](https://twitter.com/xocasgv/status/747785902852706309), [9](https://twitter.com/xocasgv/status/747786142414573569), [10](https://twitter.com/xocasgv/status/747786388548943872) 
 
