@@ -102,41 +102,18 @@
 
 <div class="policies-container">
   {#each policies as p, i}
-    <div class="pol policy-name">{descLookUp[p.id].name}</div>
-    <div class="pol bars-middle">
-      {#if i === 0}
-      <div class="column-legend">
-        <div class="legend-text">No data</div>
-        <div class="legend-text">Not met</div>
-        <div class="legend-text">On track</div>
-        <div class="legend-text">Target met</div>
-      </div>
-      {/if}
+    <div class="row policy-name">{descLookUp[p.id].name}</div>
+    <div class="row bars-middle">
       <TargetBars {selected} value={p.value}/>
     </div>
-    <div class="pol policy-description">{descLookUp[p.id][p.value]}</div>
+    <div class="row policy-description">{descLookUp[p.id][p.value]}</div>
   {/each}
 </div>
 
 <style>
 
   .separate-legend {
-    display: none;
-  }
-
-  .legend-text {
-    width: 79px;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-    min-width: 22.5%;
-    font-weight: 600;
-    color: #505050;
-  }
-
-  .column-legend {
-    position: absolute;
-    transform: translateY(-35px);
-    display: flex;
+    display: block;
   }
 
   .policy-description {
@@ -159,18 +136,8 @@
     margin-top: 75px;
   }
 
-  .pol {
+  .row {
     height: 35px;
-  }
-
-  @media (max-width: 1200px) {
-    .separate-legend {
-      display: block;
-    }
-
-    .column-legend {
-      display: none;
-    }
   }
     
 </style>

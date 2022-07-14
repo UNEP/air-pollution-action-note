@@ -21,14 +21,14 @@
 <div class="grid-bars-container">
   {#each Array(4) as _, i}
     {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
-      <div class="new-tile"
+      <div class="bar-tile"
         class:no-data={value===4} 
         class:not-met={value===3} 
         class:on-track={value===2} 
         class:target-met={value===1}
       />
     {:else}
-      <div class="new-tile unknown"/>
+      <div class="bar-tile unknown"/>
     {/if}
   {/each}  
 </div>
@@ -36,15 +36,13 @@
 
 <style>
 
-  .new-tile {
+  .bar-tile {
     max-width: 79px;
     margin-left: 2.5px;
     margin-right: 2.5px;
     width: 22.5%;
     height: 24px;
     border-radius: 3.5px;
-    border: 1px solid #73AD21;
-    background-color: #6791B1;
   }
 
   .target-met {
@@ -76,5 +74,4 @@
     display: flex;
   }
 
-    
 </style>
