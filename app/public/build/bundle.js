@@ -26376,7 +26376,7 @@ var app = (function () {
     const { Object: Object_1$1 } = globals;
     const file$7 = "src\\components\\DeathCauses.svelte";
 
-    // (96:2) {#if text}
+    // (99:2) {#if text}
     function create_if_block$5(ctx) {
     	let p;
 
@@ -26384,7 +26384,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$7, 96, 4, 3339);
+    			add_location(p, file$7, 99, 4, 3435);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -26401,7 +26401,7 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(96:2) {#if text}",
+    		source: "(99:2) {#if text}",
     		ctx
     	});
 
@@ -26502,7 +26502,7 @@ var app = (function () {
     			t6 = space();
     			create_component(wafflechart6.$$.fragment);
     			attr_dev(div, "class", "flex-container svelte-1wy5y97");
-    			add_location(div, file$7, 99, 2, 3392);
+    			add_location(div, file$7, 102, 2, 3488);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -26627,7 +26627,7 @@ var app = (function () {
     		'lungcancer': 'lung cancer',
     		'lri': 'lower respiratory infections',
     		'copd': 'chronic obstructive pulmonary disease',
-    		'diabetes': 'type 2 diabetes ',
+    		'diabetes': 'type 2 diabetes',
     		'nd': 'neonatal disorders'
     	};
 
@@ -26705,7 +26705,12 @@ var app = (function () {
     			}
     		}
 
-    		let sentence2 = generateSecondSentence(sentences["rest"]);
+    		let sentence2 = "";
+
+    		if (firstSentenceDiseases.length < serializedData.length) {
+    			sentence2 = generateSecondSentence(sentences["rest"]);
+    		}
+
     		return sentence1 + sentence2;
     	};
 
@@ -28299,7 +28304,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (32:12) {#if d.value !== null && d.id !== selectedCountry}
+    // (37:12) {#if d.value !== null && d.id !== selectedCountry}
     function create_if_block$3(ctx) {
     	let g;
     	let rect;
@@ -28328,9 +28333,9 @@ var app = (function () {
     			attr_dev(rect, "ry", yBorderRadius);
     			attr_dev(rect, "filter", "none");
     			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*d*/ ctx[10].value));
-    			add_location(rect, file$4, 33, 16, 1197);
+    			add_location(rect, file$4, 38, 16, 1271);
     			attr_dev(g, "id", g_id_value = /*d*/ ctx[10].id + /*d*/ ctx[10].value);
-    			add_location(g, file$4, 32, 14, 1156);
+    			add_location(g, file$4, 37, 14, 1230);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -28370,14 +28375,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(32:12) {#if d.value !== null && d.id !== selectedCountry}",
+    		source: "(37:12) {#if d.value !== null && d.id !== selectedCountry}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (31:8) {#each data as d}
+    // (36:8) {#each data as d}
     function create_each_block$3(ctx) {
     	let if_block_anchor;
     	let if_block = /*d*/ ctx[10].value !== null && /*d*/ ctx[10].id !== /*selectedCountry*/ ctx[0] && create_if_block$3(ctx);
@@ -28415,7 +28420,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(31:8) {#each data as d}",
+    		source: "(36:8) {#each data as d}",
     		ctx
     	});
 
@@ -28456,13 +28461,13 @@ var app = (function () {
     			attr_dev(rect, "ry", "1.5");
     			attr_dev(rect, "filter", "none");
     			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*relevantCountry*/ ctx[3].value));
-    			add_location(rect, file$4, 48, 12, 1783);
-    			add_location(g, file$4, 47, 10, 1766);
+    			add_location(rect, file$4, 53, 12, 1857);
+    			add_location(g, file$4, 52, 10, 1840);
     			attr_dev(svg, "width", /*width*/ ctx[2]);
     			attr_dev(svg, "height", height);
-    			add_location(svg, file$4, 29, 6, 1027);
+    			add_location(svg, file$4, 34, 6, 1101);
     			attr_dev(div, "width", /*width*/ ctx[2]);
-    			add_location(div, file$4, 28, 2, 1006);
+    			add_location(div, file$4, 33, 2, 1080);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28565,7 +28570,11 @@ var app = (function () {
     	const dataLookUp = createLookup(data, d => d.id, d => d);
 
     	const xLocation = (countryValue, width) => {
-    		return (countryValue - minValue) * (width - relevantTileWidth) / (maxValue - minValue);
+    		if (isNaN(width)) {
+    			return 0;
+    		} else {
+    			return (countryValue - minValue) * (width - relevantTileWidth) / (maxValue - minValue);
+    		}
     	};
 
     	const writable_props = ['selectedCountry', 'data', 'selectedDataset', 'width'];

@@ -21,7 +21,12 @@
     const dataLookUp = createLookup(data, d => d.id, d => d);
 
     const xLocation = (countryValue: number, width: number) => {
-      return ( ( (countryValue - minValue) * (width - relevantTileWidth) ) / (maxValue - minValue) );
+      if (isNaN(width)) {
+        return 0;
+      }
+      else {
+        return ( ( (countryValue - minValue) * (width - relevantTileWidth) ) / (maxValue - minValue) );
+      }
     };
 
     $: maxValue = Math.max(...data.map(d => d.value));

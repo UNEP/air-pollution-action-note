@@ -32,7 +32,7 @@
     'lungcancer': 'lung cancer',
     'lri': 'lower respiratory infections',
     'copd': 'chronic obstructive pulmonary disease',
-    'diabetes': 'type 2 diabetes ',
+    'diabetes': 'type 2 diabetes',
     'nd': 'neonatal disorders'
   };
 
@@ -111,8 +111,11 @@
         sentence1 = generateTop3(sentences["top3"]);
       }
     }
-    
-    let sentence2 = generateSecondSentence(sentences["rest"]);
+
+    let sentence2 = "";
+    if (firstSentenceDiseases.length < serializedData.length){
+      sentence2 = generateSecondSentence(sentences["rest"]);
+    }
     return sentence1 + sentence2;
   }
 
