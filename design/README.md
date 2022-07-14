@@ -3,12 +3,8 @@ Should we open our Figma file to everyone that wants a peak? You can explore [Fi
 
 
 ## Demers, tile grid maps and an Indian dessert
-- [ ] Notes from user research on Dorling cartograms readibility
 - [ ] Readibility improvements on the marks with borders
-- [ ] @xocasgv twitter thread on UK cartograms for 2015 elections
 - [ ] Slides from the SIGLibre presentation
-
-We decided on this type of visualization, Demers or square cartograms, out of the design restrictions and data nuances. TK TK summary of those. We are working on a paper evaluating Demers cartograms and explaining a soon-to-be-open-sourced in-house tool that we develop to simplify their production.
 
 But I guess it's important to confess that we love cartograms. We're biased here. And we've used them maaaaany times in the past.
 
@@ -22,17 +18,20 @@ Full thread here: [1](https://twitter.com/xocasgv/status/747784201412370432), [2
 
 Anyway ... 
 
-There's some research on how effective cartograms are to compare, locate, find biggest values, or see the big picture ... But mostly folks have looked into Dorling and continuous cartograms. One particular study highlighted that Dorling cartograms not only perform well, but they're also subjectively appreciated by audiences who see them as helpful, easy to use and innovative. Given the similarities between Dorling and Demers cartograms, we have assumed they perform similarly until we complete our current research.
+We decided on this type of visualization, Demers or square cartograms, out of a set of design restrictions and data nuances that we discuss here. We are working on a paper evaluating Demers cartograms and explaining a soon-to-be-open-sourced in-house tool that we develop to simplify their production.
+
+There's some research on how effective cartograms are to compare, locate, find the biggest values, or see the big picture ... But mostly folks have looked into Dorling and continuous cartograms. One particular study highlighted that Dorling cartograms not only perform well, but they're also subjectively appreciated by audiences who see them as helpful, easy to use, and innovative. Given the similarities between Dorling and Demers cartograms, we have assumed they perform similarly until we complete our current research.
 
 The goals of the visualizations were to:
-* Minimize any issues with international borders
-* Summarize the big trends
-* Depict the data accurately
-* Allow us to use different visual variables
-* Preserve the integrity of the visualization regardless of the type of data
-* Present the data in an engaging manner
+- [x] Minimize any issues with international borders
+- [x] Summarize the big trends
+- [x] Depict the data accurately
+- [x] Adapt to different types of data while preserving the integrity of the visualization
+- [x] Present the data in an engaging manner
 
-The cartograms were created using Barfi, our in-house interactive tool that uses a force-directed layout to generate them. Barfi is a fudge-like Indian dessert usually cut in squares. @mattosborn's original name for the tool was 'fdg', which sounded like 'fudge'. Top imaginative branding here ...
+Demers cartograms ticked those boxes.
+
+To generate them, we used Barfi, our in-house interactive tool. Barfi is a fudge-like Indian dessert usually cut in squares. @mattosborn's original name for the tool was 'fdg' (as in force-directed graph), which sounded like 'fudge'. 🔥 imaginative branding here ...
 
 You can read about the tool and how it was born [here](tktkt). But, in a nutshell:  
 
@@ -44,7 +43,7 @@ You can read about the tool and how it was born [here](tktkt). But, in a nutshel
 > 
 > Another advantage of this design solution is the use of the same visual mark, in this case squares, which allows us to create transitions between maps that facilitate a fluid sequential narrative.
 
-You can also see us [talking about it at the SIGLibre conference](http://diobma.udg.edu/handle/10256.1/6776) — we are planning to open it up once our to-do list is ... well ... done.
+You can see us [talking about it at the SIGLibre conference](http://diobma.udg.edu/handle/10256.1/6776) — we are planning to open it up once our to-do list is ... well ... done.
 
 ## Color scales
 - [ ] Inclusive color in dataviz
@@ -56,9 +55,11 @@ The Note is designed as a stack of information blocks, each composed of a data-d
 
 [IMAGE OF THE BLOCKS]
 
-Every data point has an annotation, and you can interact with it through your keyboard, click, or hover —depending on the device and technology you use. The legends allow you to filter the view based on the specific groupings it represents, if you hover or click or tab to the .
+Every data point has an annotation, and you can interact with it through your keyboard, click, or hover —depending on the device and technology you use. You can filter the view if you hover or click or tab on the legend, to isolate the specific groupings it represents: select the dark purple in the current state cartogram to see countries with higher levels of exposure, or the blue in the policy actions tile grid map to see who's met the most targets.
 
-The insides 🔪🧠🫀🫁😱 of our cartogram component look like this.
+We've tried to keep the interaction to a minimum and as effortless as possible. 
+
+Like anatomy? The insides 🔪🧠🫀🫁😱 of our cartogram component look like this.
 
 ````svelte
 <div class="countries"
@@ -87,4 +88,5 @@ The insides 🔪🧠🫀🫁😱 of our cartogram component look like this.
 </div>
 ````
 
-## References
+## Icon design
+
