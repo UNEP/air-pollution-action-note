@@ -256,7 +256,6 @@
         {/if}
       {/each}
     </div>
-
   {/if}
 
   {#if annotation}

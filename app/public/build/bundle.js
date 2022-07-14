@@ -6976,7 +6976,7 @@ var app = (function () {
     	return block;
     }
 
-    // (190:2) {#if annotation}
+    // (189:2) {#if annotation}
     function create_if_block$a(ctx) {
     	let div;
     	let annotation_1;
@@ -7007,7 +7007,7 @@ var app = (function () {
     			attr_dev(div, "class", "annotation-container svelte-sdm8di");
     			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
     			toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
-    			add_location(div, file$i, 190, 4, 6161);
+    			add_location(div, file$i, 189, 4, 6160);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7061,7 +7061,7 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(190:2) {#if annotation}",
+    		source: "(189:2) {#if annotation}",
     		ctx
     	});
 

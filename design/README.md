@@ -6,15 +6,13 @@ Should we open our Figma file to everyone that wants a peak? You can explore [Fi
 - [ ] Readibility improvements on the marks with borders
 - [ ] Slides from the SIGLibre presentation
 
-But I guess it's important to confess that we love cartograms. We're biased here. And we've used them maaaaany times in the past.
+To start, I guess it's important to confess that we love cartograms. We're a bit biased. And we've used them maaaaany times in the past.
 
 [IMAGE OF FAVORITE CARTOGRAMS]
 
-We've even gotten as far as to fight a hero of ours on twitter:
+We've even gotten as far as to fight a hero of ours on twitter. Full thread here: [1](https://twitter.com/xocasgv/status/747784201412370432), [2](https://twitter.com/xocasgv/status/747784391909269506), [3](https://twitter.com/xocasgv/status/747784639440248832), [4](https://twitter.com/xocasgv/status/747784881908776960), [5](https://twitter.com/xocasgv/status/747785136951857152), [6](https://twitter.com/xocasgv/status/747785410273652737), [7](https://twitter.com/xocasgv/status/747785637554577409), [8](https://twitter.com/xocasgv/status/747785902852706309), [9](https://twitter.com/xocasgv/status/747786142414573569), [10](https://twitter.com/xocasgv/status/747786388548943872) 
 
 <img alt="@xocasgv quixotically defending cartograms on Twitter" src="tweet_carto.png" width=540>
-
-Full thread here: [1](https://twitter.com/xocasgv/status/747784201412370432), [2](https://twitter.com/xocasgv/status/747784391909269506), [3](https://twitter.com/xocasgv/status/747784639440248832), [4](https://twitter.com/xocasgv/status/747784881908776960), [5](https://twitter.com/xocasgv/status/747785136951857152), [6](https://twitter.com/xocasgv/status/747785410273652737), [7](https://twitter.com/xocasgv/status/747785637554577409), [8](https://twitter.com/xocasgv/status/747785902852706309), [9](https://twitter.com/xocasgv/status/747786142414573569), [10](https://twitter.com/xocasgv/status/747786388548943872) 
 
 Anyway ... 
 
@@ -31,7 +29,7 @@ The goals of the visualizations were to:
 
 Demers cartograms ticked those boxes.
 
-To generate them, we used Barfi, our in-house interactive tool. Barfi is a fudge-like Indian dessert usually cut in squares. @mattosborn's original name for the tool was 'fdg' (as in force-directed graph), which sounded like 'fudge'. 🔥 imaginative branding here ...
+To generate them, we used *Barfi*, our in-house interactive tool. *Barfi* is a fudge-like Indian dessert usually cut in squares. @mattosborn's original name for the tool was 'fdg' (as in force-directed graph), which sounded like 'fudge'. 🔥 imaginative branding here ...
 
 You can read about the tool and how it was born [here](tktkt). But, in a nutshell:  
 
@@ -43,7 +41,7 @@ You can read about the tool and how it was born [here](tktkt). But, in a nutshel
 > 
 > Another advantage of this design solution is the use of the same visual mark, in this case squares, which allows us to create transitions between maps that facilitate a fluid sequential narrative.
 
-You can see us [talking about it at the SIGLibre conference](http://diobma.udg.edu/handle/10256.1/6776) — we are planning to open it up once our to-do list is ... well ... done.
+You can see us [talking about it at the SIGLibre conference](http://diobma.udg.edu/handle/10256.1/6776) — for the *Nth* time, I swear we are planning to open it up once our to-do list is ... well ... done.
 
 ## Color scales
 - [ ] Inclusive color in dataviz
