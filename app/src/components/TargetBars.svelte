@@ -20,10 +20,10 @@
 
 </script>
 
-<div class="grid-bars-container">
+<div class="grid-bars-container2">
 
   {#each Array(4) as _, i}
-    <svg width="80" height="24">
+    <svg class="col2" width="80" height="24">
       {#if value===indexToCategory[i]}
         <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" 
           class:no-data={value===4} 
@@ -66,6 +66,15 @@
     display: grid;
     grid-template-columns: 80px 80px 80px 80px;
     gap: 5px;
+  }
+
+  .grid-bars-container2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .col2{
+    width: 25%;
   }
     
 </style>

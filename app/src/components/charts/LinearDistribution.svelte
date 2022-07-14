@@ -26,8 +26,6 @@
 
     $: maxValue = Math.max(...data.map(d => d.value));
     $: minValue = Math.min(...data.map(d => d.value));
-    $: console.log(selectedDataset, "  min value ->> ", minValue);
-    $: console.log(selectedDataset, "  max value ->> ", maxValue);
   
     $: relevantCountry = {
       id: selectedCountry,

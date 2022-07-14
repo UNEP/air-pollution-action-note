@@ -39,11 +39,13 @@
 
 </script>
 
-<div class="policies-container">
+<div class="policies-container2">
   {#each policies as p}
-    <div>{descLookUp[p.id].name}</div>
-    <TargetBars value={p.value}/>
-    <div>{descLookUp[p.id][p.value]}</div>
+    <div class="pol">{descLookUp[p.id].name}</div>
+    <div class="pol">
+      <TargetBars value={p.value}/>
+    </div>
+    <div class="pol">{descLookUp[p.id][p.value]}</div>
   {/each}
 </div>
 
@@ -53,6 +55,15 @@
     display: grid;
     grid-template-columns: 215px 340px 215px;
     row-gap: 35px;
+  }
+
+  .policies-container2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pol {
+    width: 30%;
   }
     
 </style>

@@ -183,9 +183,9 @@
         <DeathCauses data={countryDeathsData}/>
       </div>
 
-      <div class="policy-grid-container">
+      <!--<div class="policy-grid-container">
         <PolicyGrid data={countryPoliciesData}/>
-      </div>
+      </div>-->
 
     {/if}
   </section>
