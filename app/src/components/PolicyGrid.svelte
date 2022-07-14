@@ -1,6 +1,7 @@
 <script lang="ts">
 
   import TargetBars from "./TargetBars.svelte";
+  import Legend from "./common/Legend.svelte";
   import descriptions from 'src/data/policiesDescriptions.json'; //algeria y venezuela -> amarillo strong
   import { createLookup } from "src/util";
 
@@ -27,6 +28,8 @@
   const generatePolicies = (data: PoliciesData) => {
     let array = [];
     for (const [key, value] of Object.entries(data)) {
+      if (key === "name")
+        console.log(value);
       if (key !== "name" && key !== "id" && key !== "pYes" && key !== "pNo" && key !== "pAlmost") {
         let policy = {id: key, value: value}
         array.push(policy);
@@ -45,14 +48,14 @@
     });
 
     if (metTargets.length <= 0){
-      text = `Kenya hasn't met <b>any targets</b>.`;
+      text = countryName + ` hasn't met <b>any targets</b>.`;
     }
     else {
       if (metTargets.length >= 9) {
-        text = `Kenya has met <b>all targets</b>: `;
+        text = countryName + ` has met <b>all targets</b>: `;
       }
       else {
-        text = `Kenya has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
+        text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
       }
 
       let n = 0;
@@ -75,8 +78,11 @@
     return text;
   }
 
+  $: countryName = data.name;
   $: policies = generatePolicies(data);
   $: text = generateText(data);
+
+  let selected: number = null;
 
 </script>
 
@@ -84,17 +90,54 @@
   <p class="col-text">{@html text}</p>
 {/if}
 
+<div class="separate-legend">
+  <Legend
+    title={`<b>Actions taken towards cleaner air</b>`}
+    colors={["#BDBDBD", "#F7CD6E", "#6791B1", "#1C477E"]}
+    labels={["No data", "Not met", "On track", "Target met"]}
+    type={"categorical"}
+    bind:selected
+  />
+</div>
+
 <div class="policies-container">
-  {#each policies as p}
+  {#each policies as p, i}
     <div class="pol policy-name">{descLookUp[p.id].name}</div>
     <div class="pol bars-middle">
-      <TargetBars value={p.value}/>
+      {#if i === 0}
+      <div class="column-legend">
+        <div class="legend-text">No data</div>
+        <div class="legend-text">Not met</div>
+        <div class="legend-text">On track</div>
+        <div class="legend-text">Target met</div>
+      </div>
+      {/if}
+      <TargetBars {selected} value={p.value}/>
     </div>
     <div class="pol policy-description">{descLookUp[p.id][p.value]}</div>
   {/each}
 </div>
 
 <style>
+
+  .separate-legend {
+    display: none;
+  }
+
+  .legend-text {
+    width: 79px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    min-width: 22.5%;
+    font-weight: 600;
+    color: #505050;
+  }
+
+  .column-legend {
+    position: absolute;
+    transform: translateY(-35px);
+    display: flex;
+  }
 
   .policy-description {
     margin-left: 25px;
@@ -111,17 +154,23 @@
   .policies-container {
     font-weight: 300;
     display: grid;
-    grid-template-columns: minmax(100px, 340px) minmax(150px, 340px) minmax(100px, 340px);
+    grid-template-columns: minmax(100px, 175px) minmax(150px, 340px) minmax(100px, 175px);
     row-gap: 35px;
-  }
-
-  .policies-container-flex {
-    display: flex;
-    justify-content: space-between;
+    margin-top: 75px;
   }
 
   .pol {
     height: 35px;
+  }
+
+  @media (max-width: 1200px) {
+    .separate-legend {
+      display: block;
+    }
+
+    .column-legend {
+      display: none;
+    }
   }
     
 </style>

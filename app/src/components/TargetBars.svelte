@@ -1,8 +1,6 @@
 <script lang="ts">
-
-  import { colorPoliciesByCountry as ColorFn} from "src/colors";
-
   export let value: number;
+  export let selected: number = null;
 
   const indexToCategory = {
     3: 1,
@@ -20,28 +18,9 @@
 
 </script>
 
-<!--<div class="grid-bars-container2">
-
-  {#each Array(4) as _, i}
-    <svg class="col2" width="80" height="24">
-      {#if value===indexToCategory[i]}
-        <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" 
-          class:no-data={value===4} 
-          class:not-met={value===3} 
-          class:on-track={value===2} 
-          class:target-met={value===1}
-        />
-      {:else}
-        <rect x="0.5" y="0.5" width="79" height="23" rx="3.5" stroke="#999999" fill="none"/>
-      {/if}
-    </svg>
-  {/each}  
-    
-</div>-->
-
 <div class="grid-bars-container">
   {#each Array(4) as _, i}
-    {#if value===indexToCategory[i]}
+    {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
       <div class="new-tile"
         class:no-data={value===4} 
         class:not-met={value===3} 

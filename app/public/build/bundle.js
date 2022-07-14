@@ -6824,7 +6824,7 @@ var app = (function () {
     }
 
     // (162:2) {#if loaded}
-    function create_if_block_1$7(ctx) {
+    function create_if_block_1$8(ctx) {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
@@ -6878,7 +6878,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$7.name,
+    		id: create_if_block_1$8.name,
     		type: "if",
     		source: "(162:2) {#if loaded}",
     		ctx
@@ -7174,7 +7174,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*loaded*/ ctx[12] && create_if_block_1$7(ctx);
+    	let if_block0 = /*loaded*/ ctx[12] && create_if_block_1$8(ctx);
     	let if_block1 = /*annotation*/ ctx[4] && create_if_block$g(ctx);
 
     	const block = {
@@ -7225,7 +7225,7 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$7(ctx);
+    					if_block0 = create_if_block_1$8(ctx);
     					if_block0.c();
     					if_block0.m(div, t1);
     				}
@@ -16038,7 +16038,7 @@ var app = (function () {
     }
 
     // (24:4) {#if labels[i] !== undefined}
-    function create_if_block_1$6(ctx) {
+    function create_if_block_1$7(ctx) {
     	let p;
     	let t_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "";
     	let t;
@@ -16064,7 +16064,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$6.name,
+    		id: create_if_block_1$7.name,
     		type: "if",
     		source: "(24:4) {#if labels[i] !== undefined}",
     		ctx
@@ -16079,7 +16079,7 @@ var app = (function () {
     	let t;
     	let mounted;
     	let dispose;
-    	let if_block = /*labels*/ ctx[3][/*i*/ ctx[15]] !== undefined && create_if_block_1$6(ctx);
+    	let if_block = /*labels*/ ctx[3][/*i*/ ctx[15]] !== undefined && create_if_block_1$7(ctx);
 
     	function mouseover_handler() {
     		return /*mouseover_handler*/ ctx[7](/*i*/ ctx[15]);
@@ -16126,7 +16126,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$6(ctx);
+    					if_block = create_if_block_1$7(ctx);
     					if_block.c();
     					if_block.m(li, t);
     				}
@@ -16398,7 +16398,7 @@ var app = (function () {
     const colorPolices = ordinal()
         .domain(['Target met', 'On track', 'Not met', 'No data'])
         .range(['#004982', '#5A93B4', '#ffcb5b', '#cacaca']);
-    const colorPoliciesByCountry = ordinal()
+    ordinal()
         .domain(['Target met', 'On track', 'Not met', 'No data'])
         .range(['#1C477E', '#6791B1', '#F7CD6E', '#E5E5E5']);
 
@@ -17721,7 +17721,7 @@ var app = (function () {
     }
 
     // (317:2) {#if isEmbed && embed === "policies"}
-    function create_if_block_1$5(ctx) {
+    function create_if_block_1$6(ctx) {
     	let div;
     	let p;
     	let t0;
@@ -17764,7 +17764,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block: block_1,
-    		id: create_if_block_1$5.name,
+    		id: create_if_block_1$6.name,
     		type: "if",
     		source: "(317:2) {#if isEmbed && embed === \\\"policies\\\"}",
     		ctx
@@ -17956,7 +17956,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block2 = /*isEmbed*/ ctx[6] && /*embed*/ ctx[5] === "policies" && create_if_block_1$5(ctx);
+    	let if_block2 = /*isEmbed*/ ctx[6] && /*embed*/ ctx[5] === "policies" && create_if_block_1$6(ctx);
     	let if_block3 = !/*isEmbed*/ ctx[6] && create_if_block$c(ctx);
 
     	const block_1 = {
@@ -18075,7 +18075,7 @@ var app = (function () {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
-    					if_block2 = create_if_block_1$5(ctx);
+    					if_block2 = create_if_block_1$6(ctx);
     					if_block2.c();
     					if_block2.m(section, t5);
     				}
@@ -18716,7 +18716,7 @@ var app = (function () {
     }
 
     // (105:0) {#if showInformation}
-    function create_if_block_1$4(ctx) {
+    function create_if_block_1$5(ctx) {
     	let annotation;
     	let current;
 
@@ -18766,7 +18766,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$4.name,
+    		id: create_if_block_1$5.name,
     		type: "if",
     		source: "(105:0) {#if showInformation}",
     		ctx
@@ -19211,7 +19211,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	const if_block_creators = [create_if_block_1$4, create_else_block$4];
+    	const if_block_creators = [create_if_block_1$5, create_else_block$4];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -20476,7 +20476,7 @@ var app = (function () {
     }
 
     // (109:2) {#if isEmbed}
-    function create_if_block_1$3(ctx) {
+    function create_if_block_1$4(ctx) {
     	let div;
     	let p;
     	let t0;
@@ -20512,7 +20512,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block: block_1,
-    		id: create_if_block_1$3.name,
+    		id: create_if_block_1$4.name,
     		type: "if",
     		source: "(109:2) {#if isEmbed}",
     		ctx
@@ -20789,7 +20789,7 @@ var app = (function () {
 
     	legend = new Legend({ props: legend_props, $$inline: true });
     	binding_callbacks.push(() => bind(legend, 'selected', legend_selected_binding));
-    	let if_block1 = /*isEmbed*/ ctx[6] && create_if_block_1$3(ctx);
+    	let if_block1 = /*isEmbed*/ ctx[6] && create_if_block_1$4(ctx);
 
     	scrollablex = new ScrollableX({
     			props: {
@@ -20889,7 +20889,7 @@ var app = (function () {
 
     			if (/*isEmbed*/ ctx[6]) {
     				if (if_block1) ; else {
-    					if_block1 = create_if_block_1$3(ctx);
+    					if_block1 = create_if_block_1$4(ctx);
     					if_block1.c();
     					if_block1.m(section, t3);
     				}
@@ -21451,7 +21451,7 @@ var app = (function () {
     }
 
     // (20:2) {#if head}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_1$3(ctx) {
     	let h1;
 
     	const block = {
@@ -21472,7 +21472,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_1$3.name,
     		type: "if",
     		source: "(20:2) {#if head}",
     		ctx
@@ -21598,7 +21598,7 @@ var app = (function () {
     		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
     	}
 
-    	let if_block0 = /*head*/ ctx[1] && create_if_block_1$2(ctx);
+    	let if_block0 = /*head*/ ctx[1] && create_if_block_1$3(ctx);
     	let if_block1 = /*text*/ ctx[0] && create_if_block$9(ctx);
 
     	const block = {
@@ -21678,7 +21678,7 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$2(ctx);
+    					if_block0 = create_if_block_1$3(ctx);
     					if_block0.c();
     					if_block0.m(section, t3);
     				}
@@ -21819,7 +21819,7 @@ var app = (function () {
     }
 
     // (6:2) {#if head}
-    function create_if_block_1$1(ctx) {
+    function create_if_block_1$2(ctx) {
     	let h2;
 
     	const block = {
@@ -21840,7 +21840,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$1.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
     		source: "(6:2) {#if head}",
     		ctx
@@ -21952,7 +21952,7 @@ var app = (function () {
     function create_fragment$n(ctx) {
     	let section;
     	let t;
-    	let if_block0 = /*head*/ ctx[1] && create_if_block_1$1(ctx);
+    	let if_block0 = /*head*/ ctx[1] && create_if_block_1$2(ctx);
     	let if_block1 = /*text*/ ctx[0] && create_if_block$8(ctx);
 
     	const block = {
@@ -21978,7 +21978,7 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$1(ctx);
+    					if_block0 = create_if_block_1$2(ctx);
     					if_block0.c();
     					if_block0.m(section, t);
     				}
@@ -32976,16 +32976,17 @@ var app = (function () {
     ];
 
     /* src\components\TargetBars.svelte generated by Svelte v3.42.3 */
+
     const file$3 = "src\\components\\TargetBars.svelte";
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
-    	child_ctx[5] = i;
+    	child_ctx[4] = list[i];
+    	child_ctx[6] = i;
     	return child_ctx;
     }
 
-    // (45:4) {:else}
+    // (26:4) {:else}
     function create_else_block$1(ctx) {
     	let div;
 
@@ -32993,7 +32994,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", "new-tile unknown svelte-uetwl8");
-    			add_location(div, file$3, 45, 6, 1154);
+    			add_location(div, file$3, 26, 6, 622);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -33008,14 +33009,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(45:4) {:else}",
+    		source: "(26:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (38:4) {#if value===indexToCategory[i]}
+    // (19:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
     function create_if_block$3(ctx) {
     	let div;
 
@@ -33027,7 +33028,7 @@ var app = (function () {
     			toggle_class(div, "not-met", /*value*/ ctx[0] === 3);
     			toggle_class(div, "on-track", /*value*/ ctx[0] === 2);
     			toggle_class(div, "target-met", /*value*/ ctx[0] === 1);
-    			add_location(div, file$3, 38, 6, 955);
+    			add_location(div, file$3, 19, 6, 423);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -33058,19 +33059,19 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(38:4) {#if value===indexToCategory[i]}",
+    		source: "(19:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (37:2) {#each Array(4) as _, i}
+    // (18:2) {#each Array(4) as _, i}
     function create_each_block$2(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*value*/ ctx[0] === /*indexToCategory*/ ctx[1][/*i*/ ctx[5]]) return create_if_block$3;
+    		if (/*value*/ ctx[0] === /*indexToCategory*/ ctx[2][/*i*/ ctx[6]] && (/*selected*/ ctx[1] === null || /*indexToCategory*/ ctx[2][/*selected*/ ctx[1]] === /*value*/ ctx[0])) return create_if_block$3;
     		return create_else_block$1;
     	}
 
@@ -33109,7 +33110,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(37:2) {#each Array(4) as _, i}",
+    		source: "(18:2) {#each Array(4) as _, i}",
     		ctx
     	});
 
@@ -33135,7 +33136,7 @@ var app = (function () {
     			}
 
     			attr_dev(div, "class", "grid-bars-container svelte-uetwl8");
-    			add_location(div, file$3, 35, 0, 848);
+    			add_location(div, file$3, 16, 0, 258);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33148,7 +33149,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*value, indexToCategory*/ 3) {
+    			if (dirty & /*value, indexToCategory, selected*/ 7) {
     				each_value = Array(4);
     				validate_each_argument(each_value);
     				let i;
@@ -33195,6 +33196,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('TargetBars', slots, []);
     	let { value } = $$props;
+    	let { selected = null } = $$props;
     	const indexToCategory = { 3: 1, 2: 2, 1: 3, 0: 4 };
 
     	const categories = {
@@ -33204,7 +33206,7 @@ var app = (function () {
     		4: 'No data'
     	};
 
-    	const writable_props = ['value'];
+    	const writable_props = ['value', 'selected'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<TargetBars> was created with unknown prop '${key}'`);
@@ -33212,30 +33214,32 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('value' in $$props) $$invalidate(0, value = $$props.value);
+    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
     	};
 
     	$$self.$capture_state = () => ({
-    		ColorFn: colorPoliciesByCountry,
     		value,
+    		selected,
     		indexToCategory,
     		categories
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('value' in $$props) $$invalidate(0, value = $$props.value);
+    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [value, indexToCategory];
+    	return [value, selected, indexToCategory];
     }
 
     class TargetBars extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, { value: 0 });
+    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, { value: 0, selected: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -33257,6 +33261,14 @@ var app = (function () {
     	}
 
     	set value(value) {
+    		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get selected() {
+    		throw new Error("<TargetBars>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selected(value) {
     		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -33338,31 +33350,32 @@ var app = (function () {
 
     /* src\components\PolicyGrid.svelte generated by Svelte v3.42.3 */
 
-    const { Object: Object_1 } = globals;
+    const { Object: Object_1, console: console_1 } = globals;
     const file$2 = "src\\components\\PolicyGrid.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[9] = list[i];
+    	child_ctx[11] = i;
     	return child_ctx;
     }
 
-    // (57:0) {#if text}
-    function create_if_block$2(ctx) {
+    // (62:0) {#if text}
+    function create_if_block_1$1(ctx) {
     	let p;
 
     	const block = {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$2, 57, 2, 1741);
+    			add_location(p, file$2, 62, 2, 1927);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
-    			p.innerHTML = /*text*/ ctx[0];
+    			p.innerHTML = /*text*/ ctx[1];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*text*/ 1) p.innerHTML = /*text*/ ctx[0];		},
+    			if (dirty & /*text*/ 2) p.innerHTML = /*text*/ ctx[1];		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -33370,31 +33383,98 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(57:0) {#if text}",
+    		source: "(62:0) {#if text}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:2) {#each policies as p}
+    // (80:6) {#if i === 0}
+    function create_if_block$2(ctx) {
+    	let div4;
+    	let div0;
+    	let t1;
+    	let div1;
+    	let t3;
+    	let div2;
+    	let t5;
+    	let div3;
+
+    	const block = {
+    		c: function create() {
+    			div4 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "No data";
+    			t1 = space();
+    			div1 = element("div");
+    			div1.textContent = "Not met";
+    			t3 = space();
+    			div2 = element("div");
+    			div2.textContent = "On track";
+    			t5 = space();
+    			div3 = element("div");
+    			div3.textContent = "Target met";
+    			attr_dev(div0, "class", "legend-text svelte-1c2t8g7");
+    			add_location(div0, file$2, 81, 8, 2480);
+    			attr_dev(div1, "class", "legend-text svelte-1c2t8g7");
+    			add_location(div1, file$2, 82, 8, 2528);
+    			attr_dev(div2, "class", "legend-text svelte-1c2t8g7");
+    			add_location(div2, file$2, 83, 8, 2576);
+    			attr_dev(div3, "class", "legend-text svelte-1c2t8g7");
+    			add_location(div3, file$2, 84, 8, 2625);
+    			attr_dev(div4, "class", "column-legend svelte-1c2t8g7");
+    			add_location(div4, file$2, 80, 6, 2443);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div0);
+    			append_dev(div4, t1);
+    			append_dev(div4, div1);
+    			append_dev(div4, t3);
+    			append_dev(div4, div2);
+    			append_dev(div4, t5);
+    			append_dev(div4, div3);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div4);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(80:6) {#if i === 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (77:2) {#each policies as p, i}
     function create_each_block$1(ctx) {
     	let div0;
-    	let t0_value = /*descLookUp*/ ctx[2][/*p*/ ctx[6].id].name + "";
+    	let t0_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id].name + "";
     	let t0;
     	let t1;
     	let div1;
-    	let targetbars;
     	let t2;
-    	let div2;
-    	let t3_value = /*descLookUp*/ ctx[2][/*p*/ ctx[6].id][/*p*/ ctx[6].value] + "";
+    	let targetbars;
     	let t3;
+    	let div2;
+    	let t4_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id][/*p*/ ctx[9].value] + "";
+    	let t4;
     	let current;
+    	let if_block = /*i*/ ctx[11] === 0 && create_if_block$2(ctx);
 
     	targetbars = new TargetBars({
-    			props: { value: /*p*/ ctx[6].value },
+    			props: {
+    				selected: /*selected*/ ctx[0],
+    				value: /*p*/ ctx[9].value
+    			},
     			$$inline: true
     		});
 
@@ -33404,34 +33484,39 @@ var app = (function () {
     			t0 = text$1(t0_value);
     			t1 = space();
     			div1 = element("div");
-    			create_component(targetbars.$$.fragment);
+    			if (if_block) if_block.c();
     			t2 = space();
+    			create_component(targetbars.$$.fragment);
+    			t3 = space();
     			div2 = element("div");
-    			t3 = text$1(t3_value);
-    			attr_dev(div0, "class", "pol policy-name svelte-1ma4852");
-    			add_location(div0, file$2, 62, 4, 1851);
-    			attr_dev(div1, "class", "pol bars-middle svelte-1ma4852");
-    			add_location(div1, file$2, 63, 4, 1915);
-    			attr_dev(div2, "class", "pol policy-description svelte-1ma4852");
-    			add_location(div2, file$2, 66, 4, 1999);
+    			t4 = text$1(t4_value);
+    			attr_dev(div0, "class", "pol policy-name svelte-1c2t8g7");
+    			add_location(div0, file$2, 77, 4, 2321);
+    			attr_dev(div1, "class", "pol bars-middle svelte-1c2t8g7");
+    			add_location(div1, file$2, 78, 4, 2385);
+    			attr_dev(div2, "class", "pol policy-description svelte-1c2t8g7");
+    			add_location(div2, file$2, 89, 4, 2759);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
     			append_dev(div0, t0);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, div1, anchor);
+    			if (if_block) if_block.m(div1, null);
+    			append_dev(div1, t2);
     			mount_component(targetbars, div1, null);
-    			insert_dev(target, t2, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, div2, anchor);
-    			append_dev(div2, t3);
+    			append_dev(div2, t4);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*policies*/ 2) && t0_value !== (t0_value = /*descLookUp*/ ctx[2][/*p*/ ctx[6].id].name + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*policies*/ 4) && t0_value !== (t0_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id].name + "")) set_data_dev(t0, t0_value);
     			const targetbars_changes = {};
-    			if (dirty & /*policies*/ 2) targetbars_changes.value = /*p*/ ctx[6].value;
+    			if (dirty & /*selected*/ 1) targetbars_changes.selected = /*selected*/ ctx[0];
+    			if (dirty & /*policies*/ 4) targetbars_changes.value = /*p*/ ctx[9].value;
     			targetbars.$set(targetbars_changes);
-    			if ((!current || dirty & /*policies*/ 2) && t3_value !== (t3_value = /*descLookUp*/ ctx[2][/*p*/ ctx[6].id][/*p*/ ctx[6].value] + "")) set_data_dev(t3, t3_value);
+    			if ((!current || dirty & /*policies*/ 4) && t4_value !== (t4_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id][/*p*/ ctx[9].value] + "")) set_data_dev(t4, t4_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -33446,8 +33531,9 @@ var app = (function () {
     			if (detaching) detach_dev(div0);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(div1);
+    			if (if_block) if_block.d();
     			destroy_component(targetbars);
-    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div2);
     		}
     	};
@@ -33456,7 +33542,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(62:2) {#each policies as p}",
+    		source: "(77:2) {#each policies as p, i}",
     		ctx
     	});
 
@@ -33464,11 +33550,33 @@ var app = (function () {
     }
 
     function create_fragment$2(ctx) {
-    	let t;
-    	let div;
+    	let t0;
+    	let div0;
+    	let legend;
+    	let updating_selected;
+    	let t1;
+    	let div1;
     	let current;
-    	let if_block = /*text*/ ctx[0] && create_if_block$2(ctx);
-    	let each_value = /*policies*/ ctx[1];
+    	let if_block = /*text*/ ctx[1] && create_if_block_1$1(ctx);
+
+    	function legend_selected_binding(value) {
+    		/*legend_selected_binding*/ ctx[5](value);
+    	}
+
+    	let legend_props = {
+    		title: `<b>Actions taken towards cleaner air</b>`,
+    		colors: ["#BDBDBD", "#F7CD6E", "#6791B1", "#1C477E"],
+    		labels: ["No data", "Not met", "On track", "Target met"],
+    		type: "categorical"
+    	};
+
+    	if (/*selected*/ ctx[0] !== void 0) {
+    		legend_props.selected = /*selected*/ ctx[0];
+    	}
+
+    	legend = new Legend({ props: legend_props, $$inline: true });
+    	binding_callbacks.push(() => bind(legend, 'selected', legend_selected_binding));
+    	let each_value = /*policies*/ ctx[2];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -33483,46 +33591,64 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			if (if_block) if_block.c();
-    			t = space();
-    			div = element("div");
+    			t0 = space();
+    			div0 = element("div");
+    			create_component(legend.$$.fragment);
+    			t1 = space();
+    			div1 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "policies-container svelte-1ma4852");
-    			add_location(div, file$2, 60, 0, 1788);
+    			attr_dev(div0, "class", "separate-legend svelte-1c2t8g7");
+    			add_location(div0, file$2, 65, 0, 1974);
+    			attr_dev(div1, "class", "policies-container svelte-1c2t8g7");
+    			add_location(div1, file$2, 75, 0, 2255);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, t, anchor);
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div0, anchor);
+    			mount_component(legend, div0, null);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, div1, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div, null);
+    				each_blocks[i].m(div1, null);
     			}
 
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*text*/ ctx[0]) {
+    			if (/*text*/ ctx[1]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$2(ctx);
+    					if_block = create_if_block_1$1(ctx);
     					if_block.c();
-    					if_block.m(t.parentNode, t);
+    					if_block.m(t0.parentNode, t0);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty & /*descLookUp, policies*/ 6) {
-    				each_value = /*policies*/ ctx[1];
+    			const legend_changes = {};
+
+    			if (!updating_selected && dirty & /*selected*/ 1) {
+    				updating_selected = true;
+    				legend_changes.selected = /*selected*/ ctx[0];
+    				add_flush_callback(() => updating_selected = false);
+    			}
+
+    			legend.$set(legend_changes);
+
+    			if (dirty & /*descLookUp, policies, selected*/ 13) {
+    				each_value = /*policies*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
 
@@ -33536,7 +33662,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block$1(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(div, null);
+    						each_blocks[i].m(div1, null);
     					}
     				}
 
@@ -33551,6 +33677,7 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
+    			transition_in(legend.$$.fragment, local);
 
     			for (let i = 0; i < each_value.length; i += 1) {
     				transition_in(each_blocks[i]);
@@ -33559,6 +33686,7 @@ var app = (function () {
     			current = true;
     		},
     		o: function outro(local) {
+    			transition_out(legend.$$.fragment, local);
     			each_blocks = each_blocks.filter(Boolean);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -33569,8 +33697,11 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(t);
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div0);
+    			destroy_component(legend);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -33587,6 +33718,7 @@ var app = (function () {
     }
 
     function instance$2($$self, $$props, $$invalidate) {
+    	let countryName;
     	let policies;
     	let text;
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -33598,6 +33730,8 @@ var app = (function () {
     		let array = [];
 
     		for (const [key, value] of Object.entries(data)) {
+    			if (key === "name") console.log(value);
+
     			if (key !== "name" && key !== "id" && key !== "pYes" && key !== "pNo" && key !== "pAlmost") {
     				let policy = { id: key, value };
     				array.push(policy);
@@ -33618,12 +33752,12 @@ var app = (function () {
     		});
 
     		if (metTargets.length <= 0) {
-    			text = `Kenya hasn't met <b>any targets</b>.`;
+    			text = countryName + ` hasn't met <b>any targets</b>.`;
     		} else {
     			if (metTargets.length >= 9) {
-    				text = `Kenya has met <b>all targets</b>: `;
+    				text = countryName + ` has met <b>all targets</b>: `;
     			} else {
-    				text = `Kenya has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
+    				text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
     			}
 
     			let n = 0;
@@ -33647,32 +33781,43 @@ var app = (function () {
     		return text;
     	};
 
+    	let selected = null;
     	const writable_props = ['data'];
 
     	Object_1.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
     	});
 
+    	function legend_selected_binding(value) {
+    		selected = value;
+    		$$invalidate(0, selected);
+    	}
+
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(3, data = $$props.data);
+    		if ('data' in $$props) $$invalidate(4, data = $$props.data);
     	};
 
     	$$self.$capture_state = () => ({
     		TargetBars,
+    		Legend,
     		descriptions,
     		createLookup,
     		data,
     		descLookUp,
     		generatePolicies,
     		generateText,
+    		selected,
     		text,
-    		policies
+    		policies,
+    		countryName
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(3, data = $$props.data);
-    		if ('text' in $$props) $$invalidate(0, text = $$props.text);
-    		if ('policies' in $$props) $$invalidate(1, policies = $$props.policies);
+    		if ('data' in $$props) $$invalidate(4, data = $$props.data);
+    		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
+    		if ('text' in $$props) $$invalidate(1, text = $$props.text);
+    		if ('policies' in $$props) $$invalidate(2, policies = $$props.policies);
+    		if ('countryName' in $$props) countryName = $$props.countryName;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -33680,22 +33825,26 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*data*/ 8) {
-    			$$invalidate(1, policies = generatePolicies(data));
+    		if ($$self.$$.dirty & /*data*/ 16) {
+    			countryName = data.name;
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 8) {
-    			$$invalidate(0, text = generateText());
+    		if ($$self.$$.dirty & /*data*/ 16) {
+    			$$invalidate(2, policies = generatePolicies(data));
+    		}
+
+    		if ($$self.$$.dirty & /*data*/ 16) {
+    			$$invalidate(1, text = generateText());
     		}
     	};
 
-    	return [text, policies, descLookUp, data];
+    	return [selected, text, policies, descLookUp, data, legend_selected_binding];
     }
 
     class PolicyGrid extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 3 });
+    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 4 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -33707,8 +33856,8 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[3] === undefined && !('data' in props)) {
-    			console.warn("<PolicyGrid> was created without expected prop 'data'");
+    		if (/*data*/ ctx[4] === undefined && !('data' in props)) {
+    			console_1.warn("<PolicyGrid> was created without expected prop 'data'");
     		}
     	}
 
