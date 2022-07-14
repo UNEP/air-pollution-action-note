@@ -14,20 +14,13 @@
     export let selectedCountry: string;
     export let data: CountryDataSquare[];
     export let selectedDataset: string;
-    export let width: number = 400;
+    export let width: number = 385;
   
     const colorFunction = (d: number) => selectedDataset === "pm25" ? colorPM25(d) : colorHealth(d);
   
     const dataLookUp = createLookup(data, d => d.id, d => d);
 
-    const xLocation = (countryValue: number, width: number) => {
-      if (isNaN(width)) {
-        return 0;
-      }
-      else {
-        return ( ( (countryValue - minValue) * (width - relevantTileWidth) ) / (maxValue - minValue) );
-      }
-    };
+    const xLocation = (countryValue: number, width: number) => (((countryValue - minValue) * (width - relevantTileWidth))/(maxValue - minValue));
 
     $: maxValue = Math.max(...data.map(d => d.value));
     $: minValue = Math.min(...data.map(d => d.value));
@@ -80,7 +73,7 @@
 
     .relevant-tile {
       fill: var(--theme-color);
-      stroke-width: 0.75;
+      stroke-width: 1;
       stroke: black;
     }
   

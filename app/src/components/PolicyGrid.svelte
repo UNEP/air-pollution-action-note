@@ -28,8 +28,6 @@
   const generatePolicies = (data: PoliciesData) => {
     let array = [];
     for (const [key, value] of Object.entries(data)) {
-      if (key === "name")
-        console.log(value);
       if (key !== "name" && key !== "id" && key !== "pYes" && key !== "pNo" && key !== "pAlmost") {
         let policy = {id: key, value: value}
         array.push(policy);
@@ -90,7 +88,7 @@
   <p class="col-text">{@html text}</p>
 {/if}
 
-<div class="separate-legend">
+<div class="legend">
   <Legend
     title={`<b>Actions taken towards cleaner air</b>`}
     colors={["#BDBDBD", "#F7CD6E", "#6791B1", "#1C477E"]}
@@ -112,8 +110,10 @@
 
 <style>
 
-  .separate-legend {
+  .legend {
     display: block;
+    margin-bottom: 50px;
+    margin-top: 26px;
   }
 
   .policy-description {
@@ -129,15 +129,15 @@
   }
 
   .policies-container {
+    margin: auto;
     font-weight: 300;
     display: grid;
     grid-template-columns: minmax(100px, 175px) minmax(150px, 340px) minmax(100px, 175px);
     row-gap: 35px;
-    margin-top: 75px;
   }
 
   .row {
-    height: 35px;
+    height: 50px;
   }
     
 </style>

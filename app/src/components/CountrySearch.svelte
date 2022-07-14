@@ -53,6 +53,8 @@
     return { id: d.id, value: d.rate };
   });
 
+  let countrySelected = false;
+
   const generateDeathsData = (countryID: string) => {
     let countryInfo = deathsLookUp[countryID];
     if (countryInfo) {
@@ -87,36 +89,34 @@
     }
   }
   
-  let countrySelected = false;
 
   function toFilter(countryID:string){
-    if (CTBF_lookUp[countryID] !== null){ return false; }
-    else { return true; }
+    if (!CTBF_lookUp[countryID])
+      return false;
+    else 
+      return true;
   }
 
   const extract = (item) => item.name;
   const filter = (item) => toFilter(item.id);
 
-  let events = []; // this needs to be removed
-
   function updateSelectedCountry(event, detail) {
-    events = [...events, { event, detail }]; // this needs to be removed
     if (event === "select"){
-    let newID = detail.original.id;
-    currentCountry.id = newID;
-    currentCountry.PM25country = pm25LookUp[newID].pm25;
-    currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
-    currentCountry.totalDeaths = healthLookUp[newID].deaths;
-    currentCountry.deathRatio = healthLookUp[newID].rate;
-    countrySelected = true;
+      let newID = detail.original.id;
+      currentCountry.id = newID;
+      currentCountry.PM25country = pm25LookUp[newID].pm25;
+      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
+      currentCountry.totalDeaths = healthLookUp[newID].deaths;
+      currentCountry.deathRatio = healthLookUp[newID].rate;
+      countrySelected = true;
     }
     else{
-    currentCountry.id = "";
-    currentCountry.PM25country = 0;
-    currentCountry.timesPM25 = 0;
-    currentCountry.totalDeaths = 0;
-    currentCountry.deathRatio = 0;
-    countrySelected = false;
+      currentCountry.id = "";
+      currentCountry.PM25country = 0;
+      currentCountry.timesPM25 = 0;
+      currentCountry.totalDeaths = 0;
+      currentCountry.deathRatio = 0;
+      countrySelected = false;
     }
   }
 
@@ -127,140 +127,141 @@
   + currentCountry.timesPM25 + ` times WHO's guideline.`;
 
   $: PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
-  pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
-  + ` in total in the country).`;
+    pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
+    + ` in total in the country).`;
 
-  let linearDistributionsWidth: number;
+  const minDistributionSize = 150;
+  const maxDistributionSize = 385;
+  let linearDistributionsWidth: number = maxDistributionSize;
 
-  const minSize = 150;
-  const maxSize = 400;
   const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
 
 </script>
   
-  <section {id} class="viz wide country-search">
+<section {id} class="viz wide country-search">
 
-    <SectionTitle {block} />
-  
-    <h2 class='narrow'>{@html head}</h2>
-  
-    <div class="search-bar">
-      <Typeahead 
-        data={countries} 
-        {extract} 
-        {filter}
-        on:select={(e) => updateSelectedCountry("select", e.detail)}
-        on:clear={(e) => updateSelectedCountry("clear", e.detail)}
-        limit={maxNumSearchResults}
-        placeholder={ `Search a country`}
-        hideLabel>
-      </Typeahead>
+  <SectionTitle {block} />
+
+  <h2 class='narrow'>{@html head}</h2>
+
+  <div class="search-bar">
+    <Typeahead 
+      data={countries} 
+      {extract} 
+      {filter}
+      on:select={(e) => updateSelectedCountry("select", e.detail)}
+      on:clear={(e) => updateSelectedCountry("clear", e.detail)}
+      limit={maxNumSearchResults}
+      placeholder={ `Search a country`}
+      hideLabel>
+    </Typeahead>
+  </div>
+
+  {#if countrySelected}
+    <div class="distributions-container" bind:clientWidth={linearDistributionsWidth}>
+      <div class="distribution">
+        <p class="primary-text"><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
+          <LinearDistribution
+            data = {countryPM25Data}
+            selectedCountry = {currentCountry.id}
+            selectedDataset = "pm25"
+            width = {clamp(linearDistributionsWidth, minDistributionSize, maxDistributionSize)}
+          />
+      </div>
+      <div class="distribution">
+        <p class="primary-text"><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
+          <LinearDistribution
+            data = {countryHealthData}
+            selectedCountry = {currentCountry.id}
+            selectedDataset = "health"
+            width = {clamp(linearDistributionsWidth, minDistributionSize, maxDistributionSize)}
+          />
+      </div>
     </div>
-  
-    {#if countrySelected}
-      <div class="distributions-container" bind:clientWidth={linearDistributionsWidth}>
-        <div class="distribution">
-          <p class="primary-text"><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
-            <LinearDistribution
-              data = {countryPM25Data}
-              selectedCountry = {currentCountry.id}
-              selectedDataset = "pm25"
-              width = {clamp(linearDistributionsWidth, minSize, maxSize)}
-            />
-        </div>
-        <div class="distribution">
-          <p class="primary-text"><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
-            <LinearDistribution
-              data = {countryHealthData}
-              selectedCountry = {currentCountry.id}
-              selectedDataset = "health"
-              width = {clamp(linearDistributionsWidth, minSize, maxSize)}
-            />
-        </div>
-      </div>
 
-      <div class="death-causes-container">
-        <DeathCauses data={countryDeathsData}/>
-      </div>
+    <div class="death-causes-container">
+      <DeathCauses data={countryDeathsData}/>
+    </div>
 
-      <div class="policy-grid-container">
-        <PolicyGrid data={countryPoliciesData}/>
-      </div>
+    <div class="policy-grid-container">
+      <PolicyGrid data={countryPoliciesData}/>
+    </div>
 
-    {/if}
-  </section>
+  {/if}
+</section>
   
-  <style>
+<style>
 
-    .death-causes-container {
-      margin-bottom: 50px;
-    }
+  .death-causes-container {
+    margin-bottom: 50px;
+  }
 
-    .primary-text {
-      margin-bottom: 0;
-      padding-bottom: 10px;
-    }
+  .primary-text {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+  }
 
-    .country-search {
-      margin-bottom: 10rem;
-    }
-  
-    .distributions-container {
-      display: flex;
-      flex-direction: row;
-      column-gap: 3rem;
-      flex-wrap: wrap;
-      margin-top: 2.5rem;
-    }
-  
-    .bigger-text {
-      font-size: 200%;
-    }
-  
-    .search-bar :global([data-svelte-typeahead] ::-webkit-search-cancel-button) {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 10px;
-      width: 10px;
-      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEyMy4wNXB4IiBoZWlnaHQ9IjEyMy4wNXB4IiB2aWV3Qm94PSIwIDAgMTIzLjA1IDEyMy4wNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIzLjA1IDEyMy4wNTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTEyMS4zMjUsMTAuOTI1bC04LjUtOC4zOTljLTIuMy0yLjMtNi4xLTIuMy04LjUsMGwtNDIuNCw0Mi4zOTlMMTguNzI2LDEuNzI2Yy0yLjMwMS0yLjMwMS02LjEwMS0yLjMwMS04LjUsMGwtOC41LDguNQ0KCQljLTIuMzAxLDIuMy0yLjMwMSw2LjEsMCw4LjVsNDMuMSw0My4xbC00Mi4zLDQyLjVjLTIuMywyLjMtMi4zLDYuMSwwLDguNWw4LjUsOC41YzIuMywyLjMsNi4xLDIuMyw4LjUsMGw0Mi4zOTktNDIuNGw0Mi40LDQyLjQNCgkJYzIuMywyLjMsNi4xLDIuMyw4LjUsMGw4LjUtOC41YzIuMy0yLjMsMi4zLTYuMSwwLTguNWwtNDIuNS00Mi40bDQyLjQtNDIuMzk5QzEyMy42MjUsMTcuMTI1LDEyMy42MjUsMTMuMzI1LDEyMS4zMjUsMTAuOTI1eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=);
-      background-size: 10px 10px;
-    }
-  
-    .search-bar :global([data-svelte-typeahead]) {
-      margin: 0rem;
-      max-width: 333px;
-      margin-top: 30px;
-      background-color: #f9f9f9;
-      z-index: 5;
-    }
+  .country-search {
+    margin-bottom: 10rem;
+  }
 
-    .search-bar :global([data-svelte-typeahead] mark) {
-      background-color: transparent;
-      color: #5A93B4ff;
-      font-weight: bold;
-    }
+  .distributions-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .bigger-text {
+    font-size: 200%;
+  }
+
+  .search-bar :global([data-svelte-typeahead] ::-webkit-search-cancel-button) {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEyMy4wNXB4IiBoZWlnaHQ9IjEyMy4wNXB4IiB2aWV3Qm94PSIwIDAgMTIzLjA1IDEyMy4wNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIzLjA1IDEyMy4wNTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTEyMS4zMjUsMTAuOTI1bC04LjUtOC4zOTljLTIuMy0yLjMtNi4xLTIuMy04LjUsMGwtNDIuNCw0Mi4zOTlMMTguNzI2LDEuNzI2Yy0yLjMwMS0yLjMwMS02LjEwMS0yLjMwMS04LjUsMGwtOC41LDguNQ0KCQljLTIuMzAxLDIuMy0yLjMwMSw2LjEsMCw4LjVsNDMuMSw0My4xbC00Mi4zLDQyLjVjLTIuMywyLjMtMi4zLDYuMSwwLDguNWw4LjUsOC41YzIuMywyLjMsNi4xLDIuMyw4LjUsMGw0Mi4zOTktNDIuNGw0Mi40LDQyLjQNCgkJYzIuMywyLjMsNi4xLDIuMyw4LjUsMGw4LjUtOC41YzIuMy0yLjMsMi4zLTYuMSwwLTguNWwtNDIuNS00Mi40bDQyLjQtNDIuMzk5QzEyMy42MjUsMTcuMTI1LDEyMy42MjUsMTMuMzI1LDEyMS4zMjUsMTAuOTI1eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=);
+    background-size: 10px 10px;
+  }
+
+  .search-bar :global([data-svelte-typeahead]) {
+    margin: 0rem;
+    max-width: 333px;
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    z-index: 5;
+  }
+
+  .search-bar :global([data-svelte-typeahead] mark) {
+    background-color: transparent;
+    color: #5A93B4ff;
+    font-weight: bold;
+  }
+
+  .search-bar :global([data-svelte-search] input:focus) {
+    outline-width: 0px;
+    background-color: #f9f9f9;
+  }
+
+  .search-bar :global([data-svelte-search] input) {
+    width: 100%;
+    padding: 0.5rem 10px;
+    background: #f9f9f9;
+    font-size: 1.25rem;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #808080;
+    border-radius: 6px;
+    font-family: Roboto;
+    font-weight: 300;
+  }
+
+  .search-bar :global([data-svelte-search] label) {
+    margin-bottom: 0.25rem;
+    display: inline-flex;
+    font-size: 0.875rem;
+  }
   
-    .search-bar :global([data-svelte-search] input:focus) {
-      outline-width: 0px;
-      background-color: #f9f9f9;
-    }
-  
-    .search-bar :global([data-svelte-search] input) {
-      width: 100%;
-      padding: 0.5rem 10px;
-      background: #f9f9f9;
-      font-size: 1.25rem;
-      border: 0;
-      border-radius: 0;
-      border-bottom: 1px solid #808080;
-      border-radius: 6px;
-      font-family: Roboto;
-      font-weight: 300;
-    }
-  
-    .search-bar :global([data-svelte-search] label) {
-      margin-bottom: 0.25rem;
-      display: inline-flex;
-      font-size: 0.875rem;
-    }
-  </style>
+</style>
