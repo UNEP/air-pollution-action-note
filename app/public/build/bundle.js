@@ -6721,7 +6721,7 @@ var app = (function () {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let each_value = /*cartogramData*/ ctx[8];
+    	let each_value = /*cartogramData*/ ctx[9];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*d*/ ctx[57].code;
     	validate_each_keys(ctx, each_value, get_each_context$a, get_key);
@@ -6742,7 +6742,7 @@ var app = (function () {
 
     			attr_dev(div, "class", "countries svelte-sdm8di");
     			attr_dev(div, "role", "graphics-document");
-    			attr_dev(div, "aria-label", /*title*/ ctx[16]);
+    			attr_dev(div, "aria-label", /*title*/ ctx[17]);
     			add_location(div, file$i, 162, 4, 5348);
     		},
     		m: function mount(target, anchor) {
@@ -6753,8 +6753,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, slug, hideLabels*/ 950535) {
-    				each_value = /*cartogramData*/ ctx[8];
+    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, hideLabels, hoverTextFn*/ 1901063) {
+    				each_value = /*cartogramData*/ ctx[9];
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context$a, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$a, null, get_each_context$a);
@@ -6783,13 +6783,17 @@ var app = (function () {
     // (167:8) {#if d.x && d.y}
     function create_if_block_2$4(ctx) {
     	let div;
-    	let t;
+    	let desc;
+    	let t0_value = /*hoverTextFn*/ ctx[1](/*d*/ ctx[57]) + "";
+    	let t0;
+    	let t1;
+    	let t2;
     	let div_class_value;
     	let div_style_value;
     	let div_data_code_value;
     	let mounted;
     	let dispose;
-    	let if_block = !/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
+    	let if_block = !/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
 
     	function mouseenter_handler(...args) {
     		return /*mouseenter_handler*/ ctx[42](/*d*/ ctx[57], ...args);
@@ -6802,20 +6806,26 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
+    			desc = svg_element("desc");
+    			t0 = text$1(t0_value);
+    			t1 = space();
     			if (if_block) if_block.c();
-    			t = space();
+    			t2 = space();
+    			add_location(desc, file$i, 178, 10, 5925);
     			attr_dev(div, "class", div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di");
-    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]));
+    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[16](/*d*/ ctx[57]));
     			attr_dev(div, "data-code", div_data_code_value = /*d*/ ctx[57].code);
     			attr_dev(div, "tabindex", "0");
-    			attr_dev(div, "role", "graphics-symbol");
-    			attr_dev(div, "aria-labelledby", "country-annotation");
+    			attr_dev(div, "role", "graphics-object");
     			add_location(div, file$i, 167, 10, 5505);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, desc);
+    			append_dev(desc, t0);
+    			append_dev(div, t1);
     			if (if_block) if_block.m(div, null);
-    			append_dev(div, t);
+    			append_dev(div, t2);
 
     			if (!mounted) {
     				dispose = [
@@ -6830,29 +6840,30 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
+    			if (dirty[0] & /*hoverTextFn, cartogramData*/ 514 && t0_value !== (t0_value = /*hoverTextFn*/ ctx[1](/*d*/ ctx[57]) + "")) set_data_dev(t0, t0_value);
 
-    			if (!/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100) {
+    			if (!/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
     					if_block = create_if_block_3$1(ctx);
     					if_block.c();
-    					if_block.m(div, t);
+    					if_block.m(div, t2);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty[0] & /*classesFn, cartogramData*/ 257 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di")) {
+    			if (dirty[0] & /*classesFn, cartogramData*/ 513 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
-    			if (dirty[0] & /*calcStyle, cartogramData*/ 33024 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]))) {
+    			if (dirty[0] & /*calcStyle, cartogramData*/ 66048 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[16](/*d*/ ctx[57]))) {
     				attr_dev(div, "style", div_style_value);
     			}
 
-    			if (dirty[0] & /*cartogramData*/ 256 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[57].code)) {
+    			if (dirty[0] & /*cartogramData*/ 512 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[57].code)) {
     				attr_dev(div, "data-code", div_data_code_value);
     			}
     		},
@@ -6880,26 +6891,20 @@ var app = (function () {
     	let span;
     	let t_value = /*d*/ ctx[57].short + "";
     	let t;
-    	let span_id_value;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t = text$1(t_value);
-    			attr_dev(span, "id", span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"));
     			attr_dev(span, "class", "country-text svelte-sdm8di");
-    			add_location(span, file$i, 180, 12, 6021);
+    			add_location(span, file$i, 180, 12, 6012);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
     			append_dev(span, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*cartogramData*/ 256 && t_value !== (t_value = /*d*/ ctx[57].short + "")) set_data_dev(t, t_value);
-
-    			if (dirty[0] & /*slug*/ 4 && span_id_value !== (span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"))) {
-    				attr_dev(span, "id", span_id_value);
-    			}
+    			if (dirty[0] & /*cartogramData*/ 512 && t_value !== (t_value = /*d*/ ctx[57].short + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -6971,24 +6976,25 @@ var app = (function () {
     	return block;
     }
 
-    // (190:2) {#if annotation}
+    // (189:2) {#if annotation}
     function create_if_block$a(ctx) {
     	let div;
     	let annotation_1;
+    	let div_id_value;
     	let current;
 
     	annotation_1 = new Annotation({
     			props: {
-    				x: /*annotation*/ ctx[4].x,
-    				y: /*annotation*/ ctx[4].y,
-    				text: /*annotation*/ ctx[4].html,
-    				radius: /*annotation*/ ctx[4].radius,
-    				forceTopWherePossible: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9],
-    				topClamp: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
+    				x: /*annotation*/ ctx[5].x,
+    				y: /*annotation*/ ctx[5].y,
+    				text: /*annotation*/ ctx[5].html,
+    				radius: /*annotation*/ ctx[5].radius,
+    				forceTopWherePossible: /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10],
+    				topClamp: /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10]
     				? 0
-    				: /*pxAboveScreenTop*/ ctx[14],
-    				canvasWidth: /*containerWidth*/ ctx[6],
-    				canvasHeight: /*containerHeight*/ ctx[7]
+    				: /*pxAboveScreenTop*/ ctx[15],
+    				canvasWidth: /*containerWidth*/ ctx[7],
+    				canvasHeight: /*containerHeight*/ ctx[8]
     			},
     			$$inline: true
     		});
@@ -6997,10 +7003,11 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(annotation_1.$$.fragment);
+    			attr_dev(div, "id", div_id_value = "" + (/*slug*/ ctx[3] + "-annotation"));
     			attr_dev(div, "class", "annotation-container svelte-sdm8di");
-    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
-    			toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
-    			add_location(div, file$i, 190, 4, 6193);
+    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
+    			toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
+    			add_location(div, file$i, 189, 4, 6160);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7009,26 +7016,30 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const annotation_1_changes = {};
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.x = /*annotation*/ ctx[4].x;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.y = /*annotation*/ ctx[4].y;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.text = /*annotation*/ ctx[4].html;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.radius = /*annotation*/ ctx[4].radius;
-    			if (dirty[0] & /*annotation, helpAnnotation*/ 528) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9];
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.x = /*annotation*/ ctx[5].x;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.y = /*annotation*/ ctx[5].y;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.text = /*annotation*/ ctx[5].html;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.radius = /*annotation*/ ctx[5].radius;
+    			if (dirty[0] & /*annotation, helpAnnotation*/ 1056) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10];
 
-    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 16912) annotation_1_changes.topClamp = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
+    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 33824) annotation_1_changes.topClamp = /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10]
     			? 0
-    			: /*pxAboveScreenTop*/ ctx[14];
+    			: /*pxAboveScreenTop*/ ctx[15];
 
-    			if (dirty[0] & /*containerWidth*/ 64) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[6];
-    			if (dirty[0] & /*containerHeight*/ 128) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[7];
+    			if (dirty[0] & /*containerWidth*/ 128) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[7];
+    			if (dirty[0] & /*containerHeight*/ 256) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[8];
     			annotation_1.$set(annotation_1_changes);
 
-    			if (dirty[0] & /*hideAnnotation*/ 1024) {
-    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
+    			if (!current || dirty[0] & /*slug*/ 8 && div_id_value !== (div_id_value = "" + (/*slug*/ ctx[3] + "-annotation"))) {
+    				attr_dev(div, "id", div_id_value);
     			}
 
-    			if (dirty[0] & /*annotation*/ 16) {
-    				toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
+    			if (dirty[0] & /*hideAnnotation*/ 2048) {
+    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
+    			}
+
+    			if (dirty[0] & /*annotation*/ 32) {
+    				toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
     			}
     		},
     		i: function intro(local) {
@@ -7050,7 +7061,7 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(190:2) {#if annotation}",
+    		source: "(189:2) {#if annotation}",
     		ctx
     	});
 
@@ -7067,8 +7078,8 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*loaded*/ ctx[12] && create_if_block_1$7(ctx);
-    	let if_block1 = /*annotation*/ ctx[4] && create_if_block$a(ctx);
+    	let if_block0 = /*loaded*/ ctx[13] && create_if_block_1$7(ctx);
+    	let if_block1 = /*annotation*/ ctx[5] && create_if_block$a(ctx);
 
     	const block = {
     		c: function create() {
@@ -7089,8 +7100,8 @@ var app = (function () {
     			add_location(filter, file$i, 158, 0, 5204);
     			attr_dev(div, "class", "cartogram svelte-sdm8di");
     			add_render_callback(() => /*div_elementresize_handler*/ ctx[47].call(div));
-    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
-    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
+    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[4]);
+    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[14]);
     			add_location(div, file$i, 153, 0, 5040);
     		},
     		l: function claim(nodes) {
@@ -7109,12 +7120,12 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[20], false, false, false);
+    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[21], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*loaded*/ ctx[12]) {
+    			if (/*loaded*/ ctx[13]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
@@ -7127,11 +7138,11 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (/*annotation*/ ctx[4]) {
+    			if (/*annotation*/ ctx[5]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*annotation*/ 16) {
+    					if (dirty[0] & /*annotation*/ 32) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -7150,12 +7161,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*hoverData*/ 8) {
-    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
+    			if (dirty[0] & /*hoverData*/ 16) {
+    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[4]);
     			}
 
-    			if (dirty[0] & /*resizing*/ 8192) {
-    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
+    			if (dirty[0] & /*resizing*/ 16384) {
+    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[14]);
     			}
     		},
     		i: function intro(local) {
@@ -7212,7 +7223,7 @@ var app = (function () {
     	let { hoverTextFn } = $$props;
     	let { onHoverFn = () => null } = $$props;
     	let { hideLabels = false } = $$props;
-    	const rerenderFn = () => (((((((((($$invalidate(8, cartogramData), $$invalidate(22, data)), $$invalidate(40, radius)), $$invalidate(26, categoryFn)), $$invalidate(39, xScale)), $$invalidate(38, yScale)), $$invalidate(41, largestVal)), $$invalidate(23, nodeSize)), $$invalidate(24, domain)), $$invalidate(32, targetWidth)), $$invalidate(33, targetHeight));
+    	const rerenderFn = () => (((((((((($$invalidate(9, cartogramData), $$invalidate(23, data)), $$invalidate(40, radius)), $$invalidate(27, categoryFn)), $$invalidate(39, xScale)), $$invalidate(38, yScale)), $$invalidate(41, largestVal)), $$invalidate(24, nodeSize)), $$invalidate(25, domain)), $$invalidate(32, targetWidth)), $$invalidate(33, targetHeight));
     	let { annotationShowing = false } = $$props;
     	let { legendTitle } = $$props;
     	let { slug } = $$props;
@@ -7238,16 +7249,16 @@ var app = (function () {
 
     	function resize() {
     		if (containerEl) {
-    			$$invalidate(13, resizing = true);
+    			$$invalidate(14, resizing = true);
     			const ctrStyle = getComputedStyle(containerEl);
     			const xPadding = parseFloat(ctrStyle.paddingLeft) + parseFloat(ctrStyle.paddingRight);
     			const yPadding = parseFloat(ctrStyle.paddingTop) - parseFloat(ctrStyle.paddingBottom);
-    			$$invalidate(6, containerWidth = containerEl.clientWidth - xPadding);
-    			$$invalidate(7, containerHeight = containerEl.clientHeight - yPadding);
+    			$$invalidate(7, containerWidth = containerEl.clientWidth - xPadding);
+    			$$invalidate(8, containerHeight = containerEl.clientHeight - yPadding);
     			const scale = Math.min(containerWidth / originalWidth, containerHeight / originalHeight);
     			$$invalidate(32, targetWidth = originalWidth * scale);
     			$$invalidate(33, targetHeight = originalHeight * scale);
-    			window.setTimeout(() => $$invalidate(13, resizing = false));
+    			window.setTimeout(() => $$invalidate(14, resizing = false));
     		}
     	}
 
@@ -7257,7 +7268,7 @@ var app = (function () {
     	window.setTimeout(
     		() => {
     			resize();
-    			$$invalidate(12, loaded = true);
+    			$$invalidate(13, loaded = true);
     		},
     		0
     	);
@@ -7269,7 +7280,7 @@ var app = (function () {
     		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(3, hoverData = {
+    		$$invalidate(4, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7283,7 +7294,7 @@ var app = (function () {
     		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(3, hoverData = {
+    		$$invalidate(4, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7298,7 +7309,7 @@ var app = (function () {
     	}
 
     	function clearHoverState() {
-    		$$invalidate(3, hoverData = null);
+    		$$invalidate(4, hoverData = null);
     		hoveredForX = false;
     		window.clearTimeout(hoverTimeout);
     		hoverTimeout = null;
@@ -7314,7 +7325,7 @@ var app = (function () {
 
     	const onWindowScroll = () => {
     		const top = containerEl.getBoundingClientRect().top - 50;
-    		$$invalidate(14, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
+    		$$invalidate(15, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
     	};
 
     	const writable_props = [
@@ -7345,29 +7356,29 @@ var app = (function () {
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			containerEl = $$value;
-    			$$invalidate(11, containerEl);
+    			$$invalidate(12, containerEl);
     		});
     	}
 
     	function div_elementresize_handler() {
     		clientWidth = this.clientWidth;
-    		$$invalidate(5, clientWidth);
+    		$$invalidate(6, clientWidth);
     	}
 
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(23, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(24, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(25, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(26, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(27, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(28, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(1, hoverTextFn = $$props.hoverTextFn);
     		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
-    		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('hideLabels' in $$props) $$invalidate(2, hideLabels = $$props.hideLabels);
+    		if ('annotationShowing' in $$props) $$invalidate(22, annotationShowing = $$props.annotationShowing);
     		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
-    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
+    		if ('slug' in $$props) $$invalidate(3, slug = $$props.slug);
     	};
 
     	$$self.$capture_state = () => ({
@@ -7429,40 +7440,40 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(23, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(24, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(25, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(26, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(27, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(28, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(1, hoverTextFn = $$props.hoverTextFn);
     		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
-    		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('hideLabels' in $$props) $$invalidate(2, hideLabels = $$props.hideLabels);
+    		if ('annotationShowing' in $$props) $$invalidate(22, annotationShowing = $$props.annotationShowing);
     		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
-    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
-    		if ('containerEl' in $$props) $$invalidate(11, containerEl = $$props.containerEl);
-    		if ('loaded' in $$props) $$invalidate(12, loaded = $$props.loaded);
+    		if ('slug' in $$props) $$invalidate(3, slug = $$props.slug);
+    		if ('containerEl' in $$props) $$invalidate(12, containerEl = $$props.containerEl);
+    		if ('loaded' in $$props) $$invalidate(13, loaded = $$props.loaded);
     		if ('targetWidth' in $$props) $$invalidate(32, targetWidth = $$props.targetWidth);
     		if ('targetHeight' in $$props) $$invalidate(33, targetHeight = $$props.targetHeight);
-    		if ('resizing' in $$props) $$invalidate(13, resizing = $$props.resizing);
+    		if ('resizing' in $$props) $$invalidate(14, resizing = $$props.resizing);
     		if ('hoverTimeout' in $$props) hoverTimeout = $$props.hoverTimeout;
-    		if ('hoverData' in $$props) $$invalidate(3, hoverData = $$props.hoverData);
+    		if ('hoverData' in $$props) $$invalidate(4, hoverData = $$props.hoverData);
     		if ('helpTextFade' in $$props) $$invalidate(34, helpTextFade = $$props.helpTextFade);
-    		if ('annotation' in $$props) $$invalidate(4, annotation = $$props.annotation);
+    		if ('annotation' in $$props) $$invalidate(5, annotation = $$props.annotation);
     		if ('hoveredForX' in $$props) hoveredForX = $$props.hoveredForX;
-    		if ('clientWidth' in $$props) $$invalidate(5, clientWidth = $$props.clientWidth);
-    		if ('containerWidth' in $$props) $$invalidate(6, containerWidth = $$props.containerWidth);
-    		if ('containerHeight' in $$props) $$invalidate(7, containerHeight = $$props.containerHeight);
-    		if ('cartogramData' in $$props) $$invalidate(8, cartogramData = $$props.cartogramData);
-    		if ('pxAboveScreenTop' in $$props) $$invalidate(14, pxAboveScreenTop = $$props.pxAboveScreenTop);
-    		if ('helpAnnotation' in $$props) $$invalidate(9, helpAnnotation = $$props.helpAnnotation);
-    		if ('hideAnnotation' in $$props) $$invalidate(10, hideAnnotation = $$props.hideAnnotation);
+    		if ('clientWidth' in $$props) $$invalidate(6, clientWidth = $$props.clientWidth);
+    		if ('containerWidth' in $$props) $$invalidate(7, containerWidth = $$props.containerWidth);
+    		if ('containerHeight' in $$props) $$invalidate(8, containerHeight = $$props.containerHeight);
+    		if ('cartogramData' in $$props) $$invalidate(9, cartogramData = $$props.cartogramData);
+    		if ('pxAboveScreenTop' in $$props) $$invalidate(15, pxAboveScreenTop = $$props.pxAboveScreenTop);
+    		if ('helpAnnotation' in $$props) $$invalidate(10, helpAnnotation = $$props.helpAnnotation);
+    		if ('hideAnnotation' in $$props) $$invalidate(11, hideAnnotation = $$props.hideAnnotation);
     		if ('countryAnnotation' in $$props) $$invalidate(35, countryAnnotation = $$props.countryAnnotation);
     		if ('haveContainerDims' in $$props) $$invalidate(36, haveContainerDims = $$props.haveContainerDims);
     		if ('helpCountry' in $$props) $$invalidate(37, helpCountry = $$props.helpCountry);
-    		if ('calcStyle' in $$props) $$invalidate(15, calcStyle = $$props.calcStyle);
+    		if ('calcStyle' in $$props) $$invalidate(16, calcStyle = $$props.calcStyle);
     		if ('yScale' in $$props) $$invalidate(38, yScale = $$props.yScale);
     		if ('xScale' in $$props) $$invalidate(39, xScale = $$props.xScale);
     		if ('radius' in $$props) $$invalidate(40, radius = $$props.radius);
@@ -7474,28 +7485,28 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
+    		if ($$self.$$.dirty[0] & /*data*/ 8388608) {
     			$$invalidate(41, largestVal = Math.max(...data.map(d => d.value)));
     		}
 
-    		if ($$self.$$.dirty[0] & /*clientWidth*/ 32) {
+    		if ($$self.$$.dirty[0] & /*clientWidth*/ 64) {
     			clientWidth && throttledResize();
     		}
 
-    		if ($$self.$$.dirty[0] & /*nodeSize*/ 8388608 | $$self.$$.dirty[1] & /*largestVal*/ 1024) {
+    		if ($$self.$$.dirty[0] & /*nodeSize*/ 16777216 | $$self.$$.dirty[1] & /*largestVal*/ 1024) {
     			$$invalidate(40, radius = sqrt().domain([0, largestVal]).range([0, nodeSize]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetWidth*/ 2) {
+    		if ($$self.$$.dirty[0] & /*domain*/ 33554432 | $$self.$$.dirty[1] & /*targetWidth*/ 2) {
     			$$invalidate(39, xScale = linear().domain([0, domain[0]]).range([0, targetWidth]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetHeight*/ 4) {
+    		if ($$self.$$.dirty[0] & /*domain*/ 33554432 | $$self.$$.dirty[1] & /*targetHeight*/ 4) {
     			$$invalidate(38, yScale = linear().domain([0, domain[1]]).range([0, targetHeight]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 71303168 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 896) {
-    			$$invalidate(8, cartogramData = data.map(d => {
+    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 142606336 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 896) {
+    			$$invalidate(9, cartogramData = data.map(d => {
     				const r = radius(d.value);
 
     				return Object.assign(Object.assign({}, d), {
@@ -7509,12 +7520,12 @@ var app = (function () {
     			}));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cartogramData*/ 256) {
+    		if ($$self.$$.dirty[0] & /*cartogramData*/ 512) {
     			cartogramData.sort((a, b) => a.y - b.y);
     		}
 
-    		if ($$self.$$.dirty[0] & /*colorFn*/ 134217728) {
-    			$$invalidate(15, calcStyle = d => {
+    		if ($$self.$$.dirty[0] & /*colorFn*/ 268435456) {
+    			$$invalidate(16, calcStyle = d => {
     				const styles = [
     					`left: ${d.left}px`,
     					`top: ${d.top}px`,
@@ -7527,14 +7538,14 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 33554688) {
+    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 67109376) {
     			$$invalidate(37, helpCountry = helpText
     			? cartogramData.find(d => d.code === helpText.code)
     			: null);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText*/ 33554432 | $$self.$$.dirty[1] & /*helpCountry*/ 64) {
-    			$$invalidate(9, helpAnnotation = helpCountry && {
+    		if ($$self.$$.dirty[0] & /*helpText*/ 67108864 | $$self.$$.dirty[1] & /*helpCountry*/ 64) {
+    			$$invalidate(10, helpAnnotation = helpCountry && {
     				x: helpCountry.left + helpCountry.width / 2,
     				y: helpCountry.top + helpCountry.height / 2,
     				radius: 2 + helpCountry.width / 2,
@@ -7543,7 +7554,7 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 268435464) {
+    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 18) {
     			$$invalidate(35, countryAnnotation = hoverTextFn && hoverData && {
     				x: hoverData.x,
     				y: hoverData.y,
@@ -7552,31 +7563,32 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 192) {
+    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 384) {
     			$$invalidate(36, haveContainerDims = containerWidth > 0 && containerHeight > 0);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 512 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 48) {
-    			$$invalidate(4, annotation = haveContainerDims
+    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 1024 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 48) {
+    			$$invalidate(5, annotation = haveContainerDims
     			? countryAnnotation || helpAnnotation
     			: undefined);
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverData*/ 8 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 24) {
-    			$$invalidate(10, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
+    		if ($$self.$$.dirty[0] & /*hoverData*/ 16 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 24) {
+    			$$invalidate(11, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
     		}
 
-    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 1552) {
-    			$$invalidate(21, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
+    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 3104) {
+    			$$invalidate(22, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
     		}
 
-    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
+    		if ($$self.$$.dirty[0] & /*data*/ 8388608) {
     			data && fadeInHelpText();
     		}
     	};
 
     	return [
     		classesFn,
+    		hoverTextFn,
     		hideLabels,
     		slug,
     		hoverData,
@@ -7604,7 +7616,6 @@ var app = (function () {
     		helpText,
     		categoryFn,
     		colorFn,
-    		hoverTextFn,
     		onHoverFn,
     		rerenderFn,
     		legendTitle,
@@ -7638,20 +7649,20 @@ var app = (function () {
     			create_fragment$i,
     			safe_not_equal,
     			{
-    				data: 22,
-    				nodeSize: 23,
-    				domain: 24,
-    				helpText: 25,
-    				categoryFn: 26,
-    				colorFn: 27,
+    				data: 23,
+    				nodeSize: 24,
+    				domain: 25,
+    				helpText: 26,
+    				categoryFn: 27,
+    				colorFn: 28,
     				classesFn: 0,
-    				hoverTextFn: 28,
+    				hoverTextFn: 1,
     				onHoverFn: 29,
-    				hideLabels: 1,
+    				hideLabels: 2,
     				rerenderFn: 30,
-    				annotationShowing: 21,
+    				annotationShowing: 22,
     				legendTitle: 31,
-    				slug: 2
+    				slug: 3
     			},
     			null,
     			[-1, -1]
@@ -7667,15 +7678,15 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[22] === undefined && !('data' in props)) {
+    		if (/*data*/ ctx[23] === undefined && !('data' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'data'");
     		}
 
-    		if (/*domain*/ ctx[24] === undefined && !('domain' in props)) {
+    		if (/*domain*/ ctx[25] === undefined && !('domain' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'domain'");
     		}
 
-    		if (/*hoverTextFn*/ ctx[28] === undefined && !('hoverTextFn' in props)) {
+    		if (/*hoverTextFn*/ ctx[1] === undefined && !('hoverTextFn' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'hoverTextFn'");
     		}
 
@@ -7683,7 +7694,7 @@ var app = (function () {
     			console.warn("<Cartogram> was created without expected prop 'legendTitle'");
     		}
 
-    		if (/*slug*/ ctx[2] === undefined && !('slug' in props)) {
+    		if (/*slug*/ ctx[3] === undefined && !('slug' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'slug'");
     		}
     	}
@@ -17040,6 +17051,7 @@ var app = (function () {
     			input = element("input");
     			attr_dev(input, "type", "text");
     			input.readOnly = true;
+    			attr_dev(input, "title", /*embed*/ ctx[0]);
     			input.value = input_value_value = "<script async src='" + /*embedScript*/ ctx[6] + "' data-embed='" + /*embed*/ ctx[0] + "'></script>";
     			attr_dev(input, "class", "svelte-xqu2bd");
     			toggle_class(input, "visible", /*showEmbedCode*/ ctx[1]);
@@ -17063,6 +17075,10 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*embed*/ 1) {
+    				attr_dev(input, "title", /*embed*/ ctx[0]);
+    			}
+
     			if (dirty & /*embed*/ 1 && input_value_value !== (input_value_value = "<script async src='" + /*embedScript*/ ctx[6] + "' data-embed='" + /*embed*/ ctx[0] + "'></script>") && input.value !== input_value_value) {
     				prop_dev(input, "value", input_value_value);
     			}
