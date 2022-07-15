@@ -18419,10 +18419,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "cat info svelte-9tmog5");
+    			attr_dev(ul, "class", "cat info svelte-h10xyx");
     			attr_dev(ul, "role", "menu");
     			attr_dev(ul, "aria-label", "Legend");
-    			add_location(ul, file$k, 67, 2, 2193);
+    			add_location(ul, file$k, 67, 2, 2198);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -18492,7 +18492,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ol, "class", "seq info svelte-9tmog5");
+    			attr_dev(ol, "class", "seq info svelte-h10xyx");
     			attr_dev(ol, "role", "menu");
     			attr_dev(ol, "aria-label", "Legend");
     			toggle_class(ol, "internal-labels", /*internalLabels*/ ctx[5]);
@@ -18578,7 +18578,7 @@ var app = (function () {
     			t0 = space();
     			t1 = text$1(t1_value);
     			t2 = space();
-    			attr_dev(div, "class", "cat-symbol svelte-9tmog5");
+    			attr_dev(div, "class", "cat-symbol svelte-h10xyx");
 
     			set_style(div, "background-color", /*c*/ ctx[17] !== 'url(#hash--windblown)'
     			? /*c*/ ctx[17]
@@ -18601,13 +18601,13 @@ var app = (function () {
               #f9f9f9 100%
             )`);
 
-    			add_location(div, file$k, 80, 8, 2622);
+    			add_location(div, file$k, 80, 8, 2627);
     			attr_dev(li, "role", "menuitem");
     			attr_dev(li, "aria-label", li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[19]]);
     			attr_dev(li, "tabindex", "0");
-    			attr_dev(li, "class", "cat-item note svelte-9tmog5");
+    			attr_dev(li, "class", "cat-item note svelte-h10xyx");
     			toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[19]);
-    			add_location(li, file$k, 69, 6, 2280);
+    			add_location(li, file$k, 69, 6, 2285);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -18703,7 +18703,7 @@ var app = (function () {
     			t0 = space();
     			div = element("div");
     			t1 = text$1(t1_value);
-    			attr_dev(div, "class", "internal-label svelte-9tmog5");
+    			attr_dev(div, "class", "note internal-label svelte-h10xyx");
     			add_location(div, file$k, 58, 10, 1932);
     		},
     		m: function mount(target, anchor) {
@@ -18756,7 +18756,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "icon svelte-9tmog5");
+    			attr_dev(div, "class", "icon svelte-h10xyx");
     			add_location(div, file$k, 56, 10, 1847);
     		},
     		m: function mount(target, anchor) {
@@ -18791,8 +18791,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text$1(t_value);
-    			attr_dev(p, "class", "note svelte-9tmog5");
-    			add_location(p, file$k, 61, 10, 2079);
+    			attr_dev(p, "class", "note svelte-h10xyx");
+    			add_location(p, file$k, 61, 10, 2084);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -18851,7 +18851,7 @@ var app = (function () {
     			: 100 / /*colors*/ ctx[2].length) + "%");
 
     			set_style(li, "background-color", /*c*/ ctx[17]);
-    			attr_dev(li, "class", "svelte-9tmog5");
+    			attr_dev(li, "class", "svelte-h10xyx");
     			toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[19]);
 
     			toggle_class(li, "border", /*internalLabels*/ ctx[5]
@@ -18966,7 +18966,7 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty$1();
-    			attr_dev(h3, "class", "note title svelte-9tmog5");
+    			attr_dev(h3, "class", "note title svelte-h10xyx");
     			add_location(h3, file$k, 30, 0, 1040);
     		},
     		l: function claim(nodes) {
