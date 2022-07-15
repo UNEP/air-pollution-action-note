@@ -12,11 +12,19 @@ export interface Meta {
 
 type TextBlockType = "p";
 
+export type HealthDisease = "diabetes" | "ischemic" | "lungcancer" | "lri" | "stroke" | "nd" | "copd";
+
 export type TextBlock = Record<TextBlockType, string>;
+
+export type DropdownOptionBlock = {
+  label: string;
+  value: string;
+};
 
 export interface Content {
   type: string;
   head?: string;
+  dropdown?: DropdownOptionBlock[]; //Allows you to put a dropdown in the title of the page
   text?: TextBlock[];
   menu?: string;
   icon?: string;
@@ -31,6 +39,12 @@ interface Region {
   numCountries: number
   totalValue: number
 }
+
+export type HeadBlock = {
+  type: "dropdown" | "title";
+  title?: string;
+  dropdown?: DropdownOptionBlock[];
+};
 
 export interface CartoRegionData {
   regions: Region[];

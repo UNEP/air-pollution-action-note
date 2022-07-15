@@ -31,7 +31,7 @@
   export var data: CountryDataPoint[];
   export var nodeSize = 100;
   export var domain: [number, number];
-  export var helpText: {code: string, text: string} = null;
+  export var helpText: {code: string, text: () => void} = null;
   export var categoryFn: (c: CountryDataPoint) => string = undefined;
   export var colorFn: (c: CountryDataPoint) => string = undefined;
   export var classesFn: (c: CountryDataPoint) => string[] = () => [];
@@ -194,7 +194,7 @@
     x: helpCountry.left + helpCountry.width / 2,
     y: helpCountry.top + helpCountry.height / 2,
     radius: 2 + helpCountry.width / 2,
-    html: helpText.text,
+    html: helpText.text(),
     class: 'help'
   };
 
