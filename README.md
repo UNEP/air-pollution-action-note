@@ -5,6 +5,10 @@
 ![SDG 13](https://img.shields.io/badge/Goal%2013-Climate%20action-3F7E44?style=for-the-badge)
 ![SDG 17](https://img.shields.io/badge/Goal%2013-Partnership%20for%20the%20goals-19486A?style=for-the-badge)
 
+---
+
+![Poster image for the Air Pollution Action Note interactive](https://github.com/UNEP/air-pollution-action-note/blob/cae2006e24023f7e583cc8a2a2b6ac253639982f/app/public/img/poster-2.jpg)
+
 # Air Pollution Note
 TK TK Explanation of the project
 
@@ -24,10 +28,10 @@ TK TK Maybe Pooja can write a paragraph. Where does this fit on the UNEP's data 
 #### Citing this project
 TK TK Do we want to have a citation 
 
-For academic citations, here's the BibTex citation:
+For **academic** citations, here's the BibTex citation:
 
 ````
  @misc{unep_2022, title={Air pollution note – data you need to know}, url={https://www.unep.org/interactive/air-pollution-note/}, journal={UNEP}, publisher={United Nations Environment Programme}, year={2022}, month={Jul}} 
 ````
 
-For media references, use 'UNEP's Air pollution note' and link to 'https://www.unep.org/interactive/air-pollution-note/' 
+For **media** references, use 'UNEP's Air pollution note' and link to 'https://www.unep.org/interactive/air-pollution-note/'
