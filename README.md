@@ -6,3 +6,28 @@
 ![SDG 17](https://img.shields.io/badge/Goal%2013-Partnership%20for%20the%20goals-19486A?style=for-the-badge)
 
 # Air Pollution Note
+TK TK Explanation of the project
+
+TK TK Live links, data folder, design folder
+
+#### Quick links
+* TK TK App folder: description
+* TK TK Data folder: description
+* TK TK Design folder: description
+
+
+---
+## TK TK UNEP data communication strategy
+TK TK Maybe Pooja can write a paragraph. Where does this fit on the UNEP's data comms bigger picture.
+
+---
+#### Citing this project
+TK TK Do we want to have a citation 
+
+For academic citations, here's the BibTex citation:
+
+````
+ @misc{unep_2022, title={Air pollution note – data you need to know}, url={https://www.unep.org/interactive/air-pollution-note/}, journal={UNEP}, publisher={United Nations Environment Programme}, year={2022}, month={Jul}} 
+````
+
+For media references, use 'UNEP's Air pollution note' and link to 'https://www.unep.org/interactive/air-pollution-note/' 
