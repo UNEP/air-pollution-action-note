@@ -11,7 +11,7 @@
 # Air Pollution Note
 ![Poster image for the Air Pollution Action Note interactive](https://github.com/UNEP/air-pollution-action-note/blob/cae2006e24023f7e583cc8a2a2b6ac253639982f/app/public/img/poster-2.jpg)
 
-The Air Pollution Note is a useful data-driven dashboard displaying the different sources of air pollution. It is designed to drive transparency and accountability by showcasing related metrics from relevant sources in a clear and compelling narrative.
+The Air Pollution Note is a useful data-driven dashboard displaying the different sources of air pollution, its health impact, and what actions countries are taking to live with clean air.
 
 #### Quick links
 * TK TK App folder: description
@@ -22,10 +22,12 @@ The Air Pollution Note is a useful data-driven dashboard displaying the differen
 ## Unlocking data through better communication
 ‘World Environment Situation Room’ (WESR) is UNEP’s strategic data platform that aggregates authoritative datasets on environmental topics — a very data-heavy hub for specialist audiences. unep.org has more than half a million visitors per month from almost every country in the world, from the informed and engaged general public, youth audiences, and media to policymakers and the private sector.
 
-The objective of the data-driven Notes is to bridge the gap between the diverse audience of unep.org and the specialist audience of WESR. They acted as an entry point, serving the most critical data in an easy to grasp, engaging manner before driving curious audiences to the hub for more detailed data exploration.
+The objective of the data-driven notes is to bridge the gap between the diverse audience of unep.org and the specialist audience of WESR. They act as an entry point, serving the most critical data in an easy to grasp, engaging manner before driving curious audiences to the hub for more detailed data exploration.
 
 ---
-#### Citing this project
+#### Reusing and citing this project
+TK TK Interactive has 
+
 TK TK Do we want to have a citation 
 
 For **academic** citations, here's the BibTex citation:
