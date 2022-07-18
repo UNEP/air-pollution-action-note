@@ -427,7 +427,7 @@
         }
       },
       color: colorDiseases,
-      legendTitle: `<strong>Actions taken towards cleaner air</strong>`,
+      legendTitle: `<strong>Percent of deaths</strong> from the disease that can be attributed to fine particles`,
       legendDomain: colorDiseases.domain().map(e => e+'%'),
       legendType: "sequential",
       domain: [1300, 1300 / (740 / 420)] as [number, number],

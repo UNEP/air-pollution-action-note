@@ -69,7 +69,7 @@
         {#if internalLabels[i]?.icon}
           <div class="icon">{@html svg[internalLabels[i]?.icon]}</div>
         {/if}
-          <div class="internal-label">{internalLabels[i] ? internalLabels[i].label : ""}</div>
+          <div class="note internal-label">{internalLabels[i] ? internalLabels[i].label : ""}</div>
         {/if}
         {#if labels[i] !== undefined}
           <p class="note">{labels[i]}</p>
@@ -122,23 +122,24 @@
     border: 2px solid #000 !important;
   }
   .icon {
-    width: 20px;
+    width: 16px;
     position: absolute;
-    left: -8px;
-    top: calc(50% - 8px);
+    left: -7px;
+    top: calc(50% - 6px);
   }
   .internal-labels {
     display: flex;
     & li {
-      height: 30px !important;
+      height: 25px !important;
       & .internal-label {
         display: flex;
         align-items: center;
         height: -webkit-fill-available, -moz-available;
         justify-content: center;
+        font-weight: 300;
       }
       & p {
-        margin: 0.5rem 0 0 0;
+        margin: 0.3rem 0 0 0;
       }
     }
   }
@@ -174,7 +175,7 @@
     left: 50%;
     width: 100%;
     text-align: center;
-    margin: 0.7rem 0 0 0;
+    margin: 0.3rem 0 0 0;
     padding: 0;
   }
   .cat-symbol {
