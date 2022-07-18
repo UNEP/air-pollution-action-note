@@ -4,6 +4,7 @@ var app = (function () {
     'use strict';
 
     function noop$1() { }
+    const identity$3 = x => x;
     function assign(tar, src) {
         // @ts-ignore
         for (const k in src)
@@ -128,6 +129,23 @@ var app = (function () {
     function append(target, node) {
         target.appendChild(node);
     }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root.host) {
+            return root;
+        }
+        return document;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
+    }
     function insert(target, node, anchor) {
         target.insertBefore(node, anchor || null);
     }
@@ -232,6 +250,100 @@ var app = (function () {
         e.initCustomEvent(type, bubbles, false, detail);
         return e;
     }
+    class HtmlTag {
+        constructor() {
+            this.e = this.n = null;
+        }
+        c(html) {
+            this.h(html);
+        }
+        m(html, target, anchor = null) {
+            if (!this.e) {
+                this.e = element(target.nodeName);
+                this.t = target;
+                this.c(html);
+            }
+            this.i(anchor);
+        }
+        h(html) {
+            this.e.innerHTML = html;
+            this.n = Array.from(this.e.childNodes);
+        }
+        i(anchor) {
+            for (let i = 0; i < this.n.length; i += 1) {
+                insert(this.t, this.n[i], anchor);
+            }
+        }
+        p(html) {
+            this.d();
+            this.h(html);
+            this.i(this.a);
+        }
+        d() {
+            this.n.forEach(detach);
+        }
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = append_empty_stylesheet(node).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
+    }
 
     let current_component;
     function set_current_component(component) {
@@ -315,6 +427,20 @@ var app = (function () {
             $$.after_update.forEach(add_render_callback);
         }
     }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch$1(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
     const outroing = new Set();
     let outros;
     function group_outros() {
@@ -351,6 +477,112 @@ var app = (function () {
             });
             block.o(local);
         }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = (program.b - t);
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity$3, tick = noop$1, css } = config || null_transition;
+            const program = {
+                start: now$1() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch$1(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch$1(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch$1(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
     }
 
     const globals = (typeof window !== 'undefined'
@@ -6062,7 +6294,7 @@ var app = (function () {
     /* src/components/maps/Annotation.svelte generated by Svelte v3.42.3 */
 
     const { Error: Error_1 } = globals;
-    const file$j = "src/components/maps/Annotation.svelte";
+    const file$m = "src/components/maps/Annotation.svelte";
 
     // (128:0) {:else}
     function create_else_block$4(ctx) {
@@ -6075,9 +6307,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "text svelte-1gfhztq");
     			set_style(div0, "transform", "translate(" + /*x*/ ctx[1] + "px, " + /*y*/ ctx[2] + "px)");
-    			add_location(div0, file$j, 130, 4, 3863);
+    			add_location(div0, file$m, 130, 4, 3863);
     			attr_dev(div1, "class", "just-text svelte-1gfhztq");
-    			add_location(div1, file$j, 128, 0, 3816);
+    			add_location(div1, file$m, 128, 0, 3816);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -6111,7 +6343,7 @@ var app = (function () {
     }
 
     // (117:0) {#if !justText}
-    function create_if_block$b(ctx) {
+    function create_if_block$c(ctx) {
     	let div4;
     	let div3;
     	let div0;
@@ -6131,19 +6363,19 @@ var app = (function () {
     			t1 = space();
     			div2 = element("div");
     			attr_dev(div0, "class", "line line-before svelte-1gfhztq");
-    			add_location(div0, file$j, 120, 6, 3612);
+    			add_location(div0, file$m, 120, 6, 3612);
     			attr_dev(div1, "class", "text svelte-1gfhztq");
     			attr_dev(div1, "style", /*textStyleStr*/ ctx[9]);
-    			add_location(div1, file$j, 121, 6, 3655);
+    			add_location(div1, file$m, 121, 6, 3655);
     			attr_dev(div2, "class", "line line-after svelte-1gfhztq");
-    			add_location(div2, file$j, 124, 6, 3756);
+    			add_location(div2, file$m, 124, 6, 3756);
     			attr_dev(div3, "class", div3_class_value = "annotation annotation--" + /*pos*/ ctx[5] + " svelte-1gfhztq");
     			attr_dev(div3, "style", /*styleStr*/ ctx[10]);
-    			add_location(div3, file$j, 118, 2, 3525);
+    			add_location(div3, file$m, 118, 2, 3525);
     			attr_dev(div4, "class", "canvas-limiter svelte-1gfhztq");
     			set_style(div4, "top", /*topClampPerc*/ ctx[11] + "%");
     			set_style(div4, "height", /*perc*/ ctx[12](/*limitedCanvasHeight*/ ctx[6], /*canvasHeight*/ ctx[0]) + "%");
-    			add_location(div4, file$j, 117, 0, 3413);
+    			add_location(div4, file$m, 117, 0, 3413);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -6188,7 +6420,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$b.name,
+    		id: create_if_block$c.name,
     		type: "if",
     		source: "(117:0) {#if !justText}",
     		ctx
@@ -6197,11 +6429,11 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$j(ctx) {
+    function create_fragment$o(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (!/*justText*/ ctx[4]) return create_if_block$b;
+    		if (!/*justText*/ ctx[4]) return create_if_block$c;
     		return create_else_block$4;
     	}
 
@@ -6243,7 +6475,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$j.name,
+    		id: create_fragment$o.name,
     		type: "component",
     		source: "",
     		ctx
@@ -6263,7 +6495,7 @@ var app = (function () {
     	return dimStr + transformStr;
     }
 
-    function instance$j($$self, $$props, $$invalidate) {
+    function instance$o($$self, $$props, $$invalidate) {
     	let limitedCanvasHeight;
     	let leftPadding;
     	let topClampPerc;
@@ -6579,8 +6811,8 @@ var app = (function () {
     		init$1(
     			this,
     			options,
-    			instance$j,
-    			create_fragment$j,
+    			instance$o,
+    			create_fragment$o,
     			safe_not_equal,
     			{
     				canvasWidth: 13,
@@ -6601,7 +6833,7 @@ var app = (function () {
     			component: this,
     			tagName: "Annotation",
     			options,
-    			id: create_fragment$j.name
+    			id: create_fragment$o.name
     		});
 
     		const { ctx } = this.$$;
@@ -6708,28 +6940,28 @@ var app = (function () {
     /* src/components/maps/Cartogram.svelte generated by Svelte v3.42.3 */
 
     const { Object: Object_1, window: window_1 } = globals;
-    const file$i = "src/components/maps/Cartogram.svelte";
+    const file$l = "src/components/maps/Cartogram.svelte";
 
-    function get_each_context$a(ctx, list, i) {
+    function get_each_context$c(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[57] = list[i];
     	return child_ctx;
     }
 
     // (162:2) {#if loaded}
-    function create_if_block_1$7(ctx) {
+    function create_if_block_1$8(ctx) {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let each_value = /*cartogramData*/ ctx[9];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*d*/ ctx[57].code;
-    	validate_each_keys(ctx, each_value, get_each_context$a, get_key);
+    	validate_each_keys(ctx, each_value, get_each_context$c, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		let child_ctx = get_each_context$a(ctx, each_value, i);
+    		let child_ctx = get_each_context$c(ctx, each_value, i);
     		let key = get_key(child_ctx);
-    		each_1_lookup.set(key, each_blocks[i] = create_each_block$a(key, child_ctx));
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$c(key, child_ctx));
     	}
 
     	const block = {
@@ -6743,7 +6975,7 @@ var app = (function () {
     			attr_dev(div, "class", "countries svelte-sdm8di");
     			attr_dev(div, "role", "graphics-document");
     			attr_dev(div, "aria-label", /*title*/ ctx[17]);
-    			add_location(div, file$i, 162, 4, 5348);
+    			add_location(div, file$l, 162, 4, 5350);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6756,8 +6988,8 @@ var app = (function () {
     			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, hideLabels, hoverTextFn*/ 1901063) {
     				each_value = /*cartogramData*/ ctx[9];
     				validate_each_argument(each_value);
-    				validate_each_keys(ctx, each_value, get_each_context$a, get_key);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$a, null, get_each_context$a);
+    				validate_each_keys(ctx, each_value, get_each_context$c, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$c, null, get_each_context$c);
     			}
     		},
     		d: function destroy(detaching) {
@@ -6771,7 +7003,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$7.name,
+    		id: create_if_block_1$8.name,
     		type: "if",
     		source: "(162:2) {#if loaded}",
     		ctx
@@ -6793,7 +7025,7 @@ var app = (function () {
     	let div_data_code_value;
     	let mounted;
     	let dispose;
-    	let if_block = !/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
+    	let if_block = !/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100 && create_if_block_3$2(ctx);
 
     	function mouseenter_handler(...args) {
     		return /*mouseenter_handler*/ ctx[42](/*d*/ ctx[57], ...args);
@@ -6811,13 +7043,13 @@ var app = (function () {
     			t1 = space();
     			if (if_block) if_block.c();
     			t2 = space();
-    			add_location(desc, file$i, 178, 10, 5925);
+    			add_location(desc, file$l, 178, 10, 5927);
     			attr_dev(div, "class", div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di");
     			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[16](/*d*/ ctx[57]));
     			attr_dev(div, "data-code", div_data_code_value = /*d*/ ctx[57].code);
     			attr_dev(div, "tabindex", "0");
     			attr_dev(div, "role", "graphics-object");
-    			add_location(div, file$i, 167, 10, 5505);
+    			add_location(div, file$l, 167, 10, 5507);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6846,7 +7078,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_3$1(ctx);
+    					if_block = create_if_block_3$2(ctx);
     					if_block.c();
     					if_block.m(div, t2);
     				}
@@ -6887,7 +7119,7 @@ var app = (function () {
     }
 
     // (180:10) {#if !hideLabels && d.width > 100}
-    function create_if_block_3$1(ctx) {
+    function create_if_block_3$2(ctx) {
     	let span;
     	let t_value = /*d*/ ctx[57].short + "";
     	let t;
@@ -6897,7 +7129,7 @@ var app = (function () {
     			span = element("span");
     			t = text$1(t_value);
     			attr_dev(span, "class", "country-text svelte-sdm8di");
-    			add_location(span, file$i, 180, 12, 6012);
+    			add_location(span, file$l, 180, 12, 6014);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -6913,7 +7145,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$1.name,
+    		id: create_if_block_3$2.name,
     		type: "if",
     		source: "(180:10) {#if !hideLabels && d.width > 100}",
     		ctx
@@ -6923,7 +7155,7 @@ var app = (function () {
     }
 
     // (166:6) {#each cartogramData as d (d.code)}
-    function create_each_block$a(key_1, ctx) {
+    function create_each_block$c(key_1, ctx) {
     	let first;
     	let if_block_anchor;
     	let if_block = /*d*/ ctx[57].x && /*d*/ ctx[57].y && create_if_block_2$4(ctx);
@@ -6967,7 +7199,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$a.name,
+    		id: create_each_block$c.name,
     		type: "each",
     		source: "(166:6) {#each cartogramData as d (d.code)}",
     		ctx
@@ -6977,7 +7209,7 @@ var app = (function () {
     }
 
     // (189:2) {#if annotation}
-    function create_if_block$a(ctx) {
+    function create_if_block$b(ctx) {
     	let div;
     	let annotation_1;
     	let div_id_value;
@@ -7007,7 +7239,7 @@ var app = (function () {
     			attr_dev(div, "class", "annotation-container svelte-sdm8di");
     			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
     			toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
-    			add_location(div, file$i, 189, 4, 6160);
+    			add_location(div, file$l, 189, 4, 6162);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7059,7 +7291,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$a.name,
+    		id: create_if_block$b.name,
     		type: "if",
     		source: "(189:2) {#if annotation}",
     		ctx
@@ -7068,7 +7300,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$i(ctx) {
+    function create_fragment$n(ctx) {
     	let div;
     	let filter;
     	let feDropShadow;
@@ -7078,8 +7310,8 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*loaded*/ ctx[13] && create_if_block_1$7(ctx);
-    	let if_block1 = /*annotation*/ ctx[5] && create_if_block$a(ctx);
+    	let if_block0 = /*loaded*/ ctx[13] && create_if_block_1$8(ctx);
+    	let if_block1 = /*annotation*/ ctx[5] && create_if_block$b(ctx);
 
     	const block = {
     		c: function create() {
@@ -7094,15 +7326,15 @@ var app = (function () {
     			attr_dev(feDropShadow, "dy", "0");
     			attr_dev(feDropShadow, "stdDeviation", "4");
     			attr_dev(feDropShadow, "flood-opacity", "0.9");
-    			add_location(feDropShadow, file$i, 159, 2, 5238);
+    			add_location(feDropShadow, file$l, 159, 2, 5240);
     			attr_dev(filter, "id", "shadow");
     			attr_dev(filter, "x", "+100px");
-    			add_location(filter, file$i, 158, 0, 5204);
+    			add_location(filter, file$l, 158, 0, 5206);
     			attr_dev(div, "class", "cartogram svelte-sdm8di");
     			add_render_callback(() => /*div_elementresize_handler*/ ctx[47].call(div));
     			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[4]);
     			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[14]);
-    			add_location(div, file$i, 153, 0, 5040);
+    			add_location(div, file$l, 153, 0, 5042);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7129,7 +7361,7 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$7(ctx);
+    					if_block0 = create_if_block_1$8(ctx);
     					if_block0.c();
     					if_block0.m(div, t1);
     				}
@@ -7146,7 +7378,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block$a(ctx);
+    					if_block1 = create_if_block$b(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div, null);
@@ -7191,7 +7423,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$i.name,
+    		id: create_fragment$n.name,
     		type: "component",
     		source: "",
     		ctx
@@ -7200,7 +7432,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$i($$self, $$props, $$invalidate) {
+    function instance$n($$self, $$props, $$invalidate) {
     	let largestVal;
     	let radius;
     	let xScale;
@@ -7549,7 +7781,7 @@ var app = (function () {
     				x: helpCountry.left + helpCountry.width / 2,
     				y: helpCountry.top + helpCountry.height / 2,
     				radius: 2 + helpCountry.width / 2,
-    				html: helpText.text,
+    				html: helpText.text(),
     				class: 'help'
     			});
     		}
@@ -7645,8 +7877,8 @@ var app = (function () {
     		init$1(
     			this,
     			options,
-    			instance$i,
-    			create_fragment$i,
+    			instance$n,
+    			create_fragment$n,
     			safe_not_equal,
     			{
     				data: 23,
@@ -7672,7 +7904,7 @@ var app = (function () {
     			component: this,
     			tagName: "Cartogram",
     			options,
-    			id: create_fragment$i.name
+    			id: create_fragment$n.name
     		});
 
     		const { ctx } = this.$$;
@@ -13276,6 +13508,2431 @@ var app = (function () {
     	}
     ];
 
+    var diseases = [
+    	{
+    		id: "CHN",
+    		short: "China",
+    		name: "China",
+    		copd: "0.25403873980854347",
+    		diabetes: "0.18891831778418244",
+    		ischemic: "0.19944217264430647",
+    		lungcancer: "0.22630049876695915",
+    		lri: "0.1987798182625026",
+    		stroke: "0.2474256539837388",
+    		nd: "0.09685974699894025"
+    	},
+    	{
+    		id: "PRK",
+    		short: "N. Kor.",
+    		name: "Dem. People’s Rep. of Korea",
+    		copd: "0.18646638218646894",
+    		diabetes: "0.09810048410427218",
+    		ischemic: "0.12639321425866412",
+    		lungcancer: "0.1382626092458508",
+    		lri: "0.15143598398488284",
+    		stroke: "0.15760912666441354",
+    		nd: "0.06269875525333825"
+    	},
+    	{
+    		id: "KHM",
+    		short: "Camb.",
+    		name: "Cambodia",
+    		copd: "0.09341660441236815",
+    		diabetes: "0.047109781457337185",
+    		ischemic: "0.06321824669847122",
+    		lungcancer: "0.0670555444094899",
+    		lri: "0.07321957338129854",
+    		stroke: "0.07291931448697668",
+    		nd: "0.029440288706936983"
+    	},
+    	{
+    		id: "IDN",
+    		short: "Indo.",
+    		name: "Indonesia",
+    		copd: "0.1212899812869454",
+    		diabetes: "0.11292852823041398",
+    		ischemic: "0.12430627322601756",
+    		lungcancer: "0.11473864478977575",
+    		lri: "0.09283298641597788",
+    		stroke: "0.13427022896424487",
+    		nd: "0.051537675025651694"
+    	},
+    	{
+    		id: "LAO",
+    		short: "Laos",
+    		name: "Lao People’s Dem. Rep.",
+    		copd: "0.08568879455162064",
+    		diabetes: "0.04270323729175858",
+    		ischemic: "0.06040863908255984",
+    		lungcancer: "0.0626339827618204",
+    		lri: "0.06737513466978201",
+    		stroke: "0.07276565925632353",
+    		nd: "0.025339891746855997"
+    	},
+    	{
+    		id: "MYS",
+    		short: "Mal.",
+    		name: "Malaysia",
+    		copd: "0.11141089121286346",
+    		diabetes: "0.1463464717926109",
+    		ischemic: "0.1255323429033967",
+    		lungcancer: "0.11780894518249892",
+    		lri: "0.08290736265208101",
+    		stroke: "0.13135450995953465",
+    		nd: "0.06537749789268908"
+    	},
+    	{
+    		id: "MDV",
+    		short: "Mald.",
+    		name: "Maldives",
+    		copd: "0.0694331126102896",
+    		diabetes: "0.07735823488962273",
+    		ischemic: "0.06752217749656811",
+    		lungcancer: "0.06745349919717052",
+    		lri: "0.05194974503505838",
+    		stroke: "0.07424187820486614",
+    		nd: "0.03244086434393066"
+    	},
+    	{
+    		id: "MMR",
+    		short: "Mya.",
+    		name: "Myanmar",
+    		copd: "0.13812617891840573",
+    		diabetes: "0.07937771732552765",
+    		ischemic: "0.09984459002290222",
+    		lungcancer: "0.10496435009038257",
+    		lri: "0.10963997981318298",
+    		stroke: "0.11963991232663237",
+    		nd: "0.0502106048079361"
+    	},
+    	{
+    		id: "PHL",
+    		short: "Phil.",
+    		name: "Philippines",
+    		copd: "0.1110543084244542",
+    		diabetes: "0.0960668895970268",
+    		ischemic: "0.11339731216075406",
+    		lungcancer: "0.10676258295412043",
+    		lri: "0.08398531083310995",
+    		stroke: "0.1224676977550262",
+    		nd: "0.035312923726538256"
+    	},
+    	{
+    		id: "LKA",
+    		short: "Sri L.",
+    		name: "Sri Lanka",
+    		copd: "0.125946864898226",
+    		diabetes: "0.11028367168684272",
+    		ischemic: "0.11097963228676509",
+    		lungcancer: "0.11671880702262677",
+    		lri: "0.09784677649860239",
+    		stroke: "0.12232779915365054",
+    		nd: "0.054518227235560254"
+    	},
+    	{
+    		id: "THA",
+    		short: "Tha.",
+    		name: "Thailand",
+    		copd: "0.17831897647573242",
+    		diabetes: "0.16846591717154968",
+    		ischemic: "0.152725691868488",
+    		lungcancer: "0.16780579403084486",
+    		lri: "0.13738667547058586",
+    		stroke: "0.18698599589925313",
+    		nd: "0.07622926540376979"
+    	},
+    	{
+    		id: "TLS",
+    		short: "T.L.",
+    		name: "Timor-Leste",
+    		copd: "0.07223842406576812",
+    		diabetes: "0.03820728414333067",
+    		ischemic: "0.05090312187867313",
+    		lungcancer: "0.054150953189133086",
+    		lri: "0.05673188945375409",
+    		stroke: "0.06166669040630232",
+    		nd: "0.023892187794717277"
+    	},
+    	{
+    		id: "VNM",
+    		short: "Viet.",
+    		name: "Viet Nam",
+    		copd: "0.12700807713896758",
+    		diabetes: "0.10309757614139574",
+    		ischemic: "0.10655868809316713",
+    		lungcancer: "0.11378499050277013",
+    		lri: "0.09801413744346835",
+    		stroke: "0.1301840453695901",
+    		nd: "0.05463264901425094"
+    	},
+    	{
+    		id: "FJI",
+    		short: "Fiji",
+    		name: "Fiji",
+    		copd: "0.07068026001872788",
+    		diabetes: "0.07101635878843808",
+    		ischemic: "0.07918031716871692",
+    		lungcancer: "0.06774147832566418",
+    		lri: "0.05437573923800804",
+    		stroke: "0.08440521845996432",
+    		nd: "0.03136457351437835"
+    	},
+    	{
+    		id: "KIR",
+    		short: "Kiri.",
+    		name: "Kiribati",
+    		copd: "0.044243844141069015",
+    		diabetes: "0.02268114572006882",
+    		ischemic: "0.03683950554329445",
+    		lungcancer: "0.03146763241651727",
+    		lri: "0.034617395367661466",
+    		stroke: "0.042967493065681546",
+    		nd: "0.009854361770142808"
+    	},
+    	{
+    		id: "MHL",
+    		short: "Mar. Is.",
+    		name: "Marshall Islands",
+    		copd: "0.05531543771218641",
+    		diabetes: "0.04124644148221418",
+    		ischemic: "0.058772035837061073",
+    		lungcancer: "0.046941215595284594",
+    		lri: "0.04264035254403222",
+    		stroke: "0.067553541628119",
+    		nd: "0.01909059259283115"
+    	},
+    	{
+    		id: "FSM",
+    		short: "Micr.",
+    		name: "Fed. States of Micronesia",
+    		copd: "0.06444642544937629",
+    		diabetes: "0.0538615612013002",
+    		ischemic: "0.06951478072039588",
+    		lungcancer: "0.05738203325176631",
+    		lri: "0.0499573214305362",
+    		stroke: "0.07863121512990641",
+    		nd: "0.022852019112529223"
+    	},
+    	{
+    		id: "PNG",
+    		short: "Pap. N.G.",
+    		name: "Papua New Guinea",
+    		copd: "0.05118244079147563",
+    		diabetes: "0.024548054563996086",
+    		ischemic: "0.03729537671250752",
+    		lungcancer: "0.034183022017359455",
+    		lri: "0.04024884500805406",
+    		stroke: "0.041244050779903466",
+    		nd: "0.012063230268551255"
+    	},
+    	{
+    		id: "WSM",
+    		short: "Samoa",
+    		name: "Samoa",
+    		copd: "0.06215747010414236",
+    		diabetes: "0.043204059686459066",
+    		ischemic: "0.05390144249749508",
+    		lungcancer: "0.05273207781721508",
+    		lri: "0.04909265927756426",
+    		stroke: "0.06304192202717315",
+    		nd: "0.022309928981391804"
+    	},
+    	{
+    		id: "SLB",
+    		short: "Solo. Is.",
+    		name: "Solomon Islands",
+    		copd: "0.043432955253099925",
+    		diabetes: "0.019484305804284983",
+    		ischemic: "0.032925780100258234",
+    		lungcancer: "0.029203357818558755",
+    		lri: "0.03510129843635089",
+    		stroke: "0.03616784035383589",
+    		nd: "0.01229208483824953"
+    	},
+    	{
+    		id: "TON",
+    		short: "Tonga",
+    		name: "Tonga",
+    		copd: "0.06781574531503874",
+    		diabetes: "0.0594036574937923",
+    		ischemic: "0.06189100428915835",
+    		lungcancer: "0.06253790813529922",
+    		lri: "0.051975284558079926",
+    		stroke: "0.06673053900252779",
+    		nd: "0.028750689757728452"
+    	},
+    	{
+    		id: "VUT",
+    		short: "Van.",
+    		name: "Vanuatu",
+    		copd: "0.0560706165120616",
+    		diabetes: "0.029660750506425713",
+    		ischemic: "0.04558654655699982",
+    		lungcancer: "0.0428278521743791",
+    		lri: "0.044976156862793985",
+    		stroke: "0.05232736476201515",
+    		nd: "0.016913566791320927"
+    	},
+    	{
+    		id: "ARM",
+    		short: "Arm.",
+    		name: "Armenia",
+    		copd: "0.21698202282668458",
+    		diabetes: "0.20408776702363",
+    		ischemic: "0.1782694103260711",
+    		lungcancer: "0.20349606235427967",
+    		lri: "0.16820880922683407",
+    		stroke: "0.20957158351103167",
+    		nd: "0.10231311989285688"
+    	},
+    	{
+    		id: "AZE",
+    		short: "Aze.",
+    		name: "Azerbaijan",
+    		copd: "0.16759810970444514",
+    		diabetes: "0.17538934564895756",
+    		ischemic: "0.1625590946834805",
+    		lungcancer: "0.163717211094806",
+    		lri: "0.1312319751690366",
+    		stroke: "0.18561273706258188",
+    		nd: "0.08097274766318519"
+    	},
+    	{
+    		id: "GEO",
+    		short: "Geo.",
+    		name: "Georgia",
+    		copd: "0.11833486302546274",
+    		diabetes: "0.12027229091453345",
+    		ischemic: "0.09851333081729881",
+    		lungcancer: "0.11611695077804593",
+    		lri: "0.0904360331565685",
+    		stroke: "0.11440557166885397",
+    		nd: "0.053429303625759976"
+    	},
+    	{
+    		id: "KAZ",
+    		short: "Kaz.",
+    		name: "Kazakhstan",
+    		copd: "0.13610762427780299",
+    		diabetes: "0.1467420934288846",
+    		ischemic: "0.12620001654938226",
+    		lungcancer: "0.13428353583253458",
+    		lri: "0.10366423207748267",
+    		stroke: "0.1491678986598778",
+    		nd: "0.06370034027530622"
+    	},
+    	{
+    		id: "KGZ",
+    		short: "Kyr.",
+    		name: "Kyrgyzstan",
+    		copd: "0.14921408624386448",
+    		diabetes: "0.12357494020403724",
+    		ischemic: "0.11784483200100321",
+    		lungcancer: "0.1325143560536316",
+    		lri: "0.11527509966684185",
+    		stroke: "0.16135532588925494",
+    		nd: "0.05901729374326786"
+    	},
+    	{
+    		id: "MNG",
+    		short: "Mon.",
+    		name: "Mongolia",
+    		copd: "0.21243239878595507",
+    		diabetes: "0.15059989007194685",
+    		ischemic: "0.1853409485388745",
+    		lungcancer: "0.17850868736987954",
+    		lri: "0.16865755511701322",
+    		stroke: "0.23706652635268924",
+    		nd: "0.09071131440591106"
+    	},
+    	{
+    		id: "TJK",
+    		short: "Taj.",
+    		name: "Tajikistan",
+    		copd: "0.20385191541433978",
+    		diabetes: "0.14381295867813024",
+    		ischemic: "0.16714856419095078",
+    		lungcancer: "0.16688098350047115",
+    		lri: "0.16266760775850972",
+    		stroke: "0.20576663009367777",
+    		nd: "0.07343824790297575"
+    	},
+    	{
+    		id: "TKM",
+    		short: "Turkm.",
+    		name: "Turkmenistan",
+    		copd: "0.1719809077175347",
+    		diabetes: "0.18546833454702924",
+    		ischemic: "0.17096829923544962",
+    		lungcancer: "0.16929319951724928",
+    		lri: "0.13515077270236775",
+    		stroke: "0.213944106095777",
+    		nd: "0.07770755557675547"
+    	},
+    	{
+    		id: "UZB",
+    		short: "Uzb.",
+    		name: "Uzbekistan",
+    		copd: "0.21393124900654759",
+    		diabetes: "0.18885670475989702",
+    		ischemic: "0.20705548935814502",
+    		lungcancer: "0.19473059539422358",
+    		lri: "0.1696001728096637",
+    		stroke: "0.254169890660989",
+    		nd: "0.10347324155187256"
+    	},
+    	{
+    		id: "ALB",
+    		short: "Alb.",
+    		name: "Albania",
+    		copd: "0.12396703940919825",
+    		diabetes: "0.12597246438189919",
+    		ischemic: "0.1028154501280589",
+    		lungcancer: "0.12059546914696218",
+    		lri: "0.09467463916542",
+    		stroke: "0.11184374412674546",
+    		nd: "0.0658295446315976"
+    	},
+    	{
+    		id: "BIH",
+    		short: "B. and H.",
+    		name: "Bosnia and Herzegovina",
+    		copd: "0.18672747591538363",
+    		diabetes: "0.16326653160638452",
+    		ischemic: "0.1465776042169262",
+    		lungcancer: "0.17281243831033813",
+    		lri: "0.14492265131161375",
+    		stroke: "0.17007079209494383",
+    		nd: "0.10169992228701487"
+    	},
+    	{
+    		id: "BGR",
+    		short: "Bu.",
+    		name: "Bulgaria",
+    		copd: "0.13169764596183434",
+    		diabetes: "0.14962596268628134",
+    		ischemic: "0.11364520066561105",
+    		lungcancer: "0.13314121248563207",
+    		lri: "0.09950433436460551",
+    		stroke: "0.12703765017556798",
+    		nd: "0.05792990485263031"
+    	},
+    	{
+    		id: "HRV",
+    		short: "Cro.",
+    		name: "Croatia",
+    		copd: "0.12583732565020067",
+    		diabetes: "0.15513779319666962",
+    		ischemic: "0.10329543916702862",
+    		lungcancer: "0.13022399233237783",
+    		lri: "0.09419876007783297",
+    		stroke: "0.11692273100516452",
+    		nd: "0.07183663779201244"
+    	},
+    	{
+    		id: "CZE",
+    		short: "Czechia",
+    		name: "Czechia",
+    		copd: "0.11321717883027496",
+    		diabetes: "0.14954114301433677",
+    		ischemic: "0.09499128211858758",
+    		lungcancer: "0.11980329893813595",
+    		lri: "0.08418471063654108",
+    		stroke: "0.10301714808191585",
+    		nd: "0.06263194365904373"
+    	},
+    	{
+    		id: "HUN",
+    		short: "Hun.",
+    		name: "Hungary",
+    		copd: "0.11213813737970854",
+    		diabetes: "0.13737702017231368",
+    		ischemic: "0.09528596728955467",
+    		lungcancer: "0.11580977402740393",
+    		lri: "0.08409316011533155",
+    		stroke: "0.10797762872597436",
+    		nd: "0.054954487821706414"
+    	},
+    	{
+    		id: "MKD",
+    		short: "Mac.",
+    		name: "North Macedonia",
+    		copd: "0.19519693469029248",
+    		diabetes: "0.18121785375397906",
+    		ischemic: "0.16962543775198083",
+    		lungcancer: "0.18459809285885395",
+    		lri: "0.1511814191281101",
+    		stroke: "0.18904568095794136",
+    		nd: "0.08714828298209659"
+    	},
+    	{
+    		id: "MNE",
+    		short: "Mont.",
+    		name: "Montenegro",
+    		copd: "0.14304943114223262",
+    		diabetes: "0.15139869482862214",
+    		ischemic: "0.12828815653422448",
+    		lungcancer: "0.141397392666058",
+    		lri: "0.10898740265138385",
+    		stroke: "0.13738738018885152",
+    		nd: "0.0730742635276319"
+    	},
+    	{
+    		id: "POL",
+    		short: "Pol.",
+    		name: "Poland",
+    		copd: "0.15147345149980126",
+    		diabetes: "0.17200953403015265",
+    		ischemic: "0.12529169512070587",
+    		lungcancer: "0.15219653924579762",
+    		lri: "0.11552338283229463",
+    		stroke: "0.14525956307183935",
+    		nd: "0.07816902417669"
+    	},
+    	{
+    		id: "ROU",
+    		short: "Rom.",
+    		name: "Romania",
+    		copd: "0.10589976885718853",
+    		diabetes: "0.13211604611916017",
+    		ischemic: "0.09149290294133292",
+    		lungcancer: "0.11005553026806693",
+    		lri: "0.07916625551758498",
+    		stroke: "0.10157600930629686",
+    		nd: "0.059251882638890786"
+    	},
+    	{
+    		id: "SRB",
+    		short: "Ser.",
+    		name: "Serbia",
+    		copd: "0.16898617858585685",
+    		diabetes: "0.1723633094597863",
+    		ischemic: "0.13916190339106133",
+    		lungcancer: "0.16467797921635177",
+    		lri: "0.12946616013432918",
+    		stroke: "0.15773253613017504",
+    		nd: "0.07658277017423447"
+    	},
+    	{
+    		id: "SVK",
+    		short: "Slovak.",
+    		name: "Slovakia",
+    		copd: "0.12545847617192865",
+    		diabetes: "0.16276226435488758",
+    		ischemic: "0.11022894550308346",
+    		lungcancer: "0.13219813051490126",
+    		lri: "0.09371565691875919",
+    		stroke: "0.1268871623430185",
+    		nd: "0.05375011028100823"
+    	},
+    	{
+    		id: "SVN",
+    		short: "Slo.",
+    		name: "Slovenia",
+    		copd: "0.11545677585310496",
+    		diabetes: "0.14855202059178826",
+    		ischemic: "0.0951000226741076",
+    		lungcancer: "0.121275841759343",
+    		lri: "0.08612663332704194",
+    		stroke: "0.10109690777021958",
+    		nd: "0.06685594530188758"
+    	},
+    	{
+    		id: "BLR",
+    		short: "Bela.",
+    		name: "Belarus",
+    		copd: "0.11045983675830465",
+    		diabetes: "0.1459224082025811",
+    		ischemic: "0.10290781537000633",
+    		lungcancer: "0.11683741862207694",
+    		lri: "0.08215489028828807",
+    		stroke: "0.11544444544156526",
+    		nd: "0.06797405381612777"
+    	},
+    	{
+    		id: "EST",
+    		short: "Est.",
+    		name: "Estonia",
+    		copd: "0.02507945598286348",
+    		diabetes: "0.03821621317534852",
+    		ischemic: "0.02139225472264745",
+    		lungcancer: "0.027312088097030274",
+    		lri: "0.018148214961683107",
+    		stroke: "0.02472364501650077",
+    		nd: "0.03482353217284713"
+    	},
+    	{
+    		id: "LVA",
+    		short: "Lat.",
+    		name: "Latvia",
+    		copd: "0.0763428224063646",
+    		diabetes: "0.10619984018755184",
+    		ischemic: "0.0672299952365543",
+    		lungcancer: "0.08214116016914866",
+    		lri: "0.05628280398783431",
+    		stroke: "0.0716916056497673",
+    		nd: "0.05535756344942205"
+    	},
+    	{
+    		id: "LTU",
+    		short: "Lith.",
+    		name: "Lithuania",
+    		copd: "0.0616364095272036",
+    		diabetes: "0.09261968275854401",
+    		ischemic: "0.05408994401608362",
+    		lungcancer: "0.06788539889991824",
+    		lri: "0.04508618470091388",
+    		stroke: "0.0598785848756191",
+    		nd: "0.04572906190349238"
+    	},
+    	{
+    		id: "MDA",
+    		short: "Mold.",
+    		name: "Rep. of Moldova",
+    		copd: "0.09050701914030142",
+    		diabetes: "0.11691615740603428",
+    		ischemic: "0.08233980582505013",
+    		lungcancer: "0.09497325388508662",
+    		lri: "0.06804518710547552",
+    		stroke: "0.0990580215520863",
+    		nd: "0.06164604020464523"
+    	},
+    	{
+    		id: "RUS",
+    		short: "Russian Fed.",
+    		name: "Russian Fed.",
+    		copd: "0.07220563757207657",
+    		diabetes: "0.09993692884391812",
+    		ischemic: "0.06973176883273643",
+    		lungcancer: "0.0764394746329124",
+    		lri: "0.052468017675306136",
+    		stroke: "0.0736423211615099",
+    		nd: "0.050464899222696945"
+    	},
+    	{
+    		id: "UKR",
+    		short: "Ukr.",
+    		name: "Ukraine",
+    		copd: "0.09574709536951836",
+    		diabetes: "0.12390786526115123",
+    		ischemic: "0.09043638545976186",
+    		lungcancer: "0.10077286652933162",
+    		lri: "0.07115123398516404",
+    		stroke: "0.10277423490888472",
+    		nd: "0.06148095392620168"
+    	},
+    	{
+    		id: "BRN",
+    		short: "Bru.",
+    		name: "Brunei Darussalam",
+    		copd: "0.03619610963917448",
+    		diabetes: "0.05871071555115775",
+    		ischemic: "0.048344458382769115",
+    		lungcancer: "0.040629771698747735",
+    		lri: "0.026384422142434576",
+    		stroke: "0.047945492584575644",
+    		nd: "0.03492744750362036"
+    	},
+    	{
+    		id: "JPN",
+    		short: "Japan",
+    		name: "Japan",
+    		copd: "0.08588571737264229",
+    		diabetes: "0.12282766882101455",
+    		ischemic: "0.06902369541745437",
+    		lungcancer: "0.09339282223054683",
+    		lri: "0.06323571871874799",
+    		stroke: "0.07035353395544186",
+    		nd: "0.04400515297550259"
+    	},
+    	{
+    		id: "KOR",
+    		short: "Rep. of Korea",
+    		name: "Rep. of Korea",
+    		copd: "0.18602701569754698",
+    		diabetes: "0.20482061970725984",
+    		ischemic: "0.1523483597419673",
+    		lungcancer: "0.18566871719562975",
+    		lri: "0.14171603811331362",
+    		stroke: "0.17486183919208576",
+    		nd: "0.06308343978454681"
+    	},
+    	{
+    		id: "SGP",
+    		short: "Sin.",
+    		name: "Singapore",
+    		copd: "0.12749765207195102",
+    		diabetes: "0.16272572038067554",
+    		ischemic: "0.12509935445094433",
+    		lungcancer: "0.13355566473619487",
+    		lri: "0.09537690852485879",
+    		stroke: "0.12735477918210475",
+    		nd: "0.06464483242378875"
+    	},
+    	{
+    		id: "AUS",
+    		short: "Aus.",
+    		name: "Australia",
+    		copd: "0.02725694341193061",
+    		diabetes: "0.045323408311924406",
+    		ischemic: "0.02378767251052338",
+    		lungcancer: "0.030834654441964253",
+    		lri: "0.01948648294647423",
+    		stroke: "0.02323391298821493",
+    		nd: "0.04401582993239375"
+    	},
+    	{
+    		id: "NZL",
+    		short: "N.Z.",
+    		name: "New Zealand",
+    		copd: "0.020558763592879562",
+    		diabetes: "0.034985099221530876",
+    		ischemic: "0.018642765741006512",
+    		lungcancer: "0.02341851880831113",
+    		lri: "0.014665322643276659",
+    		stroke: "0.018267572077364024",
+    		nd: "0.04362428765193138"
+    	},
+    	{
+    		id: "AND",
+    		short: "And.",
+    		name: "Andorra",
+    		copd: "0.048712587812243385",
+    		diabetes: "0.07769685095951372",
+    		ischemic: "0.043589662239589676",
+    		lungcancer: "0.05461490669535265",
+    		lri: "0.03528027268562505",
+    		stroke: "0.043749446449823086",
+    		nd: "0.05418983771828415"
+    	},
+    	{
+    		id: "AUT",
+    		short: "Au.",
+    		name: "Austria",
+    		copd: "0.07624402468186653",
+    		diabetes: "0.11236409910828048",
+    		ischemic: "0.061805366704136784",
+    		lungcancer: "0.08355616636315893",
+    		lri: "0.05588402282487121",
+    		stroke: "0.06560881853733457",
+    		nd: "0.05881073699704967"
+    	},
+    	{
+    		id: "BEL",
+    		short: "Bel.",
+    		name: "Belgium",
+    		copd: "0.08054304779854239",
+    		diabetes: "0.11814564536379876",
+    		ischemic: "0.068019846745212",
+    		lungcancer: "0.08818117760873292",
+    		lri: "0.05911474956103814",
+    		stroke: "0.0693103429846628",
+    		nd: "0.055558682651195686"
+    	},
+    	{
+    		id: "CYP",
+    		short: "Cyprus",
+    		name: "Cyprus",
+    		copd: "0.10413754586096209",
+    		diabetes: "0.1437641443887331",
+    		ischemic: "0.10099394860002342",
+    		lungcancer: "0.11191866329926461",
+    		lri: "0.0771561211737761",
+    		stroke: "0.09687391739031719",
+    		nd: "0.04655774665187256"
+    	},
+    	{
+    		id: "DNK",
+    		short: "Den.",
+    		name: "Denmark",
+    		copd: "0.055264445467191906",
+    		diabetes: "0.08665304098029776",
+    		ischemic: "0.047819125392427185",
+    		lungcancer: "0.06170788419888812",
+    		lri: "0.04015832386259583",
+    		stroke: "0.050239564228813295",
+    		nd: "0.05874505384983486"
+    	},
+    	{
+    		id: "FIN",
+    		short: "Fin.",
+    		name: "Finland",
+    		copd: "0.016276750270823342",
+    		diabetes: "0.028231883348609942",
+    		ischemic: "0.014026970324473751",
+    		lungcancer: "0.018632748325026767",
+    		lri: "0.011575305436654141",
+    		stroke: "0.01448870749352961",
+    		nd: "0.039042359242096626"
+    	},
+    	{
+    		id: "FRA",
+    		short: "Fra.",
+    		name: "France",
+    		copd: "0.06967496904708692",
+    		diabetes: "0.10468313925846386",
+    		ischemic: "0.056122645300395006",
+    		lungcancer: "0.07681522981776885",
+    		lri: "0.05092105175991763",
+    		stroke: "0.05779369696756096",
+    		nd: "0.055988524978196334"
+    	},
+    	{
+    		id: "DEU",
+    		short: "Ger.",
+    		name: "Germany",
+    		copd: "0.07313255612839537",
+    		diabetes: "0.10928637108736773",
+    		ischemic: "0.06161046003158839",
+    		lungcancer: "0.08050760332654182",
+    		lri: "0.05350143861898854",
+    		stroke: "0.06488212933826974",
+    		nd: "0.058210351858427656"
+    	},
+    	{
+    		id: "GRC",
+    		short: "Gr.",
+    		name: "Greece",
+    		copd: "0.09363864600312156",
+    		diabetes: "0.13115307013540334",
+    		ischemic: "0.08015877313881724",
+    		lungcancer: "0.10096842800063402",
+    		lri: "0.06904058910189895",
+    		stroke: "0.07807769562511142",
+    		nd: "0.06496644094871172"
+    	},
+    	{
+    		id: "ISL",
+    		short: "Ice.",
+    		name: "Iceland",
+    		copd: "0.017293849100756733",
+    		diabetes: "0.029512955740553026",
+    		ischemic: "0.01511433067565806",
+    		lungcancer: "0.019687867320862182",
+    		lri: "0.012318679779829061",
+    		stroke: "0.014889299213851945",
+    		nd: "0.044560866246110845"
+    	},
+    	{
+    		id: "IRL",
+    		short: "Ire.",
+    		name: "Ireland",
+    		copd: "0.03740434870102424",
+    		diabetes: "0.06150427017882892",
+    		ischemic: "0.034883187872055126",
+    		lungcancer: "0.0423016887053626",
+    		lri: "0.026907535469920103",
+    		stroke: "0.033840631206146846",
+    		nd: "0.0463443072667598"
+    	},
+    	{
+    		id: "ISR",
+    		short: "Isr.",
+    		name: "Israel",
+    		copd: "0.13507617773024033",
+    		diabetes: "0.16828101176032226",
+    		ischemic: "0.10843689816250511",
+    		lungcancer: "0.14007049701191904",
+    		lri: "0.10121917025805874",
+    		stroke: "0.11834016150627427",
+    		nd: "0.07875094282879763"
+    	},
+    	{
+    		id: "ITA",
+    		short: "Ita.",
+    		name: "Italy",
+    		copd: "0.10258413144646662",
+    		diabetes: "0.13548336252385607",
+    		ischemic: "0.08036759068331002",
+    		lungcancer: "0.11325853414222023",
+    		lri: "0.08148263620425451",
+    		stroke: "0.0828025252136294",
+    		nd: "0.061138844116320416"
+    	},
+    	{
+    		id: "LUX",
+    		short: "Lux.",
+    		name: "Luxembourg",
+    		copd: "0.0578539873261196",
+    		diabetes: "0.09040495205325526",
+    		ischemic: "0.05060028922582876",
+    		lungcancer: "0.0645558346393733",
+    		lri: "0.042099830380376506",
+    		stroke: "0.05102781420678938",
+    		nd: "0.052640266514436505"
+    	},
+    	{
+    		id: "MLT",
+    		short: "Malta",
+    		name: "Malta",
+    		copd: "0.08323886797977317",
+    		diabetes: "0.12157651977086731",
+    		ischemic: "0.07365110598451287",
+    		lungcancer: "0.09100407107273761",
+    		lri: "0.06115012592211269",
+    		stroke: "0.07507317842314261",
+    		nd: "0.05776742363001794"
+    	},
+    	{
+    		id: "NLD",
+    		short: "Neth.",
+    		name: "Netherlands",
+    		copd: "0.0752147163685618",
+    		diabetes: "0.1123564007264475",
+    		ischemic: "0.06643040575644972",
+    		lungcancer: "0.08281349876231495",
+    		lri: "0.05504099087278384",
+    		stroke: "0.06657271579421965",
+    		nd: "0.05732885036535058"
+    	},
+    	{
+    		id: "NOR",
+    		short: "Nor.",
+    		name: "Norway",
+    		copd: "0.0248875390076849",
+    		diabetes: "0.0410804149443116",
+    		ischemic: "0.020915381886703367",
+    		lungcancer: "0.02822688798301091",
+    		lri: "0.017647447456474303",
+    		stroke: "0.020957925174338466",
+    		nd: "0.046020352458205044"
+    	},
+    	{
+    		id: "PRT",
+    		short: "Port.",
+    		name: "Portugal",
+    		copd: "0.04157682820507228",
+    		diabetes: "0.06622188942166495",
+    		ischemic: "0.036421636079025696",
+    		lungcancer: "0.04652919689592371",
+    		lri: "0.030036694196240117",
+    		stroke: "0.03638212230671543",
+    		nd: "0.040754060480030066"
+    	},
+    	{
+    		id: "ESP",
+    		short: "Spa.",
+    		name: "Spain",
+    		copd: "0.05522259830123048",
+    		diabetes: "0.08510343902586781",
+    		ischemic: "0.046798299333134626",
+    		lungcancer: "0.061271313829334116",
+    		lri: "0.04016246697027442",
+    		stroke: "0.04599747775760539",
+    		nd: "0.042483516926911796"
+    	},
+    	{
+    		id: "SWE",
+    		short: "Swe.",
+    		name: "Sweden",
+    		copd: "0.0172111965001229",
+    		diabetes: "0.029746989663095066",
+    		ischemic: "0.014574975996404187",
+    		lungcancer: "0.019559151460886378",
+    		lri: "0.012302119426550379",
+    		stroke: "0.014623656699553648",
+    		nd: "0.04650010890003397"
+    	},
+    	{
+    		id: "CHE",
+    		short: "Switz.",
+    		name: "Switzerland",
+    		copd: "0.05632277231160871",
+    		diabetes: "0.08782339878643391",
+    		ischemic: "0.04463964071866315",
+    		lungcancer: "0.06277109261578359",
+    		lri: "0.04093853954032797",
+    		stroke: "0.04627224454099472",
+    		nd: "0.054313396777490704"
+    	},
+    	{
+    		id: "GBR",
+    		short: "U.K.",
+    		name: "United Kingdom",
+    		copd: "0.055093388342621764",
+    		diabetes: "0.08558910352320878",
+    		ischemic: "0.050525577779536826",
+    		lungcancer: "0.06108161005089935",
+    		lri: "0.040814742931653915",
+    		stroke: "0.047289456353996506",
+    		nd: "0.05216017528924733"
+    	},
+    	{
+    		id: "ARG",
+    		short: "Arg.",
+    		name: "Argentina",
+    		copd: "0.0873615840632908",
+    		diabetes: "0.11705053651331576",
+    		ischemic: "0.0822535980397935",
+    		lungcancer: "0.09254121938661755",
+    		lri: "0.06470371101993916",
+    		stroke: "0.09339370069338127",
+    		nd: "0.050677768426237724"
+    	},
+    	{
+    		id: "CHL",
+    		short: "Chile",
+    		name: "Chile",
+    		copd: "0.15472851739426313",
+    		diabetes: "0.1753106050534959",
+    		ischemic: "0.13872919262852687",
+    		lungcancer: "0.1555074037806822",
+    		lri: "0.11734721515107896",
+    		stroke: "0.1505082348185602",
+    		nd: "0.08281783138578575"
+    	},
+    	{
+    		id: "URY",
+    		short: "Uru.",
+    		name: "Uruguay",
+    		copd: "0.05435803120493511",
+    		diabetes: "0.07971859425708087",
+    		ischemic: "0.05039086962927182",
+    		lungcancer: "0.05918738295176499",
+    		lri: "0.03988508410286232",
+    		stroke: "0.051736135227480884",
+    		nd: "0.0436832414668866"
+    	},
+    	{
+    		id: "CAN",
+    		short: "Can.",
+    		name: "Canada",
+    		copd: "0.0304668493521179",
+    		diabetes: "0.05068974063423596",
+    		ischemic: "0.02821789049697726",
+    		lungcancer: "0.0345425268161512",
+    		lri: "0.021859273999472063",
+    		stroke: "0.027025575093887415",
+    		nd: "0.045126962324998805"
+    	},
+    	{
+    		id: "USA",
+    		short: "United States of America",
+    		name: "United States of America",
+    		copd: "0.035413956873392154",
+    		diabetes: "0.05823692648089119",
+    		ischemic: "0.034421202970307124",
+    		lungcancer: "0.03991096066526951",
+    		lri: "0.025874667195292127",
+    		stroke: "0.03461727430104328",
+    		nd: "0.04615866422913006"
+    	},
+    	{
+    		id: "ATG",
+    		short: "A. and B.",
+    		name: "Antigua and Barbuda",
+    		copd: "0.11678303870267936",
+    		diabetes: "0.14975346198672018",
+    		ischemic: "0.11332209580984774",
+    		lungcancer: "0.12252323029886839",
+    		lri: "0.08753270412611873",
+    		stroke: "0.1274112611720938",
+    		nd: "0.06036168230425289"
+    	},
+    	{
+    		id: "BHS",
+    		short: "Bah.",
+    		name: "Bahamas",
+    		copd: "0.10136479974960995",
+    		diabetes: "0.13372636867119475",
+    		ischemic: "0.11223481669766396",
+    		lungcancer: "0.1074166427382415",
+    		lri: "0.07599927607187747",
+    		stroke: "0.12136368074137209",
+    		nd: "0.05355407520532544"
+    	},
+    	{
+    		id: "BRB",
+    		short: "Barb.",
+    		name: "Barbados",
+    		copd: "0.14305457683564438",
+    		diabetes: "0.17272175625877265",
+    		ischemic: "0.1299031465329433",
+    		lungcancer: "0.14711359915083794",
+    		lri: "0.10795620725839249",
+    		stroke: "0.14271044000464467",
+    		nd: "0.07452265523408848"
+    	},
+    	{
+    		id: "BLZ",
+    		short: "Belize",
+    		name: "Belize",
+    		copd: "0.13604235185986083",
+    		diabetes: "0.13311851904616306",
+    		ischemic: "0.12651215012505884",
+    		lungcancer: "0.12905430466418197",
+    		lri: "0.10507733767456",
+    		stroke: "0.146538705713496",
+    		nd: "0.062132780876729826"
+    	},
+    	{
+    		id: "CUB",
+    		short: "Cuba",
+    		name: "Cuba",
+    		copd: "0.11824272715484713",
+    		diabetes: "0.14616312951942456",
+    		ischemic: "0.1051745531950238",
+    		lungcancer: "0.12234440794325913",
+    		lri: "0.08851393500243779",
+    		stroke: "0.11778128926451716",
+    		nd: "0.06337585135406927"
+    	},
+    	{
+    		id: "DMA",
+    		short: "Domin.",
+    		name: "Dominica",
+    		copd: "0.1240483927876283",
+    		diabetes: "0.14496156463704693",
+    		ischemic: "0.1105099405285726",
+    		lungcancer: "0.12608527103154446",
+    		lri: "0.09370021118738484",
+    		stroke: "0.12429631879316073",
+    		nd: "0.056868947990469605"
+    	},
+    	{
+    		id: "DOM",
+    		short: "Dom. Rep.",
+    		name: "Dominican Rep.",
+    		copd: "0.11597363493306914",
+    		diabetes: "0.12603112449582815",
+    		ischemic: "0.11246407277686987",
+    		lungcancer: "0.11337738164157111",
+    		lri: "0.08839528638373151",
+    		stroke: "0.12849525739447068",
+    		nd: "0.05360253098629031"
+    	},
+    	{
+    		id: "GRD",
+    		short: "Gre.",
+    		name: "Grenada",
+    		copd: "0.14264500391829749",
+    		diabetes: "0.1649732347817811",
+    		ischemic: "0.14325620302935785",
+    		lungcancer: "0.1443594460039362",
+    		lri: "0.10805945463274458",
+    		stroke: "0.15749703955230335",
+    		nd: "0.06534976013991098"
+    	},
+    	{
+    		id: "GUY",
+    		short: "Guy.",
+    		name: "Guyana",
+    		copd: "0.13168120348689322",
+    		diabetes: "0.1457150179947367",
+    		ischemic: "0.13999873796007062",
+    		lungcancer: "0.13046679515007725",
+    		lri: "0.10060473112855452",
+    		stroke: "0.1555755873648131",
+    		nd: "0.06160120856584313"
+    	},
+    	{
+    		id: "HTI",
+    		short: "Haiti",
+    		name: "Haiti",
+    		copd: "0.06918662918043421",
+    		diabetes: "0.030787455389549474",
+    		ischemic: "0.045443463171859565",
+    		lungcancer: "0.04776723784928802",
+    		lri: "0.0546051584782132",
+    		stroke: "0.05254709089877989",
+    		nd: "0.023075792055410514"
+    	},
+    	{
+    		id: "JAM",
+    		short: "Jam.",
+    		name: "Jamaica",
+    		copd: "0.10205731533942541",
+    		diabetes: "0.12247473687064904",
+    		ischemic: "0.09028851495070907",
+    		lungcancer: "0.1045276699434308",
+    		lri: "0.07671180060175649",
+    		stroke: "0.10187889220708386",
+    		nd: "0.05029240716082168"
+    	},
+    	{
+    		id: "LCA",
+    		short: "St. L.",
+    		name: "Saint Lucia",
+    		copd: "0.14139101450846586",
+    		diabetes: "0.16396642129536476",
+    		ischemic: "0.1307527659774704",
+    		lungcancer: "0.143239644479483",
+    		lri: "0.10711184850549549",
+    		stroke: "0.14586290502980148",
+    		nd: "0.0705641721629992"
+    	},
+    	{
+    		id: "VCT",
+    		short: "Vct.",
+    		name: "Saint Vincent and the Grenadines",
+    		copd: "0.14004431525123703",
+    		diabetes: "0.15961827132121684",
+    		ischemic: "0.12875643714009943",
+    		lungcancer: "0.14050641004580727",
+    		lri: "0.1059842644524389",
+    		stroke: "0.148604487069336",
+    		nd: "0.06581915717148293"
+    	},
+    	{
+    		id: "SUR",
+    		short: "Suri.",
+    		name: "Suriname",
+    		copd: "0.13913494047530914",
+    		diabetes: "0.14842001254658135",
+    		ischemic: "0.13794742310946848",
+    		lungcancer: "0.13612743545254957",
+    		lri: "0.10641389887124965",
+    		stroke: "0.15457232791836736",
+    		nd: "0.06063442325566311"
+    	},
+    	{
+    		id: "TTO",
+    		short: "T.",
+    		name: "Trinidad and Tobago",
+    		copd: "0.14517186129270357",
+    		diabetes: "0.17179558151908095",
+    		ischemic: "0.1437545179723264",
+    		lungcancer: "0.14811054788976954",
+    		lri: "0.1101773029649535",
+    		stroke: "0.15342026520858848",
+    		nd: "0.06116516001517234"
+    	},
+    	{
+    		id: "BOL",
+    		short: "Bol.",
+    		name: "Bolivia",
+    		copd: "0.16038810243017063",
+    		diabetes: "0.12947818815840118",
+    		ischemic: "0.12795743842796045",
+    		lungcancer: "0.13826923392935886",
+    		lri: "0.12517048734753145",
+    		stroke: "0.15639033448537945",
+    		nd: "0.05561559304093931"
+    	},
+    	{
+    		id: "ECU",
+    		short: "Ecu.",
+    		name: "Ecuador",
+    		copd: "0.13466784984359687",
+    		diabetes: "0.15607184129774185",
+    		ischemic: "0.12600604854303532",
+    		lungcancer: "0.13539708180704743",
+    		lri: "0.10215878693273844",
+    		stroke: "0.14493286781179165",
+    		nd: "0.05636251007964574"
+    	},
+    	{
+    		id: "PER",
+    		short: "Peru",
+    		name: "Peru",
+    		copd: "0.19146090635731092",
+    		diabetes: "0.1663126520056521",
+    		ischemic: "0.14405802776573887",
+    		lungcancer: "0.1721465900999078",
+    		lri: "0.14982340595272287",
+    		stroke: "0.1804640850005827",
+    		nd: "0.0880056763538393"
+    	},
+    	{
+    		id: "COL",
+    		short: "Col.",
+    		name: "Colombia",
+    		copd: "0.14692946743844276",
+    		diabetes: "0.15283062505917705",
+    		ischemic: "0.12209289594722351",
+    		lungcancer: "0.1414666743421657",
+    		lri: "0.11186889943043363",
+    		stroke: "0.14319645975643958",
+    		nd: "0.06218212341080158"
+    	},
+    	{
+    		id: "CRI",
+    		short: "Co. Rica",
+    		name: "Costa Rica",
+    		copd: "0.11808208565765338",
+    		diabetes: "0.1453557281246075",
+    		ischemic: "0.11026256851341473",
+    		lungcancer: "0.1215611778326889",
+    		lri: "0.08857763663779619",
+    		stroke: "0.11527690910072914",
+    		nd: "0.06357331977046936"
+    	},
+    	{
+    		id: "SLV",
+    		short: "El Sal.",
+    		name: "El Salvador",
+    		copd: "0.14524607843729465",
+    		diabetes: "0.14298543728288593",
+    		ischemic: "0.11565205460100067",
+    		lungcancer: "0.1349639811207425",
+    		lri: "0.11130060780682009",
+    		stroke: "0.13557928718975856",
+    		nd: "0.052219385524125694"
+    	},
+    	{
+    		id: "GTM",
+    		short: "Gua.",
+    		name: "Guatemala",
+    		copd: "0.142766265903025",
+    		diabetes: "0.09272075740000069",
+    		ischemic: "0.09906215769944342",
+    		lungcancer: "0.11113369663451986",
+    		lri: "0.11410830744334392",
+    		stroke: "0.12205699048426141",
+    		nd: "0.04891304378870852"
+    	},
+    	{
+    		id: "HND",
+    		short: "Hon.",
+    		name: "Honduras",
+    		copd: "0.11333162872892459",
+    		diabetes: "0.06859880238967953",
+    		ischemic: "0.07726062932104329",
+    		lungcancer: "0.07997278920389989",
+    		lri: "0.09073792296689687",
+    		stroke: "0.0942936881214414",
+    		nd: "0.037764348328237524"
+    	},
+    	{
+    		id: "MEX",
+    		short: "Mex.",
+    		name: "Mexico",
+    		copd: "0.1313371590231316",
+    		diabetes: "0.14359482269972385",
+    		ischemic: "0.11721877096920298",
+    		lungcancer: "0.12745592056999627",
+    		lri: "0.10107132703760284",
+    		stroke: "0.13426564429786927",
+    		nd: "0.0551217498892857"
+    	},
+    	{
+    		id: "NIC",
+    		short: "Nic.",
+    		name: "Nicaragua",
+    		copd: "0.11235866680227642",
+    		diabetes: "0.07581312004066912",
+    		ischemic: "0.07810847664213895",
+    		lungcancer: "0.08845073007662561",
+    		lri: "0.08754804329191779",
+    		stroke: "0.09605542655089108",
+    		nd: "0.03798977112504736"
+    	},
+    	{
+    		id: "PAN",
+    		short: "Pan.",
+    		name: "Panama",
+    		copd: "0.08684783972113923",
+    		diabetes: "0.1081465151068443",
+    		ischemic: "0.07796919814161804",
+    		lungcancer: "0.08932212801749043",
+    		lri: "0.0651469081919968",
+    		stroke: "0.08528555899640358",
+    		nd: "0.045272553566808024"
+    	},
+    	{
+    		id: "VEN",
+    		short: "Ven.",
+    		name: "Venezuela",
+    		copd: "0.14787154019527232",
+    		diabetes: "0.17579637878187662",
+    		ischemic: "0.14759938356844543",
+    		lungcancer: "0.15078346128058678",
+    		lri: "0.11191783902075317",
+    		stroke: "0.16210222653208686",
+    		nd: "0.07165093673060935"
+    	},
+    	{
+    		id: "BRA",
+    		short: "Brazil",
+    		name: "Brazil",
+    		copd: "0.07460312698109424",
+    		diabetes: "0.0874940042573106",
+    		ischemic: "0.07762734928478833",
+    		lungcancer: "0.07683254225584266",
+    		lri: "0.05753212356859991",
+    		stroke: "0.08074185653159965",
+    		nd: "0.03846202698659433"
+    	},
+    	{
+    		id: "PRY",
+    		short: "Para.",
+    		name: "Paraguay",
+    		copd: "0.08130477740606168",
+    		diabetes: "0.07358514055826589",
+    		ischemic: "0.07139501671188522",
+    		lungcancer: "0.0757037897879835",
+    		lri: "0.061998138162861406",
+    		stroke: "0.08269784705726796",
+    		nd: "0.033640876295154956"
+    	},
+    	{
+    		id: "DZA",
+    		short: "Alg.",
+    		name: "Algeria",
+    		copd: "0.21313719856712926",
+    		diabetes: "0.2132363287658334",
+    		ischemic: "0.1953324393211708",
+    		lungcancer: "0.20618840004753183",
+    		lri: "0.16631276148088867",
+    		stroke: "0.21682937607959574",
+    		nd: "0.11322157865391155"
+    	},
+    	{
+    		id: "BHR",
+    		short: "Bah.",
+    		name: "Bahrain",
+    		copd: "0.329950620962577",
+    		diabetes: "0.23878572961894637",
+    		ischemic: "0.30938713892346903",
+    		lungcancer: "0.2831355554884898",
+    		lri: "0.26502721616301755",
+    		stroke: "0.3545604667155689",
+    		nd: "0.10409420530805635"
+    	},
+    	{
+    		id: "EGY",
+    		short: "Egy.",
+    		name: "Egypt",
+    		copd: "0.3543652880832436",
+    		diabetes: "0.24030308535245645",
+    		ischemic: "0.30621089925948786",
+    		lungcancer: "0.2921567849522761",
+    		lri: "0.2891299104378818",
+    		stroke: "0.34922514425793105",
+    		nd: "0.17874896887940905"
+    	},
+    	{
+    		id: "IRN",
+    		short: "Iran",
+    		name: "Islamic Rep. of Iran",
+    		copd: "0.23527739493967853",
+    		diabetes: "0.2228737509864187",
+    		ischemic: "0.20773343108015033",
+    		lungcancer: "0.22087614613064754",
+    		lri: "0.18840587899240663",
+    		stroke: "0.23238479453458444",
+    		nd: "0.11775747803374763"
+    	},
+    	{
+    		id: "IRQ",
+    		short: "Iraq",
+    		name: "Iraq",
+    		copd: "0.2845362236441012",
+    		diabetes: "0.2281379386109538",
+    		ischemic: "0.2571495318382883",
+    		lungcancer: "0.252242811126534",
+    		lri: "0.22776651069376963",
+    		stroke: "0.3005724017592412",
+    		nd: "0.14538899219405269"
+    	},
+    	{
+    		id: "JOR",
+    		short: "Jor.",
+    		name: "Jordan",
+    		copd: "0.20325526461754437",
+    		diabetes: "0.21236945692189582",
+    		ischemic: "0.2110984439894415",
+    		lungcancer: "0.19917253465500026",
+    		lri: "0.15751895553458514",
+    		stroke: "0.21806326576297266",
+    		nd: "0.10173179529573158"
+    	},
+    	{
+    		id: "KWT",
+    		short: "Ku.",
+    		name: "Kuwait",
+    		copd: "0.33705764594922233",
+    		diabetes: "0.23966016768676293",
+    		ischemic: "0.31217434397033905",
+    		lungcancer: "0.2866894932100507",
+    		lri: "0.2708795723006588",
+    		stroke: "0.32638043858026605",
+    		nd: "0.15844000178205486"
+    	},
+    	{
+    		id: "LBN",
+    		short: "Leb.",
+    		name: "Lebanon",
+    		copd: "0.1938895822994677",
+    		diabetes: "0.2087073678202637",
+    		ischemic: "0.179156740721467",
+    		lungcancer: "0.19252601785926057",
+    		lri: "0.14903339243829325",
+    		stroke: "0.18289677033358767",
+    		nd: "0.09401845246125708"
+    	},
+    	{
+    		id: "LBY",
+    		short: "Lib.",
+    		name: "Libya",
+    		copd: "0.24196484469504745",
+    		diabetes: "0.22182350475492338",
+    		ischemic: "0.22962662142041562",
+    		lungcancer: "0.22710168296272637",
+    		lri: "0.19003668099674195",
+    		stroke: "0.2545321404326257",
+    		nd: "0.1090718288658306"
+    	},
+    	{
+    		id: "MAR",
+    		short: "Mor.",
+    		name: "Morocco",
+    		copd: "0.22301354962075423",
+    		diabetes: "0.20719687370931203",
+    		ischemic: "0.20690810796066766",
+    		lungcancer: "0.20973052413895324",
+    		lri: "0.17392805629625077",
+    		stroke: "0.2309636619408277",
+    		nd: "0.11783521371051572"
+    	},
+    	{
+    		id: "PSE",
+    		short: null,
+    		name: "State of Palestine",
+    		copd: "0.2049145544971779",
+    		diabetes: "0.20922453523832107",
+    		ischemic: "0.2055433548908422",
+    		lungcancer: "0.1989230951477552",
+    		lri: "0.15924189841054084",
+    		stroke: "0.21443885710633329",
+    		nd: "0.08441888548720801"
+    	},
+    	{
+    		id: "OMN",
+    		short: "Oman",
+    		name: "Oman",
+    		copd: "0.269305098617797",
+    		diabetes: "0.2296731395406402",
+    		ischemic: "0.2591581096749809",
+    		lungcancer: "0.24605455339305485",
+    		lri: "0.21397080103207536",
+    		stroke: "0.2910541248623792",
+    		nd: "0.1270460954730611"
+    	},
+    	{
+    		id: "QAT",
+    		short: "Qatar",
+    		name: "Qatar",
+    		copd: "0.3779314927810239",
+    		diabetes: "0.2428480873080106",
+    		ischemic: "0.3463658418169393",
+    		lungcancer: "0.3056804014558035",
+    		lri: "0.3114675527352863",
+    		stroke: "0.43331200438735734",
+    		nd: "0.18264324242042212"
+    	},
+    	{
+    		id: "SAU",
+    		short: "S. Ara.",
+    		name: "Saudi Arabia",
+    		copd: "0.33618444300399636",
+    		diabetes: "0.23710584181236052",
+    		ischemic: "0.3289366859595807",
+    		lungcancer: "0.2823516555510117",
+    		lri: "0.2704511440147125",
+    		stroke: "0.37754061514297105",
+    		nd: "0.1474401042458185"
+    	},
+    	{
+    		id: "SYR",
+    		short: "Syr.",
+    		name: "Syrian Arab Rep.",
+    		copd: "0.20150512478911947",
+    		diabetes: "0.21233054273617188",
+    		ischemic: "0.20602363684272412",
+    		lungcancer: "0.19952373804428353",
+    		lri: "0.1585561048499404",
+    		stroke: "0.22576203819665092",
+    		nd: "0.10211515762969556"
+    	},
+    	{
+    		id: "TUN",
+    		short: "Tuni.",
+    		name: "Tunisia",
+    		copd: "0.20181303916470908",
+    		diabetes: "0.21088834368163292",
+    		ischemic: "0.18426554973411616",
+    		lungcancer: "0.198426552106476",
+    		lri: "0.1556396976245287",
+    		stroke: "0.2027117923264709",
+    		nd: "0.1044049516352934"
+    	},
+    	{
+    		id: "TUR",
+    		short: "Tur.",
+    		name: "Türkiye",
+    		copd: "0.17701616283497215",
+    		diabetes: "0.19830843709922039",
+    		ischemic: "0.16267211387005187",
+    		lungcancer: "0.1775618861189364",
+    		lri: "0.13468710359211616",
+    		stroke: "0.17572833099178065",
+    		nd: "0.08809314879152683"
+    	},
+    	{
+    		id: "ARE",
+    		short: "U.A.E.",
+    		name: "United Arab Emirates",
+    		copd: "0.26770159082216083",
+    		diabetes: "0.23148259693784182",
+    		ischemic: "0.3249670090074592",
+    		lungcancer: "0.2468675820499459",
+    		lri: "0.21123050091709727",
+    		stroke: "0.3775423512219125",
+    		nd: "0.12791268067645722"
+    	},
+    	{
+    		id: "YEM",
+    		short: "Yemen",
+    		name: "Yemen",
+    		copd: "0.20547021072787414",
+    		diabetes: "0.12498412064173092",
+    		ischemic: "0.1585588303660941",
+    		lungcancer: "0.15561514201774748",
+    		lri: "0.16243044219551483",
+    		stroke: "0.176959057070131",
+    		nd: "0.07279453558178162"
+    	},
+    	{
+    		id: "AFG",
+    		short: "Afg.",
+    		name: "Afghanistan",
+    		copd: "0.1391705965337115",
+    		diabetes: "0.05772357855351105",
+    		ischemic: "0.08898544922284747",
+    		lungcancer: "0.08671366877694586",
+    		lri: "0.1078260804348944",
+    		stroke: "0.09892473741144005",
+    		nd: "0.040164635459282075"
+    	},
+    	{
+    		id: "BGD",
+    		short: "Bangl.",
+    		name: "Bangladesh",
+    		copd: "0.23165673737040762",
+    		diabetes: "0.1083762690866323",
+    		ischemic: "0.14827466697292857",
+    		lungcancer: "0.15502493316385726",
+    		lri: "0.1840635294573584",
+    		stroke: "0.1687911708606509",
+    		nd: "0.07834551118563005"
+    	},
+    	{
+    		id: "BTN",
+    		short: "Bhu.",
+    		name: "Bhutan",
+    		copd: "0.17968421940163465",
+    		diabetes: "0.10365117489445898",
+    		ischemic: "0.12261672566396324",
+    		lungcancer: "0.12908784479442953",
+    		lri: "0.14049625189296197",
+    		stroke: "0.14025078928830823",
+    		nd: "0.05629703553620652"
+    	},
+    	{
+    		id: "IND",
+    		short: "India",
+    		name: "India",
+    		copd: "0.3017056743306487",
+    		diabetes: "0.16230739322195836",
+    		ischemic: "0.21664531672917894",
+    		lungcancer: "0.21286224449276453",
+    		lri: "0.2437121804067776",
+    		stroke: "0.23398905727993158",
+    		nd: "0.10878121518224856"
+    	},
+    	{
+    		id: "NPL",
+    		short: "Nep.",
+    		name: "Nepal",
+    		copd: "0.2587527299053213",
+    		diabetes: "0.11574862917200399",
+    		ischemic: "0.1598032962772534",
+    		lungcancer: "0.16204510765780142",
+    		lri: "0.20483722168872678",
+    		stroke: "0.18563470789273434",
+    		nd: "0.08470921453949205"
+    	},
+    	{
+    		id: "PAK",
+    		short: "Pak.",
+    		name: "Pakistan",
+    		copd: "0.24554628788879593",
+    		diabetes: "0.12753784340079022",
+    		ischemic: "0.18271548100868862",
+    		lungcancer: "0.17694725390526453",
+    		lri: "0.19164818087207264",
+    		stroke: "0.1959626984420037",
+    		nd: "0.08777365438362868"
+    	},
+    	{
+    		id: "AGO",
+    		short: "An.",
+    		name: "Angola",
+    		copd: "0.13939283575501832",
+    		diabetes: "0.09029285696627232",
+    		ischemic: "0.10865948168179083",
+    		lungcancer: "0.10679198888436656",
+    		lri: "0.11029743904969176",
+    		stroke: "0.12765222332877751",
+    		nd: "0.056588704456427504"
+    	},
+    	{
+    		id: "CAF",
+    		short: "C.A.F.",
+    		name: "Central African Rep.",
+    		copd: "0.08683762136353132",
+    		diabetes: "0.034914292573070334",
+    		ischemic: "0.05109238075575633",
+    		lungcancer: "0.05084792068548702",
+    		lri: "0.06569970763074767",
+    		stroke: "0.058438467237465444",
+    		nd: "0.024372644121860867"
+    	},
+    	{
+    		id: "COG",
+    		short: "Congo",
+    		name: "Congo",
+    		copd: "0.19682213706153245",
+    		diabetes: "0.12582313759343397",
+    		ischemic: "0.15949560836072854",
+    		lungcancer: "0.15752990925190655",
+    		lri: "0.15806066762472165",
+    		stroke: "0.19141664524019558",
+    		nd: "0.1064365971269849"
+    	},
+    	{
+    		id: "COD",
+    		short: "D.R.C.",
+    		name: "Dem. Rep. of the Congo",
+    		copd: "0.0983460249803283",
+    		diabetes: "0.04454003258806872",
+    		ischemic: "0.05873075969799294",
+    		lungcancer: "0.06290862787392157",
+    		lri: "0.07979779044666938",
+    		stroke: "0.06979020737893925",
+    		nd: "0.031020379822013222"
+    	},
+    	{
+    		id: "GNQ",
+    		short: "Eq. Gui.",
+    		name: "Equatorial Guinea",
+    		copd: "0.2533334423542981",
+    		diabetes: "0.19133381554497544",
+    		ischemic: "0.21241595590842388",
+    		lungcancer: "0.21759305038910998",
+    		lri: "0.2036702943983145",
+    		stroke: "0.2546499409809851",
+    		nd: "0.16701770922586026"
+    	},
+    	{
+    		id: "GAB",
+    		short: "Gabon",
+    		name: "Gabon",
+    		copd: "0.22684478422571225",
+    		diabetes: "0.20165148991151316",
+    		ischemic: "0.21007833021579647",
+    		lungcancer: "0.20859565854582823",
+    		lri: "0.1780723942880494",
+    		stroke: "0.24535911887287312",
+    		nd: "0.13788877140512698"
+    	},
+    	{
+    		id: "BDI",
+    		short: "Buru.",
+    		name: "Burundi",
+    		copd: "0.06525056528252618",
+    		diabetes: "0.025608578957534076",
+    		ischemic: "0.03639358360037601",
+    		lungcancer: "0.03753055214693999",
+    		lri: "0.04944708511405504",
+    		stroke: "0.04211597281330858",
+    		nd: "0.018337206491169405"
+    	},
+    	{
+    		id: "COM",
+    		short: "Como.",
+    		name: "Comoros",
+    		copd: "0.07058202776132093",
+    		diabetes: "0.03521334475658849",
+    		ischemic: "0.043595178288769826",
+    		lungcancer: "0.04862014577045649",
+    		lri: "0.05524606829959704",
+    		stroke: "0.052359533752085324",
+    		nd: "0.027535024875383396"
+    	},
+    	{
+    		id: "DJI",
+    		short: "Dji.",
+    		name: "Djibouti",
+    		copd: "0.22813563878458715",
+    		diabetes: "0.1617653052173202",
+    		ischemic: "0.19583514052085502",
+    		lungcancer: "0.1855413217842335",
+    		lri: "0.18075703352277694",
+    		stroke: "0.2300710318377014",
+    		nd: "0.1150166047455172"
+    	},
+    	{
+    		id: "ERI",
+    		short: "Eri.",
+    		name: "Eritrea",
+    		copd: "0.14282491401691205",
+    		diabetes: "0.06600878206148066",
+    		ischemic: "0.0953243777754116",
+    		lungcancer: "0.09101876443004916",
+    		lri: "0.11485684475845126",
+    		stroke: "0.10997163977417543",
+    		nd: "0.0527475829812849"
+    	},
+    	{
+    		id: "ETH",
+    		short: "Ethi.",
+    		name: "Ethiopia",
+    		copd: "0.08112876073160923",
+    		diabetes: "0.03775522822722594",
+    		ischemic: "0.04900815857763164",
+    		lungcancer: "0.05377186142080398",
+    		lri: "0.058798131695527944",
+    		stroke: "0.05701888877352487",
+    		nd: "0.02176651630546188"
+    	},
+    	{
+    		id: "KEN",
+    		short: "Ken.",
+    		name: "Kenya",
+    		copd: "0.08973386209760516",
+    		diabetes: "0.058341073146518214",
+    		ischemic: "0.06878046709063597",
+    		lungcancer: "0.071777228854807",
+    		lri: "0.06838563707452089",
+    		stroke: "0.08188272886437271",
+    		nd: "0.036728159143940835"
+    	},
+    	{
+    		id: "MDG",
+    		short: "Mada.",
+    		name: "Madagascar",
+    		copd: "0.05530352196213345",
+    		diabetes: "0.025162816261061313",
+    		ischemic: "0.037498712294222594",
+    		lungcancer: "0.036653481318058456",
+    		lri: "0.04421134606546438",
+    		stroke: "0.043246372264787565",
+    		nd: "0.02067201221854119"
+    	},
+    	{
+    		id: "MWI",
+    		short: "Mala.",
+    		name: "Malawi",
+    		copd: "0.061403444930972335",
+    		diabetes: "0.026670953167514132",
+    		ischemic: "0.036438952004322005",
+    		lungcancer: "0.03794862390277921",
+    		lri: "0.04838965472199829",
+    		stroke: "0.04195844703384086",
+    		nd: "0.02128801031670802"
+    	},
+    	{
+    		id: "MUS",
+    		short: "Maur.",
+    		name: "Mauritius",
+    		copd: "0.0980250104821854",
+    		diabetes: "0.1332825143995367",
+    		ischemic: "0.10360632800220262",
+    		lungcancer: "0.10457039058348229",
+    		lri: "0.07289897478047973",
+    		stroke: "0.1116542289540285",
+    		nd: "0.05528536414678733"
+    	},
+    	{
+    		id: "MOZ",
+    		short: "Moz.",
+    		name: "Mozambique",
+    		copd: "0.048543530380465716",
+    		diabetes: "0.0198823584939401",
+    		ischemic: "0.027433217603465003",
+    		lungcancer: "0.02785435504894557",
+    		lri: "0.036892211509084345",
+    		stroke: "0.033011731201425",
+    		nd: "0.01296700719413888"
+    	},
+    	{
+    		id: "RWA",
+    		short: "Rwa.",
+    		name: "Rwanda",
+    		copd: "0.11208455461791801",
+    		diabetes: "0.050662462977689955",
+    		ischemic: "0.06721588350118043",
+    		lungcancer: "0.07298313316806601",
+    		lri: "0.09136444005954156",
+    		stroke: "0.08151399915620922",
+    		nd: "0.04258257780432722"
+    	},
+    	{
+    		id: "SYC",
+    		short: "Seych.",
+    		name: "Seychelles",
+    		copd: "0.10319958264912027",
+    		diabetes: "0.14058175194826694",
+    		ischemic: "0.11401417692464962",
+    		lungcancer: "0.11034038575272037",
+    		lri: "0.07674966714769416",
+    		stroke: "0.12203303055172116",
+    		nd: "0.06589843020689334"
+    	},
+    	{
+    		id: "SOM",
+    		short: "Som.",
+    		name: "Somalia",
+    		copd: "0.02488232175945004",
+    		diabetes: "0.009090853580158044",
+    		ischemic: "0.013410720191340748",
+    		lungcancer: "0.013623887393344166",
+    		lri: "0.016851938722013862",
+    		stroke: "0.014775737329400043",
+    		nd: "0.006743032260464832"
+    	},
+    	{
+    		id: "TZA",
+    		short: "Tanz.",
+    		name: "United Rep. of Tanzania",
+    		copd: "0.08020058766460372",
+    		diabetes: "0.03729094342543866",
+    		ischemic: "0.04950034454991289",
+    		lungcancer: "0.05395867476509112",
+    		lri: "0.06436244025852096",
+    		stroke: "0.057835023482239734",
+    		nd: "0.02830290499765075"
+    	},
+    	{
+    		id: "UGA",
+    		short: "Ug.",
+    		name: "Uganda",
+    		copd: "0.10404018134496347",
+    		diabetes: "0.04619569233027621",
+    		ischemic: "0.06116502167843743",
+    		lungcancer: "0.06422699906868867",
+    		lri: "0.08297487340652894",
+    		stroke: "0.07288225527913171",
+    		nd: "0.03546537614208103"
+    	},
+    	{
+    		id: "ZMB",
+    		short: "Zambia",
+    		name: "Zambia",
+    		copd: "0.11365817953763954",
+    		diabetes: "0.06345375564348613",
+    		ischemic: "0.08556095885047707",
+    		lungcancer: "0.08394448029342404",
+    		lri: "0.09062188987642879",
+    		stroke: "0.10031565294424977",
+    		nd: "0.05369485883805671"
+    	},
+    	{
+    		id: "BWA",
+    		short: "Bots.",
+    		name: "Botswana",
+    		copd: "0.15238019366740788",
+    		diabetes: "0.12677360742709526",
+    		ischemic: "0.1461321361915338",
+    		lungcancer: "0.13748214320764865",
+    		lri: "0.11931268449621309",
+    		stroke: "0.16370959260546739",
+    		nd: "0.11239841384359228"
+    	},
+    	{
+    		id: "LSO",
+    		short: "Les.",
+    		name: "Lesotho",
+    		copd: "0.1327978563593601",
+    		diabetes: "0.07809464312137639",
+    		ischemic: "0.10265553295008237",
+    		lungcancer: "0.1019257156124758",
+    		lri: "0.10616033447486468",
+    		stroke: "0.11681795894357304",
+    		nd: "0.07074991863718907"
+    	},
+    	{
+    		id: "NAM",
+    		short: "Nam.",
+    		name: "Namibia",
+    		copd: "0.1436062462242741",
+    		diabetes: "0.10980966724536738",
+    		ischemic: "0.1207534233259761",
+    		lungcancer: "0.12473301328951318",
+    		lri: "0.11239182855951832",
+    		stroke: "0.1382359299074811",
+    		nd: "0.08327242119758925"
+    	},
+    	{
+    		id: "ZAF",
+    		short: "S. Africa",
+    		name: "South Africa",
+    		copd: "0.17954427595779807",
+    		diabetes: "0.16969420586117326",
+    		ischemic: "0.16686341391626436",
+    		lungcancer: "0.16438272948484042",
+    		lri: "0.14326085776531217",
+    		stroke: "0.18409313111701733",
+    		nd: "0.1125908019475322"
+    	},
+    	{
+    		id: "SWZ",
+    		short: "Eswatini",
+    		name: "Eswatini",
+    		copd: "0.1315979244928909",
+    		diabetes: "0.09296316361974895",
+    		ischemic: "0.11539359082807828",
+    		lungcancer: "0.11038630339204245",
+    		lri: "0.10335534055437148",
+    		stroke: "0.13082626228713756",
+    		nd: "0.061891947480252105"
+    	},
+    	{
+    		id: "ZWE",
+    		short: "Zimb.",
+    		name: "Zimbabwe",
+    		copd: "0.0920761923206073",
+    		diabetes: "0.04705176737539058",
+    		ischemic: "0.0629558553659012",
+    		lungcancer: "0.06423090154133443",
+    		lri: "0.07325431009365228",
+    		stroke: "0.07408896208762036",
+    		nd: "0.04402661663410039"
+    	},
+    	{
+    		id: "BEN",
+    		short: "Benin",
+    		name: "Benin",
+    		copd: "0.12313568545405709",
+    		diabetes: "0.050932796332251624",
+    		ischemic: "0.06871937888566937",
+    		lungcancer: "0.07560505817026052",
+    		lri: "0.09768853187885546",
+    		stroke: "0.08055802658104162",
+    		nd: "0.038088617687350446"
+    	},
+    	{
+    		id: "BFA",
+    		short: "B.F.",
+    		name: "Burkina Faso",
+    		copd: "0.09185631218042956",
+    		diabetes: "0.036203222030650455",
+    		ischemic: "0.04868827461154799",
+    		lungcancer: "0.052432385868874845",
+    		lri: "0.06872448803354521",
+    		stroke: "0.05630429608389586",
+    		nd: "0.027750465694720977"
+    	},
+    	{
+    		id: "CMR",
+    		short: "Cam.",
+    		name: "Cameroon",
+    		copd: "0.2376624036246621",
+    		diabetes: "0.11608861543223015",
+    		ischemic: "0.15592476381440268",
+    		lungcancer: "0.1621153534989052",
+    		lri: "0.19399460483103992",
+    		stroke: "0.1886526337701583",
+    		nd: "0.11034430327350016"
+    	},
+    	{
+    		id: "CPV",
+    		short: "C. Verde",
+    		name: "Cabo Verde",
+    		copd: "0.2684183943341506",
+    		diabetes: "0.17956011416145784",
+    		ischemic: "0.1848771091172364",
+    		lungcancer: "0.21694158338178507",
+    		lri: "0.21514919541122038",
+    		stroke: "0.23230072291444556",
+    		nd: "0.13889511426428128"
+    	},
+    	{
+    		id: "TCD",
+    		short: "Chad",
+    		name: "Chad",
+    		copd: "0.09564581443367444",
+    		diabetes: "0.035075507375627195",
+    		ischemic: "0.04881254284789931",
+    		lungcancer: "0.0532374689997928",
+    		lri: "0.06887087099251293",
+    		stroke: "0.05584779898163628",
+    		nd: "0.023851436944784036"
+    	},
+    	{
+    		id: "CIV",
+    		short: "Ivo. Co.",
+    		name: "Côte d’Ivoire",
+    		copd: "0.17447039730124927",
+    		diabetes: "0.0770510334875414",
+    		ischemic: "0.1073051338045513",
+    		lungcancer: "0.11139826139926806",
+    		lri: "0.13805065018635398",
+    		stroke: "0.12709643431337891",
+    		nd: "0.0646111317547849"
+    	},
+    	{
+    		id: "GMB",
+    		short: "Gamb.",
+    		name: "Gambia",
+    		copd: "0.15624828238587898",
+    		diabetes: "0.06439762381858384",
+    		ischemic: "0.08554211702240908",
+    		lungcancer: "0.0938049028342259",
+    		lri: "0.1267292931216578",
+    		stroke: "0.1028676046245879",
+    		nd: "0.05678351435577445"
+    	},
+    	{
+    		id: "GHA",
+    		short: "Gha.",
+    		name: "Ghana",
+    		copd: "0.23924780093157863",
+    		diabetes: "0.13268073898816382",
+    		ischemic: "0.1660199423241605",
+    		lungcancer: "0.17501835059878532",
+    		lri: "0.1949171082891912",
+    		stroke: "0.20270406832339116",
+    		nd: "0.08662692455832244"
+    	},
+    	{
+    		id: "GIN",
+    		short: "Guinea",
+    		name: "Guinea",
+    		copd: "0.10885044555706797",
+    		diabetes: "0.041437070958574074",
+    		ischemic: "0.0559748884382727",
+    		lungcancer: "0.06362490546672993",
+    		lri: "0.08357078712575697",
+    		stroke: "0.06562128786630268",
+    		nd: "0.029851902796923627"
+    	},
+    	{
+    		id: "GNB",
+    		short: "Gui.-B.",
+    		name: "Guinea-Bissau",
+    		copd: "0.12257750765777656",
+    		diabetes: "0.04778945142741775",
+    		ischemic: "0.06995048215230874",
+    		lungcancer: "0.07200236033525692",
+    		lri: "0.09749136623468647",
+    		stroke: "0.08246727529946708",
+    		nd: "0.039165305172427195"
+    	},
+    	{
+    		id: "LBR",
+    		short: "Libe.",
+    		name: "Liberia",
+    		copd: "0.12619286532267096",
+    		diabetes: "0.05169005527785119",
+    		ischemic: "0.07018646873066436",
+    		lungcancer: "0.0772437956233384",
+    		lri: "0.1025707761050547",
+    		stroke: "0.08399191626159735",
+    		nd: "0.04617988531554155"
+    	},
+    	{
+    		id: "MLI",
+    		short: "Mali",
+    		name: "Mali",
+    		copd: "0.10196725473706711",
+    		diabetes: "0.03631463829094609",
+    		ischemic: "0.048316488910236204",
+    		lungcancer: "0.05531137803083116",
+    		lri: "0.07365726075676332",
+    		stroke: "0.05601501642238344",
+    		nd: "0.028804715138940545"
+    	},
+    	{
+    		id: "MRT",
+    		short: "Mau.",
+    		name: "Mauritania",
+    		copd: "0.26328934078496075",
+    		diabetes: "0.13288346839529847",
+    		ischemic: "0.16092159818095145",
+    		lungcancer: "0.18174769311941757",
+    		lri: "0.21288602258516176",
+    		stroke: "0.19889469663850912",
+    		nd: "0.12220765567547943"
+    	},
+    	{
+    		id: "NER",
+    		short: "Niger",
+    		name: "Niger",
+    		copd: "0.08662339197260965",
+    		diabetes: "0.031022330474017215",
+    		ischemic: "0.04354435938819266",
+    		lungcancer: "0.04779635844690053",
+    		lri: "0.06101264619779786",
+    		stroke: "0.048477427993353195",
+    		nd: "0.02630746206963577"
+    	},
+    	{
+    		id: "NGA",
+    		short: "Nig.",
+    		name: "Nigeria",
+    		copd: "0.22374928616366327",
+    		diabetes: "0.12453223049171776",
+    		ischemic: "0.14361323459186365",
+    		lungcancer: "0.16125904213310358",
+    		lri: "0.14819954981095682",
+    		stroke: "0.16576323878268295",
+    		nd: "0.07487704843662651"
+    	},
+    	{
+    		id: "STP",
+    		short: "S.T. and P.",
+    		name: "Sao Tome and Principe",
+    		copd: "0.14761020730494454",
+    		diabetes: "0.08957263437593352",
+    		ischemic: "0.10035352829031631",
+    		lungcancer: "0.11044829023103678",
+    		lri: "0.11735425702505718",
+    		stroke: "0.12420057028759487",
+    		nd: "0.06528426965737749"
+    	},
+    	{
+    		id: "SEN",
+    		short: "Sen.",
+    		name: "Senegal",
+    		copd: "0.16945076783403767",
+    		diabetes: "0.07065679019383922",
+    		ischemic: "0.09133078484626889",
+    		lungcancer: "0.10363470723991196",
+    		lri: "0.13296205098707128",
+    		stroke: "0.11103858993857674",
+    		nd: "0.06280900817783228"
+    	},
+    	{
+    		id: "SLE",
+    		short: "S. Leone",
+    		name: "Sierra Leone",
+    		copd: "0.11422240601921083",
+    		diabetes: "0.0442563505398683",
+    		ischemic: "0.060639879334354094",
+    		lungcancer: "0.06789687131368213",
+    		lri: "0.0897201052392797",
+    		stroke: "0.07027189250393072",
+    		nd: "0.03206009432736688"
+    	},
+    	{
+    		id: "TGO",
+    		short: "Togo",
+    		name: "Togo",
+    		copd: "0.14205421345252017",
+    		diabetes: "0.062492366733633925",
+    		ischemic: "0.08843792510378001",
+    		lungcancer: "0.09175818466656609",
+    		lri: "0.11580943051302431",
+    		stroke: "0.10582270345988086",
+    		nd: "0.05064398389766209"
+    	},
+    	{
+    		id: "ASM",
+    		short: null,
+    		name: "American Samoa",
+    		copd: "0.03544328623755645",
+    		diabetes: "0.043293242484018425",
+    		ischemic: "0.040501896283259335",
+    		lungcancer: "0.03612977341171057",
+    		lri: "0.026786309819187455",
+    		stroke: "0.0436169832061087",
+    		nd: "0.02470907543105068"
+    	},
+    	{
+    		id: "BMU",
+    		short: null,
+    		name: "Bermuda",
+    		copd: "0.03239555639103599",
+    		diabetes: "0.05127907162222495",
+    		ischemic: "0.02998685953769968",
+    		lungcancer: "0.0361468467571846",
+    		lri: "0.023530646809503765",
+    		stroke: "0.03186173831191999",
+    		nd: "0.03838356326862121"
+    	},
+    	{
+    		id: "#N/A",
+    		name: "Cook Isl.",
+    		copd: "0.029506859862262765",
+    		diabetes: "0.04287763579111932",
+    		ischemic: "0.032761806864458926",
+    		lungcancer: "0.03155613229749715",
+    		lri: "0.02146928545375408",
+    		stroke: "0.03389293727619151",
+    		nd: "0.03097330536387142"
+    	},
+    	{
+    		id: "GRL",
+    		short: null,
+    		name: "Greenland",
+    		copd: "0.026933647619856522",
+    		diabetes: "0.04202760874350533",
+    		ischemic: "0.03162723527931689",
+    		lungcancer: "0.02988636227091358",
+    		lri: "0.019579143849592664",
+    		stroke: "0.03201883647016912",
+    		nd: "0.04163871447911491"
+    	},
+    	{
+    		id: "GUM",
+    		short: null,
+    		name: "Guam",
+    		copd: "0.044363513451416155",
+    		diabetes: "0.06672163477009178",
+    		ischemic: "0.05122272615941053",
+    		lungcancer: "0.04865550891386346",
+    		lri: "0.03329117908420353",
+    		stroke: "0.05489219234885177",
+    		nd: "0.037950473390285046"
+    	},
+    	{
+    		id: "MCO",
+    		short: "Mo.",
+    		name: "Monaco",
+    		copd: "0.07185514606607706",
+    		diabetes: "0.10832403114625075",
+    		ischemic: "0.05914238474299082",
+    		lungcancer: "0.07925374725798685",
+    		lri: "0.052523618922271496",
+    		stroke: "0.06025905698929279",
+    		nd: "0.04829329507351514"
+    	},
+    	{
+    		id: "NRU",
+    		short: "Nauru",
+    		name: "Nauru",
+    		copd: "0.02566432382423538",
+    		diabetes: "0.032982140520995344",
+    		ischemic: "0.038970163744444154",
+    		lungcancer: "0.02641547324676535",
+    		lri: "0.020691288311322026",
+    		stroke: "0.04260788311337005",
+    		nd: "0.024673465428666625"
+    	},
+    	{
+    		id: "NIU",
+    		short: null,
+    		name: "Niue",
+    		copd: "0.0330837544309512",
+    		diabetes: "0.047267824340410304",
+    		ischemic: "0.036761939551745344",
+    		lungcancer: "0.03545994320160608",
+    		lri: "0.02474686433121288",
+    		stroke: "0.03891528216098709",
+    		nd: "0.03253060100687016"
+    	},
+    	{
+    		id: "#N/A",
+    		name: "Northern Mariana Islands",
+    		copd: "0.0488500890169842",
+    		diabetes: "0.0642595265981167",
+    		ischemic: "0.061132274122903174",
+    		lungcancer: "0.05132202842431597",
+    		lri: "0.03640483173429607",
+    		stroke: "0.06493646601704002",
+    		nd: "0.03170329861755527"
+    	},
+    	{
+    		id: "PLW",
+    		short: "Palau",
+    		name: "Palau",
+    		copd: "0.027918448531346358",
+    		diabetes: "0.04628387065481152",
+    		ischemic: "0.03993987190394558",
+    		lungcancer: "0.03163174317373088",
+    		lri: "0.020563980443314374",
+    		stroke: "0.040858411913237226",
+    		nd: "0.043286951611099744"
+    	},
+    	{
+    		id: "KNA",
+    		short: "Kna.",
+    		name: "Saint Kitts and Nevis",
+    		copd: "0.04799162152345526",
+    		diabetes: "0.07303673614865511",
+    		ischemic: "0.05484813891867584",
+    		lungcancer: "0.052957737438513924",
+    		lri: "0.03533172099408499",
+    		stroke: "0.05795076504286958",
+    		nd: "0.04213778390081307"
+    	},
+    	{
+    		id: "SMR",
+    		short: null,
+    		name: "San Marino",
+    		copd: "0.056213849962121594",
+    		diabetes: "0.08784966653796196",
+    		ischemic: "0.04694689050497687",
+    		lungcancer: "0.06264986963525411",
+    		lri: "0.04086667942030892",
+    		stroke: "0.04745952482927349",
+    		nd: "0.0510223186822824"
+    	},
+    	{
+    		id: "TKL",
+    		short: null,
+    		name: "Tokelau",
+    		copd: "0.02639920606198975",
+    		diabetes: "0.043639773782429434",
+    		ischemic: "0.03201676656566448",
+    		lungcancer: "0.02995130252912202",
+    		lri: "0.01977601015279568",
+    		stroke: "0.03342863169077327",
+    		nd: "0.040370895093869"
+    	},
+    	{
+    		id: "TUV",
+    		short: null,
+    		name: "Tuvalu",
+    		copd: "0.033008633746277743",
+    		diabetes: "0.032085572340257745",
+    		ischemic: "0.034608590154954426",
+    		lungcancer: "0.030281050275103496",
+    		lri: "0.02495940446896965",
+    		stroke: "0.03982955660185242",
+    		nd: "0.02177656760768947"
+    	},
+    	{
+    		id: "VIR",
+    		short: null,
+    		name: "United States Virgin Islands",
+    		copd: "0.04856502163674286",
+    		diabetes: "0.07570188578907872",
+    		ischemic: "0.05262046946966736",
+    		lungcancer: "0.05409437194981462",
+    		lri: "0.03539246129681299",
+    		stroke: "0.055924186271483906",
+    		nd: "0.04741819955244729"
+    	},
+    	{
+    		id: "SSD",
+    		short: null,
+    		name: "South Sudan",
+    		copd: "0.10342627579603611",
+    		diabetes: "0.043529628085900836",
+    		ischemic: "0.058357972951623455",
+    		lungcancer: "0.06326438520296418",
+    		lri: "0.07915905949320294",
+    		stroke: "0.06869906533383477",
+    		nd: "0.030135579940052497"
+    	},
+    	{
+    		id: "SDN",
+    		short: "Sud.",
+    		name: "Sudan",
+    		copd: "0.24462136850287644",
+    		diabetes: "0.14283607764649964",
+    		ischemic: "0.1805741581656336",
+    		lungcancer: "0.1835894372783722",
+    		lri: "0.19898795150667428",
+    		stroke: "0.2038663610082005",
+    		nd: "0.07593521717236681"
+    	}
+    ];
+
     var countryNameDictionary = [
     	{
     		id: "ARG",
@@ -14366,6 +17023,14 @@ var app = (function () {
     		id: "ESH",
     		short: null,
     		name: "Western Sahara"
+    	},
+    	{
+    		id: "COQ",
+    		name: "Cook Isl."
+    	},
+    	{
+    		id: "MNP",
+    		name: "Northern Mariana Islands"
     	}
     ];
 
@@ -15646,26 +18311,97 @@ var app = (function () {
     	}
     ];
 
+    var arrowRight = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path d=\"M15.244 11.767L8.39 18.672a1.12 1.12 0 11-1.59-1.579l6.064-6.11-6.11-6.064a1.12 1.12 0 011.58-1.59l6.904 6.854a1.117 1.117 0 01.006 1.584\"/></svg>";
+
+    var arrowLeft = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path d=\"M6.756 11.767l6.854 6.905a1.12 1.12 0 101.59-1.579l-6.064-6.11 6.11-6.064a1.12 1.12 0 00-1.58-1.59l-6.904 6.854a1.117 1.117 0 00-.006 1.584\"/></svg>";
+
+    var arrowDown = "\n<svg version=\"1.0\"\nviewBox=\"0 0 800.000000 467.000000\">\n<g transform=\"translate(0.000000,467.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M1913 3656 c-112 -37 -200 -122 -229 -224 -22 -75 -15 -180 17 -247\n18 -40 219 -248 1038 -1074 559 -563 1034 -1036 1056 -1051 111 -76 289 -79\n404 -6 20 13 495 486 1057 1052 823 830 1025 1039 1043 1079 32 67 39 172 17\n248 -24 83 -86 154 -171 197 -61 32 -76 35 -149 35 -149 -1 -83 56 -1073 -936\n-485 -486 -891 -895 -902 -909 l-21 -25 -26 30 c-15 17 -421 426 -903 909\n-737 739 -884 883 -928 903 -65 30 -170 39 -230 19z\"/>\n</g>\n</svg>\n";
+
+    var dataSource = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 36 36\"><defs><style>.svg-ds-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><g id=\"icon\"><path class=\"svg-ds-1\" d=\"M4.5,18V6.5a2,2,0,0,1,2-2h23a2,2,0,0,1,2,2v23a2,2,0,0,1-2,2H18\"/><line class=\"svg-ds-1\" x1=\"4\" y1=\"11\" x2=\"31\" y2=\"11\"/><line class=\"svg-ds-1\" x1=\"24\" y1=\"16\" x2=\"28\" y2=\"16\"/><line class=\"svg-ds-1\" x1=\"20\" y1=\"21\" x2=\"28\" y2=\"21\"/><line class=\"svg-ds-1\" x1=\"22\" y1=\"26\" x2=\"28\" y2=\"26\"/><line class=\"svg-ds-1\" x1=\"8\" y1=\"16\" x2=\"14\" y2=\"16\"/><line class=\"svg-ds-1\" x1=\"3\" y1=\"30\" x2=\"12\" y2=\"21\"/><polyline class=\"svg-ds-1\" points=\"4 21 12 21 12 29\"/></g></svg>";
+
+    var embed = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 36 36\"><defs><style>.svg-embed-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:1.93px;}</style></defs><g id=\"icon\"><path class=\"svg-embed-1\" d=\"M20.5,31.5H6.5a2,2,0,0,1-2-2V6.5a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2V9\"/><polyline class=\"svg-embed-1\" points=\"17 16.5 14 19.5 17 22.5\"/><polyline class=\"svg-embed-1\" points=\"24 22.5 27 19.5 24 16.5\"/><line class=\"svg-embed-1\" x1=\"18.5\" y1=\"24\" x2=\"22.5\" y2=\"15\"/><rect class=\"svg-embed-1\" x=\"8.5\" y=\"12\" width=\"23\" height=\"15\"/></g></svg>";
+
+    var data$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M6.5,16.5V8.4A1.4,1.4,0,0,1,7.9,7H24a1.4,1.4,0,0,1,1.4,1.4V24.5A1.4,1.4,0,0,1,24,25.9H15.9\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"6.1\" y1=\"11.6\" x2=\"25\" y2=\"11.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"20.1\" y1=\"15.1\" x2=\"22.9\" y2=\"15.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"17.3\" y1=\"18.6\" x2=\"22.9\" y2=\"18.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"18.7\" y1=\"22.1\" x2=\"22.9\" y2=\"22.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"8.9\" y1=\"15.1\" x2=\"13.1\" y2=\"15.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"5.4\" y1=\"24.9\" x2=\"11.7\" y2=\"18.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><polyline points=\"6.1 18.6 11.7 18.6 11.7 24.2\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
+
+    var deaths = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><circle cx=\"10.9\" cy=\"16.7\" r=\"2.5\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M18.6,23.4c0-2,.3-4.7,3.5-4.7s3.5,2.7,3.5,4.7\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><circle cx=\"15.8\" cy=\"10.4\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M6.7,26.9c0-2.4.4-5.6,4.2-5.6s4.2,3.2,4.2,5.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"20\" y1=\"12.8\" x2=\"24.2\" y2=\"17\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.31\"/><line x1=\"20\" y1=\"17\" x2=\"24.2\" y2=\"12.8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.31\"/></g></svg>";
+
+    var fuels = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M11.4,27S4.1,23.1,8.3,15.4\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M20.5,27s6.7-4.6,3.2-11.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M20.9,23.7a6,6,0,0,0,1.8-4.3,6.2,6.2,0,0,0-2.7-5C15.3,10.5,16,7,16,7s-7.7,5.6-5.6,11.9\" fill=\"none\" stroke=\"gray\" stroke-linejoin=\"bevel\" stroke-width=\"1.4\"/><path d=\"M15.6,27s5.6-1.3,0-9.3C10,25.7,15.6,27,15.6,27Z\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
+
+    var pm25 = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M10,28.3H23.9\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M6.9,24.8H26.4\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M6.9,21.3h17\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M10,17.8H21.2\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M13.3,14.3h1.1\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"17.9\" cy=\"8.4\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"26.7\" cy=\"14.4\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"6.3\" cy=\"11.6\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"10.9\" cy=\"5.1\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"23.4\" cy=\"3.7\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/></g></svg>";
+
+    var sectors = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><polygon points=\"6.5 7.6 10.8 7.6 10.8 17.4 18.1 13.9 18.1 17.4 25.4 13.9 25.4 26.4 6.5 26.4 6.5 7.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><rect x=\"18.2\" y=\"21.7\" width=\"3.3\" height=\"4.7\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
+
+    var policies = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\" d=\"M19.5 20.9V28l2.5-2 2.4 2v-7.1\"/><g fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"><path d=\"M18 10h-7.6M14 17h-3.6M19 13.5h-8.6M16 20.5h-5.6\"/><circle cx=\"22\" cy=\"20.9\" r=\"2.4\"/></g><path d=\"M16.6 25H8.8a1.4 1.4 0 01-1.4-1.4V7.5a1.4 1.4 0 011.4-1.4h11.8A1.4 1.4 0 0122 7.5v8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></svg>";
+
+    var nd$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M34.0527 32.1255L27.3858 32.2181\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.6625 40.4287C36.6625 40.4287 22.0408 41.0309 20.7074 35.6574C19.374 30.2839 22.4511 30.3534 24.1264 29.4037C25.8017 28.4541 24.5822 24.7714 29.5055 24.7019\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.5819 50.5853C16.5819 50.5853 19.0663 40.1625 15.3511 35.5301C11.6358 30.8978 6.72393 36.5261 6.00595 40.9731\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.03163 37.9854C6.4087 37.4555 5.65946 37.1016 4.85924 36.9593C4.05902 36.817 3.23603 36.8913 2.47304 37.1747C0.193736 38.1938 -0.27352 45.5593 5.11702 47.806C9.59585 49.6705 9.4135 41.6681 9.4135 41.6681\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.95476 47.3659L8.19408 51.9982C8.49039 57.8697 13.8923 65.8953 27.0781 60.2091C40.2638 54.5229 42.1101 49.4273 47.3183 40.0815C51.0107 33.4688 61.1308 35.5534 64.9144 24.2968C70.6127 7.38868 54.9653 1.74879 51.2387 1.135C47.512 0.521215 39.7168 1.00761 34.9417 9.92489C33.4487 12.7159 33.8818 15.0205 32.7991 15.53C30.9187 16.4218 29.6081 16.5144 30.2349 18.8653C30.5407 20.4874 30.2913 22.1669 29.5283 23.6251C29.5283 23.6251 28.4912 29.7166 35.2266 32.4497C37.3691 33.3067 39.2495 31.4885 43.1129 36.1787\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.3349 17.2786C37.3349 17.2786 38.1441 20.0001 41.5174 18.3324\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.7256 26.8791C46.7256 26.8791 50.042 31.9863 53.233 27.0992C55.7972 23.1733 50.9537 20.8918 49.985 21.1698\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.2885 40.7185C17.2885 40.7185 17.9609 38.935 21.528 37.5569\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+
+    var stroke$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M28.343 43.1323C29.177 44.9013 30.3835 46.493 31.8898 47.8114C33.3961 49.1298 35.1708 50.1476 37.107 50.8032C40.5794 52 43.4761 54.3346 45.2649 57.3783L45.8942 58.4741L47.5258 61.663\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.6304 62.1781L51.9545 58.6824C51.3202 55.387 49.9628 52.2521 47.9687 49.4773\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.5998 10.8599C21.3622 11.3092 20.7445 14.246 21.7235 15.2432C20.4943 15.4234 19.3739 16.0103 18.5641 16.8984C17.7543 17.7864 17.3083 18.9171 17.3065 20.0869C17.3119 20.3219 17.3353 20.5563 17.3764 20.7882C16.9724 20.692 16.5578 20.6405 16.1411 20.6348C14.5792 20.5552 13.0362 20.9866 11.7743 21.8556C10.5123 22.7245 9.60927 23.9775 9.21851 25.4017\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.6434 10.0708C34.5314 7.99967 35.86 5.62169 35.184 2.94784C34.6013 0.635608 29.928 -0.547908 27.8069 3.38617C27.4533 4.44636 27.1692 5.52597 26.9562 6.6189\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M26.3035 34.8258C26.3035 34.8258 33.5524 29.9712 39.7175 32.6341C43.039 34.0806 48.0619 34.2011 50.3112 31.4615C52.2924 29.0507 52.3973 25.9823 55.6371 25.8508C56.502 25.8638 57.3292 26.186 57.9504 26.7519C58.5717 27.3178 58.9405 28.0849 58.9819 28.8973\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.16026 13.5446C8.81463 13.2127 8.55332 12.8116 8.3959 12.3714C8.23848 11.9311 8.18902 11.463 8.25124 11.0022C8.34518 9.95379 8.84609 8.97452 9.65851 8.25102C10.4709 7.52752 11.5381 7.11038 12.6565 7.07911C13.4131 7.00401 14.1772 7.12215 14.8684 7.42108C15.5596 7.72 16.1523 8.18865 16.584 8.77767\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1002 23.0895C36.9518 22.0026 40.1175 21.8864 43.0506 22.7607\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.7213 32.93C20.4699 34.3446 19.8625 35.6822 18.9498 36.8312C18.6025 37.375 18.1219 37.8328 17.5482 38.1664C16.9745 38.4999 16.3242 38.6997 15.6517 38.749C15.0817 38.7481 14.5196 38.6243 14.0084 38.3873C13.1402 37.9857 12.4749 37.2788 12.1565 36.4196C11.8381 35.5603 11.8921 34.6178 12.3069 33.7957C13.216 32.0643 15.6517 27.9111 18.472 26.5851C21.8401 25.0071 25.651 25.4016 27.4923 25.5988H27.7138\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15.8265 13.5664C15.793 14.3304 16.0252 15.0838 16.4878 15.7125C16.9504 16.3413 17.6183 16.8113 18.3904 17.0512\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.9567 34.4751C50.0431 36.0532 48.668 33.5656 49.4604 32.2834\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.8104 29.5878C43.2954 29.3686 40.0322 31.2097 42.6311 33.4561\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M11.9223 34.6725H9.87114C7.49104 34.6638 5.21158 33.7687 3.53186 32.1831C1.85214 30.5975 0.90904 28.4506 0.909058 26.2126V24.0867C0.909056 23.3921 1.05474 22.7044 1.33776 22.0628C1.62079 21.4212 2.0356 20.8385 2.55845 20.3479C3.0813 19.8572 3.70193 19.4684 4.3848 19.2036C5.06767 18.9388 5.79938 18.8033 6.53804 18.8047H7.70346\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.8753 38.4861C17.2702 39.8224 18.1199 41.0003 19.2944 41.8395C20.4688 42.6786 21.9033 43.1328 23.3784 43.1325H32.3754C33.801 43.1333 35.1902 42.7096 36.3438 41.9221C37.4974 41.1346 38.3562 40.0239 38.7969 38.7491\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.4912 48.9951C43.5887 49.3184 44.7325 49.481 45.8826 49.4772H52.6304C53.8235 49.4772 54.9677 49.0316 55.8113 48.2383C56.655 47.4451 57.1289 46.3691 57.1289 45.2473C57.1289 44.1254 56.655 43.0495 55.8113 42.2563C54.9677 41.463 53.8235 41.0173 52.6304 41.0173H51.465\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M56.4646 43.0336C59.1481 42.6748 61.6038 41.4177 63.3807 39.4932C65.1577 37.5687 66.1365 35.106 66.1376 32.5574V27.2206C66.1345 24.415 64.9471 21.7253 62.8361 19.7424C60.7252 17.7595 57.8634 16.6458 54.8797 16.6458H53.7142\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.3211 11.9995C6.32362 14.2417 4.74715 16.7877 3.65942 19.5279\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8419 2.95874C22.9071 3.14802 18.1238 4.61564 14.0201 7.19965\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M53.2597 7.61604C49.2594 4.58261 44.2738 2.93097 39.1348 2.93678H35.184\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.7511 17.6102C59.9908 16.8677 60.1126 16.0959 60.1124 15.3199C60.1093 13.2438 59.23 11.2537 57.6677 9.78663C56.1053 8.3196 53.9876 7.4956 51.7796 7.49561C50.3284 7.49673 48.9026 7.85422 47.6434 8.53271C46.3843 9.21119 45.3354 10.1871 44.6006 11.3639\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6214 22.4429C48.2729 22.8218 47.8416 23.1257 47.3569 23.3337C46.8722 23.5417 46.3455 23.649 45.8127 23.6483C45.3266 23.6483 44.8452 23.5581 44.3962 23.3828C43.9472 23.2076 43.5395 22.9507 43.1962 22.627C42.853 22.3032 42.5812 21.919 42.3962 21.4963C42.2112 21.0735 42.1168 20.6206 42.1183 20.1635C42.1092 19.6222 42.2352 19.0865 42.4862 18.5993C42.7372 18.1121 43.1061 17.687 43.5634 17.3582\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1032 21.6319C25.1032 22.7537 25.5771 23.8296 26.4208 24.6229C27.2644 25.4162 28.4086 25.8618 29.6017 25.8618C30.7948 25.8618 31.939 25.4162 32.7826 24.6229C33.6263 23.8296 34.1002 22.7537 34.1002 21.6319C34.0268 20.6087 33.7459 19.6081 33.2728 18.6841\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+
+    var ischemic$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M63.5102 24.0974C60.6502 25.2224 58.9185 24.8174 55.3763 25.2224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.4331 18.1462C58.4331 18.1462 54.1431 21.5212 52.2802 21.9375\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04953 40.7025C6.15292 40.005 8.48814 37.71 11.2563 37.71\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M2.47955 34.3126C6.92698 35.2351 9.8657 34.2113 11.3744 34.3126\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.7748 4.26364L28.7968 1.04614\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.8651 4.15124C36.5102 4.08146 36.151 4.02888 35.7893 3.99374L35.9205 0.84375\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.7032 7.22243C41.9808 6.48178 41.1262 5.84388 40.1711 5.33243L42.2046 1.02368\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8259 5.55762C26.9209 6.02142 26.084 6.57664 25.3333 7.21137\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.6258 19.1924L47.2555 19.5186C55.7306 23.6249 57.0818 26.4374 54.7597 27.9224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M13.1848 6.75L14.3656 14.31C15.0609 18.7187 15.0609 23.1876 14.3656 27.5962C9.89189 33.3337 10.8496 40.5225 13.1455 43.65C15.2183 46.4737 17.829 43.8975 21.017 40.275\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M30.0824 30.4312C33.0999 26.6737 32.2209 24.0075 29.1247 22.9725C27.9095 22.5746 26.6314 22.3357 25.3333 22.2637L21.5156 5.79373C21.0433 5.09623 19.469 4.66872 17.8028 4.73622\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.6411 44.7638C14.6411 44.9325 14.7329 45.1013 14.7854 45.27C25.0577 64.1925 43.5428 62.145 56.4652 62.145C62.0803 62.145 67.2886 56.835 65.7405 46.8563C64.6385 39.8588 60.4928 27.5625 56.3603 27.4275C52.6213 29.0363 47.6228 28.6988 42.7031 27.4838C42.2273 27.3765 41.7986 27.152 41.4699 26.8381C41.1412 26.5242 40.9268 26.1347 40.8533 25.7175L40.7352 24.9975C40.5137 23.5909 40.6177 22.1607 41.0412 20.7886C41.4647 19.4165 42.1995 18.1295 43.2035 17.001C44.2075 15.8726 45.461 14.925 46.8924 14.2123C48.3238 13.4996 49.905 13.0358 51.5455 12.8475L52.2408 12.7688C53.9726 11.8575 53.2116 9.02253 51.6767 9.20253L45.445 9.91128C42.4861 10.2496 39.6699 11.2078 37.2455 12.7013C36.3272 13.275 35.0415 11.115 33.0998 12.4425C30.476 14.2425 30.8827 16.8413 31.4599 18.6188C30.6316 20.087 30.0824 21.6593 29.8331 23.2763\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.0403 26.4824C22.0403 26.4824 25.3988 24.3337 25.3332 22.2637\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.0196 30.555C38.0196 30.555 41.1288 28.305 41.2994 26.7188\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+
+    var lri$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M39.1218 15.796V13.3188C39.1219 12.3055 39.4261 11.3131 39.9989 10.4578C40.5717 9.60256 41.3894 8.91982 42.3563 8.48949C43.3232 8.05917 44.3992 7.89906 45.4585 8.02793C46.5178 8.1568 47.5164 8.56929 48.3376 9.21715L52.3445 12.3741C56.654 15.7827 60.1195 20.05 62.495 24.8729C64.8705 29.6957 66.0977 34.9557 66.0893 40.2793V57.9189C66.0882 58.5856 65.9224 59.2428 65.605 59.8376C65.2876 60.4325 64.8277 60.9484 64.262 61.344C63.6964 61.7395 63.0409 62.0036 62.3481 62.1151C61.6554 62.2266 60.9448 62.1824 60.2733 61.986L51.7738 59.5204C48.095 58.4497 44.8756 56.2867 42.5893 53.3498C40.3029 50.4129 39.0705 46.8571 39.0732 43.2058V20.4737\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 28.6772V35.1639C43.6183 36.1275 43.855 37.0774 44.3064 37.9406V37.9406C44.8507 38.9756 45.6872 39.8468 46.7227 40.4572C47.7583 41.0675 48.9521 41.3929 50.1711 41.3971H52.5995\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.1277 40.314L47.9976 45.0724\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M50.5232 32.6406L53.6558 29.2878\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.6292 0.864014V17.9275C34.6292 18.4928 34.8658 19.0349 35.2871 19.4347C35.7084 19.8344 36.2797 20.059 36.8755 20.059V20.059C37.7609 20.0575 38.6379 20.2218 39.4562 20.5426C40.2745 20.8634 41.018 21.3344 41.6441 21.9285C42.2702 22.5226 42.7665 23.2281 43.1046 24.0046C43.4427 24.7811 43.6159 25.6133 43.6143 26.4535V29.6564C43.6175 30.5039 43.9746 31.3157 44.6073 31.9139C45.2399 32.512 46.0967 32.8479 46.9898 32.8479H55.9749\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 26.4535C43.6143 27.0188 43.851 27.561 44.2723 27.9607C44.6935 28.3605 45.2649 28.585 45.8606 28.585V28.585C46.1566 28.5865 46.45 28.5325 46.724 28.4261C46.9979 28.3196 47.247 28.1629 47.4568 27.9648C47.6667 27.7667 47.8333 27.5312 47.9469 27.2719C48.0605 27.0125 48.119 26.7344 48.119 26.4535V24.322\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8782 15.7961V13.3189C27.8812 12.3057 27.5793 11.3126 27.008 10.4565C26.4367 9.60046 25.6198 8.91687 24.6533 8.48612C23.6867 8.05537 22.6107 7.89535 21.5516 8.02486C20.4925 8.15437 19.4944 8.56803 18.6745 9.21723L14.6676 12.3741C10.3521 15.78 6.88013 20.0459 4.4983 24.8688C2.11647 29.6917 0.883285 34.9532 0.886358 40.2794V57.919C0.889439 58.5862 1.05708 59.2434 1.37587 59.8381C1.69465 60.4328 2.15573 60.9485 2.7222 61.3438C3.28866 61.7391 3.94477 62.0031 4.63803 62.1146C5.33129 62.2261 6.04244 62.1821 6.71456 61.9861L15.214 59.5205C18.8938 58.4513 22.1144 56.2888 24.401 53.3515C26.6876 50.4143 27.9193 46.8577 27.9146 43.2059V20.4738\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 28.6772V35.1639C23.4082 36.1361 23.1877 37.0995 22.7421 37.9752V37.9752C22.2012 39.0127 21.3654 39.8861 20.3292 40.4969C19.2929 41.1076 18.0973 41.4314 16.8775 41.4316H14.449\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.8843 40.314L19.0023 45.0724\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.4768 32.6406L13.3441 29.2878\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.3829 0.864014V17.9275C32.3829 18.4928 32.1462 19.0349 31.725 19.4347C31.3037 19.8344 30.7323 20.059 30.1366 20.059V20.059C29.2506 20.0575 28.373 20.2217 27.554 20.5424C26.735 20.8631 25.9907 21.3339 25.3636 21.9278C24.7366 22.5217 24.2391 23.2272 23.8997 24.0037C23.5603 24.7803 23.3856 25.6127 23.3856 26.4535V29.6564C23.3856 30.5029 23.0312 31.3147 22.4005 31.9132C21.7697 32.5117 20.9142 32.8479 20.0222 32.8479H11.025\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 26.4535C23.3856 27.0188 23.149 27.561 22.7277 27.9607C22.3064 28.3605 21.7351 28.585 21.1393 28.585V28.585C20.5436 28.585 19.9723 28.3605 19.551 27.9607C19.1297 27.561 18.8931 27.0188 18.8931 26.4535V24.322\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 49.9231H59.3505\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.8301 47.7915H52.6116\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 41.3855H57.1042\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 34.991H59.3505\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 26.4536H57.1042\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 49.9231H7.64951\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.1698 47.7915H14.4005\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 41.3855H9.89576\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 34.991H7.64951\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 26.4536H9.89576\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+
+    var lungcancer$1 = "<svg viewBox=\"0 0 67 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M47.9506 17.2334H41.2781V21.6914C41.2799 22.1952 41.4718 22.6862 41.8277 23.0975C42.1836 23.5089 42.6861 23.8205 43.2667 23.9899L66.0187 31.0457\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.9506 17.2334C48.1459 17.2334 48.3392 17.2018 48.5194 17.1404C48.6997 17.079 48.8632 16.9891 49.0007 16.8758C49.1381 16.7624 49.2468 16.628 49.3203 16.4802C49.3938 16.3324 49.4308 16.1742 49.429 16.0146V14.7959\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M19.4812 0.801758C19.604 4.7773 21.2311 8.6241 24.1389 11.8131C25.7743 13.8443 24.8977 21.6913 24.8977 21.6913C24.8949 22.1963 24.7011 22.6883 24.3427 23.0998C23.9843 23.5113 23.479 23.8222 22.8959 23.9898L0.981262 31.0456\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.416 14.7958V9.93157H53.0008C53.1634 9.95497 53.3309 9.93726 53.4809 9.8808C53.6309 9.82434 53.7562 9.73182 53.8401 9.61561C53.9241 9.49939 53.9626 9.36502 53.9505 9.23045C53.9385 9.09587 53.8764 8.9675 53.7727 8.8625L49.573 0.801758\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.446 13.5772H40.3099C39.3942 13.5567 38.4897 13.7461 37.6989 14.124C36.9081 14.5019 36.2625 15.0531 35.8354 15.7153C34.8018 17.2334 34.1607 19.3181 34.1607 25.23\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6702 5.18506L39.695 6.64969C36.5943 7.16284 31.7665 8.59538 31.7665 14.7318L31.4394 25.23\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.7849 34.4561V32.9594C37.7849 30.2333 41.1996 28.5228 43.777 30.276L46.5769 32.179C49.5925 34.2321 52.0192 36.8015 53.6854 39.7056C55.3516 42.6096 56.2167 45.7773 56.2193 48.9847V59.6753C56.216 60.0776 56.0979 60.4736 55.8744 60.8321C55.6509 61.1905 55.3282 61.5014 54.932 61.7401C54.5357 61.9788 54.0768 62.1387 53.5916 62.2071C53.1065 62.2755 52.6086 62.2505 52.1373 62.1342L46.2105 60.6375C43.7036 60.0183 41.5178 58.7388 39.9937 56.9984C38.4697 55.258 37.693 53.1546 37.7849 51.0159V37.2998\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 42.0142V45.9269C40.4636 46.5098 40.6295 47.085 40.9509 47.6054V47.6054C41.3312 48.2295 41.9174 48.7544 42.6433 49.1208C43.3691 49.4873 44.2059 49.6807 45.0591 49.6794H46.76\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> \n<path d=\"M42.2201 49.0381L43.5415 51.9032\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.3078 44.4089L47.5058 42.3777\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1607 25.23V35.5251C34.1607 35.6945 34.2017 35.8622 34.2815 36.0185C34.3612 36.1749 34.478 36.3167 34.6252 36.436C34.7723 36.5553 34.947 36.6496 35.139 36.7134C35.331 36.7772 35.5365 36.8094 35.7438 36.808V36.808C36.9976 36.8108 38.199 37.2198 39.0843 37.9452C39.9697 38.6707 40.4669 39.6534 40.4669 40.678V42.6023C40.4669 43.1136 40.7146 43.6042 41.1559 43.9668C41.5971 44.3294 42.1961 44.5345 42.8219 44.5373H49.1281\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 40.6778C40.4669 41.0181 40.6323 41.3444 40.9267 41.585C41.2212 41.8256 41.6205 41.9607 42.0369 41.9607V41.9607C42.4545 41.9607 42.8552 41.8259 43.1517 41.5856C43.4482 41.3454 43.6165 41.0191 43.62 40.6778V39.3843\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.3255 34.2423V32.7456C28.3316 32.1243 28.1167 31.5149 27.7069 30.9915C27.2972 30.4681 26.7102 30.0533 26.0173 29.7974C25.3244 29.5415 24.5554 29.4555 23.8039 29.55C23.0524 29.6444 22.3506 29.9152 21.7838 30.3295L18.9709 32.2324C15.9553 34.2856 13.5286 36.855 11.8624 39.759C10.1962 42.6631 9.33114 45.8308 9.32846 49.0381V59.7288C9.33182 60.131 9.44993 60.5271 9.6734 60.8855C9.89688 61.2439 10.2196 61.5548 10.6158 61.7935C11.0121 62.0322 11.471 62.1921 11.9561 62.2605C12.4413 62.3289 12.9392 62.304 13.4105 62.1876L19.3372 60.6909C21.9143 60.0435 24.1692 58.7377 25.7706 56.9654C27.372 55.1931 28.2354 53.0478 28.2339 50.8448V37.1394\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 42.0142V45.9269C25.1364 46.5098 24.9705 47.085 24.6491 47.6054V47.6054C24.2688 48.2295 23.6827 48.7544 22.9568 49.1208C22.2309 49.4873 21.3942 49.6807 20.5409 49.6794H18.8401\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.38 49.0381L22.0586 51.9032\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.2923 44.4089L18.1074 42.3777\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.4394 25.23V35.5251C31.4394 35.6945 31.3984 35.8622 31.3187 36.0185C31.2389 36.1749 31.1221 36.3167 30.9749 36.436C30.8278 36.5553 30.6531 36.6496 30.4611 36.7134C30.2692 36.7772 30.0636 36.8094 29.8563 36.808V36.808C28.6025 36.8108 27.4012 37.2198 26.5158 37.9452C25.6304 38.6707 25.1332 39.6534 25.1332 40.678V42.6023C25.1332 43.1136 24.8855 43.6042 24.4442 43.9668C24.003 44.3294 23.404 44.5345 22.7782 44.5373H16.472\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 40.6778C25.1332 41.0181 24.9678 41.3444 24.6733 41.585C24.3789 41.8256 23.9796 41.9607 23.5632 41.9607V41.9607C23.1468 41.9607 22.7474 41.8256 22.453 41.585C22.1586 41.3444 21.9932 41.0181 21.9932 40.6778V39.3843\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 20.8896C34.8222 20.9816 34.2652 20.9996 33.7159 20.9431\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 23.3057C34.8181 23.3746 34.2621 23.3746 33.7159 23.3057\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 25.7217C34.818 25.7897 34.2622 25.7897 33.7159 25.7217\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 28.1272C34.8222 28.2191 34.2652 28.2372 33.7159 28.1807\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 30.5432C34.818 30.6113 34.2622 30.6113 33.7159 30.5432\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 32.9592C34.818 33.0273 34.2622 33.0273 33.7159 32.9592\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+
+    var diabetes$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.1206 50.7514H15.571C16.3987 50.7531 17.2185 50.5785 17.9835 50.2377C18.7485 49.8969 19.4435 49.3967 20.0288 48.7656C20.6141 48.1346 21.078 47.3851 21.3941 46.5603C21.7101 45.7355 21.8721 44.8515 21.8705 43.959V43.0063\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 28.2089C36.1449 28.5801 34.4696 25.9571 34.4696 14.4756\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 5.44389C34.4696 4.24834 34.9093 3.10157 35.6922 2.25503C36.4752 1.40849 37.5375 0.931254 38.6463 0.927979H51.624\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.7558 43.0435L19.8395 43.5755C16.7581 44.7384 13.9583 46.6326 11.6467 49.1183L6.7241 54.4384C6.2428 54.9519 5.63174 55.3009 4.96739 55.4419C4.30303 55.5828 3.61489 55.5094 2.98905 55.2307C2.36321 54.9521 1.82748 54.4806 1.44889 53.8754C1.0703 53.2701 0.865669 52.5579 0.860592 51.8278V21.8991C0.875712 16.3444 2.92811 11.0216 6.56983 7.09266C10.2115 3.16369 15.1468 0.94756 20.2985 0.927979H58.3367C58.9628 0.93064 59.5764 1.11739 60.1115 1.46813C60.6465 1.81886 61.0826 2.32029 61.373 2.91845C61.6633 3.5166 61.7969 4.18882 61.7593 4.86273C61.7216 5.53664 61.5142 6.18672 61.1594 6.74299L54.3665 17.2842C51.9135 21.0922 48.467 24.029 44.4639 25.7222L39.5184 27.8255C36.2815 29.1915 33.3968 31.3769 31.1076 34.1972L30.3617 35.1252C27.8717 38.1687 25.3014 41.7072 21.7558 43.0435Z\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 54.4631V62.0721\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.4225 37.5254C29.8187 37.9689 31.084 38.796 32.0944 39.9256\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 38.4656V30.8442\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 62.0721V54.4631\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M66.1165 25.6974C66.1633 25.3221 66.141 24.9405 66.051 24.5744C65.961 24.2083 65.805 23.865 65.5919 23.5639C65.3788 23.2629 65.1127 23.0101 64.809 22.82C64.5052 22.6299 64.1697 22.5061 63.8215 22.4559C63.2144 22.3673 62.5975 22.5072 62.0749 22.852C61.5523 23.1969 61.156 23.7256 60.9529 24.3488C60.3288 24.3091 59.7116 24.5065 59.2085 24.9065C58.7054 25.3066 58.3482 25.8842 58.199 26.5387C57.5112 26.3556 56.7842 26.4742 56.1775 26.8685C55.5708 27.2629 55.134 27.9008 54.9632 28.642C54.274 28.4627 53.547 28.5844 52.9408 28.9808C52.3346 29.3771 51.8984 30.0159 51.7273 30.7577C51.0429 30.586 50.3233 30.7117 49.7242 31.1076C49.1251 31.5035 48.6946 32.1379 48.5259 32.8734C48.0202 32.7359 47.488 32.7623 46.9961 32.9493C46.5042 33.1364 46.0744 33.4758 45.7606 33.925C45.61 33.8491 45.4523 33.791 45.2901 33.7518C44.7843 33.6143 44.2522 33.6407 43.7603 33.8278C43.2684 34.0148 42.8386 34.3542 42.5247 34.8035C42.3725 34.7288 42.2153 34.6667 42.0543 34.6179C41.3651 34.4385 40.6382 34.5603 40.032 34.9566C39.4257 35.353 38.9895 35.9917 38.8185 36.7336C38.2565 36.586 37.6654 36.6388 37.1337 36.8842C36.6019 37.1296 36.1584 37.5543 35.8695 38.0945C34.0281 38.4226 32.3545 39.4444 31.1463 40.9782C29.9381 42.512 29.2738 44.4583 29.2716 46.4706C29.2715 48.7046 30.0882 50.8485 31.5446 52.4374C33.001 54.0263 34.9797 54.932 37.0514 54.958C38.6786 54.9555 40.2651 54.4092 41.5925 53.3945C42.92 52.3797 43.9231 50.9463 44.464 49.2915C45.0293 49.1897 45.5491 48.894 45.946 48.4481C46.3429 48.0023 46.5958 47.4302 46.6671 46.817C47.0145 46.8674 47.3678 46.8434 47.7065 46.7462C48.0453 46.649 48.363 46.4806 48.6413 46.2507C48.9195 46.0207 49.153 45.7338 49.3281 45.4064C49.5033 45.0789 49.6167 44.7174 49.6619 44.3426C50.01 44.393 50.3639 44.3691 50.7034 44.272C51.0429 44.175 51.3614 44.0068 51.6406 43.777C51.9198 43.5472 52.1542 43.2603 52.3306 42.9328C52.5069 42.6052 52.6217 42.2435 52.6683 41.8681C53.0164 41.9186 53.3703 41.8946 53.7098 41.7976C54.0493 41.7005 54.3677 41.5323 54.6469 41.3025C54.9261 41.0727 55.1606 40.7858 55.3369 40.4583C55.5132 40.1308 55.628 39.769 55.6746 39.3936C56.3771 39.4922 57.0873 39.2875 57.6504 38.824C58.2135 38.3605 58.5839 37.6758 58.6809 36.9191C59.0284 36.9696 59.3816 36.9455 59.7204 36.8483C60.0592 36.7511 60.3769 36.5827 60.6551 36.3528C60.9334 36.1229 61.1668 35.8359 61.342 35.5085C61.5171 35.1811 61.6306 34.8195 61.6758 34.4447C62.0239 34.4952 62.3778 34.4712 62.7173 34.3742C63.0568 34.2771 63.3753 34.1089 63.6545 33.8791C63.9336 33.6493 64.1681 33.3624 64.3444 33.0349C64.5208 32.7074 64.6355 32.3456 64.6821 31.9702C64.7457 31.5567 64.7182 31.1329 64.6018 30.733C64.9954 30.524 65.3353 30.2138 65.5914 29.8297C65.8476 29.4457 66.0121 28.9995 66.0705 28.5307C66.1476 27.904 66.0264 27.2675 65.7263 26.7243C65.9158 26.4119 66.0482 26.0634 66.1165 25.6974V25.6974Z\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.1901 42.3381V52.236C23.1901 62.1339 31.3141 62.1339 31.3141 62.1339\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.8627 38.0698C39.8627 38.0698 39.4381 39.3071 41.274 39.3071\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.1007 46.9161C34.6064 46.2415 34.3734 45.387 34.4504 44.5313C34.5274 43.6757 34.9085 42.8854 35.5138 42.3259\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.2833 40.4947C49.2833 40.4947 51.8765 39.9751 50.7979 36.9438\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0108 35.5086C54.0108 35.5086 54.7681 34.1848 51.6241 33.5291\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0911 34.123C54.4732 33.6935 54.7612 33.1772 54.934 32.612C55.1067 32.0467 55.1598 31.447 55.0894 30.8567\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.9793 32.4402C59.0029 32.6493 59.0657 32.8511 59.1637 33.0334C59.2617 33.2157 59.3929 33.3746 59.5495 33.5007C59.7061 33.6267 59.8848 33.7172 60.0747 33.7668C60.2646 33.8163 60.4619 33.8238 60.6546 33.7888\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.1312 41.6205C44.4761 41.2148 44.9476 40.9602 45.4556 40.9054C45.9636 40.8506 46.4725 40.9995 46.8851 41.3236\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.5511 46.4705C40.5511 46.4705 39.0594 46.854 38.6693 44.825\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.0411 45.085C42.9756 45.2532 42.943 45.4343 42.9455 45.6168C42.9479 45.7993 42.9853 45.9792 43.0554 46.1454C43.1254 46.3115 43.2266 46.4602 43.3525 46.5822C43.4784 46.7042 43.6263 46.7968 43.7869 46.8542\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 54.7725V62.0721\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.5385 36.1521C35.0611 36.6662 35.5446 37.2248 35.9843 37.8224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+
+    var copd$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.2353 61.7943C12.0831 60.7558 12.0083 59.7113 12.0113 58.666V26.0798\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0112 13.9251V9.87357C11.9961 8.21209 12.5951 6.58207 13.7374 5.17668C14.8797 3.77129 16.5173 2.64946 18.4561 1.94414C20.395 1.23882 22.5538 0.979574 24.6768 1.19714C26.7997 1.4147 28.7978 2.09995 30.4341 3.17167L38.4417 8.33116C47.0521 13.8945 53.9798 20.8595 58.7337 28.7322C63.4875 36.6049 65.9512 45.1927 65.95 53.8867V61.7943\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.6036 34.9651C38.8244 36.6659 37.3347 38.1158 35.3714 39.0842C33.408 40.0525 31.0838 40.4837 28.7682 40.3092C25.2265 40.1354 22.9726 38.6256 22.9726 36.5835V35.9644C23.7678 36.2317 24.6258 36.3686 25.4924 36.3663\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.7213 40.6894L38.7917 40.2875L41.9975 36.6704\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.9736 54.7339C34.7739 54.7339 27.4943 55.125 24.1485 49.455C23.4041 48.2462 23.0031 46.9275 22.9726 45.5881V42.2317C27.3669 42.7752 31.8357 42.8556 36.2578 42.4707C39.4211 42.4561 42.5822 42.6012 45.7212 42.9051\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.1342 61.2621L29.4123 56.7109C32.5717 57.1463 35.802 57.1757 38.9737 56.7978\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04994 1.12964V14.0446C1.04994 21.0398 5.24969 21.8219 8.69348 22.4193C14.2092 23.3426 19.0249 26.4274 19.0249 31.3479V45.5881C18.9073 47.4257 19.4605 49.2517 20.6208 50.8562C23.8818 54.3542 26.5144 58.1801 28.4463 62.2288\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 30.6094L49.1371 32.0649\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 32.0758L49.1371 30.6311\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 44.5237L53.8968 45.9792\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 45.9901L53.8968 44.5454\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 55.1033L48.9691 56.5588\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 56.5697L48.9691 55.125\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 5.71338C6.16097 6.10537 4.58919 6.29638 3.00982 6.2782\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 3.28027C6.16097 3.67227 4.58919 3.86329 3.00982 3.84511\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 8.14648C6.16097 8.53848 4.58919 8.72949 3.00982 8.71131\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 10.5796C6.16097 10.9716 4.58919 11.1626 3.00982 11.1444\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.90953 13.0127C6.41296 13.4047 4.84117 13.5957 3.26181 13.5775\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.17551 15.4458C6.68378 15.8378 5.11658 16.0288 3.54179 16.0106\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.68742 16.9558C8.46956 17.7382 7.09298 18.3585 5.61367 18.7915\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0113 17.7703C11.1099 18.7756 9.99793 19.6568 8.72148 20.3772\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 0.890625C6.16097 1.28262 4.58919 1.47363 3.00982 1.45545\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.2507 22.6148C21.5727 22.832 20.9148 22.365 21.2507 22.6148\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.275 20.2468C17.889 20.5486 18.4824 20.8749 19.0529 21.2244\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M6.6916 0.814697V13.2952C6.6916 17.955 10.0514 17.64 14.7411 19.215\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.4127 27.8613V32.1193C22.4127 32.1193 23.0286 33.3358 24.1346 33.3249\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+
+    var check = "<svg viewBox=\"0 0 17 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5 4H8.2439V2H9.09756H12V11H9.09756V13H5V4Z\" fill=\"#D9D9D9\"/>\n<path d=\"M5.85246 11.0698L0 5.75386L1.6539 4.25188L5.85246 8.06369L14.7306 0L16.3869 1.5041L5.85246 11.0698Z\" fill=\"#263238\"/>\n</svg>\n";
+
+    const alignment = {
+        pm25: 'transform: translateY(-7%)',
+        sectors: 'transform: translateY(-8%)',
+    };
+    var svg = {
+        dataSource,
+        embed,
+        check,
+        arrows: {
+            right: arrowRight,
+            left: arrowLeft,
+            down: arrowDown
+        },
+        menu: {
+            data: data$1,
+            deaths,
+            fuels,
+            pm25,
+            sectors,
+            policies
+        },
+        diseases: {
+            nd: nd$1,
+            stroke: stroke$1,
+            ischemic: ischemic$1,
+            lri: lri$1,
+            lungcancer: lungcancer$1,
+            diabetes: diabetes$1,
+            copd: copd$1
+        }
+    };
+
     /* src/components/common/Legend.svelte generated by Svelte v3.42.3 */
 
-    const file$h = "src/components/common/Legend.svelte";
+    const { console: console_1$2 } = globals;
+    const file$k = "src/components/common/Legend.svelte";
 
     function get_each_context_1$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[13] = list[i];
-    	child_ctx[15] = i;
+    	child_ctx[17] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
-    function get_each_context$9(ctx, list, i) {
+    function get_each_context$b(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[13] = list[i];
-    	child_ctx[15] = i;
+    	child_ctx[17] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
-    // (31:33) 
-    function create_if_block_2$3(ctx) {
+    // (67:33) 
+    function create_if_block_4(ctx) {
     	let ul;
     	let each_value_1 = /*colors*/ ctx[2];
     	validate_each_argument(each_value_1);
@@ -15683,10 +18419,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "cat info svelte-1l0yzdf");
+    			attr_dev(ul, "class", "cat info svelte-h10xyx");
     			attr_dev(ul, "role", "menu");
     			attr_dev(ul, "aria-label", "Legend");
-    			add_location(ul, file$h, 31, 0, 774);
+    			add_location(ul, file$k, 67, 2, 2198);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -15728,24 +18464,24 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$3.name,
+    		id: create_if_block_4.name,
     		type: "if",
-    		source: "(31:33) ",
+    		source: "(67:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (10:0) {#if type === 'sequential'}
-    function create_if_block$9(ctx) {
+    // (33:0) {#if type === "sequential"}
+    function create_if_block$a(ctx) {
     	let ol;
     	let each_value = /*colors*/ ctx[2];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$9(get_each_context$9(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$b(get_each_context$b(ctx, each_value, i));
     	}
 
     	const block = {
@@ -15756,10 +18492,11 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ol, "class", "seq info svelte-1l0yzdf");
+    			attr_dev(ol, "class", "seq info svelte-h10xyx");
     			attr_dev(ol, "role", "menu");
     			attr_dev(ol, "aria-label", "Legend");
-    			add_location(ol, file$h, 10, 0, 214);
+    			toggle_class(ol, "internal-labels", /*internalLabels*/ ctx[5]);
+    			add_location(ol, file$k, 33, 2, 1113);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ol, anchor);
@@ -15769,18 +18506,18 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*colors, selected, labels, undefined*/ 13) {
+    			if (dirty & /*legendWidths, colors, selected, internalLabels, labels, undefined, svg*/ 109) {
     				each_value = /*colors*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$9(ctx, each_value, i);
+    					const child_ctx = get_each_context$b(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block$9(child_ctx);
+    						each_blocks[i] = create_each_block$b(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(ol, null);
     					}
@@ -15792,6 +18529,10 @@ var app = (function () {
 
     				each_blocks.length = each_value.length;
     			}
+
+    			if (dirty & /*internalLabels*/ 32) {
+    				toggle_class(ol, "internal-labels", /*internalLabels*/ ctx[5]);
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(ol);
@@ -15801,51 +18542,53 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$9.name,
+    		id: create_if_block$a.name,
     		type: "if",
-    		source: "(10:0) {#if type === 'sequential'}",
+    		source: "(33:0) {#if type === \\\"sequential\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (33:2) {#each colors as c,i}
+    // (69:4) {#each colors as c, i}
     function create_each_block_1$3(ctx) {
     	let li;
     	let div;
-    	let t0_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "";
     	let t0;
+    	let t1_value = /*labels*/ ctx[3][/*i*/ ctx[19]] + "";
     	let t1;
+    	let t2;
     	let li_aria_label_value;
     	let mounted;
     	let dispose;
 
     	function mouseover_handler_1() {
-    		return /*mouseover_handler_1*/ ctx[11](/*i*/ ctx[15]);
+    		return /*mouseover_handler_1*/ ctx[14](/*i*/ ctx[19]);
     	}
 
     	function focus_handler_1() {
-    		return /*focus_handler_1*/ ctx[12](/*i*/ ctx[15]);
+    		return /*focus_handler_1*/ ctx[15](/*i*/ ctx[19]);
     	}
 
     	const block = {
     		c: function create() {
     			li = element("li");
     			div = element("div");
-    			t0 = text$1(t0_value);
-    			t1 = space();
-    			attr_dev(div, "class", "cat-symbol svelte-1l0yzdf");
+    			t0 = space();
+    			t1 = text$1(t1_value);
+    			t2 = space();
+    			attr_dev(div, "class", "cat-symbol svelte-h10xyx");
 
-    			set_style(div, "background-color", /*c*/ ctx[13] !== 'url(#hash--windblown)'
-    			? /*c*/ ctx[13]
+    			set_style(div, "background-color", /*c*/ ctx[17] !== 'url(#hash--windblown)'
+    			? /*c*/ ctx[17]
     			: '');
 
-    			set_style(div, "background-size", /*c*/ ctx[13] !== 'url(#hash--windblown)'
+    			set_style(div, "background-size", /*c*/ ctx[17] !== 'url(#hash--windblown)'
     			? ''
     			: '5.66px 5.66px');
 
-    			set_style(div, "background-image", /*c*/ ctx[13] !== 'url(#hash--windblown)'
+    			set_style(div, "background-image", /*c*/ ctx[17] !== 'url(#hash--windblown)'
     			? ''
     			: `linear-gradient(
               135deg,
@@ -15858,24 +18601,25 @@ var app = (function () {
               #f9f9f9 100%
             )`);
 
-    			add_location(div, file$h, 43, 6, 1148);
+    			add_location(div, file$k, 80, 8, 2627);
     			attr_dev(li, "role", "menuitem");
-    			attr_dev(li, "aria-label", li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[15]]);
+    			attr_dev(li, "aria-label", li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[19]]);
     			attr_dev(li, "tabindex", "0");
-    			attr_dev(li, "class", "cat-item note svelte-1l0yzdf");
-    			toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[15]);
-    			add_location(li, file$h, 33, 4, 856);
+    			attr_dev(li, "class", "cat-item note svelte-h10xyx");
+    			toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[19]);
+    			add_location(li, file$k, 69, 6, 2285);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
     			append_dev(li, div);
     			append_dev(li, t0);
     			append_dev(li, t1);
+    			append_dev(li, t2);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(li, "mouseout", /*mouseout_handler_1*/ ctx[9], false, false, false),
-    					listen_dev(li, "blur", /*blur_handler_1*/ ctx[10], false, false, false),
+    					listen_dev(li, "mouseout", /*mouseout_handler_1*/ ctx[12], false, false, false),
+    					listen_dev(li, "blur", /*blur_handler_1*/ ctx[13], false, false, false),
     					listen_dev(li, "mouseover", mouseover_handler_1, false, false, false),
     					listen_dev(li, "focus", focus_handler_1, false, false, false)
     				];
@@ -15887,19 +18631,19 @@ var app = (function () {
     			ctx = new_ctx;
 
     			if (dirty & /*colors*/ 4) {
-    				set_style(div, "background-color", /*c*/ ctx[13] !== 'url(#hash--windblown)'
-    				? /*c*/ ctx[13]
+    				set_style(div, "background-color", /*c*/ ctx[17] !== 'url(#hash--windblown)'
+    				? /*c*/ ctx[17]
     				: '');
     			}
 
     			if (dirty & /*colors*/ 4) {
-    				set_style(div, "background-size", /*c*/ ctx[13] !== 'url(#hash--windblown)'
+    				set_style(div, "background-size", /*c*/ ctx[17] !== 'url(#hash--windblown)'
     				? ''
     				: '5.66px 5.66px');
     			}
 
     			if (dirty & /*colors*/ 4) {
-    				set_style(div, "background-image", /*c*/ ctx[13] !== 'url(#hash--windblown)'
+    				set_style(div, "background-image", /*c*/ ctx[17] !== 'url(#hash--windblown)'
     				? ''
     				: `linear-gradient(
               135deg,
@@ -15913,14 +18657,14 @@ var app = (function () {
             )`);
     			}
 
-    			if (dirty & /*labels*/ 8 && t0_value !== (t0_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*labels*/ 8 && t1_value !== (t1_value = /*labels*/ ctx[3][/*i*/ ctx[19]] + "")) set_data_dev(t1, t1_value);
 
-    			if (dirty & /*labels*/ 8 && li_aria_label_value !== (li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[15]])) {
+    			if (dirty & /*labels*/ 8 && li_aria_label_value !== (li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[19]])) {
     				attr_dev(li, "aria-label", li_aria_label_value);
     			}
 
     			if (dirty & /*selected*/ 1) {
-    				toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[15]);
+    				toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[19]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -15934,32 +18678,128 @@ var app = (function () {
     		block,
     		id: create_each_block_1$3.name,
     		type: "each",
-    		source: "(33:2) {#each colors as c,i}",
+    		source: "(69:4) {#each colors as c, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (24:4) {#if labels[i] !== undefined}
-    function create_if_block_1$6(ctx) {
+    // (55:8) {#if internalLabels}
+    function create_if_block_2$3(ctx) {
+    	let t0;
+    	let div;
+
+    	let t1_value = (/*internalLabels*/ ctx[5][/*i*/ ctx[19]]
+    	? /*internalLabels*/ ctx[5][/*i*/ ctx[19]].label
+    	: "") + "";
+
+    	let t1;
+    	let if_block = /*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.icon && create_if_block_3$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			t0 = space();
+    			div = element("div");
+    			t1 = text$1(t1_value);
+    			attr_dev(div, "class", "note internal-label svelte-h10xyx");
+    			add_location(div, file$k, 58, 10, 1932);
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.icon) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_3$1(ctx);
+    					if_block.c();
+    					if_block.m(t0.parentNode, t0);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (dirty & /*internalLabels*/ 32 && t1_value !== (t1_value = (/*internalLabels*/ ctx[5][/*i*/ ctx[19]]
+    			? /*internalLabels*/ ctx[5][/*i*/ ctx[19]].label
+    			: "") + "")) set_data_dev(t1, t1_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$3.name,
+    		type: "if",
+    		source: "(55:8) {#if internalLabels}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (56:8) {#if internalLabels[i]?.icon}
+    function create_if_block_3$1(ctx) {
+    	let div;
+    	let raw_value = svg[/*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.icon] + "";
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			attr_dev(div, "class", "icon svelte-h10xyx");
+    			add_location(div, file$k, 56, 10, 1847);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			div.innerHTML = raw_value;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*internalLabels*/ 32 && raw_value !== (raw_value = svg[/*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.icon] + "")) div.innerHTML = raw_value;		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3$1.name,
+    		type: "if",
+    		source: "(56:8) {#if internalLabels[i]?.icon}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (61:8) {#if labels[i] !== undefined}
+    function create_if_block_1$7(ctx) {
     	let p;
-    	let t_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "";
+    	let t_value = /*labels*/ ctx[3][/*i*/ ctx[19]] + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			p = element("p");
     			t = text$1(t_value);
-    			attr_dev(p, "class", "note svelte-1l0yzdf");
-    			add_location(p, file$h, 24, 6, 673);
+    			attr_dev(p, "class", "note svelte-h10xyx");
+    			add_location(p, file$k, 61, 10, 2084);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
     			append_dev(p, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*labels*/ 8 && t_value !== (t_value = /*labels*/ ctx[3][/*i*/ ctx[15]] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*labels*/ 8 && t_value !== (t_value = /*labels*/ ctx[3][/*i*/ ctx[19]] + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
@@ -15968,54 +18808,69 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$6.name,
+    		id: create_if_block_1$7.name,
     		type: "if",
-    		source: "(24:4) {#if labels[i] !== undefined}",
+    		source: "(61:8) {#if labels[i] !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (12:2) {#each colors as c,i}
-    function create_each_block$9(ctx) {
+    // (40:4) {#each colors as c, i}
+    function create_each_block$b(ctx) {
     	let li;
-    	let t;
+    	let t0;
+    	let t1;
     	let mounted;
     	let dispose;
-    	let if_block = /*labels*/ ctx[3][/*i*/ ctx[15]] !== undefined && create_if_block_1$6(ctx);
+    	let if_block0 = /*internalLabels*/ ctx[5] && create_if_block_2$3(ctx);
+    	let if_block1 = /*labels*/ ctx[3][/*i*/ ctx[19]] !== undefined && create_if_block_1$7(ctx);
 
     	function mouseover_handler() {
-    		return /*mouseover_handler*/ ctx[7](/*i*/ ctx[15]);
+    		return /*mouseover_handler*/ ctx[10](/*i*/ ctx[19]);
     	}
 
     	function focus_handler() {
-    		return /*focus_handler*/ ctx[8](/*i*/ ctx[15]);
+    		return /*focus_handler*/ ctx[11](/*i*/ ctx[19]);
     	}
 
     	const block = {
     		c: function create() {
     			li = element("li");
-    			if (if_block) if_block.c();
-    			t = space();
+    			if (if_block0) if_block0.c();
+    			t0 = space();
+    			if (if_block1) if_block1.c();
+    			t1 = space();
     			attr_dev(li, "role", "menuitem");
-    			attr_dev(li, "aria-label", "Legend item #" + (/*i*/ ctx[15] + 1));
+    			attr_dev(li, "aria-label", "Legend item #" + (/*i*/ ctx[19] + 1));
     			attr_dev(li, "tabindex", "0");
-    			set_style(li, "width", 100 / /*colors*/ ctx[2].length + "%");
-    			set_style(li, "background-color", /*c*/ ctx[13]);
-    			attr_dev(li, "class", "svelte-1l0yzdf");
-    			toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[15]);
-    			add_location(li, file$h, 12, 2, 294);
+
+    			set_style(li, "width", (/*legendWidths*/ ctx[6]
+    			? /*legendWidths*/ ctx[6][/*i*/ ctx[19]]
+    			: 100 / /*colors*/ ctx[2].length) + "%");
+
+    			set_style(li, "background-color", /*c*/ ctx[17]);
+    			attr_dev(li, "class", "svelte-h10xyx");
+    			toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[19]);
+
+    			toggle_class(li, "border", /*internalLabels*/ ctx[5]
+    			? /*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.border
+    			: false);
+
+    			add_location(li, file$k, 40, 6, 1258);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
-    			if (if_block) if_block.m(li, null);
-    			append_dev(li, t);
+    			if (if_block0) if_block0.m(li, null);
+    			append_dev(li, t0);
+    			if (if_block1) if_block1.m(li, null);
+    			append_dev(li, t1);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(li, "mouseout", /*mouseout_handler*/ ctx[5], false, false, false),
-    					listen_dev(li, "blur", /*blur_handler*/ ctx[6], false, false, false),
+    					listen_dev(li, "mouseout", /*mouseout_handler*/ ctx[8], false, false, false),
+    					listen_dev(li, "blur", /*blur_handler*/ ctx[9], false, false, false),
     					listen_dev(li, "mouseover", mouseover_handler, false, false, false),
     					listen_dev(li, "focus", focus_handler, false, false, false)
     				];
@@ -16026,34 +18881,56 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (/*labels*/ ctx[3][/*i*/ ctx[15]] !== undefined) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
+    			if (/*internalLabels*/ ctx[5]) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$6(ctx);
-    					if_block.c();
-    					if_block.m(li, t);
+    					if_block0 = create_if_block_2$3(ctx);
+    					if_block0.c();
+    					if_block0.m(li, t0);
     				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*labels*/ ctx[3][/*i*/ ctx[19]] !== undefined) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_1$7(ctx);
+    					if_block1.c();
+    					if_block1.m(li, t1);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (dirty & /*legendWidths, colors*/ 68) {
+    				set_style(li, "width", (/*legendWidths*/ ctx[6]
+    				? /*legendWidths*/ ctx[6][/*i*/ ctx[19]]
+    				: 100 / /*colors*/ ctx[2].length) + "%");
     			}
 
     			if (dirty & /*colors*/ 4) {
-    				set_style(li, "width", 100 / /*colors*/ ctx[2].length + "%");
-    			}
-
-    			if (dirty & /*colors*/ 4) {
-    				set_style(li, "background-color", /*c*/ ctx[13]);
+    				set_style(li, "background-color", /*c*/ ctx[17]);
     			}
 
     			if (dirty & /*selected*/ 1) {
-    				toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[15]);
+    				toggle_class(li, "selected-seq", /*selected*/ ctx[0] === /*i*/ ctx[19]);
+    			}
+
+    			if (dirty & /*internalLabels*/ 32) {
+    				toggle_class(li, "border", /*internalLabels*/ ctx[5]
+    				? /*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.border
+    				: false);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
-    			if (if_block) if_block.d();
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
     			mounted = false;
     			run_all(dispose);
     		}
@@ -16061,23 +18938,23 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$9.name,
+    		id: create_each_block$b.name,
     		type: "each",
-    		source: "(12:2) {#each colors as c,i}",
+    		source: "(40:4) {#each colors as c, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    function create_fragment$h(ctx) {
+    function create_fragment$m(ctx) {
     	let h3;
     	let t;
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*type*/ ctx[4] === 'sequential') return create_if_block$9;
-    		if (/*type*/ ctx[4] === 'categorical') return create_if_block_2$3;
+    		if (/*type*/ ctx[4] === "sequential") return create_if_block$a;
+    		if (/*type*/ ctx[4] === "categorical") return create_if_block_4;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -16089,8 +18966,8 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty$1();
-    			attr_dev(h3, "class", "note title svelte-1l0yzdf");
-    			add_location(h3, file$h, 7, 0, 143);
+    			attr_dev(h3, "class", "note title svelte-h10xyx");
+    			add_location(h3, file$k, 30, 0, 1040);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -16132,7 +19009,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$h.name,
+    		id: create_fragment$m.name,
     		type: "component",
     		source: "",
     		ctx
@@ -16141,18 +19018,52 @@ var app = (function () {
     	return block;
     }
 
-    function instance$h($$self, $$props, $$invalidate) {
+    function instance$m($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Legend', slots, []);
-    	let { title = '' } = $$props;
+    	let { title = "" } = $$props;
     	let { colors } = $$props;
     	let { labels } = $$props;
-    	let { type = 'sequential' } = $$props;
+    	let { type = "sequential" } = $$props;
     	let { selected } = $$props;
-    	const writable_props = ['title', 'colors', 'labels', 'type', 'selected'];
+    	let { linearDomain = null } = $$props;
+    	let { internalLabels = null } = $$props;
+    	let legendWidths = null;
+
+    	const calcLinearLabels = labels => {
+    		let ret = [];
+    		let normalizedLabels = labels.map(label => Number(label.match(/(\d+)/)[0]));
+    		let globalDistance = linearDomain[1] - linearDomain[0];
+    		ret.push((normalizedLabels[0] - linearDomain[0]) / globalDistance * 100);
+
+    		normalizedLabels.reduce(
+    			(acc, curr) => {
+    				let distance = curr - acc;
+    				ret.push(distance / globalDistance * 100);
+    				console.log('acc', acc, 'curr', curr, 'distance', distance, 'ret', ret);
+    				return curr;
+    			},
+    			linearDomain[0]
+    		);
+
+    		ret.push((linearDomain[1] - normalizedLabels[normalizedLabels.length - 1]) / globalDistance * 100);
+    		return ret;
+    	};
+
+    	if (linearDomain) legendWidths = calcLinearLabels(labels);
+
+    	const writable_props = [
+    		'title',
+    		'colors',
+    		'labels',
+    		'type',
+    		'selected',
+    		'linearDomain',
+    		'internalLabels'
+    	];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Legend> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$2.warn(`<Legend> was created with unknown prop '${key}'`);
     	});
 
     	const mouseout_handler = () => $$invalidate(0, selected = null);
@@ -16170,9 +19081,22 @@ var app = (function () {
     		if ('labels' in $$props) $$invalidate(3, labels = $$props.labels);
     		if ('type' in $$props) $$invalidate(4, type = $$props.type);
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
+    		if ('linearDomain' in $$props) $$invalidate(7, linearDomain = $$props.linearDomain);
+    		if ('internalLabels' in $$props) $$invalidate(5, internalLabels = $$props.internalLabels);
     	};
 
-    	$$self.$capture_state = () => ({ title, colors, labels, type, selected });
+    	$$self.$capture_state = () => ({
+    		svg,
+    		title,
+    		colors,
+    		labels,
+    		type,
+    		selected,
+    		linearDomain,
+    		internalLabels,
+    		legendWidths,
+    		calcLinearLabels
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('title' in $$props) $$invalidate(1, title = $$props.title);
@@ -16180,6 +19104,9 @@ var app = (function () {
     		if ('labels' in $$props) $$invalidate(3, labels = $$props.labels);
     		if ('type' in $$props) $$invalidate(4, type = $$props.type);
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
+    		if ('linearDomain' in $$props) $$invalidate(7, linearDomain = $$props.linearDomain);
+    		if ('internalLabels' in $$props) $$invalidate(5, internalLabels = $$props.internalLabels);
+    		if ('legendWidths' in $$props) $$invalidate(6, legendWidths = $$props.legendWidths);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -16192,6 +19119,9 @@ var app = (function () {
     		colors,
     		labels,
     		type,
+    		internalLabels,
+    		legendWidths,
+    		linearDomain,
     		mouseout_handler,
     		blur_handler,
     		mouseover_handler,
@@ -16207,34 +19137,36 @@ var app = (function () {
     	constructor(options) {
     		super(options);
 
-    		init$1(this, options, instance$h, create_fragment$h, safe_not_equal, {
+    		init$1(this, options, instance$m, create_fragment$m, safe_not_equal, {
     			title: 1,
     			colors: 2,
     			labels: 3,
     			type: 4,
-    			selected: 0
+    			selected: 0,
+    			linearDomain: 7,
+    			internalLabels: 5
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Legend",
     			options,
-    			id: create_fragment$h.name
+    			id: create_fragment$m.name
     		});
 
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
     		if (/*colors*/ ctx[2] === undefined && !('colors' in props)) {
-    			console.warn("<Legend> was created without expected prop 'colors'");
+    			console_1$2.warn("<Legend> was created without expected prop 'colors'");
     		}
 
     		if (/*labels*/ ctx[3] === undefined && !('labels' in props)) {
-    			console.warn("<Legend> was created without expected prop 'labels'");
+    			console_1$2.warn("<Legend> was created without expected prop 'labels'");
     		}
 
     		if (/*selected*/ ctx[0] === undefined && !('selected' in props)) {
-    			console.warn("<Legend> was created without expected prop 'selected'");
+    			console_1$2.warn("<Legend> was created without expected prop 'selected'");
     		}
     	}
 
@@ -16277,6 +19209,22 @@ var app = (function () {
     	set selected(value) {
     		throw new Error("<Legend>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get linearDomain() {
+    		throw new Error("<Legend>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set linearDomain(value) {
+    		throw new Error("<Legend>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get internalLabels() {
+    		throw new Error("<Legend>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set internalLabels(value) {
+    		throw new Error("<Legend>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     const colorSectors = ordinal()
@@ -16293,62 +19241,23 @@ var app = (function () {
         .domain(['process', 'liquid', 'solidbio', 'coal'])
         .range(['#407aa9', '#faba26', '#62b048', '#333333']);
     const colorPM25 = threshold()
-        .domain([...new Array(8)].map((d, i) => (i + 1) * 10))
-        .range(['#ffbeb3', '#f0a9ad', '#e094a7', '#d07fa1', '#c16b9b', '#b15694', '#a1408e',
-        '#912787', '#800080']);
+        .domain([...new Array(8)].map((d, i) => (i + 1) * 5))
+        .range(['#D9D9D9', '#ffbbb0', '#F18EA7', '#D3609E', '#C14291', '#8D0085']);
     const colorHealth = threshold()
         .domain([20, 40, 60, 80, 100, 120])
         .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
     const colorPolices = ordinal()
         .domain(['Target met', 'On track', 'Not met', 'No data'])
         .range(['#004982', '#5A93B4', '#ffcb5b', '#cacaca']);
-
-    var arrowRight = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path d=\"M15.244 11.767L8.39 18.672a1.12 1.12 0 11-1.59-1.579l6.064-6.11-6.11-6.064a1.12 1.12 0 011.58-1.59l6.904 6.854a1.117 1.117 0 01.006 1.584\"/></svg>";
-
-    var arrowLeft = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path d=\"M6.756 11.767l6.854 6.905a1.12 1.12 0 101.59-1.579l-6.064-6.11 6.11-6.064a1.12 1.12 0 00-1.58-1.59l-6.904 6.854a1.117 1.117 0 00-.006 1.584\"/></svg>";
-
-    var dataSource = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 36 36\"><defs><style>.svg-ds-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><g id=\"icon\"><path class=\"svg-ds-1\" d=\"M4.5,18V6.5a2,2,0,0,1,2-2h23a2,2,0,0,1,2,2v23a2,2,0,0,1-2,2H18\"/><line class=\"svg-ds-1\" x1=\"4\" y1=\"11\" x2=\"31\" y2=\"11\"/><line class=\"svg-ds-1\" x1=\"24\" y1=\"16\" x2=\"28\" y2=\"16\"/><line class=\"svg-ds-1\" x1=\"20\" y1=\"21\" x2=\"28\" y2=\"21\"/><line class=\"svg-ds-1\" x1=\"22\" y1=\"26\" x2=\"28\" y2=\"26\"/><line class=\"svg-ds-1\" x1=\"8\" y1=\"16\" x2=\"14\" y2=\"16\"/><line class=\"svg-ds-1\" x1=\"3\" y1=\"30\" x2=\"12\" y2=\"21\"/><polyline class=\"svg-ds-1\" points=\"4 21 12 21 12 29\"/></g></svg>";
-
-    var embed = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 36 36\"><defs><style>.svg-embed-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:1.93px;}</style></defs><g id=\"icon\"><path class=\"svg-embed-1\" d=\"M20.5,31.5H6.5a2,2,0,0,1-2-2V6.5a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2V9\"/><polyline class=\"svg-embed-1\" points=\"17 16.5 14 19.5 17 22.5\"/><polyline class=\"svg-embed-1\" points=\"24 22.5 27 19.5 24 16.5\"/><line class=\"svg-embed-1\" x1=\"18.5\" y1=\"24\" x2=\"22.5\" y2=\"15\"/><rect class=\"svg-embed-1\" x=\"8.5\" y=\"12\" width=\"23\" height=\"15\"/></g></svg>";
-
-    var data$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M6.5,16.5V8.4A1.4,1.4,0,0,1,7.9,7H24a1.4,1.4,0,0,1,1.4,1.4V24.5A1.4,1.4,0,0,1,24,25.9H15.9\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"6.1\" y1=\"11.6\" x2=\"25\" y2=\"11.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"20.1\" y1=\"15.1\" x2=\"22.9\" y2=\"15.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"17.3\" y1=\"18.6\" x2=\"22.9\" y2=\"18.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"18.7\" y1=\"22.1\" x2=\"22.9\" y2=\"22.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"8.9\" y1=\"15.1\" x2=\"13.1\" y2=\"15.1\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"5.4\" y1=\"24.9\" x2=\"11.7\" y2=\"18.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><polyline points=\"6.1 18.6 11.7 18.6 11.7 24.2\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
-
-    var deaths = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><circle cx=\"10.9\" cy=\"16.7\" r=\"2.5\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M18.6,23.4c0-2,.3-4.7,3.5-4.7s3.5,2.7,3.5,4.7\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><circle cx=\"15.8\" cy=\"10.4\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M6.7,26.9c0-2.4.4-5.6,4.2-5.6s4.2,3.2,4.2,5.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><line x1=\"20\" y1=\"12.8\" x2=\"24.2\" y2=\"17\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.31\"/><line x1=\"20\" y1=\"17\" x2=\"24.2\" y2=\"12.8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.31\"/></g></svg>";
-
-    var fuels = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M11.4,27S4.1,23.1,8.3,15.4\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M20.5,27s6.7-4.6,3.2-11.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><path d=\"M20.9,23.7a6,6,0,0,0,1.8-4.3,6.2,6.2,0,0,0-2.7-5C15.3,10.5,16,7,16,7s-7.7,5.6-5.6,11.9\" fill=\"none\" stroke=\"gray\" stroke-linejoin=\"bevel\" stroke-width=\"1.4\"/><path d=\"M15.6,27s5.6-1.3,0-9.3C10,25.7,15.6,27,15.6,27Z\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
-
-    var pm25 = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><path d=\"M10,28.3H23.9\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M6.9,24.8H26.4\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M6.9,21.3h17\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M10,17.8H21.2\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><path d=\"M13.3,14.3h1.1\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"17.9\" cy=\"8.4\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"26.7\" cy=\"14.4\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"6.3\" cy=\"11.6\" r=\"1.8\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"10.9\" cy=\"5.1\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/><circle cx=\"23.4\" cy=\"3.7\" r=\"0.5\" fill=\"none\" stroke=\"gray\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"/></g></svg>";
-
-    var sectors = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><g id=\"ux\"><polygon points=\"6.5 7.6 10.8 7.6 10.8 17.4 18.1 13.9 18.1 17.4 25.4 13.9 25.4 26.4 6.5 26.4 6.5 7.6\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/><rect x=\"18.2\" y=\"21.7\" width=\"3.3\" height=\"4.7\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></g></svg>";
-
-    var policies = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\" d=\"M19.5 20.9V28l2.5-2 2.4 2v-7.1\"/><g fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"><path d=\"M18 10h-7.6M14 17h-3.6M19 13.5h-8.6M16 20.5h-5.6\"/><circle cx=\"22\" cy=\"20.9\" r=\"2.4\"/></g><path d=\"M16.6 25H8.8a1.4 1.4 0 01-1.4-1.4V7.5a1.4 1.4 0 011.4-1.4h11.8A1.4 1.4 0 0122 7.5v8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></svg>";
-
-    const alignment = {
-        pm25: 'transform: translateY(-7%)',
-        sectors: 'transform: translateY(-8%)',
-    };
-    var svg = {
-        dataSource,
-        embed,
-        arrows: {
-            right: arrowRight,
-            left: arrowLeft
-        },
-        menu: {
-            data: data$1,
-            deaths,
-            fuels,
-            pm25,
-            sectors,
-            policies
-        }
-    };
+    const colorDiseases = ordinal()
+        .domain([5, 15, 25, 35])
+        .range(["#FFBEB3", "#E094A7", "#C16B9B", "#A1408E", "#800080"]);
 
     /* src/components/common/ScrollableX.svelte generated by Svelte v3.42.3 */
-    const file$g = "src/components/common/ScrollableX.svelte";
+    const file$j = "src/components/common/ScrollableX.svelte";
 
     // (54:2) {#if isScrollable}
-    function create_if_block$8(ctx) {
+    function create_if_block$9(ctx) {
     	let div1;
     	let div0;
     	let raw0_value = svg.arrows.right + "";
@@ -16367,15 +19276,15 @@ var app = (function () {
     			div3 = element("div");
     			div2 = element("div");
     			attr_dev(div0, "class", "svelte-lar0y2");
-    			add_location(div0, file$g, 55, 6, 1577);
+    			add_location(div0, file$j, 55, 6, 1577);
     			attr_dev(div1, "class", "overflow overflow-right svelte-lar0y2");
     			toggle_class(div1, "overflow-visible", !/*atEnd*/ ctx[2]);
-    			add_location(div1, file$g, 54, 4, 1472);
+    			add_location(div1, file$j, 54, 4, 1472);
     			attr_dev(div2, "class", "svelte-lar0y2");
-    			add_location(div2, file$g, 58, 6, 1734);
+    			add_location(div2, file$j, 58, 6, 1734);
     			attr_dev(div3, "class", "overflow overflow-left svelte-lar0y2");
     			toggle_class(div3, "overflow-visible", !/*atStart*/ ctx[3]);
-    			add_location(div3, file$g, 57, 4, 1629);
+    			add_location(div3, file$j, 57, 4, 1629);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -16415,7 +19324,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$8.name,
+    		id: create_if_block$9.name,
     		type: "if",
     		source: "(54:2) {#if isScrollable}",
     		ctx
@@ -16424,7 +19333,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$g(ctx) {
+    function create_fragment$l(ctx) {
     	let div1;
     	let div0;
     	let t;
@@ -16433,7 +19342,7 @@ var app = (function () {
     	let dispose;
     	const default_slot_template = /*#slots*/ ctx[16].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[15], null);
-    	let if_block = /*isScrollable*/ ctx[1] && create_if_block$8(ctx);
+    	let if_block = /*isScrollable*/ ctx[1] && create_if_block$9(ctx);
 
     	const block = {
     		c: function create() {
@@ -16443,11 +19352,11 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			attr_dev(div0, "class", "scrollable-content svelte-lar0y2");
-    			add_location(div0, file$g, 49, 2, 1354);
+    			add_location(div0, file$j, 49, 2, 1354);
     			attr_dev(div1, "class", "scrollable svelte-lar0y2");
     			toggle_class(div1, "scrollable-dragging", /*dragging*/ ctx[4]);
     			toggle_class(div1, "scrollable-enabled", /*isScrollable*/ ctx[1]);
-    			add_location(div1, file$g, 48, 0, 1225);
+    			add_location(div1, file$j, 48, 0, 1225);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -16497,7 +19406,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$8(ctx);
+    					if_block = create_if_block$9(ctx);
     					if_block.c();
     					if_block.m(div1, null);
     				}
@@ -16535,7 +19444,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$g.name,
+    		id: create_fragment$l.name,
     		type: "component",
     		source: "",
     		ctx
@@ -16544,7 +19453,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$g($$self, $$props, $$invalidate) {
+    function instance$l($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('ScrollableX', slots, ['default']);
     	var el;
@@ -16692,26 +19601,26 @@ var app = (function () {
     class ScrollableX extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$g, create_fragment$g, safe_not_equal, {});
+    		init$1(this, options, instance$l, create_fragment$l, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "ScrollableX",
     			options,
-    			id: create_fragment$g.name
+    			id: create_fragment$l.name
     		});
     	}
     }
 
     /* src/components/ChartFooter.svelte generated by Svelte v3.42.3 */
 
-    const file$f = "src/components/ChartFooter.svelte";
+    const file$i = "src/components/ChartFooter.svelte";
     const get_content_slot_changes = dirty => ({});
     const get_content_slot_context = ctx => ({});
     const get_text_slot_changes = dirty => ({});
     const get_text_slot_context = ctx => ({});
 
-    function create_fragment$f(ctx) {
+    function create_fragment$k(ctx) {
     	let footer;
     	let div1;
     	let div0;
@@ -16735,13 +19644,13 @@ var app = (function () {
     			t1 = space();
     			if (content_slot) content_slot.c();
     			attr_dev(div0, "class", "footer-icon svelte-2oqsuz");
-    			add_location(div0, file$f, 5, 4, 91);
+    			add_location(div0, file$i, 5, 4, 91);
     			attr_dev(span, "class", "footer-text");
-    			add_location(span, file$f, 6, 4, 139);
+    			add_location(span, file$i, 6, 4, 139);
     			attr_dev(div1, "class", "footer-content svelte-2oqsuz");
-    			add_location(div1, file$f, 4, 2, 58);
+    			add_location(div1, file$i, 4, 2, 58);
     			attr_dev(footer, "class", "svelte-2oqsuz");
-    			add_location(footer, file$f, 3, 0, 46);
+    			add_location(footer, file$i, 3, 0, 46);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -16818,7 +19727,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$f.name,
+    		id: create_fragment$k.name,
     		type: "component",
     		source: "",
     		ctx
@@ -16827,7 +19736,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$f($$self, $$props, $$invalidate) {
+    function instance$k($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('ChartFooter', slots, ['text','content']);
     	let { icon } = $$props;
@@ -16858,13 +19767,13 @@ var app = (function () {
     class ChartFooter extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$f, create_fragment$f, safe_not_equal, { icon: 0 });
+    		init$1(this, options, instance$k, create_fragment$k, safe_not_equal, { icon: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "ChartFooter",
     			options,
-    			id: create_fragment$f.name
+    			id: create_fragment$k.name
     		});
 
     		const { ctx } = this.$$;
@@ -16885,12 +19794,12 @@ var app = (function () {
     }
 
     /* src/components/EmbedFooter.svelte generated by Svelte v3.42.3 */
-    const file$e = "src/components/EmbedFooter.svelte";
-    const get_default_slot_changes = dirty => ({});
-    const get_default_slot_context = ctx => ({ slot: "text" });
+    const file$h = "src/components/EmbedFooter.svelte";
+    const get_default_slot_changes$1 = dirty => ({});
+    const get_default_slot_context$1 = ctx => ({ slot: "text" });
 
     // (28:4) {#if !showEmbedCode}
-    function create_if_block$7(ctx) {
+    function create_if_block$8(ctx) {
     	let a;
     	let mounted;
     	let dispose;
@@ -16900,7 +19809,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Want to embed the visualizations?";
     			attr_dev(a, "href", "EmbedCode");
-    			add_location(a, file$e, 28, 6, 714);
+    			add_location(a, file$h, 28, 6, 714);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -16920,7 +19829,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$7.name,
+    		id: create_if_block$8.name,
     		type: "if",
     		source: "(28:4) {#if !showEmbedCode}",
     		ctx
@@ -16932,7 +19841,7 @@ var app = (function () {
     // (27:20)      
     function fallback_block(ctx) {
     	let if_block_anchor;
-    	let if_block = !/*showEmbedCode*/ ctx[1] && create_if_block$7(ctx);
+    	let if_block = !/*showEmbedCode*/ ctx[1] && create_if_block$8(ctx);
 
     	const block = {
     		c: function create() {
@@ -16948,7 +19857,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$7(ctx);
+    					if_block = create_if_block$8(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -16978,7 +19887,7 @@ var app = (function () {
     function create_text_slot(ctx) {
     	let current;
     	const default_slot_template = /*#slots*/ ctx[7].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], get_default_slot_context);
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], get_default_slot_context$1);
     	const default_slot_or_fallback = default_slot || fallback_block(ctx);
 
     	const block = {
@@ -17002,8 +19911,8 @@ var app = (function () {
     						/*$$scope*/ ctx[9],
     						!current
     						? get_all_dirty_from_scope(/*$$scope*/ ctx[9])
-    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[9], dirty, get_default_slot_changes),
-    						get_default_slot_context
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[9], dirty, get_default_slot_changes$1),
+    						get_default_slot_context$1
     					);
     				}
     			} else {
@@ -17055,10 +19964,10 @@ var app = (function () {
     			input.value = input_value_value = "<script async src='" + /*embedScript*/ ctx[6] + "' data-embed='" + /*embed*/ ctx[0] + "'></script>";
     			attr_dev(input, "class", "svelte-xqu2bd");
     			toggle_class(input, "visible", /*showEmbedCode*/ ctx[1]);
-    			add_location(input, file$e, 32, 4, 862);
+    			add_location(input, file$h, 32, 4, 862);
     			attr_dev(div, "slot", "content");
     			attr_dev(div, "class", "input-container svelte-xqu2bd");
-    			add_location(div, file$e, 31, 2, 813);
+    			add_location(div, file$h, 31, 2, 813);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17106,7 +20015,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$e(ctx) {
+    function create_fragment$j(ctx) {
     	let chartfooter;
     	let current;
 
@@ -17158,7 +20067,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$e.name,
+    		id: create_fragment$j.name,
     		type: "component",
     		source: "",
     		ctx
@@ -17167,7 +20076,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$e($$self, $$props, $$invalidate) {
+    function instance$j($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('EmbedFooter', slots, ['default']);
     	let { embed } = $$props;
@@ -17263,13 +20172,13 @@ var app = (function () {
     class EmbedFooter extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$e, create_fragment$e, safe_not_equal, { embed: 0 });
+    		init$1(this, options, instance$j, create_fragment$j, safe_not_equal, { embed: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "EmbedFooter",
     			options,
-    			id: create_fragment$e.name
+    			id: create_fragment$j.name
     		});
 
     		const { ctx } = this.$$;
@@ -17290,9 +20199,9 @@ var app = (function () {
     }
 
     /* src/components/SectionTitle.svelte generated by Svelte v3.42.3 */
-    const file$d = "src/components/SectionTitle.svelte";
+    const file$g = "src/components/SectionTitle.svelte";
 
-    function create_fragment$d(ctx) {
+    function create_fragment$i(ctx) {
     	let div2;
     	let div0;
     	let raw0_value = svg.menu[/*block*/ ctx[0].icon] + "";
@@ -17309,11 +20218,11 @@ var app = (function () {
     			div1 = element("div");
     			attr_dev(div0, "class", "kicker-icon svelte-jvn33y");
     			attr_dev(div0, "style", div0_style_value = alignment[/*block*/ ctx[0].icon] || '');
-    			add_location(div0, file$d, 5, 2, 113);
+    			add_location(div0, file$g, 5, 2, 113);
     			attr_dev(div1, "class", "kicker-text svelte-jvn33y");
-    			add_location(div1, file$d, 6, 2, 212);
+    			add_location(div1, file$g, 6, 2, 212);
     			attr_dev(div2, "class", "kicker svelte-jvn33y");
-    			add_location(div2, file$d, 4, 0, 90);
+    			add_location(div2, file$g, 4, 0, 90);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -17342,7 +20251,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block: block_1,
-    		id: create_fragment$d.name,
+    		id: create_fragment$i.name,
     		type: "component",
     		source: "",
     		ctx
@@ -17351,7 +20260,7 @@ var app = (function () {
     	return block_1;
     }
 
-    function instance$d($$self, $$props, $$invalidate) {
+    function instance$i($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('SectionTitle', slots, []);
     	
@@ -17382,13 +20291,13 @@ var app = (function () {
     class SectionTitle extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$d, create_fragment$d, safe_not_equal, { block: 0 });
+    		init$1(this, options, instance$i, create_fragment$i, safe_not_equal, { block: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "SectionTitle",
     			options,
-    			id: create_fragment$d.name
+    			id: create_fragment$i.name
     		});
 
     		const { ctx } = this.$$;
@@ -17408,16 +20317,1384 @@ var app = (function () {
     	}
     }
 
+    function cubicInOut(t) {
+        return t < 0.5 ? 4.0 * t * t * t : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+    }
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function scale(node, { delay = 0, duration = 400, easing = cubicOut, start = 0, opacity = 0 } = {}) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const sd = 1 - start;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (_t, u) => `
+			transform: ${transform} scale(${1 - (sd * u)});
+			opacity: ${target_opacity - (od * u)}
+		`
+        };
+    }
+
+    /* src/components/Select.svelte generated by Svelte v3.42.3 */
+    const file$f = "src/components/Select.svelte";
+
+    function get_each_context$a(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[11] = list[i];
+    	child_ctx[13] = i;
+    	return child_ctx;
+    }
+
+    const get_default_slot_changes_1 = dirty => ({ option: dirty & /*options*/ 1 });
+    const get_default_slot_context_1 = ctx => ({ option: /*opt*/ ctx[11] });
+
+    const get_default_slot_changes = dirty => ({
+    	option: dirty & /*options, currentIndex*/ 3
+    });
+
+    const get_default_slot_context = ctx => ({
+    	option: /*options*/ ctx[0][/*currentIndex*/ ctx[1]]
+    });
+
+    // (41:0) {#if listboxVisible}
+    function create_if_block$7(ctx) {
+    	let div;
+    	let div_transition;
+    	let current;
+    	let each_value = /*options*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$a(get_each_context$a(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(div, "class", "listbox svelte-82po7i");
+    			add_location(div, file$f, 41, 4, 1170);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*chooseOption, $$scope, options, currentIndex*/ 75) {
+    				each_value = /*options*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$a(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$a(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			add_render_callback(() => {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, scale, {}, true);
+    				div_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, scale, {}, false);
+    			div_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_each(each_blocks, detaching);
+    			if (detaching && div_transition) div_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$7.name,
+    		type: "if",
+    		source: "(41:0) {#if listboxVisible}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (44:8) {#if i !== currentIndex}
+    function create_if_block_1$6(ctx) {
+    	let div;
+    	let t;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	const default_slot_template = /*#slots*/ ctx[7].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[6], get_default_slot_context_1);
+
+    	function focus_handler() {
+    		return /*focus_handler*/ ctx[10](/*i*/ ctx[13]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if (default_slot) default_slot.c();
+    			t = space();
+    			attr_dev(div, "class", "option svelte-82po7i");
+    			attr_dev(div, "tabindex", "-1");
+    			add_location(div, file$f, 44, 8, 1280);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append_dev(div, t);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(div, "focus", focus_handler, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (default_slot) {
+    				if (default_slot.p && (!current || dirty & /*$$scope, options*/ 65)) {
+    					update_slot_base(
+    						default_slot,
+    						default_slot_template,
+    						ctx,
+    						/*$$scope*/ ctx[6],
+    						!current
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[6])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[6], dirty, get_default_slot_changes_1),
+    						get_default_slot_context_1
+    					);
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (default_slot) default_slot.d(detaching);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$6.name,
+    		type: "if",
+    		source: "(44:8) {#if i !== currentIndex}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (43:4) {#each options as opt, i}
+    function create_each_block$a(ctx) {
+    	let if_block_anchor;
+    	let current;
+    	let if_block = /*i*/ ctx[13] !== /*currentIndex*/ ctx[1] && create_if_block_1$6(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty$1();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*i*/ ctx[13] !== /*currentIndex*/ ctx[1]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*currentIndex*/ 2) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_1$6(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$a.name,
+    		type: "each",
+    		source: "(43:4) {#each options as opt, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$h(ctx) {
+    	let div1;
+    	let div0;
+    	let t0;
+    	let svg;
+    	let path;
+    	let t1;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	const default_slot_template = /*#slots*/ ctx[7].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[6], get_default_slot_context);
+    	let if_block = /*listboxVisible*/ ctx[2] && create_if_block$7(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			if (default_slot) default_slot.c();
+    			t0 = space();
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			t1 = space();
+    			if (if_block) if_block.c();
+    			attr_dev(path, "d", "M0.630249 1L6.36134 6.5L12.0924 1");
+    			add_location(path, file$f, 36, 8, 1079);
+    			attr_dev(svg, "class", "arrow svelte-82po7i");
+    			attr_dev(svg, "viewBox", "0 0 13 8");
+    			add_location(svg, file$f, 35, 4, 1032);
+    			attr_dev(div0, "class", "selector-area svelte-82po7i");
+    			add_location(div0, file$f, 29, 0, 858);
+    			attr_dev(div1, "class", "madlib-selector svelte-82po7i");
+    			add_location(div1, file$f, 28, 0, 828);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+
+    			if (default_slot) {
+    				default_slot.m(div0, null);
+    			}
+
+    			append_dev(div0, t0);
+    			append_dev(div0, svg);
+    			append_dev(svg, path);
+    			append_dev(div1, t1);
+    			if (if_block) if_block.m(div1, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(window, "keydown", /*handleKeyDown*/ ctx[4], false, false, false),
+    					listen_dev(div0, "click", /*click_handler*/ ctx[8], false, false, false),
+    					listen_dev(div0, "blur", /*blur_handler*/ ctx[9], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (default_slot) {
+    				if (default_slot.p && (!current || dirty & /*$$scope, options, currentIndex*/ 67)) {
+    					update_slot_base(
+    						default_slot,
+    						default_slot_template,
+    						ctx,
+    						/*$$scope*/ ctx[6],
+    						!current
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[6])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[6], dirty, get_default_slot_changes),
+    						get_default_slot_context
+    					);
+    				}
+    			}
+
+    			if (/*listboxVisible*/ ctx[2]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*listboxVisible*/ 4) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$7(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			if (default_slot) default_slot.d(detaching);
+    			if (if_block) if_block.d();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$h.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$h($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Select', slots, ['default']);
+    	let { options } = $$props;
+    	let { selected = options[0].value ? options[0].value : 0 } = $$props;
+    	let currentIndex = 0;
+    	let listboxVisible = false;
+
+    	const chooseOption = index => {
+    		$$invalidate(1, currentIndex = index);
+    		$$invalidate(2, listboxVisible = false);
+    	};
+
+    	const handleKeyDown = e => {
+    		if (listboxVisible) {
+    			if (e.key === 'ArrowUp' && currentIndex > 0) {
+    				$$invalidate(1, currentIndex--, currentIndex);
+    				e.preventDefault();
+    			} else if (e.key === 'ArrowDown' && currentIndex < options.length - 1) {
+    				$$invalidate(1, currentIndex++, currentIndex);
+    				e.preventDefault();
+    			}
+    		}
+    	};
+
+    	const writable_props = ['options', 'selected'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Select> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = () => $$invalidate(2, listboxVisible = !listboxVisible);
+    	const blur_handler = () => $$invalidate(2, listboxVisible = false);
+    	const focus_handler = i => chooseOption(i);
+
+    	$$self.$$set = $$props => {
+    		if ('options' in $$props) $$invalidate(0, options = $$props.options);
+    		if ('selected' in $$props) $$invalidate(5, selected = $$props.selected);
+    		if ('$$scope' in $$props) $$invalidate(6, $$scope = $$props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		scale,
+    		options,
+    		selected,
+    		currentIndex,
+    		listboxVisible,
+    		chooseOption,
+    		handleKeyDown
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('options' in $$props) $$invalidate(0, options = $$props.options);
+    		if ('selected' in $$props) $$invalidate(5, selected = $$props.selected);
+    		if ('currentIndex' in $$props) $$invalidate(1, currentIndex = $$props.currentIndex);
+    		if ('listboxVisible' in $$props) $$invalidate(2, listboxVisible = $$props.listboxVisible);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*options, currentIndex*/ 3) {
+    			$$invalidate(5, selected = options[currentIndex].value
+    			? options[currentIndex].value
+    			: currentIndex);
+    		}
+    	};
+
+    	return [
+    		options,
+    		currentIndex,
+    		listboxVisible,
+    		chooseOption,
+    		handleKeyDown,
+    		selected,
+    		$$scope,
+    		slots,
+    		click_handler,
+    		blur_handler,
+    		focus_handler
+    	];
+    }
+
+    class Select extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$h, create_fragment$h, safe_not_equal, { options: 0, selected: 5 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Select",
+    			options,
+    			id: create_fragment$h.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*options*/ ctx[0] === undefined && !('options' in props)) {
+    			console.warn("<Select> was created without expected prop 'options'");
+    		}
+    	}
+
+    	get options() {
+    		throw new Error("<Select>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set options(value) {
+    		throw new Error("<Select>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get selected() {
+    		throw new Error("<Select>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selected(value) {
+    		throw new Error("<Select>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/DiseaseDropdownView.svelte generated by Svelte v3.42.3 */
+    const file$e = "src/components/DiseaseDropdownView.svelte";
+
+    function create_fragment$g(ctx) {
+    	let div1;
+    	let div0;
+    	let raw_value = svg.diseases[/*option*/ ctx[0].value] + "";
+    	let t0;
+    	let t1_value = /*option*/ ctx[0].label + "";
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			t1 = text$1(t1_value);
+    			attr_dev(div0, "class", "icon svelte-4kbvt7");
+    			add_location(div0, file$e, 6, 2, 103);
+    			attr_dev(div1, "class", "container svelte-4kbvt7");
+    			add_location(div1, file$e, 5, 0, 77);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			div0.innerHTML = raw_value;
+    			append_dev(div1, t0);
+    			append_dev(div1, t1);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*option*/ 1 && raw_value !== (raw_value = svg.diseases[/*option*/ ctx[0].value] + "")) div0.innerHTML = raw_value;			if (dirty & /*option*/ 1 && t1_value !== (t1_value = /*option*/ ctx[0].label + "")) set_data_dev(t1, t1_value);
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$g.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$g($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('DiseaseDropdownView', slots, []);
+    	
+    	let { option } = $$props;
+    	const writable_props = ['option'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<DiseaseDropdownView> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('option' in $$props) $$invalidate(0, option = $$props.option);
+    	};
+
+    	$$self.$capture_state = () => ({ svg, option });
+
+    	$$self.$inject_state = $$props => {
+    		if ('option' in $$props) $$invalidate(0, option = $$props.option);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [option];
+    }
+
+    class DiseaseDropdownView extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$g, create_fragment$g, safe_not_equal, { option: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "DiseaseDropdownView",
+    			options,
+    			id: create_fragment$g.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*option*/ ctx[0] === undefined && !('option' in props)) {
+    			console.warn("<DiseaseDropdownView> was created without expected prop 'option'");
+    		}
+    	}
+
+    	get option() {
+    		throw new Error("<DiseaseDropdownView>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set option(value) {
+    		throw new Error("<DiseaseDropdownView>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/Dropdown.svelte generated by Svelte v3.42.3 */
+
+    // (14:0) <Select options={items} let:option={option} bind:selected={selectedElement}>
+    function create_default_slot$3(ctx) {
+    	let diseasesdropdownview;
+    	let current;
+
+    	diseasesdropdownview = new DiseaseDropdownView({
+    			props: { option: /*option*/ ctx[4] },
+    			$$inline: true
+    		});
+
+    	const block_1 = {
+    		c: function create() {
+    			create_component(diseasesdropdownview.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(diseasesdropdownview, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const diseasesdropdownview_changes = {};
+    			if (dirty & /*option*/ 16) diseasesdropdownview_changes.option = /*option*/ ctx[4];
+    			diseasesdropdownview.$set(diseasesdropdownview_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(diseasesdropdownview.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(diseasesdropdownview.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(diseasesdropdownview, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block: block_1,
+    		id: create_default_slot$3.name,
+    		type: "slot",
+    		source: "(14:0) <Select options={items} let:option={option} bind:selected={selectedElement}>",
+    		ctx
+    	});
+
+    	return block_1;
+    }
+
+    function create_fragment$f(ctx) {
+    	let select;
+    	let updating_selected;
+    	let current;
+
+    	function select_selected_binding(value) {
+    		/*select_selected_binding*/ ctx[3](value);
+    	}
+
+    	let select_props = {
+    		options: /*items*/ ctx[1],
+    		$$slots: {
+    			default: [
+    				create_default_slot$3,
+    				({ option }) => ({ 4: option }),
+    				({ option }) => option ? 16 : 0
+    			]
+    		},
+    		$$scope: { ctx }
+    	};
+
+    	if (/*selectedElement*/ ctx[0] !== void 0) {
+    		select_props.selected = /*selectedElement*/ ctx[0];
+    	}
+
+    	select = new Select({ props: select_props, $$inline: true });
+    	binding_callbacks.push(() => bind(select, 'selected', select_selected_binding));
+
+    	const block_1 = {
+    		c: function create() {
+    			create_component(select.$$.fragment);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(select, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			const select_changes = {};
+
+    			if (dirty & /*$$scope, option*/ 48) {
+    				select_changes.$$scope = { dirty, ctx };
+    			}
+
+    			if (!updating_selected && dirty & /*selectedElement*/ 1) {
+    				updating_selected = true;
+    				select_changes.selected = /*selectedElement*/ ctx[0];
+    				add_flush_callback(() => updating_selected = false);
+    			}
+
+    			select.$set(select_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(select.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(select.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(select, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block: block_1,
+    		id: create_fragment$f.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block_1;
+    }
+
+    function instance$f($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Dropdown', slots, []);
+    	
+    	let { block = undefined } = $$props;
+    	let { selectedElement } = $$props;
+
+    	let items = block === null || block === void 0
+    	? void 0
+    	: block.dropdown.map(item => ({ value: item.value, label: item.label }));
+
+    	const writable_props = ['block', 'selectedElement'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Dropdown> was created with unknown prop '${key}'`);
+    	});
+
+    	function select_selected_binding(value) {
+    		selectedElement = value;
+    		($$invalidate(0, selectedElement), $$invalidate(1, items));
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ('block' in $$props) $$invalidate(2, block = $$props.block);
+    		if ('selectedElement' in $$props) $$invalidate(0, selectedElement = $$props.selectedElement);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		svg,
+    		alignment,
+    		Select,
+    		DiseasesDropdownView: DiseaseDropdownView,
+    		block,
+    		selectedElement,
+    		items
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('block' in $$props) $$invalidate(2, block = $$props.block);
+    		if ('selectedElement' in $$props) $$invalidate(0, selectedElement = $$props.selectedElement);
+    		if ('items' in $$props) $$invalidate(1, items = $$props.items);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$invalidate(0, selectedElement = items[0]);
+    	return [selectedElement, items, block, select_selected_binding];
+    }
+
+    class Dropdown extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$f, create_fragment$f, safe_not_equal, { block: 2, selectedElement: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Dropdown",
+    			options,
+    			id: create_fragment$f.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*selectedElement*/ ctx[0] === undefined && !('selectedElement' in props)) {
+    			console.warn("<Dropdown> was created without expected prop 'selectedElement'");
+    		}
+    	}
+
+    	get block() {
+    		throw new Error("<Dropdown>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set block(value) {
+    		throw new Error("<Dropdown>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get selectedElement() {
+    		throw new Error("<Dropdown>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selectedElement(value) {
+    		throw new Error("<Dropdown>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/Title.svelte generated by Svelte v3.42.3 */
+
+    const { console: console_1$1 } = globals;
+
+    function create_fragment$e(ctx) {
+    	let html_tag;
+    	let raw_value = /*block*/ ctx[0]?.title + "";
+    	let html_anchor;
+
+    	const block_1 = {
+    		c: function create() {
+    			html_tag = new HtmlTag();
+    			html_anchor = empty$1();
+    			html_tag.a = html_anchor;
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			html_tag.m(raw_value, target, anchor);
+    			insert_dev(target, html_anchor, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*block*/ 1 && raw_value !== (raw_value = /*block*/ ctx[0]?.title + "")) html_tag.p(raw_value);
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(html_anchor);
+    			if (detaching) html_tag.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block: block_1,
+    		id: create_fragment$e.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block_1;
+    }
+
+    function instance$e($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Title', slots, []);
+    	
+    	let { block } = $$props;
+    	console.log(block);
+    	const writable_props = ['block'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<Title> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('block' in $$props) $$invalidate(0, block = $$props.block);
+    	};
+
+    	$$self.$capture_state = () => ({ block });
+
+    	$$self.$inject_state = $$props => {
+    		if ('block' in $$props) $$invalidate(0, block = $$props.block);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [block];
+    }
+
+    class Title extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$e, create_fragment$e, safe_not_equal, { block: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Title",
+    			options,
+    			id: create_fragment$e.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*block*/ ctx[0] === undefined && !('block' in props)) {
+    			console_1$1.warn("<Title> was created without expected prop 'block'");
+    		}
+    	}
+
+    	get block() {
+    		throw new Error("<Title>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set block(value) {
+    		throw new Error("<Title>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/Head.svelte generated by Svelte v3.42.3 */
+
+    const { console: console_1 } = globals;
+    const file$d = "src/components/Head.svelte";
+
+    function get_each_context$9(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[8] = list[i];
+    	return child_ctx;
+    }
+
+    // (45:2) {#each blocks as block}
+    function create_each_block$9(ctx) {
+    	let switch_instance;
+    	let updating_selectedElement;
+    	let switch_instance_anchor;
+    	let current;
+
+    	function switch_instance_selectedElement_binding(value) {
+    		/*switch_instance_selectedElement_binding*/ ctx[6](value);
+    	}
+
+    	var switch_value = /*components*/ ctx[2][/*block*/ ctx[8].type];
+
+    	function switch_props(ctx) {
+    		let switch_instance_props = { block: /*block*/ ctx[8] };
+
+    		if (/*selectedElement*/ ctx[0] !== void 0) {
+    			switch_instance_props.selectedElement = /*selectedElement*/ ctx[0];
+    		}
+
+    		return {
+    			props: switch_instance_props,
+    			$$inline: true
+    		};
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props(ctx));
+    		binding_callbacks.push(() => bind(switch_instance, 'selectedElement', switch_instance_selectedElement_binding));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			switch_instance_anchor = empty$1();
+    		},
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_instance_changes = {};
+    			if (dirty & /*blocks*/ 2) switch_instance_changes.block = /*block*/ ctx[8];
+
+    			if (!updating_selectedElement && dirty & /*selectedElement*/ 1) {
+    				updating_selectedElement = true;
+    				switch_instance_changes.selectedElement = /*selectedElement*/ ctx[0];
+    				add_flush_callback(() => updating_selectedElement = false);
+    			}
+
+    			if (switch_value !== (switch_value = /*components*/ ctx[2][/*block*/ ctx[8].type])) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props(ctx));
+    					binding_callbacks.push(() => bind(switch_instance, 'selectedElement', switch_instance_selectedElement_binding));
+    					create_component(switch_instance.$$.fragment);
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			} else if (switch_value) {
+    				switch_instance.$set(switch_instance_changes);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(switch_instance_anchor);
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$9.name,
+    		type: "each",
+    		source: "(45:2) {#each blocks as block}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$d(ctx) {
+    	let h2;
+    	let current;
+    	let each_value = /*blocks*/ ctx[1];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$9(get_each_context$9(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			h2 = element("h2");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(h2, "class", "narrow align svelte-1bh7umy");
+    			add_location(h2, file$d, 43, 0, 996);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h2, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(h2, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*components, blocks, selectedElement*/ 7) {
+    				each_value = /*blocks*/ ctx[1];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$9(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$9(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(h2, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h2);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$d.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$d($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('Head', slots, []);
+    	
+    	let { title } = $$props;
+    	let { dropdown = [] } = $$props;
+    	let { selectedElement } = $$props;
+    	let { number = 0 } = $$props;
+    	let blocks = [];
+    	const components = { dropdown: Dropdown, title: Title };
+
+    	const createBlocks = () => {
+    		let ret = [];
+    		if (title.includes("@number")) $$invalidate(3, title = title.replace("@number", number.toString()));
+
+    		if (title.includes("@dropdown") && dropdown.length > 0) {
+    			let titleBlocks = title.split("@dropdown");
+    			ret.push({ type: "title", title: titleBlocks[0] });
+    			ret.push({ type: "dropdown", dropdown });
+    			ret.push({ type: "title", title: titleBlocks[1] });
+    		} else {
+    			ret.push({ type: "title", title });
+    		}
+
+    		console.log(ret);
+    		return ret;
+    	};
+
+    	blocks = createBlocks();
+    	const writable_props = ['title', 'dropdown', 'selectedElement', 'number'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<Head> was created with unknown prop '${key}'`);
+    	});
+
+    	function switch_instance_selectedElement_binding(value) {
+    		selectedElement = value;
+    		$$invalidate(0, selectedElement);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ('title' in $$props) $$invalidate(3, title = $$props.title);
+    		if ('dropdown' in $$props) $$invalidate(4, dropdown = $$props.dropdown);
+    		if ('selectedElement' in $$props) $$invalidate(0, selectedElement = $$props.selectedElement);
+    		if ('number' in $$props) $$invalidate(5, number = $$props.number);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Dropdown,
+    		Title,
+    		title,
+    		dropdown,
+    		selectedElement,
+    		number,
+    		blocks,
+    		components,
+    		createBlocks
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('title' in $$props) $$invalidate(3, title = $$props.title);
+    		if ('dropdown' in $$props) $$invalidate(4, dropdown = $$props.dropdown);
+    		if ('selectedElement' in $$props) $$invalidate(0, selectedElement = $$props.selectedElement);
+    		if ('number' in $$props) $$invalidate(5, number = $$props.number);
+    		if ('blocks' in $$props) $$invalidate(1, blocks = $$props.blocks);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		selectedElement,
+    		blocks,
+    		components,
+    		title,
+    		dropdown,
+    		number,
+    		switch_instance_selectedElement_binding
+    	];
+    }
+
+    class Head extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init$1(this, options, instance$d, create_fragment$d, safe_not_equal, {
+    			title: 3,
+    			dropdown: 4,
+    			selectedElement: 0,
+    			number: 5
+    		});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Head",
+    			options,
+    			id: create_fragment$d.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*title*/ ctx[3] === undefined && !('title' in props)) {
+    			console_1.warn("<Head> was created without expected prop 'title'");
+    		}
+
+    		if (/*selectedElement*/ ctx[0] === undefined && !('selectedElement' in props)) {
+    			console_1.warn("<Head> was created without expected prop 'selectedElement'");
+    		}
+    	}
+
+    	get title() {
+    		throw new Error("<Head>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set title(value) {
+    		throw new Error("<Head>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get dropdown() {
+    		throw new Error("<Head>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set dropdown(value) {
+    		throw new Error("<Head>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get selectedElement() {
+    		throw new Error("<Head>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selectedElement(value) {
+    		throw new Error("<Head>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get number() {
+    		throw new Error("<Head>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set number(value) {
+    		throw new Error("<Head>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    var diabetes = "Diabetes";
+    var copd = "Chronic obstructive pulmonary disease";
+    var ischemic = "Ischemic heart disease";
+    var lri = "Lower respiratory infection";
+    var lungcancer = "Trachea, bronchus and lung cancer";
+    var stroke = "Stroke";
+    var nd = "Neonatal disorders";
+    var diseasesDictionary = {
+    	diabetes: diabetes,
+    	copd: copd,
+    	ischemic: ischemic,
+    	lri: lri,
+    	lungcancer: lungcancer,
+    	stroke: stroke,
+    	nd: nd
+    };
+
     /* src/components/CartoWorld.svelte generated by Svelte v3.42.3 */
     const file$c = "src/components/CartoWorld.svelte";
 
     function get_each_context$8(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i];
+    	child_ctx[27] = list[i];
     	return child_ctx;
     }
 
-    // (275:2) {#if !isEmbed}
+    // (367:2) {#if !isEmbed}
     function create_if_block_3(ctx) {
     	let sectiontitle;
     	let current;
@@ -17458,14 +21735,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(275:2) {#if !isEmbed}",
+    		source: "(367:2) {#if !isEmbed}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (291:2) {#if isEmbed && embed !== "policies"}
+    // (385:2) {#if isEmbed && embed !== "policies"}
     function create_if_block_2$2(ctx) {
     	let div;
     	let p;
@@ -17483,12 +21760,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 295, 11, 12107);
-    			add_location(b, file$c, 295, 8, 12104);
-    			add_location(p, file$c, 292, 6, 11996);
+    			add_location(a, file$c, 389, 11, 16402);
+    			add_location(b, file$c, 389, 8, 16399);
+    			add_location(p, file$c, 386, 6, 16291);
     			attr_dev(div, "class", "embed-additional-text-desktop svelte-8n8gc5");
-    			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
-    			add_location(div, file$c, 291, 4, 11913);
+    			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
+    			add_location(div, file$c, 385, 4, 16208);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17498,8 +21775,8 @@ var app = (function () {
     			append_dev(b, a);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*cartogramAnnotation*/ 4096) {
-    				toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
+    			if (dirty & /*cartogramAnnotation*/ 8192) {
+    				toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -17511,28 +21788,28 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(291:2) {#if isEmbed && embed !== \\\"policies\\\"}",
+    		source: "(385:2) {#if isEmbed && embed !== \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (302:4) <ScrollableX>
+    // (396:4) <ScrollableX>
     function create_default_slot$2(ctx) {
     	let div;
     	let cartogram;
     	let updating_rerenderFn;
     	let updating_annotationShowing;
     	let current;
-    	const cartogram_spread_levels = [/*datasetParams*/ ctx[13][/*data*/ ctx[0]], { slug: /*data*/ ctx[0] }];
+    	const cartogram_spread_levels = [/*datasetParams*/ ctx[14][/*data*/ ctx[0]], { slug: /*data*/ ctx[0] }];
 
     	function cartogram_rerenderFn_binding(value) {
-    		/*cartogram_rerenderFn_binding*/ ctx[15](value);
+    		/*cartogram_rerenderFn_binding*/ ctx[17](value);
     	}
 
     	function cartogram_annotationShowing_binding(value) {
-    		/*cartogram_annotationShowing_binding*/ ctx[16](value);
+    		/*cartogram_annotationShowing_binding*/ ctx[18](value);
     	}
 
     	let cartogram_props = {};
@@ -17541,12 +21818,12 @@ var app = (function () {
     		cartogram_props = assign(cartogram_props, cartogram_spread_levels[i]);
     	}
 
-    	if (/*rerender*/ ctx[10] !== void 0) {
-    		cartogram_props.rerenderFn = /*rerender*/ ctx[10];
+    	if (/*rerender*/ ctx[11] !== void 0) {
+    		cartogram_props.rerenderFn = /*rerender*/ ctx[11];
     	}
 
-    	if (/*cartogramAnnotation*/ ctx[12] !== void 0) {
-    		cartogram_props.annotationShowing = /*cartogramAnnotation*/ ctx[12];
+    	if (/*cartogramAnnotation*/ ctx[13] !== void 0) {
+    		cartogram_props.annotationShowing = /*cartogramAnnotation*/ ctx[13];
     	}
 
     	cartogram = new Cartogram({ props: cartogram_props, $$inline: true });
@@ -17557,10 +21834,10 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(cartogram.$$.fragment);
-    			set_style(div, "width", /*width*/ ctx[9] + "px");
-    			set_style(div, "height", /*height*/ ctx[11] + "px");
+    			set_style(div, "width", /*width*/ ctx[10] + "px");
+    			set_style(div, "height", /*height*/ ctx[12] + "px");
     			attr_dev(div, "class", "cartogram-container svelte-8n8gc5");
-    			add_location(div, file$c, 302, 6, 12283);
+    			add_location(div, file$c, 396, 6, 16578);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17568,33 +21845,33 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			const cartogram_changes = (dirty & /*datasetParams, data*/ 8193)
+    			const cartogram_changes = (dirty & /*datasetParams, data*/ 16385)
     			? get_spread_update(cartogram_spread_levels, [
-    					get_spread_object(/*datasetParams*/ ctx[13][/*data*/ ctx[0]]),
+    					get_spread_object(/*datasetParams*/ ctx[14][/*data*/ ctx[0]]),
     					dirty & /*data*/ 1 && { slug: /*data*/ ctx[0] }
     				])
     			: {};
 
-    			if (!updating_rerenderFn && dirty & /*rerender*/ 1024) {
+    			if (!updating_rerenderFn && dirty & /*rerender*/ 2048) {
     				updating_rerenderFn = true;
-    				cartogram_changes.rerenderFn = /*rerender*/ ctx[10];
+    				cartogram_changes.rerenderFn = /*rerender*/ ctx[11];
     				add_flush_callback(() => updating_rerenderFn = false);
     			}
 
-    			if (!updating_annotationShowing && dirty & /*cartogramAnnotation*/ 4096) {
+    			if (!updating_annotationShowing && dirty & /*cartogramAnnotation*/ 8192) {
     				updating_annotationShowing = true;
-    				cartogram_changes.annotationShowing = /*cartogramAnnotation*/ ctx[12];
+    				cartogram_changes.annotationShowing = /*cartogramAnnotation*/ ctx[13];
     				add_flush_callback(() => updating_annotationShowing = false);
     			}
 
     			cartogram.$set(cartogram_changes);
 
-    			if (!current || dirty & /*width*/ 512) {
-    				set_style(div, "width", /*width*/ ctx[9] + "px");
+    			if (!current || dirty & /*width*/ 1024) {
+    				set_style(div, "width", /*width*/ ctx[10] + "px");
     			}
 
-    			if (!current || dirty & /*height*/ 2048) {
-    				set_style(div, "height", /*height*/ ctx[11] + "px");
+    			if (!current || dirty & /*height*/ 4096) {
+    				set_style(div, "height", /*height*/ ctx[12] + "px");
     			}
     		},
     		i: function intro(local) {
@@ -17616,14 +21893,14 @@ var app = (function () {
     		block: block_1,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(302:4) <ScrollableX>",
+    		source: "(396:4) <ScrollableX>",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (317:2) {#if isEmbed && embed === "policies"}
+    // (411:2) {#if isEmbed && embed === "policies"}
     function create_if_block_1$5(ctx) {
     	let div;
     	let p;
@@ -17641,12 +21918,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 324, 11, 12868);
-    			add_location(b, file$c, 324, 8, 12865);
-    			add_location(p, file$c, 321, 6, 12757);
+    			add_location(a, file$c, 418, 11, 17163);
+    			add_location(b, file$c, 418, 8, 17160);
+    			add_location(p, file$c, 415, 6, 17052);
     			attr_dev(div, "class", "embed-additional-text-desktop-policies svelte-8n8gc5");
-    			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
-    			add_location(div, file$c, 317, 4, 12648);
+    			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
+    			add_location(div, file$c, 411, 4, 16943);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17656,8 +21933,8 @@ var app = (function () {
     			append_dev(b, a);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*cartogramAnnotation*/ 4096) {
-    				toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[12]);
+    			if (dirty & /*cartogramAnnotation*/ 8192) {
+    				toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -17669,14 +21946,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(317:2) {#if isEmbed && embed === \\\"policies\\\"}",
+    		source: "(411:2) {#if isEmbed && embed === \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (330:2) {#if !isEmbed}
+    // (424:2) {#if !isEmbed}
     function create_if_block$6(ctx) {
     	let div;
     	let embedfooter;
@@ -17709,7 +21986,7 @@ var app = (function () {
 
     			each_1_anchor = empty$1();
     			attr_dev(div, "class", "footer svelte-8n8gc5");
-    			add_location(div, file$c, 330, 4, 12985);
+    			add_location(div, file$c, 424, 4, 17280);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17774,30 +22051,30 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(330:2) {#if !isEmbed}",
+    		source: "(424:2) {#if !isEmbed}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (335:4) {#each text as t}
+    // (429:4) {#each text as t}
     function create_each_block$8(ctx) {
     	let p;
-    	let raw_value = /*t*/ ctx[23].p + "";
+    	let raw_value = /*t*/ ctx[27].p + "";
 
     	const block_1 = {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$c, 335, 6, 13076);
+    			add_location(p, file$c, 429, 6, 17371);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
     			p.innerHTML = raw_value;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*text*/ 16 && raw_value !== (raw_value = /*t*/ ctx[23].p + "")) p.innerHTML = raw_value;		},
+    			if (dirty & /*text*/ 16 && raw_value !== (raw_value = /*t*/ ctx[27].p + "")) p.innerHTML = raw_value;		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -17807,7 +22084,7 @@ var app = (function () {
     		block: block_1,
     		id: create_each_block$8.name,
     		type: "each",
-    		source: "(335:4) {#each text as t}",
+    		source: "(429:4) {#each text as t}",
     		ctx
     	});
 
@@ -17817,7 +22094,8 @@ var app = (function () {
     function create_fragment$c(ctx) {
     	let section;
     	let t0;
-    	let h2;
+    	let head_1;
+    	let updating_selectedElement;
     	let t1;
     	let div0;
     	let legend;
@@ -17832,19 +22110,37 @@ var app = (function () {
     	let current;
     	let if_block0 = !/*isEmbed*/ ctx[6] && create_if_block_3(ctx);
 
+    	function head_1_selectedElement_binding(value) {
+    		/*head_1_selectedElement_binding*/ ctx[15](value);
+    	}
+
+    	let head_1_props = {
+    		title: /*head*/ ctx[3],
+    		dropdown: /*block*/ ctx[2].dropdown
+    	};
+
+    	if (/*selectedDisease*/ ctx[7] !== void 0) {
+    		head_1_props.selectedElement = /*selectedDisease*/ ctx[7];
+    	}
+
+    	head_1 = new Head({ props: head_1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(head_1, 'selectedElement', head_1_selectedElement_binding));
+
     	function legend_selected_binding(value) {
-    		/*legend_selected_binding*/ ctx[14](value);
+    		/*legend_selected_binding*/ ctx[16](value);
     	}
 
     	let legend_props = {
-    		title: /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendTitle,
-    		colors: /*datasetParams*/ ctx[13][/*data*/ ctx[0]].color.range(),
-    		labels: /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendDomain,
-    		type: /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendType
+    		title: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendTitle,
+    		colors: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].color.range(),
+    		labels: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendDomain,
+    		type: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendType,
+    		linearDomain: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].linearDomain,
+    		internalLabels: /*datasetParams*/ ctx[14][/*data*/ ctx[0]].internalLabels
     	};
 
-    	if (/*legendElementSelectedIndex*/ ctx[7] !== void 0) {
-    		legend_props.selected = /*legendElementSelectedIndex*/ ctx[7];
+    	if (/*legendElementSelectedIndex*/ ctx[8] !== void 0) {
+    		legend_props.selected = /*legendElementSelectedIndex*/ ctx[8];
     	}
 
     	legend = new Legend({ props: legend_props, $$inline: true });
@@ -17867,7 +22163,7 @@ var app = (function () {
     			section = element("section");
     			if (if_block0) if_block0.c();
     			t0 = space();
-    			h2 = element("h2");
+    			create_component(head_1.$$.fragment);
     			t1 = space();
     			div0 = element("div");
     			create_component(legend.$$.fragment);
@@ -17880,16 +22176,14 @@ var app = (function () {
     			if (if_block2) if_block2.c();
     			t5 = space();
     			if (if_block3) if_block3.c();
-    			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$c, 278, 2, 11537);
     			attr_dev(div0, "class", "right-narrow");
-    			add_location(div0, file$c, 280, 2, 11577);
+    			add_location(div0, file$c, 372, 2, 15760);
     			attr_dev(div1, "class", "margin-breakout-mobile");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[17].call(div1));
-    			add_location(div1, file$c, 300, 2, 12205);
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[19].call(div1));
+    			add_location(div1, file$c, 394, 2, 16500);
     			attr_dev(section, "id", /*id*/ ctx[1]);
     			attr_dev(section, "class", "viz wide");
-    			add_location(section, file$c, 273, 0, 11448);
+    			add_location(section, file$c, 365, 0, 15582);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -17898,8 +22192,7 @@ var app = (function () {
     			insert_dev(target, section, anchor);
     			if (if_block0) if_block0.m(section, null);
     			append_dev(section, t0);
-    			append_dev(section, h2);
-    			h2.innerHTML = /*head*/ ctx[3];
+    			mount_component(head_1, section, null);
     			append_dev(section, t1);
     			append_dev(section, div0);
     			mount_component(legend, div0, null);
@@ -17908,7 +22201,7 @@ var app = (function () {
     			append_dev(section, t3);
     			append_dev(section, div1);
     			mount_component(scrollablex, div1, null);
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[17].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[19].bind(div1));
     			append_dev(section, t4);
     			if (if_block2) if_block2.m(section, null);
     			append_dev(section, t5);
@@ -17939,15 +22232,28 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*head*/ 8) h2.innerHTML = /*head*/ ctx[3];			const legend_changes = {};
-    			if (dirty & /*data*/ 1) legend_changes.title = /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendTitle;
-    			if (dirty & /*data*/ 1) legend_changes.colors = /*datasetParams*/ ctx[13][/*data*/ ctx[0]].color.range();
-    			if (dirty & /*data*/ 1) legend_changes.labels = /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendDomain;
-    			if (dirty & /*data*/ 1) legend_changes.type = /*datasetParams*/ ctx[13][/*data*/ ctx[0]].legendType;
+    			const head_1_changes = {};
+    			if (dirty & /*head*/ 8) head_1_changes.title = /*head*/ ctx[3];
+    			if (dirty & /*block*/ 4) head_1_changes.dropdown = /*block*/ ctx[2].dropdown;
 
-    			if (!updating_selected && dirty & /*legendElementSelectedIndex*/ 128) {
+    			if (!updating_selectedElement && dirty & /*selectedDisease*/ 128) {
+    				updating_selectedElement = true;
+    				head_1_changes.selectedElement = /*selectedDisease*/ ctx[7];
+    				add_flush_callback(() => updating_selectedElement = false);
+    			}
+
+    			head_1.$set(head_1_changes);
+    			const legend_changes = {};
+    			if (dirty & /*data*/ 1) legend_changes.title = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendTitle;
+    			if (dirty & /*data*/ 1) legend_changes.colors = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].color.range();
+    			if (dirty & /*data*/ 1) legend_changes.labels = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendDomain;
+    			if (dirty & /*data*/ 1) legend_changes.type = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].legendType;
+    			if (dirty & /*data*/ 1) legend_changes.linearDomain = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].linearDomain;
+    			if (dirty & /*data*/ 1) legend_changes.internalLabels = /*datasetParams*/ ctx[14][/*data*/ ctx[0]].internalLabels;
+
+    			if (!updating_selected && dirty & /*legendElementSelectedIndex*/ 256) {
     				updating_selected = true;
-    				legend_changes.selected = /*legendElementSelectedIndex*/ ctx[7];
+    				legend_changes.selected = /*legendElementSelectedIndex*/ ctx[8];
     				add_flush_callback(() => updating_selected = false);
     			}
 
@@ -17968,7 +22274,7 @@ var app = (function () {
 
     			const scrollablex_changes = {};
 
-    			if (dirty & /*$$scope, width, height, data, rerender, cartogramAnnotation*/ 67116545) {
+    			if (dirty & /*$$scope, width, height, data, rerender, cartogramAnnotation*/ 1073757185) {
     				scrollablex_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18017,6 +22323,7 @@ var app = (function () {
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block0);
+    			transition_in(head_1.$$.fragment, local);
     			transition_in(legend.$$.fragment, local);
     			transition_in(scrollablex.$$.fragment, local);
     			transition_in(if_block3);
@@ -18024,6 +22331,7 @@ var app = (function () {
     		},
     		o: function outro(local) {
     			transition_out(if_block0);
+    			transition_out(head_1.$$.fragment, local);
     			transition_out(legend.$$.fragment, local);
     			transition_out(scrollablex.$$.fragment, local);
     			transition_out(if_block3);
@@ -18032,6 +22340,7 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
     			if (if_block0) if_block0.d();
+    			destroy_component(head_1);
     			destroy_component(legend);
     			if (if_block1) if_block1.d();
     			destroy_component(scrollablex);
@@ -18065,6 +22374,7 @@ var app = (function () {
     	let { text } = $$props;
     	let { embed } = $$props;
     	let { isEmbed = false } = $$props;
+    	let selectedDisease;
     	var PoliciesStatus;
 
     	(function (PoliciesStatus) {
@@ -18075,6 +22385,7 @@ var app = (function () {
     	})(PoliciesStatus || (PoliciesStatus = {}));
 
     	const policiesLookup = createLookup(policies$1, d => d.id, d => d);
+    	const diseasesLookup = createLookup(diseases, d => d.id, d => d);
     	const countryNameDictionaryLookup = createLookup(countryNameDictionary, d => d.id, d => d);
     	let legendElementSelectedIndex = null;
     	let clientWidth = 0;
@@ -18082,6 +22393,10 @@ var app = (function () {
     	let height;
     	let cartogramAnnotation;
     	let rerender;
+
+    	const diseasesHoverText = data => {
+    		return `In <b>${data.name}</b>, a <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease]}</b> are caused by pollution`;
+    	};
 
     	const policiesHoverText = data => {
     		let hasMet = [];
@@ -18143,13 +22458,13 @@ var app = (function () {
     			nodeSize: 11,
     			helpText: {
     				code: "JPN",
-    				text: `<strong>Each square is a country</strong>, sized
+    				text: () => `<strong>Each square is a country</strong>, sized
          by the annual mean levels of <strong>fine particular
          matter PM<sub>2.5</sub></strong>, measured in µg/m<sup>3</sup>.`
     			},
     			hoverTextFn: d => `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
-        <strong>${(d.value / 10).toFixed(1)}</strong> times the WHO guideline.`,
+        <strong>${(d.value / 5).toFixed(1)}</strong> times the WHO guideline.`,
     			classesFn: d => {
     				if (!legendIsHovered) {
     					return [];
@@ -18159,13 +22474,26 @@ var app = (function () {
     				}
     			},
     			color: colorPM25,
-    			legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (10 µg/m<sup>3</sup>)`,
-    			legendDomain: ["x1", "2", "3", "4", "5", "6", "7", "8"],
+    			legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
+    			legendDomain: ["x1", "2", "3", "5", "7"],
     			legendType: "sequential",
     			domain: [700, 400],
     			hoverText: d => `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
-        <strong>${(d.value / 10).toFixed(1)}</strong> times the WHO guideline.`
+        <strong>${(d.value / 10).toFixed(1)}</strong> times the WHO guideline.`,
+    			linearDomain: [0, 9],
+    			internalLabels: [
+    				{
+    					label: "AQG",
+    					border: true,
+    					icon: "check"
+    				},
+    				{ label: "IT4" },
+    				{ label: "IT3" },
+    				{ label: "IT2" },
+    				{ label: "IT1" },
+    				{ label: "" }
+    			]
     		},
     		health: {
     			data: deaths_data.map(d => {
@@ -18183,7 +22511,7 @@ var app = (function () {
     			nodeSize: 80,
     			helpText: {
     				code: "GEO",
-    				text: `<strong>Each square is a country</strong>,
+    				text: () => `<strong>Each square is a country</strong>,
         sized by the total number of <strong>deaths
         caused by fine particle pollution</strong>.`
     			},
@@ -18202,7 +22530,9 @@ var app = (function () {
     			legendTitle: `<strong>Deaths per 100,000 people</strong> caused by fine particle pollution`,
     			legendDomain: ["20", "40", "60", "80", "100"],
     			legendType: "sequential",
-    			domain: [700, 400]
+    			domain: [700, 400],
+    			linearDomain: null,
+    			internalLabels: null
     		},
     		policies: {
     			data: countries.filter(d => policiesLookup[d.code]).map(d => {
@@ -18219,7 +22549,7 @@ var app = (function () {
     			nodeSize: 16,
     			helpText: {
     				code: "JPN",
-    				text: `<strong>Each square is a country</strong>,
+    				text: () => `<strong>Each square is a country</strong>,
           colored by the <strong>number of air quality targets met</strong> or on track.`
     			},
     			hoverTextFn: d => policiesHoverText(d.data),
@@ -18274,7 +22604,89 @@ var app = (function () {
     			legendTitle: `<strong>Actions taken towards cleaner air</strong>`,
     			legendDomain: colorPolices.domain(),
     			legendType: "categorical",
-    			domain: [1300, 1300 / (740 / 420)]
+    			domain: [1300, 1300 / (740 / 420)],
+    			linearDomain: null,
+    			internalLabels: null
+    		},
+    		diseases: {
+    			data: countries.filter(d => diseasesLookup[d.code]).map(d => {
+    				return {
+    					name: countryNameDictionaryLookup[d.code].name,
+    					short: countryNameDictionaryLookup[d.code].short,
+    					code: d.code,
+    					x: d.x,
+    					y: d.y,
+    					value: 5,
+    					data: diseasesLookup[d.code]
+    				};
+    			}),
+    			nodeSize: 16,
+    			helpText: {
+    				code: "JPN",
+    				text: () => `<strong>Each square is a country</strong>, representing the <strong>percentage of deaths</strong> due the pollution from <b>${diseasesDictionary[selectedDisease]}</b>`
+    			},
+    			hoverTextFn: d => diseasesHoverText(d.data),
+    			colorFn: d => {
+    				let diseaseData = d.data;
+    				const colors = colorDiseases.range();
+    				let currentColor = null;
+    				let i = 0;
+    				const domain = colorDiseases.domain();
+
+    				while (i < domain.length && currentColor === null) {
+    					if (diseaseData[selectedDisease] * 100 <= domain[i] && !currentColor) {
+    						currentColor = colors[i];
+    					}
+
+    					i++;
+    				}
+
+    				if (currentColor === null) currentColor = colors[colors.length - 1];
+
+    				const gradients = [
+    					{
+    						color: currentColor,
+    						start: 0,
+    						end: diseaseData[selectedDisease] * 100 * 2
+    					},
+    					{
+    						color: '#D9D9D9',
+    						start: diseaseData[selectedDisease] * 100 * 2,
+    						end: 100
+    					}
+    				];
+
+    				const gradientStrs = gradients.map((g, i) => {
+    					const hide = legendIsHovered && colorDiseases.range().indexOf(currentColor) !== legendElementSelectedIndex;
+    					return `${g.color}${hide ? "50" : "ff"} ${g.start}% ${g.end}%`;
+    				});
+
+    				return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
+    			},
+    			classesFn: d => {
+    				if (!legendIsHovered) {
+    					return [];
+    				} else {
+    					const diseaseData = d.data;
+    					const domain = colorDiseases.domain();
+    					let selectedRange = null;
+
+    					if (legendElementSelectedIndex === 0) selectedRange = [0, domain[legendElementSelectedIndex]]; else if (legendElementSelectedIndex < domain.length) selectedRange = [
+    						domain[legendElementSelectedIndex - 1],
+    						domain[legendElementSelectedIndex]
+    					]; else selectedRange = [domain[legendElementSelectedIndex - 1], 100];
+
+    					const isSelected = diseaseData[selectedDisease] * 100 >= selectedRange[0] && diseaseData[selectedDisease] * 100 <= selectedRange[1];
+    					return [isSelected ? "country--shadow" : ""];
+    				}
+    			},
+    			color: colorDiseases,
+    			legendTitle: `<strong>Percent of deaths</strong> from the disease that can be attributed to fine particles`,
+    			legendDomain: colorDiseases.domain().map(e => e + '%'),
+    			legendType: "sequential",
+    			domain: [1300, 1300 / (740 / 420)],
+    			linearDomain: null,
+    			internalLabels: null
     		}
     	};
 
@@ -18284,24 +22696,29 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<CartoWorld> was created with unknown prop '${key}'`);
     	});
 
+    	function head_1_selectedElement_binding(value) {
+    		selectedDisease = value;
+    		$$invalidate(7, selectedDisease);
+    	}
+
     	function legend_selected_binding(value) {
     		legendElementSelectedIndex = value;
-    		$$invalidate(7, legendElementSelectedIndex);
+    		$$invalidate(8, legendElementSelectedIndex);
     	}
 
     	function cartogram_rerenderFn_binding(value) {
     		rerender = value;
-    		$$invalidate(10, rerender);
+    		$$invalidate(11, rerender);
     	}
 
     	function cartogram_annotationShowing_binding(value) {
     		cartogramAnnotation = value;
-    		$$invalidate(12, cartogramAnnotation);
+    		$$invalidate(13, cartogramAnnotation);
     	}
 
     	function div1_elementresize_handler() {
     		clientWidth = this.clientWidth;
-    		$$invalidate(8, clientWidth);
+    		$$invalidate(9, clientWidth);
     	}
 
     	$$self.$$set = $$props => {
@@ -18319,16 +22736,20 @@ var app = (function () {
     		pm25data,
     		countries,
     		policies: policies$1,
+    		diseases,
     		countryNameDictionary,
     		deaths_data,
     		Legend,
     		colorPM25,
     		colorHealth,
     		colorPolices,
+    		colorDiseases,
     		createLookup,
     		ScrollableX,
     		EmbedFooter,
     		SectionTitle,
+    		Head,
+    		diseasesDictionary,
     		data,
     		id,
     		block,
@@ -18336,8 +22757,10 @@ var app = (function () {
     		text,
     		embed,
     		isEmbed,
+    		selectedDisease,
     		PoliciesStatus,
     		policiesLookup,
+    		diseasesLookup,
     		countryNameDictionaryLookup,
     		legendElementSelectedIndex,
     		clientWidth,
@@ -18345,6 +22768,7 @@ var app = (function () {
     		height,
     		cartogramAnnotation,
     		rerender,
+    		diseasesHoverText,
     		policiesHoverText,
     		datasetParams,
     		legendIsHovered
@@ -18358,13 +22782,14 @@ var app = (function () {
     		if ('text' in $$props) $$invalidate(4, text = $$props.text);
     		if ('embed' in $$props) $$invalidate(5, embed = $$props.embed);
     		if ('isEmbed' in $$props) $$invalidate(6, isEmbed = $$props.isEmbed);
+    		if ('selectedDisease' in $$props) $$invalidate(7, selectedDisease = $$props.selectedDisease);
     		if ('PoliciesStatus' in $$props) PoliciesStatus = $$props.PoliciesStatus;
-    		if ('legendElementSelectedIndex' in $$props) $$invalidate(7, legendElementSelectedIndex = $$props.legendElementSelectedIndex);
-    		if ('clientWidth' in $$props) $$invalidate(8, clientWidth = $$props.clientWidth);
-    		if ('width' in $$props) $$invalidate(9, width = $$props.width);
-    		if ('height' in $$props) $$invalidate(11, height = $$props.height);
-    		if ('cartogramAnnotation' in $$props) $$invalidate(12, cartogramAnnotation = $$props.cartogramAnnotation);
-    		if ('rerender' in $$props) $$invalidate(10, rerender = $$props.rerender);
+    		if ('legendElementSelectedIndex' in $$props) $$invalidate(8, legendElementSelectedIndex = $$props.legendElementSelectedIndex);
+    		if ('clientWidth' in $$props) $$invalidate(9, clientWidth = $$props.clientWidth);
+    		if ('width' in $$props) $$invalidate(10, width = $$props.width);
+    		if ('height' in $$props) $$invalidate(12, height = $$props.height);
+    		if ('cartogramAnnotation' in $$props) $$invalidate(13, cartogramAnnotation = $$props.cartogramAnnotation);
+    		if ('rerender' in $$props) $$invalidate(11, rerender = $$props.rerender);
     		if ('legendIsHovered' in $$props) legendIsHovered = $$props.legendIsHovered;
     	};
 
@@ -18373,23 +22798,23 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*legendElementSelectedIndex*/ 128) {
+    		if ($$self.$$.dirty & /*legendElementSelectedIndex*/ 256) {
     			legendIsHovered = legendElementSelectedIndex !== null;
     		}
 
-    		if ($$self.$$.dirty & /*legendElementSelectedIndex, rerender*/ 1152) {
+    		if ($$self.$$.dirty & /*legendElementSelectedIndex, selectedDisease, rerender*/ 2432) {
     			// re-render hack (as Cartogram component doesn't know when then result of our funcs change)
-    			legendElementSelectedIndex !== undefined && rerender && rerender();
+    			(legendElementSelectedIndex !== undefined || selectedDisease) && rerender && rerender();
     		}
 
-    		if ($$self.$$.dirty & /*clientWidth*/ 256) {
+    		if ($$self.$$.dirty & /*clientWidth*/ 512) {
     			{
-    				$$invalidate(9, width = Math.max(clientWidth, 700));
+    				$$invalidate(10, width = Math.max(clientWidth, 700));
     			}
     		}
 
-    		if ($$self.$$.dirty & /*width, data*/ 513) {
-    			$$invalidate(11, height = width * (data === "pm25" ? 0.55 : 0.62));
+    		if ($$self.$$.dirty & /*width, data*/ 1025) {
+    			$$invalidate(12, height = width * (data === "pm25" ? 0.55 : 0.62));
     		}
     	};
 
@@ -18401,6 +22826,7 @@ var app = (function () {
     		text,
     		embed,
     		isEmbed,
+    		selectedDisease,
     		legendElementSelectedIndex,
     		clientWidth,
     		width,
@@ -18408,6 +22834,7 @@ var app = (function () {
     		height,
     		cartogramAnnotation,
     		datasetParams,
+    		head_1_selectedElement_binding,
     		legend_selected_binding,
     		cartogram_rerenderFn_binding,
     		cartogram_annotationShowing_binding,
@@ -22614,17 +27041,17 @@ var app = (function () {
     				label: "Air"
     			},
     			{
-    				a: "https://www.unep.org/explore-topics/air/what-we-do/air-pollution-note",
+    				a: "",
     				label: "Pollution Action Note"
     			}
     		],
     		head: "Pollution Action Note – Data you need to know",
     		text: [
     			{
-    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, more net development and environmental benefits, along with mitigating climate change."
+    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths[a] every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
     			},
     			{
-    				p: "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health and national efforts to tackle this critical issue."
+    				p: "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
     			}
     		]
     	},
@@ -22637,10 +27064,10 @@ var app = (function () {
     		icon: "pm25",
     		data: "pm25",
     		embed: "pm25",
-    		head: "<strong>Nine out of ten people</strong> worldwide breathe air containing levels of pollutants that exceed World Health Organization limits.",
+    		head: "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest air quality guideline levels were not met.",
     		text: [
     			{
-    				p: "With every breath we take, we suck in tiny particles that can damage our lungs, hearts and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter — shortened as <strong>PM<sub>2.5</sub></strong>."
+    				p: "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
     			},
     			{
     				p: "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
@@ -22653,13 +27080,13 @@ var app = (function () {
     		icon: "sectors",
     		data: "sectors",
     		embed: "sectors",
-    		head: "<strong>Residential</strong> pollution — mostly from cooking, heating and generating electricity for our homes — and <strong>transportation</strong> are significant <strong>sources</strong> of fine particles. <strong>Windblown dust</strong> is a major source of particles in much of Africa and West Asia.",
+    		head: "<strong>Residential</strong> pollution, mostly from cooking, heating and generating electricity for our homes, is the main <strong>human-made source</strong> of fine particles globally while <strong>windblown dust</strong> is a major source in much of Africa and West Asia.",
     		text: [
     			{
-    				p: "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity and transportation, waste burning, agriculture and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust and lightning. Agriculture is also a major source of methane and ammonia, which lead to the development of tropospheric ozone."
+    				p: "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity, transportation, waste burning, agriculture — a major source of methane and ammonia -- and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust, and lightning."
     			},
     			{
-    				p: "In developing countries, reliance on wood and other solid fuels, like raw coal for cooking and heating, and the use of kerosene for lighting, increases air pollution in homes. Household air pollution is also a large source of outdoor air pollution in many countries."
+    				p: "In developing countries, reliance on wood and other solid fuels, like raw coal for cooking and heating, and the use of kerosene for lighting, increases air pollution in homes."
     			}
     		]
     	},
@@ -22670,13 +27097,57 @@ var app = (function () {
     		icon: "deaths",
     		data: "health",
     		embed: "health",
-    		head: "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in Asia and Eastern Europe.",
+    		head: "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in East Asia and Central Europe.",
     		text: [
     			{
-    				p: "Air pollution is a major global health concern and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2016."
+    				p: "Air pollution is a major global health epidemic and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2019."
     			},
     			{
-    				p: "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, such as diabetes, and have been associated with impairing cognitive development in children and exacerbating mental health problems."
+    				p: "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems."
+    			}
+    		]
+    	},
+    	{
+    		type: "carto-world",
+    		anchor: "diseases",
+    		menu: "Diseases",
+    		icon: "policies",
+    		data: "diseases",
+    		embed: "diseases",
+    		head: "@number of people died in 2019 from @dropdown attributable to fine particle outdoor air pollution.",
+    		dropdown: [
+    			{
+    				label: "Ischemic heart disease",
+    				value: "ischemic"
+    			},
+    			{
+    				label: "Stroke",
+    				value: "stroke"
+    			},
+    			{
+    				label: "Lower respiratory infections",
+    				value: "lri"
+    			},
+    			{
+    				label: "Trachea, bronchus, and lung cancer",
+    				value: "lungcancer"
+    			},
+    			{
+    				label: "Type 2 diabetes",
+    				value: "diabetes"
+    			},
+    			{
+    				label: "Neonatal disorders",
+    				value: "nd"
+    			},
+    			{
+    				label: "Chronic obstructive pulmonary disease",
+    				value: "copd"
+    			}
+    		],
+    		text: [
+    			{
+    				p: ""
     			}
     		]
     	},
@@ -22687,53 +27158,56 @@ var app = (function () {
     		icon: "policies",
     		data: "policies",
     		embed: "policies",
-    		head: "More governments are introducing <strong>policies to improve air quality</strong> but barriers to progress include slow implementation and capacity gaps.",
+    		head: "<strong>Government actions</strong> on air quality are <strong>steadily growing</strong>, but <strong>implementation and capacity gaps</strong> hinder progress towards clean air.",
     		text: [
     			{
-    				p: "<a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">UNEP's Actions on Air Quality report</a> found progress in all major polluting sectors over the past five years but noted there were <strong>large gaps in implementation, financing, capacity, and monitoring of air quality</strong>. Policy measures create a framework for long-term improvements in air quality but they can take time to show results. In the most polluted areas, other measures, such as traffic bans or road closures, might also be needed."
+    				p: "<a href=”https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution”>UNEP’s <strong>Actions on Air Quality</strong> report</a> provides a review of policy actions being undertaken by governments around the world to improve air quality. The report provides an assessment of actions in key sectors that contribute to air pollution including industrial emissions (incentives for cleaner production), transportation (vehicle emission and fuel quality standards), solid waste management (regulation of open burning of waste), household air pollution (incentives for clean energy use in residential cooking and heating) and agriculture (sustainable agricultural practices)."
     			},
     			{
-    				p: "Developed countries have greatly improved air quality in recent years but many developing countries, still reliant on wood and other solid fuels for cooking and heating, lag behind. They need support and guidance to access knowledge, tools and resources to tackle air quality."
-    			},
-    			{
-    				p: "As the world starts to emerge from the pandemic, governments must prioritise policies that lay the foundations for a green, inclusive recovery. This will not be possible without tackling air pollution. Countries need to work together on sustainable transport, renewable energy production and use, and waste management. Businesses need to innovate and we must all reduce our carbon footprints."
+    				p: "These sectoral measures are supported by enabling policy frameworks (including air quality standards) and air quality management capacities. The report, therefore, includes in its analysis: air quality management strategies, and air quality monitoring."
     			}
     		]
     	},
     	{
     		type: "methodology",
     		anchor: "methodology",
-    		menu: "Data and notes",
+    		menu: "Data",
     		icon: "data",
     		head: "About the data",
     		text: [
     			{
-    				p: "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://www.stateofglobalair.org/data/#/air/plot\" target=\"_blank\" rel=\"noopener\"> Health Effects Institute. 2020. State of Global Air 2020</a>. Data source: Global Burden of Disease Study 2019. IHME, 2020."
+    				p: "The boundaries and names shown, and the designations used on this map, do not imply official endorsement or acceptance by the United Nations."
     			},
     			{
-    				p: "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"​​https://www.nature.com/articles/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
+    				p: "Data for PM<sub>2.5</sub> estimates, sectors and fuel sources, and attributable deaths comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales. <em>Nat Commun<em> <strong>12</strong>, 3594 (2021)"
     			},
     			{
-    				p: "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
-    			},
-    			{
-    				p: "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
-    			},
-    			{
-    				p: "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
+    				p: "The data for the sector and fuel sections was reaggregated from country data into UNEP regions, which are different to the ones used in the study.[b]"
     			}
     		]
     	}
     ];
+    var footer = [
+    	{
+    		a: "",
+    		label: ""
+    	}
+    ];
     var meta = {
-    	title: "Air Pollution Note – Data you need to know",
-    	url: "https://www.unep.org/explore-topics/air/what-we-do/air-pollution-note",
-    	description: "All of the critical data you need to know on air pollution from pm2.5 by country, policy-level action, health impact and more.",
-    	keywords: "Air pollution, health and air pollution, pm2.5"
+    	title: "",
+    	url: "",
+    	description: ""
     };
+    var a = [
+    ];
+    var b = [
+    ];
     var text = {
     	article: article,
-    	meta: meta
+    	footer: footer,
+    	meta: meta,
+    	a: a,
+    	b: b
     };
 
     class MenuSpy {
@@ -22910,10 +27384,6 @@ var app = (function () {
             });
         }
     };
-
-    function cubicInOut(t) {
-        return t < 0.5 ? 4.0 * t * t * t : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
-    }
 
     var _ = {
       $(selector) {

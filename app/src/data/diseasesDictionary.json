@@ -1,0 +1,9 @@
+{
+    "diabetes": "Diabetes",
+    "copd": "Chronic obstructive pulmonary disease",
+    "ischemic": "Ischemic heart disease",
+    "lri": "Lower respiratory infection",
+    "lungcancer": "Trachea, bronchus and lung cancer",
+    "stroke": "Stroke",
+    "nd": "Neonatal disorders"
+}

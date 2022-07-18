@@ -1088,5 +1088,13 @@
      "id": "ESH",
      "short": null,
      "name": "Western Sahara"
+  },
+  {
+   "id": "COQ",
+   "name": "Cook Isl."
+  },
+  {
+   "id": "MNP",
+   "name": "Northern Mariana Islands"
   }
 ]
