@@ -22727,17 +22727,17 @@ var app = (function () {
     				label: "Air"
     			},
     			{
-    				a: "https://www.unep.org/explore-topics/air/what-we-do/air-pollution-note",
+    				a: "",
     				label: "Pollution Action Note"
     			}
     		],
     		head: "Pollution Action Note – Data you need to know",
     		text: [
     			{
-    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, more net development and environmental benefits, along with mitigating climate change."
+    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
     			},
     			{
-    				p: "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health and national efforts to tackle this critical issue."
+    				p: "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
     			}
     		]
     	},
@@ -22750,13 +22750,16 @@ var app = (function () {
     		icon: "pm25",
     		data: "pm25",
     		embed: "pm25",
-    		head: "<strong>Nine out of ten people</strong> worldwide breathe air containing levels of pollutants that exceed World Health Organization limits.",
+    		head: "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest air quality guideline levels were not met.",
     		text: [
     			{
-    				p: "With every breath we take, we suck in tiny particles that can damage our lungs, hearts and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter — shortened as <strong>PM<sub>2.5</sub></strong>."
+    				p: "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
     			},
     			{
     				p: "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
+    			},
+    			{
+    				p: "TK TK[a]"
     			}
     		]
     	},
@@ -22766,13 +22769,13 @@ var app = (function () {
     		icon: "sectors",
     		data: "sectors",
     		embed: "sectors",
-    		head: "<strong>Residential</strong> pollution — mostly from cooking, heating and generating electricity for our homes — and <strong>transportation</strong> are significant <strong>sources</strong> of fine particles. <strong>Windblown dust</strong> is a major source of particles in much of Africa and West Asia.",
+    		head: "<strong>Residential</strong> pollution, mostly from cooking, heating and generating electricity for our homes, is the main <strong>human-made source</strong> of fine particles globally while <strong>windblown dust</strong> is a major source in much of Africa and West Asia.",
     		text: [
     			{
-    				p: "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity and transportation, waste burning, agriculture and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust and lightning. Agriculture is also a major source of methane and ammonia, which lead to the development of tropospheric ozone."
+    				p: "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity, transportation, waste burning, agriculture — a major source of methane and ammonia -- and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust, and lightning."
     			},
     			{
-    				p: "In developing countries, reliance on wood and other solid fuels, like raw coal for cooking and heating, and the use of kerosene for lighting, increases air pollution in homes. Household air pollution is also a large source of outdoor air pollution in many countries."
+    				p: "In developing countries, reliance on wood and other solid fuels, like raw coal for cooking and heating, and the use of kerosene for lighting, increases air pollution in homes."
     			}
     		]
     	},
@@ -22783,13 +22786,13 @@ var app = (function () {
     		icon: "deaths",
     		data: "health",
     		embed: "health",
-    		head: "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in Asia and Eastern Europe.",
+    		head: "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in East Asia and Central Europe.",
     		text: [
     			{
-    				p: "Air pollution is a major global health concern and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2016."
+    				p: "Air pollution is a major global health epidemic and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2019."
     			},
     			{
-    				p: "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, such as diabetes, and have been associated with impairing cognitive development in children and exacerbating mental health problems."
+    				p: "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems."
     			}
     		]
     	},
@@ -22798,28 +22801,68 @@ var app = (function () {
     	},
     	{
     		type: "carto-world",
+    		anchor: "diseases",
+    		data: "diseases",
+    		embed: "diseases",
+    		head: "In 2019, <strong>@number% of deaths</strong> from @dropdown were attributable to fine particle outdoor air pollution.",
+    		dropdown: [
+    			{
+    				label: "ischemic heart disease",
+    				value: "ischemic"
+    			},
+    			{
+    				label: "stroke",
+    				value: "stroke"
+    			},
+    			{
+    				label: "lower respiratory infections",
+    				value: "lri"
+    			},
+    			{
+    				label: "trachea, bronchus, and lung cancer",
+    				value: "lungcancer"
+    			},
+    			{
+    				label: "type 2 diabetes",
+    				value: "diabetes"
+    			},
+    			{
+    				label: "neonatal disorders",
+    				value: "nd"
+    			},
+    			{
+    				label: "COPD",
+    				value: "copd"
+    			}
+    		],
+    		text: [
+    			{
+    				p: ""
+    			}
+    		]
+    	},
+    	{
+    		type: "carto-world",
     		anchor: "policies",
     		menu: "Policy actions",
     		icon: "policies",
     		data: "policies",
     		embed: "policies",
-    		head: "More governments are introducing <strong>policies to improve air quality</strong> but barriers to progress include slow implementation and capacity gaps.",
+    		head: "<strong>Government actions</strong> on air quality are <strong>steadily growing</strong>, but <strong>implementation and capacity gaps</strong> hinder progress towards clean air.",
     		text: [
     			{
-    				p: "<a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">UNEP's Actions on Air Quality report</a> found progress in all major polluting sectors over the past five years but noted there were <strong>large gaps in implementation, financing, capacity, and monitoring of air quality</strong>. Policy measures create a framework for long-term improvements in air quality but they can take time to show results. In the most polluted areas, other measures, such as traffic bans or road closures, might also be needed."
+    				p: "<a href=”https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution”>UNEP’s <strong>Actions on Air Quality</strong> report</a> provides a review of policy actions being undertaken by governments around the world to improve air quality. The report provides an assessment of actions in key sectors that contribute to air pollution including industrial emissions (incentives for cleaner production), transportation (vehicle emission and fuel quality standards), solid waste management (regulation of open burning of waste), household air pollution (incentives for clean energy use in residential cooking and heating) and agriculture (sustainable agricultural practices)."
     			},
     			{
-    				p: "Developed countries have greatly improved air quality in recent years but many developing countries, still reliant on wood and other solid fuels for cooking and heating, lag behind. They need support and guidance to access knowledge, tools and resources to tackle air quality."
-    			},
-    			{
-    				p: "As the world starts to emerge from the pandemic, governments must prioritise policies that lay the foundations for a green, inclusive recovery. This will not be possible without tackling air pollution. Countries need to work together on sustainable transport, renewable energy production and use, and waste management. Businesses need to innovate and we must all reduce our carbon footprints."
+    				p: "These sectoral measures are supported by enabling policy frameworks (including air quality standards) and air quality management capacities. The report, therefore, includes in its analysis: air quality management strategies, and air quality monitoring."
     			}
     		]
     	},
     	{
     		type: "country-search",
     		menu: "By country",
-    		icon: "search"
+    		icon: "search",
+    		head: "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
     	},
     	{
     		type: "methodology",
@@ -22829,7 +22872,7 @@ var app = (function () {
     		head: "About the data",
     		text: [
     			{
-    				p: "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://www.stateofglobalair.org/data/#/air/plot\" target=\"_blank\" rel=\"noopener\"> Health Effects Institute. 2020. State of Global Air 2020</a>. Data source: Global Burden of Disease Study 2019. IHME, 2020."
+    				p: "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\"> Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
     			},
     			{
     				p: "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"​​https://www.nature.com/articles/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
@@ -22846,15 +22889,27 @@ var app = (function () {
     		]
     	}
     ];
+    var footer = [
+    	{
+    		a: "",
+    		label: ""
+    	}
+    ];
     var meta = {
-    	title: "Air Pollution Note – Data you need to know",
-    	url: "https://www.unep.org/explore-topics/air/what-we-do/air-pollution-note",
-    	description: "All of the critical data you need to know on air pollution from pm2.5 by country, policy-level action, health impact and more.",
-    	keywords: "Air pollution, health and air pollution, pm2.5"
+    	title: "",
+    	url: "",
+    	description: ""
     };
+    var a = [
+    ];
+    var b = [
+    ];
     var text = {
     	article: article,
-    	meta: meta
+    	footer: footer,
+    	meta: meta,
+    	a: a,
+    	b: b
     };
 
     class MenuSpy {
@@ -36129,26 +36184,26 @@ var app = (function () {
     			div4 = element("div");
     			create_component(policygrid.$$.fragment);
     			attr_dev(span0, "class", "bigger-text svelte-p3rtck");
-    			add_location(span0, file$1, 135, 32, 4913);
+    			add_location(span0, file$1, 135, 32, 4813);
     			html_tag.a = null;
     			attr_dev(p0, "class", "primary-text svelte-p3rtck");
-    			add_location(p0, file$1, 135, 8, 4889);
+    			add_location(p0, file$1, 135, 8, 4789);
     			attr_dev(div0, "class", "distribution");
-    			add_location(div0, file$1, 134, 6, 4853);
+    			add_location(div0, file$1, 134, 6, 4753);
     			attr_dev(span1, "class", "bigger-text svelte-p3rtck");
-    			add_location(span1, file$1, 145, 32, 5390);
+    			add_location(span1, file$1, 145, 32, 5290);
     			html_tag_1.a = null;
     			attr_dev(p1, "class", "primary-text svelte-p3rtck");
-    			add_location(p1, file$1, 145, 8, 5366);
+    			add_location(p1, file$1, 145, 8, 5266);
     			attr_dev(div1, "class", "distribution");
-    			add_location(div1, file$1, 144, 6, 5330);
+    			add_location(div1, file$1, 144, 6, 5230);
     			attr_dev(div2, "class", "distributions-container svelte-p3rtck");
     			add_render_callback(() => /*div2_elementresize_handler*/ ctx[21].call(div2));
-    			add_location(div2, file$1, 133, 4, 4764);
+    			add_location(div2, file$1, 133, 4, 4664);
     			attr_dev(div3, "class", "death-causes-container svelte-p3rtck");
-    			add_location(div3, file$1, 156, 4, 5827);
+    			add_location(div3, file$1, 156, 4, 5727);
     			attr_dev(div4, "class", "policy-grid-container");
-    			add_location(div4, file$1, 160, 4, 5930);
+    			add_location(div4, file$1, 160, 4, 5830);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -36283,12 +36338,12 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$1, 117, 2, 4333);
+    			add_location(h2, file$1, 117, 2, 4233);
     			attr_dev(div, "class", "search-bar svelte-p3rtck");
-    			add_location(div, file$1, 119, 2, 4375);
+    			add_location(div, file$1, 119, 2, 4275);
     			attr_dev(section, "id", /*id*/ ctx[0]);
     			attr_dev(section, "class", "viz wide country-search svelte-p3rtck");
-    			add_location(section, file$1, 113, 0, 4251);
+    			add_location(section, file$1, 113, 0, 4151);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -36386,7 +36441,7 @@ var app = (function () {
     	
     	
     	let { id } = $$props;
-    	let { head = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.` } = $$props;
+    	let { head } = $$props;
     	let { block } = $$props;
 
     	const countriesToBeFiltered = [
@@ -36521,9 +36576,9 @@ var app = (function () {
     		healthData,
     		policiesData,
     		policiesDescriptions,
-    		createLookup,
     		SectionTitle,
     		PolicyGrid,
+    		createLookup,
     		id,
     		head,
     		block,
@@ -36642,6 +36697,10 @@ var app = (function () {
 
     		if (/*id*/ ctx[0] === undefined && !('id' in props)) {
     			console.warn("<CountrySearch> was created without expected prop 'id'");
+    		}
+
+    		if (/*head*/ ctx[1] === undefined && !('head' in props)) {
+    			console.warn("<CountrySearch> was created without expected prop 'head'");
     		}
 
     		if (/*block*/ ctx[2] === undefined && !('block' in props)) {

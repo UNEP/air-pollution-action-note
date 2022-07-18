@@ -8,15 +8,15 @@
   import healthData from 'src/data/health.json';
   import policiesData from 'src/data/policiesData.json';
   import policiesDescriptions from 'src/data/policiesDescriptions.json';
+  import SectionTitle from "./SectionTitle.svelte";
+  import PolicyGrid from "./PolicyGrid.svelte";
   import { createLookup } from "src/util";
   import type { DeathsData } from "./DeathCauses.svelte";
   import type { Content } from "src/types";
   import type { CountryDataSquare } from "./charts/LinearDistribution.svelte";
-  import SectionTitle from "./SectionTitle.svelte";
-  import PolicyGrid from "./PolicyGrid.svelte";
 
   export var id: string;
-  export var head: string = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.`;
+  export var head: string;
   export var block: Content;
 
   const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
