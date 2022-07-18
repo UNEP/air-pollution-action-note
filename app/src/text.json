@@ -23,7 +23,7 @@
       "head": "Pollution Action Note – Data you need to know",
       "text": [
         {
-          "p": "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths[a] every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
+          "p": "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
         },
         {
           "p": "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
@@ -46,6 +46,9 @@
         },
         {
           "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
+        },
+        {
+          "p": "TK TK[a]"
         }
       ]
     },
@@ -85,38 +88,36 @@
     {
       "type": "carto-world",
       "anchor": "diseases",
-      "menu": "Diseases",
-      "icon": "policies",
       "data": "diseases",
       "embed": "diseases",
-      "head": "@number of people died in 2019 from @dropdown attributable to fine particle outdoor air pollution.",
+      "head": "In 2019, <strong>@number% of deaths</strong> from @dropdown were attributable to fine particle outdoor air pollution.",
       "dropdown": [
         {
-          "label": "Ischemic heart disease",
+          "label": "ischemic heart disease",
           "value": "ischemic"
         },
         {
-          "label": "Stroke",
+          "label": "stroke",
           "value": "stroke"
         },
         {
-          "label": "Lower respiratory infections",
+          "label": "lower respiratory infections",
           "value": "lri"
         },
         {
-          "label": "Trachea, bronchus, and lung cancer",
+          "label": "trachea, bronchus, and lung cancer",
           "value": "lungcancer"
         },
         {
-          "label": "Type 2 diabetes",
+          "label": "type 2 diabetes",
           "value": "diabetes"
         },
         {
-          "label": "Neonatal disorders",
+          "label": "neonatal disorders",
           "value": "nd"
         },
         {
-          "label": "Chronic obstructive pulmonary disease",
+          "label": "COPD",
           "value": "copd"
         }
       ],
@@ -144,20 +145,32 @@
       ]
     },
     {
+      "type": "country-search",
+      "menu": "By country",
+      "icon": "search",
+      "head": "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
+    },
+    {
       "type": "methodology",
       "anchor": "methodology",
-      "menu": "Data",
+      "menu": "Data and notes",
       "icon": "data",
       "head": "About the data",
       "text": [
         {
-          "p": "The boundaries and names shown, and the designations used on this map, do not imply official endorsement or acceptance by the United Nations."
+          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\"> Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
         },
         {
-          "p": "Data for PM<sub>2.5</sub> estimates, sectors and fuel sources, and attributable deaths comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales. <em>Nat Commun<em> <strong>12</strong>, 3594 (2021)"
+          "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"​​https://www.nature.com/articles/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
         },
         {
-          "p": "The data for the sector and fuel sections was reaggregated from country data into UNEP regions, which are different to the ones used in the study.[b]"
+          "p": "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
+        },
+        {
+          "p": "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
+        },
+        {
+          "p": "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
         }
       ]
     }

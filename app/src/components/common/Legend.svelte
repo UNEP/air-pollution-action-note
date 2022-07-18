@@ -30,7 +30,6 @@
     normalizedLabels.reduce((acc, curr) => {
       let distance = curr - acc;
       ret.push((distance / globalDistance) * 100);
-      console.log('acc', acc, 'curr', curr, 'distance', distance, 'ret', ret);
       return curr;
     }, linearDomain[0]);
 

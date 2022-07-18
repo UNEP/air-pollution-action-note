@@ -76,10 +76,17 @@
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
         background-color: inherit;
         color: #1e1e1e;
+        :global(.icon svg){
+          stroke: #1e1e1e;
+        }
       }
       &:hover {
         position: relative;
         z-index: 1;
+      }
+      
+      :global(.icon svg){
+        stroke: #a8a8a8;
       }
     }
     .selector-area {

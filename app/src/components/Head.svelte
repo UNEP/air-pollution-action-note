@@ -15,12 +15,13 @@
     title: Title,
   };
 
-  const createBlocks = (): HeadBlock[] => {
+  const createBlocks = (number: number, dropdown: DropdownOptionBlock[]): HeadBlock[] => {
     let ret: HeadBlock[] = [];
-    if (title.includes("@number"))
-      title = title.replace("@number", number.toString());
+    let auxTitle = title;
+    if (title.includes("@number")) auxTitle = title.replace("@number", number.toFixed(1).toString());
+
     if (title.includes("@dropdown") && dropdown.length > 0) {
-      let titleBlocks = title.split("@dropdown");
+      let titleBlocks = auxTitle.split("@dropdown");
       ret.push({
         type: "title",
         title: titleBlocks[0],
@@ -39,11 +40,10 @@
         title: title,
       });
     }
-    console.log(ret);
     return ret;
   };
 
-  blocks = createBlocks();
+  $:  blocks = createBlocks(number, dropdown);
 </script>
 
 <h2 class="narrow align">

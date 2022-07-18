@@ -17,6 +17,7 @@
   import SectionTitle from "src/components/SectionTitle.svelte";
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
+  import diseasesGlobal from "src/data/diseasesGlobal.json";
 
   export var data: "pm25" | "health" | "policies" | "diseases";
   export var id: string;
@@ -26,7 +27,7 @@
   export var embed: string;
   export var isEmbed = false;
   
-  let selectedDisease: HealthDisease;
+  let selectedDisease: HealthDisease = "ischemic";
 
   interface PoliciesData {
     name: string;
@@ -321,16 +322,16 @@
           {
             color: colors[1],
             start: policiesData.pYes,
-            end: policiesData.pAlmost,
+            end: policiesData.pYes + policiesData.pAlmost,
           },
           {
             color: colors[2],
-            start: policiesData.pAlmost,
-            end: policiesData.pNo,
+            start: policiesData.pYes + policiesData.pAlmost,
+            end: policiesData.pYes + policiesData.pAlmost + policiesData.pNo,
           },
-          { color: colors[3], start: policiesData.pNo, end: 100 },
+          { color: colors[3], start: policiesData.pYes + policiesData.pAlmost + policiesData.pNo, end: 100 },
         ];
-
+        
         const gradientStrs = gradients.map((g, i) => {
           const hide = legendIsHovered && legendElementSelectedIndex !== i;
           return `${g.color}${hide ? "00" : "ff"} ${g.start}% ${g.end}%`;
@@ -444,11 +445,11 @@
 </script>
 
 <section {id} class="viz wide">
-  {#if !isEmbed}
+  {#if !isEmbed && block.menu} <!-- if block has no menu there's no section title -->
     <SectionTitle {block} />
   {/if}
 
-  <Head title={head} dropdown={block.dropdown} bind:selectedElement={selectedDisease}/>
+  <Head title={head} dropdown={block.dropdown} bind:selectedElement={selectedDisease} number={diseasesGlobal[selectedDisease] * 100}/>
 
   <div class="right-narrow">
     <Legend
