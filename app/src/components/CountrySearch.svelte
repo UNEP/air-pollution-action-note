@@ -1,12 +1,3 @@
-<script lang="ts" context="module">
-
-  export interface CountryDataSquare {
-    id: string,
-    value: number
-  }
-
-</script>
-  
 <script lang="ts">
   import Typeahead from "svelte-typeahead";
   import LinearDistribution from "./charts/LinearDistribution.svelte";
@@ -16,9 +7,11 @@
   import pm25data from 'src/data/pm25.json';
   import healthData from 'src/data/health.json';
   import policiesData from 'src/data/policiesData.json';
+  import policiesDescriptions from 'src/data/policiesDescriptions.json';
   import { createLookup } from "src/util";
   import type { DeathsData } from "./DeathCauses.svelte";
   import type { Content } from "src/types";
+  import type { CountryDataSquare } from "./charts/LinearDistribution.svelte";
   import SectionTitle from "./SectionTitle.svelte";
   import PolicyGrid from "./PolicyGrid.svelte";
 
@@ -29,6 +22,15 @@
   const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
     "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
 
+  const countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
+    return { id: d.id, value: d.pm25 };
+  });
+
+  const countryHealthData: CountryDataSquare[] = healthData.map(d => {
+    return { id: d.id, value: d.rate };
+  });
+
+  const descLookUp = createLookup(policiesDescriptions, d => d.id, d => d);
   const CTBF_lookUp = createLookup(countriesToBeFiltered, c => c, c => c);
   const pm25LookUp = createLookup(pm25data, p => p.id, p => p);
   const healthLookUp = createLookup(healthData, h => h.id, h => h);
@@ -44,14 +46,6 @@
     totalDeaths: 0,
     deathRatio: 0
   };
-
-  let countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
-    return { id: d.id, value: d.pm25 };
-  });
-
-  let countryHealthData: CountryDataSquare[] = healthData.map(d => {
-    return { id: d.id, value: d.rate };
-  });
 
   let countrySelected = false;
 
@@ -163,8 +157,9 @@
         <p class="primary-text"><span class="bigger-text">{currentCountry.PM25country}</span>{@html PM25commentary}</p>
           <LinearDistribution
             data = {countryPM25Data}
-            selectedCountry = {currentCountry.id}
-            selectedDataset = "pm25"
+            value = {pm25LookUp[currentCountry.id].pm25}
+            country = {currentCountry.id}
+            type = "pm25"
             width = {clamp(linearDistributionsWidth, minDistributionSize, maxDistributionSize)}
           />
       </div>
@@ -172,8 +167,9 @@
         <p class="primary-text"><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
           <LinearDistribution
             data = {countryHealthData}
-            selectedCountry = {currentCountry.id}
-            selectedDataset = "health"
+            value = {healthLookUp[currentCountry.id].rate}
+            country = {currentCountry.id}
+            type = "health"
             width = {clamp(linearDistributionsWidth, minDistributionSize, maxDistributionSize)}
           />
       </div>
@@ -184,7 +180,7 @@
     </div>
 
     <div class="policy-grid-container">
-      <PolicyGrid data={countryPoliciesData}/>
+      <PolicyGrid data={countryPoliciesData} desc={descLookUp[currentCountry.id]}/>
     </div>
 
   {/if}

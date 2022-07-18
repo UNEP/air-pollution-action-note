@@ -9,13 +9,6 @@
     0: 4
   }
 
-  const categories = {
-    1: 'Target met',
-    2: 'On track',
-    3: 'Not met',
-    4: 'No data'
-  }
-
 </script>
 
 <div class="grid-bars-container">

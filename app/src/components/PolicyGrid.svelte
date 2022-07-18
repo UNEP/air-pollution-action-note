@@ -1,11 +1,21 @@
 <script lang="ts">
-
   import TargetBars from "./TargetBars.svelte";
   import Legend from "./common/Legend.svelte";
-  import descriptions from 'src/data/policiesDescriptions.json'; //algeria y venezuela -> amarillo strong
-  import { createLookup } from "src/util";
 
   export let data: PoliciesData;
+  export let desc: PoliciesDescription;
+
+  interface PoliciesDescription {
+    id: string,
+    "ind-1": string;
+    "tra-1": string;
+    "tra-2": string;
+    "waste-1": string;
+    "aq-1": string;
+    "agri-1": string;
+    "aqms-1": string;
+    "aqm-1": string;
+  }
 
   interface PoliciesData {
     name: string;
@@ -36,9 +46,6 @@
     "aqm-1": "Air quality monitoring",
     "aq-1": "Air quality standards"
   }
-
-  const descLookUp = createLookup(descriptions, d => d.id, d => d);
-  console.log(descLookUp);
 
   const generatePolicies = (data: PoliciesData) => {
     let array = [];
@@ -92,7 +99,6 @@
   }
 
   $: countryName = data.name;
-  $: countryID = data.id;
   $: policies = generatePolicies(data);
   $: text = generateText(data);
 
@@ -113,12 +119,12 @@
 </div>
 
 <div class="policies-container">
-  {#each policies as p, i}
+  {#each policies as p}
     <div class="row policy-name">{policy_name[p.id]}</div>
     <div class="row bars-middle">
       <TargetBars {selected} value={p.value}/>
     </div>
-    <div class="row policy-description">{descLookUp[countryID][p.id]}</div>
+    <div class="row policy-description">{desc[p.id]}</div>
   {/each}
 </div>
 

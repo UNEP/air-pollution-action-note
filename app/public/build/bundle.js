@@ -28314,70 +28314,43 @@ var app = (function () {
 
     function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[10] = list[i];
+    	child_ctx[9] = list[i];
     	return child_ctx;
     }
 
-    // (30:12) {#if d.value !== null && d.id !== selectedCountry}
+    // (26:6) {#if d.value && d.id !== country}
     function create_if_block$4(ctx) {
     	let g;
     	let rect;
-    	let rect_width_value;
-    	let rect_height_value;
     	let rect_x_value;
-    	let g_id_value;
 
     	const block = {
     		c: function create() {
     			g = svg_element("g");
     			rect = svg_element("rect");
-    			attr_dev(rect, "class", "normal-tile svelte-17q24y0");
-
-    			attr_dev(rect, "width", rect_width_value = /*d*/ ctx[10].id === /*selectedCountry*/ ctx[0]
-    			? relevantTileWidth
-    			: normalTileWidth);
-
-    			attr_dev(rect, "height", rect_height_value = /*d*/ ctx[10].id === /*selectedCountry*/ ctx[0]
-    			? relevantTileHeight
-    			: normalTileHeight);
-
-    			attr_dev(rect, "x", rect_x_value = /*xLocation*/ ctx[5](/*d*/ ctx[10].value, /*width*/ ctx[2]));
+    			attr_dev(rect, "class", "normal-tile svelte-1g6f7vc");
+    			attr_dev(rect, "width", normalTileWidth);
+    			attr_dev(rect, "height", normalTileHeight);
+    			attr_dev(rect, "x", rect_x_value = /*xLocation*/ ctx[5](/*d*/ ctx[9].value, /*width*/ ctx[2]));
     			attr_dev(rect, "y", "10");
     			attr_dev(rect, "rx", xBorderRadius);
     			attr_dev(rect, "ry", yBorderRadius);
     			attr_dev(rect, "filter", "none");
-    			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*d*/ ctx[10].value));
-    			add_location(rect, file$4, 31, 16, 1179);
-    			attr_dev(g, "id", g_id_value = /*d*/ ctx[10].id + /*d*/ ctx[10].value);
-    			add_location(g, file$4, 30, 14, 1138);
+    			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*d*/ ctx[9].value));
+    			add_location(rect, file$4, 27, 10, 882);
+    			add_location(g, file$4, 26, 8, 867);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
     			append_dev(g, rect);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*data, selectedCountry*/ 3 && rect_width_value !== (rect_width_value = /*d*/ ctx[10].id === /*selectedCountry*/ ctx[0]
-    			? relevantTileWidth
-    			: normalTileWidth)) {
-    				attr_dev(rect, "width", rect_width_value);
-    			}
-
-    			if (dirty & /*data, selectedCountry*/ 3 && rect_height_value !== (rect_height_value = /*d*/ ctx[10].id === /*selectedCountry*/ ctx[0]
-    			? relevantTileHeight
-    			: normalTileHeight)) {
-    				attr_dev(rect, "height", rect_height_value);
-    			}
-
-    			if (dirty & /*data, width*/ 6 && rect_x_value !== (rect_x_value = /*xLocation*/ ctx[5](/*d*/ ctx[10].value, /*width*/ ctx[2]))) {
+    			if (dirty & /*data, width*/ 6 && rect_x_value !== (rect_x_value = /*xLocation*/ ctx[5](/*d*/ ctx[9].value, /*width*/ ctx[2]))) {
     				attr_dev(rect, "x", rect_x_value);
     			}
 
     			if (dirty & /*data*/ 2) {
-    				set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*d*/ ctx[10].value));
-    			}
-
-    			if (dirty & /*data*/ 2 && g_id_value !== (g_id_value = /*d*/ ctx[10].id + /*d*/ ctx[10].value)) {
-    				attr_dev(g, "id", g_id_value);
+    				set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*d*/ ctx[9].value));
     			}
     		},
     		d: function destroy(detaching) {
@@ -28389,17 +28362,17 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(30:12) {#if d.value !== null && d.id !== selectedCountry}",
+    		source: "(26:6) {#if d.value && d.id !== country}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (29:8) {#each data as d}
+    // (25:4) {#each data as d}
     function create_each_block$3(ctx) {
     	let if_block_anchor;
-    	let if_block = /*d*/ ctx[10].value !== null && /*d*/ ctx[10].id !== /*selectedCountry*/ ctx[0] && create_if_block$4(ctx);
+    	let if_block = /*d*/ ctx[9].value && /*d*/ ctx[9].id !== /*country*/ ctx[0] && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -28411,7 +28384,7 @@ var app = (function () {
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*d*/ ctx[10].value !== null && /*d*/ ctx[10].id !== /*selectedCountry*/ ctx[0]) {
+    			if (/*d*/ ctx[9].value && /*d*/ ctx[9].id !== /*country*/ ctx[0]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -28434,7 +28407,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(29:8) {#each data as d}",
+    		source: "(25:4) {#each data as d}",
     		ctx
     	});
 
@@ -28466,22 +28439,22 @@ var app = (function () {
 
     			g = svg_element("g");
     			rect = svg_element("rect");
-    			attr_dev(rect, "class", "relevant-tile svelte-17q24y0");
+    			attr_dev(rect, "class", "relevant-tile svelte-1g6f7vc");
     			attr_dev(rect, "width", relevantTileWidth);
     			attr_dev(rect, "height", relevantTileHeight);
-    			attr_dev(rect, "x", rect_x_value = /*xLocation*/ ctx[5](/*relevantCountry*/ ctx[3].value, /*width*/ ctx[2]));
+    			attr_dev(rect, "x", rect_x_value = /*xLocation*/ ctx[5](/*value*/ ctx[3], /*width*/ ctx[2]));
     			attr_dev(rect, "y", "4");
     			attr_dev(rect, "rx", "10");
     			attr_dev(rect, "ry", "1.5");
     			attr_dev(rect, "filter", "none");
-    			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*relevantCountry*/ ctx[3].value));
-    			add_location(rect, file$4, 46, 12, 1765);
-    			add_location(g, file$4, 45, 10, 1748);
+    			set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*value*/ ctx[3]));
+    			add_location(rect, file$4, 42, 8, 1287);
+    			add_location(g, file$4, 41, 6, 1274);
     			attr_dev(svg, "width", /*width*/ ctx[2]);
     			attr_dev(svg, "height", height);
-    			add_location(svg, file$4, 27, 6, 1009);
+    			add_location(svg, file$4, 23, 2, 771);
     			attr_dev(div, "width", /*width*/ ctx[2]);
-    			add_location(div, file$4, 26, 2, 988);
+    			add_location(div, file$4, 22, 0, 754);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28498,7 +28471,7 @@ var app = (function () {
     			append_dev(g, rect);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*data, selectedCountry, relevantTileWidth, normalTileWidth, relevantTileHeight, normalTileHeight, xLocation, width, xBorderRadius, yBorderRadius, colorFunction*/ 55) {
+    			if (dirty & /*normalTileWidth, normalTileHeight, xLocation, data, width, xBorderRadius, yBorderRadius, colorFunction, country*/ 55) {
     				each_value = /*data*/ ctx[1];
     				validate_each_argument(each_value);
     				let i;
@@ -28522,12 +28495,12 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*relevantCountry, width*/ 12 && rect_x_value !== (rect_x_value = /*xLocation*/ ctx[5](/*relevantCountry*/ ctx[3].value, /*width*/ ctx[2]))) {
+    			if (dirty & /*value, width*/ 12 && rect_x_value !== (rect_x_value = /*xLocation*/ ctx[5](/*value*/ ctx[3], /*width*/ ctx[2]))) {
     				attr_dev(rect, "x", rect_x_value);
     			}
 
-    			if (dirty & /*relevantCountry*/ 8) {
-    				set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*relevantCountry*/ ctx[3].value));
+    			if (dirty & /*value*/ 8) {
+    				set_style(rect, "--theme-color", /*colorFunction*/ ctx[4](/*value*/ ctx[3]));
     			}
 
     			if (dirty & /*width*/ 4) {
@@ -28568,36 +28541,30 @@ var app = (function () {
     function instance$4($$self, $$props, $$invalidate) {
     	let maxValue;
     	let minValue;
-    	let relevantCountry;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('LinearDistribution', slots, []);
-    	
-    	let { selectedCountry } = $$props;
+    	let { country } = $$props;
     	let { data } = $$props;
-    	let { selectedDataset } = $$props;
+    	let { type } = $$props;
     	let { width = 385 } = $$props;
-
-    	const colorFunction = d => selectedDataset === "pm25"
-    	? colorPM25(d)
-    	: colorHealth(d);
-
-    	const dataLookUp = createLookup(data, d => d.id, d => d);
+    	let { value } = $$props;
+    	const colorFunction = d => type === "pm25" ? colorPM25(d) : colorHealth(d);
     	const xLocation = (countryValue, width) => (countryValue - minValue) * (width - relevantTileWidth) / (maxValue - minValue);
-    	const writable_props = ['selectedCountry', 'data', 'selectedDataset', 'width'];
+    	const writable_props = ['country', 'data', 'type', 'width', 'value'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<LinearDistribution> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ('selectedCountry' in $$props) $$invalidate(0, selectedCountry = $$props.selectedCountry);
+    		if ('country' in $$props) $$invalidate(0, country = $$props.country);
     		if ('data' in $$props) $$invalidate(1, data = $$props.data);
-    		if ('selectedDataset' in $$props) $$invalidate(6, selectedDataset = $$props.selectedDataset);
+    		if ('type' in $$props) $$invalidate(6, type = $$props.type);
     		if ('width' in $$props) $$invalidate(2, width = $$props.width);
+    		if ('value' in $$props) $$invalidate(3, value = $$props.value);
     	};
 
     	$$self.$capture_state = () => ({
-    		createLookup,
     		colorPM25,
     		colorHealth,
     		height,
@@ -28607,24 +28574,23 @@ var app = (function () {
     		relevantTileHeight,
     		xBorderRadius,
     		yBorderRadius,
-    		selectedCountry,
+    		country,
     		data,
-    		selectedDataset,
+    		type,
     		width,
+    		value,
     		colorFunction,
-    		dataLookUp,
     		xLocation,
-    		relevantCountry,
     		minValue,
     		maxValue
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('selectedCountry' in $$props) $$invalidate(0, selectedCountry = $$props.selectedCountry);
+    		if ('country' in $$props) $$invalidate(0, country = $$props.country);
     		if ('data' in $$props) $$invalidate(1, data = $$props.data);
-    		if ('selectedDataset' in $$props) $$invalidate(6, selectedDataset = $$props.selectedDataset);
+    		if ('type' in $$props) $$invalidate(6, type = $$props.type);
     		if ('width' in $$props) $$invalidate(2, width = $$props.width);
-    		if ('relevantCountry' in $$props) $$invalidate(3, relevantCountry = $$props.relevantCountry);
+    		if ('value' in $$props) $$invalidate(3, value = $$props.value);
     		if ('minValue' in $$props) minValue = $$props.minValue;
     		if ('maxValue' in $$props) maxValue = $$props.maxValue;
     	};
@@ -28641,25 +28607,9 @@ var app = (function () {
     		if ($$self.$$.dirty & /*data*/ 2) {
     			minValue = Math.min(...data.map(d => d.value));
     		}
-
-    		if ($$self.$$.dirty & /*selectedCountry*/ 1) {
-    			$$invalidate(3, relevantCountry = {
-    				id: selectedCountry,
-    				value: dataLookUp[selectedCountry].value,
-    				relevantCountryColor: colorFunction(dataLookUp[selectedCountry].value)
-    			});
-    		}
     	};
 
-    	return [
-    		selectedCountry,
-    		data,
-    		width,
-    		relevantCountry,
-    		colorFunction,
-    		xLocation,
-    		selectedDataset
-    	];
+    	return [country, data, width, value, colorFunction, xLocation, type];
     }
 
     class LinearDistribution extends SvelteComponentDev {
@@ -28667,10 +28617,11 @@ var app = (function () {
     		super(options);
 
     		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, {
-    			selectedCountry: 0,
+    			country: 0,
     			data: 1,
-    			selectedDataset: 6,
-    			width: 2
+    			type: 6,
+    			width: 2,
+    			value: 3
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -28683,24 +28634,28 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*selectedCountry*/ ctx[0] === undefined && !('selectedCountry' in props)) {
-    			console.warn("<LinearDistribution> was created without expected prop 'selectedCountry'");
+    		if (/*country*/ ctx[0] === undefined && !('country' in props)) {
+    			console.warn("<LinearDistribution> was created without expected prop 'country'");
     		}
 
     		if (/*data*/ ctx[1] === undefined && !('data' in props)) {
     			console.warn("<LinearDistribution> was created without expected prop 'data'");
     		}
 
-    		if (/*selectedDataset*/ ctx[6] === undefined && !('selectedDataset' in props)) {
-    			console.warn("<LinearDistribution> was created without expected prop 'selectedDataset'");
+    		if (/*type*/ ctx[6] === undefined && !('type' in props)) {
+    			console.warn("<LinearDistribution> was created without expected prop 'type'");
+    		}
+
+    		if (/*value*/ ctx[3] === undefined && !('value' in props)) {
+    			console.warn("<LinearDistribution> was created without expected prop 'value'");
     		}
     	}
 
-    	get selectedCountry() {
+    	get country() {
     		throw new Error("<LinearDistribution>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set selectedCountry(value) {
+    	set country(value) {
     		throw new Error("<LinearDistribution>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -28712,11 +28667,11 @@ var app = (function () {
     		throw new Error("<LinearDistribution>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get selectedDataset() {
+    	get type() {
     		throw new Error("<LinearDistribution>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set selectedDataset(value) {
+    	set type(value) {
     		throw new Error("<LinearDistribution>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -28725,6 +28680,14 @@ var app = (function () {
     	}
 
     	set width(value) {
+    		throw new Error("<LinearDistribution>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get value() {
+    		throw new Error("<LinearDistribution>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set value(value) {
     		throw new Error("<LinearDistribution>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -32983,305 +32946,7 @@ var app = (function () {
     	}
     ];
 
-    /* src\components\TargetBars.svelte generated by Svelte v3.42.3 */
-
-    const file$3 = "src\\components\\TargetBars.svelte";
-
-    function get_each_context$2(ctx, list, i) {
-    	const child_ctx = ctx.slice();
-    	child_ctx[4] = list[i];
-    	child_ctx[6] = i;
-    	return child_ctx;
-    }
-
-    // (26:4) {:else}
-    function create_else_block$1(ctx) {
-    	let div;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			attr_dev(div, "class", "bar-tile unknown svelte-1cgidq5");
-    			add_location(div, file$3, 26, 6, 622);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    		},
-    		p: noop$1,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block$1.name,
-    		type: "else",
-    		source: "(26:4) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (19:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
-    function create_if_block$3(ctx) {
-    	let div;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			attr_dev(div, "class", "bar-tile svelte-1cgidq5");
-    			toggle_class(div, "no-data", /*value*/ ctx[0] === 4);
-    			toggle_class(div, "not-met", /*value*/ ctx[0] === 3);
-    			toggle_class(div, "on-track", /*value*/ ctx[0] === 2);
-    			toggle_class(div, "target-met", /*value*/ ctx[0] === 1);
-    			add_location(div, file$3, 19, 6, 423);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*value*/ 1) {
-    				toggle_class(div, "no-data", /*value*/ ctx[0] === 4);
-    			}
-
-    			if (dirty & /*value*/ 1) {
-    				toggle_class(div, "not-met", /*value*/ ctx[0] === 3);
-    			}
-
-    			if (dirty & /*value*/ 1) {
-    				toggle_class(div, "on-track", /*value*/ ctx[0] === 2);
-    			}
-
-    			if (dirty & /*value*/ 1) {
-    				toggle_class(div, "target-met", /*value*/ ctx[0] === 1);
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block$3.name,
-    		type: "if",
-    		source: "(19:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (18:2) {#each Array(4) as _, i}
-    function create_each_block$2(ctx) {
-    	let if_block_anchor;
-
-    	function select_block_type(ctx, dirty) {
-    		if (/*value*/ ctx[0] === /*indexToCategory*/ ctx[2][/*i*/ ctx[6]] && (/*selected*/ ctx[1] === null || /*indexToCategory*/ ctx[2][/*selected*/ ctx[1]] === /*value*/ ctx[0])) return create_if_block$3;
-    		return create_else_block$1;
-    	}
-
-    	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
-
-    	const block = {
-    		c: function create() {
-    			if_block.c();
-    			if_block_anchor = empty$1();
-    		},
-    		m: function mount(target, anchor) {
-    			if_block.m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
-    				if_block.p(ctx, dirty);
-    			} else {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
-
-    				if (if_block) {
-    					if_block.c();
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
-    				}
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if_block.d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block$2.name,
-    		type: "each",
-    		source: "(18:2) {#each Array(4) as _, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$3(ctx) {
-    	let div;
-    	let each_value = Array(4);
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
-    	}
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			attr_dev(div, "class", "grid-bars-container svelte-1cgidq5");
-    			add_location(div, file$3, 16, 0, 258);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div, null);
-    			}
-    		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*value, indexToCategory, selected*/ 7) {
-    				each_value = Array(4);
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$2(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block$2(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(div, null);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
-    			}
-    		},
-    		i: noop$1,
-    		o: noop$1,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			destroy_each(each_blocks, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_fragment$3.name,
-    		type: "component",
-    		source: "",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function instance$3($$self, $$props, $$invalidate) {
-    	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots('TargetBars', slots, []);
-    	let { value } = $$props;
-    	let { selected = null } = $$props;
-    	const indexToCategory = { 3: 1, 2: 2, 1: 3, 0: 4 };
-
-    	const categories = {
-    		1: 'Target met',
-    		2: 'On track',
-    		3: 'Not met',
-    		4: 'No data'
-    	};
-
-    	const writable_props = ['value', 'selected'];
-
-    	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<TargetBars> was created with unknown prop '${key}'`);
-    	});
-
-    	$$self.$$set = $$props => {
-    		if ('value' in $$props) $$invalidate(0, value = $$props.value);
-    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
-    	};
-
-    	$$self.$capture_state = () => ({
-    		value,
-    		selected,
-    		indexToCategory,
-    		categories
-    	});
-
-    	$$self.$inject_state = $$props => {
-    		if ('value' in $$props) $$invalidate(0, value = $$props.value);
-    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
-
-    	return [value, selected, indexToCategory];
-    }
-
-    class TargetBars extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, { value: 0, selected: 1 });
-
-    		dispatch_dev("SvelteRegisterComponent", {
-    			component: this,
-    			tagName: "TargetBars",
-    			options,
-    			id: create_fragment$3.name
-    		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*value*/ ctx[0] === undefined && !('value' in props)) {
-    			console.warn("<TargetBars> was created without expected prop 'value'");
-    		}
-    	}
-
-    	get value() {
-    		throw new Error("<TargetBars>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set value(value) {
-    		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get selected() {
-    		throw new Error("<TargetBars>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set selected(value) {
-    		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    var descriptions = [
+    var policiesDescriptions = [
     	{
     		id: "ARG",
     		"ind-1": "Yes",
@@ -35612,19 +35277,303 @@ var app = (function () {
     	}
     ];
 
+    /* src\components\TargetBars.svelte generated by Svelte v3.42.3 */
+
+    const file$3 = "src\\components\\TargetBars.svelte";
+
+    function get_each_context$2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[3] = list[i];
+    	child_ctx[5] = i;
+    	return child_ctx;
+    }
+
+    // (20:4) {:else}
+    function create_else_block$1(ctx) {
+    	let div;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			attr_dev(div, "class", "bar-tile unknown svelte-1cgidq5");
+    			add_location(div, file$3, 20, 6, 517);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    		},
+    		p: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(20:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (13:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
+    function create_if_block$3(ctx) {
+    	let div;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			attr_dev(div, "class", "bar-tile svelte-1cgidq5");
+    			toggle_class(div, "no-data", /*value*/ ctx[0] === 4);
+    			toggle_class(div, "not-met", /*value*/ ctx[0] === 3);
+    			toggle_class(div, "on-track", /*value*/ ctx[0] === 2);
+    			toggle_class(div, "target-met", /*value*/ ctx[0] === 1);
+    			add_location(div, file$3, 13, 6, 318);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*value*/ 1) {
+    				toggle_class(div, "no-data", /*value*/ ctx[0] === 4);
+    			}
+
+    			if (dirty & /*value*/ 1) {
+    				toggle_class(div, "not-met", /*value*/ ctx[0] === 3);
+    			}
+
+    			if (dirty & /*value*/ 1) {
+    				toggle_class(div, "on-track", /*value*/ ctx[0] === 2);
+    			}
+
+    			if (dirty & /*value*/ 1) {
+    				toggle_class(div, "target-met", /*value*/ ctx[0] === 1);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(13:4) {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (12:2) {#each Array(4) as _, i}
+    function create_each_block$2(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*value*/ ctx[0] === /*indexToCategory*/ ctx[2][/*i*/ ctx[5]] && (/*selected*/ ctx[1] === null || /*indexToCategory*/ ctx[2][/*selected*/ ctx[1]] === /*value*/ ctx[0])) return create_if_block$3;
+    		return create_else_block$1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty$1();
+    		},
+    		m: function mount(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$2.name,
+    		type: "each",
+    		source: "(12:2) {#each Array(4) as _, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let div;
+    	let each_value = Array(4);
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(div, "class", "grid-bars-container svelte-1cgidq5");
+    			add_location(div, file$3, 10, 0, 153);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*value, indexToCategory, selected*/ 7) {
+    				each_value = Array(4);
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$2(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('TargetBars', slots, []);
+    	let { value } = $$props;
+    	let { selected = null } = $$props;
+    	const indexToCategory = { 3: 1, 2: 2, 1: 3, 0: 4 };
+    	const writable_props = ['value', 'selected'];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<TargetBars> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ('value' in $$props) $$invalidate(0, value = $$props.value);
+    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
+    	};
+
+    	$$self.$capture_state = () => ({ value, selected, indexToCategory });
+
+    	$$self.$inject_state = $$props => {
+    		if ('value' in $$props) $$invalidate(0, value = $$props.value);
+    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [value, selected, indexToCategory];
+    }
+
+    class TargetBars extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, { value: 0, selected: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "TargetBars",
+    			options,
+    			id: create_fragment$3.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*value*/ ctx[0] === undefined && !('value' in props)) {
+    			console.warn("<TargetBars> was created without expected prop 'value'");
+    		}
+    	}
+
+    	get value() {
+    		throw new Error("<TargetBars>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set value(value) {
+    		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get selected() {
+    		throw new Error("<TargetBars>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selected(value) {
+    		throw new Error("<TargetBars>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
     /* src\components\PolicyGrid.svelte generated by Svelte v3.42.3 */
 
-    const { Object: Object_1, console: console_1 } = globals;
+    const { Object: Object_1 } = globals;
     const file$2 = "src\\components\\PolicyGrid.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
-    	child_ctx[13] = i;
+    	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
-    // (73:0) {#if text}
+    // (69:0) {#if text}
     function create_if_block$2(ctx) {
     	let p;
 
@@ -35632,14 +35581,14 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$2, 73, 2, 2354);
+    			add_location(p, file$2, 69, 2, 2148);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
-    			p.innerHTML = /*text*/ ctx[1];
+    			p.innerHTML = /*text*/ ctx[2];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*text*/ 2) p.innerHTML = /*text*/ ctx[1];		},
+    			if (dirty & /*text*/ 4) p.innerHTML = /*text*/ ctx[2];		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -35649,31 +35598,31 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(73:0) {#if text}",
+    		source: "(69:0) {#if text}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:2) {#each policies as p, i}
+    // (84:2) {#each policies as p}
     function create_each_block$1(ctx) {
     	let div0;
-    	let t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[11].id] + "";
+    	let t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[10].id] + "";
     	let t0;
     	let t1;
     	let div1;
     	let targetbars;
     	let t2;
     	let div2;
-    	let t3_value = /*descLookUp*/ ctx[5][/*countryID*/ ctx[3]][/*p*/ ctx[11].id] + "";
+    	let t3_value = /*desc*/ ctx[0][/*p*/ ctx[10].id] + "";
     	let t3;
     	let current;
 
     	targetbars = new TargetBars({
     			props: {
-    				selected: /*selected*/ ctx[0],
-    				value: /*p*/ ctx[11].value
+    				selected: /*selected*/ ctx[1],
+    				value: /*p*/ ctx[10].value
     			},
     			$$inline: true
     		});
@@ -35689,11 +35638,11 @@ var app = (function () {
     			div2 = element("div");
     			t3 = text$1(t3_value);
     			attr_dev(div0, "class", "row policy-name svelte-zile0w");
-    			add_location(div0, file$2, 88, 4, 2739);
+    			add_location(div0, file$2, 84, 4, 2530);
     			attr_dev(div1, "class", "row bars-middle svelte-zile0w");
-    			add_location(div1, file$2, 89, 4, 2799);
+    			add_location(div1, file$2, 85, 4, 2590);
     			attr_dev(div2, "class", "row policy-description svelte-zile0w");
-    			add_location(div2, file$2, 92, 4, 2894);
+    			add_location(div2, file$2, 88, 4, 2685);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -35707,12 +35656,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*policies*/ 4) && t0_value !== (t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[11].id] + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*policies*/ 8) && t0_value !== (t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[10].id] + "")) set_data_dev(t0, t0_value);
     			const targetbars_changes = {};
-    			if (dirty & /*selected*/ 1) targetbars_changes.selected = /*selected*/ ctx[0];
-    			if (dirty & /*policies*/ 4) targetbars_changes.value = /*p*/ ctx[11].value;
+    			if (dirty & /*selected*/ 2) targetbars_changes.selected = /*selected*/ ctx[1];
+    			if (dirty & /*policies*/ 8) targetbars_changes.value = /*p*/ ctx[10].value;
     			targetbars.$set(targetbars_changes);
-    			if ((!current || dirty & /*countryID, policies*/ 12) && t3_value !== (t3_value = /*descLookUp*/ ctx[5][/*countryID*/ ctx[3]][/*p*/ ctx[11].id] + "")) set_data_dev(t3, t3_value);
+    			if ((!current || dirty & /*desc, policies*/ 9) && t3_value !== (t3_value = /*desc*/ ctx[0][/*p*/ ctx[10].id] + "")) set_data_dev(t3, t3_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -35737,7 +35686,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(88:2) {#each policies as p, i}",
+    		source: "(84:2) {#each policies as p}",
     		ctx
     	});
 
@@ -35752,10 +35701,10 @@ var app = (function () {
     	let t1;
     	let div1;
     	let current;
-    	let if_block = /*text*/ ctx[1] && create_if_block$2(ctx);
+    	let if_block = /*text*/ ctx[2] && create_if_block$2(ctx);
 
     	function legend_selected_binding(value) {
-    		/*legend_selected_binding*/ ctx[7](value);
+    		/*legend_selected_binding*/ ctx[6](value);
     	}
 
     	let legend_props = {
@@ -35765,13 +35714,13 @@ var app = (function () {
     		type: "categorical"
     	};
 
-    	if (/*selected*/ ctx[0] !== void 0) {
-    		legend_props.selected = /*selected*/ ctx[0];
+    	if (/*selected*/ ctx[1] !== void 0) {
+    		legend_props.selected = /*selected*/ ctx[1];
     	}
 
     	legend = new Legend({ props: legend_props, $$inline: true });
     	binding_callbacks.push(() => bind(legend, 'selected', legend_selected_binding));
-    	let each_value = /*policies*/ ctx[2];
+    	let each_value = /*policies*/ ctx[3];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -35797,9 +35746,9 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "legend svelte-zile0w");
-    			add_location(div0, file$2, 76, 0, 2401);
+    			add_location(div0, file$2, 72, 0, 2195);
     			attr_dev(div1, "class", "policies-container svelte-zile0w");
-    			add_location(div1, file$2, 86, 0, 2673);
+    			add_location(div1, file$2, 82, 0, 2467);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -35819,7 +35768,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*text*/ ctx[1]) {
+    			if (/*text*/ ctx[2]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -35834,16 +35783,16 @@ var app = (function () {
 
     			const legend_changes = {};
 
-    			if (!updating_selected && dirty & /*selected*/ 1) {
+    			if (!updating_selected && dirty & /*selected*/ 2) {
     				updating_selected = true;
-    				legend_changes.selected = /*selected*/ ctx[0];
+    				legend_changes.selected = /*selected*/ ctx[1];
     				add_flush_callback(() => updating_selected = false);
     			}
 
     			legend.$set(legend_changes);
 
-    			if (dirty & /*descLookUp, countryID, policies, selected, policy_name*/ 61) {
-    				each_value = /*policies*/ ctx[2];
+    			if (dirty & /*desc, policies, selected, policy_name*/ 27) {
+    				each_value = /*policies*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
 
@@ -35914,12 +35863,12 @@ var app = (function () {
 
     function instance$2($$self, $$props, $$invalidate) {
     	let countryName;
-    	let countryID;
     	let policies;
     	let text;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('PolicyGrid', slots, []);
     	let { data } = $$props;
+    	let { desc } = $$props;
     	let selected = null;
 
     	const policy_name = {
@@ -35933,9 +35882,6 @@ var app = (function () {
     		"aqm-1": "Air quality monitoring",
     		"aq-1": "Air quality standards"
     	};
-
-    	const descLookUp = createLookup(descriptions, d => d.id, d => d);
-    	console.log(descLookUp);
 
     	const generatePolicies = data => {
     		let array = [];
@@ -35990,44 +35936,42 @@ var app = (function () {
     		return text;
     	};
 
-    	const writable_props = ['data'];
+    	const writable_props = ['data', 'desc'];
 
     	Object_1.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
     	});
 
     	function legend_selected_binding(value) {
     		selected = value;
-    		$$invalidate(0, selected);
+    		$$invalidate(1, selected);
     	}
 
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(6, data = $$props.data);
+    		if ('data' in $$props) $$invalidate(5, data = $$props.data);
+    		if ('desc' in $$props) $$invalidate(0, desc = $$props.desc);
     	};
 
     	$$self.$capture_state = () => ({
     		TargetBars,
     		Legend,
-    		descriptions,
-    		createLookup,
     		data,
+    		desc,
     		selected,
     		policy_name,
-    		descLookUp,
     		generatePolicies,
     		generateText,
     		text,
     		policies,
-    		countryID,
     		countryName
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(6, data = $$props.data);
-    		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
-    		if ('text' in $$props) $$invalidate(1, text = $$props.text);
-    		if ('policies' in $$props) $$invalidate(2, policies = $$props.policies);
-    		if ('countryID' in $$props) $$invalidate(3, countryID = $$props.countryID);
+    		if ('data' in $$props) $$invalidate(5, data = $$props.data);
+    		if ('desc' in $$props) $$invalidate(0, desc = $$props.desc);
+    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
+    		if ('text' in $$props) $$invalidate(2, text = $$props.text);
+    		if ('policies' in $$props) $$invalidate(3, policies = $$props.policies);
     		if ('countryName' in $$props) countryName = $$props.countryName;
     	};
 
@@ -36036,39 +35980,26 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*data*/ 64) {
+    		if ($$self.$$.dirty & /*data*/ 32) {
     			countryName = data.name;
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 64) {
-    			$$invalidate(3, countryID = data.id);
+    		if ($$self.$$.dirty & /*data*/ 32) {
+    			$$invalidate(3, policies = generatePolicies(data));
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 64) {
-    			$$invalidate(2, policies = generatePolicies(data));
-    		}
-
-    		if ($$self.$$.dirty & /*data*/ 64) {
-    			$$invalidate(1, text = generateText());
+    		if ($$self.$$.dirty & /*data*/ 32) {
+    			$$invalidate(2, text = generateText());
     		}
     	};
 
-    	return [
-    		selected,
-    		text,
-    		policies,
-    		countryID,
-    		policy_name,
-    		descLookUp,
-    		data,
-    		legend_selected_binding
-    	];
+    	return [desc, selected, text, policies, policy_name, data, legend_selected_binding];
     }
 
     class PolicyGrid extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 6 });
+    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 5, desc: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -36080,8 +36011,12 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[6] === undefined && !('data' in props)) {
-    			console_1.warn("<PolicyGrid> was created without expected prop 'data'");
+    		if (/*data*/ ctx[5] === undefined && !('data' in props)) {
+    			console.warn("<PolicyGrid> was created without expected prop 'data'");
+    		}
+
+    		if (/*desc*/ ctx[0] === undefined && !('desc' in props)) {
+    			console.warn("<PolicyGrid> was created without expected prop 'desc'");
     		}
     	}
 
@@ -36090,6 +36025,14 @@ var app = (function () {
     	}
 
     	set data(value) {
+    		throw new Error("<PolicyGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get desc() {
+    		throw new Error("<PolicyGrid>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set desc(value) {
     		throw new Error("<PolicyGrid>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -36129,9 +36072,10 @@ var app = (function () {
     	lineardistribution0 = new LinearDistribution({
     			props: {
     				data: /*countryPM25Data*/ ctx[10],
-    				selectedCountry: /*currentCountry*/ ctx[3].id,
-    				selectedDataset: "pm25",
-    				width: /*clamp*/ ctx[15](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
+    				value: /*pm25LookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].pm25,
+    				country: /*currentCountry*/ ctx[3].id,
+    				type: "pm25",
+    				width: /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
     			},
     			$$inline: true
     		});
@@ -36139,9 +36083,10 @@ var app = (function () {
     	lineardistribution1 = new LinearDistribution({
     			props: {
     				data: /*countryHealthData*/ ctx[11],
-    				selectedCountry: /*currentCountry*/ ctx[3].id,
-    				selectedDataset: "health",
-    				width: /*clamp*/ ctx[15](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
+    				value: /*healthLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id].rate,
+    				country: /*currentCountry*/ ctx[3].id,
+    				type: "health",
+    				width: /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
     			},
     			$$inline: true
     		});
@@ -36152,7 +36097,10 @@ var app = (function () {
     		});
 
     	policygrid = new PolicyGrid({
-    			props: { data: /*countryPoliciesData*/ ctx[8] },
+    			props: {
+    				data: /*countryPoliciesData*/ ctx[8],
+    				desc: /*descLookUp*/ ctx[12][/*currentCountry*/ ctx[3].id]
+    			},
     			$$inline: true
     		});
 
@@ -36181,26 +36129,26 @@ var app = (function () {
     			div4 = element("div");
     			create_component(policygrid.$$.fragment);
     			attr_dev(span0, "class", "bigger-text svelte-p3rtck");
-    			add_location(span0, file$1, 135, 32, 4821);
+    			add_location(span0, file$1, 135, 32, 4913);
     			html_tag.a = null;
     			attr_dev(p0, "class", "primary-text svelte-p3rtck");
-    			add_location(p0, file$1, 135, 8, 4797);
+    			add_location(p0, file$1, 135, 8, 4889);
     			attr_dev(div0, "class", "distribution");
-    			add_location(div0, file$1, 134, 6, 4761);
+    			add_location(div0, file$1, 134, 6, 4853);
     			attr_dev(span1, "class", "bigger-text svelte-p3rtck");
-    			add_location(span1, file$1, 144, 32, 5259);
+    			add_location(span1, file$1, 145, 32, 5390);
     			html_tag_1.a = null;
     			attr_dev(p1, "class", "primary-text svelte-p3rtck");
-    			add_location(p1, file$1, 144, 8, 5235);
+    			add_location(p1, file$1, 145, 8, 5366);
     			attr_dev(div1, "class", "distribution");
-    			add_location(div1, file$1, 143, 6, 5199);
+    			add_location(div1, file$1, 144, 6, 5330);
     			attr_dev(div2, "class", "distributions-container svelte-p3rtck");
-    			add_render_callback(() => /*div2_elementresize_handler*/ ctx[18].call(div2));
-    			add_location(div2, file$1, 133, 4, 4672);
+    			add_render_callback(() => /*div2_elementresize_handler*/ ctx[21].call(div2));
+    			add_location(div2, file$1, 133, 4, 4764);
     			attr_dev(div3, "class", "death-causes-container svelte-p3rtck");
-    			add_location(div3, file$1, 154, 4, 5655);
+    			add_location(div3, file$1, 156, 4, 5827);
     			attr_dev(div4, "class", "policy-grid-container");
-    			add_location(div4, file$1, 158, 4, 5758);
+    			add_location(div4, file$1, 160, 4, 5930);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -36219,7 +36167,7 @@ var app = (function () {
     			html_tag_1.m(/*PMtimesCommentary*/ ctx[6], p1);
     			append_dev(div1, t4);
     			mount_component(lineardistribution1, div1, null);
-    			div2_resize_listener = add_resize_listener(div2, /*div2_elementresize_handler*/ ctx[18].bind(div2));
+    			div2_resize_listener = add_resize_listener(div2, /*div2_elementresize_handler*/ ctx[21].bind(div2));
     			insert_dev(target, t5, anchor);
     			insert_dev(target, div3, anchor);
     			mount_component(deathcauses, div3, null);
@@ -36232,20 +36180,23 @@ var app = (function () {
     			if ((!current || dirty & /*currentCountry*/ 8) && t0_value !== (t0_value = /*currentCountry*/ ctx[3].PM25country + "")) set_data_dev(t0, t0_value);
     			if (!current || dirty & /*PM25commentary*/ 128) html_tag.p(/*PM25commentary*/ ctx[7]);
     			const lineardistribution0_changes = {};
-    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.selectedCountry = /*currentCountry*/ ctx[3].id;
-    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution0_changes.width = /*clamp*/ ctx[15](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
+    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.value = /*pm25LookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].pm25;
+    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.country = /*currentCountry*/ ctx[3].id;
+    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution0_changes.width = /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
     			lineardistribution0.$set(lineardistribution0_changes);
     			if ((!current || dirty & /*currentCountry*/ 8) && t3_value !== (t3_value = /*currentCountry*/ ctx[3].deathRatio + "")) set_data_dev(t3, t3_value);
     			if (!current || dirty & /*PMtimesCommentary*/ 64) html_tag_1.p(/*PMtimesCommentary*/ ctx[6]);
     			const lineardistribution1_changes = {};
-    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.selectedCountry = /*currentCountry*/ ctx[3].id;
-    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution1_changes.width = /*clamp*/ ctx[15](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
+    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.value = /*healthLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id].rate;
+    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.country = /*currentCountry*/ ctx[3].id;
+    			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution1_changes.width = /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
     			lineardistribution1.$set(lineardistribution1_changes);
     			const deathcauses_changes = {};
     			if (dirty & /*countryDeathsData*/ 512) deathcauses_changes.data = /*countryDeathsData*/ ctx[9];
     			deathcauses.$set(deathcauses_changes);
     			const policygrid_changes = {};
     			if (dirty & /*countryPoliciesData*/ 256) policygrid_changes.data = /*countryPoliciesData*/ ctx[8];
+    			if (dirty & /*currentCountry*/ 8) policygrid_changes.desc = /*descLookUp*/ ctx[12][/*currentCountry*/ ctx[3].id];
     			policygrid.$set(policygrid_changes);
     		},
     		i: function intro(local) {
@@ -36307,8 +36258,8 @@ var app = (function () {
     	typeahead = new Typeahead({
     			props: {
     				data: countries,
-    				extract: /*extract*/ ctx[12],
-    				filter: /*filter*/ ctx[13],
+    				extract: /*extract*/ ctx[15],
+    				filter: /*filter*/ ctx[16],
     				limit: maxNumSearchResults,
     				placeholder: `Search a country`,
     				hideLabel: true
@@ -36316,8 +36267,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	typeahead.$on("select", /*select_handler*/ ctx[16]);
-    	typeahead.$on("clear", /*clear_handler*/ ctx[17]);
+    	typeahead.$on("select", /*select_handler*/ ctx[19]);
+    	typeahead.$on("clear", /*clear_handler*/ ctx[20]);
     	let if_block = /*countrySelected*/ ctx[4] && create_if_block$1(ctx);
 
     	const block_1 = {
@@ -36332,12 +36283,12 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$1, 117, 2, 4241);
+    			add_location(h2, file$1, 117, 2, 4333);
     			attr_dev(div, "class", "search-bar svelte-p3rtck");
-    			add_location(div, file$1, 119, 2, 4283);
+    			add_location(div, file$1, 119, 2, 4375);
     			attr_dev(section, "id", /*id*/ ctx[0]);
     			attr_dev(section, "class", "viz wide country-search svelte-p3rtck");
-    			add_location(section, file$1, 113, 0, 4159);
+    			add_location(section, file$1, 113, 0, 4251);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -36433,6 +36384,7 @@ var app = (function () {
     	validate_slots('CountrySearch', slots, []);
     	
     	
+    	
     	let { id } = $$props;
     	let { head = `Lorem <b>ipsum dolor sit amet</b>, consectetur adipiscing elit. Mauris mattis posuere faucibus.` } = $$props;
     	let { block } = $$props;
@@ -36459,20 +36411,20 @@ var app = (function () {
     		"ESH"
     	];
 
+    	const countryPM25Data = pm25data.map(d => {
+    		return { id: d.id, value: d.pm25 };
+    	});
+
+    	const countryHealthData = healthData.map(d => {
+    		return { id: d.id, value: d.rate };
+    	});
+
+    	const descLookUp = createLookup(policiesDescriptions, d => d.id, d => d);
     	const CTBF_lookUp = createLookup(countriesToBeFiltered, c => c, c => c);
     	const pm25LookUp = createLookup(pm25data, p => p.id, p => p);
     	const healthLookUp = createLookup(healthData, h => h.id, h => h);
     	const deathsLookUp = createLookup(deathsdata, d => d.id, d => d);
     	const policiesLookUp = createLookup(policiesData, p => p.id, p => p);
-
-    	let countryPM25Data = pm25data.map(d => {
-    		return { id: d.id, value: d.pm25 };
-    	});
-
-    	let countryHealthData = healthData.map(d => {
-    		return { id: d.id, value: d.rate };
-    	});
-
     	let countrySelected = false;
 
     	const generateDeathsData = countryID => {
@@ -36568,6 +36520,7 @@ var app = (function () {
     		pm25data,
     		healthData,
     		policiesData,
+    		policiesDescriptions,
     		createLookup,
     		SectionTitle,
     		PolicyGrid,
@@ -36575,14 +36528,15 @@ var app = (function () {
     		head,
     		block,
     		countriesToBeFiltered,
+    		countryPM25Data,
+    		countryHealthData,
+    		descLookUp,
     		CTBF_lookUp,
     		pm25LookUp,
     		healthLookUp,
     		deathsLookUp,
     		policiesLookUp,
     		maxNumSearchResults,
-    		countryPM25Data,
-    		countryHealthData,
     		countrySelected,
     		generateDeathsData,
     		generatePoliciesData,
@@ -36605,8 +36559,6 @@ var app = (function () {
     		if ('id' in $$props) $$invalidate(0, id = $$props.id);
     		if ('head' in $$props) $$invalidate(1, head = $$props.head);
     		if ('block' in $$props) $$invalidate(2, block = $$props.block);
-    		if ('countryPM25Data' in $$props) $$invalidate(10, countryPM25Data = $$props.countryPM25Data);
-    		if ('countryHealthData' in $$props) $$invalidate(11, countryHealthData = $$props.countryHealthData);
     		if ('countrySelected' in $$props) $$invalidate(4, countrySelected = $$props.countrySelected);
     		if ('linearDistributionsWidth' in $$props) $$invalidate(5, linearDistributionsWidth = $$props.linearDistributionsWidth);
     		if ('currentCountry' in $$props) $$invalidate(3, currentCountry = $$props.currentCountry);
@@ -36660,6 +36612,9 @@ var app = (function () {
     		countryDeathsData,
     		countryPM25Data,
     		countryHealthData,
+    		descLookUp,
+    		pm25LookUp,
+    		healthLookUp,
     		extract,
     		filter,
     		updateSelectedCountry,
