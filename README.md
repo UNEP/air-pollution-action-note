@@ -11,7 +11,7 @@
 # Air Pollution Note
 ![Poster image for the Air Pollution Action Note interactive](https://github.com/UNEP/air-pollution-action-note/blob/cae2006e24023f7e583cc8a2a2b6ac253639982f/app/public/img/poster-2.jpg)
 
-The Air Pollution Note is a useful data-driven dashboard displaying the different sources of air pollution, its health impact, and what actions countries are taking to live with clean air.
+The Air Pollution Note is a data-driven dashboard that displays the different sources of air pollution, the health impact of outdoor air pollution, and what actions countries are taking to live with clean air. It aims to serve curious citizens engaged in the topic, as well as media professionals and academics.
 
 #### Quick links
 * TK TK App folder: description
@@ -26,7 +26,28 @@ The objective of the data-driven notes is to bridge the gap between the diverse 
 
 ---
 #### Reusing and citing this project
-TK TK Interactive has 
+You are welcome to reuse our visualizations in your personal website or your media outlet as long as you abide the [terms of the license](LICENSE).
+
+Here're the embeds for the individual data visualizations:
+* Current state
+````javascript
+<script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='pm25'></script>
+````
+
+* Sources per sector 
+````javascript
+<script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='sectors'></script>
+````
+
+* Impact 
+````javascript
+<script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='health'></script>
+````
+
+* Policy actions 
+````javascript
+<script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='policies'></script>
+````
 
 TK TK Do we want to have a citation 
 
