@@ -6828,7 +6828,7 @@ var app = (function () {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let each_value = /*cartogramData*/ ctx[8];
+    	let each_value = /*cartogramData*/ ctx[9];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*d*/ ctx[57].code;
     	validate_each_keys(ctx, each_value, get_each_context$f, get_key);
@@ -6849,7 +6849,7 @@ var app = (function () {
 
     			attr_dev(div, "class", "countries svelte-sdm8di");
     			attr_dev(div, "role", "graphics-document");
-    			attr_dev(div, "aria-label", /*title*/ ctx[16]);
+    			attr_dev(div, "aria-label", /*title*/ ctx[17]);
     			add_location(div, file$x, 162, 4, 5510);
     		},
     		m: function mount(target, anchor) {
@@ -6860,8 +6860,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, slug, hideLabels*/ 950535) {
-    				each_value = /*cartogramData*/ ctx[8];
+    			if (dirty[0] & /*classesFn, cartogramData, calcStyle, onMouseEnterCountry, onMouseLeaveCountry, onMouseClick, hideLabels, hoverTextFn*/ 1901063) {
+    				each_value = /*cartogramData*/ ctx[9];
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context$f, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$f, null, get_each_context$f);
@@ -6890,13 +6890,17 @@ var app = (function () {
     // (167:8) {#if d.x && d.y}
     function create_if_block_2$4(ctx) {
     	let div;
-    	let t;
+    	let desc;
+    	let t0_value = /*hoverTextFn*/ ctx[1](/*d*/ ctx[57]) + "";
+    	let t0;
+    	let t1;
+    	let t2;
     	let div_class_value;
     	let div_style_value;
     	let div_data_code_value;
     	let mounted;
     	let dispose;
-    	let if_block = !/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
+    	let if_block = !/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100 && create_if_block_3$1(ctx);
 
     	function mouseenter_handler(...args) {
     		return /*mouseenter_handler*/ ctx[42](/*d*/ ctx[57], ...args);
@@ -6909,20 +6913,26 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
+    			desc = svg_element("desc");
+    			t0 = text$1(t0_value);
+    			t1 = space();
     			if (if_block) if_block.c();
-    			t = space();
+    			t2 = space();
+    			add_location(desc, file$x, 178, 10, 6103);
     			attr_dev(div, "class", div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di");
-    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]));
+    			attr_dev(div, "style", div_style_value = /*calcStyle*/ ctx[16](/*d*/ ctx[57]));
     			attr_dev(div, "data-code", div_data_code_value = /*d*/ ctx[57].code);
     			attr_dev(div, "tabindex", "0");
-    			attr_dev(div, "role", "graphics-symbol");
-    			attr_dev(div, "aria-labelledby", "country-annotation");
+    			attr_dev(div, "role", "graphics-object");
     			add_location(div, file$x, 167, 10, 5672);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, desc);
+    			append_dev(desc, t0);
+    			append_dev(div, t1);
     			if (if_block) if_block.m(div, null);
-    			append_dev(div, t);
+    			append_dev(div, t2);
 
     			if (!mounted) {
     				dispose = [
@@ -6937,29 +6947,30 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
+    			if (dirty[0] & /*hoverTextFn, cartogramData*/ 514 && t0_value !== (t0_value = /*hoverTextFn*/ ctx[1](/*d*/ ctx[57]) + "")) set_data_dev(t0, t0_value);
 
-    			if (!/*hideLabels*/ ctx[1] && /*d*/ ctx[57].width > 100) {
+    			if (!/*hideLabels*/ ctx[2] && /*d*/ ctx[57].width > 100) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
     					if_block = create_if_block_3$1(ctx);
     					if_block.c();
-    					if_block.m(div, t);
+    					if_block.m(div, t2);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty[0] & /*classesFn, cartogramData*/ 257 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di")) {
+    			if (dirty[0] & /*classesFn, cartogramData*/ 513 && div_class_value !== (div_class_value = "country " + /*classesFn*/ ctx[0](/*d*/ ctx[57]).join(' ') + " svelte-sdm8di")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
-    			if (dirty[0] & /*calcStyle, cartogramData*/ 33024 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[15](/*d*/ ctx[57]))) {
+    			if (dirty[0] & /*calcStyle, cartogramData*/ 66048 && div_style_value !== (div_style_value = /*calcStyle*/ ctx[16](/*d*/ ctx[57]))) {
     				attr_dev(div, "style", div_style_value);
     			}
 
-    			if (dirty[0] & /*cartogramData*/ 256 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[57].code)) {
+    			if (dirty[0] & /*cartogramData*/ 512 && div_data_code_value !== (div_data_code_value = /*d*/ ctx[57].code)) {
     				attr_dev(div, "data-code", div_data_code_value);
     			}
     		},
@@ -6987,26 +6998,20 @@ var app = (function () {
     	let span;
     	let t_value = /*d*/ ctx[57].short + "";
     	let t;
-    	let span_id_value;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t = text$1(t_value);
-    			attr_dev(span, "id", span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"));
     			attr_dev(span, "class", "country-text svelte-sdm8di");
-    			add_location(span, file$x, 180, 12, 6201);
+    			add_location(span, file$x, 180, 12, 6192);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
     			append_dev(span, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*cartogramData*/ 256 && t_value !== (t_value = /*d*/ ctx[57].short + "")) set_data_dev(t, t_value);
-
-    			if (dirty[0] & /*slug*/ 4 && span_id_value !== (span_id_value = "" + (/*slug*/ ctx[2] + "-annotation"))) {
-    				attr_dev(span, "id", span_id_value);
-    			}
+    			if (dirty[0] & /*cartogramData*/ 512 && t_value !== (t_value = /*d*/ ctx[57].short + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -7078,24 +7083,25 @@ var app = (function () {
     	return block;
     }
 
-    // (190:2) {#if annotation}
+    // (189:2) {#if annotation}
     function create_if_block$g(ctx) {
     	let div;
     	let annotation_1;
+    	let div_id_value;
     	let current;
 
     	annotation_1 = new Annotation({
     			props: {
-    				x: /*annotation*/ ctx[4].x,
-    				y: /*annotation*/ ctx[4].y,
-    				text: /*annotation*/ ctx[4].html,
-    				radius: /*annotation*/ ctx[4].radius,
-    				forceTopWherePossible: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9],
-    				topClamp: /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
+    				x: /*annotation*/ ctx[5].x,
+    				y: /*annotation*/ ctx[5].y,
+    				text: /*annotation*/ ctx[5].html,
+    				radius: /*annotation*/ ctx[5].radius,
+    				forceTopWherePossible: /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10],
+    				topClamp: /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10]
     				? 0
-    				: /*pxAboveScreenTop*/ ctx[14],
-    				canvasWidth: /*containerWidth*/ ctx[6],
-    				canvasHeight: /*containerHeight*/ ctx[7]
+    				: /*pxAboveScreenTop*/ ctx[15],
+    				canvasWidth: /*containerWidth*/ ctx[7],
+    				canvasHeight: /*containerHeight*/ ctx[8]
     			},
     			$$inline: true
     		});
@@ -7104,10 +7110,11 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(annotation_1.$$.fragment);
+    			attr_dev(div, "id", div_id_value = "" + (/*slug*/ ctx[3] + "-annotation"));
     			attr_dev(div, "class", "annotation-container svelte-sdm8di");
-    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
-    			toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
-    			add_location(div, file$x, 190, 4, 6383);
+    			toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
+    			toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
+    			add_location(div, file$x, 189, 4, 6349);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7116,26 +7123,30 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const annotation_1_changes = {};
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.x = /*annotation*/ ctx[4].x;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.y = /*annotation*/ ctx[4].y;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.text = /*annotation*/ ctx[4].html;
-    			if (dirty[0] & /*annotation*/ 16) annotation_1_changes.radius = /*annotation*/ ctx[4].radius;
-    			if (dirty[0] & /*annotation, helpAnnotation*/ 528) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9];
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.x = /*annotation*/ ctx[5].x;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.y = /*annotation*/ ctx[5].y;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.text = /*annotation*/ ctx[5].html;
+    			if (dirty[0] & /*annotation*/ 32) annotation_1_changes.radius = /*annotation*/ ctx[5].radius;
+    			if (dirty[0] & /*annotation, helpAnnotation*/ 1056) annotation_1_changes.forceTopWherePossible = /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10];
 
-    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 16912) annotation_1_changes.topClamp = /*annotation*/ ctx[4] === /*helpAnnotation*/ ctx[9]
+    			if (dirty[0] & /*annotation, helpAnnotation, pxAboveScreenTop*/ 33824) annotation_1_changes.topClamp = /*annotation*/ ctx[5] === /*helpAnnotation*/ ctx[10]
     			? 0
-    			: /*pxAboveScreenTop*/ ctx[14];
+    			: /*pxAboveScreenTop*/ ctx[15];
 
-    			if (dirty[0] & /*containerWidth*/ 64) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[6];
-    			if (dirty[0] & /*containerHeight*/ 128) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[7];
+    			if (dirty[0] & /*containerWidth*/ 128) annotation_1_changes.canvasWidth = /*containerWidth*/ ctx[7];
+    			if (dirty[0] & /*containerHeight*/ 256) annotation_1_changes.canvasHeight = /*containerHeight*/ ctx[8];
     			annotation_1.$set(annotation_1_changes);
 
-    			if (dirty[0] & /*hideAnnotation*/ 1024) {
-    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[10]);
+    			if (!current || dirty[0] & /*slug*/ 8 && div_id_value !== (div_id_value = "" + (/*slug*/ ctx[3] + "-annotation"))) {
+    				attr_dev(div, "id", div_id_value);
     			}
 
-    			if (dirty[0] & /*annotation*/ 16) {
-    				toggle_class(div, "annotation-help", /*annotation*/ ctx[4].class === "help");
+    			if (dirty[0] & /*hideAnnotation*/ 2048) {
+    				toggle_class(div, "annotation-hide", /*hideAnnotation*/ ctx[11]);
+    			}
+
+    			if (dirty[0] & /*annotation*/ 32) {
+    				toggle_class(div, "annotation-help", /*annotation*/ ctx[5].class === "help");
     			}
     		},
     		i: function intro(local) {
@@ -7157,7 +7168,7 @@ var app = (function () {
     		block,
     		id: create_if_block$g.name,
     		type: "if",
-    		source: "(190:2) {#if annotation}",
+    		source: "(189:2) {#if annotation}",
     		ctx
     	});
 
@@ -7174,8 +7185,8 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*loaded*/ ctx[12] && create_if_block_1$7(ctx);
-    	let if_block1 = /*annotation*/ ctx[4] && create_if_block$g(ctx);
+    	let if_block0 = /*loaded*/ ctx[13] && create_if_block_1$7(ctx);
+    	let if_block1 = /*annotation*/ ctx[5] && create_if_block$g(ctx);
 
     	const block = {
     		c: function create() {
@@ -7196,8 +7207,8 @@ var app = (function () {
     			add_location(filter, file$x, 158, 0, 5362);
     			attr_dev(div, "class", "cartogram svelte-sdm8di");
     			add_render_callback(() => /*div_elementresize_handler*/ ctx[47].call(div));
-    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
-    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
+    			toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[4]);
+    			toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[14]);
     			add_location(div, file$x, 153, 0, 5193);
     		},
     		l: function claim(nodes) {
@@ -7216,12 +7227,12 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[20], false, false, false);
+    				dispose = listen_dev(window_1, "scroll", /*onWindowScroll*/ ctx[21], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*loaded*/ ctx[12]) {
+    			if (/*loaded*/ ctx[13]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
@@ -7234,11 +7245,11 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (/*annotation*/ ctx[4]) {
+    			if (/*annotation*/ ctx[5]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*annotation*/ 16) {
+    					if (dirty[0] & /*annotation*/ 32) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -7257,12 +7268,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*hoverData*/ 8) {
-    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[3]);
+    			if (dirty[0] & /*hoverData*/ 16) {
+    				toggle_class(div, "cartogram-country-hover", /*hoverData*/ ctx[4]);
     			}
 
-    			if (dirty[0] & /*resizing*/ 8192) {
-    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[13]);
+    			if (dirty[0] & /*resizing*/ 16384) {
+    				toggle_class(div, "cartogram-resizing", /*resizing*/ ctx[14]);
     			}
     		},
     		i: function intro(local) {
@@ -7319,7 +7330,7 @@ var app = (function () {
     	let { hoverTextFn } = $$props;
     	let { onHoverFn = () => null } = $$props;
     	let { hideLabels = false } = $$props;
-    	const rerenderFn = () => (((((((((($$invalidate(8, cartogramData), $$invalidate(22, data)), $$invalidate(40, radius)), $$invalidate(26, categoryFn)), $$invalidate(39, xScale)), $$invalidate(38, yScale)), $$invalidate(41, largestVal)), $$invalidate(23, nodeSize)), $$invalidate(24, domain)), $$invalidate(32, targetWidth)), $$invalidate(33, targetHeight));
+    	const rerenderFn = () => (((((((((($$invalidate(9, cartogramData), $$invalidate(23, data)), $$invalidate(40, radius)), $$invalidate(27, categoryFn)), $$invalidate(39, xScale)), $$invalidate(38, yScale)), $$invalidate(41, largestVal)), $$invalidate(24, nodeSize)), $$invalidate(25, domain)), $$invalidate(32, targetWidth)), $$invalidate(33, targetHeight));
     	let { annotationShowing = false } = $$props;
     	let { legendTitle } = $$props;
     	let { slug } = $$props;
@@ -7345,16 +7356,16 @@ var app = (function () {
 
     	function resize() {
     		if (containerEl) {
-    			$$invalidate(13, resizing = true);
+    			$$invalidate(14, resizing = true);
     			const ctrStyle = getComputedStyle(containerEl);
     			const xPadding = parseFloat(ctrStyle.paddingLeft) + parseFloat(ctrStyle.paddingRight);
     			const yPadding = parseFloat(ctrStyle.paddingTop) - parseFloat(ctrStyle.paddingBottom);
-    			$$invalidate(6, containerWidth = containerEl.clientWidth - xPadding);
-    			$$invalidate(7, containerHeight = containerEl.clientHeight - yPadding);
+    			$$invalidate(7, containerWidth = containerEl.clientWidth - xPadding);
+    			$$invalidate(8, containerHeight = containerEl.clientHeight - yPadding);
     			const scale = Math.min(containerWidth / originalWidth, containerHeight / originalHeight);
     			$$invalidate(32, targetWidth = originalWidth * scale);
     			$$invalidate(33, targetHeight = originalHeight * scale);
-    			window.setTimeout(() => $$invalidate(13, resizing = false));
+    			window.setTimeout(() => $$invalidate(14, resizing = false));
     		}
     	}
 
@@ -7364,7 +7375,7 @@ var app = (function () {
     	window.setTimeout(
     		() => {
     			resize();
-    			$$invalidate(12, loaded = true);
+    			$$invalidate(13, loaded = true);
     		},
     		0
     	);
@@ -7376,7 +7387,7 @@ var app = (function () {
     		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(3, hoverData = {
+    		$$invalidate(4, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7390,7 +7401,7 @@ var app = (function () {
     		$$invalidate(34, helpTextFade = false);
     		_debouncedShowHelpText.cancel();
 
-    		$$invalidate(3, hoverData = {
+    		$$invalidate(4, hoverData = {
     			country,
     			x: country.left + country.width / 2,
     			y: country.top + country.height / 2
@@ -7405,7 +7416,7 @@ var app = (function () {
     	}
 
     	function clearHoverState() {
-    		$$invalidate(3, hoverData = null);
+    		$$invalidate(4, hoverData = null);
     		hoveredForX = false;
     		window.clearTimeout(hoverTimeout);
     		hoverTimeout = null;
@@ -7421,7 +7432,7 @@ var app = (function () {
 
     	const onWindowScroll = () => {
     		const top = containerEl.getBoundingClientRect().top - 50;
-    		$$invalidate(14, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
+    		$$invalidate(15, pxAboveScreenTop = top < 0 ? Math.abs(top) : 0);
     	};
 
     	const writable_props = [
@@ -7452,29 +7463,29 @@ var app = (function () {
     	function div_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			containerEl = $$value;
-    			$$invalidate(11, containerEl);
+    			$$invalidate(12, containerEl);
     		});
     	}
 
     	function div_elementresize_handler() {
     		clientWidth = this.clientWidth;
-    		$$invalidate(5, clientWidth);
+    		$$invalidate(6, clientWidth);
     	}
 
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(23, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(24, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(25, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(26, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(27, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(28, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(1, hoverTextFn = $$props.hoverTextFn);
     		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
-    		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('hideLabels' in $$props) $$invalidate(2, hideLabels = $$props.hideLabels);
+    		if ('annotationShowing' in $$props) $$invalidate(22, annotationShowing = $$props.annotationShowing);
     		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
-    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
+    		if ('slug' in $$props) $$invalidate(3, slug = $$props.slug);
     	};
 
     	$$self.$capture_state = () => ({
@@ -7536,40 +7547,40 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(22, data = $$props.data);
-    		if ('nodeSize' in $$props) $$invalidate(23, nodeSize = $$props.nodeSize);
-    		if ('domain' in $$props) $$invalidate(24, domain = $$props.domain);
-    		if ('helpText' in $$props) $$invalidate(25, helpText = $$props.helpText);
-    		if ('categoryFn' in $$props) $$invalidate(26, categoryFn = $$props.categoryFn);
-    		if ('colorFn' in $$props) $$invalidate(27, colorFn = $$props.colorFn);
+    		if ('data' in $$props) $$invalidate(23, data = $$props.data);
+    		if ('nodeSize' in $$props) $$invalidate(24, nodeSize = $$props.nodeSize);
+    		if ('domain' in $$props) $$invalidate(25, domain = $$props.domain);
+    		if ('helpText' in $$props) $$invalidate(26, helpText = $$props.helpText);
+    		if ('categoryFn' in $$props) $$invalidate(27, categoryFn = $$props.categoryFn);
+    		if ('colorFn' in $$props) $$invalidate(28, colorFn = $$props.colorFn);
     		if ('classesFn' in $$props) $$invalidate(0, classesFn = $$props.classesFn);
-    		if ('hoverTextFn' in $$props) $$invalidate(28, hoverTextFn = $$props.hoverTextFn);
+    		if ('hoverTextFn' in $$props) $$invalidate(1, hoverTextFn = $$props.hoverTextFn);
     		if ('onHoverFn' in $$props) $$invalidate(29, onHoverFn = $$props.onHoverFn);
-    		if ('hideLabels' in $$props) $$invalidate(1, hideLabels = $$props.hideLabels);
-    		if ('annotationShowing' in $$props) $$invalidate(21, annotationShowing = $$props.annotationShowing);
+    		if ('hideLabels' in $$props) $$invalidate(2, hideLabels = $$props.hideLabels);
+    		if ('annotationShowing' in $$props) $$invalidate(22, annotationShowing = $$props.annotationShowing);
     		if ('legendTitle' in $$props) $$invalidate(31, legendTitle = $$props.legendTitle);
-    		if ('slug' in $$props) $$invalidate(2, slug = $$props.slug);
-    		if ('containerEl' in $$props) $$invalidate(11, containerEl = $$props.containerEl);
-    		if ('loaded' in $$props) $$invalidate(12, loaded = $$props.loaded);
+    		if ('slug' in $$props) $$invalidate(3, slug = $$props.slug);
+    		if ('containerEl' in $$props) $$invalidate(12, containerEl = $$props.containerEl);
+    		if ('loaded' in $$props) $$invalidate(13, loaded = $$props.loaded);
     		if ('targetWidth' in $$props) $$invalidate(32, targetWidth = $$props.targetWidth);
     		if ('targetHeight' in $$props) $$invalidate(33, targetHeight = $$props.targetHeight);
-    		if ('resizing' in $$props) $$invalidate(13, resizing = $$props.resizing);
+    		if ('resizing' in $$props) $$invalidate(14, resizing = $$props.resizing);
     		if ('hoverTimeout' in $$props) hoverTimeout = $$props.hoverTimeout;
-    		if ('hoverData' in $$props) $$invalidate(3, hoverData = $$props.hoverData);
+    		if ('hoverData' in $$props) $$invalidate(4, hoverData = $$props.hoverData);
     		if ('helpTextFade' in $$props) $$invalidate(34, helpTextFade = $$props.helpTextFade);
-    		if ('annotation' in $$props) $$invalidate(4, annotation = $$props.annotation);
+    		if ('annotation' in $$props) $$invalidate(5, annotation = $$props.annotation);
     		if ('hoveredForX' in $$props) hoveredForX = $$props.hoveredForX;
-    		if ('clientWidth' in $$props) $$invalidate(5, clientWidth = $$props.clientWidth);
-    		if ('containerWidth' in $$props) $$invalidate(6, containerWidth = $$props.containerWidth);
-    		if ('containerHeight' in $$props) $$invalidate(7, containerHeight = $$props.containerHeight);
-    		if ('cartogramData' in $$props) $$invalidate(8, cartogramData = $$props.cartogramData);
-    		if ('pxAboveScreenTop' in $$props) $$invalidate(14, pxAboveScreenTop = $$props.pxAboveScreenTop);
-    		if ('helpAnnotation' in $$props) $$invalidate(9, helpAnnotation = $$props.helpAnnotation);
-    		if ('hideAnnotation' in $$props) $$invalidate(10, hideAnnotation = $$props.hideAnnotation);
+    		if ('clientWidth' in $$props) $$invalidate(6, clientWidth = $$props.clientWidth);
+    		if ('containerWidth' in $$props) $$invalidate(7, containerWidth = $$props.containerWidth);
+    		if ('containerHeight' in $$props) $$invalidate(8, containerHeight = $$props.containerHeight);
+    		if ('cartogramData' in $$props) $$invalidate(9, cartogramData = $$props.cartogramData);
+    		if ('pxAboveScreenTop' in $$props) $$invalidate(15, pxAboveScreenTop = $$props.pxAboveScreenTop);
+    		if ('helpAnnotation' in $$props) $$invalidate(10, helpAnnotation = $$props.helpAnnotation);
+    		if ('hideAnnotation' in $$props) $$invalidate(11, hideAnnotation = $$props.hideAnnotation);
     		if ('countryAnnotation' in $$props) $$invalidate(35, countryAnnotation = $$props.countryAnnotation);
     		if ('haveContainerDims' in $$props) $$invalidate(36, haveContainerDims = $$props.haveContainerDims);
     		if ('helpCountry' in $$props) $$invalidate(37, helpCountry = $$props.helpCountry);
-    		if ('calcStyle' in $$props) $$invalidate(15, calcStyle = $$props.calcStyle);
+    		if ('calcStyle' in $$props) $$invalidate(16, calcStyle = $$props.calcStyle);
     		if ('yScale' in $$props) $$invalidate(38, yScale = $$props.yScale);
     		if ('xScale' in $$props) $$invalidate(39, xScale = $$props.xScale);
     		if ('radius' in $$props) $$invalidate(40, radius = $$props.radius);
@@ -7581,28 +7592,28 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
+    		if ($$self.$$.dirty[0] & /*data*/ 8388608) {
     			$$invalidate(41, largestVal = Math.max(...data.map(d => d.value)));
     		}
 
-    		if ($$self.$$.dirty[0] & /*clientWidth*/ 32) {
+    		if ($$self.$$.dirty[0] & /*clientWidth*/ 64) {
     			clientWidth && throttledResize();
     		}
 
-    		if ($$self.$$.dirty[0] & /*nodeSize*/ 8388608 | $$self.$$.dirty[1] & /*largestVal*/ 1024) {
+    		if ($$self.$$.dirty[0] & /*nodeSize*/ 16777216 | $$self.$$.dirty[1] & /*largestVal*/ 1024) {
     			$$invalidate(40, radius = sqrt().domain([0, largestVal]).range([0, nodeSize]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetWidth*/ 2) {
+    		if ($$self.$$.dirty[0] & /*domain*/ 33554432 | $$self.$$.dirty[1] & /*targetWidth*/ 2) {
     			$$invalidate(39, xScale = linear().domain([0, domain[0]]).range([0, targetWidth]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*domain*/ 16777216 | $$self.$$.dirty[1] & /*targetHeight*/ 4) {
+    		if ($$self.$$.dirty[0] & /*domain*/ 33554432 | $$self.$$.dirty[1] & /*targetHeight*/ 4) {
     			$$invalidate(38, yScale = linear().domain([0, domain[1]]).range([0, targetHeight]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 71303168 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 896) {
-    			$$invalidate(8, cartogramData = data.map(d => {
+    		if ($$self.$$.dirty[0] & /*data, categoryFn*/ 142606336 | $$self.$$.dirty[1] & /*radius, xScale, yScale*/ 896) {
+    			$$invalidate(9, cartogramData = data.map(d => {
     				const r = radius(d.value);
 
     				return Object.assign(Object.assign({}, d), {
@@ -7616,12 +7627,12 @@ var app = (function () {
     			}));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cartogramData*/ 256) {
+    		if ($$self.$$.dirty[0] & /*cartogramData*/ 512) {
     			cartogramData.sort((a, b) => a.y - b.y);
     		}
 
-    		if ($$self.$$.dirty[0] & /*colorFn*/ 134217728) {
-    			$$invalidate(15, calcStyle = d => {
+    		if ($$self.$$.dirty[0] & /*colorFn*/ 268435456) {
+    			$$invalidate(16, calcStyle = d => {
     				const styles = [
     					`left: ${d.left}px`,
     					`top: ${d.top}px`,
@@ -7634,14 +7645,14 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 33554688) {
+    		if ($$self.$$.dirty[0] & /*helpText, cartogramData*/ 67109376) {
     			$$invalidate(37, helpCountry = helpText
     			? cartogramData.find(d => d.code === helpText.code)
     			: null);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpText*/ 33554432 | $$self.$$.dirty[1] & /*helpCountry*/ 64) {
-    			$$invalidate(9, helpAnnotation = helpCountry && {
+    		if ($$self.$$.dirty[0] & /*helpText*/ 67108864 | $$self.$$.dirty[1] & /*helpCountry*/ 64) {
+    			$$invalidate(10, helpAnnotation = helpCountry && {
     				x: helpCountry.left + helpCountry.width / 2,
     				y: helpCountry.top + helpCountry.height / 2,
     				radius: 2 + helpCountry.width / 2,
@@ -7650,7 +7661,7 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 268435464) {
+    		if ($$self.$$.dirty[0] & /*hoverTextFn, hoverData*/ 18) {
     			$$invalidate(35, countryAnnotation = hoverTextFn && hoverData && {
     				x: hoverData.x,
     				y: hoverData.y,
@@ -7659,31 +7670,32 @@ var app = (function () {
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 192) {
+    		if ($$self.$$.dirty[0] & /*containerWidth, containerHeight*/ 384) {
     			$$invalidate(36, haveContainerDims = containerWidth > 0 && containerHeight > 0);
     		}
 
-    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 512 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 48) {
-    			$$invalidate(4, annotation = haveContainerDims
+    		if ($$self.$$.dirty[0] & /*helpAnnotation*/ 1024 | $$self.$$.dirty[1] & /*haveContainerDims, countryAnnotation*/ 48) {
+    			$$invalidate(5, annotation = haveContainerDims
     			? countryAnnotation || helpAnnotation
     			: undefined);
     		}
 
-    		if ($$self.$$.dirty[0] & /*hoverData*/ 8 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 24) {
-    			$$invalidate(10, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
+    		if ($$self.$$.dirty[0] & /*hoverData*/ 16 | $$self.$$.dirty[1] & /*helpTextFade, countryAnnotation*/ 24) {
+    			$$invalidate(11, hideAnnotation = helpTextFade || !countryAnnotation && hoverData);
     		}
 
-    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 1552) {
-    			$$invalidate(21, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
+    		if ($$self.$$.dirty[0] & /*annotation, hideAnnotation, helpAnnotation*/ 3104) {
+    			$$invalidate(22, annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation);
     		}
 
-    		if ($$self.$$.dirty[0] & /*data*/ 4194304) {
+    		if ($$self.$$.dirty[0] & /*data*/ 8388608) {
     			data && fadeInHelpText();
     		}
     	};
 
     	return [
     		classesFn,
+    		hoverTextFn,
     		hideLabels,
     		slug,
     		hoverData,
@@ -7711,7 +7723,6 @@ var app = (function () {
     		helpText,
     		categoryFn,
     		colorFn,
-    		hoverTextFn,
     		onHoverFn,
     		rerenderFn,
     		legendTitle,
@@ -7745,20 +7756,20 @@ var app = (function () {
     			create_fragment$x,
     			safe_not_equal,
     			{
-    				data: 22,
-    				nodeSize: 23,
-    				domain: 24,
-    				helpText: 25,
-    				categoryFn: 26,
-    				colorFn: 27,
+    				data: 23,
+    				nodeSize: 24,
+    				domain: 25,
+    				helpText: 26,
+    				categoryFn: 27,
+    				colorFn: 28,
     				classesFn: 0,
-    				hoverTextFn: 28,
+    				hoverTextFn: 1,
     				onHoverFn: 29,
-    				hideLabels: 1,
+    				hideLabels: 2,
     				rerenderFn: 30,
-    				annotationShowing: 21,
+    				annotationShowing: 22,
     				legendTitle: 31,
-    				slug: 2
+    				slug: 3
     			},
     			null,
     			[-1, -1]
@@ -7774,15 +7785,15 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[22] === undefined && !('data' in props)) {
+    		if (/*data*/ ctx[23] === undefined && !('data' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'data'");
     		}
 
-    		if (/*domain*/ ctx[24] === undefined && !('domain' in props)) {
+    		if (/*domain*/ ctx[25] === undefined && !('domain' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'domain'");
     		}
 
-    		if (/*hoverTextFn*/ ctx[28] === undefined && !('hoverTextFn' in props)) {
+    		if (/*hoverTextFn*/ ctx[1] === undefined && !('hoverTextFn' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'hoverTextFn'");
     		}
 
@@ -7790,7 +7801,7 @@ var app = (function () {
     			console.warn("<Cartogram> was created without expected prop 'legendTitle'");
     		}
 
-    		if (/*slug*/ ctx[2] === undefined && !('slug' in props)) {
+    		if (/*slug*/ ctx[3] === undefined && !('slug' in props)) {
     			console.warn("<Cartogram> was created without expected prop 'slug'");
     		}
     	}
@@ -17153,6 +17164,7 @@ var app = (function () {
     			input = element("input");
     			attr_dev(input, "type", "text");
     			input.readOnly = true;
+    			attr_dev(input, "title", /*embed*/ ctx[0]);
     			input.value = input_value_value = "<script async src='" + /*embedScript*/ ctx[6] + "' data-embed='" + /*embed*/ ctx[0] + "'></script>";
     			attr_dev(input, "class", "svelte-xqu2bd");
     			toggle_class(input, "visible", /*showEmbedCode*/ ctx[1]);
@@ -17176,6 +17188,10 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*embed*/ 1) {
+    				attr_dev(input, "title", /*embed*/ ctx[0]);
+    			}
+
     			if (dirty & /*embed*/ 1 && input_value_value !== (input_value_value = "<script async src='" + /*embedScript*/ ctx[6] + "' data-embed='" + /*embed*/ ctx[0] + "'></script>") && input.value !== input_value_value) {
     				prop_dev(input, "value", input_value_value);
     			}
@@ -26384,7 +26400,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$7, 99, 4, 3425);
+    			add_location(p, file$7, 99, 4, 3427);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -26502,7 +26518,7 @@ var app = (function () {
     			t6 = space();
     			create_component(wafflechart6.$$.fragment);
     			attr_dev(div, "class", "flex-container svelte-1wy5y97");
-    			add_location(div, file$7, 102, 2, 3478);
+    			add_location(div, file$7, 102, 2, 3480);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -26759,7 +26775,7 @@ var app = (function () {
     		if ($$self.$$.dirty & /*data*/ 1) {
     			$$invalidate(1, text = data !== WorldMeanDeaths
     			? generateText()
-    			: $$invalidate(1, text = ""));
+    			: $$invalidate(1, text = null));
     		}
     	};
 
@@ -33267,92 +33283,2348 @@ var app = (function () {
 
     var descriptions = [
     	{
-    		"1": "Yes",
-    		"2": "",
-    		"3": "No",
-    		"4": "No data",
-    		id: "ind-1",
-    		name: "Clean production incentives"
+    		id: "ARG",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Euro 4 or higher",
-    		"2": "Less than Euro 4",
-    		"3": "No standards",
-    		"4": "No data",
-    		id: "tra-1",
-    		name: "Vehicle emission standards"
+    		id: "AUS",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Less than 50ppm",
-    		"2": "Between 51 and 500ppm",
-    		"3": "Greater than 500ppm",
-    		"4": "No data",
-    		id: "tra-2",
-    		name: "Sulphur level in diesel"
+    		id: "AUT",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes, burning of solid waste is strictly regulated",
-    		"2": "Partially controlled",
-    		"3": "No controlls",
-    		"4": "No data",
-    		id: "waste-1",
-    		name: "Solid Waste Burning"
+    		id: "BEL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes",
-    		"2": "",
-    		"3": "No",
-    		"4": "No data",
-    		id: "res-1",
-    		name: "Incentives for residential cooking and heating"
+    		id: "BGR",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes",
-    		"2": "",
-    		"3": "No",
-    		"4": "No data",
-    		id: "agri-1",
-    		name: "Sustainable agricultural practices"
+    		id: "BRA",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes",
-    		"2": "",
-    		"3": "No",
-    		"4": "No data",
-    		id: "aqms-1",
-    		name: "Air quality management strategies"
+    		id: "CAN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes, continuous monitoring at multiple sites",
-    		"2": "Yes, a monitoring network exists but is not operational --- Yes, monitoring done periodically at a few sites",
-    		"3": "No monitoring",
-    		"4": "No data",
-    		id: "aqm-1",
-    		name: "Air quality monitoring"
+    		id: "CHN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
     	},
     	{
-    		"1": "Yes",
-    		"2": "",
-    		"3": "No",
-    		"4": "No data",
-    		id: "aq-1",
-    		name: "Air quality standards"
+    		id: "CYP",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "CZE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "DEU",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "DNK",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ESP",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "EST",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "FIN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "FRA",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "GBR",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "GRC",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "HRV",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "HUN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "IDN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "IND",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "IRL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ISL",
+    		"ind-1": "No",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ITA",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "JPN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "KOR",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "LTU",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "LUX",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "LVA",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MEX",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MLT",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "NLD",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "POL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PRT",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ROU",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "RUS",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SAU",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SVK",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SVN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SWE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "TUR",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "USA",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ZAF",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "AFG",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "AGO",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "ALB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "AND",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ARE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ARM",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ATG",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "AZE",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BDI",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "BEN",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BFA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BGD",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BHR",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BHS",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "BIH",
+    		"ind-1": "No data",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BLR",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "BLZ",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "BOL",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BRB",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "BRN",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BTN",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "BWA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "CAF",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "CHE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "CHL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "CIV",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "CMR",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "COD",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "COG",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "COL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "COM",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "CPV",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "CRI",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "CUB",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "DJI",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "DMA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "DOM",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "DZA",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, a monitoring network exists but is not operational",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ECU",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "EGY",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "ERI",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "ETH",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "FJI",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "FSM",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data about laws but burning exists",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GAB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GEO",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "GHA",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "GIN",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GMB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "GNB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GNQ",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GRD",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GTM",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "GUY",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "HND",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "HTI",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "IRN",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "IRQ",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "ISR",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "JAM",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "JOR",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "KAZ",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "Yes",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "KEN",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "KGZ",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "KHM",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No controlls",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "KIR",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data about laws but burning exists",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "KNA",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "KWT",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "LAO",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "LBN",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "LBR",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "LBY",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "LCA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "LIE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "LKA",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "LSO",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MAR",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MCO",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MDA",
+    		"ind-1": "No data",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "MDG",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SYC",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MDV",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MHL",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No data about laws but burning exists",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MKD",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MLI",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MMR",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MNE",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MNG",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MOZ",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MRT",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "MUS",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MWI",
+    		"ind-1": "No",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "MYS",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "NAM",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "NER",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "NGA",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "NIC",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "NOR",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "NPL",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "NRU",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "NZL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "OMN",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PAK",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PAN",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PER",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PHL",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "PLW",
+    		"ind-1": "No",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "PNG",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "PRK",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "No data",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "PRY",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "QAT",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "RWA",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SDN",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SEN",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SGP",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SLB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SLE",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SLV",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SOM",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SRB",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SSD",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "STP",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SUR",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "SWZ",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "SYR",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "TCD",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TGO",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "THA",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "TJK",
+    		"ind-1": "Yes",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TKM",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TLS",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TON",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TTO",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "No",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "TUN",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "TZA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "UGA",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "Yes",
+    		"agri-1": "No",
+    		"aqms-1": "No",
+    		"aqm-1": "Yes, continuous monitoring at multiple sites",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "UKR",
+    		"ind-1": "No data",
+    		"tra-1": "Euro 4 or Higher",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "URY",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Less than 50 ppm",
+    		"waste-1": "Yes, burning of solid waste is strictly regulated",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, monitoring done periodically at a few sites",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "UZB",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "VCT",
+    		"ind-1": "No data",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "VEN",
+    		"ind-1": "Yes",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "Partially controlled",
+    		"res-1": "No",
+    		"agri-1": "Yes",
+    		"aqms-1": "Yes",
+    		"aqm-1": "Yes, a monitoring network exists but is not operational",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "VNM",
+    		"ind-1": "No",
+    		"tra-1": "Less than Euro 4",
+    		"tra-2": "Between 51 and 500ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "Yes"
+    	},
+    	{
+    		id: "VUT",
+    		"ind-1": "No",
+    		"tra-1": "No standards",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "WSM",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No controlls",
+    		"res-1": "No data",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "YEM",
+    		"ind-1": "No",
+    		"tra-1": "No data",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "ZMB",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "ZWE",
+    		"ind-1": "Yes",
+    		"tra-1": "No standards",
+    		"tra-2": "Greater than 500 ppm",
+    		"waste-1": "No controlls",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "NIU",
+    		"ind-1": "No data",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No data"
+    	},
+    	{
+    		id: "SMR",
+    		"ind-1": "No",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data",
+    		"res-1": "Yes",
+    		"agri-1": "No data",
+    		"aqms-1": "No data",
+    		"aqm-1": "No data",
+    		"aq-1": "No"
+    	},
+    	{
+    		id: "TUV",
+    		"ind-1": "Yes",
+    		"tra-1": "No data",
+    		"tra-2": "No data",
+    		"waste-1": "No data about laws but burning exists",
+    		"res-1": "Yes",
+    		"agri-1": "Yes",
+    		"aqms-1": "No",
+    		"aqm-1": "No monitoring",
+    		"aq-1": "No"
     	}
     ];
 
     /* src\components\PolicyGrid.svelte generated by Svelte v3.42.3 */
 
-    const { Object: Object_1 } = globals;
+    const { Object: Object_1, console: console_1 } = globals;
     const file$2 = "src\\components\\PolicyGrid.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
-    	child_ctx[11] = i;
+    	child_ctx[11] = list[i];
+    	child_ctx[13] = i;
     	return child_ctx;
     }
 
-    // (60:0) {#if text}
+    // (73:0) {#if text}
     function create_if_block$2(ctx) {
     	let p;
 
@@ -33360,7 +35632,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$2, 60, 2, 1865);
+    			add_location(p, file$2, 73, 2, 2354);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -33377,31 +35649,31 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(60:0) {#if text}",
+    		source: "(73:0) {#if text}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:2) {#each policies as p, i}
+    // (88:2) {#each policies as p, i}
     function create_each_block$1(ctx) {
     	let div0;
-    	let t0_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id].name + "";
+    	let t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[11].id] + "";
     	let t0;
     	let t1;
     	let div1;
     	let targetbars;
     	let t2;
     	let div2;
-    	let t3_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id][/*p*/ ctx[9].value] + "";
+    	let t3_value = /*descLookUp*/ ctx[5][/*countryID*/ ctx[3]][/*p*/ ctx[11].id] + "";
     	let t3;
     	let current;
 
     	targetbars = new TargetBars({
     			props: {
     				selected: /*selected*/ ctx[0],
-    				value: /*p*/ ctx[9].value
+    				value: /*p*/ ctx[11].value
     			},
     			$$inline: true
     		});
@@ -33417,11 +35689,11 @@ var app = (function () {
     			div2 = element("div");
     			t3 = text$1(t3_value);
     			attr_dev(div0, "class", "row policy-name svelte-zile0w");
-    			add_location(div0, file$2, 75, 4, 2250);
+    			add_location(div0, file$2, 88, 4, 2739);
     			attr_dev(div1, "class", "row bars-middle svelte-zile0w");
-    			add_location(div1, file$2, 76, 4, 2314);
+    			add_location(div1, file$2, 89, 4, 2799);
     			attr_dev(div2, "class", "row policy-description svelte-zile0w");
-    			add_location(div2, file$2, 79, 4, 2409);
+    			add_location(div2, file$2, 92, 4, 2894);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -33435,12 +35707,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*policies*/ 4) && t0_value !== (t0_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id].name + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*policies*/ 4) && t0_value !== (t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[11].id] + "")) set_data_dev(t0, t0_value);
     			const targetbars_changes = {};
     			if (dirty & /*selected*/ 1) targetbars_changes.selected = /*selected*/ ctx[0];
-    			if (dirty & /*policies*/ 4) targetbars_changes.value = /*p*/ ctx[9].value;
+    			if (dirty & /*policies*/ 4) targetbars_changes.value = /*p*/ ctx[11].value;
     			targetbars.$set(targetbars_changes);
-    			if ((!current || dirty & /*policies*/ 4) && t3_value !== (t3_value = /*descLookUp*/ ctx[3][/*p*/ ctx[9].id][/*p*/ ctx[9].value] + "")) set_data_dev(t3, t3_value);
+    			if ((!current || dirty & /*countryID, policies*/ 12) && t3_value !== (t3_value = /*descLookUp*/ ctx[5][/*countryID*/ ctx[3]][/*p*/ ctx[11].id] + "")) set_data_dev(t3, t3_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -33465,7 +35737,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(75:2) {#each policies as p, i}",
+    		source: "(88:2) {#each policies as p, i}",
     		ctx
     	});
 
@@ -33483,7 +35755,7 @@ var app = (function () {
     	let if_block = /*text*/ ctx[1] && create_if_block$2(ctx);
 
     	function legend_selected_binding(value) {
-    		/*legend_selected_binding*/ ctx[5](value);
+    		/*legend_selected_binding*/ ctx[7](value);
     	}
 
     	let legend_props = {
@@ -33525,9 +35797,9 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "legend svelte-zile0w");
-    			add_location(div0, file$2, 63, 0, 1912);
+    			add_location(div0, file$2, 76, 0, 2401);
     			attr_dev(div1, "class", "policies-container svelte-zile0w");
-    			add_location(div1, file$2, 73, 0, 2184);
+    			add_location(div1, file$2, 86, 0, 2673);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33570,7 +35842,7 @@ var app = (function () {
 
     			legend.$set(legend_changes);
 
-    			if (dirty & /*descLookUp, policies, selected*/ 13) {
+    			if (dirty & /*descLookUp, countryID, policies, selected, policy_name*/ 61) {
     				each_value = /*policies*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
@@ -33642,12 +35914,28 @@ var app = (function () {
 
     function instance$2($$self, $$props, $$invalidate) {
     	let countryName;
+    	let countryID;
     	let policies;
     	let text;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('PolicyGrid', slots, []);
     	let { data } = $$props;
+    	let selected = null;
+
+    	const policy_name = {
+    		"ind-1": "Clean production incentives",
+    		"tra-1": "Vehicle emission standards",
+    		"tra-2": "Sulphur level in diesel",
+    		"waste-1": "Solid waste burning",
+    		"res-1": "Incentives for residential cooking and heating",
+    		"agri-1": "Sustainable agricultural practices",
+    		"aqms-1": "Air quality management strategies",
+    		"aqm-1": "Air quality monitoring",
+    		"aq-1": "Air quality standards"
+    	};
+
     	const descLookUp = createLookup(descriptions, d => d.id, d => d);
+    	console.log(descLookUp);
 
     	const generatePolicies = data => {
     		let array = [];
@@ -33668,7 +35956,7 @@ var app = (function () {
 
     		policies.forEach(p => {
     			if (p.value === 1) {
-    				metTargets.push(descLookUp[p.id].name.toLowerCase());
+    				metTargets.push(policy_name[p.id].toLowerCase());
     			}
     		});
 
@@ -33702,11 +35990,10 @@ var app = (function () {
     		return text;
     	};
 
-    	let selected = null;
     	const writable_props = ['data'];
 
     	Object_1.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<PolicyGrid> was created with unknown prop '${key}'`);
     	});
 
     	function legend_selected_binding(value) {
@@ -33715,7 +36002,7 @@ var app = (function () {
     	}
 
     	$$self.$$set = $$props => {
-    		if ('data' in $$props) $$invalidate(4, data = $$props.data);
+    		if ('data' in $$props) $$invalidate(6, data = $$props.data);
     	};
 
     	$$self.$capture_state = () => ({
@@ -33724,20 +36011,23 @@ var app = (function () {
     		descriptions,
     		createLookup,
     		data,
+    		selected,
+    		policy_name,
     		descLookUp,
     		generatePolicies,
     		generateText,
-    		selected,
     		text,
     		policies,
+    		countryID,
     		countryName
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('data' in $$props) $$invalidate(4, data = $$props.data);
+    		if ('data' in $$props) $$invalidate(6, data = $$props.data);
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
     		if ('text' in $$props) $$invalidate(1, text = $$props.text);
     		if ('policies' in $$props) $$invalidate(2, policies = $$props.policies);
+    		if ('countryID' in $$props) $$invalidate(3, countryID = $$props.countryID);
     		if ('countryName' in $$props) countryName = $$props.countryName;
     	};
 
@@ -33746,26 +36036,39 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*data*/ 16) {
+    		if ($$self.$$.dirty & /*data*/ 64) {
     			countryName = data.name;
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 16) {
+    		if ($$self.$$.dirty & /*data*/ 64) {
+    			$$invalidate(3, countryID = data.id);
+    		}
+
+    		if ($$self.$$.dirty & /*data*/ 64) {
     			$$invalidate(2, policies = generatePolicies(data));
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 16) {
+    		if ($$self.$$.dirty & /*data*/ 64) {
     			$$invalidate(1, text = generateText());
     		}
     	};
 
-    	return [selected, text, policies, descLookUp, data, legend_selected_binding];
+    	return [
+    		selected,
+    		text,
+    		policies,
+    		countryID,
+    		policy_name,
+    		descLookUp,
+    		data,
+    		legend_selected_binding
+    	];
     }
 
     class PolicyGrid extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 4 });
+    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 6 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -33777,8 +36080,8 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*data*/ ctx[4] === undefined && !('data' in props)) {
-    			console.warn("<PolicyGrid> was created without expected prop 'data'");
+    		if (/*data*/ ctx[6] === undefined && !('data' in props)) {
+    			console_1.warn("<PolicyGrid> was created without expected prop 'data'");
     		}
     	}
 

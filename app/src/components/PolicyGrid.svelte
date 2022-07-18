@@ -23,7 +23,22 @@
     pAlmost: number;
   }
 
+  let selected: number = null;
+
+  const policy_name = {
+    "ind-1": "Clean production incentives",
+    "tra-1": "Vehicle emission standards",
+    "tra-2": "Sulphur level in diesel",
+    "waste-1": "Solid waste burning",
+    "res-1": "Incentives for residential cooking and heating",
+    "agri-1": "Sustainable agricultural practices",
+    "aqms-1": "Air quality management strategies",
+    "aqm-1": "Air quality monitoring",
+    "aq-1": "Air quality standards"
+  }
+
   const descLookUp = createLookup(descriptions, d => d.id, d => d);
+  console.log(descLookUp);
 
   const generatePolicies = (data: PoliciesData) => {
     let array = [];
@@ -41,7 +56,7 @@
     let metTargets: string[] = [];
     policies.forEach(p => {
       if (p.value === 1){
-        metTargets.push(descLookUp[p.id].name.toLowerCase());
+        metTargets.push(policy_name[p.id].toLowerCase());
       }
     });
 
@@ -77,10 +92,9 @@
   }
 
   $: countryName = data.name;
+  $: countryID = data.id;
   $: policies = generatePolicies(data);
   $: text = generateText(data);
-
-  let selected: number = null;
 
 </script>
 
@@ -100,11 +114,11 @@
 
 <div class="policies-container">
   {#each policies as p, i}
-    <div class="row policy-name">{descLookUp[p.id].name}</div>
+    <div class="row policy-name">{policy_name[p.id]}</div>
     <div class="row bars-middle">
       <TargetBars {selected} value={p.value}/>
     </div>
-    <div class="row policy-description">{descLookUp[p.id][p.value]}</div>
+    <div class="row policy-description">{descLookUp[countryID][p.id]}</div>
   {/each}
 </div>
 

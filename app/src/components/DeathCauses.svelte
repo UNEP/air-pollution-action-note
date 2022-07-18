@@ -101,7 +101,7 @@
     return text;
   }
 
-  $: text = data !== WorldMeanDeaths ? generateText(data) : text = "";
+  $: text = data !== WorldMeanDeaths ? generateText(data) : text = null;
 
   const generateText = (data: DeathsData) => {
     let sentence1 = generateTextGreaterThan(0.2, sentences[">20"]);
