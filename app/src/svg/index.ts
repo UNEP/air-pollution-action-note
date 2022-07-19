@@ -13,13 +13,13 @@ import sectors from './icons_sectors.svg';
 import policies from './icons_policies.svg';
 import search from './icons_search-table.svg';
 
-import nd from './icons_nd.svg';
-import stroke from './icons_stroke.svg';
-import ischemic from './icons_ischemic.svg';
-import lri from './icons_lri.svg';
-import lungcancer from './icons_lungcancer.svg';
-import diabetes from './icons_diabetes.svg';
-import copd from './icons_copd.svg';
+import nd from './disease_icons/small/icons_nd.svg';
+import stroke from './disease_icons/small/icons_stroke.svg';
+import ischemic from './disease_icons/small/icons_ischemic.svg';
+import lri from './disease_icons/small/icons_lri.svg';
+import lungcancer from './disease_icons/small/icons_lungcancer.svg';
+import diabetes from './disease_icons/small/icons_diabetes.svg';
+import copd from './disease_icons/small/icons_copd.svg';
 
 import check from './icons_check.svg';
 
