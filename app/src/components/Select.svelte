@@ -1,11 +1,14 @@
 <script lang="ts" context="module">
-    export interface SelectOption{
-        label: string;
-        value?: string;
-        icon?: string;
-    }
+
+  export interface SelectOption{
+    label: string;
+    value?: string;
+    icon?: string;
+  }
 </script>
+
 <script lang="ts">
+
     import { scale } from 'svelte/transition';
     export let options: SelectOption[];
     export let selected = options[0].value? options[0].value : 0;
@@ -28,6 +31,7 @@
       }
     };
     $: selected = options[currentIndex].value? options[currentIndex].value : currentIndex;
+
 </script>
   
 <svelte:window on:keydown={handleKeyDown} />
@@ -45,17 +49,16 @@
 </div>
 
 {#if listboxVisible}
-    <div class="listbox" transition:scale>
+  <div class="listbox" transition:scale>
     {#each options as opt, i}
         {#if i !== currentIndex}
-        <div class="option"
-        on:focus={() => chooseOption(i)} tabindex="-1">
-            <slot option={opt}/>
-        
-        </div>
+          <div class="option"
+            on:focus={() => chooseOption(i)} tabindex="-1">
+              <slot option={opt}/>
+          </div>
         {/if}
     {/each}
-    </div>
+  </div>
 {/if}
 </div>
   
@@ -69,7 +72,6 @@
   }
 
   .option {
-    width: inherit;
     display: block;
     border-bottom: #1e1e1e solid 1.5px;
     cursor: pointer;
@@ -79,9 +81,11 @@
       box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
       background-color: inherit;
       color: #1e1e1e;
+
       :global(.icon svg){
         stroke: #1e1e1e;
       }
+
     }
     &:hover {
       position: relative;
@@ -105,6 +109,7 @@
     align-items: center;
     justify-items: space-between;
     margin-right: 10px;
+    width: 100%;
 
     &:focus {
       outline: 0.1rem solid;
