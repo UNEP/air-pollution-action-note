@@ -198,7 +198,7 @@
   }
 
   .country-search {
-    margin-bottom: 10rem;
+    margin-bottom: 0rem;
   }
 
   .distributions-container {

@@ -35637,11 +35637,11 @@ var app = (function () {
     			t2 = space();
     			div2 = element("div");
     			t3 = text$1(t3_value);
-    			attr_dev(div0, "class", "row policy-name svelte-zile0w");
+    			attr_dev(div0, "class", "row policy-name svelte-j7kh3i");
     			add_location(div0, file$2, 84, 4, 2530);
-    			attr_dev(div1, "class", "row bars-middle svelte-zile0w");
+    			attr_dev(div1, "class", "row bars-middle svelte-j7kh3i");
     			add_location(div1, file$2, 85, 4, 2590);
-    			attr_dev(div2, "class", "row policy-description svelte-zile0w");
+    			attr_dev(div2, "class", "row policy-description svelte-j7kh3i");
     			add_location(div2, file$2, 88, 4, 2685);
     		},
     		m: function mount(target, anchor) {
@@ -35745,9 +35745,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "legend svelte-zile0w");
+    			attr_dev(div0, "class", "legend svelte-j7kh3i");
     			add_location(div0, file$2, 72, 0, 2195);
-    			attr_dev(div1, "class", "policies-container svelte-zile0w");
+    			attr_dev(div1, "class", "policies-container svelte-j7kh3i");
     			add_location(div1, file$2, 82, 0, 2467);
     		},
     		l: function claim(nodes) {
@@ -36128,24 +36128,24 @@ var app = (function () {
     			t6 = space();
     			div4 = element("div");
     			create_component(policygrid.$$.fragment);
-    			attr_dev(span0, "class", "bigger-text svelte-p3rtck");
+    			attr_dev(span0, "class", "bigger-text svelte-halpmx");
     			add_location(span0, file$1, 135, 32, 4813);
     			html_tag.a = null;
-    			attr_dev(p0, "class", "primary-text svelte-p3rtck");
+    			attr_dev(p0, "class", "primary-text svelte-halpmx");
     			add_location(p0, file$1, 135, 8, 4789);
     			attr_dev(div0, "class", "distribution");
     			add_location(div0, file$1, 134, 6, 4753);
-    			attr_dev(span1, "class", "bigger-text svelte-p3rtck");
+    			attr_dev(span1, "class", "bigger-text svelte-halpmx");
     			add_location(span1, file$1, 145, 32, 5290);
     			html_tag_1.a = null;
-    			attr_dev(p1, "class", "primary-text svelte-p3rtck");
+    			attr_dev(p1, "class", "primary-text svelte-halpmx");
     			add_location(p1, file$1, 145, 8, 5266);
     			attr_dev(div1, "class", "distribution");
     			add_location(div1, file$1, 144, 6, 5230);
-    			attr_dev(div2, "class", "distributions-container svelte-p3rtck");
+    			attr_dev(div2, "class", "distributions-container svelte-halpmx");
     			add_render_callback(() => /*div2_elementresize_handler*/ ctx[21].call(div2));
     			add_location(div2, file$1, 133, 4, 4664);
-    			attr_dev(div3, "class", "death-causes-container svelte-p3rtck");
+    			attr_dev(div3, "class", "death-causes-container svelte-halpmx");
     			add_location(div3, file$1, 156, 4, 5727);
     			attr_dev(div4, "class", "policy-grid-container");
     			add_location(div4, file$1, 160, 4, 5830);
@@ -36284,10 +36284,10 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
     			add_location(h2, file$1, 117, 2, 4233);
-    			attr_dev(div, "class", "search-bar svelte-p3rtck");
+    			attr_dev(div, "class", "search-bar svelte-halpmx");
     			add_location(div, file$1, 119, 2, 4275);
     			attr_dev(section, "id", /*id*/ ctx[0]);
-    			attr_dev(section, "class", "viz wide country-search svelte-p3rtck");
+    			attr_dev(section, "class", "viz wide country-search svelte-halpmx");
     			add_location(section, file$1, 113, 0, 4151);
     		},
     		l: function claim(nodes) {

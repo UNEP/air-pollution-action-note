@@ -152,7 +152,7 @@
     margin: auto;
     font-weight: 300;
     display: grid;
-    grid-template-columns: minmax(100px, 175px) minmax(150px, 340px) minmax(100px, 175px);
+    grid-template-columns: minmax(85px, 175px) minmax(150px, 340px) minmax(85px, 250px);
     row-gap: 35px;
   }
 
