@@ -3,25 +3,31 @@
   import pm25data from "src/data/pm25_coords.json";
   import countries from "src/data/countries.json";
   import policies from "src/data/policiesData.json";
+  import diseases from "src/data/diseases.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
   import Legend from "src/components/common/Legend.svelte";
-  import { colorPM25, colorHealth, colorPolices } from "src/colors";
+  import { colorPM25, colorHealth, colorPolices, colorDiseases } from "src/colors";
   import { createLookup } from "src/util";
 
   import type { CountryDataPoint } from "src/components/maps/Cartogram.svelte";
-  import type { Content, TextBlock } from "src/types";
+  import type { Content, HealthDisease, TextBlock } from "src/types";
   import ScrollableX from "./common/ScrollableX.svelte";
   import EmbedFooter from "./EmbedFooter.svelte";
   import SectionTitle from "src/components/SectionTitle.svelte";
+  import Head from "./Head.svelte";
+  import diseasesDictionary from "src/data/diseasesDictionary.json";
+  import diseasesGlobal from "src/data/diseasesGlobal.json";
 
-  export var data: "pm25" | "health" | "policies";
+  export var data: "pm25" | "health" | "policies" | "diseases";
   export var id: string;
   export var block: Content;
   export var head: string;
   export var text: TextBlock[];
   export var embed: string;
   export var isEmbed = false;
+  
+  let selectedDisease: HealthDisease = "ischemic";
 
   interface PoliciesData {
     name: string;
@@ -39,6 +45,19 @@
     pAlmost: number;
   }
 
+  interface DiseasesData {
+    name: string;
+    id: string;
+    short: string;
+    copd: number;
+    diabetes: number;
+    ischemic: number;
+    lungcancer: number;
+    lri: number;
+    stroke: number;
+    nd: number;
+  }
+
   enum PoliciesStatus {
     Yes = 1,
     No = 2,
@@ -48,6 +67,11 @@
 
   const policiesLookup = createLookup(
     policies,
+    (d) => d.id,
+    (d) => d
+  );
+  const diseasesLookup = createLookup(
+    diseases,
     (d) => d.id,
     (d) => d
   );
@@ -65,6 +89,10 @@
   let rerender: () => void;
 
   $: legendIsHovered = legendElementSelectedIndex !== null;
+
+  const diseasesHoverText = (data: DiseasesData) => {
+    return `In <b>${data.name}</b>, a <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease]}</b> are caused by pollution`
+  };
 
   const policiesHoverText = (data: PoliciesData): string => {
     let hasMet = [];
@@ -183,14 +211,14 @@
       nodeSize: 11,
       helpText: {
         code: "JPN",
-        text: `<strong>Each square is a country</strong>, sized
+        text: () => `<strong>Each square is a country</strong>, sized
          by the annual mean levels of <strong>fine particular
          matter PM<sub>2.5</sub></strong>, measured in µg/m<sup>3</sup>.`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
         `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
-        <strong>${(d.value / 10).toFixed(1)}</strong> times the WHO guideline.`,
+        <strong>${(d.value / 5).toFixed(1)}</strong> times the WHO guideline.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];
@@ -201,14 +229,23 @@
         }
       },
       color: colorPM25,
-      legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (10 µg/m<sup>3</sup>)`,
-      legendDomain: ["x1", "2", "3", "4", "5", "6", "7", "8"],
+      legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
+      legendDomain: ["x1", "2", "3", "5", "7"],
       legendType: "sequential",
       domain: [700, 400] as [number, number],
       hoverText: (d: CountryDataPoint) =>
         `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
         <strong>${(d.value / 10).toFixed(1)}</strong> times the WHO guideline.`,
+      linearDomain: [0, 9],
+      internalLabels: [
+        { label: "AQG", border: true, icon: "check" },
+        { label: "IT4"},
+        { label: "IT3"},
+        { label: "IT2"},
+        { label: "IT1"},
+        { label: "" },
+      ]
     },
 
     health: {
@@ -227,7 +264,7 @@
       nodeSize: 80,
       helpText: {
         code: "GEO",
-        text: `<strong>Each square is a country</strong>,
+        text: () => `<strong>Each square is a country</strong>,
         sized by the total number of <strong>deaths
         caused by fine particle pollution</strong>.`,
       },
@@ -251,6 +288,8 @@
       legendDomain: ["20", "40", "60", "80", "100"],
       legendType: "sequential",
       domain: [700, 400] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
     },
 
     policies: {
@@ -270,7 +309,7 @@
       nodeSize: 16,
       helpText: {
         code: "JPN",
-        text: `<strong>Each square is a country</strong>,
+        text: () => `<strong>Each square is a country</strong>,
           colored by the <strong>number of air quality targets met</strong> or on track.`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
@@ -283,16 +322,16 @@
           {
             color: colors[1],
             start: policiesData.pYes,
-            end: policiesData.pAlmost,
+            end: policiesData.pYes + policiesData.pAlmost,
           },
           {
             color: colors[2],
-            start: policiesData.pAlmost,
-            end: policiesData.pNo,
+            start: policiesData.pYes + policiesData.pAlmost,
+            end: policiesData.pYes + policiesData.pAlmost + policiesData.pNo,
           },
-          { color: colors[3], start: policiesData.pNo, end: 100 },
+          { color: colors[3], start: policiesData.pYes + policiesData.pAlmost + policiesData.pNo, end: 100 },
         ];
-
+        
         const gradientStrs = gradients.map((g, i) => {
           const hide = legendIsHovered && legendElementSelectedIndex !== i;
           return `${g.color}${hide ? "00" : "ff"} ${g.start}% ${g.end}%`;
@@ -316,10 +355,89 @@
       legendDomain: colorPolices.domain(),
       legendType: "categorical",
       domain: [1300, 1300 / (740 / 420)] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
+    },
+
+    diseases: {
+      data: countries
+        .filter((d) => diseasesLookup[d.code])
+        .map((d) => {
+          return {
+            name: countryNameDictionaryLookup[d.code].name,
+            short: countryNameDictionaryLookup[d.code].short,
+            code: d.code,
+            x: d.x,
+            y: d.y,
+            value: 5,
+            data: diseasesLookup[d.code],
+          };
+        }),
+      nodeSize: 16,
+      helpText: {
+        code: "JPN",
+        text: () => `<strong>Each square is a country</strong>, representing the <strong>percentage of deaths</strong> due the pollution from <b>${diseasesDictionary[selectedDisease]}</b>`,
+      },
+      hoverTextFn: (d: CountryDataPoint) =>
+        diseasesHoverText(d.data as DiseasesData),
+      colorFn: (d: CountryDataPoint) => {
+        let diseaseData = d.data as DiseasesData;
+        const colors = colorDiseases.range();
+        let currentColor = null;
+
+        let i = 0;
+        const domain = colorDiseases.domain();
+        while(i < domain.length && currentColor === null){
+          if (diseaseData[selectedDisease] * 100 <= domain[i] && !currentColor) {
+            currentColor = colors[i];
+          }
+          i++;
+        }
+        if(currentColor === null) currentColor = colors[colors.length - 1];
+
+        const gradients = [
+          { color: currentColor, start: 0, end: (diseaseData[selectedDisease]) * 100 * 2 },
+          { color: '#D9D9D9', start: (diseaseData[selectedDisease]) * 100 * 2 , end: 100 },
+        ];
+
+        const gradientStrs = gradients.map((g, i) => {
+          const hide = legendIsHovered && colorDiseases.range().indexOf(currentColor) !== legendElementSelectedIndex;
+          return `${g.color}${hide ? "50" : "ff"} ${g.start}% ${g.end}%`;
+        });
+        return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
+      },
+      classesFn: (d: CountryDataPoint) => {
+        if (!legendIsHovered) {
+          return [];
+        } else {
+          const diseaseData = d.data as DiseasesData;
+          const domain = colorDiseases.domain();
+          
+          let selectedRange = null;
+
+          if(legendElementSelectedIndex === 0) selectedRange = [0, domain[legendElementSelectedIndex]];
+          else if(legendElementSelectedIndex <  domain.length) selectedRange = [domain[legendElementSelectedIndex - 1], domain[legendElementSelectedIndex]];
+          else selectedRange = [domain[legendElementSelectedIndex - 1], 100];
+          
+          const isSelected =
+            diseaseData[selectedDisease] * 100 >= selectedRange[0] &&
+            diseaseData[selectedDisease] * 100 <= selectedRange[1];
+
+          return [isSelected ? "country--shadow" : ""];
+        }
+      },
+      color: colorDiseases,
+      legendTitle: `<strong>Percent of deaths</strong> from the disease that can be attributed to fine particles`,
+      legendDomain: colorDiseases.domain().map(e => e+'%'),
+      legendType: "sequential",
+      domain: [1300, 1300 / (740 / 420)] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
     },
   };
   // re-render hack (as Cartogram component doesn't know when then result of our funcs change)
-  $: legendElementSelectedIndex !== undefined && rerender && rerender();
+  $: (legendElementSelectedIndex !== undefined || selectedDisease) && rerender && rerender(); 
+
   $: {
     width = Math.max(clientWidth, 700);
   }
@@ -327,11 +445,11 @@
 </script>
 
 <section {id} class="viz wide">
-  {#if !isEmbed}
+  {#if !isEmbed && block.menu} <!-- if block has no menu there's no section title -->
     <SectionTitle {block} />
   {/if}
 
-  <h2 class="narrow">{@html head}</h2>
+  <Head title={head} dropdown={block.dropdown} bind:selectedElement={selectedDisease} number={diseasesGlobal[selectedDisease] * 100}/>
 
   <div class="right-narrow">
     <Legend
@@ -339,6 +457,8 @@
       colors={datasetParams[data].color.range()}
       labels={datasetParams[data].legendDomain}
       type={datasetParams[data].legendType}
+      linearDomain={datasetParams[data].linearDomain}
+      internalLabels={datasetParams[data].internalLabels}
       bind:selected={legendElementSelectedIndex}
     />
   </div>

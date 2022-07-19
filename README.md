@@ -13,10 +13,12 @@
 
 The Air Pollution Note is a data-driven dashboard that displays the different sources of air pollution, the health impact of outdoor air pollution, and what actions countries are taking to live with clean air. It aims to serve curious citizens engaged in the topic, as well as media professionals and academics.
 
+It is live at https://www.unep.org/interactive/air-pollution-note/
+
 #### Quick links
-* TK TK App folder: description
-* TK TK Data folder: description
-* TK TK Design folder: description
+* [`app`](app) is the code to the interactive.
+* [`data`](data) lists the sources, methodologies and some explanations on the data transformations —in the form of notebooks.
+* [`design`](design) has some notes on the design of the interactive.
 
 ---
 ## Unlocking data through better communication
@@ -26,9 +28,17 @@ The objective of the data-driven notes is to bridge the gap between the diverse 
 
 ---
 #### Reusing and citing this project
-You are welcome to reuse our visualizations in your personal website or your media outlet as long as you abide the [terms of the license](LICENSE).
+You are welcome to reuse the content and data visualizations in this dashboard in your personal website or your media outlet as long as you abide the TK TK need to discuss license [terms of the license](LICENSE), which means you have to give credit and link back to the original work.
 
-Here're the embeds for the individual data visualizations:
+For **academic** citations, here is the BibTex citation:
+
+````
+ @misc{unep_2022, title={Air pollution note – data you need to know}, url={https://www.unep.org/interactive/air-pollution-note/}, journal={UNEP}, publisher={United Nations Environment Programme}, year={2022}, month={Jul}} 
+````
+
+For **media** references, use 'UNEP's Air pollution note' and link to 'https://www.unep.org/interactive/air-pollution-note/'
+
+Here are the embeds for the individual data visualizations:
 * Current state
 ````javascript
 <script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='pm25'></script>
@@ -49,12 +59,3 @@ Here're the embeds for the individual data visualizations:
 <script async src='https://www.unep.org/interactive/air-pollution-note/embed.js' data-embed='policies'></script>
 ````
 
-TK TK Do we want to have a citation 
-
-For **academic** citations, here's the BibTex citation:
-
-````
- @misc{unep_2022, title={Air pollution note – data you need to know}, url={https://www.unep.org/interactive/air-pollution-note/}, journal={UNEP}, publisher={United Nations Environment Programme}, year={2022}, month={Jul}} 
-````
-
-For **media** references, use 'UNEP's Air pollution note' and link to 'https://www.unep.org/interactive/air-pollution-note/'
