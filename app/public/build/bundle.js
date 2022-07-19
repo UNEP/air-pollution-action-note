@@ -10351,13 +10351,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Argentina",
@@ -10366,13 +10367,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Australia",
@@ -10381,13 +10383,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Austria",
@@ -10396,13 +10399,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Belgium",
@@ -10411,13 +10415,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 2,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Bulgaria",
@@ -10426,6 +10431,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
@@ -10434,20 +10440,21 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 66.66666666666667,
     		pNo: 11.11111111111111,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "Brazil",
     		id: "BRA"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Canada",
@@ -10456,13 +10463,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "China",
@@ -10471,13 +10479,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Cyprus",
@@ -10486,13 +10495,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Czechia",
@@ -10501,13 +10511,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Germany",
@@ -10516,13 +10527,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Denmark",
@@ -10531,13 +10543,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 11.11111111111111,
     		pAlmost: 11.11111111111111,
     		name: "Spain",
@@ -10546,13 +10559,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Estonia",
@@ -10561,13 +10575,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Finland",
@@ -10576,13 +10591,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 0,
     		pAlmost: 0,
     		name: "France",
@@ -10591,13 +10607,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "United Kingdom",
@@ -10606,13 +10623,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Greece",
@@ -10621,13 +10639,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Croatia",
@@ -10636,13 +10655,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Hungary",
@@ -10651,13 +10671,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Indonesia",
@@ -10666,6 +10687,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 4,
@@ -10674,20 +10696,21 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 22.22222222222222,
     		pNo: 11.11111111111111,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "India",
     		id: "IND"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Ireland",
@@ -10696,6 +10719,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -10711,13 +10735,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Italy",
@@ -10726,13 +10751,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Japan",
@@ -10741,13 +10767,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Rep. of Korea",
@@ -10756,13 +10783,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Lithuania",
@@ -10771,13 +10799,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 4,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Luxembourg",
@@ -10786,13 +10815,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Latvia",
@@ -10801,13 +10831,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Mexico",
@@ -10816,13 +10847,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Malta",
@@ -10831,13 +10863,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Netherlands",
@@ -10846,13 +10879,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Poland",
@@ -10861,13 +10895,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Portugal",
@@ -10876,13 +10911,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Romania",
@@ -10891,13 +10927,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Russian Fed.",
@@ -10906,6 +10943,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -10913,7 +10951,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Saudi Arabia",
     		id: "SAU"
@@ -10921,13 +10959,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Slovakia",
@@ -10936,13 +10975,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Slovenia",
@@ -10951,13 +10991,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Sweden",
@@ -10966,13 +11007,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Türkiye",
@@ -10981,13 +11023,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "United States of America",
@@ -10996,6 +11039,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
@@ -11004,13 +11048,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 77.77777777777777,
     		pNo: 0,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "South Africa",
     		id: "ZAF"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
@@ -11019,13 +11064,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 22.22222222222222,
     		pNo: 33.333333333333336,
-    		pAlmost: 33.333333333333336,
+    		pAlmost: 44.44444444444444,
     		name: "Afghanistan",
     		id: "AFG"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11033,7 +11079,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Angola",
     		id: "AGO"
@@ -11041,13 +11087,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 11.11111111111111,
+    		pYes: 22.22222222222222,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Albania",
@@ -11056,13 +11103,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Andorra",
@@ -11071,13 +11119,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "United Arab Emirates",
@@ -11086,6 +11135,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
@@ -11094,13 +11144,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Armenia",
     		id: "ARM"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11108,7 +11159,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Antigua and Barbuda",
     		id: "ATG"
@@ -11116,13 +11167,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 2,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Azerbaijan",
@@ -11131,13 +11183,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
-    		pYes: 0,
+    		pYes: 11.11111111111111,
     		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Burundi",
@@ -11146,6 +11199,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11153,7 +11207,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Benin",
     		id: "BEN"
@@ -11161,6 +11215,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11168,7 +11223,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Burkina Faso",
     		id: "BFA"
@@ -11176,6 +11231,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
@@ -11184,13 +11240,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 55.55555555555556,
     		pNo: 11.11111111111111,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "Bangladesh",
     		id: "BGD"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11198,7 +11255,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Bahrain",
     		id: "BHR"
@@ -11206,6 +11263,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 2,
@@ -11213,7 +11271,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 11.11111111111111,
     		name: "Bahamas",
     		id: "BHS"
@@ -11221,13 +11279,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 11.11111111111111,
+    		pYes: 22.22222222222222,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Bosnia and Herzegovina",
@@ -11236,13 +11295,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 4,
-    		pYes: 11.11111111111111,
+    		pYes: 22.22222222222222,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Belarus",
@@ -11251,13 +11311,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
     		"aqms-1": 1,
     		"aqm-1": 3,
     		"aq-1": 2,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 44.44444444444444,
     		pAlmost: 22.22222222222222,
     		name: "Belize",
@@ -11266,6 +11327,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11273,7 +11335,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Bolivia",
     		id: "BOL"
@@ -11281,13 +11343,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
-    		pYes: 11.11111111111111,
+    		pYes: 22.22222222222222,
     		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Barbados",
@@ -11296,6 +11359,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11303,7 +11367,7 @@ var app = (function () {
     		"aqm-1": 1,
     		"aq-1": 1,
     		pYes: 33.333333333333336,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Brunei Darussalam",
     		id: "BRN"
@@ -11311,6 +11375,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11319,13 +11384,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 22.22222222222222,
     		pNo: 22.22222222222222,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "Bhutan",
     		id: "BTN"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11334,13 +11400,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Botswana",
     		id: "BWA"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11348,7 +11415,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Central African Rep.",
     		id: "CAF"
@@ -11356,13 +11423,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Switzerland",
@@ -11371,13 +11439,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Chile",
@@ -11386,13 +11455,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 3,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Côte d’Ivoire",
@@ -11401,6 +11471,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
@@ -11408,7 +11479,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 77.77777777777777,
+    		pNo: 88.88888888888889,
     		pAlmost: 11.11111111111111,
     		name: "Cameroon",
     		id: "CMR"
@@ -11416,6 +11487,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 2,
@@ -11424,13 +11496,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 0,
     		pNo: 88.88888888888889,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Dem. Rep. of the Congo",
     		id: "COD"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11438,7 +11511,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Congo",
     		id: "COG"
@@ -11446,13 +11519,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Colombia",
@@ -11461,6 +11535,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11476,6 +11551,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11483,7 +11559,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Cabo Verde",
     		id: "CPV"
@@ -11491,13 +11567,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Costa Rica",
@@ -11506,6 +11583,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11513,7 +11591,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Cuba",
     		id: "CUB"
@@ -11521,6 +11599,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11528,7 +11607,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Djibouti",
     		id: "DJI"
@@ -11536,6 +11615,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11551,6 +11631,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11558,7 +11639,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Dominican Rep.",
     		id: "DOM"
@@ -11566,6 +11647,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
@@ -11574,13 +11656,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 66.66666666666667,
     		pNo: 0,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "Algeria",
     		id: "DZA"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11588,7 +11671,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 22.22222222222222,
     		name: "Ecuador",
     		id: "ECU"
@@ -11596,6 +11679,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11603,7 +11687,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Egypt",
     		id: "EGY"
@@ -11611,6 +11695,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11618,7 +11703,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Eritrea",
     		id: "ERI"
@@ -11626,6 +11711,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11633,7 +11719,7 @@ var app = (function () {
     		"aqm-1": 1,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 66.66666666666667,
+    		pNo: 77.77777777777777,
     		pAlmost: 0,
     		name: "Ethiopia",
     		id: "ETH"
@@ -11641,6 +11727,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 4,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
@@ -11649,21 +11736,22 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 22.22222222222222,
     		pNo: 0,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "Fiji",
     		id: "FJI"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 4,
-    		"waste-1": 2,
+    		"tra-2": 4,
+    		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 22.22222222222222,
+    		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Fed. States of Micronesia",
     		id: "FSM"
@@ -11671,6 +11759,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11678,7 +11767,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Gabon",
     		id: "GAB"
@@ -11686,13 +11775,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Georgia",
@@ -11701,6 +11791,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 1,
@@ -11708,7 +11799,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 1,
     		pYes: 55.55555555555556,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Ghana",
     		id: "GHA"
@@ -11716,6 +11807,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11723,7 +11815,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Guinea",
     		id: "GIN"
@@ -11731,6 +11823,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 2,
@@ -11738,7 +11831,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 11.11111111111111,
     		name: "Gambia",
     		id: "GMB"
@@ -11746,6 +11839,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11753,7 +11847,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Guinea-Bissau",
     		id: "GNB"
@@ -11761,6 +11855,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11768,7 +11863,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Equatorial Guinea",
     		id: "GNQ"
@@ -11776,6 +11871,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11791,6 +11887,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 2,
@@ -11798,7 +11895,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 11.11111111111111,
     		name: "Guatemala",
     		id: "GTM"
@@ -11806,6 +11903,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11813,7 +11911,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Guyana",
     		id: "GUY"
@@ -11821,6 +11919,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 2,
@@ -11828,7 +11927,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 22.22222222222222,
     		name: "Honduras",
     		id: "HND"
@@ -11836,6 +11935,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 1,
@@ -11843,7 +11943,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 66.66666666666667,
+    		pNo: 77.77777777777777,
     		pAlmost: 11.11111111111111,
     		name: "Haiti",
     		id: "HTI"
@@ -11851,6 +11951,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 2,
@@ -11859,13 +11960,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 55.55555555555556,
     		pNo: 33.333333333333336,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Islamic Rep. of Iran",
     		id: "IRN"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11873,7 +11975,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Iraq",
     		id: "IRQ"
@@ -11881,13 +11983,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Israel",
@@ -11896,6 +11999,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 4,
@@ -11903,7 +12007,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Jamaica",
     		id: "JAM"
@@ -11911,6 +12015,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11918,7 +12023,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Jordan",
     		id: "JOR"
@@ -11926,6 +12031,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
@@ -11934,20 +12040,21 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 22.22222222222222,
     		pNo: 11.11111111111111,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "Kazakhstan",
     		id: "KAZ"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 2,
     		"aqms-1": 2,
     		"aqm-1": 3,
     		"aq-1": 1,
-    		pYes: 33.333333333333336,
+    		pYes: 44.44444444444444,
     		pNo: 33.333333333333336,
     		pAlmost: 22.22222222222222,
     		name: "Kenya",
@@ -11956,6 +12063,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11963,7 +12071,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Kyrgyzstan",
     		id: "KGZ"
@@ -11971,6 +12079,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -11978,7 +12087,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Cambodia",
     		id: "KHM"
@@ -11986,14 +12095,15 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 4,
-    		"waste-1": 2,
+    		"tra-2": 4,
+    		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 22.22222222222222,
+    		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Kiribati",
     		id: "KIR"
@@ -12001,6 +12111,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12009,13 +12120,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Saint Kitts and Nevis",
     		id: "KNA"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 4,
     		"agri-1": 4,
@@ -12023,7 +12135,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Kuwait",
     		id: "KWT"
@@ -12031,6 +12143,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12038,7 +12151,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Lao People’s Dem. Rep.",
     		id: "LAO"
@@ -12046,6 +12159,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 4,
     		"agri-1": 4,
@@ -12054,13 +12168,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 11.11111111111111,
     		pNo: 33.333333333333336,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Lebanon",
     		id: "LBN"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 2,
@@ -12068,7 +12183,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 22.22222222222222,
     		name: "Liberia",
     		id: "LBR"
@@ -12076,6 +12191,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12083,7 +12199,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 11.11111111111111,
+    		pNo: 22.22222222222222,
     		pAlmost: 11.11111111111111,
     		name: "Libya",
     		id: "LBY"
@@ -12091,6 +12207,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12098,7 +12215,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 11.11111111111111,
     		name: "Saint Lucia",
     		id: "LCA"
@@ -12106,13 +12223,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 55.55555555555556,
+    		pYes: 66.66666666666667,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Liechtenstein",
@@ -12121,6 +12239,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
@@ -12129,13 +12248,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 55.55555555555556,
     		pNo: 11.11111111111111,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "Sri Lanka",
     		id: "LKA"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 2,
@@ -12144,20 +12264,21 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 0,
     		pNo: 88.88888888888889,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Lesotho",
     		id: "LSO"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 4,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 11.11111111111111,
     		pAlmost: 11.11111111111111,
     		name: "Morocco",
@@ -12166,13 +12287,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 2,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 2,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Monaco",
@@ -12181,6 +12303,7 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
@@ -12188,7 +12311,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 4,
     		pYes: 0,
-    		pNo: 11.11111111111111,
+    		pNo: 22.22222222222222,
     		pAlmost: 0,
     		name: "Rep. of Moldova",
     		id: "MDA"
@@ -12196,6 +12319,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12211,6 +12335,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12226,6 +12351,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
@@ -12241,28 +12367,30 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
-    		"waste-1": 2,
+    		"tra-2": 3,
+    		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 44.44444444444444,
-    		pAlmost: 0,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
     		name: "Marshall Islands",
     		id: "MHL"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "North Macedonia",
@@ -12271,6 +12399,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12278,7 +12407,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 66.66666666666667,
+    		pNo: 77.77777777777777,
     		pAlmost: 0,
     		name: "Mali",
     		id: "MLI"
@@ -12286,6 +12415,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
@@ -12293,7 +12423,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 2,
     		pYes: 33.333333333333336,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 22.22222222222222,
     		name: "Myanmar",
     		id: "MMR"
@@ -12301,13 +12431,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Montenegro",
@@ -12316,6 +12447,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12323,7 +12455,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Mongolia",
     		id: "MNG"
@@ -12331,13 +12463,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 0,
     		pAlmost: 22.22222222222222,
     		name: "Mozambique",
@@ -12346,6 +12479,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12353,7 +12487,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 44.44444444444444,
+    		pNo: 55.55555555555556,
     		pAlmost: 0,
     		name: "Mauritania",
     		id: "MRT"
@@ -12361,13 +12495,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 22.22222222222222,
     		pAlmost: 22.22222222222222,
     		name: "Mauritius",
@@ -12376,6 +12511,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 2,
@@ -12384,13 +12520,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 33.333333333333336,
     		pNo: 55.55555555555556,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Malawi",
     		id: "MWI"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
@@ -12399,13 +12536,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 44.44444444444444,
     		pNo: 22.22222222222222,
-    		pAlmost: 22.22222222222222,
+    		pAlmost: 33.333333333333336,
     		name: "Malaysia",
     		id: "MYS"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12414,13 +12552,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 11.11111111111111,
     		pNo: 66.66666666666667,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Namibia",
     		id: "NAM"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 1,
@@ -12429,13 +12568,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 22.22222222222222,
     		pNo: 66.66666666666667,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Niger",
     		id: "NER"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12443,7 +12583,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Nigeria",
     		id: "NGA"
@@ -12451,6 +12591,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
@@ -12458,7 +12599,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 1,
     		pYes: 44.44444444444444,
-    		pNo: 11.11111111111111,
+    		pNo: 22.22222222222222,
     		pAlmost: 33.333333333333336,
     		name: "Nicaragua",
     		id: "NIC"
@@ -12466,13 +12607,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Norway",
@@ -12481,13 +12623,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 0,
     		pAlmost: 22.22222222222222,
     		name: "Nepal",
@@ -12496,6 +12639,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12511,13 +12655,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "New Zealand",
@@ -12526,6 +12671,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12533,7 +12679,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Oman",
     		id: "OMN"
@@ -12541,6 +12687,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
@@ -12549,20 +12696,21 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
-    		pAlmost: 33.333333333333336,
+    		pAlmost: 44.44444444444444,
     		name: "Pakistan",
     		id: "PAK"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 2,
     		"aqm-1": 3,
     		"aq-1": 1,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Panama",
@@ -12571,13 +12719,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 11.11111111111111,
     		pAlmost: 11.11111111111111,
     		name: "Peru",
@@ -12586,13 +12735,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Philippines",
@@ -12601,6 +12751,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12616,6 +12767,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 4,
     		"agri-1": 4,
@@ -12631,6 +12783,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 4,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
@@ -12646,6 +12799,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12653,7 +12807,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 33.333333333333336,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 0,
     		name: "Paraguay",
     		id: "PRY"
@@ -12661,6 +12815,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
@@ -12669,20 +12824,21 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 88.88888888888889,
     		pNo: 0,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Qatar",
     		id: "QAT"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 88.88888888888889,
+    		pYes: 100,
     		pNo: 0,
     		pAlmost: 0,
     		name: "Rwanda",
@@ -12691,6 +12847,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12699,13 +12856,14 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Sudan",
     		id: "SDN"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
@@ -12713,7 +12871,7 @@ var app = (function () {
     		"aqm-1": 1,
     		"aq-1": 1,
     		pYes: 55.55555555555556,
-    		pNo: 22.22222222222222,
+    		pNo: 33.333333333333336,
     		pAlmost: 11.11111111111111,
     		name: "Senegal",
     		id: "SEN"
@@ -12721,13 +12879,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 77.77777777777777,
+    		pYes: 88.88888888888889,
     		pNo: 11.11111111111111,
     		pAlmost: 0,
     		name: "Singapore",
@@ -12736,6 +12895,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12751,6 +12911,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 2,
@@ -12758,7 +12919,7 @@ var app = (function () {
     		"aqm-1": 2,
     		"aq-1": 1,
     		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
+    		pNo: 88.88888888888889,
     		pAlmost: 0,
     		name: "Sierra Leone",
     		id: "SLE"
@@ -12766,6 +12927,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 2,
@@ -12774,13 +12936,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 44.44444444444444,
     		pNo: 33.333333333333336,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "El Salvador",
     		id: "SLV"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12796,13 +12959,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 11.11111111111111,
     		pAlmost: 11.11111111111111,
     		name: "Serbia",
@@ -12811,6 +12975,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12826,6 +12991,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12841,6 +13007,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 2,
@@ -12848,7 +13015,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 22.22222222222222,
     		name: "Suriname",
     		id: "SUR"
@@ -12856,6 +13023,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12864,13 +13032,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 22.22222222222222,
     		pNo: 44.44444444444444,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Eswatini",
     		id: "SWZ"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -12878,7 +13047,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 1,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Syrian Arab Rep.",
     		id: "SYR"
@@ -12902,6 +13071,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12909,7 +13079,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Chad",
     		id: "TCD"
@@ -12917,6 +13087,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -12924,7 +13095,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 55.55555555555556,
+    		pNo: 66.66666666666667,
     		pAlmost: 0,
     		name: "Togo",
     		id: "TGO"
@@ -12932,13 +13103,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 22.22222222222222,
     		pAlmost: 0,
     		name: "Thailand",
@@ -12947,6 +13119,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 1,
+    		"tra-2": 3,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
@@ -12955,29 +13128,15 @@ var app = (function () {
     		"aq-1": 2,
     		pYes: 22.22222222222222,
     		pNo: 11.11111111111111,
-    		pAlmost: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Tajikistan",
     		id: "TJK"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 4,
-    		"res-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 4,
-    		"aq-1": 2,
-    		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
-    		pAlmost: 0,
-    		name: "Turkmenistan",
-    		id: "TKM"
-    	},
-    	{
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
@@ -12986,12 +13145,29 @@ var app = (function () {
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
     		pAlmost: 0,
+    		name: "Turkmenistan",
+    		id: "TKM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"tra-2": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
     		name: "Timor-Leste",
     		id: "TLS"
     	},
     	{
     		"ind-1": 1,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 4,
     		"agri-1": 4,
@@ -13007,6 +13183,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 2,
@@ -13014,7 +13191,7 @@ var app = (function () {
     		"aqm-1": 1,
     		"aq-1": 1,
     		pYes: 55.55555555555556,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Trinidad and Tobago",
     		id: "TTO"
@@ -13022,6 +13199,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 1,
     		"res-1": 2,
     		"agri-1": 1,
@@ -13030,20 +13208,21 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 55.55555555555556,
     		pNo: 22.22222222222222,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "Tunisia",
     		id: "TUN"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 3,
     		"aq-1": 1,
-    		pYes: 44.44444444444444,
+    		pYes: 55.55555555555556,
     		pNo: 22.22222222222222,
     		pAlmost: 22.22222222222222,
     		name: "United Rep. of Tanzania",
@@ -13052,13 +13231,14 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 1,
     		"agri-1": 2,
     		"aqms-1": 2,
     		"aqm-1": 1,
     		"aq-1": 2,
-    		pYes: 22.22222222222222,
+    		pYes: 33.333333333333336,
     		pNo: 55.55555555555556,
     		pAlmost: 11.11111111111111,
     		name: "Uganda",
@@ -13067,13 +13247,14 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 1,
+    		"tra-2": 1,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
     		"aq-1": 4,
-    		pYes: 11.11111111111111,
+    		pYes: 22.22222222222222,
     		pNo: 0,
     		pAlmost: 11.11111111111111,
     		name: "Ukraine",
@@ -13082,13 +13263,14 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 3,
     		"aq-1": 1,
-    		pYes: 66.66666666666667,
+    		pYes: 77.77777777777777,
     		pNo: 0,
     		pAlmost: 22.22222222222222,
     		name: "Uruguay",
@@ -13097,6 +13279,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 4,
     		"agri-1": 4,
@@ -13104,7 +13287,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 0,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 11.11111111111111,
     		name: "Uzbekistan",
     		id: "UZB"
@@ -13112,6 +13295,7 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
     		"agri-1": 4,
@@ -13127,6 +13311,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 3,
+    		"tra-2": 2,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 1,
@@ -13134,7 +13319,7 @@ var app = (function () {
     		"aqm-1": 3,
     		"aq-1": 1,
     		pYes: 44.44444444444444,
-    		pNo: 11.11111111111111,
+    		pNo: 22.22222222222222,
     		pAlmost: 33.333333333333336,
     		name: "Venezuela",
     		id: "VEN"
@@ -13158,6 +13343,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 3,
+    		"tra-2": 3,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -13166,13 +13352,14 @@ var app = (function () {
     		"aq-1": 1,
     		pYes: 11.11111111111111,
     		pNo: 33.333333333333336,
-    		pAlmost: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
     		name: "Viet Nam",
     		id: "VNM"
     	},
     	{
     		"ind-1": 2,
     		"tra-1": 2,
+    		"tra-2": 4,
     		"waste-1": 2,
     		"res-1": 2,
     		"agri-1": 4,
@@ -13186,17 +13373,17 @@ var app = (function () {
     		id: "VUT"
     	},
     	{
-    		"ind-1": 4,
+    		"ind-1": 1,
     		"tra-1": 4,
     		"tra-2": 4,
-    		"waste-1": 4,
+    		"waste-1": 2,
     		"res-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
-    		"aq-1": 4,
-    		pYes: 0,
-    		pNo: 0,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
     		pAlmost: 0,
     		name: "Samoa",
     		id: "WSM"
@@ -13204,6 +13391,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 4,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -13211,7 +13399,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Yemen",
     		id: "YEM"
@@ -13219,6 +13407,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -13226,7 +13415,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Zambia",
     		id: "ZMB"
@@ -13234,6 +13423,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 2,
+    		"tra-2": 2,
     		"waste-1": 2,
     		"res-1": 1,
     		"agri-1": 4,
@@ -13241,7 +13431,7 @@ var app = (function () {
     		"aqm-1": 4,
     		"aq-1": 2,
     		pYes: 22.22222222222222,
-    		pNo: 33.333333333333336,
+    		pNo: 44.44444444444444,
     		pAlmost: 0,
     		name: "Zimbabwe",
     		id: "ZWE"
@@ -13473,6 +13663,7 @@ var app = (function () {
     	{
     		"ind-1": 4,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -13552,6 +13743,7 @@ var app = (function () {
     	{
     		"ind-1": 2,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 4,
@@ -13599,14 +13791,15 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 4,
-    		"waste-1": 2,
+    		"tra-2": 4,
+    		"waste-1": 4,
     		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 2,
     		"aq-1": 2,
     		pYes: 33.333333333333336,
-    		pNo: 44.44444444444444,
+    		pNo: 33.333333333333336,
     		pAlmost: 0,
     		name: "Tuvalu",
     		id: "TUV"
@@ -13646,6 +13839,7 @@ var app = (function () {
     	{
     		"ind-1": 1,
     		"tra-1": 4,
+    		"tra-2": 4,
     		"waste-1": 3,
     		"res-1": 2,
     		"agri-1": 4,
@@ -21948,12 +22142,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$r, 390, 11, 17106);
-    			add_location(b, file$r, 390, 8, 17103);
-    			add_location(p, file$r, 387, 6, 16992);
+    			add_location(a, file$r, 390, 11, 17108);
+    			add_location(b, file$r, 390, 8, 17105);
+    			add_location(p, file$r, 387, 6, 16994);
     			attr_dev(div, "class", "embed-additional-text-desktop svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
-    			add_location(div, file$r, 386, 4, 16908);
+    			add_location(div, file$r, 386, 4, 16910);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22025,7 +22219,7 @@ var app = (function () {
     			set_style(div, "width", /*width*/ ctx[10] + "px");
     			set_style(div, "height", /*height*/ ctx[12] + "px");
     			attr_dev(div, "class", "cartogram-container svelte-8n8gc5");
-    			add_location(div, file$r, 397, 6, 17289);
+    			add_location(div, file$r, 397, 6, 17291);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22106,12 +22300,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$r, 419, 11, 17896);
-    			add_location(b, file$r, 419, 8, 17893);
-    			add_location(p, file$r, 416, 6, 17782);
+    			add_location(a, file$r, 419, 11, 17898);
+    			add_location(b, file$r, 419, 8, 17895);
+    			add_location(p, file$r, 416, 6, 17784);
     			attr_dev(div, "class", "embed-additional-text-desktop-policies svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
-    			add_location(div, file$r, 412, 4, 17669);
+    			add_location(div, file$r, 412, 4, 17671);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22174,7 +22368,7 @@ var app = (function () {
 
     			each_1_anchor = empty$1();
     			attr_dev(div, "class", "footer svelte-8n8gc5");
-    			add_location(div, file$r, 425, 4, 18019);
+    			add_location(div, file$r, 425, 4, 18021);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22255,7 +22449,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$r, 430, 6, 18115);
+    			add_location(p, file$r, 430, 6, 18117);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22366,13 +22560,13 @@ var app = (function () {
     			t5 = space();
     			if (if_block3) if_block3.c();
     			attr_dev(div0, "class", "right-narrow");
-    			add_location(div0, file$r, 373, 2, 16447);
+    			add_location(div0, file$r, 373, 2, 16449);
     			attr_dev(div1, "class", "margin-breakout-mobile");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[19].call(div1));
-    			add_location(div1, file$r, 395, 2, 17209);
+    			add_location(div1, file$r, 395, 2, 17211);
     			attr_dev(section, "id", /*id*/ ctx[1]);
     			attr_dev(section, "class", "viz wide");
-    			add_location(section, file$r, 366, 0, 16146);
+    			add_location(section, file$r, 366, 0, 16148);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22782,9 +22976,9 @@ var app = (function () {
 
     				let policiesCont = [
     					policiesData.pYes,
-    					policiesData.pAlmost - policiesData.pYes,
-    					policiesData.pNo - policiesData.pAlmost,
-    					100 - policiesData.pNo
+    					policiesData.pAlmost,
+    					policiesData.pNo,
+    					100 - (policiesData.pNo + policiesData.pAlmost + policiesData.pYes)
     				];
 
     				const hasValue = legendIsHovered && policiesCont[legendElementSelectedIndex] > 0;
@@ -40129,7 +40323,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (69:0) {#if text}
+    // (73:0) {#if text}
     function create_if_block$2(ctx) {
     	let p;
 
@@ -40137,7 +40331,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$2, 69, 2, 2148);
+    			add_location(p, file$2, 73, 2, 2386);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -40154,14 +40348,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(69:0) {#if text}",
+    		source: "(73:0) {#if text}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:2) {#each policies as p}
+    // (88:2) {#each policies as p}
     function create_each_block$1(ctx) {
     	let div0;
     	let t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[10].id] + "";
@@ -40171,7 +40365,11 @@ var app = (function () {
     	let targetbars;
     	let t2;
     	let div2;
-    	let t3_value = /*desc*/ ctx[0][/*p*/ ctx[10].id] + "";
+
+    	let t3_value = (/*desc*/ ctx[0]
+    	? /*desc*/ ctx[0][/*p*/ ctx[10].id]
+    	: "No data") + "";
+
     	let t3;
     	let current;
 
@@ -40194,11 +40392,11 @@ var app = (function () {
     			div2 = element("div");
     			t3 = text$1(t3_value);
     			attr_dev(div0, "class", "row policy-name svelte-j7kh3i");
-    			add_location(div0, file$2, 84, 4, 2530);
+    			add_location(div0, file$2, 88, 4, 2768);
     			attr_dev(div1, "class", "row bars-middle svelte-j7kh3i");
-    			add_location(div1, file$2, 85, 4, 2590);
+    			add_location(div1, file$2, 89, 4, 2828);
     			attr_dev(div2, "class", "row policy-description svelte-j7kh3i");
-    			add_location(div2, file$2, 88, 4, 2685);
+    			add_location(div2, file$2, 92, 4, 2923);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -40217,7 +40415,10 @@ var app = (function () {
     			if (dirty & /*selected*/ 2) targetbars_changes.selected = /*selected*/ ctx[1];
     			if (dirty & /*policies*/ 8) targetbars_changes.value = /*p*/ ctx[10].value;
     			targetbars.$set(targetbars_changes);
-    			if ((!current || dirty & /*desc, policies*/ 9) && t3_value !== (t3_value = /*desc*/ ctx[0][/*p*/ ctx[10].id] + "")) set_data_dev(t3, t3_value);
+
+    			if ((!current || dirty & /*desc, policies*/ 9) && t3_value !== (t3_value = (/*desc*/ ctx[0]
+    			? /*desc*/ ctx[0][/*p*/ ctx[10].id]
+    			: "No data") + "")) set_data_dev(t3, t3_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -40242,7 +40443,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(84:2) {#each policies as p}",
+    		source: "(88:2) {#each policies as p}",
     		ctx
     	});
 
@@ -40302,9 +40503,9 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "legend svelte-j7kh3i");
-    			add_location(div0, file$2, 72, 0, 2195);
+    			add_location(div0, file$2, 76, 0, 2433);
     			attr_dev(div1, "class", "policies-container svelte-j7kh3i");
-    			add_location(div1, file$2, 82, 0, 2467);
+    			add_location(div1, file$2, 86, 0, 2705);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40453,43 +40654,45 @@ var app = (function () {
     	};
 
     	const generateText = data => {
-    		let text = "";
-    		let metTargets = [];
+    		if (desc) {
+    			let text = "";
+    			let metTargets = [];
 
-    		policies.forEach(p => {
-    			if (p.value === 1) {
-    				metTargets.push(policy_name[p.id].toLowerCase());
-    			}
-    		});
+    			policies.forEach(p => {
+    				if (p.value === 1) {
+    					metTargets.push(policy_name[p.id].toLowerCase());
+    				}
+    			});
 
-    		if (metTargets.length <= 0) {
-    			text = countryName + ` hasn't met <b>any targets</b>.`;
-    		} else {
-    			if (metTargets.length >= 9) {
-    				text = countryName + ` has met <b>all targets</b>: `;
+    			if (metTargets.length <= 0) {
+    				text = countryName + ` hasn't met <b>any targets</b>.`;
     			} else {
-    				text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
-    			}
-
-    			let n = 0;
-    			let groupLength = metTargets.length;
-    			text += metTargets[n];
-    			n++;
-
-    			while (n <= groupLength) {
-    				if (n === groupLength) {
-    					text += `.`;
-    				} else if (n === groupLength - 1) {
-    					text += ` and ` + metTargets[n];
+    				if (metTargets.length >= 9) {
+    					text = countryName + ` has met <b>all targets</b>: `;
     				} else {
-    					text += `, ` + metTargets[n];
+    					text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
     				}
 
+    				let n = 0;
+    				let groupLength = metTargets.length;
+    				text += metTargets[n];
     				n++;
-    			}
-    		}
 
-    		return text;
+    				while (n <= groupLength) {
+    					if (n === groupLength) {
+    						text += `.`;
+    					} else if (n === groupLength - 1) {
+    						text += ` and ` + metTargets[n];
+    					} else {
+    						text += `, ` + metTargets[n];
+    					}
+
+    					n++;
+    				}
+    			}
+
+    			return text;
+    		} else return "No data for " + countryName + "'s targets.";
     	};
 
     	const writable_props = ['data', 'desc'];
@@ -40627,8 +40830,8 @@ var app = (function () {
 
     	lineardistribution0 = new LinearDistribution({
     			props: {
-    				data: /*countryPM25Data*/ ctx[10],
-    				value: /*pm25LookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].pm25,
+    				data: /*countryPM25Data*/ ctx[9],
+    				value: /*pm25LookUp*/ ctx[12][/*currentCountry*/ ctx[3].id].pm25,
     				country: /*currentCountry*/ ctx[3].id,
     				type: "pm25",
     				width: /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
@@ -40638,8 +40841,8 @@ var app = (function () {
 
     	lineardistribution1 = new LinearDistribution({
     			props: {
-    				data: /*countryHealthData*/ ctx[11],
-    				value: /*healthLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id].rate,
+    				data: /*countryHealthData*/ ctx[10],
+    				value: /*healthLookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].rate,
     				country: /*currentCountry*/ ctx[3].id,
     				type: "health",
     				width: /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize)
@@ -40648,14 +40851,14 @@ var app = (function () {
     		});
 
     	deathcauses = new DeathCauses({
-    			props: { data: /*countryDeathsData*/ ctx[9] },
+    			props: { data: /*countryDeathsData*/ ctx[8] },
     			$$inline: true
     		});
 
     	policygrid = new PolicyGrid({
     			props: {
-    				data: /*countryPoliciesData*/ ctx[8],
-    				desc: /*descLookUp*/ ctx[12][/*currentCountry*/ ctx[3].id]
+    				data: /*policiesLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id],
+    				desc: /*descLookUp*/ ctx[11][/*currentCountry*/ ctx[3].id]
     			},
     			$$inline: true
     		});
@@ -40736,23 +40939,23 @@ var app = (function () {
     			if ((!current || dirty & /*currentCountry*/ 8) && t0_value !== (t0_value = /*currentCountry*/ ctx[3].PM25country + "")) set_data_dev(t0, t0_value);
     			if (!current || dirty & /*PM25commentary*/ 128) html_tag.p(/*PM25commentary*/ ctx[7]);
     			const lineardistribution0_changes = {};
-    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.value = /*pm25LookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].pm25;
+    			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.value = /*pm25LookUp*/ ctx[12][/*currentCountry*/ ctx[3].id].pm25;
     			if (dirty & /*currentCountry*/ 8) lineardistribution0_changes.country = /*currentCountry*/ ctx[3].id;
     			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution0_changes.width = /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
     			lineardistribution0.$set(lineardistribution0_changes);
     			if ((!current || dirty & /*currentCountry*/ 8) && t3_value !== (t3_value = /*currentCountry*/ ctx[3].deathRatio + "")) set_data_dev(t3, t3_value);
     			if (!current || dirty & /*PMtimesCommentary*/ 64) html_tag_1.p(/*PMtimesCommentary*/ ctx[6]);
     			const lineardistribution1_changes = {};
-    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.value = /*healthLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id].rate;
+    			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.value = /*healthLookUp*/ ctx[13][/*currentCountry*/ ctx[3].id].rate;
     			if (dirty & /*currentCountry*/ 8) lineardistribution1_changes.country = /*currentCountry*/ ctx[3].id;
     			if (dirty & /*linearDistributionsWidth*/ 32) lineardistribution1_changes.width = /*clamp*/ ctx[18](/*linearDistributionsWidth*/ ctx[5], minDistributionSize, maxDistributionSize);
     			lineardistribution1.$set(lineardistribution1_changes);
     			const deathcauses_changes = {};
-    			if (dirty & /*countryDeathsData*/ 512) deathcauses_changes.data = /*countryDeathsData*/ ctx[9];
+    			if (dirty & /*countryDeathsData*/ 256) deathcauses_changes.data = /*countryDeathsData*/ ctx[8];
     			deathcauses.$set(deathcauses_changes);
     			const policygrid_changes = {};
-    			if (dirty & /*countryPoliciesData*/ 256) policygrid_changes.data = /*countryPoliciesData*/ ctx[8];
-    			if (dirty & /*currentCountry*/ 8) policygrid_changes.desc = /*descLookUp*/ ctx[12][/*currentCountry*/ ctx[3].id];
+    			if (dirty & /*currentCountry*/ 8) policygrid_changes.data = /*policiesLookUp*/ ctx[14][/*currentCountry*/ ctx[3].id];
+    			if (dirty & /*currentCountry*/ 8) policygrid_changes.desc = /*descLookUp*/ ctx[11][/*currentCountry*/ ctx[3].id];
     			policygrid.$set(policygrid_changes);
     		},
     		i: function intro(local) {
@@ -41120,8 +41323,8 @@ var app = (function () {
     		if ('currentCountry' in $$props) $$invalidate(3, currentCountry = $$props.currentCountry);
     		if ('PMtimesCommentary' in $$props) $$invalidate(6, PMtimesCommentary = $$props.PMtimesCommentary);
     		if ('PM25commentary' in $$props) $$invalidate(7, PM25commentary = $$props.PM25commentary);
-    		if ('countryPoliciesData' in $$props) $$invalidate(8, countryPoliciesData = $$props.countryPoliciesData);
-    		if ('countryDeathsData' in $$props) $$invalidate(9, countryDeathsData = $$props.countryDeathsData);
+    		if ('countryPoliciesData' in $$props) countryPoliciesData = $$props.countryPoliciesData;
+    		if ('countryDeathsData' in $$props) $$invalidate(8, countryDeathsData = $$props.countryDeathsData);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -41130,11 +41333,11 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*currentCountry*/ 8) {
-    			$$invalidate(9, countryDeathsData = generateDeathsData(currentCountry.id));
+    			$$invalidate(8, countryDeathsData = generateDeathsData(currentCountry.id));
     		}
 
     		if ($$self.$$.dirty & /*currentCountry*/ 8) {
-    			$$invalidate(8, countryPoliciesData = generatePoliciesData(currentCountry.id));
+    			countryPoliciesData = generatePoliciesData(currentCountry.id);
     		}
 
     		if ($$self.$$.dirty & /*currentCountry*/ 8) {
@@ -41164,13 +41367,13 @@ var app = (function () {
     		linearDistributionsWidth,
     		PMtimesCommentary,
     		PM25commentary,
-    		countryPoliciesData,
     		countryDeathsData,
     		countryPM25Data,
     		countryHealthData,
     		descLookUp,
     		pm25LookUp,
     		healthLookUp,
+    		policiesLookUp,
     		extract,
     		filter,
     		updateSelectedCountry,

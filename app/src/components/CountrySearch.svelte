@@ -180,7 +180,7 @@
     </div>
 
     <div class="policy-grid-container">
-      <PolicyGrid data={countryPoliciesData} desc={descLookUp[currentCountry.id]}/>
+      <PolicyGrid data={policiesLookUp[currentCountry.id]} desc={descLookUp[currentCountry.id]}/>
     </div>
 
   {/if}

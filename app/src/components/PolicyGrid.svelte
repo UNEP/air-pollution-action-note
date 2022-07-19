@@ -7,30 +7,30 @@
 
   interface PoliciesDescription {
     id: string,
-    "ind-1": string;
-    "tra-1": string;
-    "tra-2": string;
-    "waste-1": string;
-    "aq-1": string;
-    "agri-1": string;
-    "aqms-1": string;
-    "aqm-1": string;
+    "ind-1": string,
+    "tra-1": string,
+    "tra-2": string,
+    "waste-1": string,
+    "aq-1": string,
+    "agri-1": string,
+    "aqms-1": string,
+    "aqm-1": string
   }
 
   interface PoliciesData {
-    name: string;
-    id: string;
-    "ind-1": number;
-    "tra-1": number;
-    "tra-2": number;
-    "waste-1": number;
-    "aq-1": number;
-    "agri-1": number;
-    "aqms-1": number;
-    "aqm-1": number;
-    pYes: number;
-    pNo: number;
-    pAlmost: number;
+    name: string,
+    id: string,
+    "ind-1": number,
+    "tra-1": number,
+    "tra-2": number,
+    "waste-1": number,
+    "aq-1": number,
+    "agri-1": number,
+    "aqms-1": number,
+    "aqm-1": number,
+    pYes: number,
+    pNo: number,
+    pAlmost: number
   }
 
   let selected: number = null;
@@ -59,43 +59,48 @@
   }
 
   const generateText = (data: PoliciesData) => {
-    let text: string = "";
-    let metTargets: string[] = [];
-    policies.forEach(p => {
-      if (p.value === 1){
-        metTargets.push(policy_name[p.id].toLowerCase());
-      }
-    });
+    if (desc) {
+      let text: string = "";
+      let metTargets: string[] = [];
+      policies.forEach(p => {
+        if (p.value === 1){
+          metTargets.push(policy_name[p.id].toLowerCase());
+        }
+      });
 
-    if (metTargets.length <= 0){
-      text = countryName + ` hasn't met <b>any targets</b>.`;
-    }
-    else {
-      if (metTargets.length >= 9) {
-        text = countryName + ` has met <b>all targets</b>: `;
+      if (metTargets.length <= 0){
+        text = countryName + ` hasn't met <b>any targets</b>.`;
       }
       else {
-        text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
-      }
-
-      let n = 0;
-      let groupLength = metTargets.length;
-      text += metTargets[n];
-      n++;
-      while (n <= groupLength) {
-        if (n === groupLength){
-          text += `.`;
-        }
-        else if (n === groupLength - 1){
-          text += ` and ` + metTargets[n];
+        if (metTargets.length >= 9) {
+          text = countryName + ` has met <b>all targets</b>: `;
         }
         else {
-          text += `, ` + metTargets[n];
+          text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
         }
+
+        let n = 0;
+        let groupLength = metTargets.length;
+        text += metTargets[n];
         n++;
+        while (n <= groupLength) {
+          if (n === groupLength){
+            text += `.`;
+          }
+          else if (n === groupLength - 1){
+            text += ` and ` + metTargets[n];
+          }
+          else {
+            text += `, ` + metTargets[n];
+          }
+          n++;
+        }
       }
+      return text;
     }
-    return text;
+    else
+      return ("No data for " + countryName + "'s targets.");
+
   }
 
   $: countryName = data.name;
@@ -124,7 +129,7 @@
     <div class="row bars-middle">
       <TargetBars {selected} value={p.value}/>
     </div>
-    <div class="row policy-description">{desc[p.id]}</div>
+    <div class="row policy-description">{desc ? desc[p.id] : "No data"}</div>
   {/each}
 </div>
 
