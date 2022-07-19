@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import WaffleChart from "./WaffleChart.svelte";
-  import WorldMeanDeaths from "../data/worldMean_deaths.json"
+  import WorldMeanDeaths from "../data/diseasesGlobal.json"
 
   export let data: DeathsData = WorldMeanDeaths;
 
