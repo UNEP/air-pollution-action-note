@@ -59,7 +59,9 @@
   }
 
   const generateText = (data: PoliciesData) => {
-    if (desc) {
+    let hasPoliciesData = Math.min(...policies.map(p => p.value)) != 4;
+    
+    if (hasPoliciesData) {
       let text: string = "";
       let metTargets: string[] = [];
       policies.forEach(p => {

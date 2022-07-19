@@ -40304,7 +40304,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (73:0) {#if text}
+    // (74:0) {#if text}
     function create_if_block$2(ctx) {
     	let p;
 
@@ -40312,7 +40312,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$2, 73, 2, 2386);
+    			add_location(p, file$2, 74, 2, 2470);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -40329,14 +40329,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(73:0) {#if text}",
+    		source: "(74:0) {#if text}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:2) {#each policies as p}
+    // (89:2) {#each policies as p}
     function create_each_block$1(ctx) {
     	let div0;
     	let t0_value = /*policy_name*/ ctx[4][/*p*/ ctx[10].id] + "";
@@ -40373,11 +40373,11 @@ var app = (function () {
     			div2 = element("div");
     			t3 = text$1(t3_value);
     			attr_dev(div0, "class", "row policy-name svelte-114vmf");
-    			add_location(div0, file$2, 88, 4, 2768);
+    			add_location(div0, file$2, 89, 4, 2852);
     			attr_dev(div1, "class", "row bars-middle svelte-114vmf");
-    			add_location(div1, file$2, 89, 4, 2828);
+    			add_location(div1, file$2, 90, 4, 2912);
     			attr_dev(div2, "class", "row policy-description svelte-114vmf");
-    			add_location(div2, file$2, 92, 4, 2923);
+    			add_location(div2, file$2, 93, 4, 3007);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -40424,7 +40424,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(88:2) {#each policies as p}",
+    		source: "(89:2) {#each policies as p}",
     		ctx
     	});
 
@@ -40484,9 +40484,9 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "legend svelte-114vmf");
-    			add_location(div0, file$2, 76, 0, 2433);
+    			add_location(div0, file$2, 77, 0, 2517);
     			attr_dev(div1, "class", "policies-container svelte-114vmf");
-    			add_location(div1, file$2, 86, 0, 2705);
+    			add_location(div1, file$2, 87, 0, 2789);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40635,7 +40635,9 @@ var app = (function () {
     	};
 
     	const generateText = data => {
-    		if (desc) {
+    		let hasPoliciesData = Math.min(...policies.map(p => p.value)) != 4;
+
+    		if (hasPoliciesData) {
     			let text = "";
     			let metTargets = [];
 
