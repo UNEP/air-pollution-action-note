@@ -1,12 +1,12 @@
 <script lang="ts">
 
-    import IconsCopd from "src/svg/icons_copd.svelte";
-    import IconsDmt2 from "src/svg/icons_dmt2.svelte";
-    import IconsIhd from "src/svg/icons_ihd.svelte";
-    import IconsNd from "src/svg/icons_nd.svelte";
-    import IconsStroke from "src/svg/icons_stroke.svelte";
-    import IconsTblc from "src/svg/icons_tblc.svelte";
-    import IconsLri from "src/svg/icons_lri.svelte";
+    import IconsCopd from "src/svg/disease_icons/default/icons_copd.svelte";
+    import IconsDmt2 from "src/svg/disease_icons/default/icons_dmt2.svelte";
+    import IconsIhd from "src/svg/disease_icons/default/icons_ihd.svelte";
+    import IconsNd from "src/svg/disease_icons/default/icons_nd.svelte";
+    import IconsStroke from "src/svg/disease_icons/default/icons_stroke.svelte";
+    import IconsTblc from "src/svg/disease_icons/default/icons_tblc.svelte";
+    import IconsLri from "src/svg/disease_icons/default/icons_lri.svelte";
   
     export let percentage: number;
     export let cause: string;
