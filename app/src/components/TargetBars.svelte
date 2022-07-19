@@ -4,8 +4,8 @@
 
   const indexToCategory = {
     3: 1,
-    2: 2,
-    1: 3,
+    2: 3,
+    1: 2,
     0: 4
   }
 
@@ -16,8 +16,8 @@
     {#if value===indexToCategory[i] && (selected===null || indexToCategory[selected]===value)}
       <div class="bar-tile"
         class:no-data={value===4} 
-        class:not-met={value===3} 
-        class:on-track={value===2} 
+        class:not-met={value===2} 
+        class:on-track={value===3} 
         class:target-met={value===1}
       />
     {:else}

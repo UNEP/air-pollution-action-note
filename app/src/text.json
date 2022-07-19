@@ -86,6 +86,9 @@
       ]
     },
     {
+      "type": "death-causes"
+    },
+    {
       "type": "carto-world",
       "anchor": "diseases",
       "data": "diseases",
@@ -128,9 +131,6 @@
       ]
     },
     {
-      "type": "death-causes"
-    },
-    {
       "type": "carto-world",
       "anchor": "policies",
       "menu": "Policy actions",
@@ -150,12 +150,8 @@
     {
       "type": "country-search",
       "menu": "By country",
-<<<<<<< HEAD
-      "icon": "search"
-=======
       "icon": "search",
       "head": "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
->>>>>>> main
     },
     {
       "type": "methodology",
