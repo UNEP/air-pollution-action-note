@@ -40871,26 +40871,26 @@ var app = (function () {
     			div4 = element("div");
     			create_component(policygrid.$$.fragment);
     			attr_dev(span0, "class", "bigger-text svelte-halpmx");
-    			add_location(span0, file$1, 135, 32, 4813);
+    			add_location(span0, file$1, 135, 32, 4812);
     			html_tag.a = null;
     			attr_dev(p0, "class", "primary-text svelte-halpmx");
-    			add_location(p0, file$1, 135, 8, 4789);
+    			add_location(p0, file$1, 135, 8, 4788);
     			attr_dev(div0, "class", "distribution");
-    			add_location(div0, file$1, 134, 6, 4753);
+    			add_location(div0, file$1, 134, 6, 4752);
     			attr_dev(span1, "class", "bigger-text svelte-halpmx");
-    			add_location(span1, file$1, 145, 32, 5290);
+    			add_location(span1, file$1, 145, 32, 5289);
     			html_tag_1.a = null;
     			attr_dev(p1, "class", "primary-text svelte-halpmx");
-    			add_location(p1, file$1, 145, 8, 5266);
+    			add_location(p1, file$1, 145, 8, 5265);
     			attr_dev(div1, "class", "distribution");
-    			add_location(div1, file$1, 144, 6, 5230);
+    			add_location(div1, file$1, 144, 6, 5229);
     			attr_dev(div2, "class", "distributions-container svelte-halpmx");
     			add_render_callback(() => /*div2_elementresize_handler*/ ctx[21].call(div2));
-    			add_location(div2, file$1, 133, 4, 4664);
+    			add_location(div2, file$1, 133, 4, 4663);
     			attr_dev(div3, "class", "death-causes-container svelte-halpmx");
-    			add_location(div3, file$1, 156, 4, 5727);
+    			add_location(div3, file$1, 156, 4, 5726);
     			attr_dev(div4, "class", "policy-grid-container");
-    			add_location(div4, file$1, 160, 4, 5830);
+    			add_location(div4, file$1, 160, 4, 5829);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -41025,12 +41025,12 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(h2, "class", "narrow");
-    			add_location(h2, file$1, 117, 2, 4233);
+    			add_location(h2, file$1, 117, 2, 4232);
     			attr_dev(div, "class", "search-bar svelte-halpmx");
-    			add_location(div, file$1, 119, 2, 4275);
+    			add_location(div, file$1, 119, 2, 4274);
     			attr_dev(section, "id", /*id*/ ctx[0]);
     			attr_dev(section, "class", "viz wide country-search svelte-halpmx");
-    			add_location(section, file$1, 113, 0, 4151);
+    			add_location(section, file$1, 113, 0, 4150);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -41217,7 +41217,7 @@ var app = (function () {
     			let newID = detail.original.id;
     			$$invalidate(3, currentCountry.id = newID, currentCountry);
     			$$invalidate(3, currentCountry.PM25country = pm25LookUp[newID].pm25, currentCountry);
-    			$$invalidate(3, currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1)), currentCountry);
+    			$$invalidate(3, currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 5).toFixed(1)), currentCountry);
     			$$invalidate(3, currentCountry.totalDeaths = healthLookUp[newID].deaths, currentCountry);
     			$$invalidate(3, currentCountry.deathRatio = healthLookUp[newID].rate, currentCountry);
     			$$invalidate(4, countrySelected = true);

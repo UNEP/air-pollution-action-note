@@ -99,7 +99,7 @@
       let newID = detail.original.id;
       currentCountry.id = newID;
       currentCountry.PM25country = pm25LookUp[newID].pm25;
-      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 10).toFixed(1));
+      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 5).toFixed(1));
       currentCountry.totalDeaths = healthLookUp[newID].deaths;
       currentCountry.deathRatio = healthLookUp[newID].rate;
       countrySelected = true;
