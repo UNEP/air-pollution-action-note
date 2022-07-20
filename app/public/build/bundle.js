@@ -10275,3236 +10275,3330 @@ var app = (function () {
 
     var policies$1 = [
     	{
-    		name: "Afghanistan",
-    		id: "AFG",
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 22.22222222222222
-    	},
-    	{
-    		name: "Albania",
-    		id: "ALB",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Algeria",
-    		id: "DZA",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Andorra",
-    		id: "AND",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Angola",
-    		id: "AGO",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Antigua and Barbuda",
-    		id: "ATG",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
     		name: "Argentina",
-    		id: "ARG",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		id: "ARG"
     	},
     	{
-    		name: "Armenia",
-    		id: "ARM",
-    		"ind-1": 2,
+    		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 2,
     		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
+    		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Australia",
-    		id: "AUS",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
+    		id: "AUS"
     	},
     	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Austria",
-    		id: "AUT",
+    		id: "AUT"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 66.66666666666667,
-    		pNo: 77.77777777777779,
-    		pAlmost: 77.77777777777779
-    	},
-    	{
-    		name: "Azerbaijan",
-    		id: "AZE",
-    		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Bahamas",
-    		id: "BHS",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Bahrain",
-    		id: "BHR",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
     		"waste-1": 3,
     		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Bangladesh",
-    		id: "BGD",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
     		"agri-1": 1,
-    		"aqms-1": 2,
+    		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Barbados",
-    		id: "BRB",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Belarus",
-    		id: "BLR",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 55.55555555555556,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Belgium",
-    		id: "BEL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
+    		id: "BEL"
     	},
     	{
-    		name: "Belize",
-    		id: "BLZ",
     		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 1,
     		"agri-1": 2,
     		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Benin",
-    		id: "BEN",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Bhutan",
-    		id: "BTN",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Bolivia",
-    		id: "BOL",
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Bosnia and Herzegovina",
-    		id: "BIH",
-    		"ind-1": 3,
-    		"tra-1": 2,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 55.55555555555556,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Botswana",
-    		id: "BWA",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Brazil",
-    		id: "BRA",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Brunei Darussalam",
-    		id: "BRN",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 2,
     		"aqm-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 88.88888888888889,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
     		name: "Bulgaria",
-    		id: "BGR",
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 1,
+    		id: "BGR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
     		"waste-1": 1,
-    		"res-1": 1,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
     		"aq-1": 1,
-    		"agri-1": 2,
+    		pYes: 66.66666666666667,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Brazil",
+    		id: "BRA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Burkina Faso",
-    		id: "BFA",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
     		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Burundi",
-    		id: "BDI",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Cabo Verde",
-    		id: "CPV",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Cambodia",
-    		id: "KHM",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Cameroon",
-    		id: "CMR",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Canada",
-    		id: "CAN",
+    		id: "CAN"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
     		"waste-1": 2,
     		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Central African Rep.",
-    		id: "CAF",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Chad",
-    		id: "TCD",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Chile",
-    		id: "CHL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
+    		"aqm-1": 4,
     		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
+    		pYes: 44.44444444444444,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
     		name: "China",
-    		id: "CHN",
+    		id: "CHN"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 3,
+    		"waste-1": 1,
     		"res-1": 1,
-    		"aq-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
+    		"aqm-1": 4,
+    		"aq-1": 1,
     		pYes: 55.55555555555556,
-    		pNo: 77.77777777777777,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Colombia",
-    		id: "COL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Comoros",
-    		id: "COM",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Dem. Rep. of the Congo",
-    		id: "COD",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Cook Isl.",
-    		id: "#N/A",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 55.55555555555555,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Costa Rica",
-    		id: "CRI",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Côte d’Ivoire",
-    		id: "CIV",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 66.66666666666667,
-    		pNo: 100,
-    		pAlmost: 77.77777777777779
-    	},
-    	{
-    		name: "Croatia",
-    		id: "HRV",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 77.77777777777779,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Cuba",
-    		id: "CUB",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Cyprus",
-    		id: "CYP",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 66.66666666666667,
-    		pNo: 77.77777777777779,
-    		pAlmost: 77.77777777777779
+    		id: "CYP"
     	},
     	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
     		name: "Czechia",
-    		id: "CZE",
+    		id: "CZE"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 77.77777777777779,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Denmark",
-    		id: "DNK",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Djibouti",
-    		id: "DJI",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Dominica",
-    		id: "DMA",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Dominican Rep.",
-    		id: "DOM",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Ecuador",
-    		id: "ECU",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 22.22222222222222,
-    		pNo: 88.88888888888889,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Egypt",
-    		id: "EGY",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "El Salvador",
-    		id: "SLV",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 44.44444444444444,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Equatorial Guinea",
-    		id: "GNQ",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Eritrea",
-    		id: "ERI",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Estonia",
-    		id: "EST",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Ethiopia",
-    		id: "ETH",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 11.11111111111111,
-    		pNo: 88.88888888888889,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Fiji",
-    		id: "FJI",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 55.55555555555555,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Finland",
-    		id: "FIN",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "France",
-    		id: "FRA",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
     		"waste-1": 4,
     		"res-1": 1,
-    		"aq-1": 1,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
+    		"aqm-1": 4,
+    		"aq-1": 1,
     		pYes: 44.44444444444444,
-    		pNo: 66.66666666666666,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Gabon",
-    		id: "GAB",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Gambia",
-    		id: "GMB",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Georgia",
-    		id: "GEO",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Germany",
-    		id: "DEU",
+    		id: "DEU"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
+    		"waste-1": 1,
     		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Ghana",
-    		id: "GHA",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Greece",
-    		id: "GRC",
-    		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 44.44444444444444,
-    		pNo: 66.66666666666667,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Grenada",
-    		id: "GRD",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Guatemala",
-    		id: "GTM",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Guinea",
-    		id: "GIN",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Guinea-Bissau",
-    		id: "GNB",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Guyana",
-    		id: "GUY",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Haiti",
-    		id: "HTI",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 11.11111111111111,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Honduras",
-    		id: "HND",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Hungary",
-    		id: "HUN",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
+    		"aq-1": 1,
     		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Denmark",
+    		id: "DNK"
     	},
     	{
-    		name: "Iceland",
-    		id: "ISL",
-    		"ind-1": 2,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 44.44444444444444,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "India",
-    		id: "IND",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Indonesia",
-    		id: "IDN",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Islamic Rep. of Iran",
-    		id: "IRN",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
     		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Iraq",
-    		id: "IRQ",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Ireland",
-    		id: "IRL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Israel",
-    		id: "ISR",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 88.88888888888889,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Italy",
-    		id: "ITA",
-    		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 44.44444444444444,
-    		pNo: 66.66666666666667,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Jamaica",
-    		id: "JAM",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Japan",
-    		id: "JPN",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 77.77777777777779,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Jordan",
-    		id: "JOR",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Kazakhstan",
-    		id: "KAZ",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 1,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Kenya",
-    		id: "KEN",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 44.44444444444444,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Kiribati",
-    		id: "KIR",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Dem. People’s Rep. of Korea",
-    		id: "PRK",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 4,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 3,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 88.88888888888889,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Kuwait",
-    		id: "KWT",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Kyrgyzstan",
-    		id: "KGZ",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Lao People’s Dem. Rep.",
-    		id: "LAO",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Latvia",
-    		id: "LVA",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 55.55555555555556,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Lebanon",
-    		id: "LBN",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Lesotho",
-    		id: "LSO",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Liberia",
-    		id: "LBR",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Libya",
-    		id: "LBY",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Liechtenstein",
-    		id: "LIE",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
     		pYes: 66.66666666666667,
-    		pNo: 77.77777777777779,
-    		pAlmost: 77.77777777777779
-    	},
-    	{
-    		name: "Lithuania",
-    		id: "LTU",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Luxembourg",
-    		id: "LUX",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666667,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Madagascar",
-    		id: "MDG",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Malawi",
-    		id: "MWI",
-    		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Malaysia",
-    		id: "MYS",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 44.44444444444444,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Maldives",
-    		id: "MDV",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 88.88888888888889,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Mali",
-    		id: "MLI",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 88.88888888888889,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Malta",
-    		id: "MLT",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 44.44444444444444,
-    		pNo: 55.55555555555556,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Marshall Islands",
-    		id: "MHL",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Mauritania",
-    		id: "MRT",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Mauritius",
-    		id: "MUS",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Mexico",
-    		id: "MEX",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Fed. States of Micronesia",
-    		id: "FSM",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Rep. of Moldova",
-    		id: "MDA",
-    		"ind-1": 3,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 55.55555555555556,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Monaco",
-    		id: "MCO",
-    		"ind-1": 2,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Mongolia",
-    		id: "MNG",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Montenegro",
-    		id: "MNE",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Morocco",
-    		id: "MAR",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Mozambique",
-    		id: "MOZ",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Myanmar",
-    		id: "MMR",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Namibia",
-    		id: "NAM",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 88.88888888888889,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Nauru",
-    		id: "NRU",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 22.22222222222222
-    	},
-    	{
-    		name: "Nepal",
-    		id: "NPL",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Netherlands",
-    		id: "NLD",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "New Zealand",
-    		id: "NZL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 55.55555555555556,
-    		pNo: 77.77777777777779,
-    		pAlmost: 66.66666666666667
-    	},
-    	{
-    		name: "Nicaragua",
-    		id: "NIC",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 44.44444444444444,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Niger",
-    		id: "NER",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Nigeria",
-    		id: "NGA",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Niue",
-    		id: "NIU",
-    		"ind-1": 3,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "North Macedonia",
-    		id: "MKD",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Norway",
-    		id: "NOR",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Oman",
-    		id: "OMN",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Pakistan",
-    		id: "PAK",
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 11.11111111111111,
-    		pNo: 100,
-    		pAlmost: 11.11111111111111
-    	},
-    	{
-    		name: "Palau",
-    		id: "PLW",
-    		"ind-1": 2,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 44.44444444444444,
-    		pAlmost: 11.11111111111111
-    	},
-    	{
-    		name: "Panama",
-    		id: "PAN",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 2,
-    		pYes: 33.333333333333336,
-    		pNo: 88.88888888888889,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Papua New Guinea",
-    		id: "PNG",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 55.55555555555556,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Paraguay",
-    		id: "PRY",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 77.77777777777777,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Peru",
-    		id: "PER",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Philippines",
-    		id: "PHL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Poland",
-    		id: "POL",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Portugal",
-    		id: "PRT",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 44.44444444444444,
-    		pNo: 66.66666666666666,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Qatar",
-    		id: "QAT",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Congo",
-    		id: "COG",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 100,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Romania",
-    		id: "ROU",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Russian Fed.",
-    		id: "RUS",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Rwanda",
-    		id: "RWA",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Samoa",
-    		id: "WSM",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "San Marino",
-    		id: "SMR",
-    		"ind-1": 2,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 44.44444444444444,
-    		pAlmost: 22.22222222222222
-    	},
-    	{
-    		name: "Sao Tome and Principe",
-    		id: "STP",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Saudi Arabia",
-    		id: "SAU",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Senegal",
-    		id: "SEN",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Serbia",
-    		id: "SRB",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Seychelles",
-    		id: "SYC",
-    		"ind-1": 2,
-    		"tra-1": 2,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 22.22222222222222
-    	},
-    	{
-    		name: "Sierra Leone",
-    		id: "SLE",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Singapore",
-    		id: "SGP",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Slovakia",
-    		id: "SVK",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 66.66666666666667,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Slovenia",
-    		id: "SVN",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 44.44444444444444,
-    		pNo: 66.66666666666667,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Solomon Islands",
-    		id: "SLB",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Somalia",
-    		id: "SOM",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "South Africa",
-    		id: "ZAF",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Rep. of Korea",
-    		id: "KOR",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 66.66666666666667,
-    		pNo: 77.77777777777779,
-    		pAlmost: 77.77777777777779
-    	},
-    	{
-    		name: "South Sudan",
-    		id: "SSD",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
     		name: "Spain",
-    		id: "ESP",
+    		id: "ESP"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 2,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
     		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Estonia",
+    		id: "EST"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Finland",
+    		id: "FIN"
     	},
     	{
-    		name: "Sri Lanka",
-    		id: "LKA",
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "France",
+    		id: "FRA"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "United Kingdom",
+    		id: "GBR"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Greece",
+    		id: "GRC"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Croatia",
+    		id: "HRV"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Hungary",
+    		id: "HUN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Indonesia",
+    		id: "IDN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
+    		name: "India",
+    		id: "IND"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Ireland",
+    		id: "IRL"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Iceland",
+    		id: "ISL"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Italy",
+    		id: "ITA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Japan",
+    		id: "JPN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Rep. of Korea",
+    		id: "KOR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Lithuania",
+    		id: "LTU"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 22.22222222222222,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Luxembourg",
+    		id: "LUX"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Latvia",
+    		id: "LVA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Mexico",
+    		id: "MEX"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Malta",
+    		id: "MLT"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Netherlands",
+    		id: "NLD"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Poland",
+    		id: "POL"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Portugal",
+    		id: "PRT"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Romania",
+    		id: "ROU"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Russian Fed.",
+    		id: "RUS"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Saudi Arabia",
+    		id: "SAU"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Slovakia",
+    		id: "SVK"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Slovenia",
+    		id: "SVN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Sweden",
+    		id: "SWE"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Türkiye",
+    		id: "TUR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "United States of America",
+    		id: "USA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "South Africa",
+    		id: "ZAF"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 33.333333333333336,
+    		name: "Afghanistan",
+    		id: "AFG"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Angola",
+    		id: "AGO"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Albania",
+    		id: "ALB"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Andorra",
+    		id: "AND"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "United Arab Emirates",
+    		id: "ARE"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Armenia",
+    		id: "ARM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
     		"waste-1": 2,
     		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
     		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Antigua and Barbuda",
+    		id: "ATG"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Azerbaijan",
+    		id: "AZE"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Burundi",
+    		id: "BDI"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Benin",
+    		id: "BEN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Burkina Faso",
+    		id: "BFA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
+    		name: "Bangladesh",
+    		id: "BGD"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Bahrain",
+    		id: "BHR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 11.11111111111111,
+    		name: "Bahamas",
+    		id: "BHS"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 3,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Bosnia and Herzegovina",
+    		id: "BIH"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 11.11111111111111,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Belarus",
+    		id: "BLR"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 22.22222222222222,
+    		name: "Belize",
+    		id: "BLZ"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Bolivia",
+    		id: "BOL"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Barbados",
+    		id: "BRB"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Brunei Darussalam",
+    		id: "BRN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Bhutan",
+    		id: "BTN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Botswana",
+    		id: "BWA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Central African Rep.",
+    		id: "CAF"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Switzerland",
+    		id: "CHE"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Chile",
+    		id: "CHL"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Côte d’Ivoire",
+    		id: "CIV"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 77.77777777777777,
+    		pAlmost: 11.11111111111111,
+    		name: "Cameroon",
+    		id: "CMR"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 88.88888888888889,
+    		pAlmost: 0,
+    		name: "Dem. Rep. of the Congo",
+    		id: "COD"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Congo",
+    		id: "COG"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Colombia",
+    		id: "COL"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Comoros",
+    		id: "COM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Cabo Verde",
+    		id: "CPV"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Costa Rica",
+    		id: "CRI"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Cuba",
+    		id: "CUB"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Djibouti",
+    		id: "DJI"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Dominica",
+    		id: "DMA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Dominican Rep.",
+    		id: "DOM"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 0,
+    		pAlmost: 22.22222222222222,
+    		name: "Algeria",
+    		id: "DZA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 22.22222222222222,
+    		name: "Ecuador",
+    		id: "ECU"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Egypt",
+    		id: "EGY"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Eritrea",
+    		id: "ERI"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666667,
+    		pAlmost: 0,
+    		name: "Ethiopia",
+    		id: "ETH"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Fiji",
+    		id: "FJI"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 2,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Fed. States of Micronesia",
+    		id: "FSM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Gabon",
+    		id: "GAB"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Georgia",
+    		id: "GEO"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Ghana",
+    		id: "GHA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Guinea",
+    		id: "GIN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 11.11111111111111,
+    		name: "Gambia",
+    		id: "GMB"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Guinea-Bissau",
+    		id: "GNB"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Equatorial Guinea",
+    		id: "GNQ"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Grenada",
+    		id: "GRD"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 11.11111111111111,
+    		name: "Guatemala",
+    		id: "GTM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Guyana",
+    		id: "GUY"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 22.22222222222222,
+    		name: "Honduras",
+    		id: "HND"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666667,
+    		pAlmost: 11.11111111111111,
+    		name: "Haiti",
+    		id: "HTI"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Islamic Rep. of Iran",
+    		id: "IRN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Iraq",
+    		id: "IRQ"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Israel",
+    		id: "ISR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Jamaica",
+    		id: "JAM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Jordan",
+    		id: "JOR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 1,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
+    		name: "Kazakhstan",
+    		id: "KAZ"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 33.333333333333336,
+    		pAlmost: 22.22222222222222,
+    		name: "Kenya",
+    		id: "KEN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Kyrgyzstan",
+    		id: "KGZ"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Cambodia",
+    		id: "KHM"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 2,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Kiribati",
+    		id: "KIR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Saint Kitts and Nevis",
+    		id: "KNA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Kuwait",
+    		id: "KWT"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Lao People’s Dem. Rep.",
+    		id: "LAO"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Lebanon",
+    		id: "LBN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 22.22222222222222,
+    		name: "Liberia",
+    		id: "LBR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Libya",
+    		id: "LBY"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 11.11111111111111,
+    		name: "Saint Lucia",
+    		id: "LCA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Liechtenstein",
+    		id: "LIE"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 11.11111111111111,
+    		pAlmost: 22.22222222222222,
+    		name: "Sri Lanka",
+    		id: "LKA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 88.88888888888889,
+    		pAlmost: 0,
+    		name: "Lesotho",
+    		id: "LSO"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Morocco",
+    		id: "MAR"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 2,
+    		pYes: 44.44444444444444,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Monaco",
+    		id: "MCO"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Rep. of Moldova",
+    		id: "MDA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Madagascar",
+    		id: "MDG"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 55.55555555555556,
+    		pAlmost: 11.11111111111111,
+    		name: "Seychelles",
+    		id: "SYC"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 2,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
+    		"aq-1": 2,
+    		pYes: 33.333333333333336,
+    		pNo: 44.44444444444444,
+    		pAlmost: 11.11111111111111,
+    		name: "Maldives",
+    		id: "MDV"
     	},
     	{
-    		name: "Saint Vincent and the Grenadines",
-    		id: "VCT",
-    		"ind-1": 3,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
     		"res-1": 4,
-    		"aq-1": 3,
     		"agri-1": 4,
     		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Marshall Islands",
+    		id: "MHL"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "North Macedonia",
+    		id: "MKD"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666667,
+    		pAlmost: 0,
+    		name: "Mali",
+    		id: "MLI"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
     		"aqm-1": 3,
+    		"aq-1": 2,
+    		pYes: 33.333333333333336,
+    		pNo: 33.333333333333336,
+    		pAlmost: 22.22222222222222,
+    		name: "Myanmar",
+    		id: "MMR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Montenegro",
+    		id: "MNE"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Mongolia",
+    		id: "MNG"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 0,
+    		pAlmost: 22.22222222222222,
+    		name: "Mozambique",
+    		id: "MOZ"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Mauritania",
+    		id: "MRT"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 22.22222222222222,
+    		pAlmost: 22.22222222222222,
+    		name: "Mauritius",
+    		id: "MUS"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Malawi",
+    		id: "MWI"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 22.22222222222222,
+    		pAlmost: 22.22222222222222,
+    		name: "Malaysia",
+    		id: "MYS"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 66.66666666666667,
+    		pAlmost: 0,
+    		name: "Namibia",
+    		id: "NAM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 66.66666666666667,
+    		pAlmost: 0,
+    		name: "Niger",
+    		id: "NER"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Nigeria",
+    		id: "NGA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 11.11111111111111,
+    		pAlmost: 33.333333333333336,
+    		name: "Nicaragua",
+    		id: "NIC"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Norway",
+    		id: "NOR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 0,
+    		pAlmost: 22.22222222222222,
+    		name: "Nepal",
+    		id: "NPL"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Nauru",
+    		id: "NRU"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "New Zealand",
+    		id: "NZL"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Oman",
+    		id: "OMN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 33.333333333333336,
+    		name: "Pakistan",
+    		id: "PAK"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 11.11111111111111,
+    		name: "Panama",
+    		id: "PAN"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Peru",
+    		id: "PER"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 77.77777777777777,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Philippines",
+    		id: "PHL"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
     		pYes: 0,
     		pNo: 33.333333333333336,
-    		pAlmost: 33.333333333333336
+    		pAlmost: 0,
+    		name: "Palau",
+    		id: "PLW"
     	},
     	{
-    		name: "Saint Kitts and Nevis",
-    		id: "KNA",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Saint Lucia",
-    		id: "LCA",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
+    		"tra-1": 2,
     		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Sudan",
-    		id: "SDN",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Suriname",
-    		id: "SUR",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 11.11111111111111,
-    		pNo: 100,
-    		pAlmost: 33.33333333333333
-    	},
-    	{
-    		name: "Eswatini",
-    		id: "SWZ",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 2,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 88.88888888888889,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Sweden",
-    		id: "SWE",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Switzerland",
-    		id: "CHE",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 100,
-    		pNo: 100,
-    		pAlmost: 100
-    	},
-    	{
-    		name: "Syrian Arab Rep.",
-    		id: "SYR",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
-    	},
-    	{
-    		name: "Tajikistan",
-    		id: "TJK",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 2,
-    		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 55.55555555555555,
-    		pAlmost: 33.33333333333333
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Papua New Guinea",
+    		id: "PNG"
     	},
     	{
-    		name: "United Rep. of Tanzania",
-    		id: "TZA",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 2,
     		"agri-1": 1,
     		"aqms-1": 1,
-    		"aqm-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 4,
     		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 66.66666666666667
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Dem. People’s Rep. of Korea",
+    		id: "PRK"
     	},
     	{
-    		name: "Thailand",
-    		id: "THA",
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 33.333333333333336,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Paraguay",
+    		id: "PRY"
+    	},
+    	{
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Qatar",
+    		id: "QAT"
     	},
     	{
-    		name: "Timor-Leste",
-    		id: "TLS",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Togo",
-    		id: "TGO",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 77.77777777777777,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Tonga",
-    		id: "TON",
     		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 3,
-    		"res-1": 4,
-    		"aq-1": 2,
+    		"tra-1": 1,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 88.88888888888889,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Rwanda",
+    		id: "RWA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
+    		"aqm-1": 4,
+    		"aq-1": 2,
     		pYes: 11.11111111111111,
     		pNo: 44.44444444444444,
-    		pAlmost: 33.33333333333333
+    		pAlmost: 0,
+    		name: "Sudan",
+    		id: "SDN"
     	},
     	{
-    		name: "Trinidad and Tobago",
-    		id: "TTO",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 2,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
-    	},
-    	{
-    		name: "Tunisia",
-    		id: "TUN",
     		"ind-1": 1,
     		"tra-1": 2,
-    		"tra-2": 2,
-    		"waste-1": 1,
-    		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 55.55555555555556,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Turkey",
-    		id: "TUR",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Turkmenistan",
-    		id: "TKM",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 4,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Tuvalu",
-    		id: "TUV",
-    		"ind-1": 1,
-    		"tra-1": 4,
-    		"tra-2": 4,
     		"waste-1": 3,
     		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 1,
-    		"aqms-1": 2,
-    		"aqm-1": 3,
-    		pYes: 33.333333333333336,
-    		pNo: 77.77777777777777,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "Uganda",
-    		id: "UGA",
-    		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 2,
-    		"aqms-1": 2,
-    		"aqm-1": 1,
-    		pYes: 33.333333333333336,
-    		pNo: 100,
-    		pAlmost: 44.44444444444444
-    	},
-    	{
-    		name: "Ukraine",
-    		id: "UKR",
-    		"ind-1": 3,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 3,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 66.66666666666667,
-    		pAlmost: 55.55555555555556
-    	},
-    	{
-    		name: "United Arab Emirates",
-    		id: "ARE",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
-    		"aq-1": 1,
     		"agri-1": 1,
     		"aqms-1": 2,
     		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "United Kingdom",
-    		id: "GBR",
-    		"ind-1": 1,
-    		"tra-1": 1,
-    		"tra-2": 1,
-    		"waste-1": 2,
-    		"res-1": 1,
     		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
     		pYes: 55.55555555555556,
-    		pNo: 77.77777777777779,
-    		pAlmost: 66.66666666666667
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Senegal",
+    		id: "SEN"
     	},
     	{
-    		name: "United States of America",
-    		id: "USA",
     		"ind-1": 1,
     		"tra-1": 1,
-    		"tra-2": 1,
     		"waste-1": 1,
     		"res-1": 2,
-    		"aq-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
     		"aqm-1": 1,
-    		pYes: 88.88888888888889,
-    		pNo: 100,
-    		pAlmost: 88.88888888888889
-    	},
-    	{
-    		name: "Uruguay",
-    		id: "URY",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 1,
-    		"waste-1": 1,
-    		"res-1": 1,
     		"aq-1": 1,
-    		"agri-1": 1,
-    		"aqms-1": 1,
-    		"aqm-1": 2,
     		pYes: 77.77777777777777,
-    		pNo: 100,
-    		pAlmost: 77.77777777777777
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Singapore",
+    		id: "SGP"
     	},
     	{
-    		name: "Uzbekistan",
-    		id: "UZB",
     		"ind-1": 2,
-    		"tra-1": 3,
-    		"tra-2": 3,
+    		"tra-1": 2,
     		"waste-1": 2,
-    		"res-1": 4,
-    		"aq-1": 2,
+    		"res-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
+    		"aqm-1": 4,
+    		"aq-1": 2,
     		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Solomon Islands",
+    		id: "SLB"
     	},
     	{
-    		name: "Vanuatu",
-    		id: "VUT",
     		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 77.77777777777777,
+    		pAlmost: 0,
+    		name: "Sierra Leone",
+    		id: "SLE"
+    	},
+    	{
+    		"ind-1": 1,
     		"tra-1": 3,
-    		"tra-2": 4,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "El Salvador",
+    		id: "SLV"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 66.66666666666667,
+    		pAlmost: 0,
+    		name: "Somalia",
+    		id: "SOM"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
     		"waste-1": 3,
     		"res-1": 2,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 0,
-    		pNo: 66.66666666666667,
-    		pAlmost: 33.333333333333336
-    	},
-    	{
-    		name: "Venezuela",
-    		id: "VEN",
-    		"ind-1": 1,
-    		"tra-1": 2,
-    		"tra-2": 3,
-    		"waste-1": 2,
-    		"res-1": 2,
-    		"aq-1": 1,
     		"agri-1": 1,
     		"aqms-1": 1,
-    		"aqm-1": 2,
-    		pYes: 44.44444444444444,
-    		pNo: 100,
-    		pAlmost: 55.55555555555556
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Serbia",
+    		id: "SRB"
     	},
     	{
-    		name: "Viet Nam",
-    		id: "VNM",
     		"ind-1": 2,
     		"tra-1": 2,
-    		"tra-2": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "South Sudan",
+    		id: "SSD"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Sao Tome and Principe",
+    		id: "STP"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
     		"waste-1": 3,
     		"res-1": 2,
-    		"aq-1": 1,
-    		"agri-1": 4,
-    		"aqms-1": 4,
+    		"agri-1": 2,
+    		"aqms-1": 1,
     		"aqm-1": 3,
+    		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 77.77777777777777,
-    		pAlmost: 33.33333333333333
+    		pNo: 55.55555555555556,
+    		pAlmost: 22.22222222222222,
+    		name: "Suriname",
+    		id: "SUR"
     	},
     	{
-    		name: "Yemen",
-    		id: "YEM",
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 2,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Eswatini",
+    		id: "SWZ"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Syrian Arab Rep.",
+    		id: "SYR"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Turks and Caicos Islands",
+    		id: "TCA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Chad",
+    		id: "TCD"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Togo",
+    		id: "TGO"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Thailand",
+    		id: "THA"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 1,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 11.11111111111111,
+    		pAlmost: 0,
+    		name: "Tajikistan",
+    		id: "TJK"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Turkmenistan",
+    		id: "TKM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Timor-Leste",
+    		id: "TLS"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 2,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "Tonga",
+    		id: "TON"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 2,
+    		"aqms-1": 1,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Trinidad and Tobago",
+    		id: "TTO"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 1,
+    		pYes: 55.55555555555556,
+    		pNo: 22.22222222222222,
+    		pAlmost: 11.11111111111111,
+    		name: "Tunisia",
+    		id: "TUN"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 22.22222222222222,
+    		pAlmost: 22.22222222222222,
+    		name: "United Rep. of Tanzania",
+    		id: "TZA"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 1,
+    		"agri-1": 2,
+    		"aqms-1": 2,
+    		"aqm-1": 1,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 55.55555555555556,
+    		pAlmost: 11.11111111111111,
+    		name: "Uganda",
+    		id: "UGA"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 1,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 11.11111111111111,
+    		pNo: 0,
+    		pAlmost: 11.11111111111111,
+    		name: "Ukraine",
+    		id: "UKR"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 1,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 66.66666666666667,
+    		pNo: 0,
+    		pAlmost: 22.22222222222222,
+    		name: "Uruguay",
+    		id: "URY"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 3,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Uzbekistan",
+    		id: "UZB"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Saint Vincent and the Grenadines",
+    		id: "VCT"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 3,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 1,
+    		"aqms-1": 1,
+    		"aqm-1": 3,
+    		"aq-1": 1,
+    		pYes: 44.44444444444444,
+    		pNo: 11.11111111111111,
+    		pAlmost: 33.333333333333336,
+    		name: "Venezuela",
+    		id: "VEN"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "British Virgin Islands",
+    		id: "VGB"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 3,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 1,
+    		pYes: 11.11111111111111,
+    		pNo: 33.333333333333336,
+    		pAlmost: 11.11111111111111,
+    		name: "Viet Nam",
+    		id: "VNM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 0,
+    		pNo: 55.55555555555556,
+    		pAlmost: 0,
+    		name: "Vanuatu",
+    		id: "VUT"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Samoa",
+    		id: "WSM"
+    	},
+    	{
     		"ind-1": 2,
     		"tra-1": 4,
-    		"tra-2": 3,
-    		"waste-1": 3,
+    		"waste-1": 2,
     		"res-1": 1,
-    		"aq-1": 2,
     		"agri-1": 4,
     		"aqms-1": 4,
-    		"aqm-1": 3,
+    		"aqm-1": 4,
+    		"aq-1": 2,
     		pYes: 11.11111111111111,
-    		pNo: 66.66666666666666,
-    		pAlmost: 44.44444444444444
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
+    		name: "Yemen",
+    		id: "YEM"
     	},
     	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
     		name: "Zambia",
-    		id: "ZMB",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
+    		id: "ZMB"
     	},
     	{
+    		"ind-1": 1,
+    		"tra-1": 2,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 22.22222222222222,
+    		pNo: 33.333333333333336,
+    		pAlmost: 0,
     		name: "Zimbabwe",
-    		id: "ZWE",
-    		"ind-1": 1,
-    		"tra-1": 3,
-    		"tra-2": 3,
-    		"waste-1": 3,
-    		"res-1": 1,
-    		"aq-1": 2,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 3,
-    		pYes: 22.22222222222222,
-    		pNo: 77.77777777777777,
-    		pAlmost: 66.66666666666666
+    		id: "ZWE"
     	},
     	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "American Samoa",
-    		id: "ASM",
+    		id: "ASM"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
+    		pAlmost: 0,
+    		name: "Anguilla",
+    		id: "AIA"
     	},
     	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Bermuda",
-    		id: "BMU",
+    		id: "BMU"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
+    		pAlmost: 0,
+    		name: "British Virgin Islands",
+    		id: "CYM"
     	},
     	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Curaçao",
+    		id: "CUW"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Falkland Islands (Malvinas)",
+    		id: "FLK"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Faroe Islands",
+    		id: "FRO"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Gibraltar",
+    		id: "GIB"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "Greenland",
-    		id: "GRL",
+    		id: "GRL"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
-    	},
-    	{
+    		pAlmost: 0,
     		name: "Guam",
-    		id: "GUM",
+    		id: "GUM"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
+    		pAlmost: 0,
+    		name: "Holy See",
+    		id: "VAT"
     	},
     	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Jersey",
+    		id: "JEY"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Montserrat",
+    		id: "MSR"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "New Caledonia",
+    		id: "NCL"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 11.11111111111111,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Niue",
+    		id: "NIU"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Norfolk Island",
+    		id: "NFK"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Pitcairn",
+    		id: "PCN"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Saint Helena",
+    		id: "SHN"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Saint Pierre et Miquelon",
+    		id: "SPM"
+    	},
+    	{
+    		"ind-1": 2,
+    		"tra-1": 4,
+    		"waste-1": 4,
+    		"res-1": 1,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 2,
+    		pYes: 11.11111111111111,
+    		pNo: 22.22222222222222,
+    		pAlmost: 0,
+    		name: "San Marino",
+    		id: "SMR"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
     		name: "State of Palestine",
-    		id: "PSE",
+    		id: "PSE"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
-    	},
-    	{
+    		pAlmost: 0,
     		name: "Tokelau",
-    		id: "TKL",
-    		"ind-1": 4,
-    		"tra-1": 4,
-    		"tra-2": 4,
-    		"waste-1": 4,
-    		"res-1": 4,
-    		"aq-1": 4,
-    		"agri-1": 4,
-    		"aqms-1": 4,
-    		"aqm-1": 4,
-    		pYes: 0,
-    		pNo: 0,
-    		pAlmost: 0
+    		id: "TKL"
     	},
     	{
-    		name: "United States Virgin Islands",
-    		id: "VIR",
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 2,
+    		"res-1": 1,
+    		"agri-1": 1,
+    		"aqms-1": 2,
+    		"aqm-1": 2,
+    		"aq-1": 2,
+    		pYes: 33.333333333333336,
+    		pNo: 44.44444444444444,
+    		pAlmost: 0,
+    		name: "Tuvalu",
+    		id: "TUV"
+    	},
+    	{
     		"ind-1": 4,
     		"tra-1": 4,
     		"tra-2": 4,
     		"waste-1": 4,
     		"res-1": 4,
-    		"aq-1": 4,
     		"agri-1": 4,
     		"aqms-1": 4,
     		"aqm-1": 4,
+    		"aq-1": 4,
     		pYes: 0,
     		pNo: 0,
-    		pAlmost: 0
+    		pAlmost: 0,
+    		name: "United States Virgin Islands",
+    		id: "VIR"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Western Sahara",
+    		id: "ESH"
+    	},
+    	{
+    		"ind-1": 1,
+    		"tra-1": 4,
+    		"waste-1": 3,
+    		"res-1": 2,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 11.11111111111111,
+    		pNo: 11.11111111111111,
+    		pAlmost: 11.11111111111111,
+    		name: "Cook Isl.",
+    		id: "COQ"
+    	},
+    	{
+    		"ind-1": 4,
+    		"tra-1": 4,
+    		"tra-2": 4,
+    		"waste-1": 4,
+    		"res-1": 4,
+    		"agri-1": 4,
+    		"aqms-1": 4,
+    		"aqm-1": 4,
+    		"aq-1": 4,
+    		pYes: 0,
+    		pNo: 0,
+    		pAlmost: 0,
+    		name: "Northern Mariana Islands",
+    		id: "MNP"
     	}
     ];
 
@@ -18333,19 +18427,19 @@ var app = (function () {
 
     var policies = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\" d=\"M19.5 20.9V28l2.5-2 2.4 2v-7.1\"/><g fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"><path d=\"M18 10h-7.6M14 17h-3.6M19 13.5h-8.6M16 20.5h-5.6\"/><circle cx=\"22\" cy=\"20.9\" r=\"2.4\"/></g><path d=\"M16.6 25H8.8a1.4 1.4 0 01-1.4-1.4V7.5a1.4 1.4 0 011.4-1.4h11.8A1.4 1.4 0 0122 7.5v8\" fill=\"none\" stroke=\"gray\" stroke-miterlimit=\"10\" stroke-width=\"1.4\"/></svg>";
 
-    var nd$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M34.0527 32.1255L27.3858 32.2181\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.6625 40.4287C36.6625 40.4287 22.0408 41.0309 20.7074 35.6574C19.374 30.2839 22.4511 30.3534 24.1264 29.4037C25.8017 28.4541 24.5822 24.7714 29.5055 24.7019\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.5819 50.5853C16.5819 50.5853 19.0663 40.1625 15.3511 35.5301C11.6358 30.8978 6.72393 36.5261 6.00595 40.9731\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.03163 37.9854C6.4087 37.4555 5.65946 37.1016 4.85924 36.9593C4.05902 36.817 3.23603 36.8913 2.47304 37.1747C0.193736 38.1938 -0.27352 45.5593 5.11702 47.806C9.59585 49.6705 9.4135 41.6681 9.4135 41.6681\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.95476 47.3659L8.19408 51.9982C8.49039 57.8697 13.8923 65.8953 27.0781 60.2091C40.2638 54.5229 42.1101 49.4273 47.3183 40.0815C51.0107 33.4688 61.1308 35.5534 64.9144 24.2968C70.6127 7.38868 54.9653 1.74879 51.2387 1.135C47.512 0.521215 39.7168 1.00761 34.9417 9.92489C33.4487 12.7159 33.8818 15.0205 32.7991 15.53C30.9187 16.4218 29.6081 16.5144 30.2349 18.8653C30.5407 20.4874 30.2913 22.1669 29.5283 23.6251C29.5283 23.6251 28.4912 29.7166 35.2266 32.4497C37.3691 33.3067 39.2495 31.4885 43.1129 36.1787\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.3349 17.2786C37.3349 17.2786 38.1441 20.0001 41.5174 18.3324\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.7256 26.8791C46.7256 26.8791 50.042 31.9863 53.233 27.0992C55.7972 23.1733 50.9537 20.8918 49.985 21.1698\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.2885 40.7185C17.2885 40.7185 17.9609 38.935 21.528 37.5569\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+    var nd$2 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" stroke=\"#263238\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M34.0527 32.1255L27.3858 32.2181\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.6625 40.4287C36.6625 40.4287 22.0408 41.0309 20.7074 35.6574C19.374 30.2839 22.4511 30.3534 24.1264 29.4037C25.8017 28.4541 24.5822 24.7714 29.5055 24.7019\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.5819 50.5853C16.5819 50.5853 19.0663 40.1625 15.3511 35.5301C11.6358 30.8978 6.72393 36.5261 6.00595 40.9731\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.03163 37.9854C6.4087 37.4555 5.65946 37.1016 4.85924 36.9593C4.05902 36.817 3.23603 36.8913 2.47304 37.1747C0.193736 38.1938 -0.27352 45.5593 5.11702 47.806C9.59585 49.6705 9.4135 41.6681 9.4135 41.6681\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.95476 47.3659L8.19408 51.9982C8.49039 57.8697 13.8923 65.8953 27.0781 60.2091C40.2638 54.5229 42.1101 49.4273 47.3183 40.0815C51.0107 33.4688 61.1308 35.5534 64.9144 24.2968C70.6127 7.38868 54.9653 1.74879 51.2387 1.135C47.512 0.521215 39.7168 1.00761 34.9417 9.92489C33.4487 12.7159 33.8818 15.0205 32.7991 15.53C30.9187 16.4218 29.6081 16.5144 30.2349 18.8653C30.5407 20.4874 30.2913 22.1669 29.5283 23.6251C29.5283 23.6251 28.4912 29.7166 35.2266 32.4497C37.3691 33.3067 39.2495 31.4885 43.1129 36.1787\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.3349 17.2786C37.3349 17.2786 38.1441 20.0001 41.5174 18.3324\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.7256 26.8791C46.7256 26.8791 50.042 31.9863 53.233 27.0992C55.7972 23.1733 50.9537 20.8918 49.985 21.1698\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.2885 40.7185C17.2885 40.7185 17.9609 38.935 21.528 37.5569\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
 
-    var stroke$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M28.343 43.1323C29.177 44.9013 30.3835 46.493 31.8898 47.8114C33.3961 49.1298 35.1708 50.1476 37.107 50.8032C40.5794 52 43.4761 54.3346 45.2649 57.3783L45.8942 58.4741L47.5258 61.663\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.6304 62.1781L51.9545 58.6824C51.3202 55.387 49.9628 52.2521 47.9687 49.4773\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.5998 10.8599C21.3622 11.3092 20.7445 14.246 21.7235 15.2432C20.4943 15.4234 19.3739 16.0103 18.5641 16.8984C17.7543 17.7864 17.3083 18.9171 17.3065 20.0869C17.3119 20.3219 17.3353 20.5563 17.3764 20.7882C16.9724 20.692 16.5578 20.6405 16.1411 20.6348C14.5792 20.5552 13.0362 20.9866 11.7743 21.8556C10.5123 22.7245 9.60927 23.9775 9.21851 25.4017\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.6434 10.0708C34.5314 7.99967 35.86 5.62169 35.184 2.94784C34.6013 0.635608 29.928 -0.547908 27.8069 3.38617C27.4533 4.44636 27.1692 5.52597 26.9562 6.6189\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M26.3035 34.8258C26.3035 34.8258 33.5524 29.9712 39.7175 32.6341C43.039 34.0806 48.0619 34.2011 50.3112 31.4615C52.2924 29.0507 52.3973 25.9823 55.6371 25.8508C56.502 25.8638 57.3292 26.186 57.9504 26.7519C58.5717 27.3178 58.9405 28.0849 58.9819 28.8973\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.16026 13.5446C8.81463 13.2127 8.55332 12.8116 8.3959 12.3714C8.23848 11.9311 8.18902 11.463 8.25124 11.0022C8.34518 9.95379 8.84609 8.97452 9.65851 8.25102C10.4709 7.52752 11.5381 7.11038 12.6565 7.07911C13.4131 7.00401 14.1772 7.12215 14.8684 7.42108C15.5596 7.72 16.1523 8.18865 16.584 8.77767\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1002 23.0895C36.9518 22.0026 40.1175 21.8864 43.0506 22.7607\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.7213 32.93C20.4699 34.3446 19.8625 35.6822 18.9498 36.8312C18.6025 37.375 18.1219 37.8328 17.5482 38.1664C16.9745 38.4999 16.3242 38.6997 15.6517 38.749C15.0817 38.7481 14.5196 38.6243 14.0084 38.3873C13.1402 37.9857 12.4749 37.2788 12.1565 36.4196C11.8381 35.5603 11.8921 34.6178 12.3069 33.7957C13.216 32.0643 15.6517 27.9111 18.472 26.5851C21.8401 25.0071 25.651 25.4016 27.4923 25.5988H27.7138\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15.8265 13.5664C15.793 14.3304 16.0252 15.0838 16.4878 15.7125C16.9504 16.3413 17.6183 16.8113 18.3904 17.0512\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.9567 34.4751C50.0431 36.0532 48.668 33.5656 49.4604 32.2834\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.8104 29.5878C43.2954 29.3686 40.0322 31.2097 42.6311 33.4561\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M11.9223 34.6725H9.87114C7.49104 34.6638 5.21158 33.7687 3.53186 32.1831C1.85214 30.5975 0.90904 28.4506 0.909058 26.2126V24.0867C0.909056 23.3921 1.05474 22.7044 1.33776 22.0628C1.62079 21.4212 2.0356 20.8385 2.55845 20.3479C3.0813 19.8572 3.70193 19.4684 4.3848 19.2036C5.06767 18.9388 5.79938 18.8033 6.53804 18.8047H7.70346\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.8753 38.4861C17.2702 39.8224 18.1199 41.0003 19.2944 41.8395C20.4688 42.6786 21.9033 43.1328 23.3784 43.1325H32.3754C33.801 43.1333 35.1902 42.7096 36.3438 41.9221C37.4974 41.1346 38.3562 40.0239 38.7969 38.7491\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.4912 48.9951C43.5887 49.3184 44.7325 49.481 45.8826 49.4772H52.6304C53.8235 49.4772 54.9677 49.0316 55.8113 48.2383C56.655 47.4451 57.1289 46.3691 57.1289 45.2473C57.1289 44.1254 56.655 43.0495 55.8113 42.2563C54.9677 41.463 53.8235 41.0173 52.6304 41.0173H51.465\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M56.4646 43.0336C59.1481 42.6748 61.6038 41.4177 63.3807 39.4932C65.1577 37.5687 66.1365 35.106 66.1376 32.5574V27.2206C66.1345 24.415 64.9471 21.7253 62.8361 19.7424C60.7252 17.7595 57.8634 16.6458 54.8797 16.6458H53.7142\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.3211 11.9995C6.32362 14.2417 4.74715 16.7877 3.65942 19.5279\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8419 2.95874C22.9071 3.14802 18.1238 4.61564 14.0201 7.19965\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M53.2597 7.61604C49.2594 4.58261 44.2738 2.93097 39.1348 2.93678H35.184\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.7511 17.6102C59.9908 16.8677 60.1126 16.0959 60.1124 15.3199C60.1093 13.2438 59.23 11.2537 57.6677 9.78663C56.1053 8.3196 53.9876 7.4956 51.7796 7.49561C50.3284 7.49673 48.9026 7.85422 47.6434 8.53271C46.3843 9.21119 45.3354 10.1871 44.6006 11.3639\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6214 22.4429C48.2729 22.8218 47.8416 23.1257 47.3569 23.3337C46.8722 23.5417 46.3455 23.649 45.8127 23.6483C45.3266 23.6483 44.8452 23.5581 44.3962 23.3828C43.9472 23.2076 43.5395 22.9507 43.1962 22.627C42.853 22.3032 42.5812 21.919 42.3962 21.4963C42.2112 21.0735 42.1168 20.6206 42.1183 20.1635C42.1092 19.6222 42.2352 19.0865 42.4862 18.5993C42.7372 18.1121 43.1061 17.687 43.5634 17.3582\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1032 21.6319C25.1032 22.7537 25.5771 23.8296 26.4208 24.6229C27.2644 25.4162 28.4086 25.8618 29.6017 25.8618C30.7948 25.8618 31.939 25.4162 32.7826 24.6229C33.6263 23.8296 34.1002 22.7537 34.1002 21.6319C34.0268 20.6087 33.7459 19.6081 33.2728 18.6841\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+    var stroke$2 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" stroke=\"#263238\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M28.343 43.1323C29.177 44.9013 30.3835 46.493 31.8898 47.8114C33.3961 49.1298 35.1708 50.1476 37.107 50.8032C40.5794 52 43.4761 54.3346 45.2649 57.3783L45.8942 58.4741L47.5258 61.663\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.6304 62.1781L51.9545 58.6824C51.3202 55.387 49.9628 52.2521 47.9687 49.4773\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.5998 10.8599C21.3622 11.3092 20.7445 14.246 21.7235 15.2432C20.4943 15.4234 19.3739 16.0103 18.5641 16.8984C17.7543 17.7864 17.3083 18.9171 17.3065 20.0869C17.3119 20.3219 17.3353 20.5563 17.3764 20.7882C16.9724 20.692 16.5578 20.6405 16.1411 20.6348C14.5792 20.5552 13.0362 20.9866 11.7743 21.8556C10.5123 22.7245 9.60927 23.9775 9.21851 25.4017\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.6434 10.0708C34.5314 7.99967 35.86 5.62169 35.184 2.94784C34.6013 0.635608 29.928 -0.547908 27.8069 3.38617C27.4533 4.44636 27.1692 5.52597 26.9562 6.6189\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M26.3035 34.8258C26.3035 34.8258 33.5524 29.9712 39.7175 32.6341C43.039 34.0806 48.0619 34.2011 50.3112 31.4615C52.2924 29.0507 52.3973 25.9823 55.6371 25.8508C56.502 25.8638 57.3292 26.186 57.9504 26.7519C58.5717 27.3178 58.9405 28.0849 58.9819 28.8973\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.16026 13.5446C8.81463 13.2127 8.55332 12.8116 8.3959 12.3714C8.23848 11.9311 8.18902 11.463 8.25124 11.0022C8.34518 9.95379 8.84609 8.97452 9.65851 8.25102C10.4709 7.52752 11.5381 7.11038 12.6565 7.07911C13.4131 7.00401 14.1772 7.12215 14.8684 7.42108C15.5596 7.72 16.1523 8.18865 16.584 8.77767\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1002 23.0895C36.9518 22.0026 40.1175 21.8864 43.0506 22.7607\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.7213 32.93C20.4699 34.3446 19.8625 35.6822 18.9498 36.8312C18.6025 37.375 18.1219 37.8328 17.5482 38.1664C16.9745 38.4999 16.3242 38.6997 15.6517 38.749C15.0817 38.7481 14.5196 38.6243 14.0084 38.3873C13.1402 37.9857 12.4749 37.2788 12.1565 36.4196C11.8381 35.5603 11.8921 34.6178 12.3069 33.7957C13.216 32.0643 15.6517 27.9111 18.472 26.5851C21.8401 25.0071 25.651 25.4016 27.4923 25.5988H27.7138\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15.8265 13.5664C15.793 14.3304 16.0252 15.0838 16.4878 15.7125C16.9504 16.3413 17.6183 16.8113 18.3904 17.0512\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.9567 34.4751C50.0431 36.0532 48.668 33.5656 49.4604 32.2834\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.8104 29.5878C43.2954 29.3686 40.0322 31.2097 42.6311 33.4561\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M11.9223 34.6725H9.87114C7.49104 34.6638 5.21158 33.7687 3.53186 32.1831C1.85214 30.5975 0.90904 28.4506 0.909058 26.2126V24.0867C0.909056 23.3921 1.05474 22.7044 1.33776 22.0628C1.62079 21.4212 2.0356 20.8385 2.55845 20.3479C3.0813 19.8572 3.70193 19.4684 4.3848 19.2036C5.06767 18.9388 5.79938 18.8033 6.53804 18.8047H7.70346\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.8753 38.4861C17.2702 39.8224 18.1199 41.0003 19.2944 41.8395C20.4688 42.6786 21.9033 43.1328 23.3784 43.1325H32.3754C33.801 43.1333 35.1902 42.7096 36.3438 41.9221C37.4974 41.1346 38.3562 40.0239 38.7969 38.7491\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.4912 48.9951C43.5887 49.3184 44.7325 49.481 45.8826 49.4772H52.6304C53.8235 49.4772 54.9677 49.0316 55.8113 48.2383C56.655 47.4451 57.1289 46.3691 57.1289 45.2473C57.1289 44.1254 56.655 43.0495 55.8113 42.2563C54.9677 41.463 53.8235 41.0173 52.6304 41.0173H51.465\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M56.4646 43.0336C59.1481 42.6748 61.6038 41.4177 63.3807 39.4932C65.1577 37.5687 66.1365 35.106 66.1376 32.5574V27.2206C66.1345 24.415 64.9471 21.7253 62.8361 19.7424C60.7252 17.7595 57.8634 16.6458 54.8797 16.6458H53.7142\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.3211 11.9995C6.32362 14.2417 4.74715 16.7877 3.65942 19.5279\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8419 2.95874C22.9071 3.14802 18.1238 4.61564 14.0201 7.19965\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M53.2597 7.61604C49.2594 4.58261 44.2738 2.93097 39.1348 2.93678H35.184\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.7511 17.6102C59.9908 16.8677 60.1126 16.0959 60.1124 15.3199C60.1093 13.2438 59.23 11.2537 57.6677 9.78663C56.1053 8.3196 53.9876 7.4956 51.7796 7.49561C50.3284 7.49673 48.9026 7.85422 47.6434 8.53271C46.3843 9.21119 45.3354 10.1871 44.6006 11.3639\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6214 22.4429C48.2729 22.8218 47.8416 23.1257 47.3569 23.3337C46.8722 23.5417 46.3455 23.649 45.8127 23.6483C45.3266 23.6483 44.8452 23.5581 44.3962 23.3828C43.9472 23.2076 43.5395 22.9507 43.1962 22.627C42.853 22.3032 42.5812 21.919 42.3962 21.4963C42.2112 21.0735 42.1168 20.6206 42.1183 20.1635C42.1092 19.6222 42.2352 19.0865 42.4862 18.5993C42.7372 18.1121 43.1061 17.687 43.5634 17.3582\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1032 21.6319C25.1032 22.7537 25.5771 23.8296 26.4208 24.6229C27.2644 25.4162 28.4086 25.8618 29.6017 25.8618C30.7948 25.8618 31.939 25.4162 32.7826 24.6229C33.6263 23.8296 34.1002 22.7537 34.1002 21.6319C34.0268 20.6087 33.7459 19.6081 33.2728 18.6841\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
 
-    var ischemic$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M63.5102 24.0974C60.6502 25.2224 58.9185 24.8174 55.3763 25.2224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.4331 18.1462C58.4331 18.1462 54.1431 21.5212 52.2802 21.9375\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04953 40.7025C6.15292 40.005 8.48814 37.71 11.2563 37.71\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M2.47955 34.3126C6.92698 35.2351 9.8657 34.2113 11.3744 34.3126\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.7748 4.26364L28.7968 1.04614\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.8651 4.15124C36.5102 4.08146 36.151 4.02888 35.7893 3.99374L35.9205 0.84375\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.7032 7.22243C41.9808 6.48178 41.1262 5.84388 40.1711 5.33243L42.2046 1.02368\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8259 5.55762C26.9209 6.02142 26.084 6.57664 25.3333 7.21137\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.6258 19.1924L47.2555 19.5186C55.7306 23.6249 57.0818 26.4374 54.7597 27.9224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M13.1848 6.75L14.3656 14.31C15.0609 18.7187 15.0609 23.1876 14.3656 27.5962C9.89189 33.3337 10.8496 40.5225 13.1455 43.65C15.2183 46.4737 17.829 43.8975 21.017 40.275\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M30.0824 30.4312C33.0999 26.6737 32.2209 24.0075 29.1247 22.9725C27.9095 22.5746 26.6314 22.3357 25.3333 22.2637L21.5156 5.79373C21.0433 5.09623 19.469 4.66872 17.8028 4.73622\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.6411 44.7638C14.6411 44.9325 14.7329 45.1013 14.7854 45.27C25.0577 64.1925 43.5428 62.145 56.4652 62.145C62.0803 62.145 67.2886 56.835 65.7405 46.8563C64.6385 39.8588 60.4928 27.5625 56.3603 27.4275C52.6213 29.0363 47.6228 28.6988 42.7031 27.4838C42.2273 27.3765 41.7986 27.152 41.4699 26.8381C41.1412 26.5242 40.9268 26.1347 40.8533 25.7175L40.7352 24.9975C40.5137 23.5909 40.6177 22.1607 41.0412 20.7886C41.4647 19.4165 42.1995 18.1295 43.2035 17.001C44.2075 15.8726 45.461 14.925 46.8924 14.2123C48.3238 13.4996 49.905 13.0358 51.5455 12.8475L52.2408 12.7688C53.9726 11.8575 53.2116 9.02253 51.6767 9.20253L45.445 9.91128C42.4861 10.2496 39.6699 11.2078 37.2455 12.7013C36.3272 13.275 35.0415 11.115 33.0998 12.4425C30.476 14.2425 30.8827 16.8413 31.4599 18.6188C30.6316 20.087 30.0824 21.6593 29.8331 23.2763\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.0403 26.4824C22.0403 26.4824 25.3988 24.3337 25.3332 22.2637\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.0196 30.555C38.0196 30.555 41.1288 28.305 41.2994 26.7188\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+    var ischemic$2 = "<svg viewBox=\"0 0 67 63\" stroke=\"#263238\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M63.5102 24.0974C60.6502 25.2224 58.9185 24.8174 55.3763 25.2224\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.4331 18.1462C58.4331 18.1462 54.1431 21.5212 52.2802 21.9375\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04953 40.7025C6.15292 40.005 8.48814 37.71 11.2563 37.71\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M2.47955 34.3126C6.92698 35.2351 9.8657 34.2113 11.3744 34.3126\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.7748 4.26364L28.7968 1.04614\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M36.8651 4.15124C36.5102 4.08146 36.151 4.02888 35.7893 3.99374L35.9205 0.84375\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M42.7032 7.22243C41.9808 6.48178 41.1262 5.84388 40.1711 5.33243L42.2046 1.02368\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8259 5.55762C26.9209 6.02142 26.084 6.57664 25.3333 7.21137\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.6258 19.1924L47.2555 19.5186C55.7306 23.6249 57.0818 26.4374 54.7597 27.9224\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M13.1848 6.75L14.3656 14.31C15.0609 18.7187 15.0609 23.1876 14.3656 27.5962C9.89189 33.3337 10.8496 40.5225 13.1455 43.65C15.2183 46.4737 17.829 43.8975 21.017 40.275\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M30.0824 30.4312C33.0999 26.6737 32.2209 24.0075 29.1247 22.9725C27.9095 22.5746 26.6314 22.3357 25.3333 22.2637L21.5156 5.79373C21.0433 5.09623 19.469 4.66872 17.8028 4.73622\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.6411 44.7638C14.6411 44.9325 14.7329 45.1013 14.7854 45.27C25.0577 64.1925 43.5428 62.145 56.4652 62.145C62.0803 62.145 67.2886 56.835 65.7405 46.8563C64.6385 39.8588 60.4928 27.5625 56.3603 27.4275C52.6213 29.0363 47.6228 28.6988 42.7031 27.4838C42.2273 27.3765 41.7986 27.152 41.4699 26.8381C41.1412 26.5242 40.9268 26.1347 40.8533 25.7175L40.7352 24.9975C40.5137 23.5909 40.6177 22.1607 41.0412 20.7886C41.4647 19.4165 42.1995 18.1295 43.2035 17.001C44.2075 15.8726 45.461 14.925 46.8924 14.2123C48.3238 13.4996 49.905 13.0358 51.5455 12.8475L52.2408 12.7688C53.9726 11.8575 53.2116 9.02253 51.6767 9.20253L45.445 9.91128C42.4861 10.2496 39.6699 11.2078 37.2455 12.7013C36.3272 13.275 35.0415 11.115 33.0998 12.4425C30.476 14.2425 30.8827 16.8413 31.4599 18.6188C30.6316 20.087 30.0824 21.6593 29.8331 23.2763\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.0403 26.4824C22.0403 26.4824 25.3988 24.3337 25.3332 22.2637\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.0196 30.555C38.0196 30.555 41.1288 28.305 41.2994 26.7188\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
 
-    var lri$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M39.1218 15.796V13.3188C39.1219 12.3055 39.4261 11.3131 39.9989 10.4578C40.5717 9.60256 41.3894 8.91982 42.3563 8.48949C43.3232 8.05917 44.3992 7.89906 45.4585 8.02793C46.5178 8.1568 47.5164 8.56929 48.3376 9.21715L52.3445 12.3741C56.654 15.7827 60.1195 20.05 62.495 24.8729C64.8705 29.6957 66.0977 34.9557 66.0893 40.2793V57.9189C66.0882 58.5856 65.9224 59.2428 65.605 59.8376C65.2876 60.4325 64.8277 60.9484 64.262 61.344C63.6964 61.7395 63.0409 62.0036 62.3481 62.1151C61.6554 62.2266 60.9448 62.1824 60.2733 61.986L51.7738 59.5204C48.095 58.4497 44.8756 56.2867 42.5893 53.3498C40.3029 50.4129 39.0705 46.8571 39.0732 43.2058V20.4737\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 28.6772V35.1639C43.6183 36.1275 43.855 37.0774 44.3064 37.9406V37.9406C44.8507 38.9756 45.6872 39.8468 46.7227 40.4572C47.7583 41.0675 48.9521 41.3929 50.1711 41.3971H52.5995\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.1277 40.314L47.9976 45.0724\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M50.5232 32.6406L53.6558 29.2878\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.6292 0.864014V17.9275C34.6292 18.4928 34.8658 19.0349 35.2871 19.4347C35.7084 19.8344 36.2797 20.059 36.8755 20.059V20.059C37.7609 20.0575 38.6379 20.2218 39.4562 20.5426C40.2745 20.8634 41.018 21.3344 41.6441 21.9285C42.2702 22.5226 42.7665 23.2281 43.1046 24.0046C43.4427 24.7811 43.6159 25.6133 43.6143 26.4535V29.6564C43.6175 30.5039 43.9746 31.3157 44.6073 31.9139C45.2399 32.512 46.0967 32.8479 46.9898 32.8479H55.9749\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 26.4535C43.6143 27.0188 43.851 27.561 44.2723 27.9607C44.6935 28.3605 45.2649 28.585 45.8606 28.585V28.585C46.1566 28.5865 46.45 28.5325 46.724 28.4261C46.9979 28.3196 47.247 28.1629 47.4568 27.9648C47.6667 27.7667 47.8333 27.5312 47.9469 27.2719C48.0605 27.0125 48.119 26.7344 48.119 26.4535V24.322\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8782 15.7961V13.3189C27.8812 12.3057 27.5793 11.3126 27.008 10.4565C26.4367 9.60046 25.6198 8.91687 24.6533 8.48612C23.6867 8.05537 22.6107 7.89535 21.5516 8.02486C20.4925 8.15437 19.4944 8.56803 18.6745 9.21723L14.6676 12.3741C10.3521 15.78 6.88013 20.0459 4.4983 24.8688C2.11647 29.6917 0.883285 34.9532 0.886358 40.2794V57.919C0.889439 58.5862 1.05708 59.2434 1.37587 59.8381C1.69465 60.4328 2.15573 60.9485 2.7222 61.3438C3.28866 61.7391 3.94477 62.0031 4.63803 62.1146C5.33129 62.2261 6.04244 62.1821 6.71456 61.9861L15.214 59.5205C18.8938 58.4513 22.1144 56.2888 24.401 53.3515C26.6876 50.4143 27.9193 46.8577 27.9146 43.2059V20.4738\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 28.6772V35.1639C23.4082 36.1361 23.1877 37.0995 22.7421 37.9752V37.9752C22.2012 39.0127 21.3654 39.8861 20.3292 40.4969C19.2929 41.1076 18.0973 41.4314 16.8775 41.4316H14.449\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.8843 40.314L19.0023 45.0724\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.4768 32.6406L13.3441 29.2878\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.3829 0.864014V17.9275C32.3829 18.4928 32.1462 19.0349 31.725 19.4347C31.3037 19.8344 30.7323 20.059 30.1366 20.059V20.059C29.2506 20.0575 28.373 20.2217 27.554 20.5424C26.735 20.8631 25.9907 21.3339 25.3636 21.9278C24.7366 22.5217 24.2391 23.2272 23.8997 24.0037C23.5603 24.7803 23.3856 25.6127 23.3856 26.4535V29.6564C23.3856 30.5029 23.0312 31.3147 22.4005 31.9132C21.7697 32.5117 20.9142 32.8479 20.0222 32.8479H11.025\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 26.4535C23.3856 27.0188 23.149 27.561 22.7277 27.9607C22.3064 28.3605 21.7351 28.585 21.1393 28.585V28.585C20.5436 28.585 19.9723 28.3605 19.551 27.9607C19.1297 27.561 18.8931 27.0188 18.8931 26.4535V24.322\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 49.9231H59.3505\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.8301 47.7915H52.6116\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 41.3855H57.1042\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 34.991H59.3505\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 26.4536H57.1042\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 49.9231H7.64951\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.1698 47.7915H14.4005\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 41.3855H9.89576\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 34.991H7.64951\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 26.4536H9.89576\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
+    var lri$2 = "<svg viewBox=\"0 0 67 63\" stroke=\"#263238\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M39.1218 15.796V13.3188C39.1219 12.3055 39.4261 11.3131 39.9989 10.4578C40.5717 9.60256 41.3894 8.91982 42.3563 8.48949C43.3232 8.05917 44.3992 7.89906 45.4585 8.02793C46.5178 8.1568 47.5164 8.56929 48.3376 9.21715L52.3445 12.3741C56.654 15.7827 60.1195 20.05 62.495 24.8729C64.8705 29.6957 66.0977 34.9557 66.0893 40.2793V57.9189C66.0882 58.5856 65.9224 59.2428 65.605 59.8376C65.2876 60.4325 64.8277 60.9484 64.262 61.344C63.6964 61.7395 63.0409 62.0036 62.3481 62.1151C61.6554 62.2266 60.9448 62.1824 60.2733 61.986L51.7738 59.5204C48.095 58.4497 44.8756 56.2867 42.5893 53.3498C40.3029 50.4129 39.0705 46.8571 39.0732 43.2058V20.4737\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 28.6772V35.1639C43.6183 36.1275 43.855 37.0774 44.3064 37.9406V37.9406C44.8507 38.9756 45.6872 39.8468 46.7227 40.4572C47.7583 41.0675 48.9521 41.3929 50.1711 41.3971H52.5995\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.1277 40.314L47.9976 45.0724\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M50.5232 32.6406L53.6558 29.2878\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.6292 0.864014V17.9275C34.6292 18.4928 34.8658 19.0349 35.2871 19.4347C35.7084 19.8344 36.2797 20.059 36.8755 20.059V20.059C37.7609 20.0575 38.6379 20.2218 39.4562 20.5426C40.2745 20.8634 41.018 21.3344 41.6441 21.9285C42.2702 22.5226 42.7665 23.2281 43.1046 24.0046C43.4427 24.7811 43.6159 25.6133 43.6143 26.4535V29.6564C43.6175 30.5039 43.9746 31.3157 44.6073 31.9139C45.2399 32.512 46.0967 32.8479 46.9898 32.8479H55.9749\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.6143 26.4535C43.6143 27.0188 43.851 27.561 44.2723 27.9607C44.6935 28.3605 45.2649 28.585 45.8606 28.585V28.585C46.1566 28.5865 46.45 28.5325 46.724 28.4261C46.9979 28.3196 47.247 28.1629 47.4568 27.9648C47.6667 27.7667 47.8333 27.5312 47.9469 27.2719C48.0605 27.0125 48.119 26.7344 48.119 26.4535V24.322\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M27.8782 15.7961V13.3189C27.8812 12.3057 27.5793 11.3126 27.008 10.4565C26.4367 9.60046 25.6198 8.91687 24.6533 8.48612C23.6867 8.05537 22.6107 7.89535 21.5516 8.02486C20.4925 8.15437 19.4944 8.56803 18.6745 9.21723L14.6676 12.3741C10.3521 15.78 6.88013 20.0459 4.4983 24.8688C2.11647 29.6917 0.883285 34.9532 0.886358 40.2794V57.919C0.889439 58.5862 1.05708 59.2434 1.37587 59.8381C1.69465 60.4328 2.15573 60.9485 2.7222 61.3438C3.28866 61.7391 3.94477 62.0031 4.63803 62.1146C5.33129 62.2261 6.04244 62.1821 6.71456 61.9861L15.214 59.5205C18.8938 58.4513 22.1144 56.2888 24.401 53.3515C26.6876 50.4143 27.9193 46.8577 27.9146 43.2059V20.4738\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 28.6772V35.1639C23.4082 36.1361 23.1877 37.0995 22.7421 37.9752V37.9752C22.2012 39.0127 21.3654 39.8861 20.3292 40.4969C19.2929 41.1076 18.0973 41.4314 16.8775 41.4316H14.449\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.8843 40.314L19.0023 45.0724\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M16.4768 32.6406L13.3441 29.2878\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M32.3829 0.864014V17.9275C32.3829 18.4928 32.1462 19.0349 31.725 19.4347C31.3037 19.8344 30.7323 20.059 30.1366 20.059V20.059C29.2506 20.0575 28.373 20.2217 27.554 20.5424C26.735 20.8631 25.9907 21.3339 25.3636 21.9278C24.7366 22.5217 24.2391 23.2272 23.8997 24.0037C23.5603 24.7803 23.3856 25.6127 23.3856 26.4535V29.6564C23.3856 30.5029 23.0312 31.3147 22.4005 31.9132C21.7697 32.5117 20.9142 32.8479 20.0222 32.8479H11.025\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.3856 26.4535C23.3856 27.0188 23.149 27.561 22.7277 27.9607C22.3064 28.3605 21.7351 28.585 21.1393 28.585V28.585C20.5436 28.585 19.9723 28.3605 19.551 27.9607C19.1297 27.561 18.8931 27.0188 18.8931 26.4535V24.322\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 49.9231H59.3505\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.8301 47.7915H52.6116\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 41.3855H57.1042\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M59.5691 34.991H59.3505\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M57.3227 26.4536H57.1042\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 49.9231H7.64951\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M14.1698 47.7915H14.4005\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 41.3855H9.89576\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.43095 34.991H7.64951\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.6772 26.4536H9.89576\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n";
 
-    var lungcancer$1 = "<svg viewBox=\"0 0 67 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M47.9506 17.2334H41.2781V21.6914C41.2799 22.1952 41.4718 22.6862 41.8277 23.0975C42.1836 23.5089 42.6861 23.8205 43.2667 23.9899L66.0187 31.0457\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.9506 17.2334C48.1459 17.2334 48.3392 17.2018 48.5194 17.1404C48.6997 17.079 48.8632 16.9891 49.0007 16.8758C49.1381 16.7624 49.2468 16.628 49.3203 16.4802C49.3938 16.3324 49.4308 16.1742 49.429 16.0146V14.7959\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M19.4812 0.801758C19.604 4.7773 21.2311 8.6241 24.1389 11.8131C25.7743 13.8443 24.8977 21.6913 24.8977 21.6913C24.8949 22.1963 24.7011 22.6883 24.3427 23.0998C23.9843 23.5113 23.479 23.8222 22.8959 23.9898L0.981262 31.0456\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.416 14.7958V9.93157H53.0008C53.1634 9.95497 53.3309 9.93726 53.4809 9.8808C53.6309 9.82434 53.7562 9.73182 53.8401 9.61561C53.9241 9.49939 53.9626 9.36502 53.9505 9.23045C53.9385 9.09587 53.8764 8.9675 53.7727 8.8625L49.573 0.801758\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.446 13.5772H40.3099C39.3942 13.5567 38.4897 13.7461 37.6989 14.124C36.9081 14.5019 36.2625 15.0531 35.8354 15.7153C34.8018 17.2334 34.1607 19.3181 34.1607 25.23\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6702 5.18506L39.695 6.64969C36.5943 7.16284 31.7665 8.59538 31.7665 14.7318L31.4394 25.23\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.7849 34.4561V32.9594C37.7849 30.2333 41.1996 28.5228 43.777 30.276L46.5769 32.179C49.5925 34.2321 52.0192 36.8015 53.6854 39.7056C55.3516 42.6096 56.2167 45.7773 56.2193 48.9847V59.6753C56.216 60.0776 56.0979 60.4736 55.8744 60.8321C55.6509 61.1905 55.3282 61.5014 54.932 61.7401C54.5357 61.9788 54.0768 62.1387 53.5916 62.2071C53.1065 62.2755 52.6086 62.2505 52.1373 62.1342L46.2105 60.6375C43.7036 60.0183 41.5178 58.7388 39.9937 56.9984C38.4697 55.258 37.693 53.1546 37.7849 51.0159V37.2998\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 42.0142V45.9269C40.4636 46.5098 40.6295 47.085 40.9509 47.6054V47.6054C41.3312 48.2295 41.9174 48.7544 42.6433 49.1208C43.3691 49.4873 44.2059 49.6807 45.0591 49.6794H46.76\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> \n<path d=\"M42.2201 49.0381L43.5415 51.9032\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.3078 44.4089L47.5058 42.3777\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1607 25.23V35.5251C34.1607 35.6945 34.2017 35.8622 34.2815 36.0185C34.3612 36.1749 34.478 36.3167 34.6252 36.436C34.7723 36.5553 34.947 36.6496 35.139 36.7134C35.331 36.7772 35.5365 36.8094 35.7438 36.808V36.808C36.9976 36.8108 38.199 37.2198 39.0843 37.9452C39.9697 38.6707 40.4669 39.6534 40.4669 40.678V42.6023C40.4669 43.1136 40.7146 43.6042 41.1559 43.9668C41.5971 44.3294 42.1961 44.5345 42.8219 44.5373H49.1281\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 40.6778C40.4669 41.0181 40.6323 41.3444 40.9267 41.585C41.2212 41.8256 41.6205 41.9607 42.0369 41.9607V41.9607C42.4545 41.9607 42.8552 41.8259 43.1517 41.5856C43.4482 41.3454 43.6165 41.0191 43.62 40.6778V39.3843\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.3255 34.2423V32.7456C28.3316 32.1243 28.1167 31.5149 27.7069 30.9915C27.2972 30.4681 26.7102 30.0533 26.0173 29.7974C25.3244 29.5415 24.5554 29.4555 23.8039 29.55C23.0524 29.6444 22.3506 29.9152 21.7838 30.3295L18.9709 32.2324C15.9553 34.2856 13.5286 36.855 11.8624 39.759C10.1962 42.6631 9.33114 45.8308 9.32846 49.0381V59.7288C9.33182 60.131 9.44993 60.5271 9.6734 60.8855C9.89688 61.2439 10.2196 61.5548 10.6158 61.7935C11.0121 62.0322 11.471 62.1921 11.9561 62.2605C12.4413 62.3289 12.9392 62.304 13.4105 62.1876L19.3372 60.6909C21.9143 60.0435 24.1692 58.7377 25.7706 56.9654C27.372 55.1931 28.2354 53.0478 28.2339 50.8448V37.1394\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 42.0142V45.9269C25.1364 46.5098 24.9705 47.085 24.6491 47.6054V47.6054C24.2688 48.2295 23.6827 48.7544 22.9568 49.1208C22.2309 49.4873 21.3942 49.6807 20.5409 49.6794H18.8401\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.38 49.0381L22.0586 51.9032\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.2923 44.4089L18.1074 42.3777\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.4394 25.23V35.5251C31.4394 35.6945 31.3984 35.8622 31.3187 36.0185C31.2389 36.1749 31.1221 36.3167 30.9749 36.436C30.8278 36.5553 30.6531 36.6496 30.4611 36.7134C30.2692 36.7772 30.0636 36.8094 29.8563 36.808V36.808C28.6025 36.8108 27.4012 37.2198 26.5158 37.9452C25.6304 38.6707 25.1332 39.6534 25.1332 40.678V42.6023C25.1332 43.1136 24.8855 43.6042 24.4442 43.9668C24.003 44.3294 23.404 44.5345 22.7782 44.5373H16.472\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 40.6778C25.1332 41.0181 24.9678 41.3444 24.6733 41.585C24.3789 41.8256 23.9796 41.9607 23.5632 41.9607V41.9607C23.1468 41.9607 22.7474 41.8256 22.453 41.585C22.1586 41.3444 21.9932 41.0181 21.9932 40.6778V39.3843\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 20.8896C34.8222 20.9816 34.2652 20.9996 33.7159 20.9431\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 23.3057C34.8181 23.3746 34.2621 23.3746 33.7159 23.3057\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 25.7217C34.818 25.7897 34.2622 25.7897 33.7159 25.7217\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 28.1272C34.8222 28.2191 34.2652 28.2372 33.7159 28.1807\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 30.5432C34.818 30.6113 34.2622 30.6113 33.7159 30.5432\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 32.9592C34.818 33.0273 34.2622 33.0273 33.7159 32.9592\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+    var lungcancer$2 = "<svg viewBox=\"0 0 67 64\" stroke=\"#263238\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M47.9506 17.2334H41.2781V21.6914C41.2799 22.1952 41.4718 22.6862 41.8277 23.0975C42.1836 23.5089 42.6861 23.8205 43.2667 23.9899L66.0187 31.0457\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.9506 17.2334C48.1459 17.2334 48.3392 17.2018 48.5194 17.1404C48.6997 17.079 48.8632 16.9891 49.0007 16.8758C49.1381 16.7624 49.2468 16.628 49.3203 16.4802C49.3938 16.3324 49.4308 16.1742 49.429 16.0146V14.7959\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M19.4812 0.801758C19.604 4.7773 21.2311 8.6241 24.1389 11.8131C25.7743 13.8443 24.8977 21.6913 24.8977 21.6913C24.8949 22.1963 24.7011 22.6883 24.3427 23.0998C23.9843 23.5113 23.479 23.8222 22.8959 23.9898L0.981262 31.0456\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.416 14.7958V9.93157H53.0008C53.1634 9.95497 53.3309 9.93726 53.4809 9.8808C53.6309 9.82434 53.7562 9.73182 53.8401 9.61561C53.9241 9.49939 53.9626 9.36502 53.9505 9.23045C53.9385 9.09587 53.8764 8.9675 53.7727 8.8625L49.573 0.801758\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M46.446 13.5772H40.3099C39.3942 13.5567 38.4897 13.7461 37.6989 14.124C36.9081 14.5019 36.2625 15.0531 35.8354 15.7153C34.8018 17.2334 34.1607 19.3181 34.1607 25.23\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M48.6702 5.18506L39.695 6.64969C36.5943 7.16284 31.7665 8.59538 31.7665 14.7318L31.4394 25.23\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M37.7849 34.4561V32.9594C37.7849 30.2333 41.1996 28.5228 43.777 30.276L46.5769 32.179C49.5925 34.2321 52.0192 36.8015 53.6854 39.7056C55.3516 42.6096 56.2167 45.7773 56.2193 48.9847V59.6753C56.216 60.0776 56.0979 60.4736 55.8744 60.8321C55.6509 61.1905 55.3282 61.5014 54.932 61.7401C54.5357 61.9788 54.0768 62.1387 53.5916 62.2071C53.1065 62.2755 52.6086 62.2505 52.1373 62.1342L46.2105 60.6375C43.7036 60.0183 41.5178 58.7388 39.9937 56.9984C38.4697 55.258 37.693 53.1546 37.7849 51.0159V37.2998\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 42.0142V45.9269C40.4636 46.5098 40.6295 47.085 40.9509 47.6054V47.6054C41.3312 48.2295 41.9174 48.7544 42.6433 49.1208C43.3691 49.4873 44.2059 49.6807 45.0591 49.6794H46.76\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> \n<path d=\"M42.2201 49.0381L43.5415 51.9032\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.3078 44.4089L47.5058 42.3777\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.1607 25.23V35.5251C34.1607 35.6945 34.2017 35.8622 34.2815 36.0185C34.3612 36.1749 34.478 36.3167 34.6252 36.436C34.7723 36.5553 34.947 36.6496 35.139 36.7134C35.331 36.7772 35.5365 36.8094 35.7438 36.808V36.808C36.9976 36.8108 38.199 37.2198 39.0843 37.9452C39.9697 38.6707 40.4669 39.6534 40.4669 40.678V42.6023C40.4669 43.1136 40.7146 43.6042 41.1559 43.9668C41.5971 44.3294 42.1961 44.5345 42.8219 44.5373H49.1281\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.4669 40.6778C40.4669 41.0181 40.6323 41.3444 40.9267 41.585C41.2212 41.8256 41.6205 41.9607 42.0369 41.9607V41.9607C42.4545 41.9607 42.8552 41.8259 43.1517 41.5856C43.4482 41.3454 43.6165 41.0191 43.62 40.6778V39.3843\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.3255 34.2423V32.7456C28.3316 32.1243 28.1167 31.5149 27.7069 30.9915C27.2972 30.4681 26.7102 30.0533 26.0173 29.7974C25.3244 29.5415 24.5554 29.4555 23.8039 29.55C23.0524 29.6444 22.3506 29.9152 21.7838 30.3295L18.9709 32.2324C15.9553 34.2856 13.5286 36.855 11.8624 39.759C10.1962 42.6631 9.33114 45.8308 9.32846 49.0381V59.7288C9.33182 60.131 9.44993 60.5271 9.6734 60.8855C9.89688 61.2439 10.2196 61.5548 10.6158 61.7935C11.0121 62.0322 11.471 62.1921 11.9561 62.2605C12.4413 62.3289 12.9392 62.304 13.4105 62.1876L19.3372 60.6909C21.9143 60.0435 24.1692 58.7377 25.7706 56.9654C27.372 55.1931 28.2354 53.0478 28.2339 50.8448V37.1394\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 42.0142V45.9269C25.1364 46.5098 24.9705 47.085 24.6491 47.6054V47.6054C24.2688 48.2295 23.6827 48.7544 22.9568 49.1208C22.2309 49.4873 21.3942 49.6807 20.5409 49.6794H18.8401\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.38 49.0381L22.0586 51.9032\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M20.2923 44.4089L18.1074 42.3777\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.4394 25.23V35.5251C31.4394 35.6945 31.3984 35.8622 31.3187 36.0185C31.2389 36.1749 31.1221 36.3167 30.9749 36.436C30.8278 36.5553 30.6531 36.6496 30.4611 36.7134C30.2692 36.7772 30.0636 36.8094 29.8563 36.808V36.808C28.6025 36.8108 27.4012 37.2198 26.5158 37.9452C25.6304 38.6707 25.1332 39.6534 25.1332 40.678V42.6023C25.1332 43.1136 24.8855 43.6042 24.4442 43.9668C24.003 44.3294 23.404 44.5345 22.7782 44.5373H16.472\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M25.1332 40.6778C25.1332 41.0181 24.9678 41.3444 24.6733 41.585C24.3789 41.8256 23.9796 41.9607 23.5632 41.9607V41.9607C23.1468 41.9607 22.7474 41.8256 22.453 41.585C22.1586 41.3444 21.9932 41.0181 21.9932 40.6778V39.3843\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 20.8896C34.8222 20.9816 34.2652 20.9996 33.7159 20.9431\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 23.3057C34.8181 23.3746 34.2621 23.3746 33.7159 23.3057\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 25.7217C34.818 25.7897 34.2622 25.7897 33.7159 25.7217\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 28.1272C34.8222 28.2191 34.2652 28.2372 33.7159 28.1807\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 30.5432C34.818 30.6113 34.2622 30.6113 33.7159 30.5432\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.3644 32.9592C34.818 33.0273 34.2622 33.0273 33.7159 32.9592\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
 
-    var diabetes$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.1206 50.7514H15.571C16.3987 50.7531 17.2185 50.5785 17.9835 50.2377C18.7485 49.8969 19.4435 49.3967 20.0288 48.7656C20.6141 48.1346 21.078 47.3851 21.3941 46.5603C21.7101 45.7355 21.8721 44.8515 21.8705 43.959V43.0063\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 28.2089C36.1449 28.5801 34.4696 25.9571 34.4696 14.4756\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 5.44389C34.4696 4.24834 34.9093 3.10157 35.6922 2.25503C36.4752 1.40849 37.5375 0.931254 38.6463 0.927979H51.624\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.7558 43.0435L19.8395 43.5755C16.7581 44.7384 13.9583 46.6326 11.6467 49.1183L6.7241 54.4384C6.2428 54.9519 5.63174 55.3009 4.96739 55.4419C4.30303 55.5828 3.61489 55.5094 2.98905 55.2307C2.36321 54.9521 1.82748 54.4806 1.44889 53.8754C1.0703 53.2701 0.865669 52.5579 0.860592 51.8278V21.8991C0.875712 16.3444 2.92811 11.0216 6.56983 7.09266C10.2115 3.16369 15.1468 0.94756 20.2985 0.927979H58.3367C58.9628 0.93064 59.5764 1.11739 60.1115 1.46813C60.6465 1.81886 61.0826 2.32029 61.373 2.91845C61.6633 3.5166 61.7969 4.18882 61.7593 4.86273C61.7216 5.53664 61.5142 6.18672 61.1594 6.74299L54.3665 17.2842C51.9135 21.0922 48.467 24.029 44.4639 25.7222L39.5184 27.8255C36.2815 29.1915 33.3968 31.3769 31.1076 34.1972L30.3617 35.1252C27.8717 38.1687 25.3014 41.7072 21.7558 43.0435Z\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 54.4631V62.0721\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.4225 37.5254C29.8187 37.9689 31.084 38.796 32.0944 39.9256\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 38.4656V30.8442\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 62.0721V54.4631\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M66.1165 25.6974C66.1633 25.3221 66.141 24.9405 66.051 24.5744C65.961 24.2083 65.805 23.865 65.5919 23.5639C65.3788 23.2629 65.1127 23.0101 64.809 22.82C64.5052 22.6299 64.1697 22.5061 63.8215 22.4559C63.2144 22.3673 62.5975 22.5072 62.0749 22.852C61.5523 23.1969 61.156 23.7256 60.9529 24.3488C60.3288 24.3091 59.7116 24.5065 59.2085 24.9065C58.7054 25.3066 58.3482 25.8842 58.199 26.5387C57.5112 26.3556 56.7842 26.4742 56.1775 26.8685C55.5708 27.2629 55.134 27.9008 54.9632 28.642C54.274 28.4627 53.547 28.5844 52.9408 28.9808C52.3346 29.3771 51.8984 30.0159 51.7273 30.7577C51.0429 30.586 50.3233 30.7117 49.7242 31.1076C49.1251 31.5035 48.6946 32.1379 48.5259 32.8734C48.0202 32.7359 47.488 32.7623 46.9961 32.9493C46.5042 33.1364 46.0744 33.4758 45.7606 33.925C45.61 33.8491 45.4523 33.791 45.2901 33.7518C44.7843 33.6143 44.2522 33.6407 43.7603 33.8278C43.2684 34.0148 42.8386 34.3542 42.5247 34.8035C42.3725 34.7288 42.2153 34.6667 42.0543 34.6179C41.3651 34.4385 40.6382 34.5603 40.032 34.9566C39.4257 35.353 38.9895 35.9917 38.8185 36.7336C38.2565 36.586 37.6654 36.6388 37.1337 36.8842C36.6019 37.1296 36.1584 37.5543 35.8695 38.0945C34.0281 38.4226 32.3545 39.4444 31.1463 40.9782C29.9381 42.512 29.2738 44.4583 29.2716 46.4706C29.2715 48.7046 30.0882 50.8485 31.5446 52.4374C33.001 54.0263 34.9797 54.932 37.0514 54.958C38.6786 54.9555 40.2651 54.4092 41.5925 53.3945C42.92 52.3797 43.9231 50.9463 44.464 49.2915C45.0293 49.1897 45.5491 48.894 45.946 48.4481C46.3429 48.0023 46.5958 47.4302 46.6671 46.817C47.0145 46.8674 47.3678 46.8434 47.7065 46.7462C48.0453 46.649 48.363 46.4806 48.6413 46.2507C48.9195 46.0207 49.153 45.7338 49.3281 45.4064C49.5033 45.0789 49.6167 44.7174 49.6619 44.3426C50.01 44.393 50.3639 44.3691 50.7034 44.272C51.0429 44.175 51.3614 44.0068 51.6406 43.777C51.9198 43.5472 52.1542 43.2603 52.3306 42.9328C52.5069 42.6052 52.6217 42.2435 52.6683 41.8681C53.0164 41.9186 53.3703 41.8946 53.7098 41.7976C54.0493 41.7005 54.3677 41.5323 54.6469 41.3025C54.9261 41.0727 55.1606 40.7858 55.3369 40.4583C55.5132 40.1308 55.628 39.769 55.6746 39.3936C56.3771 39.4922 57.0873 39.2875 57.6504 38.824C58.2135 38.3605 58.5839 37.6758 58.6809 36.9191C59.0284 36.9696 59.3816 36.9455 59.7204 36.8483C60.0592 36.7511 60.3769 36.5827 60.6551 36.3528C60.9334 36.1229 61.1668 35.8359 61.342 35.5085C61.5171 35.1811 61.6306 34.8195 61.6758 34.4447C62.0239 34.4952 62.3778 34.4712 62.7173 34.3742C63.0568 34.2771 63.3753 34.1089 63.6545 33.8791C63.9336 33.6493 64.1681 33.3624 64.3444 33.0349C64.5208 32.7074 64.6355 32.3456 64.6821 31.9702C64.7457 31.5567 64.7182 31.1329 64.6018 30.733C64.9954 30.524 65.3353 30.2138 65.5914 29.8297C65.8476 29.4457 66.0121 28.9995 66.0705 28.5307C66.1476 27.904 66.0264 27.2675 65.7263 26.7243C65.9158 26.4119 66.0482 26.0634 66.1165 25.6974V25.6974Z\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.1901 42.3381V52.236C23.1901 62.1339 31.3141 62.1339 31.3141 62.1339\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.8627 38.0698C39.8627 38.0698 39.4381 39.3071 41.274 39.3071\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.1007 46.9161C34.6064 46.2415 34.3734 45.387 34.4504 44.5313C34.5274 43.6757 34.9085 42.8854 35.5138 42.3259\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.2833 40.4947C49.2833 40.4947 51.8765 39.9751 50.7979 36.9438\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0108 35.5086C54.0108 35.5086 54.7681 34.1848 51.6241 33.5291\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0911 34.123C54.4732 33.6935 54.7612 33.1772 54.934 32.612C55.1067 32.0467 55.1598 31.447 55.0894 30.8567\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.9793 32.4402C59.0029 32.6493 59.0657 32.8511 59.1637 33.0334C59.2617 33.2157 59.3929 33.3746 59.5495 33.5007C59.7061 33.6267 59.8848 33.7172 60.0747 33.7668C60.2646 33.8163 60.4619 33.8238 60.6546 33.7888\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.1312 41.6205C44.4761 41.2148 44.9476 40.9602 45.4556 40.9054C45.9636 40.8506 46.4725 40.9995 46.8851 41.3236\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.5511 46.4705C40.5511 46.4705 39.0594 46.854 38.6693 44.825\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.0411 45.085C42.9756 45.2532 42.943 45.4343 42.9455 45.6168C42.9479 45.7993 42.9853 45.9792 43.0554 46.1454C43.1254 46.3115 43.2266 46.4602 43.3525 46.5822C43.4784 46.7042 43.6263 46.7968 43.7869 46.8542\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 54.7725V62.0721\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.5385 36.1521C35.0611 36.6662 35.5446 37.2248 35.9843 37.8224\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+    var diabetes$2 = "<svg viewBox=\"0 0 67 63\" stroke=\"#263238\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.1206 50.7514H15.571C16.3987 50.7531 17.2185 50.5785 17.9835 50.2377C18.7485 49.8969 19.4435 49.3967 20.0288 48.7656C20.6141 48.1346 21.078 47.3851 21.3941 46.5603C21.7101 45.7355 21.8721 44.8515 21.8705 43.959V43.0063\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 28.2089C36.1449 28.5801 34.4696 25.9571 34.4696 14.4756\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 5.44389C34.4696 4.24834 34.9093 3.10157 35.6922 2.25503C36.4752 1.40849 37.5375 0.931254 38.6463 0.927979H51.624\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.7558 43.0435L19.8395 43.5755C16.7581 44.7384 13.9583 46.6326 11.6467 49.1183L6.7241 54.4384C6.2428 54.9519 5.63174 55.3009 4.96739 55.4419C4.30303 55.5828 3.61489 55.5094 2.98905 55.2307C2.36321 54.9521 1.82748 54.4806 1.44889 53.8754C1.0703 53.2701 0.865669 52.5579 0.860592 51.8278V21.8991C0.875712 16.3444 2.92811 11.0216 6.56983 7.09266C10.2115 3.16369 15.1468 0.94756 20.2985 0.927979H58.3367C58.9628 0.93064 59.5764 1.11739 60.1115 1.46813C60.6465 1.81886 61.0826 2.32029 61.373 2.91845C61.6633 3.5166 61.7969 4.18882 61.7593 4.86273C61.7216 5.53664 61.5142 6.18672 61.1594 6.74299L54.3665 17.2842C51.9135 21.0922 48.467 24.029 44.4639 25.7222L39.5184 27.8255C36.2815 29.1915 33.3968 31.3769 31.1076 34.1972L30.3617 35.1252C27.8717 38.1687 25.3014 41.7072 21.7558 43.0435Z\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 54.4631V62.0721\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M28.4225 37.5254C29.8187 37.9689 31.084 38.796 32.0944 39.9256\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 38.4656V30.8442\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.4696 62.0721V54.4631\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M66.1165 25.6974C66.1633 25.3221 66.141 24.9405 66.051 24.5744C65.961 24.2083 65.805 23.865 65.5919 23.5639C65.3788 23.2629 65.1127 23.0101 64.809 22.82C64.5052 22.6299 64.1697 22.5061 63.8215 22.4559C63.2144 22.3673 62.5975 22.5072 62.0749 22.852C61.5523 23.1969 61.156 23.7256 60.9529 24.3488C60.3288 24.3091 59.7116 24.5065 59.2085 24.9065C58.7054 25.3066 58.3482 25.8842 58.199 26.5387C57.5112 26.3556 56.7842 26.4742 56.1775 26.8685C55.5708 27.2629 55.134 27.9008 54.9632 28.642C54.274 28.4627 53.547 28.5844 52.9408 28.9808C52.3346 29.3771 51.8984 30.0159 51.7273 30.7577C51.0429 30.586 50.3233 30.7117 49.7242 31.1076C49.1251 31.5035 48.6946 32.1379 48.5259 32.8734C48.0202 32.7359 47.488 32.7623 46.9961 32.9493C46.5042 33.1364 46.0744 33.4758 45.7606 33.925C45.61 33.8491 45.4523 33.791 45.2901 33.7518C44.7843 33.6143 44.2522 33.6407 43.7603 33.8278C43.2684 34.0148 42.8386 34.3542 42.5247 34.8035C42.3725 34.7288 42.2153 34.6667 42.0543 34.6179C41.3651 34.4385 40.6382 34.5603 40.032 34.9566C39.4257 35.353 38.9895 35.9917 38.8185 36.7336C38.2565 36.586 37.6654 36.6388 37.1337 36.8842C36.6019 37.1296 36.1584 37.5543 35.8695 38.0945C34.0281 38.4226 32.3545 39.4444 31.1463 40.9782C29.9381 42.512 29.2738 44.4583 29.2716 46.4706C29.2715 48.7046 30.0882 50.8485 31.5446 52.4374C33.001 54.0263 34.9797 54.932 37.0514 54.958C38.6786 54.9555 40.2651 54.4092 41.5925 53.3945C42.92 52.3797 43.9231 50.9463 44.464 49.2915C45.0293 49.1897 45.5491 48.894 45.946 48.4481C46.3429 48.0023 46.5958 47.4302 46.6671 46.817C47.0145 46.8674 47.3678 46.8434 47.7065 46.7462C48.0453 46.649 48.363 46.4806 48.6413 46.2507C48.9195 46.0207 49.153 45.7338 49.3281 45.4064C49.5033 45.0789 49.6167 44.7174 49.6619 44.3426C50.01 44.393 50.3639 44.3691 50.7034 44.272C51.0429 44.175 51.3614 44.0068 51.6406 43.777C51.9198 43.5472 52.1542 43.2603 52.3306 42.9328C52.5069 42.6052 52.6217 42.2435 52.6683 41.8681C53.0164 41.9186 53.3703 41.8946 53.7098 41.7976C54.0493 41.7005 54.3677 41.5323 54.6469 41.3025C54.9261 41.0727 55.1606 40.7858 55.3369 40.4583C55.5132 40.1308 55.628 39.769 55.6746 39.3936C56.3771 39.4922 57.0873 39.2875 57.6504 38.824C58.2135 38.3605 58.5839 37.6758 58.6809 36.9191C59.0284 36.9696 59.3816 36.9455 59.7204 36.8483C60.0592 36.7511 60.3769 36.5827 60.6551 36.3528C60.9334 36.1229 61.1668 35.8359 61.342 35.5085C61.5171 35.1811 61.6306 34.8195 61.6758 34.4447C62.0239 34.4952 62.3778 34.4712 62.7173 34.3742C63.0568 34.2771 63.3753 34.1089 63.6545 33.8791C63.9336 33.6493 64.1681 33.3624 64.3444 33.0349C64.5208 32.7074 64.6355 32.3456 64.6821 31.9702C64.7457 31.5567 64.7182 31.1329 64.6018 30.733C64.9954 30.524 65.3353 30.2138 65.5914 29.8297C65.8476 29.4457 66.0121 28.9995 66.0705 28.5307C66.1476 27.904 66.0264 27.2675 65.7263 26.7243C65.9158 26.4119 66.0482 26.0634 66.1165 25.6974V25.6974Z\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.1901 42.3381V52.236C23.1901 62.1339 31.3141 62.1339 31.3141 62.1339\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.8627 38.0698C39.8627 38.0698 39.4381 39.3071 41.274 39.3071\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M35.1007 46.9161C34.6064 46.2415 34.3734 45.387 34.4504 44.5313C34.5274 43.6757 34.9085 42.8854 35.5138 42.3259\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M49.2833 40.4947C49.2833 40.4947 51.8765 39.9751 50.7979 36.9438\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0108 35.5086C54.0108 35.5086 54.7681 34.1848 51.6241 33.5291\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M54.0911 34.123C54.4732 33.6935 54.7612 33.1772 54.934 32.612C55.1067 32.0467 55.1598 31.447 55.0894 30.8567\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M58.9793 32.4402C59.0029 32.6493 59.0657 32.8511 59.1637 33.0334C59.2617 33.2157 59.3929 33.3746 59.5495 33.5007C59.7061 33.6267 59.8848 33.7172 60.0747 33.7668C60.2646 33.8163 60.4619 33.8238 60.6546 33.7888\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M44.1312 41.6205C44.4761 41.2148 44.9476 40.9602 45.4556 40.9054C45.9636 40.8506 46.4725 40.9995 46.8851 41.3236\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M40.5511 46.4705C40.5511 46.4705 39.0594 46.854 38.6693 44.825\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M43.0411 45.085C42.9756 45.2532 42.943 45.4343 42.9455 45.6168C42.9479 45.7993 42.9853 45.9792 43.0554 46.1454C43.1254 46.3115 43.2266 46.4602 43.3525 46.5822C43.4784 46.7042 43.6263 46.7968 43.7869 46.8542\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.6693 54.7725V62.0721\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M34.5385 36.1521C35.0611 36.6662 35.5446 37.2248 35.9843 37.8224\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
 
-    var copd$1 = "<svg viewBox=\"0 0 67 63\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.2353 61.7943C12.0831 60.7558 12.0083 59.7113 12.0113 58.666V26.0798\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0112 13.9251V9.87357C11.9961 8.21209 12.5951 6.58207 13.7374 5.17668C14.8797 3.77129 16.5173 2.64946 18.4561 1.94414C20.395 1.23882 22.5538 0.979574 24.6768 1.19714C26.7997 1.4147 28.7978 2.09995 30.4341 3.17167L38.4417 8.33116C47.0521 13.8945 53.9798 20.8595 58.7337 28.7322C63.4875 36.6049 65.9512 45.1927 65.95 53.8867V61.7943\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.6036 34.9651C38.8244 36.6659 37.3347 38.1158 35.3714 39.0842C33.408 40.0525 31.0838 40.4837 28.7682 40.3092C25.2265 40.1354 22.9726 38.6256 22.9726 36.5835V35.9644C23.7678 36.2317 24.6258 36.3686 25.4924 36.3663\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.7213 40.6894L38.7917 40.2875L41.9975 36.6704\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.9736 54.7339C34.7739 54.7339 27.4943 55.125 24.1485 49.455C23.4041 48.2462 23.0031 46.9275 22.9726 45.5881V42.2317C27.3669 42.7752 31.8357 42.8556 36.2578 42.4707C39.4211 42.4561 42.5822 42.6012 45.7212 42.9051\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.1342 61.2621L29.4123 56.7109C32.5717 57.1463 35.802 57.1757 38.9737 56.7978\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04994 1.12964V14.0446C1.04994 21.0398 5.24969 21.8219 8.69348 22.4193C14.2092 23.3426 19.0249 26.4274 19.0249 31.3479V45.5881C18.9073 47.4257 19.4605 49.2517 20.6208 50.8562C23.8818 54.3542 26.5144 58.1801 28.4463 62.2288\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 30.6094L49.1371 32.0649\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 32.0758L49.1371 30.6311\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 44.5237L53.8968 45.9792\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 45.9901L53.8968 44.5454\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 55.1033L48.9691 56.5588\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 56.5697L48.9691 55.125\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 5.71338C6.16097 6.10537 4.58919 6.29638 3.00982 6.2782\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 3.28027C6.16097 3.67227 4.58919 3.86329 3.00982 3.84511\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 8.14648C6.16097 8.53848 4.58919 8.72949 3.00982 8.71131\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 10.5796C6.16097 10.9716 4.58919 11.1626 3.00982 11.1444\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.90953 13.0127C6.41296 13.4047 4.84117 13.5957 3.26181 13.5775\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.17551 15.4458C6.68378 15.8378 5.11658 16.0288 3.54179 16.0106\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.68742 16.9558C8.46956 17.7382 7.09298 18.3585 5.61367 18.7915\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0113 17.7703C11.1099 18.7756 9.99793 19.6568 8.72148 20.3772\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 0.890625C6.16097 1.28262 4.58919 1.47363 3.00982 1.45545\" stroke=\"#263238\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.2507 22.6148C21.5727 22.832 20.9148 22.365 21.2507 22.6148\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.275 20.2468C17.889 20.5486 18.4824 20.8749 19.0529 21.2244\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M6.6916 0.814697V13.2952C6.6916 17.955 10.0514 17.64 14.7411 19.215\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.4127 27.8613V32.1193C22.4127 32.1193 23.0286 33.3358 24.1346 33.3249\" stroke=\"#263238\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
+    var copd$2 = "<svg viewBox=\"0 0 67 63\" stroke=\"#263238\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.2353 61.7943C12.0831 60.7558 12.0083 59.7113 12.0113 58.666V26.0798\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0112 13.9251V9.87357C11.9961 8.21209 12.5951 6.58207 13.7374 5.17668C14.8797 3.77129 16.5173 2.64946 18.4561 1.94414C20.395 1.23882 22.5538 0.979574 24.6768 1.19714C26.7997 1.4147 28.7978 2.09995 30.4341 3.17167L38.4417 8.33116C47.0521 13.8945 53.9798 20.8595 58.7337 28.7322C63.4875 36.6049 65.9512 45.1927 65.95 53.8867V61.7943\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M39.6036 34.9651C38.8244 36.6659 37.3347 38.1158 35.3714 39.0842C33.408 40.0525 31.0838 40.4837 28.7682 40.3092C25.2265 40.1354 22.9726 38.6256 22.9726 36.5835V35.9644C23.7678 36.2317 24.6258 36.3686 25.4924 36.3663\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M45.7213 40.6894L38.7917 40.2875L41.9975 36.6704\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M38.9736 54.7339C34.7739 54.7339 27.4943 55.125 24.1485 49.455C23.4041 48.2462 23.0031 46.9275 22.9726 45.5881V42.2317C27.3669 42.7752 31.8357 42.8556 36.2578 42.4707C39.4211 42.4561 42.5822 42.6012 45.7212 42.9051\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M31.1342 61.2621L29.4123 56.7109C32.5717 57.1463 35.802 57.1757 38.9737 56.7978\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M1.04994 1.12964V14.0446C1.04994 21.0398 5.24969 21.8219 8.69348 22.4193C14.2092 23.3426 19.0249 26.4274 19.0249 31.3479V45.5881C18.9073 47.4257 19.4605 49.2517 20.6208 50.8562C23.8818 54.3542 26.5144 58.1801 28.4463 62.2288\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 30.6094L49.1371 32.0649\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.2612 32.0758L49.1371 30.6311\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 44.5237L53.8968 45.9792\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M52.0209 45.9901L53.8968 44.5454\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 55.1033L48.9691 56.5588\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M47.0932 56.5697L48.9691 55.125\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 5.71338C6.16097 6.10537 4.58919 6.29638 3.00982 6.2782\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 3.28027C6.16097 3.67227 4.58919 3.86329 3.00982 3.84511\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 8.14648C6.16097 8.53848 4.58919 8.72949 3.00982 8.71131\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 10.5796C6.16097 10.9716 4.58919 11.1626 3.00982 11.1444\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.90953 13.0127C6.41296 13.4047 4.84117 13.5957 3.26181 13.5775\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8.17551 15.4458C6.68378 15.8378 5.11658 16.0288 3.54179 16.0106\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M9.68742 16.9558C8.46956 17.7382 7.09298 18.3585 5.61367 18.7915\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M12.0113 17.7703C11.1099 18.7756 9.99793 19.6568 8.72148 20.3772\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.65754 0.890625C6.16097 1.28262 4.58919 1.47363 3.00982 1.45545\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M21.2507 22.6148C21.5727 22.832 20.9148 22.365 21.2507 22.6148\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.275 20.2468C17.889 20.5486 18.4824 20.8749 19.0529 21.2244\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M6.6916 0.814697V13.2952C6.6916 17.955 10.0514 17.64 14.7411 19.215\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M22.4127 27.8613V32.1193C22.4127 32.1193 23.0286 33.3358 24.1346 33.3249\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>";
 
     var check = "<svg viewBox=\"0 0 17 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5 4H8.2439V2H9.09756H12V11H9.09756V13H5V4Z\" fill=\"#D9D9D9\"/>\n<path d=\"M5.85246 11.0698L0 5.75386L1.6539 4.25188L5.85246 8.06369L14.7306 0L16.3869 1.5041L5.85246 11.0698Z\" fill=\"#263238\"/>\n</svg>\n";
 
@@ -18371,19 +18465,17 @@ var app = (function () {
             policies
         },
         diseases: {
-            nd: nd$1,
-            stroke: stroke$1,
-            ischemic: ischemic$1,
-            lri: lri$1,
-            lungcancer: lungcancer$1,
-            diabetes: diabetes$1,
-            copd: copd$1
+            nd: nd$2,
+            stroke: stroke$2,
+            ischemic: ischemic$2,
+            lri: lri$2,
+            lungcancer: lungcancer$2,
+            diabetes: diabetes$2,
+            copd: copd$2
         }
     };
 
     /* src/components/common/Legend.svelte generated by Svelte v3.42.3 */
-
-    const { console: console_1$2 } = globals;
     const file$k = "src/components/common/Legend.svelte";
 
     function get_each_context_1$3(ctx, list, i) {
@@ -18400,7 +18492,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (67:33) 
+    // (66:33) 
     function create_if_block_4(ctx) {
     	let ul;
     	let each_value_1 = /*colors*/ ctx[2];
@@ -18422,7 +18514,7 @@ var app = (function () {
     			attr_dev(ul, "class", "cat info svelte-h10xyx");
     			attr_dev(ul, "role", "menu");
     			attr_dev(ul, "aria-label", "Legend");
-    			add_location(ul, file$k, 67, 2, 2198);
+    			add_location(ul, file$k, 66, 2, 2117);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -18466,14 +18558,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(67:33) ",
+    		source: "(66:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (33:0) {#if type === "sequential"}
+    // (32:0) {#if type === "sequential"}
     function create_if_block$a(ctx) {
     	let ol;
     	let each_value = /*colors*/ ctx[2];
@@ -18496,7 +18588,7 @@ var app = (function () {
     			attr_dev(ol, "role", "menu");
     			attr_dev(ol, "aria-label", "Legend");
     			toggle_class(ol, "internal-labels", /*internalLabels*/ ctx[5]);
-    			add_location(ol, file$k, 33, 2, 1113);
+    			add_location(ol, file$k, 32, 2, 1032);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ol, anchor);
@@ -18544,14 +18636,14 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(33:0) {#if type === \\\"sequential\\\"}",
+    		source: "(32:0) {#if type === \\\"sequential\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (69:4) {#each colors as c, i}
+    // (68:4) {#each colors as c, i}
     function create_each_block_1$3(ctx) {
     	let li;
     	let div;
@@ -18601,13 +18693,13 @@ var app = (function () {
               #f9f9f9 100%
             )`);
 
-    			add_location(div, file$k, 80, 8, 2627);
+    			add_location(div, file$k, 79, 8, 2546);
     			attr_dev(li, "role", "menuitem");
     			attr_dev(li, "aria-label", li_aria_label_value = /*labels*/ ctx[3][/*i*/ ctx[19]]);
     			attr_dev(li, "tabindex", "0");
     			attr_dev(li, "class", "cat-item note svelte-h10xyx");
     			toggle_class(li, "selected-cat", /*selected*/ ctx[0] === /*i*/ ctx[19]);
-    			add_location(li, file$k, 69, 6, 2285);
+    			add_location(li, file$k, 68, 6, 2204);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -18678,14 +18770,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$3.name,
     		type: "each",
-    		source: "(69:4) {#each colors as c, i}",
+    		source: "(68:4) {#each colors as c, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:8) {#if internalLabels}
+    // (54:8) {#if internalLabels}
     function create_if_block_2$3(ctx) {
     	let t0;
     	let div;
@@ -18704,7 +18796,7 @@ var app = (function () {
     			div = element("div");
     			t1 = text$1(t1_value);
     			attr_dev(div, "class", "note internal-label svelte-h10xyx");
-    			add_location(div, file$k, 58, 10, 1932);
+    			add_location(div, file$k, 57, 10, 1851);
     		},
     		m: function mount(target, anchor) {
     			if (if_block) if_block.m(target, anchor);
@@ -18741,14 +18833,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(55:8) {#if internalLabels}",
+    		source: "(54:8) {#if internalLabels}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:8) {#if internalLabels[i]?.icon}
+    // (55:8) {#if internalLabels[i]?.icon}
     function create_if_block_3$1(ctx) {
     	let div;
     	let raw_value = svg[/*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.icon] + "";
@@ -18757,7 +18849,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", "icon svelte-h10xyx");
-    			add_location(div, file$k, 56, 10, 1847);
+    			add_location(div, file$k, 55, 10, 1766);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -18774,14 +18866,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(56:8) {#if internalLabels[i]?.icon}",
+    		source: "(55:8) {#if internalLabels[i]?.icon}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (61:8) {#if labels[i] !== undefined}
+    // (60:8) {#if labels[i] !== undefined}
     function create_if_block_1$7(ctx) {
     	let p;
     	let t_value = /*labels*/ ctx[3][/*i*/ ctx[19]] + "";
@@ -18792,7 +18884,7 @@ var app = (function () {
     			p = element("p");
     			t = text$1(t_value);
     			attr_dev(p, "class", "note svelte-h10xyx");
-    			add_location(p, file$k, 61, 10, 2084);
+    			add_location(p, file$k, 60, 10, 2003);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -18810,14 +18902,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$7.name,
     		type: "if",
-    		source: "(61:8) {#if labels[i] !== undefined}",
+    		source: "(60:8) {#if labels[i] !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (40:4) {#each colors as c, i}
+    // (39:4) {#each colors as c, i}
     function create_each_block$b(ctx) {
     	let li;
     	let t0;
@@ -18858,7 +18950,7 @@ var app = (function () {
     			? /*internalLabels*/ ctx[5][/*i*/ ctx[19]]?.border
     			: false);
 
-    			add_location(li, file$k, 40, 6, 1258);
+    			add_location(li, file$k, 39, 6, 1177);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -18940,7 +19032,7 @@ var app = (function () {
     		block,
     		id: create_each_block$b.name,
     		type: "each",
-    		source: "(40:4) {#each colors as c, i}",
+    		source: "(39:4) {#each colors as c, i}",
     		ctx
     	});
 
@@ -18967,7 +19059,7 @@ var app = (function () {
     			if (if_block) if_block.c();
     			if_block_anchor = empty$1();
     			attr_dev(h3, "class", "note title svelte-h10xyx");
-    			add_location(h3, file$k, 30, 0, 1040);
+    			add_location(h3, file$k, 29, 0, 959);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19040,7 +19132,6 @@ var app = (function () {
     			(acc, curr) => {
     				let distance = curr - acc;
     				ret.push(distance / globalDistance * 100);
-    				console.log('acc', acc, 'curr', curr, 'distance', distance, 'ret', ret);
     				return curr;
     			},
     			linearDomain[0]
@@ -19063,7 +19154,7 @@ var app = (function () {
     	];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$2.warn(`<Legend> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Legend> was created with unknown prop '${key}'`);
     	});
 
     	const mouseout_handler = () => $$invalidate(0, selected = null);
@@ -19158,15 +19249,15 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*colors*/ ctx[2] === undefined && !('colors' in props)) {
-    			console_1$2.warn("<Legend> was created without expected prop 'colors'");
+    			console.warn("<Legend> was created without expected prop 'colors'");
     		}
 
     		if (/*labels*/ ctx[3] === undefined && !('labels' in props)) {
-    			console_1$2.warn("<Legend> was created without expected prop 'labels'");
+    			console.warn("<Legend> was created without expected prop 'labels'");
     		}
 
     		if (/*selected*/ ctx[0] === undefined && !('selected' in props)) {
-    			console_1$2.warn("<Legend> was created without expected prop 'selected'");
+    			console.warn("<Legend> was created without expected prop 'selected'");
     		}
     	}
 
@@ -20388,7 +20479,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "listbox svelte-82po7i");
+    			attr_dev(div, "class", "listbox svelte-1fegpod");
     			add_location(div, file$f, 41, 4, 1170);
     		},
     		m: function mount(target, anchor) {
@@ -20491,7 +20582,7 @@ var app = (function () {
     			div = element("div");
     			if (default_slot) default_slot.c();
     			t = space();
-    			attr_dev(div, "class", "option svelte-82po7i");
+    			attr_dev(div, "class", "option svelte-1fegpod");
     			attr_dev(div, "tabindex", "-1");
     			add_location(div, file$f, 44, 8, 1280);
     		},
@@ -20648,12 +20739,12 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(path, "d", "M0.630249 1L6.36134 6.5L12.0924 1");
     			add_location(path, file$f, 36, 8, 1079);
-    			attr_dev(svg, "class", "arrow svelte-82po7i");
+    			attr_dev(svg, "class", "arrow svelte-1fegpod");
     			attr_dev(svg, "viewBox", "0 0 13 8");
     			add_location(svg, file$f, 35, 4, 1032);
-    			attr_dev(div0, "class", "selector-area svelte-82po7i");
+    			attr_dev(div0, "class", "selector-area svelte-1fegpod");
     			add_location(div0, file$f, 29, 0, 858);
-    			attr_dev(div1, "class", "madlib-selector svelte-82po7i");
+    			attr_dev(div1, "class", "madlib-selector svelte-1fegpod");
     			add_location(div1, file$f, 28, 0, 828);
     		},
     		l: function claim(nodes) {
@@ -21205,8 +21296,6 @@ var app = (function () {
 
     /* src/components/Title.svelte generated by Svelte v3.42.3 */
 
-    const { console: console_1$1 } = globals;
-
     function create_fragment$e(ctx) {
     	let html_tag;
     	let raw_value = /*block*/ ctx[0]?.title + "";
@@ -21252,11 +21341,10 @@ var app = (function () {
     	validate_slots('Title', slots, []);
     	
     	let { block } = $$props;
-    	console.log(block);
     	const writable_props = ['block'];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<Title> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Title> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
@@ -21292,7 +21380,7 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*block*/ ctx[0] === undefined && !('block' in props)) {
-    			console_1$1.warn("<Title> was created without expected prop 'block'");
+    			console.warn("<Title> was created without expected prop 'block'");
     		}
     	}
 
@@ -21306,8 +21394,6 @@ var app = (function () {
     }
 
     /* src/components/Head.svelte generated by Svelte v3.42.3 */
-
-    const { console: console_1 } = globals;
     const file$d = "src/components/Head.svelte";
 
     function get_each_context$9(ctx, list, i) {
@@ -21445,7 +21531,7 @@ var app = (function () {
     			}
 
     			attr_dev(h2, "class", "narrow align svelte-1bh7umy");
-    			add_location(h2, file$d, 43, 0, 996);
+    			add_location(h2, file$d, 43, 0, 1052);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21534,12 +21620,13 @@ var app = (function () {
     	let blocks = [];
     	const components = { dropdown: Dropdown, title: Title };
 
-    	const createBlocks = () => {
+    	const createBlocks = (number, dropdown) => {
     		let ret = [];
-    		if (title.includes("@number")) $$invalidate(3, title = title.replace("@number", number.toString()));
+    		let auxTitle = title;
+    		if (title.includes("@number")) auxTitle = title.replace("@number", number.toFixed(1).toString());
 
     		if (title.includes("@dropdown") && dropdown.length > 0) {
-    			let titleBlocks = title.split("@dropdown");
+    			let titleBlocks = auxTitle.split("@dropdown");
     			ret.push({ type: "title", title: titleBlocks[0] });
     			ret.push({ type: "dropdown", dropdown });
     			ret.push({ type: "title", title: titleBlocks[1] });
@@ -21547,15 +21634,13 @@ var app = (function () {
     			ret.push({ type: "title", title });
     		}
 
-    		console.log(ret);
     		return ret;
     	};
 
-    	blocks = createBlocks();
     	const writable_props = ['title', 'dropdown', 'selectedElement', 'number'];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<Head> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Head> was created with unknown prop '${key}'`);
     	});
 
     	function switch_instance_selectedElement_binding(value) {
@@ -21594,6 +21679,12 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*number, dropdown*/ 48) {
+    			$$invalidate(1, blocks = createBlocks(number, dropdown));
+    		}
+    	};
+
     	return [
     		selectedElement,
     		blocks,
@@ -21627,11 +21718,11 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*title*/ ctx[3] === undefined && !('title' in props)) {
-    			console_1.warn("<Head> was created without expected prop 'title'");
+    			console.warn("<Head> was created without expected prop 'title'");
     		}
 
     		if (/*selectedElement*/ ctx[0] === undefined && !('selectedElement' in props)) {
-    			console_1.warn("<Head> was created without expected prop 'selectedElement'");
+    			console.warn("<Head> was created without expected prop 'selectedElement'");
     		}
     	}
 
@@ -21668,19 +21759,36 @@ var app = (function () {
     	}
     }
 
-    var diabetes = "Diabetes";
-    var copd = "Chronic obstructive pulmonary disease";
-    var ischemic = "Ischemic heart disease";
-    var lri = "Lower respiratory infection";
-    var lungcancer = "Trachea, bronchus and lung cancer";
-    var stroke = "Stroke";
-    var nd = "Neonatal disorders";
+    var diabetes$1 = "Diabetes";
+    var copd$1 = "Chronic obstructive pulmonary disease";
+    var ischemic$1 = "Ischemic heart disease";
+    var lri$1 = "Lower respiratory infection";
+    var lungcancer$1 = "Trachea, bronchus and lung cancer";
+    var stroke$1 = "Stroke";
+    var nd$1 = "Neonatal disorders";
     var diseasesDictionary = {
-    	diabetes: diabetes,
+    	diabetes: diabetes$1,
+    	copd: copd$1,
+    	ischemic: ischemic$1,
+    	lri: lri$1,
+    	lungcancer: lungcancer$1,
+    	stroke: stroke$1,
+    	nd: nd$1
+    };
+
+    var copd = 0.211807181490399;
+    var diabetes = 0.133622721696892;
+    var ischemic = 0.145768494352016;
+    var lungcancer = 0.150586535898081;
+    var lri = 0.130921877227553;
+    var stroke = 0.174475849039067;
+    var nd = 0.0718777176537465;
+    var diseasesGlobal = {
     	copd: copd,
+    	diabetes: diabetes,
     	ischemic: ischemic,
-    	lri: lri,
     	lungcancer: lungcancer,
+    	lri: lri,
     	stroke: stroke,
     	nd: nd
     };
@@ -21694,7 +21802,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (367:2) {#if !isEmbed}
+    // (368:2) {#if !isEmbed && block.menu}
     function create_if_block_3(ctx) {
     	let sectiontitle;
     	let current;
@@ -21735,14 +21843,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(367:2) {#if !isEmbed}",
+    		source: "(368:2) {#if !isEmbed && block.menu}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (385:2) {#if isEmbed && embed !== "policies"}
+    // (386:2) {#if isEmbed && embed !== "policies"}
     function create_if_block_2$2(ctx) {
     	let div;
     	let p;
@@ -21760,12 +21868,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 389, 11, 16402);
-    			add_location(b, file$c, 389, 8, 16399);
-    			add_location(p, file$c, 386, 6, 16291);
+    			add_location(a, file$c, 390, 11, 16716);
+    			add_location(b, file$c, 390, 8, 16713);
+    			add_location(p, file$c, 387, 6, 16605);
     			attr_dev(div, "class", "embed-additional-text-desktop svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
-    			add_location(div, file$c, 385, 4, 16208);
+    			add_location(div, file$c, 386, 4, 16522);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21788,14 +21896,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(385:2) {#if isEmbed && embed !== \\\"policies\\\"}",
+    		source: "(386:2) {#if isEmbed && embed !== \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (396:4) <ScrollableX>
+    // (397:4) <ScrollableX>
     function create_default_slot$2(ctx) {
     	let div;
     	let cartogram;
@@ -21837,7 +21945,7 @@ var app = (function () {
     			set_style(div, "width", /*width*/ ctx[10] + "px");
     			set_style(div, "height", /*height*/ ctx[12] + "px");
     			attr_dev(div, "class", "cartogram-container svelte-8n8gc5");
-    			add_location(div, file$c, 396, 6, 16578);
+    			add_location(div, file$c, 397, 6, 16892);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21893,14 +22001,14 @@ var app = (function () {
     		block: block_1,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(396:4) <ScrollableX>",
+    		source: "(397:4) <ScrollableX>",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (411:2) {#if isEmbed && embed === "policies"}
+    // (412:2) {#if isEmbed && embed === "policies"}
     function create_if_block_1$5(ctx) {
     	let div;
     	let p;
@@ -21918,12 +22026,12 @@ var app = (function () {
     			a.textContent = "unep.org";
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://www.unep.org/");
-    			add_location(a, file$c, 418, 11, 17163);
-    			add_location(b, file$c, 418, 8, 17160);
-    			add_location(p, file$c, 415, 6, 17052);
+    			add_location(a, file$c, 419, 11, 17477);
+    			add_location(b, file$c, 419, 8, 17474);
+    			add_location(p, file$c, 416, 6, 17366);
     			attr_dev(div, "class", "embed-additional-text-desktop-policies svelte-8n8gc5");
     			toggle_class(div, "hide", /*cartogramAnnotation*/ ctx[13]);
-    			add_location(div, file$c, 411, 4, 16943);
+    			add_location(div, file$c, 412, 4, 17257);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21946,14 +22054,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(411:2) {#if isEmbed && embed === \\\"policies\\\"}",
+    		source: "(412:2) {#if isEmbed && embed === \\\"policies\\\"}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (424:2) {#if !isEmbed}
+    // (425:2) {#if !isEmbed}
     function create_if_block$6(ctx) {
     	let div;
     	let embedfooter;
@@ -21986,7 +22094,7 @@ var app = (function () {
 
     			each_1_anchor = empty$1();
     			attr_dev(div, "class", "footer svelte-8n8gc5");
-    			add_location(div, file$c, 424, 4, 17280);
+    			add_location(div, file$c, 425, 4, 17594);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22051,14 +22159,14 @@ var app = (function () {
     		block: block_1,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(424:2) {#if !isEmbed}",
+    		source: "(425:2) {#if !isEmbed}",
     		ctx
     	});
 
     	return block_1;
     }
 
-    // (429:4) {#each text as t}
+    // (430:4) {#each text as t}
     function create_each_block$8(ctx) {
     	let p;
     	let raw_value = /*t*/ ctx[27].p + "";
@@ -22067,7 +22175,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			attr_dev(p, "class", "col-text");
-    			add_location(p, file$c, 429, 6, 17371);
+    			add_location(p, file$c, 430, 6, 17685);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22084,7 +22192,7 @@ var app = (function () {
     		block: block_1,
     		id: create_each_block$8.name,
     		type: "each",
-    		source: "(429:4) {#each text as t}",
+    		source: "(430:4) {#each text as t}",
     		ctx
     	});
 
@@ -22108,7 +22216,7 @@ var app = (function () {
     	let t4;
     	let t5;
     	let current;
-    	let if_block0 = !/*isEmbed*/ ctx[6] && create_if_block_3(ctx);
+    	let if_block0 = !/*isEmbed*/ ctx[6] && /*block*/ ctx[2].menu && create_if_block_3(ctx);
 
     	function head_1_selectedElement_binding(value) {
     		/*head_1_selectedElement_binding*/ ctx[15](value);
@@ -22116,7 +22224,8 @@ var app = (function () {
 
     	let head_1_props = {
     		title: /*head*/ ctx[3],
-    		dropdown: /*block*/ ctx[2].dropdown
+    		dropdown: /*block*/ ctx[2].dropdown,
+    		number: diseasesGlobal[/*selectedDisease*/ ctx[7]] * 100
     	};
 
     	if (/*selectedDisease*/ ctx[7] !== void 0) {
@@ -22177,13 +22286,13 @@ var app = (function () {
     			t5 = space();
     			if (if_block3) if_block3.c();
     			attr_dev(div0, "class", "right-narrow");
-    			add_location(div0, file$c, 372, 2, 15760);
+    			add_location(div0, file$c, 373, 2, 16074);
     			attr_dev(div1, "class", "margin-breakout-mobile");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[19].call(div1));
-    			add_location(div1, file$c, 394, 2, 16500);
+    			add_location(div1, file$c, 395, 2, 16814);
     			attr_dev(section, "id", /*id*/ ctx[1]);
     			attr_dev(section, "class", "viz wide");
-    			add_location(section, file$c, 365, 0, 15582);
+    			add_location(section, file$c, 366, 0, 15780);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22209,11 +22318,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!/*isEmbed*/ ctx[6]) {
+    			if (!/*isEmbed*/ ctx[6] && /*block*/ ctx[2].menu) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty & /*isEmbed*/ 64) {
+    					if (dirty & /*isEmbed, block*/ 68) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -22235,6 +22344,7 @@ var app = (function () {
     			const head_1_changes = {};
     			if (dirty & /*head*/ 8) head_1_changes.title = /*head*/ ctx[3];
     			if (dirty & /*block*/ 4) head_1_changes.dropdown = /*block*/ ctx[2].dropdown;
+    			if (dirty & /*selectedDisease*/ 128) head_1_changes.number = diseasesGlobal[/*selectedDisease*/ ctx[7]] * 100;
 
     			if (!updating_selectedElement && dirty & /*selectedDisease*/ 128) {
     				updating_selectedElement = true;
@@ -22374,7 +22484,7 @@ var app = (function () {
     	let { text } = $$props;
     	let { embed } = $$props;
     	let { isEmbed = false } = $$props;
-    	let selectedDisease;
+    	let selectedDisease = "ischemic";
     	var PoliciesStatus;
 
     	(function (PoliciesStatus) {
@@ -22566,16 +22676,16 @@ var app = (function () {
     					{
     						color: colors[1],
     						start: policiesData.pYes,
-    						end: policiesData.pAlmost
+    						end: policiesData.pYes + policiesData.pAlmost
     					},
     					{
     						color: colors[2],
-    						start: policiesData.pAlmost,
-    						end: policiesData.pNo
+    						start: policiesData.pYes + policiesData.pAlmost,
+    						end: policiesData.pYes + policiesData.pAlmost + policiesData.pNo
     					},
     					{
     						color: colors[3],
-    						start: policiesData.pNo,
+    						start: policiesData.pYes + policiesData.pAlmost + policiesData.pNo,
     						end: 100
     					}
     				];
@@ -22750,6 +22860,7 @@ var app = (function () {
     		SectionTitle,
     		Head,
     		diseasesDictionary,
+    		diseasesGlobal,
     		data,
     		id,
     		block,
@@ -27048,7 +27159,7 @@ var app = (function () {
     		head: "Pollution Action Note – Data you need to know",
     		text: [
     			{
-    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths[a] every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
+    				p: "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
     			},
     			{
     				p: "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
@@ -27071,6 +27182,9 @@ var app = (function () {
     			},
     			{
     				p: "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
+    			},
+    			{
+    				p: "TK TK[a]"
     			}
     		]
     	},
@@ -27108,40 +27222,41 @@ var app = (function () {
     		]
     	},
     	{
+    		type: "death-causes"
+    	},
+    	{
     		type: "carto-world",
     		anchor: "diseases",
-    		menu: "Diseases",
-    		icon: "policies",
     		data: "diseases",
     		embed: "diseases",
-    		head: "@number of people died in 2019 from @dropdown attributable to fine particle outdoor air pollution.",
+    		head: "In 2019, <strong>@number% of deaths</strong> from @dropdown were attributable to fine particle outdoor air pollution.",
     		dropdown: [
     			{
-    				label: "Ischemic heart disease",
+    				label: "ischemic heart disease",
     				value: "ischemic"
     			},
     			{
-    				label: "Stroke",
+    				label: "stroke",
     				value: "stroke"
     			},
     			{
-    				label: "Lower respiratory infections",
+    				label: "lower respiratory infections",
     				value: "lri"
     			},
     			{
-    				label: "Trachea, bronchus, and lung cancer",
+    				label: "trachea, bronchus, and lung cancer",
     				value: "lungcancer"
     			},
     			{
-    				label: "Type 2 diabetes",
+    				label: "type 2 diabetes",
     				value: "diabetes"
     			},
     			{
-    				label: "Neonatal disorders",
+    				label: "neonatal disorders",
     				value: "nd"
     			},
     			{
-    				label: "Chronic obstructive pulmonary disease",
+    				label: "COPD",
     				value: "copd"
     			}
     		],
@@ -27169,20 +27284,32 @@ var app = (function () {
     		]
     	},
     	{
+    		type: "country-search",
+    		menu: "By country",
+    		icon: "search",
+    		head: "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
+    	},
+    	{
     		type: "methodology",
     		anchor: "methodology",
-    		menu: "Data",
+    		menu: "Data and notes",
     		icon: "data",
     		head: "About the data",
     		text: [
     			{
-    				p: "The boundaries and names shown, and the designations used on this map, do not imply official endorsement or acceptance by the United Nations."
+    				p: "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\"> Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
     			},
     			{
-    				p: "Data for PM<sub>2.5</sub> estimates, sectors and fuel sources, and attributable deaths comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales. <em>Nat Commun<em> <strong>12</strong>, 3594 (2021)"
+    				p: "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"​​https://www.nature.com/articles/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
     			},
     			{
-    				p: "The data for the sector and fuel sections was reaggregated from country data into UNEP regions, which are different to the ones used in the study.[b]"
+    				p: "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
+    			},
+    			{
+    				p: "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
+    			},
+    			{
+    				p: "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
     			}
     		]
     	}

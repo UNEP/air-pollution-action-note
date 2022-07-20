@@ -86,6 +86,9 @@
       ]
     },
     {
+      "type": "death-causes"
+    },
+    {
       "type": "carto-world",
       "anchor": "diseases",
       "data": "diseases",
