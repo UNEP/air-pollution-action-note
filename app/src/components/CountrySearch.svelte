@@ -188,10 +188,6 @@
   
 <style>
 
-  .death-causes-container {
-    margin-bottom: 50px;
-  }
-
   .primary-text {
     margin-bottom: 0;
     padding-bottom: 10px;

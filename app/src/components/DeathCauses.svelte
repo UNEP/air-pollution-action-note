@@ -143,6 +143,7 @@
       gap: 10px;
       row-gap: 20px;
       flex-wrap: wrap;
+      padding-bottom: 4rem;
     }
   
   </style>

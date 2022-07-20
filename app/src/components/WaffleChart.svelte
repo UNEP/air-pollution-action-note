@@ -85,7 +85,7 @@
     }
   
     .highlight {
-      background-color: #53367E;
+      background-color: #800080;
     }
   
   </style>
