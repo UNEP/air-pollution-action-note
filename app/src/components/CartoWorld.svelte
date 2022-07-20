@@ -342,9 +342,9 @@
         let policiesData = d.data as PoliciesData;
         let policiesCont = [
           policiesData.pYes,
-          policiesData.pAlmost - policiesData.pYes,
-          policiesData.pNo - policiesData.pAlmost,
-          100 - policiesData.pNo,
+          policiesData.pAlmost,
+          policiesData.pNo,
+          100 - (policiesData.pNo + policiesData.pAlmost + policiesData.pYes),
         ];
         const hasValue =
           legendIsHovered && policiesCont[legendElementSelectedIndex] > 0;

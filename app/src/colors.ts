@@ -19,6 +19,10 @@ export const colorPM25 = scaleThreshold<number, string>()
   .domain([...new Array(8)].map((d,i) => (i + 1) * 5))
   .range(['#D9D9D9', '#ffbbb0', '#F18EA7', '#D3609E', '#C14291', '#8D0085']);
 
+export const colorPM25distribution = scaleThreshold<number, string>()
+  .domain([...new Array(8)].map((d,i) => (i + 1) * 10))
+  .range(['#ffbeb3', '#f0a9ad', '#e094a7', '#d07fa1', '#c16b9b', '#b15694', '#a1408e','#912787', '#800080']);
+
 export const colorHealth = scaleThreshold<number, string>()
   .domain([20,40,60,80,100,120])
   .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
@@ -28,6 +32,6 @@ export const colorPolices = scaleOrdinal<string>()
   .domain(['Target met', 'On track', 'Not met', 'No data'])
   .range(['#004982', '#5A93B4', '#ffcb5b', '#cacaca']);
 
-  export const colorDiseases = scaleOrdinal<number, string>()
+export const colorDiseases = scaleOrdinal<number, string>()
   .domain([5, 15, 25, 35])
   .range(["#FFBEB3","#E094A7","#C16B9B","#A1408E","#800080"]);

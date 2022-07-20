@@ -11,6 +11,7 @@
 </div>
 
 <style lang="scss">
+
   .container {
     display: flex;
     gap: 10px;
@@ -18,12 +19,13 @@
     background-color: transparent;
     padding: 5px;
   }
+
   .icon {
     width: 36px;
     height: 36px;
   }
+
   .arrow {
-    transform: translateY(-0.1rem);
     width: 0.6em;
     height: 0.6em;
     fill: none;
@@ -31,4 +33,5 @@
     stroke-width: 1.5;
     justify-self: flex-end;
   }
+
 </style>
