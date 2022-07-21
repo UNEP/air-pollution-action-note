@@ -93,7 +93,7 @@
       "anchor": "diseases",
       "data": "diseases",
       "embed": "diseases",
-      "head": "In 2019, <strong>@number% of deaths</strong> from @dropdown were attributable to fine particle outdoor air pollution.",
+      "head": "@dropdown<br/><span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2019.",
       "dropdown": [
         {
           "label": "ischemic heart disease",
@@ -126,7 +126,7 @@
       ],
       "text": [
         {
-          "p": ""
+          "p": "TK TK"
         }
       ]
     },
@@ -151,7 +151,7 @@
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
-      "head": "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
+      "head": "[c]TK TK[d] See the impact of air pollution in each country and what they are doing to live with clean air."
     },
     {
       "type": "methodology",
@@ -190,5 +190,7 @@
     "description": ""
   },
   "a": [],
-  "b": []
+  "b": [],
+  "c": [],
+  "d": []
 }

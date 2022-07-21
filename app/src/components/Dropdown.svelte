@@ -17,7 +17,3 @@
 <Select options={items} let:option={option} bind:selected={selectedElement}>
     <DiseasesDropdownView option={option}/>
 </Select>
-
-<style lang="scss">
-
-</style>
