@@ -44,8 +44,6 @@
   export var legendTitle: string;
   export var slug: string;
 
-  console.log(slug);
-
   const title = legendTitle
     .replaceAll("\\<.*?\\>", "")
     .toLowerCase();
@@ -123,11 +121,9 @@
   $: cartogramData.sort((a,b) => a.y - b.y);
 
   const tileBorder = (color: string, type: string) => {
-    if (type === 'pm25' && color === "#ffbbb0"){
-      return (`1.5px solid ${chroma(color).darken(0.75)}`);
-    }
-    else if (type === 'health' && color === "#ffcb5b") {
-      return (`1.5px solid ${chroma(color).darken(1)}`);
+    if (type === 'pm25' || type === 'health') {
+      const darken = 40 / chroma.deltaE(color, '#F9F9F9');
+      return (`1px solid ${chroma(color).darken(darken)}`);
     }
     else
       return (`none`);
@@ -303,7 +299,7 @@
 
   .country {
     position: absolute;
-    border-radius: 4px;
+    border-radius: 6px;
     min-width: 7.5px;
     min-height: 7.5px;
     cursor: pointer;
@@ -313,6 +309,7 @@
     will-change: opacity, background-color, border-radius;
     background: grey;
     outline-color: black;
+    box-sizing: border-box;
   }
 
   .cartogram-resizing .country {
@@ -367,6 +364,6 @@
   }
 
   .country--shadow {
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+    box-shadow: 0 0 1rem rgb(0 0 0 / 0.25);
   }
 </style>
