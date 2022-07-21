@@ -91,7 +91,7 @@
   $: legendIsHovered = legendElementSelectedIndex !== null;
 
   const diseasesHoverText = (data: DiseasesData) => {
-    return `In <b>${data.name}</b>, a <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease]}</b> are caused by pollution`
+    return `In <b>${data.name}</b>, a <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease]}</b> are caused by fine particles`
   };
 
   const policiesHoverText = (data: PoliciesData): string => {
@@ -376,7 +376,7 @@
       nodeSize: 16,
       helpText: {
         code: "JPN",
-        text: () => `<strong>Each square is a country</strong>, representing the <strong>percentage of deaths</strong> due the pollution from <b>${diseasesDictionary[selectedDisease]}</b>`,
+        text: () => `<strong>Each square is a country</strong>, representing the <strong>percentage of deaths</strong> from <b>${diseasesDictionary[selectedDisease]}</b> attributable to fine particle outdoor air pollution`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
         diseasesHoverText(d.data as DiseasesData),

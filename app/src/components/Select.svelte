@@ -69,17 +69,19 @@
     display: inline-block;
     vertical-align: middle;
     line-height: 100%;
+    padding-bottom: 1.5rem;
+    font-size: 1rem;
   }
 
   .option {
-    width: 450px;
+    width: 360px;
     padding: 0 10px;
     background-color: #F2F2F2;
     display: block;
     border-top: #DCDCDC solid 1.5px;
     cursor: pointer;
     position: relative;
-    color: #a8a8a8;
+    color: #808080;
     &:hover {
       box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
       background-color: inherit;
@@ -112,7 +114,7 @@
 
     gap: 10px;
     margin-right: 10px;
-    width: 450px;
+    width: 360px;
 
     &:focus {
       outline: 0.1rem solid;
