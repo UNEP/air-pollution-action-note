@@ -93,7 +93,7 @@
       "anchor": "diseases",
       "data": "diseases",
       "embed": "diseases",
-      "head": "In 2019, <strong>@number% of deaths</strong> from @dropdown were attributable to fine particle outdoor air pollution.",
+      "head": "@dropdown<br/><span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2019.",
       "dropdown": [
         {
           "label": "ischemic heart disease",

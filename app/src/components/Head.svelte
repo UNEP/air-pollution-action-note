@@ -60,4 +60,9 @@
   .align {
     vertical-align: middle;
   }
+  .narrow{
+    & > :global(span){
+      font-size: 40px;
+    }
+  }
 </style>
