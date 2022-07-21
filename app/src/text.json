@@ -126,7 +126,7 @@
       ],
       "text": [
         {
-          "p": ""
+          "p": "TK TK"
         }
       ]
     },
@@ -151,7 +151,7 @@
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
-      "head": "[b]See the impact of air pollution in each country and what they are doing to live with clean air."
+      "head": "[c]TK TK[d] See the impact of air pollution in each country and what they are doing to live with clean air."
     },
     {
       "type": "methodology",
@@ -190,5 +190,7 @@
     "description": ""
   },
   "a": [],
-  "b": []
+  "b": [],
+  "c": [],
+  "d": []
 }
