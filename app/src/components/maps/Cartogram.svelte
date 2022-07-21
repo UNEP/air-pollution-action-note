@@ -17,6 +17,7 @@
 
 <script lang="ts">
   import * as d3 from 'src/d3';
+  import chroma from "chroma-js";
   import { throttle, trailingDebounce } from 'src/util';
   import Annotation from './Annotation.svelte';
 
@@ -42,6 +43,8 @@
   export var annotationShowing: boolean = false;
   export var legendTitle: string;
   export var slug: string;
+
+  console.log(slug);
 
   const title = legendTitle
     .replaceAll("\\<.*?\\>", "")
@@ -119,6 +122,17 @@
 
   $: cartogramData.sort((a,b) => a.y - b.y);
 
+  const tileBorder = (color: string, type: string) => {
+    if (type === 'pm25' && color === "#ffbbb0"){
+      return (`1.5px solid ${chroma(color).darken(0.75)}`);
+    }
+    else if (type === 'health' && color === "#ffcb5b") {
+      return (`1.5px solid ${chroma(color).darken(1)}`);
+    }
+    else
+      return (`none`);
+  }
+
   $: calcStyle = (d: CartogramDataPoint) => {
     const styles = [
       `left: ${d.left}px`,
@@ -126,6 +140,7 @@
       `width: ${d.width}px`,
       `height: ${d.height}px`,
       `background: ${d.color ? d.color : colorFn(d)};`,
+      `border: ${tileBorder(d.color, slug)};`
     ];
     return styles.join(';');
   };
@@ -289,6 +304,8 @@
   .country {
     position: absolute;
     border-radius: 4px;
+    min-width: 7.5px;
+    min-height: 7.5px;
     cursor: pointer;
     opacity: 1;
     z-index: 2;
