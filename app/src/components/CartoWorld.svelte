@@ -80,6 +80,7 @@
     (d) => d.id,
     (d) => d
   );
+
   let legendElementSelectedIndex: number = null;
   let clientWidth = 0;
   let width: number;
@@ -449,7 +450,7 @@
     <SectionTitle {block} />
   {/if}
 
-  <Head title={head} dropdown={block.dropdown} bind:selectedElement={selectedDisease} number={diseasesGlobal[selectedDisease] * 100}/>
+  <Head title={head} dropdown={block.dropdown} bind:selectedElement={selectedDisease} number={diseasesGlobal[selectedDisease] * 100} smaller={data==="diseases"}/>
 
   <div class="right-narrow">
     <Legend

@@ -7,6 +7,7 @@
   export let dropdown: DropdownOptionBlock[] = [];
   export let selectedElement: HealthDisease;
   export let number: number = 0;
+  export let smaller: boolean = false;
 
   let blocks: HeadBlock[] = [];
 
@@ -46,7 +47,7 @@
   $:  blocks = createBlocks(number, dropdown);
 </script>
 
-<h2 class="narrow align">
+<h2 class="narrow align" style={smaller? "font-size: 1.25rem;": ""}>
   {#each blocks as block}
     <svelte:component
       this={components[block.type]}
