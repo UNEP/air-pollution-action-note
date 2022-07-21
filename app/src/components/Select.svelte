@@ -69,6 +69,7 @@
     display: inline-block;
     vertical-align: middle;
     line-height: 100%;
+    margin-bottom: 30px;
   }
 
   .option {
