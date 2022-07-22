@@ -228,7 +228,7 @@
 
   .search-bar :global([data-svelte-typeahead] mark) {
     background-color: transparent;
-    color: #5A93B4ff;
+    color: #121212;
     font-weight: bold;
   }
 
@@ -237,11 +237,15 @@
     background-color: #f9f9f9;
   }
 
+  .search-bar :global(li) {
+    color: #808080
+  }
+
   .search-bar :global([data-svelte-search] input) {
     width: 100%;
     padding: 0.5rem 10px;
     background: #f9f9f9;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid #808080;
