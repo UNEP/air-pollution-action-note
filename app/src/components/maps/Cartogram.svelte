@@ -120,13 +120,9 @@
 
   $: cartogramData.sort((a,b) => a.y - b.y);
 
-  const tileBorder = (color: string, type: string) => {
-    if (type === 'pm25' || type === 'health') {
-      const darken = 40 / chroma.deltaE(color, '#F9F9F9');
+  const tileBorder = (color: string) => {
+      const darken = 1.5 / chroma.contrast(color, '#F9F9F9');
       return (`1px solid ${chroma(color).darken(darken)}`);
-    }
-    else
-      return (`none`);
   }
 
   $: calcStyle = (d: CartogramDataPoint) => {
@@ -136,7 +132,8 @@
       `width: ${d.width}px`,
       `height: ${d.height}px`,
       `background: ${d.color ? d.color : colorFn(d)};`,
-      `border: ${tileBorder(d.color, slug)};`
+      // `border: ${tileBorder(d.color)}`
+      `border: ${slug === 'pm25' || slug === 'health' ? tileBorder(d.color) : '1px solid #BDBDBD'};`
     ];
     return styles.join(';');
   };
@@ -364,6 +361,6 @@
   }
 
   .country--shadow {
-    box-shadow: 0 0 1rem rgb(0 0 0 / 0.25);
+    box-shadow: 0 2px .5rem rgb(0 0 0 / 0.5);
   }
 </style>
