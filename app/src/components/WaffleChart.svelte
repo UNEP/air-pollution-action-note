@@ -25,11 +25,11 @@
   
   
   <div class="container">
-    <div class="top-icons">
+    <div class="top-icons" aria-label="Icon for {causes[cause].name}">
       <svelte:component this={causes[cause].component}/>
     </div>
   
-    <div class="waffle-container">
+    <div class="waffle-container" aria-label="Chart displaying the percent of deaths from the disease attributable to air pollution">
       {#each Array(100) as _, i}
         <div class="circle" class:highlight={i < Math.round(percentage * 100)}/>
       {/each}
