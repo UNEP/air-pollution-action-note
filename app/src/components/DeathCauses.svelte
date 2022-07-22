@@ -128,13 +128,9 @@
   <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to fine particle outdoor air pollution</strong> in 2019.</h3>
 
   <div class="flex-container">
-    <WaffleChart percentage={data.stroke} cause={'stroke'}/>
-    <WaffleChart percentage={data.ischemic} cause={'ischemic'}/>
-    <WaffleChart percentage={data.lungcancer} cause={'lungcancer'}/>
-    <WaffleChart percentage={data.lri} cause={'lri'}/>
-    <WaffleChart percentage={data.copd} cause={'copd'}/>
-    <WaffleChart percentage={data.diabetes} cause={'diabetes'}/>
-    <WaffleChart percentage={data.nd} cause={'nd'}/>
+    {#each serializedData as d}
+      <WaffleChart percentage={d[1]} cause={d[0]}/>
+    {/each}
   </div>
   
   <style>
