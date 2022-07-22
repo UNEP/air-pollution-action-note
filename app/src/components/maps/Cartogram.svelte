@@ -17,6 +17,7 @@
 
 <script lang="ts">
   import * as d3 from 'src/d3';
+  import chroma from "chroma-js";
   import { throttle, trailingDebounce } from 'src/util';
   import Annotation from './Annotation.svelte';
 
@@ -119,6 +120,11 @@
 
   $: cartogramData.sort((a,b) => a.y - b.y);
 
+  const tileBorder = (color: string) => {
+      const darken = 1.5 / chroma.contrast(color, '#F9F9F9');
+      return (`1px solid ${chroma(color).darken(darken)}`);
+  }
+
   $: calcStyle = (d: CartogramDataPoint) => {
     const styles = [
       `left: ${d.left}px`,
@@ -126,6 +132,8 @@
       `width: ${d.width}px`,
       `height: ${d.height}px`,
       `background: ${d.color ? d.color : colorFn(d)};`,
+      // `border: ${tileBorder(d.color)}`
+      `border: ${slug === 'pm25' || slug === 'health' ? tileBorder(d.color) : '1px solid #BDBDBD'};`
     ];
     return styles.join(';');
   };
@@ -288,7 +296,9 @@
 
   .country {
     position: absolute;
-    border-radius: 4px;
+    border-radius: 6px;
+    min-width: 7.5px;
+    min-height: 7.5px;
     cursor: pointer;
     opacity: 1;
     z-index: 2;
@@ -296,6 +306,7 @@
     will-change: opacity, background-color, border-radius;
     background: grey;
     outline-color: black;
+    box-sizing: border-box;
   }
 
   .cartogram-resizing .country {
@@ -350,6 +361,6 @@
   }
 
   .country--shadow {
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+    box-shadow: 0 2px .5rem rgb(0 0 0 / 0.5);
   }
 </style>
