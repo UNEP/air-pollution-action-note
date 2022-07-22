@@ -124,7 +124,9 @@
   {#if text}
     <p class="col-text">{@html text}</p>
   {/if}
-  
+
+  <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to fine particle outdoor air pollution</strong> in 2019.</h3>
+
   <div class="flex-container">
     <WaffleChart percentage={data.stroke} cause={'stroke'}/>
     <WaffleChart percentage={data.ischemic} cause={'ischemic'}/>
@@ -144,6 +146,10 @@
       row-gap: 20px;
       flex-wrap: wrap;
       padding-bottom: 4rem;
+    }
+
+    .note {
+      padding-bottom: 2rem;
     }
   
   </style>
