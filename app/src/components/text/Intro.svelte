@@ -1,7 +1,18 @@
 <script>
+import * as d3 from 'src/d3';
 export let text;
 export let head;
 export let breadcrumbs;
+export let pub;
+export let update;
+
+const parseDate = d3.timeParse("%Y-%m-%d");
+const formatDate = (date) => date.toLocaleString('en-GB', {
+  day: "numeric",
+  month: "short",
+  year: "numeric"
+})
+
 </script>
 <section class='intro col-text'>
   <nav class="inner-nav" role="navigation" labelledby="breadcrumbs-label">
@@ -27,6 +38,17 @@ export let breadcrumbs;
   {/each}
   {/if}
 
+  {#if pub}
+    <p class="date">
+      Published <time datetime="{pub}">{formatDate(parseDate(pub))}</time>
+      {#if head}
+        <span class="update">
+        Updated <time datetime="{update}">{formatDate(parseDate(update))}</time>
+        </span>
+      {/if}
+    </p>
+  {/if}
+
 </section>
 
 <style>
@@ -38,6 +60,13 @@ export let breadcrumbs;
     list-style-type: none;
     margin:0;
     padding: 0;
+  }
+  .date {
+    color: #505050;
+    font-size: 1rem;
+  }
+  .update {
+    font-weight: 400;
   }
   li {
     display: inline-block;
