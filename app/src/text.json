@@ -39,16 +39,16 @@
       "icon": "pm25",
       "data": "pm25",
       "embed": "pm25",
-      "head": "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest air quality guideline levels were not met.",
+      "head": "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest <strong>air quality guideline levels</a> were not met.",
       "text": [
         {
           "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
         },
         {
-          "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
+          "p": "[a][b]In 2021, the WHO updated the annual mean <strong>air quality guideline for PM<sub>2.5</sub> to 5µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as stepping stones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
         },
         {
-          "p": "TK TK[a]"
+          "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
         }
       ]
     },
@@ -126,7 +126,7 @@
       ],
       "text": [
         {
-          "p": "TK TK"
+          "p": "Exposure to fine particle outdoor air pollution is the largest environmental risk factor for human health and one of the leading risk factor for death worldwide. The percentage of deaths from specific diseases that is linked to fine particles varies greatly depending of where you live. In countries in the Middle East and North Africa region, outdoor air pollution is responsible for 1 in 3 deaths from stroke, ischemic heart disease and chronic obstructive pulmonary disease (COPD)."
         }
       ]
     },
@@ -151,7 +151,7 @@
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
-      "head": "[c]TK TK[d] See the impact of air pollution in each country and what they are doing to live with clean air."
+      "head": "[e] See the impact of air pollution in each country and what they are doing to live with clean air."
     },
     {
       "type": "methodology",
@@ -161,10 +161,10 @@
       "head": "About the data",
       "text": [
         {
-          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\"> Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
+          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
         },
         {
-          "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"​​https://www.nature.com/articles/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
+          "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"https://doi.org/10.1038/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
         },
         {
           "p": "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
@@ -192,5 +192,6 @@
   "a": [],
   "b": [],
   "c": [],
-  "d": []
+  "d": [],
+  "e": []
 }

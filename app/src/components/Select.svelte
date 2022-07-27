@@ -36,7 +36,7 @@
   
 <svelte:window on:keydown={handleKeyDown} />
   
-<div class="madlib-selector">
+<div class="narrow madlib-selector">
 <div class="selector-area"
     on:click={() => listboxVisible = !listboxVisible}
     on:blur={() => listboxVisible = false}
@@ -49,7 +49,7 @@
 </div>
 
 {#if listboxVisible}
-  <div class="listbox" transition:scale>
+  <div class="narrow listbox" transition:scale>
     {#each options as opt, i}
         {#if i !== currentIndex}
           <div class="option"
@@ -74,7 +74,6 @@
   }
 
   .option {
-    width: 360px;
     padding: 0 10px;
     background-color: #F2F2F2;
     display: block;
@@ -82,6 +81,7 @@
     cursor: pointer;
     position: relative;
     color: #808080;
+
     &:hover {
       box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
       background-color: inherit;
@@ -113,8 +113,6 @@
     justify-content: space-between;
 
     gap: 10px;
-    margin-right: 10px;
-    width: 360px;
 
     &:focus {
       outline: 0.1rem solid;
@@ -128,6 +126,7 @@
     background-color: #f9f9f9;
     border: none;
     z-index: 1;
+    overflow: hidden;
   }
 
   .arrow {
