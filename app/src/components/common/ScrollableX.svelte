@@ -77,17 +77,17 @@
     top: 0;
     bottom: 0;
     display: none;
-    width: 70px;
+    width: 4rem;
     z-index: 5;
   }
 
   .overflow-right {
     right: 0;
-    background: linear-gradient(90deg, rgba(243,243,243,0) 0%, rgba(243,243,243,1) 100%);
+    background: linear-gradient(90deg, rgba(249,249,249,0) 0%,  rgba(249,249,249,.8) 60%, rgba(249,249,249,1) 100%);
   }
   .overflow-left {
     left: 0;
-    background: linear-gradient(90deg, rgba(243,243,243,1) 0%, rgba(243,243,243,0) 100%);
+    background: linear-gradient(90deg, rgba(249,249,249,1) 0%, rgba(249,249,249,.8) 60%, rgba(249,249,249,0) 100%);
   }
 
   .overflow-visible {
@@ -95,7 +95,7 @@
   }
 
   .overflow div {
-    width: 18px;
+    width: 1.75rem;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -110,7 +110,7 @@
     left: 2px;
   }
   .overflow div :global(svg) {
-    fill: #999999;
+    fill: #222;
     width: 100%;
   }
 
