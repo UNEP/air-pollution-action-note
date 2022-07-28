@@ -13,9 +13,13 @@ body {
   font-style: normal;
 }
 
-article, .page-header, .footer-content {
+article, .page-header {
   max-width: 75rem;
   margin: 0 1rem;
+}
+
+.footer-content {
+  margin: 0;
 }
 
 .margin-breakout-mobile {

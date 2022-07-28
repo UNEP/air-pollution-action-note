@@ -83,11 +83,11 @@
 
   .overflow-right {
     right: 0;
-    background: linear-gradient(90deg, rgba(249,249,249,0) 0%,  rgba(249,249,249,.8) 60%, rgba(249,249,249,1) 100%);
+    background: linear-gradient(90deg, rgba(249,249,249,0) 0%, rgba(249,249,249,1) 100%);
   }
   .overflow-left {
     left: 0;
-    background: linear-gradient(90deg, rgba(249,249,249,1) 0%, rgba(249,249,249,.8) 60%, rgba(249,249,249,0) 100%);
+    background: linear-gradient(90deg, rgba(249,249,249,1) 0%, rgba(249,249,249,0) 100%);
   }
 
   .overflow-visible {
@@ -95,7 +95,7 @@
   }
 
   .overflow div {
-    width: 1.75rem;
+    width: 2rem;
     position: absolute;
     bottom: 0;
     top: 0;

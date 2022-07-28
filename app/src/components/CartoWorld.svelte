@@ -92,7 +92,7 @@
   $: legendIsHovered = legendElementSelectedIndex !== null;
 
   const diseasesHoverText = (data: DiseasesData) => {
-    return `In <b>${data.name}</b>, a <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease]}</b> are caused by fine particles`
+    return `In <b>${data.name}</b>, <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease].toLocaleLowerCase()}</b> are attributable to outdoor fine particles.`
   };
 
   const policiesHoverText = (data: PoliciesData): string => {
@@ -377,7 +377,7 @@
       nodeSize: 16,
       helpText: {
         code: "JPN",
-        text: () => `<strong>Each square is a country</strong>, representing the <strong>percentage of deaths</strong> from <b>${diseasesDictionary[selectedDisease]}</b> attributable to fine particle outdoor air pollution`,
+        text: () => `<strong>Each square is a country</strong>, the filled area depicts the <strong>percentage of deaths</strong> from <b>${diseasesDictionary[selectedDisease].toLocaleLowerCase()}</b> attributable to fine particle outdoor air pollution.`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
         diseasesHoverText(d.data as DiseasesData),
@@ -428,7 +428,7 @@
         }
       },
       color: colorDiseases,
-      legendTitle: `<strong>Percent of deaths</strong> from the disease that can be attributed to fine particles`,
+      legendTitle: `<strong>Percent of deaths</strong> from the disease that can be attributed to outdoor fine particles`,
       legendDomain: colorDiseases.domain().map(e => e+'%'),
       legendType: "sequential",
       domain: [1300, 1300 / (740 / 420)] as [number, number],
