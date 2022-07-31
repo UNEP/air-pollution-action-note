@@ -136,5 +136,13 @@
     stroke: currentColor;
     stroke-width: 1.5;
   }
+  @media (max-width: 480px) {
+    .selector-area{
+      width: auto;
+    }
+    .madlib-selector{
+      width: 100%;
+    }
+  }
 
 </style>
