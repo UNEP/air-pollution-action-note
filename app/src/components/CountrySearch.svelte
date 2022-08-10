@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte/internal";
   import Typeahead from "svelte-typeahead";
   import LinearDistribution from "./charts/LinearDistribution.svelte";
   import DeathCauses from "./DeathCauses.svelte";
@@ -8,6 +9,8 @@
   import healthData from 'src/data/health.json';
   import policiesData from 'src/data/policiesData.json';
   import policiesDescriptions from 'src/data/policiesDescriptions.json';
+  import countryDictionary from 'src/data/countryDictionary.json';
+  import alpha2Data from 'src/data/alpha2countries.json';
   import SectionTitle from "./SectionTitle.svelte";
   import PolicyGrid from "./PolicyGrid.svelte";
   import { createLookup } from "src/util";
@@ -18,6 +21,52 @@
   export var id: string;
   export var head: string;
   export var block: Content;
+
+  const geolocationOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function geolocationSuccess(pos) {
+    getCountryFromCoordinates(pos.coords.latitude, pos.coords.longitude);
+  }
+
+  function geolocationError(err) {
+    getRandomCountry();
+  }
+
+  const getCountryFromCoordinates = async (lat: number, long: number) => {
+    fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${long}`)
+    .then(response => response.json())
+    .then(data => {
+      let alpha2 = (data.address.country_code).toUpperCase();
+      let alpha3 = geolocationLookUp[alpha2];
+      typeaheadValue = countryNameLookUp[alpha3];
+      maxNumSearchResults = 0;
+      selectCountry(alpha3);
+    }).catch(error => {
+      getRandomCountry();
+      return [];
+    });
+  }
+
+  const getRandomCountry = () => {
+    let filteredCountries = countryDictionary.filter(function (c) {
+      return !countriesToBeFiltered.includes(c.id);
+    });
+    let randomPos = Math.floor(Math.random() * filteredCountries.length);
+    let randomCountryID = filteredCountries[randomPos].id;
+    typeaheadValue = countryNameLookUp[randomCountryID];
+    maxNumSearchResults = 0;
+    selectCountry(randomCountryID);
+  }
+
+  onMount(async () => {
+    navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
+  });  
+
+  const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
 
   const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
     "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
@@ -36,10 +85,12 @@
   const healthLookUp = createLookup(healthData, h => h.id, h => h);
   const deathsLookUp = createLookup(deathsdata, d => d.id, d => d);
   const policiesLookUp = createLookup(policiesData, p => p.id, p => p);
+  const geolocationLookUp = createLookup(alpha2Data, a => a.alpha_2, p => p.id);
+  const countryNameLookUp = createLookup(countryDictionary, c => c.id, c => c.name);
 
-  const maxNumSearchResults = 5;
+  let maxNumSearchResults = 5;
 
-  $: currentCountry = {
+  let currentCountry = {
     id: "",
     PM25country: 0,
     timesPM25: 0,
@@ -76,14 +127,6 @@
     }
   }
 
-  const generatePoliciesData = (countryID: string) => {
-    let countryInfo = policiesLookUp[countryID];
-    if (countryInfo) {
-      return countryInfo;
-    }
-  }
-  
-
   function toFilter(countryID:string){
     if (!CTBF_lookUp[countryID])
       return false;
@@ -95,27 +138,28 @@
   const filter = (item) => toFilter(item.id);
 
   function updateSelectedCountry(event, detail) {
-    if (event === "select"){
-      let newID = detail.original.id;
-      currentCountry.id = newID;
-      currentCountry.PM25country = pm25LookUp[newID].pm25;
-      currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 5).toFixed(1));
-      currentCountry.totalDeaths = healthLookUp[newID].deaths;
-      currentCountry.deathRatio = healthLookUp[newID].rate;
-      countrySelected = true;
-    }
-    else{
-      currentCountry.id = "";
-      currentCountry.PM25country = 0;
-      currentCountry.timesPM25 = 0;
-      currentCountry.totalDeaths = 0;
-      currentCountry.deathRatio = 0;
-      countrySelected = false;
-    }
+    event === "select" ? selectCountry(detail.original.id) : clearCountry();
+  }
+
+  const selectCountry = (newID: string) => {
+    currentCountry.id = newID;
+    currentCountry.PM25country = pm25LookUp[newID].pm25;
+    currentCountry.timesPM25 = parseFloat((currentCountry.PM25country / 5).toFixed(1));
+    currentCountry.totalDeaths = healthLookUp[newID].deaths;
+    currentCountry.deathRatio = healthLookUp[newID].rate;
+    countrySelected = true;
+  }
+
+  const clearCountry = () => {
+    currentCountry.id = "";
+    currentCountry.PM25country = 0;
+    currentCountry.timesPM25 = 0;
+    currentCountry.totalDeaths = 0;
+    currentCountry.deathRatio = 0;
+    countrySelected = false;
   }
 
   $: countryDeathsData = generateDeathsData(currentCountry.id);
-  $: countryPoliciesData = generatePoliciesData(currentCountry.id);
 
   $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
   + currentCountry.timesPM25 + ` times WHO's guideline.`;
@@ -128,7 +172,7 @@
   const maxDistributionSize = 385;
   let linearDistributionsWidth: number = maxDistributionSize;
 
-  const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
+  let typeaheadValue: string;
 
 </script>
   
@@ -139,14 +183,16 @@
   <h2 class='narrow'>{@html head}</h2>
 
   <div class="search-bar">
-    <Typeahead 
-      data={countries} 
+    <Typeahead
+      data={countries}
+      bind:value={typeaheadValue} 
       {extract} 
       {filter}
       on:select={(e) => updateSelectedCountry("select", e.detail)}
       on:clear={(e) => updateSelectedCountry("clear", e.detail)}
+      on:focus={() => maxNumSearchResults = 5}
       limit={maxNumSearchResults}
-      placeholder={ `Search a country`}
+      placeholder={`Search a country`}
       hideLabel>
     </Typeahead>
   </div>
