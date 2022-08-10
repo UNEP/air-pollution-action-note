@@ -69,7 +69,7 @@
   const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
 
   const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
-    "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH"];
+    "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH", "COK"];
 
   const countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
     return { id: d.id, value: d.pm25 };
