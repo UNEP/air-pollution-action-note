@@ -271,27 +271,6 @@
     z-index: 5;
   }
 
-  @-webkit-keyframes SearchBarAnimation {
-    0%{background-position:0% 55%}
-    50%{background-position:100% 46%}
-    100%{background-position:0% 55%}
-  }
-  @-moz-keyframes SearchBarAnimation {
-    0%{background-position:0% 55%}
-    50%{background-position:100% 46%}
-    100%{background-position:0% 55%}
-  }
-  @-o-keyframes SearchBarAnimation {
-    0%{background-position:0% 55%}
-    50%{background-position:100% 46%}
-    100%{background-position:0% 55%}
-  }
-  @keyframes SearchBarAnimation {
-    0%{background-position:0% 55%}
-    50%{background-position:100% 46%}
-    100%{background-position:0% 55%}
-  }
-
   .search-bar :global([data-svelte-typeahead] mark) {
     background-color: transparent;
     color: #121212;
@@ -313,16 +292,37 @@
     font-size: 1.5rem;
     border: 0;
     border-radius: 0;
-    border-bottom: 1px solid #808080;
+    border-bottom: 0px solid #808080;
     border-radius: 6px;
     font-family: Roboto;
     font-weight: 300;
-    background: linear-gradient(311deg, #f9f9f9, #e2e2e2);
-    background-size: 400% 400%;
+    background: linear-gradient(120deg, #f9f9f9, #e2e2e2);
+    background-size: 300% 300%;
     -webkit-animation: SearchBarAnimation 3s ease infinite;
     -moz-animation: SearchBarAnimation 3s ease infinite;
     -o-animation: SearchBarAnimation 3s ease infinite;
     animation: SearchBarAnimation 3s ease infinite;
+  }
+
+  @-webkit-keyframes SearchBarAnimation {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+  }
+  @-moz-keyframes SearchBarAnimation {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+  }
+  @-o-keyframes SearchBarAnimation {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+  }
+  @keyframes SearchBarAnimation {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
   }
 
   .search-bar :global([data-svelte-search] label) {
