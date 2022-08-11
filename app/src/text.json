@@ -47,7 +47,7 @@
           "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
         },
         {
-          "p": "[a][b]In 2021, the WHO updated the annual mean <strong>air quality guideline for PM<sub>2.5</sub> to 5µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as stepping stones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
+          "p": "In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM<sub>2.5</sub> annual mean <strong>air quality guideline to 5µg/m<sup>3</sup></strong>. The update halves the previous 2005 guideline level of 10µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as stepping stones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
         },
         {
           "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
@@ -128,7 +128,7 @@
       ],
       "text": [
         {
-          "p": "Exposure to fine particle outdoor air pollution is the largest environmental risk factor for human health and one of the leading risk factor for death worldwide. The percentage of deaths from specific diseases that is linked to fine particles varies greatly depending of where you live. In countries in the Middle East and North Africa region, outdoor air pollution is responsible for 1 in 3 deaths from stroke, ischemic heart disease and chronic obstructive pulmonary disease (COPD)."
+          "p": "Exposure to fine particle outdoor air pollution is the largest environmental risk factor for premature death globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, air pollution is linked to 20 percent of ischemic heart disease deaths globally but over 30 percent in the Middle East and North Africa regions. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
         }
       ]
     },
@@ -153,7 +153,7 @@
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
-      "head": "[e] See the impact of air pollution in each country and what they are doing to live with clean air."
+      "head": "See how air pollution is impacting individual countries today and the actions they are taking to achieve clean air."
     },
     {
       "type": "methodology",
@@ -190,10 +190,5 @@
     "title": "",
     "url": "",
     "description": ""
-  },
-  "a": [],
-  "b": [],
-  "c": [],
-  "d": [],
-  "e": []
+  }
 }
