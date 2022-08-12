@@ -5,6 +5,11 @@
   export let data: PoliciesData;
   export let desc: PoliciesDescription;
 
+  const countriesWithArticle = 
+    ["BHS", "CAF", "COM", "COD", "COG", "DOM", "GMB", 
+    "KOR", "PRK", "LAO", "MHL", "MDA", "NLD", "NER", 
+    "PHL", "RUS", "SYR", "TZA", "ARE", "GBR", "USA"];
+
   interface PoliciesDescription {
     id: string,
     "ind-1": string,
@@ -62,8 +67,11 @@
     let hasPoliciesData = Math.min(...policies.map(p => p.value)) != 4;
     
     if (hasPoliciesData) {
+
+      let country = hasArticle ? "The " + countryName : countryName;
       let text: string = "";
       let metTargets: string[] = [];
+
       policies.forEach(p => {
         if (p.value === 1){
           metTargets.push(policy_name[p.id].toLowerCase());
@@ -71,14 +79,14 @@
       });
 
       if (metTargets.length <= 0){
-        text = countryName + ` hasn't met <b>any targets</b>.`;
+        text = country + ` hasn't met <b>any targets</b>.`;
       }
       else {
         if (metTargets.length >= 9) {
-          text = countryName + ` has met <b>all targets</b>: `;
+          text = country + ` has met <b>all targets</b>: `;
         }
         else {
-          text = countryName + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
+          text = country + ` has met <b>` + metTargets.length + ` out of 9 targets</b>: `;
         }
 
         let n = 0;
@@ -100,10 +108,13 @@
       }
       return text;
     }
-    else
-      return ("No data for " + countryName + "'" + (countryName.slice(-1) === 's' ? '' : 's') + " targets.");
+    else {
+      let country = hasArticle ? "the " + countryName : countryName;
+      return ("No data for " + country + "'" + (countryName.slice(-1) === 's' ? '' : 's') + " targets.");
+    }
   }
 
+  $: hasArticle = countriesWithArticle.includes(data.id);
   $: countryName = data.name;
   $: policies = generatePolicies(data);
   $: text = generateText(data);
