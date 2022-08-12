@@ -101,8 +101,7 @@
       return text;
     }
     else
-      return ("No data for " + countryName + "'s targets.");
-
+      return ("No data for " + countryName + "'" + (countryName.slice(-1) === 's' ? '' : 's') + " targets.");
   }
 
   $: countryName = data.name;
