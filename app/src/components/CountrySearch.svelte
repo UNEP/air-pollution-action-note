@@ -45,7 +45,6 @@
       let alpha2 = (data.address.country_code).toUpperCase();
       let alpha3 = geolocationLookUp[alpha2];
       typeaheadValue = countryNameLookUp[alpha3];
-      maxNumSearchResults = _dropdown ? 5 : 0;
       selectCountry(alpha3);
     }).catch(error => {
       getRandomCountry();
@@ -60,7 +59,6 @@
     let randomPos = Math.floor(Math.random() * filteredCountries.length);
     let randomCountryID = filteredCountries[randomPos].id;
     typeaheadValue = countryNameLookUp[randomCountryID];
-    maxNumSearchResults = 0;
     selectCountry(randomCountryID);
   }
 
@@ -70,8 +68,10 @@
 
   const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
 
-  const countriesToBeFiltered = ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
-    "GIB","VAT","JEY","LIE","MSR","NCL","NFK","PCN","SHN","SPM","TCA","ESH","COK"];
+  const countriesToBeFiltered = 
+    ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
+    "GIB","VAT","JEY","LIE","MSR","NCL","NFK",
+    "PCN","SHN","SPM","TCA","ESH","COK","MNP"];
 
   const countryPM25Data: CountryDataSquare[] = pm25data.map(d => {
     return { id: d.id, value: d.pm25 };
@@ -90,7 +90,9 @@
   const geolocationLookUp = createLookup(alpha2Data, a => a.alpha_2, p => p.id);
   const countryNameLookUp = createLookup(countryDictionary, c => c.id, c => c.name);
 
-  let maxNumSearchResults = 5;
+  let numResults = 5;
+  let typeaheadValue: string;
+  let showDropdown = false;
 
   let currentCountry = {
     id: "",
@@ -165,19 +167,16 @@
   const maxDistributionSize = 385;
   let linearDistributionsWidth: number = maxDistributionSize;
 
-  let typeaheadValue: string;
-  let _dropdown = false;
-
   $: countryDeathsData = generateDeathsData(currentCountry.id);
 
   $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
-  + currentCountry.timesPM25 + ` times WHO's guideline.`;
+    + currentCountry.timesPM25 + ` times WHO's guideline.`;
 
   $: PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
     pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
     + ` in total in the country).`;
 
-  $: maxNumSearchResults = _dropdown ? MAX_RESULTS : 0;
+  $: numResults = showDropdown ? MAX_RESULTS : 0;
 
 </script>
   
@@ -195,8 +194,8 @@
       {filter}
       on:select={(e) => updateSelectedCountry("select", e.detail)}
       on:clear={(e) => updateSelectedCountry("clear", e.detail)}
-      on:focus={() => _dropdown = true}
-      limit={maxNumSearchResults}
+      on:focus={() => showDropdown = true}
+      limit={numResults}
       placeholder={`Search a country`}
       hideLabel
     />
