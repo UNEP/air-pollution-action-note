@@ -22,6 +22,8 @@
   export var head: string;
   export var block: Content;
 
+  const MAX_RESULTS = 5;
+
   const geolocationOptions = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -43,11 +45,11 @@
       let alpha2 = (data.address.country_code).toUpperCase();
       let alpha3 = geolocationLookUp[alpha2];
       typeaheadValue = countryNameLookUp[alpha3];
-      maxNumSearchResults = 0;
+      maxNumSearchResults = _dropdown ? 5 : 0;
       selectCountry(alpha3);
     }).catch(error => {
       getRandomCountry();
-      return [];
+      return []; 
     });
   }
 
@@ -159,6 +161,13 @@
     countrySelected = false;
   }
 
+  const minDistributionSize = 150;
+  const maxDistributionSize = 385;
+  let linearDistributionsWidth: number = maxDistributionSize;
+
+  let typeaheadValue: string;
+  let _dropdown = false;
+
   $: countryDeathsData = generateDeathsData(currentCountry.id);
 
   $: PM25commentary = ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` 
@@ -168,11 +177,7 @@
     pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
     + ` in total in the country).`;
 
-  const minDistributionSize = 150;
-  const maxDistributionSize = 385;
-  let linearDistributionsWidth: number = maxDistributionSize;
-
-  let typeaheadValue: string;
+  $: maxNumSearchResults = _dropdown ? MAX_RESULTS : 0;
 
 </script>
   
@@ -190,11 +195,11 @@
       {filter}
       on:select={(e) => updateSelectedCountry("select", e.detail)}
       on:clear={(e) => updateSelectedCountry("clear", e.detail)}
-      on:focus={() => maxNumSearchResults = 5}
+      on:focus={() => _dropdown = true}
       limit={maxNumSearchResults}
       placeholder={`Search a country`}
-      hideLabel>
-    </Typeahead>
+      hideLabel
+    />
   </div>
 
   {#if countrySelected}
