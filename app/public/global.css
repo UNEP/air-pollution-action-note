@@ -13,13 +13,9 @@ body {
   font-style: normal;
 }
 
-article, .page-header {
+article, .page-header, .footer-content {
   max-width: 75rem;
   margin: 0 1rem;
-}
-
-.footer-content {
-  margin: 0;
 }
 
 .margin-breakout-mobile {
@@ -27,11 +23,8 @@ article, .page-header {
 }
 
 @media (min-width: 400px) {
-  article, .page-header {
+  article, .page-header, .footer-content {
     margin: 0 2rem;
-  }
-  .footer-content {
-    margin: 0;
   }
   .margin-breakout-mobile {
     margin: 0 -2rem;
@@ -158,13 +151,9 @@ sup, sub { line-height: 0; }
 
   h2 {font-size: 1.5rem; }
 
-  article, .page-header {
+  article, .page-header, .footer-content {
     margin-left: 3.75rem;
     margin-right: 1.5rem;
-  }
-
-  .footer-content {
-    margin-left: 0;
   }
 
   h1 { font-size: 3rem; }

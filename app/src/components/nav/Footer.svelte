@@ -17,7 +17,7 @@
     ];
 </script>
 
-<footer class="fs footer">
+<footer class="footer">
     <nav class="footer-content" role="navigation" labelledby="footer-label">
         <Logo color="white" />
         <h3 id="footer-label" class="hidden">Footer menu</h3>
