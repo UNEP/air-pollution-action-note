@@ -9,7 +9,8 @@ In 2019, 99% of the world population was living in places where the WHO’s stri
 * The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.
 
 TKTKTKT
-* [Ambient particulate matter pollution exposure summary estimates](https://ghdx.healthdata.org/sites/default/files/record-attached-files/IHME_GBD_2019_AIR_POLLUTION_1990_2019_PM.zip)
+* [Ambient particulate matter pollution exposure summary estimates](https://ghdx.healthdata.org/sites/default/files/record-attached-files/IHME_GBD_2019_AIR_POLLUTION_1990_2019_PM.zip), from the Institute for Health Metrics and Evaluation (IHME), an independent global health research center at the University of Washington. The Global Health Data Exchange (GHDx) is a data catalog created and supported by IHME.
+
 * [Total deaths and deaths per 100,000 people attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results?params=gbd-api-2019-permalink/6e3468190433cfde61c4d81616db6945) (You need to register)
 * [Percent of deaths from a selected set of illnesses attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results/?params=gbd-api-2019-permalink/0e754a60c0fefcbbe6801c994e9ab274) (You need to register)
 * TK TK Sectors
