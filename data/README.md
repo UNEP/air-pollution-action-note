@@ -1,6 +1,14 @@
 # Data Description
-To create the Air Pollution Note dashboard we use data from different sourceS TKTKTKT
+The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue.
+In 2019, 99% of the world population was living in places where the WHO’s strictest air quality guideline levels were not met. Data for the Current State TKTKT 
 
+* Data for PM2.5 exposure and attributable deaths comes from Health Effects Institute. 2020. State of Global Air 2020. Data source: Global Burden of Disease Study 2019. IHME, 2020.
+* Data for sectors breakdown comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. Source sector and fuel contributions to ambient PM2.5 and attributable mortality across multiple spatial scales. Nat Commun 12, 3594 (2021)
+* The data for the sector section was reaggregated from country data into UNEP regions, which are different from the ones used in the study.
+* Data for policy implementations comes from Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021.
+* The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.
+
+TKTKTKT
 * [Ambient particulate matter pollution exposure summary estimates](https://ghdx.healthdata.org/sites/default/files/record-attached-files/IHME_GBD_2019_AIR_POLLUTION_1990_2019_PM.zip)
 * [Total deaths and deaths per 100,000 people attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results?params=gbd-api-2019-permalink/6e3468190433cfde61c4d81616db6945) (You need to register)
 * [Percent of deaths from a selected set of illnesses attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results/?params=gbd-api-2019-permalink/0e754a60c0fefcbbe6801c994e9ab274) (You need to register)
