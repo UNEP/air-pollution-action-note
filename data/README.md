@@ -1,7 +1,7 @@
 # Data Description
 The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue. The dashboard shows different sets of data:
 
-* Data for PM2.5 exposure and attributable deaths comes from [Global Burden of Disease Study 2019] (https://vizhub.healthdata.org/gbd-results/). Institute for Health Metrics and Evaluation (IHME), 2020. The IHME is an independent global health research center at the University of Washington. 
+* Data for PM2.5 exposure and attributable deaths comes from [Global Burden of Disease Study 2019](https://vizhub.healthdata.org/gbd-results/). Institute for Health Metrics and Evaluation (IHME), 2020. The IHME is an independent global health research center at the University of Washington. 
 * Data for sectors breakdown comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. [Source sector and fuel contributions to ambient PM2.5 and attributable mortality across multiple spatial scales](https://www.nature.com/articles/s41467-021-23853-y) Nat Commun 12, 3594 (2021)
 * Data for the sector section was reaggregated from country data into UNEP regions, which are different from the ones used in the study.
 * Data for policy implementations comes from Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021.
