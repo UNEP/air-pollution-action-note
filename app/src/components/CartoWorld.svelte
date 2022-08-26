@@ -177,7 +177,7 @@
         hoverText += onTrack.join(", ");
       }
     } else if (onTrack.length > 0) {
-      hoverText += `<strong>${data.name}</strong> has on track to met <strong>
+      hoverText += `<strong>${data.name}</strong> is on track to met <strong>
                     ${
                       onTrack.length === 1 ? "this target" : "these targets"
                     }</strong>: `;

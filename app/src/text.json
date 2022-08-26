@@ -28,7 +28,7 @@
           "p": "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
         },
         {
-          "p": "The UNEP Pollution Dashboard displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
+          "p": "The UNEP Pollution Action Note displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
         }
       ]
     },
@@ -41,16 +41,16 @@
       "icon": "pm25",
       "data": "pm25",
       "embed": "pm25",
-      "head": "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest <strong>air quality guideline levels</a> were not met.",
+      "head": "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest 2021 <strong>air quality guideline levels were not met</strong>.",
       "text": [
         {
-          "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
+          "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot, soil dust, to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
         },
         {
-          "p": "In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM<sub>2.5</sub> annual mean <strong>air quality guideline to 5µg/m<sup>3</sup></strong>. The update halves the previous 2005 guideline level of 10µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as stepping stones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
+          "p": "In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM<sub>2.5</sub> annual mean <strong>air quality guideline to 5µg/m<sup>3</sup></strong>, which represents clean air as few impacts have been observed below these levels. The update halves the previous 2005 guideline level of 10µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as steppingstones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
         },
         {
-          "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women and children."
+          "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women, children and the elderly."
         }
       ]
     },
@@ -60,7 +60,7 @@
       "icon": "sectors",
       "data": "sectors",
       "embed": "sectors",
-      "head": "<strong>Residential</strong> pollution, mostly from cooking, heating and generating electricity for our homes, is the main <strong>human-made source</strong> of fine particles globally while <strong>windblown dust</strong> is a major source in much of Africa and West Asia.",
+      "head": "<strong>Residential</strong> pollution, mostly from cooking and heating using biomass, and generating electricity from fossil fuels for our homes, and transport, are the main <strong>human-made sources</strong> of fine particles globally. <strong>windblown dust</strong> is also a major source in portions of Africa and West Asia that are close to deserts.",
       "text": [
         {
           "p": "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity, transportation, waste burning, agriculture — a major source of methane and ammonia -- and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust, and lightning."
@@ -80,7 +80,7 @@
       "head": "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in East Asia and Central Europe.",
       "text": [
         {
-          "p": "Air pollution is a major global health epidemic and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2019."
+          "p": "Air pollution is a major global health crisis and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2019."
         },
         {
           "p": "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems."
@@ -163,7 +163,7 @@
       "head": "About the data",
       "text": [
         {
-          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>attributable deaths</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
+          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
         },
         {
           "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"https://doi.org/10.1038/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
@@ -176,6 +176,9 @@
         },
         {
           "p": "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
+        },
+        {
+          "p": "The UNEP Pollution Action Note has been developed with the support of the of the <a href=\"https://www.ccacoalition.org/en\">Climate and Clean Air Coalition</a> and with scientific oversight of the Scientific and Technical Advisory Panel (STAP) of the International Day of Clean Air for blue skies."
         }
       ]
     }
