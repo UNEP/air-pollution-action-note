@@ -25,9 +25,9 @@
   const MAX_RESULTS = 5;
 
   const geolocationOptions = {
-    enableHighAccuracy: true,
+    enableHighAccuracy: false,
     timeout: 5000,
-    maximumAge: 0
+    maximumAge: Infinity
   };
 
   function geolocationSuccess(pos) {
