@@ -6,7 +6,7 @@
   import countries from 'src/data/countryDictionary.json';
   import deathsdata from 'src/data/deathDatabase.json';
   import pm25data from 'src/data/pm25.json';
-  import healthData from 'src/data/health.json';
+  import healthData from 'src/data/death_coords.json';
   import policiesData from 'src/data/policiesData.json';
   import policiesDescriptions from 'src/data/policiesDescriptions.json';
   import countryDictionary from 'src/data/countryDictionary.json';
@@ -173,7 +173,7 @@
     + currentCountry.timesPM25 + ` times WHO's guideline.`;
 
   $: PMtimesCommentary = ` deaths per 100,000 people <br>attributable to fine particle 
-    pollution in 2017 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
+    pollution in 2019 <br>(` + currentCountry.totalDeaths.toLocaleString('en-US')
     + ` in total in the country).`;
 
   $: numResults = showDropdown ? MAX_RESULTS : 0;
