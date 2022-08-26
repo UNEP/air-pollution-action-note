@@ -3,9 +3,9 @@ The UNEP Pollution Dashboard displays the global state of air pollution, major s
 
 * Data for PM2.5 exposure and attributable deaths comes from [Global Burden of Disease Study 2019](https://vizhub.healthdata.org/gbd-results/). Source: Institute for Health Metrics and Evaluation (IHME), 2020. The IHME is an independent global health research center at the University of Washington. 
 * Data for sectors breakdown comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. [Source sector and fuel contributions to ambient PM2.5 and attributable mortality across multiple spatial scales](https://www.nature.com/articles/s41467-021-23853-y) Nat Commun 12, 3594 (2021)
-* -  Data for the sector section was reaggregated from country data into UNEP regions, which are different from the ones used in the study.
-* Data for policy implementations comes from Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021.
-* The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.
+ -  Data for the sector section was reaggregated from country data into UNEP regions, which are different from the ones used in the study.
+* Data for policy implementations comes from [Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution](https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution). Source: UNEP, 2021. 
+* <em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>
 
 TKTKTKT
 * [Ambient particulate matter pollution exposure summary estimates](https://ghdx.healthdata.org/sites/default/files/record-attached-files/IHME_GBD_2019_AIR_POLLUTION_1990_2019_PM.zip)
