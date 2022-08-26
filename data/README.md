@@ -10,7 +10,7 @@ The UNEP Pollution Dashboard displays the global state of air pollution, major s
 * [Total deaths and deaths per 100,000 people attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results?params=gbd-api-2019-permalink/6e3468190433cfde61c4d81616db6945) (You need to register)
 * [Percent of deaths from a selected set of illnesses attributable to ambient particulate matter pullution](https://vizhub.healthdata.org/gbd-results/?params=gbd-api-2019-permalink/0e754a60c0fefcbbe6801c994e9ab274) (You need to register)
 
-TK TK Links to methodologies on the resources themselves
+-- Methodology for [information on how Global Burden Diseases](https://www.thelancet.com/gbd) estimates are produced.
 
 # Codebook
 In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM2.5 annual mean Air Quality Guideline (AQG) to 5µg/m3. The update halves the previous 2005 guideline level of 10µg/m3.
@@ -51,7 +51,7 @@ For 'Health impacts' by disease:
 | upper          | Upper bound of the 95% uncertainty interval                                                  |
 | lower          | Lower bound of the 95% uncertainty interval                                                  |
 
-Residential pollution is the main human-made source of fine particles globally, while windblown dust is a major source in much of Africa and West Asia.[Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: [AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536). And the value is a number from 1 to 4: 1-Target met, 2-On track, 3-No policies and 4-No data.
+Residential pollution is the main human-made source of fine particles globally, while windblown dust is a major source in much of Africa and West Asia. [Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: [AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536). And the value is a number from 1 to 4: 1-Target met, 2-On track, 3-No policies and 4-No data.
 
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
@@ -67,5 +67,4 @@ Residential pollution is the main human-made source of fine particles globally, 
                                                  |
 ## Minor data transformations
 [ObservableHQ notebooks](https://observablehq.com/@levarez/unep-pollution-health-data)
-[Country-dictionary](https://docs.google.com/spreadsheets/d/1p499R36YtrOut6i_1AaK4KLdW44XsFjNxJR8NqAdXX8/edit#gid=127605032)
-
+ 
