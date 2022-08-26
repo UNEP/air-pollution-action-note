@@ -19,7 +19,7 @@
   const createBlocks = (number: number, dropdown: DropdownOptionBlock[]): HeadBlock[] => {
     let ret: HeadBlock[] = [];
     let auxTitle = title;
-    if (title.includes("@number")) auxTitle = title.replace("@number", number.toFixed(1).toString());
+    if (title.includes("@number")) auxTitle = title.replace("@number", Math.round(number).toString());
 
     if (title.includes("@dropdown") && dropdown.length > 0) {
       let titleBlocks = auxTitle.split("@dropdown");
