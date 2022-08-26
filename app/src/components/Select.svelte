@@ -31,7 +31,6 @@
       }
     };
     $: selected = options[currentIndex].value? options[currentIndex].value : currentIndex;
-    $: console.log({listboxVisible});
 
 </script>
   
