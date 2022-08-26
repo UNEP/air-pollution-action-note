@@ -31,6 +31,7 @@
       }
     };
     $: selected = options[currentIndex].value? options[currentIndex].value : currentIndex;
+    $: console.log({listboxVisible});
 
 </script>
   
@@ -43,13 +44,13 @@
 >
 
     <slot option={options[currentIndex]}/>
-    <svg class="arrow" viewBox="0 0 13 8">
+    <svg class="arrow" class:animated={!listboxVisible} viewBox="0 0 13 8">
         <path d="M0.630249 1L6.36134 6.5L12.0924 1" />
     </svg>
 </div>
 
 {#if listboxVisible}
-  <div class="narrow listbox" transition:scale>
+  <div class="narrow" transition:scale>
     {#each options as opt, i}
         {#if i !== currentIndex}
           <div class="option"
@@ -135,7 +136,22 @@
     fill: none;
     stroke: currentColor;
     stroke-width: 1.5;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
   }
+
+  .animated {
+    animation-name: bounce;
+    animation-timing-function: ease;
+  }
+
+  @keyframes bounce {
+    0%   { transform: translateY(5px); }
+    50%  { transform: translateY(-5px); }
+    100% { transform: translateY(5px); }
+  }
+
   @media (max-width: 480px) {
     .selector-area{
       width: auto;
