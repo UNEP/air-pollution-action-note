@@ -35,7 +35,7 @@
       {/each}
     </div>
   
-    <div class="percent-text">{(percentage * 100).toFixed(2)}<span class="symbol">%</span></div>
+    <div class="percent-text">{Math.round(percentage * 100)}<span class="symbol">%</span></div>
   
     <div class="cause-text">{causes[cause].name}</div>
   </div>
