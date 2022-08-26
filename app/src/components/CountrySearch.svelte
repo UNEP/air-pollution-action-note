@@ -214,7 +214,7 @@
           />
       </div>
       <div class="distribution">
-        <p class="primary-text"><span class="bigger-text">{currentCountry.deathRatio}</span>{@html PMtimesCommentary}</p>
+        <p class="primary-text"><span class="bigger-text">{Math.round(currentCountry.deathRatio)}</span>{@html PMtimesCommentary}</p>
           <LinearDistribution
             data = {countryHealthData}
             value = {healthLookUp[currentCountry.id].rate}
