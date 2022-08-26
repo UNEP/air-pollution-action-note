@@ -66,5 +66,6 @@ Residential pollution is the main human-made source of fine particles globally, 
 | aq-1           | AIR QUALITY STANDARDS                                               |
                                                  |
 ## Minor data transformations
- 
-TK TK Links to ObservableHQ notebooks
+[ObservableHQ notebooks](https://observablehq.com/@levarez/unep-pollution-health-data)
+[Country-dictionary](https://docs.google.com/spreadsheets/d/1p499R36YtrOut6i_1AaK4KLdW44XsFjNxJR8NqAdXX8/edit#gid=127605032)
+
