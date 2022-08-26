@@ -48,8 +48,7 @@ Residential pollution, mostly from cooking, heating and generating electricity f
 | tra-1          | TRANSPORT- Vehicle emission standards                                                        |
 | tra-2          | TRANSPORT- Fuel Sulphur content                                                              |
 | waste-1        | WASTE- Solid Waste Burning                                                                   |
-| res-1          | RESIDENTIAL (HOUSEHOLD AIR POLLUTION). Number of countries that promote use of clean energy  |
-|                  in households for cooking and heating.                                                       |
+| res-1          | RESIDENTIAL (HOUSEHOLD AIR POLLUTION). Number of countries that promote use of clean energy in households for cooking and heating.                                                       |
 | agri-1         | AGRICULTURE- Sustainable agricultural practices                                              |
 | aqms-1         | AIR QUALITY MANAGEMENT STRATEGIES (AQMS)- Countries with an AQMS, framework or plan of action|                                 
 | aqm-1          | AIR QUALITY MONITORING                                                |  
