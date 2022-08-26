@@ -13,15 +13,27 @@ The UNEP Pollution Dashboard displays the global state of air pollution, major s
 TK TK Links to methodologies on the resources themselves
 
 # Codebook
-TK TK For exposure:
+In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM2.5 annual mean Air Quality Guideline (AQG) to 5µg/m3. The update halves the previous 2005 guideline level of 10µg/m3.
+For current state:
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
-| TK TK          | TK TK                                                                                        |
+|AQG 2021        | 5 µg/m3 a year
+|Interim Target 4| 10 µg/m3 
+|Interim Target 3| 15 µg/m3 
+|Interim Target 2| 25 µg/m3 
+|Interim Target 1| 35 µg/m3 
 
-TK TK For total deaths 'Health impacts' section:
+Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For exposure:
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
-| TK TK          | TK TK                                                                                        |
+| TK TK          | TK TK   
+
+Air pollution is a major global health epidemic and causes one in nine deaths worldwide. Exposure to PM2.5 reduced average global life expectancy by approximately one year in 2019. For total deaths 'Health impacts' section:
+| :variable_name | :description                                                                                 |
+|----------------|----------------------------------------------------------------------------------------------|
+|name            | Country
+|id              | Identification from the Country-dictionary
+|deaths          | Number of deaths by country in 2019 caused by air pollution
 
 The deadliest illnesses linked to PM2.5 air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems. 
 For 'Health impacts' by disease:
@@ -39,8 +51,7 @@ For 'Health impacts' by disease:
 | upper          | Upper bound of the 95% uncertainty interval                                                  |
 | lower          | Lower bound of the 95% uncertainty interval                                                  |
 
-Residential pollution, mostly from cooking, heating and generating electricity for our homes, is the main human-made source of fine particles globally while windblown dust is a major source in much of Africa and West Asia.
-[Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536)   
+Residential pollution is the main human-made source of fine particles globally, while windblown dust is a major source in much of Africa and West Asia.[Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: [AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536). And the value is a number from 1 to 4: **1- Target met, 2- On track, 3- No policies and 4- No data**.
 
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
