@@ -23,7 +23,8 @@ TK TK For total deaths 'Health impacts' section:
 |----------------|----------------------------------------------------------------------------------------------|
 | TK TK          | TK TK                                                                                        |
 
-TK TK For 'Health impacts' by disease:
+The deadliest illnesses linked to PM2.5 air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems. 
+For 'Health impacts' by disease:
 
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
@@ -39,7 +40,7 @@ TK TK For 'Health impacts' by disease:
 | lower          | Lower bound of the 95% uncertainty interval                                                  |
 
 Residential pollution, mostly from cooking, heating and generating electricity for our homes, is the main human-made source of fine particles globally while windblown dust is a major source in much of Africa and West Asia.
-[Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: AQ Actions Report - Country Data (Survey_06 July 2022)],(https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536)   
+[Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536)   
 
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
@@ -48,7 +49,7 @@ Residential pollution, mostly from cooking, heating and generating electricity f
 | tra-2          | TRANSPORT- Fuel Sulphur content                                                              |
 | waste-1        | WASTE- Solid Waste Burning                                                                   |
 | res-1          | RESIDENTIAL (HOUSEHOLD AIR POLLUTION). Number of countries that promote use of clean energy  |
-|                | in households for cooking and heating.                                                       |
+|                  in households for cooking and heating.                                                       |
 | agri-1         | AGRICULTURE- Sustainable agricultural practices                                              |
 | aqms-1         | AIR QUALITY MANAGEMENT STRATEGIES (AQMS)- Countries with an AQMS, framework or plan of action|                                 
 | aqm-1          | AIR QUALITY MONITORING                                                |  
