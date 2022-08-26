@@ -92,7 +92,7 @@
   $: legendIsHovered = legendElementSelectedIndex !== null;
 
   const diseasesHoverText = (data: DiseasesData) => {
-    return `In <b>${data.name}</b>, <b>${(data[selectedDisease] * 100).toPrecision(2)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease].toLocaleLowerCase()}</b> are attributable to outdoor fine particles.`
+    return `In <b>${data.name}</b>, <b>${Math.round(data[selectedDisease] * 100)}% of deaths</b> from <b>${diseasesDictionary[selectedDisease].toLocaleLowerCase()}</b> are attributable to outdoor fine particles.`
   };
 
   const policiesHoverText = (data: PoliciesData): string => {
@@ -274,7 +274,7 @@
       pollution caused <strong>${d.value.toLocaleString(
         "en-US"
       )} deaths</strong>
-      in 2019 — or <strong>${d.rate} per 100,000 people</strong>.`,
+      in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];
