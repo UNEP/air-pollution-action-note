@@ -22,7 +22,7 @@ It is live at https://www.unep.org/interactive/air-pollution-note/
 
 ---
 ## Reusing and citing this project
-You are welcome to reuse the content and data visualizations in this dashboard in your personal website or your media outlet as long as you abide the TK TK need to discuss license [terms of the license](LICENSE), which means you have to give credit and link back to the original work.
+You are welcome to reuse the content and data visualizations in this dashboard in your personal website or your media outlet as long as you abide the [terms of the license](LICENSE), which means you have to give credit and link back to the original work.
 
 For **academic** citations, here is the BibTex citation:
 
@@ -60,8 +60,8 @@ Here are the embeds for the individual data visualizations:
 ## Unlocking data through better communication
 The UNEP Pollution Action Note has been developed with the support of the of the [Climate and Clean Air Coalition](https://www.ccacoalition.org/en) and with scientific oversight of the Scientific and Technical Advisory Panel (STAP) of the International Day of Clean Air for blue skies.
 
-This repository is maintained by UNEP and the [Visualization for Transparency Foundation](https://www.fundaciovit.org/)
+This repository is maintained by [UNEP](https://www.unep.org/) and the [Visualization for Transparency Foundation](https://www.fundaciovit.org/).
 
-‘World Environment Situation Room’ (WESR) is UNEP’s strategic data platform that aggregates authoritative datasets on environmental topics — a very data-heavy hub for specialist audiences. unep.org has more than half a million visitors per month from almost every country in the world, from the informed and engaged general public, youth audiences, and media to policymakers and the private sector.
+[‘World Environment Situation Room’ (WESR)](https://wesr.unep.org/) is UNEP’s strategic data platform that aggregates authoritative datasets on environmental topics — a very data-heavy hub for specialist audiences. unep.org has more than half a million visitors per month from almost every country in the world, from the informed and engaged general public, youth audiences, and media to policymakers and the private sector.
 
 The objective of the data-driven notes is to bridge the gap between the diverse audience of unep.org and the specialist audience of WESR. They act as an entry point, serving the most critical data in an easy to grasp, engaging manner before driving curious audiences to the hub for more detailed data exploration.
