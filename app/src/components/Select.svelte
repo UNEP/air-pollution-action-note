@@ -49,7 +49,7 @@
 </div>
 
 {#if listboxVisible}
-  <div class="narrow" transition:scale>
+  <div class="narrow listbox" transition:scale>
     {#each options as opt, i}
         {#if i !== currentIndex}
           <div class="option"
