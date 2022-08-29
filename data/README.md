@@ -65,6 +65,19 @@ Residential pollution is the main human-made source of fine particles globally, 
 | aqm-1          | AIR QUALITY MONITORING                                                |  
 | aq-1           | AIR QUALITY STANDARDS                                               |
 
+                                                 
+Government actions on air quality are steadily growing, but implementation and capacity gaps hinder progress towards clean air. 
+Actions taken towards cleaner air are classified into four categories: Target met, On track, Not met, No data. 
+The [UNEP policies actions filtred data](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) assign a number to each of these categories.
+
+| Policies actions classifications | Description                                                                                                                                                                                     |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Target met  (1)                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
+| On track (2)                     | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
+| Not met  (3)                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
+| No data  (4)                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
+
+
 ## Minor data transformations
 [ObservableHQ notebooks](https://observablehq.com/@levarez/unep-pollution-health-data)
  
