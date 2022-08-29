@@ -172,7 +172,7 @@
 
       hoverText += hasMet.join(", ");
       if (onTrack.length > 0) {
-        hoverText += `<br>And it's on track to meet <strong>
+        hoverText += `<br>And it is on track to meet <strong>
                       ${onTrack.length === 1 ? "this" : "these"}</strong>: `;
         hoverText += onTrack.join(", ");
       }
@@ -186,10 +186,10 @@
       hoverText += `No data for <strong>${data.name}</strong>`;
     else {
       if (noMet.length === 6)
-        hoverText += `<strong>${data.name}</strong> hasn't met any targets`;
+        hoverText += `<strong>${data.name}</strong> has not met any targets`;
       else {
         hoverText += `<strong>${data.name}</strong>
-                      hasn't met any of the target for which we have data: `;
+                      has not met any of the targets for which we have data: `;
         hoverText += noMet.join(", ");
       }
     }
