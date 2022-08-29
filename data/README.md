@@ -32,7 +32,7 @@ Air pollution is a major global health epidemic and causes one in nine deaths wo
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
 |name            | Country
-|id              | Identification from the [Country-dictionary](https://docs.google.com/spreadsheets/d/1p499R36YtrOut6i_1AaK4KLdW44XsFjNxJR8NqAdXX8/edit#gid=127605032)
+|id              | Identification from the [Country-dictionary]
 |deaths          | Number of deaths by country in 2019 caused by air pollution
 
 The deadliest illnesses linked to PM2.5 air pollution are stroke, heart disease, lung disease and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems. 
