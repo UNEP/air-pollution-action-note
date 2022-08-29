@@ -5,7 +5,7 @@
   import DeathCauses from "./DeathCauses.svelte";
   import countries from 'src/data/countryDictionary.json';
   import deathsdata from 'src/data/deathDatabase.json';
-  import pm25data from 'src/data/pm25.json';
+  import pm25data from 'src/data/pm25_coords.json';
   import healthData from 'src/data/death_coords.json';
   import policiesData from 'src/data/policiesData.json';
   import policiesDescriptions from 'src/data/policiesDescriptions.json';
