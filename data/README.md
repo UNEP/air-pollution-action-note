@@ -75,6 +75,17 @@ Actions taken towards cleaner air are classified into [four categories and an as
 | Not met (3)                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
 | No data (4)                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
 
+|               | Target met (1)      | On track (3)        | Not met (2)        | No Data (4) |
+|---------------|---------------------|---------------------|--------------------|-------------|
+| ind-1         | 1. Yes              | No elements         | 2. No              | 3. No Data  |
+| tra-1         | 1. Euro 4 or Higher | 2. Less than Euro 4 | 3. No Standards    | 4. No Data |
+| tra-2         | Less than 50ppm     | Between 51 and 500 ppm | Greater than 500ppm | n/a |
+| waste-1       | 1. Yes, burning of solid waste is stricly regulated | 2.Partially controlled | 4. No controlls | 5. No data AND 3. No data about laws but burning exists |
+| res-1         | 1. Yes | No elements | 2. No | 3. No data |
+| agri-1        | 1. Yes | No elements | 2. No | 3. No data |
+| aqms-1        | 1. Yes | No elements | 2. No | 3. No data |
+| aqm-1         | 1. Yes, continuous monitoring at multiple sites | 1. Yes, monitoring done periodically at a few sites AND 1. Yes, a monitoring network exists but is not operational | 2. No monitoring | 3. No data |
+| aq-1 | aqms-1        | 1. Yes | No elements | 2. No | 3. No data |
 
 ## Minor data transformations
 [ObservableHQ notebooks](https://observablehq.com/@levarez/unep-pollution-health-data)
