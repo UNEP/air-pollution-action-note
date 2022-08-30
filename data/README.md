@@ -67,7 +67,7 @@ Residential pollution is the main human-made source of fine particles globally, 
 
                                                  
 Government actions on air quality are steadily growing, but implementation and capacity gaps hinder progress towards clean air. 
-Actions taken towards cleaner air are classified into four categories and a value: Target met (1), On track (2), Not met (3), No data (4) 
+Actions taken towards cleaner air are classified into four categories and a value: Target met (1), On track (2), Not met (3), No data (4). 
 The [UNEP policies actions filtred data](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) assign a number to each of these categories.
 
 | Policies actions classifications | Description                                                                                                                                                                                     |
