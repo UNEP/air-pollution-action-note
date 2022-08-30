@@ -71,8 +71,8 @@ Actions taken towards cleaner air are classified into [four categories and an as
 | Policies actions classifications | Description                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Target met (1)                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
-| On track (2)                     | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
-| Not met (3)                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
+| Not met (2)                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
+| On track (3)                     | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
 | No data (4)                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
 
 |               | Target met (1)      | On track (3)        | Not met (2)        | No Data (4) |
