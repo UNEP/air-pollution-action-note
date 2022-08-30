@@ -75,7 +75,7 @@ Actions taken towards cleaner air are classified into [four categories](https://
 | On track                    | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
 | No data                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
 
-|               | Target met      | On track        | Not met        | No Data  |
+|Policy code    | Target met      | On track        | Not met        | No Data  |
 |---------------|---------------------|---------------------|--------------------|-------------|
 | ind-1         | 1. Yes              | No elements         | 2. No              | 3. No Data  |
 | tra-1         | 1. Euro 4 or Higher | 2. Less than Euro 4 | 3. No Standards    | 4. No Data |
