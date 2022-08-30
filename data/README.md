@@ -67,7 +67,7 @@ Residential pollution is the main human-made source of fine particles globally, 
 
                                                  
 Government actions on air quality are steadily growing, but implementation and capacity gaps hinder progress towards clean air. 
-Actions taken towards cleaner air are classified into [four categories and an assigned value](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0): Target met, On track, Not met, No data. 
+Actions taken towards cleaner air are classified into [four categories](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0): Target met, On track, Not met, No data. 
 | Policies actions classifications | Description                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Target met                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
@@ -75,7 +75,7 @@ Actions taken towards cleaner air are classified into [four categories and an as
 | On track                    | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
 | No data                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
 
-|               | Target met (1)      | On track (3)        | Not met (2)        | No Data (4) |
+|               | Target met      | On track        | Not met        | No Data  |
 |---------------|---------------------|---------------------|--------------------|-------------|
 | ind-1         | 1. Yes              | No elements         | 2. No              | 3. No Data  |
 | tra-1         | 1. Euro 4 or Higher | 2. Less than Euro 4 | 3. No Standards    | 4. No Data |
