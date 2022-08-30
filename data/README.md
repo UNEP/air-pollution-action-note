@@ -67,13 +67,13 @@ Residential pollution is the main human-made source of fine particles globally, 
 
                                                  
 Government actions on air quality are steadily growing, but implementation and capacity gaps hinder progress towards clean air. 
-Actions taken towards cleaner air are classified into [four categories and an assigned value](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0): Target met (1), On track (2), Not met (3), No data (4). 
+Actions taken towards cleaner air are classified into [four categories and an assigned value](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0): Target met, On track, Not met, No data. 
 | Policies actions classifications | Description                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Target met (1)                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
-| Not met (2)                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
-| On track (3)                     | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
-| No data (4)                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
+| Target met                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
+| Not met                     | Countries that have no policy or similar instrument in place to achieve desired air quality improvements                                                                                        |
+| On track                    | Countries that are on the way to adopting policies and strategies for air quality improvement but acceleration needed                                                                           |
+| No data                     | This classification denotes instances where no internationally comparable data were available for a country or, when available, these data were not deemed recent enough to use in the analysis |
 
 |               | Target met (1)      | On track (3)        | Not met (2)        | No Data (4) |
 |---------------|---------------------|---------------------|--------------------|-------------|
