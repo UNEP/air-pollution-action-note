@@ -51,7 +51,7 @@ For 'Health impacts' by disease:
 | upper          | Upper bound of the 95% uncertainty interval                                                  |
 | lower          | Lower bound of the 95% uncertainty interval                                                  |
 
-Residential pollution is the main human-made source of fine particles globally, while windblown dust is a major source in much of Africa and West Asia. [Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: [AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536). And the value is a number from 1 to 4: 1-Target met, 2-On track, 3-No policies and 4-No data.
+Residential pollution is the main human-made source of fine particles globally, while windblown dust is a major source in much of Africa and West Asia. [Data for sectors and regions was filtred](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) from this source: [AQ Actions Report - Country Data (Survey_06 July 2022)](https://docs.google.com/spreadsheets/d/1r89KtMNU6ffW9bthFZLjkSjZ2-GqIz5X/edit#gid=275222536). 
 
 | :variable_name | :description                                                                                 |
 |----------------|----------------------------------------------------------------------------------------------|
@@ -67,9 +67,7 @@ Residential pollution is the main human-made source of fine particles globally, 
 
                                                  
 Government actions on air quality are steadily growing, but implementation and capacity gaps hinder progress towards clean air. 
-Actions taken towards cleaner air are classified into four categories and a value: Target met (1), On track (2), Not met (3), No data (4). 
-The [UNEP policies actions filtred data](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0) assign a number to each of these categories.
-
+Actions taken towards cleaner air are classified into [four categories and a assign a value](https://docs.google.com/spreadsheets/d/1riat7SmYFjJ8IHVrxD3BjcqEqZA7CM-T321Z_IBscxI/edit#gid=0): Target met (1), On track (2), Not met (3), No data (4). 
 | Policies actions classifications | Description                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Target met (1)                  | This classification denotes countries that have adopted policies or similar instruments to help achieve desired air quality improvements                                                        |
