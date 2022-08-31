@@ -60,7 +60,7 @@
       "icon": "sectors",
       "data": "sectors",
       "embed": "sectors",
-      "head": "<strong>Residential</strong> pollution, mostly from cooking and heating using biomass, and generating electricity from fossil fuels for our homes, and transport, are the main <strong>human-made sources</strong> of fine particles globally. <strong>windblown dust</strong> is also a major source in portions of Africa and West Asia that are close to deserts.",
+      "head": "<strong>Residential</strong> pollution, mostly from cooking and heating using biomass, and generating electricity from fossil fuels for our homes, and transport, are the main <strong>human-made sources</strong> of fine particles globally. <strong>Windblown dust</strong> is also a major source in portions of Africa and West Asia that are close to deserts.",
       "text": [
         {
           "p": "The fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity, transportation, waste burning, agriculture — a major source of methane and ammonia -- and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust, and lightning."
@@ -128,7 +128,7 @@
       ],
       "text": [
         {
-          "p": "Exposure to fine particle outdoor air pollution is the largest environmental risk factor for premature death globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, air pollution is linked to 20 percent of ischemic heart disease deaths globally but over 30 percent in the Middle East and North Africa regions. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
+          "p": "Exposure to fine particle outdoor air pollution is the <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, air pollution is linked to 20 percent of ischemic heart disease deaths globally but over 30 percent in the Middle East and North Africa regions. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
         }
       ]
     },
@@ -163,7 +163,7 @@
       "head": "About the data",
       "text": [
         {
-          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results.</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
+          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
         },
         {
           "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"https://doi.org/10.1038/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
