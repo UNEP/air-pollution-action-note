@@ -152,8 +152,6 @@
     {
       "type": "carto-world",
       "anchor": "agreements",
-      "menu": "Agreements",
-      "icon": "policies",
       "data": "agreements",
       "embed": "agreements",
       "head": "<strong>Government actions</strong> on air quality are <strong>steadily growing</strong>, but <strong>implementation and capacity gaps</strong> hinder progress towards clean air.",
