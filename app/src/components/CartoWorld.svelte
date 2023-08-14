@@ -589,28 +589,23 @@
           {
             color: agreementsData.nAgreements > 0 ? colors[0] : "#D9D9D9",
             start: 0,
-            end: 20,
+            end: 25,
           },
           {
             color: agreementsData.nAgreements > 1 ? colors[1] : "#D9D9D9",
-            start: 20,
-            end: 40,
+            start: 25,
+            end: 50,
           },
           {
             color: agreementsData.nAgreements > 2 ? colors[2] : "#D9D9D9",
-            start: 40,
-            end: 60,
+            start: 50,
+            end: 75,
           },
           {
             color: agreementsData.nAgreements > 3 ? colors[3] : "#D9D9D9",
-            start: 60,
-            end: 80,
-          },
-          {
-            color: agreementsData.nAgreements > 4 ? colors[4] : "#D9D9D9",
-            start: 80,
+            start: 75,
             end: 100,
-          },
+          }
         ];
 
         const gradientStrs = gradients.map((g) => `${g.color} ${g.start}% ${g.end}%`);
