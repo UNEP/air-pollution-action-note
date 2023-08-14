@@ -185,11 +185,11 @@
     if(data["us-canada"] === AgreementsStatus.Participant) participantAgreement.push('us-canada');
     if(data["us-canada"] === AgreementsStatus.Observer) observerAgreement.push('us-canada');
 
-    let hoverText = `<strong>${data.name}</strong> has <strong>${data.nAgreements} ${data.nAgreements === 1 ? 'agreement' : 'agremments'}</strong>.\n`
+    let hoverText = `<strong>${data.name}</strong> ${data.nAgreements === 0 ? 'does not participate in any agreement' : 'participates in the '}`
     
     participantAgreement.forEach((agreement, i) => {
       let finalChar = ', ';
-      if (i === participantAgreement.length - 1) finalChar = '.';
+      if (i === participantAgreement.length - 1) finalChar = ' agreement/s.';
       if ( i === participantAgreement.length - 2) finalChar = ' and ';
       hoverText += `${agreementsDefinitionLookup[agreement].name}${finalChar}`;
     })
