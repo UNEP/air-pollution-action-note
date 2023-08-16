@@ -43,6 +43,7 @@
   export var annotationShowing: boolean = false;
   export var legendTitle: string;
   export var slug: string;
+  export var staticPosition: boolean = false;
 
   const title = legendTitle
     .replaceAll("\\<.*?\\>", "")
@@ -273,7 +274,7 @@
     <Annotation x={annotation.x} y={annotation.y} text={annotation.html}
       radius={annotation.radius} forceTopWherePossible={annotation === helpAnnotation}
       topClamp={annotation === helpAnnotation ? 0 : pxAboveScreenTop}
-      canvasWidth={containerWidth} canvasHeight={containerHeight}
+      canvasWidth={containerWidth} canvasHeight={containerHeight} {staticPosition}
     />
     </div>
   {/if}
