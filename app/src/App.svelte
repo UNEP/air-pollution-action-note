@@ -13,6 +13,7 @@
   import DeathCauses from './components/DeathCauses.svelte';
   import { strToId } from './util';
   import CountrySearch from './components/CountrySearch.svelte';
+  import AgreementCarto from './components/AgreementCarto.svelte';
 
   const content: Content[] = text.article;
   
@@ -27,7 +28,8 @@
     "menu": Menu,
     'methodology': MethodologySourcesText,
     "death-causes": DeathCauses,
-    "country-search": CountrySearch
+    "country-search": CountrySearch,
+    "agreements-carto": AgreementCarto
   };
 </script>
 {#if embedBlock}

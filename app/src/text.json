@@ -165,6 +165,9 @@
       ]
     },
     {
+      "type": "agreements-carto"
+    },
+    {
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
