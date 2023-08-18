@@ -1,7 +1,9 @@
 <script lang="ts">
+  import AgreementCarto from "./AgreementCarto.svelte";
   import svg from "src/svg";
   import type { AgreementName } from "src/types";
   import { createEventDispatcher } from 'svelte';
+    import AgreementCard from "./AgreementCard.svelte";
 
   export let title: string;
   export let body: string;
@@ -36,7 +38,7 @@
       {/if}
     </div>
     <div class="tilegram">
-      <img src="img/BigTilemap.png" alt={tilegram}/>
+      <AgreementCarto agreement={tilegram} popupVersion/>
     </div>
   </div>
 

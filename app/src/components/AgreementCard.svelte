@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { AgreementName } from 'src/types';
+  import AgreementCarto from './AgreementCarto.svelte';
   import { createEventDispatcher } from 'svelte';
 
   export let title: string;
@@ -18,7 +19,7 @@
   <span class="text">{@html title}</span>
   {#if !simple}
     <div class="tilegram">
-      <img src="img/AgreementCartogramMockup.png" alt={tilegram}/>
+      <AgreementCarto agreement={tilegram} />
     </div>
   {/if}
 </button>

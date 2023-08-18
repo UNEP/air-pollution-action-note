@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { colorAgreement } from "src/colors";
+  import { colorAgreementTypes } from "src/colors";
   import agreements from "../data/agreementsData.json";
   import countries from "../data/countries.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
@@ -9,7 +9,7 @@
   import type { CountryDataPoint } from "./maps/Cartogram.svelte";
   import Cartogram from "./maps/Cartogram.svelte";
 
-  export let popupVersion: boolean = true;
+  export let popupVersion = false;
   export let agreement: string = "rapap";
   export let category = null;
   
@@ -44,7 +44,7 @@
       hoverTextFn: (d: CountryDataPoint) => (d.data.name),
       colorFn: (d: CountryDataPoint) => {
         let agreementsData = d.data;
-        const colors = colorAgreement.range();
+        const colors = colorAgreementTypes.range();
         const hasValue = category && category === agreementsData[agreement];
 
         if (category) return hasValue ? colors[agreementsData[agreement] - 1] : '#D9D9D9';
@@ -56,9 +56,9 @@
 
         return hasValue ? ["country--shadow"] : [];
       },
-      color: colorAgreement,
+      color: colorAgreementTypes,
       legendTitle: '',
-      legendDomain: colorAgreement.range(),
+      legendDomain: colorAgreementTypes.range(),
       legendType: "sequential",
       domain: [1300, 1300 / (740 / 420)] as [number, number],
       linearDomain: null,
@@ -72,27 +72,27 @@
   let rerender: () => void;
   // TODO: Ajust with the Agreements Grid component
   $: {
-    width = 600;
+    width = popupVersion ? 450 : 210;
     height = width * 0.62;
   }
 
 </script>
 
-<div class="viz wide">
-  <div
-    style="width: {width}px; height: {height}px"
-    class="cartogram-container agreement-cartogram"
-    class:grid-version={!popupVersion}
-  >
-    <Cartogram
-      {...datasetParams["agreements"]}
-      slug={"agreements"}
-      bind:rerenderFn={rerender}
-      annotationShowing={false}
-      staticPosition={true}
-    />
-  </div>
+
+<div
+  style="width: {width}px; height: {height}px"
+  class="cartogram-container agreement-cartogram"
+  class:grid-version={!popupVersion}
+>
+  <Cartogram
+    {...datasetParams["agreements"]}
+    slug={"agreements"}
+    bind:rerenderFn={rerender}
+    annotationShowing={false}
+    staticPosition
+  />
 </div>
+
 
 <style>
   .agreement-cartogram {
