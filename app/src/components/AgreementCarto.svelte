@@ -1,16 +1,15 @@
 <script lang="ts">
   import { colorAgreementTypes } from "src/colors";
+  import Cartogram from "./maps/Cartogram.svelte";
   import agreements from "../data/agreementsData.json";
   import countries from "../data/countries.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
-
   import { createLookup } from "src/util";
-
   import type { CountryDataPoint } from "./maps/Cartogram.svelte";
-  import Cartogram from "./maps/Cartogram.svelte";
+  import type { AgreementName } from "src/types";
 
   export let popupVersion = false;
-  export let agreement: string = "rapap";
+  export let agreement: AgreementName;
   export let category = null;
   
   const agreementsLookup = createLookup(
