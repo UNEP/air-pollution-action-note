@@ -1,3 +1,11 @@
+<script lang="ts" context="module">
+  export type CountryAgreementsData = {
+    id: string,
+    name: string,
+    agreements: string[]
+  };
+</script>
+
 <script lang="ts">
   import AgreementCard from "./AgreementCard.svelte";
   import ModalCard from "./ModalCard.svelte";
@@ -7,8 +15,11 @@
   import { colorAgreementTypes } from "src/colors";
   import agreementsLookup from "../data/agreementsLookup.json";
   import type { AgreementName } from "src/types";
+  import { countriesWithArticle } from "src/data";
 
-  export let head: string;
+  export let head: string = null;
+  export let searchVersion = false;
+  export let countryData: CountryAgreementsData = null;
 
   const agreementsData = Object.entries(agreementsLookup).map(a => ({
     id: a[0] as AgreementName,
@@ -38,11 +49,27 @@
     selectedAgreement = null;
   };
 
+  //work in progress
+
+  function getCountryDescription(id: string){
+    let hasArticle = countriesWithArticle.includes(id);
+    let countryName = hasArticle ? `The ${countryData.name} ` : `${countryData.name} `;
+    return "Kenya has signed a total of 4 agreements regarding air quality:";
+  };
+
+  $: countrySentence = searchVersion ? getCountryDescription(countryData.id) : null;
+
+  $: if (searchVersion) console.log(countryData.agreements);
+
 </script>
 
 <section id="agreements-grid" class="viz wide">
 
-  <Head title={head} selectedElement={null}/>
+  {#if !searchVersion}
+    <Head title={head} selectedElement={null}/>
+  {:else}
+    <p class="narrow align">{@html countrySentence}</p>
+  {/if}
 
   <div class="right-narrow">
     <Legend
@@ -60,6 +87,7 @@
           title={a.title}
           tilegram={a.id} 
           selected={selectedAgreement === i}
+          simple={searchVersion}
           on:agreementClicked={() => onAgreementCardClicked(i)}/>
       </div>
     {/each}

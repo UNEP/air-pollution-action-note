@@ -11,12 +11,15 @@
   import policiesDescriptions from 'src/data/policiesDescriptions.json';
   import countryDictionary from 'src/data/countryDictionary.json';
   import alpha2Data from 'src/data/alpha2countries.json';
+  import agreementsData from 'src/data/agreementsData.json';
   import SectionTitle from "./SectionTitle.svelte";
   import PolicyGrid from "./PolicyGrid.svelte";
   import { createLookup } from "src/util";
   import type { DeathsData } from "./DeathCauses.svelte";
   import type { Content } from "src/types";
   import type { CountryDataSquare } from "./charts/LinearDistribution.svelte";
+  import AgreementsGrid from "./AgreementsGrid.svelte";
+  import type { CountryAgreementsData } from "./AgreementsGrid.svelte";
 
   export var id: string;
   export var head: string;
@@ -89,10 +92,13 @@
   const policiesLookUp = createLookup(policiesData, p => p.id, p => p);
   const geolocationLookUp = createLookup(alpha2Data, a => a.alpha_2, p => p.id);
   const countryNameLookUp = createLookup(countryDictionary, c => c.id, c => c.name);
+  const agreementsLookup = createLookup(agreementsData, a => a.id, a => a);
 
   let numResults = 5;
   let typeaheadValue: string;
+  let countryAgreementsData: CountryAgreementsData;
   let showDropdown = false;
+
 
   let currentCountry = {
     id: "",
@@ -178,6 +184,13 @@
 
   $: numResults = showDropdown ? MAX_RESULTS : 0;
 
+  $: countryAgreementsData = {
+    id: currentCountry.id,
+    name: countryNameLookUp[currentCountry.id],
+    //work in progress
+    agreements: Object.entries(agreementsLookup[currentCountry.id]).filter(([, v]) => v === 1 || v === 2).map(([k]) => k)
+  };
+
 </script>
   
 <section {id} class="viz wide country-search">
@@ -230,7 +243,14 @@
     </div>
 
     <div class="policy-grid-container">
-      <PolicyGrid data={policiesLookUp[currentCountry.id]} desc={descLookUp[currentCountry.id]}/>
+       <PolicyGrid data={policiesLookUp[currentCountry.id]} desc={descLookUp[currentCountry.id]}/>
+    </div>
+
+    <div class="agreements-grid-container">
+      <AgreementsGrid 
+        countryData={countryAgreementsData}
+        searchVersion
+      />
     </div>
 
   {/if}

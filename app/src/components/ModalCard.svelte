@@ -28,10 +28,12 @@
   <div class="content-container">
     <div class="text">
       {@html body}
-      <div class="link">
-        <span class="icon">{@html svg.menu.policies}</span>
-        <a href={link} target="_blank" rel=”noreferrer”>Read the agreement</a>
-      </div>
+      {#if link}
+        <div class="link">
+          <span class="icon">{@html svg.menu.policies}</span>
+          <a href={link} target="_blank" rel=”noreferrer”>Read the agreement</a>
+        </div>
+      {/if}
     </div>
     <div class="tilegram">
       <img src="img/BigTilemap.png" alt={tilegram}/>
@@ -69,6 +71,10 @@
       margin-top: 0.5rem;
       height: 1.25rem;
     }
+  }
+
+  .text {
+    line-height: 1.5rem;
   }
 
   .text,

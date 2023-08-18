@@ -26,7 +26,6 @@
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
   import diseasesGlobal from "src/data/diseasesGlobal.json";
-  import { create } from "d3-selection";
 
   export var data: "pm25" | "health" | "policies" | "diseases";
   export var id: string;
