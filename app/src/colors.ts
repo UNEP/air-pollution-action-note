@@ -42,5 +42,8 @@ export const colorAgreements = scaleThreshold<number, string>()
 
 export const colorAgreementTypes = scaleOrdinal<string>()
   .domain(['Participant', 'Observer'])
-  .range(["#17CBCC", "#FA8072"])
+  .range(["#34659B", "#7CBFEF"])
 
+export const colorAgreementSimpleType = scaleOrdinal<string>()
+.domain(['Participant'])
+.range(["#34659B"])

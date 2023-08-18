@@ -59,8 +59,6 @@
 
   $: countrySentence = searchVersion ? getCountryDescription(countryData.id) : null;
 
-  $: if (searchVersion) console.log(countryData.agreements);
-
 </script>
 
 <section id="agreements-grid" class="viz wide">
@@ -71,15 +69,17 @@
     <p class="narrow align">{@html countrySentence}</p>
   {/if}
 
-  <div class="right-narrow">
-    <Legend
-      title={legendOptions.title}
-      colors={legendOptions.colors}
-      labels={legendOptions.labels}
-      type={legendOptions.type}
-      bind:selected={selectedAgreementType}
-    />
-  </div>
+  {#if !modalVisible}
+    <div class="right-narrow">
+      <Legend
+        title={legendOptions.title}
+        colors={legendOptions.colors}
+        labels={legendOptions.labels}
+        type={legendOptions.type}
+        bind:selected={selectedAgreementType}
+      />
+    </div>
+  {/if}
   <div class="grid">
     {#each agreementsData as a, i}
       <div class="card">

@@ -3,18 +3,40 @@
   import svg from "src/svg";
   import type { AgreementName } from "src/types";
   import { createEventDispatcher } from 'svelte';
-    import AgreementCard from "./AgreementCard.svelte";
+  import { colorAgreementTypes, colorAgreementSimpleType} from "src/colors";
+  import Legend from "./common/Legend.svelte";
 
   export let title: string;
   export let body: string;
   export let tilegram: AgreementName;
   export let link: string;
 
+  const agreementsWithObservers = ["asean-trans", "rapap"];
+
+  const legendOptionsWithObservers = {
+    title: "Agreement status",
+    colors: colorAgreementTypes.range(),
+    labels: colorAgreementTypes.domain(),
+    type: "categorical"
+  };
+
+  const legendOptionsSimple = {
+    title: "Agreement status",
+    colors: colorAgreementSimpleType.range(),
+    labels: colorAgreementSimpleType.domain(),
+    type: "categorical"
+  };
+
   const dispatch = createEventDispatcher();
 
   function onClickClose() {
     dispatch('modalClosed');
   }
+
+
+  $: legendOptions = agreementsWithObservers.includes(tilegram) 
+    ? legendOptionsWithObservers 
+    : legendOptionsSimple;
   
 </script>
 
@@ -38,12 +60,18 @@
       {/if}
     </div>
     <div class="tilegram">
-      <AgreementCarto agreement={tilegram} popupVersion/>
+      <AgreementCarto agreement={tilegram} popupVersion />
+      <div class="legend">
+        <Legend
+          title={legendOptions.title}
+          colors={legendOptions.colors}
+          labels={legendOptions.labels}
+          type={legendOptions.type}
+          selected={null}
+       />
+      </div>
     </div>
   </div>
-
-
-
 </div>
 
 <style lang="scss">
@@ -52,6 +80,11 @@
     background-color: #FFFFFF;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
     padding: 3.5rem;
+  }
+
+  .legend {
+    margin-top: -3.5rem;
+    margin-left: 1rem;
   }
 
   .link {
