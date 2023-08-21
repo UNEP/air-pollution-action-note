@@ -112,6 +112,10 @@
     width: calc(250px + 3%) !important;
   }
 
+  .agreement-cartogram :global(.country) {
+    border-radius: 20% !important;
+  }
+
   .agreement-cartogram :global(.line) {
     border: none !important;
   }

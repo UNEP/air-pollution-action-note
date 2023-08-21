@@ -80,6 +80,9 @@
     background-color: #FFFFFF;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
     padding: 3.5rem;
+    box-sizing: border-box;
+    width: 64rem;
+    border-radius: 0.3rem;
   }
 
   .legend {

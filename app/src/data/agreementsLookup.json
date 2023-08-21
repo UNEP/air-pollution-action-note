@@ -60,10 +60,8 @@
     "url": "https://rds.org.co/apc-aa-files/205ec78c9cca6d1850bdca24e20e50bf/vf_draft_regional-aq-action-plan_eng_june_2022.pdf"
   },
   "arctic": {
-    "name": "Artic Council",
+    "name": "Arctic Council",
     "definition": "Established under the 1996 Ottawa Declaration, the Arctic Council is a high-level intergovernmental forum providing a means for promoting cooperation, coordination, and interaction among the Arctic States. The Arctic Council’s 2017 Fairbanks Declaration is the first pan-Arctic goal to reduce black carbon emissions from a range of sources by 25 to 33 per cent below 2013 levels by 2025.",
     "url": "https://arctic-council.org/"
-  },
-  "kathmandu": { "name": "Kathmandu", "definition": "Kathmandu definition", "url": "" },
-  "sica": { "name": "Sica", "definition": "Sica definition", "url": "" }
+  }
 }

@@ -11,7 +11,7 @@
   export const agreementList = [
     "eanet", "asean-trans", "male", "neaspec",
     "rapap", "clrtap", "eu-directive", "us-canada", "lusaka",
-    "nairobi", "abidjan", "lat-caribbean", "arctic" , "kathmandu" , "sica"
+    "nairobi", "abidjan", "lat-caribbean", "arctic"
   ];
 </script>
 
@@ -25,6 +25,7 @@
   import agreementsLookup from "../data/agreementsLookup.json";
   import type { AgreementName } from "src/types";
   import { countriesWithArticle } from "src/data";
+  import IntersectionObserver from "svelte-intersection-observer";
 
   export let head: string = null;
   export let searchVersion = false;
@@ -42,8 +43,21 @@
   let selectedAgreement: number;
 
   function onAgreementCardClicked(i: number) {
-    selectedAgreement = i;
-    modalVisible = true;
+    if (intersecting) {
+      selectedAgreement = i;
+      modalVisible = true;
+    }
+    if (!intersecting) {
+      const vOffset = 250;
+      let scrollOffset = document.getElementById(`agreement-card-${i}`)
+        .getBoundingClientRect().top + window.scrollY - vOffset;
+      window.scrollTo({
+        top: scrollOffset,
+        behavior: 'smooth',
+      });
+      selectedAgreement = i;
+      modalVisible = true;
+    }
   };
 
   function onModalClosed(){
@@ -80,72 +94,77 @@
       status: a.status
     }));
 
-  const colorBandFn = (status: number) => status === 1 ? legendOptions.colors[0] : legendOptions.colors[1];
+  const colorBandFn = (status: number) => status === 1 
+    ? legendOptions.colors[0] 
+    : legendOptions.colors[1];
+
+  let element;
+  let intersecting;
+  const threshold = 0.4;
+
+  $: if (!intersecting) onModalClosed();
 
 </script>
 
-<section id="agreements-grid" class="viz wide">
+<IntersectionObserver {element} bind:intersecting {threshold}>
+  <section id="agreements-grid" class="viz wide" bind:this={element}>
+    {#if !searchVersion}
+      <Head title={head} selectedElement={null}/>
+    {:else}
+      <p class="narrow align">{@html countrySentence}</p>
+    {/if}
 
-  {#if !searchVersion}
-    <Head title={head} selectedElement={null}/>
-  {:else}
-    <p class="narrow align">{@html countrySentence}</p>
-  {/if}
-
-  {#if !modalVisible}
-    <div class="right-narrow">
-      <Legend
-        title={legendOptions.title}
-        colors={legendOptions.colors}
-        labels={legendOptions.labels}
-        type={legendOptions.type}
-        bind:selected={selectedAgreementType}
-      />
-    </div>
-  {/if}
-  <div class="grid">
-    {#each agreementsData as a, i}
-      <div class="card" 
-        class:simple={searchVersion} 
-        style="--band-color: {colorBandFn(a.status)};">
-        <AgreementCard 
-          title={a.title}
-          tilegram={a.id} 
-          selected={selectedAgreement === i}
-          simple={searchVersion}
-          on:agreementClicked={() => onAgreementCardClicked(i)}/>
+    {#if !modalVisible}
+      <div class="right-narrow">
+        <Legend
+          title={legendOptions.title}
+          colors={legendOptions.colors}
+          labels={legendOptions.labels}
+          type={legendOptions.type}
+          bind:selected={selectedAgreementType}
+        />
       </div>
-    {/each}
-  </div>
-
-  {#if modalVisible}
-    <div class="modal" transition:scale >
-      <ModalCard 
-        title={agreementsData[selectedAgreement].title}
-        body={agreementsData[selectedAgreement].body}
-        tilegram={agreementsData[selectedAgreement].id}
-        link={agreementsData[selectedAgreement].link}
-        on:modalClosed={onModalClosed} 
-      />
+    {/if}
+    <div class="grid">
+      {#each agreementsData as a, i}
+        <div class="card"
+          id={`agreement-card-${i}`} 
+          class:simple={searchVersion} 
+          style="--band-color: {colorBandFn(a.status)};">
+          <AgreementCard 
+            title={a.title}
+            tilegram={a.id} 
+            selected={selectedAgreement === i}
+            simple={searchVersion}
+            on:agreementClicked={() => onAgreementCardClicked(i)}/>
+        </div>
+      {/each}
     </div>
-  {/if}
-  
-
-</section>
+    {#if modalVisible}
+      <div class="modal" transition:scale >
+        <ModalCard 
+          title={agreementsData[selectedAgreement].title}
+          body={agreementsData[selectedAgreement].body}
+          tilegram={agreementsData[selectedAgreement].id}
+          link={agreementsData[selectedAgreement].link}
+          on:modalClosed={onModalClosed} 
+        />
+      </div>
+    {/if}
+  </section>
+</IntersectionObserver>
 
 <style lang="scss">
   .grid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: -1.25rem;
   }
 
   .modal {
     position: fixed;
     display: block;
     top: 40%;
-    width: 1024px;
     z-index: 20;
   }
 
