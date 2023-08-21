@@ -21,12 +21,15 @@
     <div class="tilegram">
       <AgreementCarto agreement={tilegram} />
     </div>
+  {:else}
+    <div class="status-band" />
   {/if}
 </button>
 
 <style lang="scss">
 
   .card {
+    position: relative;
     border-radius: 6px;
     border: 1px solid #EFEFEF;
     display: flex;
@@ -50,6 +53,15 @@
     .tilegram {
       height: 7rem;
     }
+  }
+
+  .status-band {
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 
   .card:hover,

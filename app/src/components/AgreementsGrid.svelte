@@ -69,14 +69,18 @@
       id: a[0] as AgreementName,
       title: a[1].name,
       body: a[1].definition,
-      link: a[1].url
+      link: a[1].url,
+      status: null
     }))
     : countryData.agreements.map(a => ({
       id: a.id as AgreementName,
       title: agreementsLookup[a.id].name,
       body: agreementsLookup[a.id].definition,
-      link: agreementsLookup[a.id].url
-    }))
+      link: agreementsLookup[a.id].url,
+      status: a.status
+    }));
+
+  const colorBandFn = (status: number) => status === 1 ? legendOptions.colors[0] : legendOptions.colors[1];
 
 </script>
 
@@ -101,7 +105,9 @@
   {/if}
   <div class="grid">
     {#each agreementsData as a, i}
-      <div class="card">
+      <div class="card" 
+        class:simple={searchVersion} 
+        style="--band-color: {colorBandFn(a.status)};">
         <AgreementCard 
           title={a.title}
           tilegram={a.id} 
@@ -141,6 +147,10 @@
     top: 40%;
     width: 1024px;
     z-index: 20;
+  }
+
+  .simple :global(.status-band) {
+    background-color: var(--band-color);
   }
 
 </style>
