@@ -20,6 +20,8 @@
   import type { CountryDataSquare } from "./charts/LinearDistribution.svelte";
   import AgreementsGrid from "./AgreementsGrid.svelte";
   import type { CountryAgreementsData } from "./AgreementsGrid.svelte";
+  import { agreementList } from "./AgreementsGrid.svelte";
+  import { clamp } from "src/util";
 
   export var id: string;
   export var head: string;
@@ -69,8 +71,6 @@
     navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
   });  
 
-  const clamp = (n: number, min: number, max:number) => Math.min(Math.max(n, min), max);
-
   const countriesToBeFiltered = 
     ["AIA","VGB","CYM","CUW","SWZ","FLK","FRO",
     "GIB","VAT","JEY","LIE","MSR","NCL","NFK",
@@ -98,7 +98,6 @@
   let typeaheadValue: string;
   let countryAgreementsData: CountryAgreementsData;
   let showDropdown = false;
-
 
   let currentCountry = {
     id: "",
@@ -137,15 +136,8 @@
     }
   }
 
-  function toFilter(countryID:string){
-    if (!CTBF_lookUp[countryID])
-      return false;
-    else 
-      return true;
-  }
-
   const extract = (item) => item.name;
-  const filter = (item) => toFilter(item.id);
+  const filter = (item) => Boolean(CTBF_lookUp[item.id]);
 
   function updateSelectedCountry(event, detail) {
     event === "select" ? selectCountry(detail.original.id) : clearCountry();
@@ -171,7 +163,7 @@
 
   const minDistributionSize = 150;
   const maxDistributionSize = 385;
-  let linearDistributionsWidth: number = maxDistributionSize;
+  let linearDistributionsWidth = maxDistributionSize;
 
   $: countryDeathsData = generateDeathsData(currentCountry.id);
 
@@ -187,10 +179,9 @@
   $: countryAgreementsData = {
     id: currentCountry.id,
     name: countryNameLookUp[currentCountry.id],
-    //work in progress
-    agreements: Object.entries(agreementsLookup[currentCountry.id]).filter(([, v]) => v === 1 || v === 2).map(([k]) => k)
+    agreements: agreementList.filter((i) => agreementsLookup[currentCountry.id][i] > 0)
+      .map((a) => ({id: a, status: agreementsLookup[currentCountry.id][a]}))
   };
-
 </script>
   
 <section {id} class="viz wide country-search">

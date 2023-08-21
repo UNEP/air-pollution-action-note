@@ -2,8 +2,17 @@
   export type CountryAgreementsData = {
     id: string,
     name: string,
-    agreements: string[]
+    agreements: Agreement[]
   };
+  type Agreement = { 
+    id: string, 
+    status: number 
+  };
+  export const agreementList = [
+    "eanet", "asean-trans", "male", "neaspec",
+    "rapap", "clrtap", "eu-directive", "us-canada", "lusaka",
+    "nairobi", "abidjan", "lat-caribbean", "arctic" , "kathmandu" , "sica"
+  ];
 </script>
 
 <script lang="ts">
@@ -20,13 +29,6 @@
   export let head: string = null;
   export let searchVersion = false;
   export let countryData: CountryAgreementsData = null;
-
-  const agreementsData = Object.entries(agreementsLookup).map(a => ({
-    id: a[0] as AgreementName,
-    title: a[1].name,
-    body: a[1].definition,
-    link: a[1].url
-  }));
  
   const legendOptions = {
     title: "Agreement status",
@@ -49,15 +51,32 @@
     selectedAgreement = null;
   };
 
-  //work in progress
-
   function getCountryDescription(id: string){
     let hasArticle = countriesWithArticle.includes(id);
     let countryName = hasArticle ? `The ${countryData.name} ` : `${countryData.name} `;
-    return "Kenya has signed a total of 4 agreements regarding air quality:";
+    let nAgreements = countryData.agreements.length;
+    if (nAgreements <= 0)
+      return `${countryName} hasn't signed any agreements regarding air quality.`;
+    if (nAgreements === 1)
+      return `${countryName} has signed a single agreement regarding air quality:`;
+    return `${countryName} has signed a total of ${nAgreements} agreements regarding air quality:`;
   };
 
   $: countrySentence = searchVersion ? getCountryDescription(countryData.id) : null;
+
+  $: agreementsData = !countryData 
+    ? Object.entries(agreementsLookup).map(a => ({
+      id: a[0] as AgreementName,
+      title: a[1].name,
+      body: a[1].definition,
+      link: a[1].url
+    }))
+    : countryData.agreements.map(a => ({
+      id: a.id as AgreementName,
+      title: agreementsLookup[a.id].name,
+      body: agreementsLookup[a.id].definition,
+      link: agreementsLookup[a.id].url
+    }))
 
 </script>
 
