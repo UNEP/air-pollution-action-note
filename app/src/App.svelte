@@ -13,6 +13,7 @@
   import DeathCauses from './components/DeathCauses.svelte';
   import { strToId } from './util';
   import CountrySearch from './components/CountrySearch.svelte';
+  import ScrollyCartoWorld from './components/ScrollyCartoWorld.svelte';
 
   const content: Content[] = text.article;
   
@@ -21,6 +22,7 @@
 
   const components = {
     'carto-world': CartoWorld,
+    'scrolly-carto-world': ScrollyCartoWorld,
     'carto-region': CartoRegion,
     'intro': Intro,
     'text': Text,
