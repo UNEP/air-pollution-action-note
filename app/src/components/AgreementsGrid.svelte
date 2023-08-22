@@ -113,18 +113,15 @@
     {:else}
       <p class="narrow align">{@html countrySentence}</p>
     {/if}
-
-    {#if !modalVisible}
-      <div class="right-narrow">
-        <Legend
-          title={legendOptions.title}
-          colors={legendOptions.colors}
-          labels={legendOptions.labels}
-          type={legendOptions.type}
-          bind:selected={selectedAgreementType}
-        />
-      </div>
-    {/if}
+    <div class="right-narrow">
+      <Legend
+        title={legendOptions.title}
+        colors={legendOptions.colors}
+        labels={legendOptions.labels}
+        type={legendOptions.type}
+        bind:selected={selectedAgreementType}
+      />
+    </div>
     <div class="grid">
       {#each agreementsData as a, i}
         <div class="card"

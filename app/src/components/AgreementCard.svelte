@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { AgreementName } from 'src/types';
-  import AgreementCarto from './AgreementCarto.svelte';
   import { createEventDispatcher } from 'svelte';
 
   export let title: string;
