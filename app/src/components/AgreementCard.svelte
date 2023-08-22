@@ -19,7 +19,7 @@
   <span class="text">{@html title}</span>
   {#if !simple}
     <div class="tilegram">
-      <AgreementCarto agreement={tilegram} />
+      <img src={`img/agreements/${tilegram}.png`} alt={tilegram} />
     </div>
   {:else}
     <div class="status-band" />
@@ -52,6 +52,10 @@
 
     .tilegram {
       height: 7rem;
+      img {
+        height: 7rem; 
+        width: 100%;
+      }
     }
   }
 
