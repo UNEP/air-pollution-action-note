@@ -33,10 +33,14 @@
     dispatch('modalClosed');
   }
 
+  let selected: number = undefined;
+  let selectedCategory: number;
 
   $: legendOptions = agreementsWithObservers.includes(tilegram) 
     ? legendOptionsWithObservers 
     : legendOptionsSimple;
+
+  $: selectedCategory = (selected === 0) ? 1 : (selected === 1) ? 2 : undefined;
   
 </script>
 
@@ -60,14 +64,14 @@
       {/if}
     </div>
     <div class="tilegram">
-      <AgreementCarto agreement={tilegram} />
+      <AgreementCarto agreement={tilegram} category={selectedCategory}/>
       <div class="legend">
         <Legend
           title={legendOptions.title}
           colors={legendOptions.colors}
           labels={legendOptions.labels}
           type={legendOptions.type}
-          selected={null}
+          bind:selected
        />
       </div>
     </div>
