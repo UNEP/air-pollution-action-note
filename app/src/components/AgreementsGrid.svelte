@@ -169,4 +169,11 @@
     background-color: var(--band-color);
   }
 
+  @media(max-width: 768px) {
+    .modal {
+      bottom: 4rem;
+      top: auto;
+    }
+  }
+
 </style>

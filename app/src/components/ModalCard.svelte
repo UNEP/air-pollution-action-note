@@ -164,6 +164,14 @@
     }
     .modal-card {
       width: calc(100vw - 5rem);
+      padding: 2rem;
+    }
+    .close-button {
+      margin-right: 0;
+      margin-top: 0;
+    }
+    .modal-header {
+      width: 85%;
     }
   }
 
