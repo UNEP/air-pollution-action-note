@@ -16,13 +16,13 @@
 
 <button class="card" class:selected on:click={onClick}>
   <span class="text">{@html title}</span>
-  {#if !simple}
+  <!-- {#if !simple}
     <div class="tilegram">
       <img src={`img/agreements/${tilegram}.png`} alt={tilegram} />
     </div>
-  {:else}
+  {:else} -->
     <div class="status-band" />
-  {/if}
+  <!-- {/if} -->
 </button>
 
 <style lang="scss">

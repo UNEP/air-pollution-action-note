@@ -113,7 +113,7 @@
     {:else}
       <p class="narrow align">{@html countrySentence}</p>
     {/if}
-    <div class="right-narrow">
+    <!-- <div class="right-narrow">
       <Legend
         title={legendOptions.title}
         colors={legendOptions.colors}
@@ -121,7 +121,7 @@
         type={legendOptions.type}
         bind:selected={selectedAgreementType}
       />
-    </div>
+    </div> -->
     <div class="grid">
       {#each agreementsData as a, i}
         <div class="card"
