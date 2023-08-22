@@ -8,7 +8,6 @@
   import type { CountryDataPoint } from "./maps/Cartogram.svelte";
   import type { AgreementName } from "src/types";
 
-  export let popupVersion = false;
   export let agreement: AgreementName;
   export let category = null;
   
@@ -45,7 +44,6 @@
         let agreementsData = d.data;
         const colors = colorAgreementTypes.range();
         const hasValue = category && category === agreementsData[agreement];
-
         if (category) return hasValue ? colors[agreementsData[agreement] - 1] : '#D9D9D9';
         return agreementsData[agreement] !== 0 ? colors[agreementsData[agreement] - 1] : "#D9D9D9";
       },
@@ -65,63 +63,38 @@
     },
   };
 
-  let width = 0;
-  let height = 0;
-
-  let rerender: () => void;
-  // TODO: Ajust with the Agreements Grid component
-  $: {
-    width = popupVersion ? 450 : 210;
-    height = width * 0.62;
-  }
-
 </script>
 
 
-<div
-  style="width: {width}px; height: {height}px"
-  class="cartogram-container agreement-cartogram"
-  class:grid-version={!popupVersion}
->
+<div class="agreement-cartogram">
   <Cartogram
     {...datasetParams["agreements"]}
     slug={"agreements"}
-    bind:rerenderFn={rerender}
     annotationShowing={false}
     staticPosition
   />
 </div>
 
 
-<style>
+<style lang="scss">
   .agreement-cartogram {
     transform-origin: 0 0;
-    height: 100%;
+    aspect-ratio: 16/10;
     width: 100%;
     display: flex;
     position: relative;
-  }
 
-  .agreement-cartogram :global(.text) {
-    background:rgba(255, 255, 255, 0.6);
-    border-radius: 4px;
-    padding: 10px 5px;
-  }
-
-  .agreement-cartogram :global(.annotation) {
-    width: calc(250px + 3%) !important;
-  }
-
-  .agreement-cartogram :global(.country) {
-    border-radius: 20% !important;
-  }
-
-  .agreement-cartogram :global(.line) {
-    border: none !important;
-  }
-
-  .grid-version :global(.country) {
-    pointer-events: none !important;
+    :global(.text) {
+      background-color:rgba(255, 255, 255, 0.6);
+      border-radius: 4px;
+      padding: 0.625rem 0.313rem;
+    }
+    :global(.country) {
+      border-radius: 20% !important;
+    }
+    :global(.line) {
+      border: none !important;
+    }
   }
 
 </style>

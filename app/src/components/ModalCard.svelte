@@ -60,7 +60,7 @@
       {/if}
     </div>
     <div class="tilegram">
-      <AgreementCarto agreement={tilegram} popupVersion />
+      <AgreementCarto agreement={tilegram} />
       <div class="legend">
         <Legend
           title={legendOptions.title}
@@ -81,7 +81,8 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
     padding: 3.5rem;
     box-sizing: border-box;
-    width: 64rem;
+    max-width: 64rem;
+    margin-right: 2rem;
     border-radius: 0.3rem;
   }
 
@@ -120,13 +121,17 @@
     width: 50%;
   }
 
+  .tilegram {
+    transform: translateY(-0.5rem);
+    max-width: 28rem;
+  }
+
   .content-container {
     display: flex;
     flex-direction: row;
-    width: 56rem;
+    width: 100%;
     margin-top: 2rem;
     gap: 2rem;
-    line-height: 1.5rem;
   }
 
   .close-button {
@@ -144,6 +149,18 @@
 
   .close-button:hover :global(svg) {
     transform: scale(1.25);
+  }
+
+  @media(max-width: 768px) {
+    .tilegram {
+      display: none;  
+    }
+    .text {
+      width: 100%;
+    }
+    .modal-card {
+      width: calc(100vw - 5rem);
+    }
   }
 
 </style>

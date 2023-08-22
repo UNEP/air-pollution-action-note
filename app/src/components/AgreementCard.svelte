@@ -53,7 +53,6 @@
     .tilegram {
       height: 7rem;
       img {
-        height: 7rem; 
         width: 100%;
       }
     }
