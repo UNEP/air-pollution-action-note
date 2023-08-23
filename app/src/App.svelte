@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Content } from 'src/types';
   import CartoWorld from 'src/components/CartoWorld.svelte';
+  import ScrollyCartoWorld from './components/ScrollyCartoWorld.svelte';
   import CartoRegion from 'src/components/CartoRegion.svelte';
   import Intro from 'src/components/text/Intro.svelte';
   import Text from 'src/components/text/Text.svelte';
@@ -22,6 +23,7 @@
   const components = {
     'carto-world': CartoWorld,
     'carto-region': CartoRegion,
+    'scrolly-carto-world': ScrollyCartoWorld,
     'intro': Intro,
     'text': Text,
     "menu": Menu,

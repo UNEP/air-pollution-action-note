@@ -19,22 +19,25 @@
   import { createLookup } from "src/util";
 
   import type { CountryDataPoint } from "src/components/maps/Cartogram.svelte";
-  import type { Content, HealthDisease, TextBlock } from "src/types";
   import ScrollableX from "./common/ScrollableX.svelte";
   import EmbedFooter from "./EmbedFooter.svelte";
   import SectionTitle from "src/components/SectionTitle.svelte";
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
   import diseasesGlobal from "src/data/diseasesGlobal.json";
-  import { create } from "d3-selection";
+  import Embed from "./Embed.svelte";
+  import type { Content, HealthDisease, TextBlock } from "src/types";
 
-  export var data: "pm25" | "health" | "policies" | "diseases";
+  export var data: "pm25" | "health" | "policies" | "diseases" | "test";
   export var id: string;
   export var block: Content;
   export var head: string;
   export var text: TextBlock[];
   export var embed: string;
-  export var isEmbed = false;
+  export var isEmbed: boolean = false;
+  export let cartogramAnnotation: boolean;
+  export let showEmbed: boolean = true;
+  export let rangeValue: number = 0;
 
   let selectedDisease: HealthDisease = "ischemic";
 
@@ -84,7 +87,7 @@
     nairobi: number;
     abidjan: number;
     "lat-caribbean": number;
-    arctiv: number;
+    arctic: number;
     nAgreements: number;
   }
 
@@ -97,7 +100,7 @@
 
   enum AgreementsStatus {
     Participant = 1,
-    Observer = 2
+    Observer = 2,
   }
 
   const policiesLookup = createLookup(
@@ -126,7 +129,8 @@
   let clientWidth = 0;
   let width: number;
   let height: number;
-  let cartogramAnnotation: boolean;
+  let scale: number = 0;
+  let checked: boolean = true;
 
   let rerender: () => void;
 
@@ -143,59 +147,90 @@
     const participantAgreement = [];
     const observerAgreement = [];
 
-    if(data.abidjan === AgreementsStatus.Participant) participantAgreement.push('abidjan')
-    if(data.abidjan === AgreementsStatus.Observer) observerAgreement.push('abidjan');
+    if (data.abidjan === AgreementsStatus.Participant)
+      participantAgreement.push("abidjan");
+    if (data.abidjan === AgreementsStatus.Observer)
+      observerAgreement.push("abidjan");
 
-    if(data.arctiv === AgreementsStatus.Participant) participantAgreement.push('arctiv');
-    if(data.arctiv === AgreementsStatus.Observer) observerAgreement.push('arctiv');
+    if (data.arctic === AgreementsStatus.Participant)
+      participantAgreement.push("arctic");
+    if (data.arctic === AgreementsStatus.Observer)
+      observerAgreement.push("arctic");
 
-    if(data["asean-trans"] === AgreementsStatus.Participant) participantAgreement.push('asean-trans');
-    if(data["asean-trans"] === AgreementsStatus.Observer) observerAgreement.push('asean-trans');
+    if (data["asean-trans"] === AgreementsStatus.Participant)
+      participantAgreement.push("asean-trans");
+    if (data["asean-trans"] === AgreementsStatus.Observer)
+      observerAgreement.push("asean-trans");
 
-    if(data.clrtap === AgreementsStatus.Participant) participantAgreement.push('clrtap');
-    if(data.clrtap === AgreementsStatus.Observer) observerAgreement.push('clrtap');
+    if (data.clrtap === AgreementsStatus.Participant)
+      participantAgreement.push("clrtap");
+    if (data.clrtap === AgreementsStatus.Observer)
+      observerAgreement.push("clrtap");
 
-    if(data.eanet === AgreementsStatus.Participant) participantAgreement.push('eanet');
-    if(data.eanet === AgreementsStatus.Observer) observerAgreement.push('eanet');
+    if (data.eanet === AgreementsStatus.Participant)
+      participantAgreement.push("eanet");
+    if (data.eanet === AgreementsStatus.Observer)
+      observerAgreement.push("eanet");
 
-    if(data["eu-directive"] === AgreementsStatus.Participant) participantAgreement.push('eu-directive');
-    if(data["eu-directive"] === AgreementsStatus.Observer) observerAgreement.push('eu-directive');
+    if (data["eu-directive"] === AgreementsStatus.Participant)
+      participantAgreement.push("eu-directive");
+    if (data["eu-directive"] === AgreementsStatus.Observer)
+      observerAgreement.push("eu-directive");
 
-    if(data.kathmandu === AgreementsStatus.Participant) participantAgreement.push('kathmandu');
-    if(data.kathmandu === AgreementsStatus.Observer) observerAgreement.push('kathmandu');
+    if (data.kathmandu === AgreementsStatus.Participant)
+      participantAgreement.push("kathmandu");
+    if (data.kathmandu === AgreementsStatus.Observer)
+      observerAgreement.push("kathmandu");
 
-    if(data["lat-caribbean"] === AgreementsStatus.Participant) participantAgreement.push('lat-caribbean');
-    if(data["lat-caribbean"] === AgreementsStatus.Observer) observerAgreement.push('lat-caribbean');
+    if (data["lat-caribbean"] === AgreementsStatus.Participant)
+      participantAgreement.push("lat-caribbean");
+    if (data["lat-caribbean"] === AgreementsStatus.Observer)
+      observerAgreement.push("lat-caribbean");
 
-    if(data.lusaka === AgreementsStatus.Participant) participantAgreement.push('lusaka');
-    if(data.lusaka === AgreementsStatus.Observer) observerAgreement.push('lusaka');
+    if (data.lusaka === AgreementsStatus.Participant)
+      participantAgreement.push("lusaka");
+    if (data.lusaka === AgreementsStatus.Observer)
+      observerAgreement.push("lusaka");
 
-    if(data.male === AgreementsStatus.Participant) participantAgreement.push('male');
-    if(data.male === AgreementsStatus.Observer) observerAgreement.push('male');
+    if (data.male === AgreementsStatus.Participant)
+      participantAgreement.push("male");
+    if (data.male === AgreementsStatus.Observer) observerAgreement.push("male");
 
-    if(data.nairobi === AgreementsStatus.Participant) participantAgreement.push('nairobi');
-    if(data.nairobi === AgreementsStatus.Observer) observerAgreement.push('nairobi');
+    if (data.nairobi === AgreementsStatus.Participant)
+      participantAgreement.push("nairobi");
+    if (data.nairobi === AgreementsStatus.Observer)
+      observerAgreement.push("nairobi");
 
-    if(data.neaspec === AgreementsStatus.Participant) participantAgreement.push('neaspec');
-    if(data.neaspec === AgreementsStatus.Observer) observerAgreement.push('neaspec');
+    if (data.neaspec === AgreementsStatus.Participant)
+      participantAgreement.push("neaspec");
+    if (data.neaspec === AgreementsStatus.Observer)
+      observerAgreement.push("neaspec");
 
-    if(data.rapap === AgreementsStatus.Participant) participantAgreement.push('rapap');
-    if(data.rapap === AgreementsStatus.Observer) observerAgreement.push('rapap');
+    if (data.rapap === AgreementsStatus.Participant)
+      participantAgreement.push("rapap");
+    if (data.rapap === AgreementsStatus.Observer)
+      observerAgreement.push("rapap");
 
-    if(data["us-canada"] === AgreementsStatus.Participant) participantAgreement.push('us-canada');
-    if(data["us-canada"] === AgreementsStatus.Observer) observerAgreement.push('us-canada');
+    if (data["us-canada"] === AgreementsStatus.Participant)
+      participantAgreement.push("us-canada");
+    if (data["us-canada"] === AgreementsStatus.Observer)
+      observerAgreement.push("us-canada");
 
-    let hoverText = `<strong>${data.name}</strong> ${data.nAgreements === 0 ? 'does not participate in any agreement' : 'participates in the '}`
-    
+    let hoverText = `<strong>${data.name}</strong> ${
+      data.nAgreements === 0
+        ? "does not participate in any agreement"
+        : "participates in the "
+    }`;
+
     participantAgreement.forEach((agreement, i) => {
-      let finalChar = ', ';
-      if (i === participantAgreement.length - 1) finalChar = '.';
-      if ( i === participantAgreement.length - 2) finalChar = ' and ';
+      let finalChar = ", ";
+      if (i === participantAgreement.length - 1) finalChar = ".";
+      if (i === participantAgreement.length - 2) finalChar = " and ";
       hoverText += `${agreementsDefinitionLookup[agreement].name}${finalChar}`;
-    })
+    });
 
     return hoverText;
-  }
+  };
   const policiesHoverText = (data: PoliciesData): string => {
     let hasMet = [];
     let onTrack = [];
@@ -610,17 +645,21 @@
             color: agreementsData.nAgreements > 4 ? colors[4] : "#D9D9D9",
             start: 80,
             end: 100,
-          }
+          },
         ];
 
-        const gradientStrs = gradients.map((g) => `${g.color} ${g.start}% ${g.end}%`);
+        const gradientStrs = gradients.map(
+          (g) => `${g.color} ${g.start}% ${g.end}%`
+        );
         return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
       },
       classesFn: (d: CountryDataPoint) => {
         let agreementsData = d.data as AgreementsData;
         let agreementsCont = [1, 2, 3, 4, 5];
         const hasValue =
-          legendIsHovered && agreementsCont[legendElementSelectedIndex] === agreementsData.nAgreements;
+          legendIsHovered &&
+          agreementsCont[legendElementSelectedIndex] ===
+            agreementsData.nAgreements;
         return hasValue ? ["country--shadow"] : [];
       },
       color: colorAgreements,
@@ -631,9 +670,63 @@
       linearDomain: null,
       internalLabels: null,
     },
+    test: {
+      data: deaths_data.map((d) => {
+        return {
+          name: countryNameDictionaryLookup[d.id].name,
+          short: countryNameDictionaryLookup[d.id].short,
+          code: d.id,
+          x: d.x,
+          y: d.y,
+          value: d.deaths,
+          rate: d.rate,
+          color: colorPM25(d.rate),
+        };
+      }),
+      nodeSize: 80,
+      helpText: {
+        code: "GEO",
+        text: () => `<strong>Each square is a country</strong>,
+        sized by the total number of <strong>deaths
+        caused by fine particle pollution</strong>.`,
+      },
+      hoverTextFn: (d: CountryDataPoint) =>
+        `In <strong>${d.name}</strong>, fine particle
+      pollution caused <strong>${d.value.toLocaleString(
+        "en-US"
+      )} deaths</strong>
+      in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
+      classesFn: (d: CountryDataPoint) => {
+        if (!legendIsHovered) {
+          return [];
+        } else {
+          const isSelected =
+            colorPM25.range().indexOf(d.color) === legendElementSelectedIndex;
+          return [isSelected ? "country--shadow" : "country--hide"];
+        }
+      },
+      color: colorPM25,
+      legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
+      legendDomain: ["x1", "2", "3", "5", "7"],
+      legendType: "sequential",
+      domain: [700, 400] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
+      staticBorder: () => {
+        console.log("static border", checked);
+        return checked;
+      },
+      tileBorder: colorHealth,
+      colorFn: colorHealth,
+      scale: () => scale,
+    },
   };
   // re-render hack (as Cartogram component doesn't know when then result of our funcs change)
-  $: (legendElementSelectedIndex !== undefined || selectedDisease) &&
+  $: (legendElementSelectedIndex !== undefined ||
+    selectedDisease ||
+    scale ||
+    !checked ||
+    checked) &&
     rerender &&
     rerender();
 
@@ -641,6 +734,8 @@
     width = Math.max(clientWidth, 700);
   }
   $: height = width * (data === "pm25" ? 0.55 : 0.62);
+
+  $: scale = rangeValue;
 </script>
 
 <section {id} class="viz wide">
@@ -665,6 +760,8 @@
       type={datasetParams[data].legendType}
       linearDomain={datasetParams[data].linearDomain}
       internalLabels={datasetParams[data].internalLabels}
+      checkbox={data === 'test'}
+      bind:checked
       bind:selected={legendElementSelectedIndex}
     />
   </div>
@@ -679,7 +776,8 @@
     </div>
   {/if}
 
-  <div class="margin-breakout-mobile" bind:clientWidth>
+  <div class="margin-breakout-mobile cartogram-region" bind:clientWidth>
+    <slot name="range"/>
     <ScrollableX>
       <div
         style="width:{width}px; height:{height}px"
@@ -690,32 +788,14 @@
           slug={data}
           bind:rerenderFn={rerender}
           bind:annotationShowing={cartogramAnnotation}
+          staticBorder={checked}
         />
       </div>
     </ScrollableX>
   </div>
 
-  {#if isEmbed && embed === "policies"}
-    <div
-      class="embed-additional-text-desktop-policies"
-      class:hide={cartogramAnnotation}
-    >
-      <p>
-        To explore more about the climate emergency and the effects on the
-        planet visit
-        <b><a target="_blank" href="https://www.unep.org/">unep.org</a></b>
-      </p>
-    </div>
-  {/if}
-
-  {#if !isEmbed}
-    <div class="footer">
-      <EmbedFooter {embed} />
-    </div>
-
-    {#each text as t}
-      <p class="col-text">{@html t.p}</p>
-    {/each}
+  {#if showEmbed}
+    <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
   {/if}
 </section>
 
@@ -744,5 +824,9 @@
     background: #f9f9f9e0;
     border-radius: 4px;
     padding: 0 10px 5px;
+  }
+
+  .cartogram-region {
+    display: flex;
   }
 </style>

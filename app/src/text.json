@@ -165,6 +165,21 @@
       ]
     },
     {
+      "type": "scrolly-carto-world",
+      "anchor": "test",
+      "data": "test",
+      "embed": "test",
+      "head": "<strong>Government actions</strong> on air quality are <strong>steadily growing</strong>, but <strong>implementation and capacity gaps</strong> hinder progress towards clean air.",
+      "text": [
+        {
+          "p": "<a href=”https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution”>UNEP’s <strong>Actions on Air Quality</strong> report</a> provides a review of policy actions being undertaken by governments around the world to improve air quality. The report provides an assessment of actions in key sectors that contribute to air pollution including industrial emissions (incentives for cleaner production), transportation (vehicle emission and fuel quality standards), solid waste management (regulation of open burning of waste), household air pollution (incentives for clean energy use in residential cooking and heating) and agriculture (sustainable agricultural practices)."
+        },
+        {
+          "p": "These sectoral measures are supported by enabling policy frameworks (including air quality standards) and air quality management capacities. The report, therefore, includes in its analysis: air quality management strategies, and air quality monitoring."
+        }
+      ]
+    },
+    {
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
