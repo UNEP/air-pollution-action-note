@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+
   export interface CountryDataPoint {
     name: string;
     short: string;
@@ -9,16 +10,16 @@
     rate?: number;
     color?: string;
     // waiting for svelte to add support for generics
-    data?: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
+    data?: any; /* eslint-disable-line @typescript-eslint/no-explicit-any */
   }
+
 </script>
 
 <script lang="ts">
-  import * as d3 from "src/d3";
+  import * as d3 from 'src/d3';
   import chroma from "chroma-js";
-  import { throttle, trailingDebounce } from "src/util";
-  import Annotation from "./Annotation.svelte";
-  import { fade } from "svelte/transition";
+  import { throttle, trailingDebounce } from 'src/util';
+  import Annotation from './Annotation.svelte';
 
   interface CartogramDataPoint extends CountryDataPoint {
     category: string;
@@ -31,21 +32,21 @@
   export var data: CountryDataPoint[];
   export var nodeSize = 100;
   export var domain: [number, number];
-  export var helpText: { code: string; text: () => void } = null;
+  export var helpText: {code: string, text: () => void} = null;
   export var categoryFn: (c: CountryDataPoint) => string = undefined;
   export var colorFn: (c: CountryDataPoint) => string = undefined;
   export var classesFn: (c: CountryDataPoint) => string[] = () => [];
   export var hoverTextFn: (c: CountryDataPoint) => string;
   export var onHoverFn: (c: CountryDataPoint) => void = () => null;
   export var hideLabels = false;
-  export const rerenderFn: () => void = () => (cartogramData = cartogramData);
+  export const rerenderFn: () => void = () => cartogramData = cartogramData;
   export var annotationShowing: boolean = false;
   export var legendTitle: string;
   export var slug: string;
-  export let staticBorder: boolean;
-  export let scale: () => number;
 
-  const title = legendTitle.replaceAll("\\<.*?\\>", "").toLowerCase();
+  const title = legendTitle
+    .replaceAll("\\<.*?\\>", "")
+    .toLowerCase();
 
   let containerEl: Element;
   let loaded = false;
@@ -57,12 +58,12 @@
   let targetHeight: number = originalHeight;
   let resizing = false;
   let hoverTimeout: number;
-  let hoverData: { x: number; y: number; country: CartogramDataPoint } = null;
+  let hoverData: {x: number, y: number, country: CartogramDataPoint} = null;
   let helpTextFade = false;
   let annotation: AnnotationData;
   let hoveredForX = false;
 
-  $: largestVal = Math.max(...data.map((d) => d.value));
+  $: largestVal = Math.max(...data.map(d => d.value));
 
   let clientWidth: number;
   let containerWidth: number;
@@ -73,35 +74,36 @@
       resizing = true;
       const ctrStyle = getComputedStyle(containerEl);
 
-      const xPadding =
-        parseFloat(ctrStyle.paddingLeft) + parseFloat(ctrStyle.paddingRight);
-      const yPadding =
-        parseFloat(ctrStyle.paddingTop) - parseFloat(ctrStyle.paddingBottom);
+      const xPadding = parseFloat(ctrStyle.paddingLeft) + parseFloat(ctrStyle.paddingRight);
+      const yPadding = parseFloat(ctrStyle.paddingTop) - parseFloat(ctrStyle.paddingBottom);
 
       containerWidth = containerEl.clientWidth - xPadding;
       containerHeight = containerEl.clientHeight - yPadding;
 
-      const scale = Math.min(
-        containerWidth / originalWidth,
-        containerHeight / originalHeight
-      );
+      const scale = Math.min(containerWidth / originalWidth, containerHeight / originalHeight);
       targetWidth = originalWidth * scale;
       targetHeight = originalHeight * scale;
-      window.setTimeout(() => (resizing = false));
+      window.setTimeout(() => resizing = false);
     }
   }
 
   const throttledResize = throttle(resize, 100);
   $: clientWidth && throttledResize();
 
-  $: radius = d3.scaleSqrt().domain([0, largestVal]).range([0, nodeSize]);
+  $: radius = d3.scaleSqrt()
+    .domain([0, largestVal])
+    .range([0, nodeSize]);
 
-  $: xScale = d3.scaleLinear().domain([0, domain[0]]).range([0, targetWidth]);
+  $: xScale = d3.scaleLinear()
+    .domain([0, domain[0]])
+    .range([0, targetWidth]);
 
-  $: yScale = d3.scaleLinear().domain([0, domain[1]]).range([0, targetHeight]);
+  $: yScale = d3.scaleLinear()
+    .domain([0, domain[1]])
+    .range([0, targetHeight]);
 
   let cartogramData: CartogramDataPoint[];
-  $: cartogramData = data.map((d) => {
+  $: cartogramData = data.map(d => {
     const r = radius(d.value);
     return {
       ...d,
@@ -112,35 +114,28 @@
 
       // width height should be the same if the aspect is correct
       width: xScale(r * 2),
-      height: yScale(r * 2),
+      height: yScale(r * 2)
     };
   });
 
-  $: cartogramData.sort((a, b) => a.y - b.y);
+  $: cartogramData.sort((a,b) => a.y - b.y);
 
   const tileBorder = (color: string) => {
-    const darken = 1.5 / chroma.contrast(color, "#F9F9F9");
-    return `1px solid ${chroma(color).darken(darken)}`;
-  };
+      const darken = 1.5 / chroma.contrast(color, '#F9F9F9');
+      return (`1px solid ${chroma(color).darken(darken)}`);
+  }
 
-  $: calcStyle = (d: CartogramDataPoint, staticBorder = false) => {
+  $: calcStyle = (d: CartogramDataPoint) => {
     const styles = [
       `left: ${d.left}px`,
       `top: ${d.top}px`,
       `width: ${d.width}px`,
       `height: ${d.height}px`,
-      !staticBorder
-        ? `background: ${d.color ? d.color : colorFn(d)};`
-        : "transparent",
+      `background: ${d.color ? d.color : colorFn(d)};`,
       // `border: ${tileBorder(d.color)}`
-      `border: ${
-        slug === "pm25" || slug === "health" || slug === "test"
-          ? tileBorder(d.color)
-          : "1px solid #BDBDBD"
-      };`,
-      `scale: ${scale && !staticBorder ? scale() : 1}`
+      `border: ${slug === 'pm25' || slug === 'health' ? tileBorder(d.color) : '1px solid #BDBDBD'};`
     ];
-    return styles.join(";");
+    return styles.join(';');
   };
 
   window.setTimeout(() => {
@@ -154,13 +149,10 @@
     y: number;
     radius: number;
     html: string;
-    class?: string;
+    class?: string
   }
 
-  const _debouncedShowHelpText = trailingDebounce(
-    () => (helpTextFade = false),
-    200
-  );
+  const _debouncedShowHelpText = trailingDebounce(() => helpTextFade = false, 200);
 
   function onMouseEnterCountry(evt: MouseEvent, country: CartogramDataPoint) {
     onHoverFn(country);
@@ -168,10 +160,10 @@
     _debouncedShowHelpText.cancel();
     hoverData = {
       country,
-      x: country.left + country.width / 2,
-      y: country.top + country.height / 2,
+      x: country.left + (country.width / 2),
+      y: country.top + (country.height / 2)
     };
-    hoverTimeout = window.setTimeout(() => (hoveredForX = true), 350);
+    hoverTimeout = window.setTimeout(() => hoveredForX = true, 350);
   }
 
   function onMouseClick(country: CartogramDataPoint) {
@@ -180,10 +172,10 @@
     _debouncedShowHelpText.cancel();
     hoverData = {
       country,
-      x: country.left + country.width / 2,
-      y: country.top + country.height / 2,
+      x: country.left + (country.width / 2),
+      y: country.top + (country.height / 2)
     };
-    hoverTimeout = window.setTimeout(() => (hoveredForX = true), 350);
+    hoverTimeout = window.setTimeout(() => hoveredForX = true, 350);
   }
 
   function onMouseLeaveCountry() {
@@ -204,34 +196,28 @@
     _debouncedShowHelpText();
   }
 
-  $: helpCountry = helpText
-    ? cartogramData.find((d) => d.code === helpText.code)
-    : null;
+  $: helpCountry = helpText ? cartogramData.find(d => d.code === helpText.code) : null;
 
   $: helpAnnotation = helpCountry && {
     x: helpCountry.left + helpCountry.width / 2,
     y: helpCountry.top + helpCountry.height / 2,
     radius: 2 + helpCountry.width / 2,
     html: helpText.text(),
-    class: "help",
+    class: 'help'
   };
 
-  $: countryAnnotation = hoverTextFn &&
-    hoverData && {
-      x: hoverData.x,
-      y: hoverData.y,
-      radius: 2 + hoverData.country.width / 2,
-      html: hoverTextFn(hoverData.country),
-    };
+  $: countryAnnotation = hoverTextFn && hoverData && {
+    x: hoverData.x,
+    y: hoverData.y,
+    radius: 2 + hoverData.country.width / 2,
+    html: hoverTextFn(hoverData.country)
+  };
 
   $: haveContainerDims = containerWidth > 0 && containerHeight > 0;
-  $: annotation = haveContainerDims
-    ? countryAnnotation || helpAnnotation
-    : undefined;
+  $: annotation = haveContainerDims ? (countryAnnotation || helpAnnotation) : undefined;
   $: hideAnnotation = helpTextFade || (!countryAnnotation && hoverData);
 
-  $: annotationShowing =
-    annotation && !hideAnnotation && annotation !== helpAnnotation;
+  $: annotationShowing = annotation && !hideAnnotation && annotation !== helpAnnotation;
 
   $: data && fadeInHelpText();
 
@@ -240,27 +226,25 @@
     const top = containerEl.getBoundingClientRect().top - 50;
     pxAboveScreenTop = top < 0 ? Math.abs(top) : 0;
   };
+
 </script>
 
 <svelte:window on:scroll={onWindowScroll} />
 
-<div
-  class="cartogram"
-  bind:this={containerEl}
-  bind:clientWidth
+<div class="cartogram" bind:this={containerEl}
+  bind:clientWidth={clientWidth}
   class:cartogram-country-hover={hoverData}
   class:cartogram-resizing={resizing}
 >
-  <filter id="shadow" x="+100px">
-    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-opacity="0.9" />
-  </filter>
+<filter id="shadow" x="+100px">
+  <feDropShadow dx="0" dy="0" stdDeviation="4" flood-opacity="0.9"></feDropShadow>
+</filter>
   {#if loaded}
-    <div class="countries" role="graphics-document" aria-label={title}>
+    <div class="countries"
+      role="graphics-document"
+      aria-label={title}>
       {#each cartogramData as d (d.code)}
         {#if d.x && d.y}
-          {#if staticBorder}
-            <div class="static-border" style={calcStyle(d, true)} transition:fade/>
-          {/if}
           <div
             class="country {classesFn(d).join(' ')}"
             style={calcStyle(d)}
@@ -272,10 +256,10 @@
             on:focus={() => onMouseClick(d)}
             on:blur={() => onMouseLeaveCountry()}
           >
-            <desc>{hoverTextFn(d)}</desc>
-            {#if !hideLabels && d.width > 100}
-              <span class="country-text">{d.short}</span>
-            {/if}
+          <desc>{hoverTextFn(d)}</desc>
+          {#if !hideLabels && d.width > 100}
+            <span class="country-text">{d.short}</span>
+          {/if}
           </div>
         {/if}
       {/each}
@@ -283,24 +267,17 @@
   {/if}
 
   {#if annotation}
-    <div
-      id="{slug}-annotation"
-      class="annotation-container"
-      class:annotation-hide={hideAnnotation}
-      class:annotation-help={annotation.class === "help"}
+    <div id="{slug}-annotation" class="annotation-container"
+      class:annotation-hide={hideAnnotation} class:annotation-help={annotation.class === "help"}
     >
-      <Annotation
-        x={annotation.x}
-        y={annotation.y}
-        text={annotation.html}
-        radius={annotation.radius}
-        forceTopWherePossible={annotation === helpAnnotation}
-        topClamp={annotation === helpAnnotation ? 0 : pxAboveScreenTop}
-        canvasWidth={containerWidth}
-        canvasHeight={containerHeight}
-      />
+    <Annotation x={annotation.x} y={annotation.y} text={annotation.html}
+      radius={annotation.radius} forceTopWherePossible={annotation === helpAnnotation}
+      topClamp={annotation === helpAnnotation ? 0 : pxAboveScreenTop}
+      canvasWidth={containerWidth} canvasHeight={containerHeight}
+    />
     </div>
   {/if}
+
 </div>
 
 <style>
@@ -325,8 +302,7 @@
     cursor: pointer;
     opacity: 1;
     z-index: 2;
-    transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s,
-      background-color 0.2s, opacity 0.45s, scale ease 0.15s;
+    transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s, background-color 0.2s, opacity 0.45s ease 0.15s;
     will-change: opacity, background-color, border-radius;
     background: grey;
     outline-color: black;
@@ -340,7 +316,7 @@
   .country-text {
     color: white;
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: .85rem;
     position: absolute;
     top: 50%;
     left: 0;
@@ -377,7 +353,7 @@
   }
 
   .annotation-container :global(.line) {
-    border-color: #bbbbbb !important;
+    border-color :#bbbbbb !important;
   }
 
   .country--hide {
@@ -385,21 +361,6 @@
   }
 
   .country--shadow {
-    box-shadow: 0 2px 0.5rem rgb(0 0 0 / 0.5);
-  }
-
-  .static-border {
-    position: absolute;
-    border-radius: 6px;
-    min-width: 7.5px;
-    min-height: 7.5px;
-    cursor: pointer;
-    opacity: 1;
-    z-index: 2;
-    transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s,
-      background-color 0.2s, opacity 0.45s ease 0.15s;
-    will-change: opacity, background-color, border-radius;
-    outline-color: black;
-    box-sizing: border-box;
+    box-shadow: 0 2px .5rem rgb(0 0 0 / 0.5);
   }
 </style>

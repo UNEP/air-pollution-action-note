@@ -16,17 +16,6 @@ export type HealthDisease = "diabetes" | "ischemic" | "lungcancer" | "lri" | "st
 
 export type TextBlock = Record<TextBlockType, string>;
 
-export enum DataTypeEnum {
-  PM = 'pm25',
-  HEALTH = 'health',
-  POLICIES = 'policies',
-  DISEASES = 'diseases',
-  IT_REDUCTION = 'test'
-}
-
-export type DataType = DataTypeEnum.PM | DataTypeEnum.HEALTH | DataTypeEnum.POLICIES | DataTypeEnum.DISEASES | DataTypeEnum.IT_REDUCTION;
-
-
 export type DropdownOptionBlock = {
   label: string;
   value: string;

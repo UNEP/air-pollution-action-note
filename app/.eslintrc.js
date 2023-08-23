@@ -9,7 +9,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        'svelte3', '@typescript-eslint',
+        "@typescript-eslint"
     ],
     "rules": {
     }
