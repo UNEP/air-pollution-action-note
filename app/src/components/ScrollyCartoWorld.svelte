@@ -4,6 +4,8 @@
   import type { Content, TextBlock } from "src/types";
   import CartoWorld from "./CartoWorld.svelte";
   import Embed from "./Embed.svelte";
+  import RangeItReduction from "./RangeITReduction.svelte";
+  import * as animateScroll from "svelte-scrollto";
 
   export var data;
   export var id: string;
@@ -21,7 +23,6 @@
 
   const normalize = (val: number) => {
     // Shift to positive to avoid issues when crossing the 0 line
-    console.log({ val });
     if (val < 0) return 0;
     if (val > 1) return 1;
 
@@ -31,9 +32,17 @@
   const dataConf = {
     test: {
       sectionHeight: "70vh",
-      sections: 7, //Need to specify
+      sections: 6, //Need to specify
+      rangeTexts: ['WHO', 'IT1', 'IT2', 'IT3', 'IT4', 'IT5']
     },
   };
+
+  const onIndexChangedFn = (e: CustomEvent) => {
+    const {detail} = e;
+    console.log(detail);
+    //const dest = document.getElementById(`scrolly-carto-section-${detail.index + 1}`);
+    animateScroll.scrollTo({ element: `#scrolly-carto-section-${detail.index}`, offset: 200});
+  }
 
   $: rangeValue = normalize(progress);
 </script>
@@ -53,21 +62,14 @@
         bind:cartogramAnnotation
         {rangeValue}
       >
-        <input
-          slot="range"
-          type="range"
-          id="volume"
-          name="volume"
-          min="0"
-          max="1"
-          step="0.1"
-          bind:value={rangeValue}
-        />
+        <div slot="range">
+          <RangeItReduction  bind:index texts={dataConf[data].rangeTexts} on:indexChanged={onIndexChangedFn}/>
+        </div>
       </CartoWorld>
     </div>
     <div slot="foreground" id="scrolly-carto-foreground">
       {#each { length: dataConf[data].sections } as _, i}
-        <section />
+        <section id='scrolly-carto-section-{i}' style="{i === dataConf[data].sections - 1 ? `height: calc(${dataConf[data].sectionHeight} * 2);` : ''}"/>
       {/each}
     </div>
   </Scroller>

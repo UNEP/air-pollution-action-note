@@ -828,5 +828,8 @@
 
   .cartogram-region {
     display: flex;
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
   }
 </style>
