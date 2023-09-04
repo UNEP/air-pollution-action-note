@@ -43,7 +43,7 @@
   export var legendTitle: string;
   export var slug: string;
   export let staticBorder: boolean;
-  export let scale: () => number;
+  export let scale: (c: CountryDataPoint) => number;
 
   const title = legendTitle.replaceAll("\\<.*?\\>", "").toLowerCase();
 
@@ -134,11 +134,11 @@
         : "transparent",
       // `border: ${tileBorder(d.color)}`
       `border: ${
-        slug === "pm25" || slug === "health" || slug === "test"
+        slug === "pm25" || slug === "health"
           ? tileBorder(d.color)
           : "1px solid #BDBDBD"
       };`,
-      `scale: ${scale && !staticBorder ? scale() : 1}`
+      `scale: ${scale && !staticBorder ? scale(d) : 1}`
     ];
     return styles.join(";");
   };
@@ -258,12 +258,12 @@
     <div class="countries" role="graphics-document" aria-label={title}>
       {#each cartogramData as d (d.code)}
         {#if d.x && d.y}
-          {#if staticBorder}
-            <div class="static-border" style={calcStyle(d, true)} transition:fade/>
-          {/if}
+        {#if staticBorder}
+          <div class="country" style={calcStyle(d, !staticBorder)} transition:fade/>
+        {/if}
           <div
-            class="country {classesFn(d).join(' ')}"
-            style={calcStyle(d)}
+            class="{staticBorder ? 'static-border' : 'country'} {classesFn(d).join(' ')}"
+            style={calcStyle(d, staticBorder)}
             data-code={d.code}
             tabindex="0"
             role="graphics-object"
@@ -277,6 +277,7 @@
               <span class="country-text">{d.short}</span>
             {/if}
           </div>
+
         {/if}
       {/each}
     </div>
@@ -326,7 +327,7 @@
     opacity: 1;
     z-index: 2;
     transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s,
-      background-color 0.2s, opacity 0.45s, scale ease 0.15s;
+      background-color 0.2s, opacity 0.45s, scale ease 0.7s;
     will-change: opacity, background-color, border-radius;
     background: grey;
     outline-color: black;

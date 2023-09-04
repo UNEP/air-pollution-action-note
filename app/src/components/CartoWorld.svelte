@@ -6,6 +6,7 @@
   import diseases from "src/data/diseases.json";
   import agreements from "src/data/agreementsData.json";
   import agreementsDefinitionLookup from "src/data/agreementsLookup.json";
+  import gbdCleenAirData from "src/data/GBDCleanAirData.json"
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
   import Legend from "src/components/common/Legend.svelte";
@@ -15,6 +16,7 @@
     colorPolices,
     colorDiseases,
     colorAgreements,
+    colorGBD
   } from "src/colors";
   import { createLookup } from "src/util";
 
@@ -37,7 +39,7 @@
   export var isEmbed: boolean = false;
   export let cartogramAnnotation: boolean;
   export let showEmbed: boolean = true;
-  export let rangeValue: number = 0;
+  export let index: number = 0;
 
   let selectedDisease: HealthDisease = "ischemic";
 
@@ -55,6 +57,23 @@
     pYes: number;
     pNo: number;
     pAlmost: number;
+  }
+
+  interface GBDCleanAirData {
+    id: string;
+    initialInt: number
+    int0: number;
+    int1: number;
+    int2: number;
+    int3: number;
+    int4: number;
+    aqg: number;
+    int0Pop: number;
+    int1Pop: number;
+    int2Pop: number;
+    int3Pop: number;
+    int4Pop: number;
+    aqgPop: number;
   }
 
   interface DiseasesData {
@@ -124,6 +143,21 @@
     (d) => d.id,
     (d) => d
   );
+
+  const gbdCleenAirLookup = createLookup(
+    gbdCleenAirData,
+    (d) => d.id,
+    (d) =>  d
+  )
+
+  const gbdIndexToField = {
+    0: 'int0',
+    1: 'int1',
+    2: 'int2',
+    3: 'int3',
+    4: 'int4',
+    5: 'aqg'
+  }
 
   let legendElementSelectedIndex: number = null;
   let clientWidth = 0;
@@ -680,7 +714,7 @@
           y: d.y,
           value: d.deaths,
           rate: d.rate,
-          color: colorPM25(d.rate),
+          data: gbdCleenAirLookup[d.id]
         };
       }),
       nodeSize: 80,
@@ -697,34 +731,53 @@
       )} deaths</strong>
       in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
       classesFn: (d: CountryDataPoint) => {
-        if (!legendIsHovered) {
-          return [];
-        } else {
+          console.log({code: d.code});
+          const data = d.data as GBDCleanAirData;
+          if(!data || !legendIsHovered) return [];
           const isSelected =
-            colorPM25.range().indexOf(d.color) === legendElementSelectedIndex;
+            colorGBD.range().reverse()[data.initialInt + index > 5 ? 5 : data.initialInt + index] === colorGBD.range()[legendElementSelectedIndex];
+
           return [isSelected ? "country--shadow" : "country--hide"];
-        }
+
+        
       },
-      color: colorPM25,
+      color: colorGBD,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
       legendDomain: ["x1", "2", "3", "5", "7"],
+      internalLabels: [
+        { label: "AQG", border: true, icon: "check" },
+        { label: "IT4" },
+        { label: "IT3" },
+        { label: "IT2" },
+        { label: "IT1" },
+        { label: "" },
+      ],
       legendType: "sequential",
       domain: [700, 400] as [number, number],
-      linearDomain: null,
-      internalLabels: null,
+      linearDomain: [0, 9],
       staticBorder: () => {
         console.log("static border", checked);
         return checked;
       },
-      tileBorder: colorHealth,
-      colorFn: colorHealth,
-      scale: () => scale,
+      
+      colorFn: (d: CountryDataPoint) => {
+        const data = d.data as GBDCleanAirData;
+        if (!data) return 'red';
+        const currentIndex = data.initialInt + index > 5 ? 5 : data.initialInt + index;
+        return  colorGBD.range().reverse()[currentIndex];
+      },
+      scale: (d: CountryDataPoint) => {
+        const data = gbdCleenAirLookup[d.code];
+        if (!data) return 1;
+        const currentIndex = data.initialInt + index > 5 ? 5 : data.initialInt + index;
+        return gbdCleenAirLookup[d.code][gbdIndexToField[currentIndex]] / 100;
+      },
     },
   };
   // re-render hack (as Cartogram component doesn't know when then result of our funcs change)
   $: (legendElementSelectedIndex !== undefined ||
     selectedDisease ||
-    scale ||
+    index ||
     !checked ||
     checked) &&
     rerender &&
@@ -734,8 +787,6 @@
     width = Math.max(clientWidth, 700);
   }
   $: height = width * (data === "pm25" ? 0.55 : 0.62);
-
-  $: scale = rangeValue;
 </script>
 
 <section {id} class="viz wide">
@@ -760,7 +811,6 @@
       type={datasetParams[data].legendType}
       linearDomain={datasetParams[data].linearDomain}
       internalLabels={datasetParams[data].internalLabels}
-      checkbox={data === 'test'}
       bind:checked
       bind:selected={legendElementSelectedIndex}
     />
