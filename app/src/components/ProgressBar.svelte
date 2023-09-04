@@ -27,7 +27,7 @@
 
   <div class="progress-moved">
     <div class="progress-bar"></div>
-    <span class="label percentage-label">{percentage}%</span>
+    <h2 class="percentage-label">{percentage}%</h2>
   </div>
 </div>
 
@@ -65,7 +65,7 @@
   }
 
   .progress-bar {
-    background-color: #7CBFEF;
+    background-color: #00ABF1;
     animation: progress 5s infinite;
   }
 
