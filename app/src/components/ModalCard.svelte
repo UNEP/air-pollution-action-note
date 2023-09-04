@@ -102,9 +102,11 @@
   }
   .scrollable::-webkit-scrollbar-track {
     background: #D9D9D9;
+    width: 1px;
   }
   .scrollable::-webkit-scrollbar-thumb {
     background: #505050;
+    width: 1px;
   }
 
   .scroll-gradient {
@@ -176,6 +178,8 @@
   @media(max-width: 768px) {
     .tilegram {
       width: 100%;
+    }
+    .tilegram :global(.agreement-cartogram) {
       pointer-events: none;
     }
     .content-container {

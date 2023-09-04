@@ -20,7 +20,7 @@
   import ModalCard from "./ModalCard.svelte";
   import Legend from "./common/Legend.svelte";
   import Head from "./Head.svelte";
-  import { scale, slide } from "svelte/transition";
+  import { scale } from "svelte/transition";
   import { colorAgreementTypes } from "src/colors";
   import agreementsLookup from "../data/agreementsLookup.json";
   import type { AgreementName } from "src/types";
@@ -41,45 +41,48 @@
     type: "categorical"
   };
 
-  const splideOptions: Options = {
-    type: 'slide',
-    arrows: false,
-    height: 285,
-    pagination: false,
-    autoWidth: true,
-    gap: 20,
-    focus: 'center'
-  };
-
-  const colorBandFn = (status: number) => status === 1 
-    ? legendOptions.colors[0] 
+  const colorBandFn = (status: number) => (status === 1)
+    ? legendOptions.colors[0]
     : legendOptions.colors[1];
 
   const threshold = 0.4;
+  const vOffset = 250;
 
+  let index = 0;
   let modalVisible = false;
   let selectedAgreementType: number;
   let selectedAgreement: number;
+  let splideOptions: Options;
   let intersecting: boolean;
+  let isGrid: boolean;
   let innerWidth: number;
   let innerHeight: number;
+  let splide: Splide;
   let element;
 
+  function openAgreementModal(i: number) {
+    selectedAgreement = i;
+    modalVisible = true;
+  }
+
+  function verticalScrollToCard(i: number) {
+    let scrollOffset = document
+      .getElementById(`agreement-card-${i}`)
+      .getBoundingClientRect().top + window.scrollY - vOffset;
+    window.scrollTo({
+      top: scrollOffset,
+      behavior: 'smooth',
+    });
+  }
+
   function onAgreementCardClicked(i: number) {
-    if (intersecting) {
-      selectedAgreement = i;
-      modalVisible = true;
-    }
-    if (!intersecting) {
-      const vOffset = 250;
-      let scrollOffset = document.getElementById(`agreement-card-${i}`)
-        .getBoundingClientRect().top + window.scrollY - vOffset;
-      window.scrollTo({
-        top: scrollOffset,
-        behavior: 'smooth',
-      });
-      selectedAgreement = i;
-      modalVisible = true;
+    if (!isGrid && i !== index) 
+      splide.go(i);
+    if (intersecting)
+      openAgreementModal(i);
+    else {
+      verticalScrollToCard(i);
+      openAgreementModal(i);
     }
   };
 
@@ -119,6 +122,18 @@
 
   $: if (!intersecting) onModalClosed();
 
+  $: splideOptions = {
+    type: 'slide',
+    arrows: false,
+    height: searchVersion ? 165 : 285,
+    pagination: false,
+    autoWidth: true,
+    gap: 20,
+    focus: 'center'
+  };
+
+  $: isGrid = ((innerWidth > 768) || (searchVersion && countryData.agreements.length <= 1));
+  
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight/>
@@ -130,16 +145,19 @@
     {:else}
       <p class="narrow align">{@html countrySentence}</p>
     {/if}
-    <div class="right-narrow">
-      <Legend
-        title={legendOptions.title}
-        colors={legendOptions.colors}
-        labels={legendOptions.labels}
-        type={legendOptions.type}
-        bind:selected={selectedAgreementType}
-      />
-    </div>
-    {#if innerWidth > 768}
+    {#if (!searchVersion) || (searchVersion && countryData.agreements.length > 0)}
+      <div class="right-narrow">
+        <Legend
+          title={legendOptions.title}
+          colors={legendOptions.colors}
+          labels={legendOptions.labels}
+          type={legendOptions.type}
+          interactive={false}
+          bind:selected={selectedAgreementType}
+        />
+      </div>
+    {/if}
+    {#if isGrid}
       <div class="grid">
         {#each agreementsData as a, i}
           <div class="card"
@@ -156,8 +174,14 @@
         {/each}
       </div>
     {:else}
-    <div class="caroussel-container">
-      <Splide aria-label="Agreements" options={splideOptions} hasTrack={true}>
+    <div class="caroussel-container" style="--card-height: {searchVersion ? 165 : 285}px;">
+      <Splide 
+        bind:this={splide}
+        on:move={(e) => (index = e.detail.index)}
+        aria-label="Agreements"
+        options={splideOptions}
+        hasTrack={true}
+      >
           {#each agreementsData as a, i}
             <SplideSlide>
               <div class="card"
@@ -197,7 +221,7 @@
   .caroussel-container {
     width: 100%;
     position: relative;
-    height: 285px;
+    height: var(--card-height);
   }
 
   .grid {
