@@ -6,6 +6,7 @@
   import Embed from "./Embed.svelte";
   import RangeItReduction from "./RangeITReduction.svelte";
   import * as animateScroll from "svelte-scrollto";
+    import LoadingBar from "./LoadingBar.svelte";
 
   export var data;
   export var id: string;
@@ -73,6 +74,7 @@
       {/each}
     </div>
   </Scroller>
+  <LoadingBar/>
 </div>
 
 <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
