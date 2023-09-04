@@ -1,67 +1,80 @@
 {
-  "eanet": {
-    "name": "Acid Deposition Monitoring Network in East Asia (EANET)",
-    "definition": "The Acid Deposition Monitoring Network in East Asia (EANET) was established in 2001 as an intergovernmental initiative to create a common understanding on the state of acid deposition, provide inputs for decision making, and promote cooperation among countries. In 2021, EANET expanded its scope to cover wider air pollution issues and established the EANET Project Fund.",
-    "url": "https://www.eanet.asia/"
-  },
-  "asean-trans": {
-    "name": "ASEAN Agreement on Transboundary Haze Pollution",
-    "definition": "ASEAN Agreement on Transboundary Haze Pollution is a legally binding agreement to monitor and prevent transboundary haze from land and/or forest fires. It includes provisions on monitoring, mitigation, and response; research; coordination and communication. It came into force in 2003.",
-    "url": "https://hazeportal.asean.org/action/asean-agreement-on-transboundary-haze-pollution/"
-  },
-  "male": {
-    "name": "Malé Declaration on Control and Prevention of Air Pollution and Its Likely Transboundary Effects for South Asia (Malé Declaration)",
-    "definition": "The Malé Declaration was the first Regional Agreement on pollution in South Asia. Adopted in 1998 the Declaration led to the development of emission inventories, monitoring of air pollutants, and assessment of impacts on corrosion of materials, human health and crop yields. Countries have expressed their desire for the Declaration to be revitalised.",
-    "url": "http://www.sacep.org/programmes/male-declaration"
-  },
-  "neaspec": {
-    "name": "North-East Asian Subregional Programme for Environmental Cooperation (NEASPEC)",
-    "definition": "The North-East Asian Subregional Programme for Environmental Cooperation (NEASPEC) is an intergovernmental cooperation framework established in 1993 to address environmental challenges in North-East Asia. Air pollution is one of its work areas of NEASPEC, starting with technical cooperation on mitigation from coal-fired power plants from 1996-2011. In 2018, it launched the North-East Asia Clean Air Partnership (NEACAP).",
-    "url": "https://www.neaspec.org/"
-  },
   "rapap": {
     "name": "UN ESCAP Regional Action Programme on Air Pollution",
     "definition": "The Regional Action Programme on Air Pollution was adopted at the Seventh Session of the United Nations Economic and Social Commission for Asia and the Pacific Committee on Environment and Development in 2022. It covers improving air quality management, facilitating air quality monitoring, sharing open data, exchanging best practice, supporting capacity building, and mobilizing multilateral cooperation.",
-    "url": "https://www.unescap.org/sites/default/d8files/event-documents/AP.pdf"
+    "url": "https://www.unescap.org/sites/default/d8files/event-documents/AP.pdf",
+    "participants": 60
   },
   "clrtap": {
     "name": "UN ECE Convention on Long-Range Transboundary Air Pollution (CLRTAP)",
     "definition": "UN ECE Convention on Long-Range Transboundary Air Pollution (CLRTAP) is the first international legally binding agreement to address transboundary air pollution. It has been ratified by the European Union and 31 countries who report emissions annually, monitor pollutants in a coordinated network, develop impact assessments, and agree on targets. Since it came into force in 1979, it has reduced emissions of sulphur dioxide by over 90 per cent.",
-    "url": "https://unece.org/environmental-policy-1/air#"
-  },
-  "eu-directive": {
-    "name": "European Union Legislation",
-    "definition": "The European Union (EU) has several different policies affecting atmospheric emissions. These include the EU Air Quality Directive and the National Emissions Ceilings (NEC) Directive and numerous pieces of source-sector legislation such as Euro Standards for vehicles. The NEC Directive is a legally binding instrument, specifying emissions ceilings for pollutants. It came into force in 2001 and was revised in 2016.",
-    "url": ""
-  },
-  "us-canada": {
-    "name": "US-Canada Air Quality Agreement",
-    "definition": "In 1991, the U.S. and Canada entered into an agreement to address transboundary air pollution, whereby pollutants released at one location can travel long distances, affecting air quality at their sources, as well as many miles away. The US-Canada Agreement led to reductions in acid rain in the 1990s and was expanded in 2000 to reduce transboundary smog missions under the Ozone Annex.",
-    "url": ""
-  },
-  "lusaka": {
-    "name": "Lusaka Agreement to develop a Southern African Development Community Regional Policy Framework on Air Pollution (Lusaka Agreement)",
-    "definition": "The Lusaka Agreement to develop a Southern African Development Community Regional Policy Framework on Air Pollution concentrates on the impacts of air pollutants on health from indoor and outdoor exposure and impacts on crops and ecosystems. The Lusaka Agreement was adopted in 2008.",
-    "url": "https://www.sei.org/wp-content/uploads/2021/05/final-circulated-lusaka-agreement.pdf"
-  },
-  "nairobi": {
-    "name": "Eastern Africa Regional Framework Agreement on Air Pollution (Nairobi Agreement)",
-    "definition": "The Eastern Africa Regional Framework Agreement on Air Pollution (Nairobi Agreement) was agreed in 2008 to develop actionable targets to address air pollution in a number of source sectors. It aims to promote regional cooperation, public participation in air quality management, and research and capacity building.",
-    "url": "https://www.sei.org/wp-content/uploads/2021/05/eastern-africa-air-pollution-agreement.pdf"
-  },
-  "abidjan": {
-    "name": "West and Central Africa Regional Framework Agreement on Air Pollution (Abidjan Agreement)",
-    "definition": "The West and Central Africa Regional Framework Agreement on Air Pollution (Abidjan Agreement) was agreed in 2009. It aims to develop actionable targets to address air pollution issues in the key source sectors, and to promote public participation in air quality management, capacity building and research development.",
-    "url": "https://www.york.ac.uk/media/sei/documents/publications/gapforum/West_and_Central_Africa_Air_Pollution_Agreement_English_final.pdf"
+    "url": "https://unece.org/environmental-policy-1/air#",
+    "participants": 51
   },
   "lat-caribbean": {
     "name": "Intergovernmental Network on Atmospheric Pollution for Latin America and Caribbean (LAC)",
     "definition": "In 2022, the Intergovernmental Network on Atmospheric Pollution for Latin America and Caribbean (LAC) was re-launched with the aim of building a cooperation framework at the national and sub-national levels together with a new Regional Air Quality Action Plan for the LAC region (2022-2025). The new plan follows work undertaken on atmospheric pollution at the XXII Forum of Ministers of Environment of Latin America and the Caribbean.",
-    "url": "https://rds.org.co/apc-aa-files/205ec78c9cca6d1850bdca24e20e50bf/vf_draft_regional-aq-action-plan_eng_june_2022.pdf"
+    "url": "https://rds.org.co/apc-aa-files/205ec78c9cca6d1850bdca24e20e50bf/vf_draft_regional-aq-action-plan_eng_june_2022.pdf",
+    "participants": 25
+  },
+  "eu-directive": {
+    "name": "European Union Legislation",
+    "definition": "The European Union (EU) has several different policies affecting atmospheric emissions. These include the EU Air Quality Directive and the National Emissions Ceilings (NEC) Directive and numerous pieces of source-sector legislation such as Euro Standards for vehicles. The NEC Directive is a legally binding instrument, specifying emissions ceilings for pollutants. It came into force in 2001 and was revised in 2016.",
+    "url": "",
+    "participants": 24
+  },
+  "abidjan": {
+    "name": "West and Central Africa Regional Framework Agreement on Air Pollution (Abidjan Agreement)",
+    "definition": "The West and Central Africa Regional Framework Agreement on Air Pollution (Abidjan Agreement) was agreed in 2009. It aims to develop actionable targets to address air pollution issues in the key source sectors, and to promote public participation in air quality management, capacity building and research development.",
+    "url": "https://www.york.ac.uk/media/sei/documents/publications/gapforum/West_and_Central_Africa_Air_Pollution_Agreement_English_final.pdf",
+    "participants": 21
+  },
+  "lusaka": {
+    "name": "Lusaka Agreement to develop a Southern African Development Community Regional Policy Framework on Air Pollution (Lusaka Agreement)",
+    "definition": "The Lusaka Agreement to develop a Southern African Development Community Regional Policy Framework on Air Pollution concentrates on the impacts of air pollutants on health from indoor and outdoor exposure and impacts on crops and ecosystems. The Lusaka Agreement was adopted in 2008.",
+    "url": "https://www.sei.org/wp-content/uploads/2021/05/final-circulated-lusaka-agreement.pdf",
+    "participants": 16
+  },
+  "eanet": {
+    "name": "Acid Deposition Monitoring Network in East Asia (EANET)",
+    "definition": "The Acid Deposition Monitoring Network in East Asia (EANET) was established in 2001 as an intergovernmental initiative to create a common understanding on the state of acid deposition, provide inputs for decision making, and promote cooperation among countries. In 2021, EANET expanded its scope to cover wider air pollution issues and established the EANET Project Fund.",
+    "url": "https://www.eanet.asia/",
+    "participants": 13
+  },
+  "asean-trans": {
+    "name": "ASEAN Agreement on Transboundary Haze Pollution",
+    "definition": "ASEAN Agreement on Transboundary Haze Pollution is a legally binding agreement to monitor and prevent transboundary haze from land and/or forest fires. It includes provisions on monitoring, mitigation, and response; research; coordination and communication. It came into force in 2003.",
+    "url": "https://hazeportal.asean.org/action/asean-agreement-on-transboundary-haze-pollution/",
+    "participants": 11
+  },
+  "nairobi": {
+    "name": "Eastern Africa Regional Framework Agreement on Air Pollution (Nairobi Agreement)",
+    "definition": "The Eastern Africa Regional Framework Agreement on Air Pollution (Nairobi Agreement) was agreed in 2008 to develop actionable targets to address air pollution in a number of source sectors. It aims to promote regional cooperation, public participation in air quality management, and research and capacity building.",
+    "url": "https://www.sei.org/wp-content/uploads/2021/05/eastern-africa-air-pollution-agreement.pdf",
+    "participants": 11
   },
   "arctic": {
-    "name": "Arctic Council",
+    "name": "Artic Council",
     "definition": "Established under the 1996 Ottawa Declaration, the Arctic Council is a high-level intergovernmental forum providing a means for promoting cooperation, coordination, and interaction among the Arctic States. The Arctic Council’s 2017 Fairbanks Declaration is the first pan-Arctic goal to reduce black carbon emissions from a range of sources by 25 to 33 per cent below 2013 levels by 2025.",
-    "url": "https://arctic-council.org/"
+    "url": "https://arctic-council.org/",
+    "participants": 8
+  },
+  "male": {
+    "name": "Malé Declaration on Control and Prevention of Air Pollution and Its Likely Transboundary Effects for South Asia (Malé Declaration)",
+    "definition": "The Malé Declaration was the first Regional Agreement on pollution in South Asia. Adopted in 1998 the Declaration led to the development of emission inventories, monitoring of air pollutants, and assessment of impacts on corrosion of materials, human health and crop yields. Countries have expressed their desire for the Declaration to be revitalised.",
+    "url": "http://www.sacep.org/programmes/male-declaration",
+    "participants": 8
+  },
+  "neaspec": {
+    "name": "North-East Asian Subregional Programme for Environmental Cooperation (NEASPEC)",
+    "definition": "The North-East Asian Subregional Programme for Environmental Cooperation (NEASPEC) is an intergovernmental cooperation framework established in 1993 to address environmental challenges in North-East Asia. Air pollution is one of its work areas of NEASPEC, starting with technical cooperation on mitigation from coal-fired power plants from 1996-2011. In 2018, it launched the North-East Asia Clean Air Partnership (NEACAP).",
+    "url": "https://www.neaspec.org/",
+    "participants": 6
+  },
+  "us-canada": {
+    "name": "US-Canada Air Quality Agreement",
+    "definition": "In 1991, the U.S. and Canada entered into an agreement to address transboundary air pollution, whereby pollutants released at one location can travel long distances, affecting air quality at their sources, as well as many miles away. The US-Canada Agreement led to reductions in acid rain in the 1990s and was expanded in 2000 to reduce transboundary smog missions under the Ozone Annex.",
+    "url": "",
+    "participants": 2
   }
 }
