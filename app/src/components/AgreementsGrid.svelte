@@ -20,13 +20,16 @@
   import ModalCard from "./ModalCard.svelte";
   import Legend from "./common/Legend.svelte";
   import Head from "./Head.svelte";
-  import { scale } from "svelte/transition";
+  import { scale, slide } from "svelte/transition";
   import { colorAgreementTypes } from "src/colors";
   import agreementsLookup from "../data/agreementsLookup.json";
   import type { AgreementName } from "src/types";
   import { countriesWithArticle } from "src/data";
   import IntersectionObserver from "svelte-intersection-observer";
-
+  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import type { Options } from '@splidejs/splide';
+  import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+  
   export let head: string = null;
   export let searchVersion = false;
   export let countryData: CountryAgreementsData = null;
@@ -38,9 +41,29 @@
     type: "categorical"
   };
 
+  const splideOptions: Options = {
+    type: 'slide',
+    arrows: false,
+    height: 285,
+    pagination: false,
+    autoWidth: true,
+    gap: 20,
+    focus: 'center'
+  };
+
+  const colorBandFn = (status: number) => status === 1 
+    ? legendOptions.colors[0] 
+    : legendOptions.colors[1];
+
+  const threshold = 0.4;
+
   let modalVisible = false;
   let selectedAgreementType: number;
   let selectedAgreement: number;
+  let intersecting: boolean;
+  let innerWidth: number;
+  let innerHeight: number;
+  let element;
 
   function onAgreementCardClicked(i: number) {
     if (intersecting) {
@@ -94,17 +117,11 @@
       status: a.status
     }));
 
-  const colorBandFn = (status: number) => status === 1 
-    ? legendOptions.colors[0] 
-    : legendOptions.colors[1];
-
-  let element;
-  let intersecting;
-  const threshold = 0.4;
-
   $: if (!intersecting) onModalClosed();
 
 </script>
+
+<svelte:window bind:innerWidth bind:innerHeight/>
 
 <IntersectionObserver {element} bind:intersecting {threshold}>
   <section id="agreements-grid" class="viz wide" bind:this={element}>
@@ -122,21 +139,45 @@
         bind:selected={selectedAgreementType}
       />
     </div>
-    <div class="grid">
-      {#each agreementsData as a, i}
-        <div class="card"
-          id={`agreement-card-${i}`} 
-          class:simple={searchVersion} 
-          style="--band-color: {colorBandFn(a.status)};">
-          <AgreementCard 
-            title={a.title}
-            tilegram={a.id} 
-            selected={selectedAgreement === i}
-            simple={searchVersion}
-            on:agreementClicked={() => onAgreementCardClicked(i)}/>
-        </div>
-      {/each}
+    {#if innerWidth > 768}
+      <div class="grid">
+        {#each agreementsData as a, i}
+          <div class="card"
+            id={`agreement-card-${i}`} 
+            class:simple={searchVersion} 
+            style="--band-color: {colorBandFn(a.status)};">
+            <AgreementCard 
+              title={a.title}
+              tilegram={a.id} 
+              selected={selectedAgreement === i}
+              simple={searchVersion}
+              on:agreementClicked={() => onAgreementCardClicked(i)}/>
+          </div>
+        {/each}
+      </div>
+    {:else}
+    <div class="caroussel-container">
+      <Splide aria-label="Agreements" options={splideOptions} hasTrack={true}>
+          {#each agreementsData as a, i}
+            <SplideSlide>
+              <div class="card"
+                id={`agreement-card-${i}`} 
+                class:simple={searchVersion} 
+                style="--band-color: {colorBandFn(a.status)};"
+              >
+                <AgreementCard 
+                  title={a.title}
+                  tilegram={a.id} 
+                  selected={selectedAgreement === i}
+                  simple={searchVersion}
+                  on:agreementClicked={() => onAgreementCardClicked(i)}
+                />
+              </div>
+            </SplideSlide>
+          {/each}
+      </Splide>
     </div>
+    {/if}
     {#if modalVisible}
       <div class="modal" transition:scale >
         <ModalCard 
@@ -152,6 +193,13 @@
 </IntersectionObserver>
 
 <style lang="scss">
+
+  .caroussel-container {
+    width: 100%;
+    position: relative;
+    height: 285px;
+  }
+
   .grid {
     display: flex;
     flex-direction: row;
