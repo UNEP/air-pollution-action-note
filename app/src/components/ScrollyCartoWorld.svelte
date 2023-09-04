@@ -19,7 +19,6 @@
   let offset: number;
   let progress: number;
   let cartogramAnnotation: boolean;
-  let rangeValue: number;
 
   const normalize = (val: number) => {
     // Shift to positive to avoid issues when crossing the 0 line
@@ -44,7 +43,6 @@
     animateScroll.scrollTo({ element: `#scrolly-carto-section-${detail.index}`, offset: 200});
   }
 
-  $: rangeValue = normalize(progress);
 </script>
 
 <div style="--section-height: {dataConf[data].sectionHeight};">
@@ -60,16 +58,14 @@
         {isEmbed}
         showEmbed={false}
         bind:cartogramAnnotation
-        {rangeValue}
-      >
-        <div slot="range">
-          <RangeItReduction  bind:index texts={dataConf[data].rangeTexts} on:indexChanged={onIndexChangedFn}/>
-        </div>
-      </CartoWorld>
+        {index}
+      />
     </div>
     <div slot="foreground" id="scrolly-carto-foreground">
       {#each { length: dataConf[data].sections } as _, i}
-        <section id='scrolly-carto-section-{i}' style="{i === dataConf[data].sections - 1 ? `height: calc(${dataConf[data].sectionHeight} * 2);` : ''}"/>
+        <section id='scrolly-carto-section-{i}' style="{i === dataConf[data].sections - 1 ? `height: calc(${dataConf[data].sectionHeight} * 2);` : ''}">
+          SOME TEXT FLOATING
+          </section>
       {/each}
     </div>
   </Scroller>

@@ -39,3 +39,7 @@ export const colorDiseases = scaleOrdinal<number, string>()
   export const colorAgreements = scaleThreshold<number, string>()
   .domain([1, 2, 3, 4])
   .range(['#7CBFEF', '#64A1D3', '#4C83B7', '#34659B', '#1C477F']);
+
+  export const colorGBD = scaleThreshold<number, string>()
+  .domain([...new Array(8)].map((d,i) => (i + 1) * 5))
+  .range(['#00ABF1', '#FFBEB3', '#E293A7', '#C5679C', '#B24B8E', '#800080']);
