@@ -6,7 +6,8 @@
   import Embed from "./Embed.svelte";
   import RangeItReduction from "./RangeITReduction.svelte";
   import * as animateScroll from "svelte-scrollto";
-    import LoadingBar from "./LoadingBar.svelte";
+  import LoadingBar from "./LoadingBar.svelte";
+  import Tooltip from "./Tooltip.svelte";
 
   export var data;
   export var id: string;
@@ -75,6 +76,7 @@
     </div>
   </Scroller>
   <LoadingBar/>
+  <Tooltip country={'India'}/>
 </div>
 
 <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
