@@ -2,10 +2,12 @@
   // @ts-ignore
   import Scroller from "@sveltejs/svelte-scroller";
   import type { Content, TextBlock } from "src/types";
+  import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import CartoWorld from "./CartoWorld.svelte";
   import Embed from "./Embed.svelte";
-  import RangeItReduction from "./RangeITReduction.svelte";
-  import * as animateScroll from "svelte-scrollto";
+  import ProgressBar from "./ProgressBar.svelte";
+  import Tooltip from "./Tooltip.svelte";
+  import type { GBDCleanAirData } from "./CartoWorld.svelte";
 
   export var data;
   export var id: string;
@@ -19,14 +21,20 @@
   let offset: number;
   let progress: number;
   let cartogramAnnotation: boolean;
+  let totalPopulation: number;
+  let currentPopulation: number;
+  let gbdData = gbdCleenAirData as GBDCleanAirData[];
 
-  const normalize = (val: number) => {
-    // Shift to positive to avoid issues when crossing the 0 line
-    if (val < 0) return 0;
-    if (val > 1) return 1;
+  const gbdIndexToPop= {
+    0: 'int0Pop',
+    1: 'int1Pop',
+    2: 'int2Pop',
+    3: 'int3Pop',
+    4: 'int4Pop',
+    5: 'aqgPop'
+  }
 
-    return val;
-  };
+  totalPopulation = gbdData.reduce((acc, current) => acc + current.pop, 0);
 
   const dataConf = {
     test: {
@@ -36,19 +44,16 @@
     },
   };
 
-  const onIndexChangedFn = (e: CustomEvent) => {
-    const {detail} = e;
-    console.log(detail);
-    //const dest = document.getElementById(`scrolly-carto-section-${detail.index + 1}`);
-    animateScroll.scrollTo({ element: `#scrolly-carto-section-${detail.index}`, offset: 200});
-  }
+  $: currentPopulation = gbdData.reduce((acc, current) => acc + current[gbdIndexToPop[current.initialInt + index > 5 ? 5 : current.initialInt + index]], 0);
 
+  $:  populationPercentage = Math.round(currentPopulation / totalPopulation * 100);
 </script>
 
 <div style="--section-height: {dataConf[data].sectionHeight};">
   <Scroller bind:index bind:offset bind:progress threshold={0}>
     <div slot="background" id="scrolly-carto-background">
-      <CartoWorld
+      <div class="background"> 
+        <CartoWorld
         {data}
         {id}
         {block}
@@ -60,6 +65,9 @@
         bind:cartogramAnnotation
         {index}
       />
+      <ProgressBar percentage={populationPercentage}/>
+      </div>
+
     </div>
     <div slot="foreground" id="scrolly-carto-foreground">
       {#each { length: dataConf[data].sections } as _, i}
@@ -69,6 +77,7 @@
       {/each}
     </div>
   </Scroller>
+  <Tooltip country={'India'}/>
 </div>
 
 <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
@@ -83,5 +92,11 @@
   }
   :global(svelte-scroller-background-container) {
     pointer-events: all !important;
+  }
+
+  .background {
+    display: grid;
+    grid-template-rows: 80% auto;
+    height: 100%;
   }
 </style>

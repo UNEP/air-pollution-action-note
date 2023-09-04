@@ -1,3 +1,23 @@
+<script context="module" lang="ts">
+  export interface GBDCleanAirData {
+    id: string;
+    initialInt: number;
+    int0: number;
+    int1: number;
+    int2: number;
+    int3: number;
+    int4: number;
+    aqg: number;
+    int0Pop: number;
+    int1Pop: number;
+    int2Pop: number;
+    int3Pop: number;
+    int4Pop: number;
+    aqgPop: number;
+    pop: number;
+  }
+</script>
+
 <script lang="ts">
   import Cartogram from "src/components/maps/Cartogram.svelte";
   import pm25data from "src/data/pm25_coords.json";
@@ -6,7 +26,7 @@
   import diseases from "src/data/diseases.json";
   import agreements from "src/data/agreementsData.json";
   import agreementsDefinitionLookup from "src/data/agreementsLookup.json";
-  import gbdCleenAirData from "src/data/GBDCleanAirData.json"
+  import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
   import Legend from "src/components/common/Legend.svelte";
@@ -16,7 +36,7 @@
     colorPolices,
     colorDiseases,
     colorAgreements,
-    colorGBD
+    colorGBD,
   } from "src/colors";
   import { createLookup } from "src/util";
 
@@ -57,23 +77,6 @@
     pYes: number;
     pNo: number;
     pAlmost: number;
-  }
-
-  interface GBDCleanAirData {
-    id: string;
-    initialInt: number
-    int0: number;
-    int1: number;
-    int2: number;
-    int3: number;
-    int4: number;
-    aqg: number;
-    int0Pop: number;
-    int1Pop: number;
-    int2Pop: number;
-    int3Pop: number;
-    int4Pop: number;
-    aqgPop: number;
   }
 
   interface DiseasesData {
@@ -147,17 +150,17 @@
   const gbdCleenAirLookup = createLookup(
     gbdCleenAirData,
     (d) => d.id,
-    (d) =>  d
-  )
+    (d) => d
+  );
 
   const gbdIndexToField = {
-    0: 'int0',
-    1: 'int1',
-    2: 'int2',
-    3: 'int3',
-    4: 'int4',
-    5: 'aqg'
-  }
+    0: "int0",
+    1: "int1",
+    2: "int2",
+    3: "int3",
+    4: "int4",
+    5: "aqg",
+  };
 
   let legendElementSelectedIndex: number = null;
   let clientWidth = 0;
@@ -714,7 +717,7 @@
           y: d.y,
           value: d.deaths,
           rate: d.rate,
-          data: gbdCleenAirLookup[d.id]
+          data: gbdCleenAirLookup[d.id],
         };
       }),
       nodeSize: 80,
@@ -731,15 +734,14 @@
       )} deaths</strong>
       in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
       classesFn: (d: CountryDataPoint) => {
-          console.log({code: d.code});
-          const data = d.data as GBDCleanAirData;
-          if(!data || !legendIsHovered) return [];
-          const isSelected =
-            colorGBD.range().reverse()[data.initialInt + index > 5 ? 5 : data.initialInt + index] === colorGBD.range()[legendElementSelectedIndex];
+        const data = d.data as GBDCleanAirData;
+        if (!data || !legendIsHovered) return [];
+        const isSelected =
+          colorGBD.range().reverse()[
+            data.initialInt + index > 5 ? 5 : data.initialInt + index
+          ] === colorGBD.range()[legendElementSelectedIndex];
 
-          return [isSelected ? "country--shadow" : "country--hide"];
-
-        
+        return [isSelected ? "country--shadow" : "country--hide"];
       },
       color: colorGBD,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
@@ -759,17 +761,19 @@
         console.log("static border", checked);
         return checked;
       },
-      
+
       colorFn: (d: CountryDataPoint) => {
         const data = d.data as GBDCleanAirData;
-        if (!data) return 'red';
-        const currentIndex = data.initialInt + index > 5 ? 5 : data.initialInt + index;
-        return  colorGBD.range().reverse()[currentIndex];
+        if (!data) return "red";
+        const currentIndex =
+          data.initialInt + index > 5 ? 5 : data.initialInt + index;
+        return colorGBD.range().reverse()[currentIndex];
       },
       scale: (d: CountryDataPoint) => {
         const data = gbdCleenAirLookup[d.code];
         if (!data) return 1;
-        const currentIndex = data.initialInt + index > 5 ? 5 : data.initialInt + index;
+        const currentIndex =
+          data.initialInt + index > 5 ? 5 : data.initialInt + index;
         return gbdCleenAirLookup[d.code][gbdIndexToField[currentIndex]] / 100;
       },
     },
@@ -827,7 +831,7 @@
   {/if}
 
   <div class="margin-breakout-mobile cartogram-region" bind:clientWidth>
-    <slot name="range"/>
+    <slot name="range" />
     <ScrollableX>
       <div
         style="width:{width}px; height:{height}px"

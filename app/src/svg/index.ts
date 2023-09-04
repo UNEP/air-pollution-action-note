@@ -22,6 +22,7 @@ import diabetes from './disease_icons/small/icons_diabetes.svg';
 import copd from './disease_icons/small/icons_copd.svg';
 
 import check from './icons_check.svg';
+import whitecheck from './white-check.svg';
 
 export const alignment = {
   pm25: 'transform: translateY(-7%)',
@@ -32,6 +33,7 @@ export default {
   dataSource,
   embed,
   check,
+  whitecheck,
   arrows: {
     right: arrowRight,
     left: arrowLeft,
