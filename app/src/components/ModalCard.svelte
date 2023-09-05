@@ -1,10 +1,10 @@
 <script lang="ts">
   import AgreementCarto from "./AgreementCarto.svelte";
+  import Legend from "./common/Legend.svelte";
   import svg from "src/svg";
   import type { AgreementName } from "src/types";
   import { createEventDispatcher } from 'svelte';
   import { colorAgreementTypes, colorAgreementSimpleType} from "src/colors";
-  import Legend from "./common/Legend.svelte";
 
   export let title: string;
   export let body: string;
@@ -55,7 +55,10 @@
 
   <div class="content-container">
     <div class="text">
-      {@html body}
+      <div class="scrollable">
+        {@html body}
+        <div class="scroll-gradient" />
+      </div>
       {#if link}
         <div class="link">
           <span class="icon">{@html svg.menu.policies}</span>
@@ -89,6 +92,26 @@
     margin-right: 2rem;
     border-radius: 0.3rem;
   }
+  .scrollable {
+    position: relative;
+    width: 100%;
+  }
+
+  .scrollable::-webkit-scrollbar {
+    width: 1px;
+  }
+  .scrollable::-webkit-scrollbar-track {
+    background: #D9D9D9;
+    width: 1px;
+  }
+  .scrollable::-webkit-scrollbar-thumb {
+    background: #505050;
+    width: 1px;
+  }
+
+  .scroll-gradient {
+    display: none;
+  }
 
   .legend {
     margin-top: -3.5rem;
@@ -108,7 +131,6 @@
       width: 2.25rem;
       height: 2.25rem;
     }
-
     a {
       display: inline-flex;
       margin-top: 0.5rem;
@@ -119,15 +141,9 @@
   .text {
     line-height: 1.5rem;
   }
-
   .text,
   .tilegram {
     width: 50%;
-  }
-
-  .tilegram {
-    transform: translateY(-0.5rem);
-    max-width: 28rem;
   }
 
   .content-container {
@@ -157,13 +173,39 @@
 
   @media(max-width: 768px) {
     .tilegram {
-      display: none;  
+      width: 100%;
+    }
+    .tilegram :global(.agreement-cartogram) {
+      pointer-events: none;
+    }
+    .content-container {
+      flex-direction: column;
+    }
+    .scroll-gradient {
+      display: block;
+      position: sticky;
+      pointer-events: none;
+      user-select: none;
+      left: inherit;
+      right: inherit;
+      bottom: 0;
+      height: 2.5rem;
+      width: 100%;
+      background: linear-gradient(to bottom, transparent, #FFFFFF);
     }
     .text {
       width: 100%;
+      height: 100%;
+    }    
+    .scrollable {
+      height: 8rem;
+      width: 85%;
+      padding-right: calc(15% - 1rem);
+      overflow-y: scroll;
     }
     .modal-card {
-      width: calc(100vw - 5rem);
+      width: calc(100% - 2rem);
+      margin-right: 0;
       padding: 2rem;
     }
     .close-button {
@@ -172,6 +214,19 @@
     }
     .modal-header {
       width: 85%;
+    }
+    .legend {
+      margin-left: 0;
+      margin-top: -3rem;
+    }
+    .legend :global(.note) {
+      font-size: 0.8125rem !important;
+    }
+  }
+
+  @media(max-width: 400px) {
+    .modal-card {
+      width: calc(100% - 1rem);
     }
   }
 

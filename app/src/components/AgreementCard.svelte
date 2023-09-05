@@ -16,13 +16,13 @@
 
 <button class="card" class:selected on:click={onClick}>
   <span class="text">{@html title}</span>
-  <!-- {#if !simple}
+  {#if !simple}
     <div class="tilegram">
       <img src={`img/agreements/${tilegram}.png`} alt={tilegram} />
     </div>
-  {:else} -->
+  {:else}
     <div class="status-band" />
-  <!-- {/if} -->
+  {/if}
 </button>
 
 <style lang="scss">
@@ -33,8 +33,8 @@
     border: 1px solid #EFEFEF;
     display: flex;
     flex-direction: column;
-    width: 15.75rem;
-    padding: 1.25rem;
+    width: 14rem;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
     gap: 1.25rem;
     transition: ease-out 0.2s;
     margin-bottom: 0.25rem;
@@ -45,7 +45,7 @@
     cursor: pointer;
 
     .text {
-      height: 9rem;
+      height: 9.5rem;
       line-height: 1.5rem !important;
     }
 

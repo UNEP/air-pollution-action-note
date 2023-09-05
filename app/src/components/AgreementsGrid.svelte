@@ -23,11 +23,15 @@
   import { scale } from "svelte/transition";
   import { colorAgreementTypes } from "src/colors";
   import agreementsLookup from "../data/agreementsLookup.json";
-  import type { AgreementName } from "src/types";
+  import type { AgreementName, TextBlock } from "src/types";
   import { countriesWithArticle } from "src/data";
   import IntersectionObserver from "svelte-intersection-observer";
-
+  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import type { Options } from '@splidejs/splide';
+  import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+  
   export let head: string = null;
+  export var text: TextBlock[];
   export let searchVersion = false;
   export let countryData: CountryAgreementsData = null;
  
@@ -38,25 +42,48 @@
     type: "categorical"
   };
 
+  const colorBandFn = (status: number) => (status === 1)
+    ? legendOptions.colors[0]
+    : legendOptions.colors[1];
+
+  const threshold = 0.4;
+  const vOffset = 250;
+
+  let index = 0;
   let modalVisible = false;
   let selectedAgreementType: number;
   let selectedAgreement: number;
+  let splideOptions: Options;
+  let intersecting: boolean;
+  let isGrid: boolean;
+  let innerWidth: number;
+  let innerHeight: number;
+  let splide: Splide;
+  let element;
+
+  function openAgreementModal(i: number) {
+    selectedAgreement = i;
+    modalVisible = true;
+  }
+
+  function verticalScrollToCard(i: number) {
+    let scrollOffset = document
+      .getElementById(`agreement-card-${i}`)
+      .getBoundingClientRect().top + window.scrollY - vOffset;
+    window.scrollTo({
+      top: scrollOffset,
+      behavior: 'smooth',
+    });
+  }
 
   function onAgreementCardClicked(i: number) {
-    if (intersecting) {
-      selectedAgreement = i;
-      modalVisible = true;
-    }
-    if (!intersecting) {
-      const vOffset = 250;
-      let scrollOffset = document.getElementById(`agreement-card-${i}`)
-        .getBoundingClientRect().top + window.scrollY - vOffset;
-      window.scrollTo({
-        top: scrollOffset,
-        behavior: 'smooth',
-      });
-      selectedAgreement = i;
-      modalVisible = true;
+    if (!isGrid && i !== index) 
+      splide.go(i);
+    if (intersecting)
+      openAgreementModal(i);
+    else {
+      verticalScrollToCard(i);
+      openAgreementModal(i);
     }
   };
 
@@ -94,17 +121,23 @@
       status: a.status
     }));
 
-  const colorBandFn = (status: number) => status === 1 
-    ? legendOptions.colors[0] 
-    : legendOptions.colors[1];
-
-  let element;
-  let intersecting;
-  const threshold = 0.4;
-
   $: if (!intersecting) onModalClosed();
 
+  $: splideOptions = {
+    type: 'slide',
+    arrows: false,
+    height: searchVersion ? 165 : 285,
+    pagination: false,
+    autoWidth: true,
+    gap: 20,
+    focus: 'center'
+  };
+
+  $: isGrid = ((innerWidth > 768) || (searchVersion && countryData?.agreements.length <= 1));
+  
 </script>
+
+<svelte:window bind:innerWidth bind:innerHeight/>
 
 <IntersectionObserver {element} bind:intersecting {threshold}>
   <section id="agreements-grid" class="viz wide" bind:this={element}>
@@ -113,30 +146,63 @@
     {:else}
       <p class="narrow align">{@html countrySentence}</p>
     {/if}
-    <!-- <div class="right-narrow">
-      <Legend
-        title={legendOptions.title}
-        colors={legendOptions.colors}
-        labels={legendOptions.labels}
-        type={legendOptions.type}
-        bind:selected={selectedAgreementType}
-      />
-    </div> -->
-    <div class="grid">
-      {#each agreementsData as a, i}
-        <div class="card"
-          id={`agreement-card-${i}`} 
-          class:simple={searchVersion} 
-          style="--band-color: {colorBandFn(a.status)};">
-          <AgreementCard 
-            title={a.title}
-            tilegram={a.id} 
-            selected={selectedAgreement === i}
-            simple={searchVersion}
-            on:agreementClicked={() => onAgreementCardClicked(i)}/>
-        </div>
-      {/each}
-    </div>
+    {#if (!searchVersion) || (searchVersion && countryData.agreements.length > 0)}
+      <div class="right-narrow">
+        <Legend
+          title={legendOptions.title}
+          colors={legendOptions.colors}
+          labels={legendOptions.labels}
+          type={legendOptions.type}
+          interactive={false}
+          bind:selected={selectedAgreementType}
+        />
+      </div>
+    {/if}
+    {#if isGrid}
+      <div class="grid">
+        {#each agreementsData as a, i}
+          <div class="card"
+            id={`agreement-card-${i}`} 
+            class:simple={searchVersion} 
+            style="--band-color: {colorBandFn(a.status)};">
+            <AgreementCard 
+              title={a.title}
+              tilegram={a.id} 
+              selected={selectedAgreement === i}
+              simple={searchVersion}
+              on:agreementClicked={() => onAgreementCardClicked(i)}/>
+          </div>
+        {/each}
+      </div>
+    {:else}
+      <div class="caroussel-container" style="--card-height: {searchVersion ? 165 : 285}px;">
+        <Splide 
+          bind:this={splide}
+          on:move={(e) => (index = e.detail.index)}
+          aria-label="Agreements"
+          options={splideOptions}
+          hasTrack={true}
+        >
+            {#each agreementsData as a, i}
+              <SplideSlide>
+                <div class="card"
+                  id={`agreement-card-${i}`} 
+                  class:simple={searchVersion} 
+                  style="--band-color: {colorBandFn(a.status)};"
+                >
+                  <AgreementCard 
+                    title={a.title}
+                    tilegram={a.id} 
+                    selected={selectedAgreement === i}
+                    simple={searchVersion}
+                    on:agreementClicked={() => onAgreementCardClicked(i)}
+                  />
+                </div>
+              </SplideSlide>
+            {/each}
+        </Splide>
+      </div>
+    {/if}
     {#if modalVisible}
       <div class="modal" transition:scale >
         <ModalCard 
@@ -148,10 +214,27 @@
         />
       </div>
     {/if}
+    {#if text}
+      {#each text as t}
+        <p class="col-text">{@html t.p}</p>
+      {/each}
+    {/if}
   </section>
 </IntersectionObserver>
 
+
 <style lang="scss">
+  .caroussel-container {
+    width: 100%;
+    position: relative;
+    height: var(--card-height);
+  }
+
+  .grid,
+  .caroussel-container {
+    margin-bottom: 4rem;
+  }
+
   .grid {
     display: flex;
     flex-direction: row;
