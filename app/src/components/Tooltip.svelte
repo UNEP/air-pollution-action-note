@@ -36,6 +36,7 @@
     display: flex;
     width: fit-content;
     opacity: 0;
+    pointer-events: none;
 
     padding: .5rem;
     border-radius: 3px;

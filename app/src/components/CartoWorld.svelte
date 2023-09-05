@@ -29,6 +29,7 @@
   import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
+  import cleanAir_data from "src/data/cleanAir_coords.json"
   import Legend from "src/components/common/Legend.svelte";
   import {
     colorPM25,
@@ -162,6 +163,7 @@
     4: "int4",
     5: "aqg",
   };
+
 
   let legendElementSelectedIndex: number = null;
   let clientWidth = 0;
@@ -709,31 +711,30 @@
       internalLabels: null,
     },
     test: {
-      data: deaths_data.map((d) => {
+      data: cleanAir_data.map((d) => {
         return {
-          name: countryNameDictionaryLookup[d.id].name,
-          short: countryNameDictionaryLookup[d.id].short,
+          name: countryNameDictionaryLookup[d.id]?.name,
+          short: countryNameDictionaryLookup[d.id]?.short,
           code: d.id,
           x: d.x,
           y: d.y,
-          value: d.deaths,
-          rate: d.rate,
+          value: d.pop,
           data: gbdCleenAirLookup[d.id],
         };
       }),
-      nodeSize: 80,
+      nodeSize: 45,
       helpText: {
         code: "GEO",
         text: () => `<strong>Each square is a country</strong>,
         sized by the total number of <strong>deaths
         caused by fine particle pollution</strong>.`,
       },
-      hoverTextFn: (d: CountryDataPoint) =>
-        `In <strong>${d.name}</strong>, fine particle
-      pollution caused <strong>${d.value.toLocaleString(
-        "en-US"
-      )} deaths</strong>
-      in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
+      hoverTextFn: (d: CountryDataPoint) => {
+        const data = d.data as GBDCleanAirData;
+        const currentInt = d.data.initialInt + index > 5 ? 5 : d.data.initialInt + index;
+        const currentIntField = gbdIndexToField[currentInt];
+        return `If <strong>${countryNameDictionaryLookup[data.id]?.name}</strong> moved to ${currentIntField.toUpperCase()}, <strong>${data[currentIntField]}%</strong> of its population <strong>would breathe clean air</strong>.`;
+      },
       classesFn: (d: CountryDataPoint) => {
         const data = d.data as GBDCleanAirData;
         if (!data || !legendIsHovered) return [];
@@ -838,7 +839,7 @@
   {/if}
 
   <div class="margin-breakout-mobile cartogram-region" bind:clientWidth>
-    <slot name="range" />
+   
     <ScrollableX>
       <div
         style="width:{width}px; height:{height}px"
