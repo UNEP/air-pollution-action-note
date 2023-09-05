@@ -136,25 +136,22 @@
       "type": "cleanair-scrolly",
       "anchor": "cleanair",
       "data": "cleanair",
-      "head": "What would happen if countries <strong>moved progressively closer</strong> to the WHO Air quality guidelines?[a][b]",
+      "head": "What would happen if countries <strong>moved progressively closer</strong> to the strictest WHO air quality guideline?",
       "cards": [
         {
-          "p": "TK TK Current situation TK TK"
+          "p": "Currently, only six countries have PM<sub>2.5</sub> levels below 5µg/m<sup>3</sup>: Sweden, Finland, Luxemburg, Estonia, Greenland, and the Seychelles."
         },
         {
-          "p": "If all countries move one step closer, TK TK % of the world will breathe clean air."
+          "p": "If all countries moved only one step closer, almost three-quarters of the world would breathe clean air —up from about 40%."
         },
         {
-          "p": "Two steps closer and TK TK"
+          "p": "If they moved two steps closer, Oceania, and most of Europe and the Americas, would breathe clean air."
         },
         {
-          "p": "Three steps and TK TK"
+          "p": "Three steps, and only 1% of the world's population would remain above the strictest WHO air quality guideline."
         },
         {
-          "p": "TK TK Four"
-        },
-        {
-          "p": "TK TK Five[c]"
+          "p": "With each progressive step, a larger and larger proportion of people would breathe cleaner air."
         }
       ]
     },

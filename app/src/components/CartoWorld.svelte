@@ -573,8 +573,8 @@
       nodeSize: 16,
       helpText: {
         code: "JPN",
-        text: () => `<strong>Each square is a country</strong>,
-          colored by the <strong>number of agreements</strong>.`,
+        text: () => `<strong>Each square represents a country</strong>.
+         Hover over one to view which <strong>agreements the country has signed</strong>.`,
       },
       hoverTextFn: (d: CountryDataPoint) => agreementsHoverText(d.data),
       colorFn: (d: CountryDataPoint) => {
