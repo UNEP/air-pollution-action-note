@@ -60,6 +60,7 @@
   export let cartogramAnnotation: boolean;
   export let showEmbed: boolean = true;
   export let index: number = 0;
+  export let prevIndex: number = -1;
 
   let selectedDisease: HealthDisease = "ischemic";
 
@@ -742,6 +743,12 @@
           ] === colorGBD.range()[legendElementSelectedIndex];
 
         return [isSelected ? "country--shadow" : "country--hide"];
+      },
+      showPopup: (d: CountryDataPoint) => {
+        const data = d.data as GBDCleanAirData;
+        if (!data) return false;
+
+        return data.initialInt + index === 5 && data.pop > 50000000 && index > prevIndex;
       },
       color: colorGBD,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,

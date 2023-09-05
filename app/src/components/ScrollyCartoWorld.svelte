@@ -8,6 +8,7 @@
   import ProgressBar from "./ProgressBar.svelte";
   import Tooltip from "./Tooltip.svelte";
   import type { GBDCleanAirData } from "./CartoWorld.svelte";
+  import type { NumberValue } from "d3-scale";
 
   export var data;
   export var id: string;
@@ -18,6 +19,8 @@
   export var isEmbed: boolean;
 
   let index: number;
+  let currentIdenx;
+  let prevIndex: number;
   let offset: number;
   let progress: number;
   let cartogramAnnotation: boolean;
@@ -47,10 +50,15 @@
   $: currentPopulation = gbdData.reduce((acc, current) => acc + current[gbdIndexToPop[current.initialInt + index > 5 ? 5 : current.initialInt + index]], 0);
 
   $:  populationPercentage = Math.round(currentPopulation / totalPopulation * 100);
+
+  $: {
+    prevIndex = currentIdenx;
+    currentIdenx = index;
+  }
 </script>
 
 <div style="--section-height: {dataConf[data].sectionHeight};">
-  <Scroller bind:index bind:offset bind:progress threshold={0}>
+  <Scroller bind:index bind:offset bind:progress threshold={0} >
     <div slot="background" id="scrolly-carto-background">
       <div class="background"> 
         <CartoWorld
@@ -63,7 +71,8 @@
         {isEmbed}
         showEmbed={false}
         bind:cartogramAnnotation
-        {index}
+        index={currentIdenx}
+        prevIndex={prevIndex}
       />
       <ProgressBar percentage={populationPercentage}/>
       </div>
@@ -73,7 +82,7 @@
       {#each { length: dataConf[data].sections } as _, i}
         <section id='scrolly-carto-section-{i}' style="{i === dataConf[data].sections - 1 ? `height: calc(${dataConf[data].sectionHeight} * 2);` : ''}">
           SOME TEXT FLOATING
-          </section>
+        </section>
       {/each}
     </div>
   </Scroller>
