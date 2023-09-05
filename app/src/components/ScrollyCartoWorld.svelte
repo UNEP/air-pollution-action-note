@@ -6,6 +6,7 @@
   import CartoWorld from "./CartoWorld.svelte";
   import ProgressBar from "./ProgressBar.svelte";
   import type { GBDCleanAirData } from "./CartoWorld.svelte";
+  import type { NumberValue } from "d3-scale";
 
   export var data;
   export var id: string;
@@ -17,6 +18,8 @@
   export var isEmbed: boolean;
 
   let index: number;
+  let currentIdenx;
+  let prevIndex: number;
   let offset: number;
   let progress: number;
   let cartogramAnnotation: boolean;
@@ -24,14 +27,14 @@
   let currentPopulation: number;
   let gbdData = gbdCleenAirData as GBDCleanAirData[];
 
-  const gbdIndexToPop= {
-    0: 'int0Pop',
-    1: 'int1Pop',
-    2: 'int2Pop',
-    3: 'int3Pop',
-    4: 'int4Pop',
-    5: 'aqgPop'
-  }
+  const gbdIndexToPop = {
+    0: "int0Pop",
+    1: "int1Pop",
+    2: "int2Pop",
+    3: "int3Pop",
+    4: "int4Pop",
+    5: "aqgPop",
+  };
 
   totalPopulation = gbdData.reduce((acc, current) => acc + current.pop, 0);
 
@@ -39,18 +42,35 @@
     test: {
       sectionHeight: "70vh",
       sections: 6, //Need to specify
-      rangeTexts: ['WHO', 'IT1', 'IT2', 'IT3', 'IT4', 'IT5']
+      rangeTexts: ["WHO", "IT1", "IT2", "IT3", "IT4", "IT5"],
     },
   };
 
-  $: currentPopulation = gbdData.reduce((acc, current) => acc + current[gbdIndexToPop[current.initialInt + index > 5 ? 5 : current.initialInt + index]], 0);
-  $: populationPercentage = Math.round(currentPopulation / totalPopulation * 100);
+  $: currentPopulation = gbdData.reduce(
+    (acc, current) =>
+      acc +
+      current[
+        gbdIndexToPop[
+          current.initialInt + index > 5 ? 5 : current.initialInt + index
+        ]
+      ],
+    0
+  );
+
+  $: populationPercentage = Math.round(
+    (currentPopulation / totalPopulation) * 100
+  );
+
+  $: {
+    prevIndex = currentIdenx;
+    currentIdenx = index;
+  }
 </script>
 
 <section style="--section-height: {dataConf[data].sectionHeight};">
   <Scroller bind:index bind:offset bind:progress threshold={0} top={0} bottom={1}>
     <div slot="background" id="scrolly-carto-background">
-      <div class="background"> 
+      <div class="background">
         <CartoWorld
         {data}
         {id}
@@ -92,6 +112,7 @@
     grid-template-rows: 80% auto;
     height: 70rem;
     margin-top: 5rem;
+    max-width: 100vw;
   }
 
   .step { 

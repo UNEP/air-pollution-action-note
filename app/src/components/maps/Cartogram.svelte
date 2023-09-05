@@ -19,6 +19,7 @@
   import { throttle, trailingDebounce } from "src/util";
   import Annotation from "./Annotation.svelte";
   import { fade } from "svelte/transition";
+  import Tooltip from "../Tooltip.svelte";
 
   interface CartogramDataPoint extends CountryDataPoint {
     category: string;
@@ -37,6 +38,7 @@
   export var classesFn: (c: CountryDataPoint) => string[] = () => [];
   export var hoverTextFn: (c: CountryDataPoint) => string;
   export var onHoverFn: (c: CountryDataPoint) => void = () => null;
+  export var showPopup: (c: CountryDataPoint) => boolean;
   export var hideLabels = false;
   export const rerenderFn: () => void = () => (cartogramData = cartogramData);
   export var annotationShowing: boolean = false;
@@ -261,6 +263,7 @@
         {#if staticBorder}
           <div class="country" style={calcStyle(d, !staticBorder)} transition:fade/>
         {/if}
+
           <div
             class="{staticBorder ? 'static-border' : 'country'} {classesFn(d).join(' ')}"
             style={calcStyle(d, staticBorder)}
@@ -277,7 +280,11 @@
               <span class="country-text">{d.short}</span>
             {/if}
           </div>
-
+          {#if showPopup && showPopup(d)}
+          <div class="popup" style="left: {d.left}px; top: {d.top - 50}px;">
+            <Tooltip country={d.name}/>
+          </div>
+          {/if}
         {/if}
       {/each}
     </div>
@@ -402,5 +409,10 @@
     will-change: opacity, background-color, border-radius;
     outline-color: black;
     box-sizing: border-box;
+  }
+  
+  .popup {
+    position: absolute;
+    z-index: 10;
   }
 </style>

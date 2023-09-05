@@ -29,6 +29,7 @@
   import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
+  import cleanAir_data from "src/data/cleanAir_coords.json";
   import Legend from "src/components/common/Legend.svelte";
   import {
     colorPM25,
@@ -60,6 +61,7 @@
   export let cartogramAnnotation: boolean;
   export let showEmbed: boolean = true;
   export let index: number = 0;
+  export let prevIndex: number = -1;
 
   let selectedDisease: HealthDisease = "ischemic";
 
@@ -708,31 +710,36 @@
       internalLabels: null,
     },
     test: {
-      data: deaths_data.map((d) => {
+      data: cleanAir_data.map((d) => {
         return {
-          name: countryNameDictionaryLookup[d.id].name,
-          short: countryNameDictionaryLookup[d.id].short,
+          name: countryNameDictionaryLookup[d.id]?.name,
+          short: countryNameDictionaryLookup[d.id]?.short,
           code: d.id,
           x: d.x,
           y: d.y,
-          value: d.deaths,
-          rate: d.rate,
+          value: d.pop,
           data: gbdCleenAirLookup[d.id],
         };
       }),
-      nodeSize: 80,
+      nodeSize: 45,
       helpText: {
-        code: "GEO",
-        text: () => `<strong>Each square is a country</strong>,
-        sized by the total number of <strong>deaths
-        caused by fine particle pollution</strong>.`,
+        code: "JPN",
+        text: () => {
+          if (innerWidth < 768) return '';
+          return `<strong>Each square is a country</strong>, sized by the <strong>number of people that would enjoy pollution-free air</strong> as the country reduces its air pollution levels.`;
+        },
       },
-      hoverTextFn: (d: CountryDataPoint) =>
-        `In <strong>${d.name}</strong>, fine particle
-      pollution caused <strong>${d.value.toLocaleString(
-        "en-US"
-      )} deaths</strong>
-      in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
+      hoverTextFn: (d: CountryDataPoint) => {
+        const data = d.data as GBDCleanAirData;
+        const currentInt =
+          d.data.initialInt + index > 5 ? 5 : d.data.initialInt + index;
+        const currentIntField = gbdIndexToField[currentInt];
+        return `If <strong>${
+          countryNameDictionaryLookup[data.id]?.name
+        }</strong> moved to ${currentIntField.toUpperCase()}, <strong>${
+          data[currentIntField]
+        }%</strong> of its population <strong>would breathe clean air</strong>.`;
+      },
       classesFn: (d: CountryDataPoint) => {
         const data = d.data as GBDCleanAirData;
         if (!data || !legendIsHovered) return [];
@@ -742,6 +749,16 @@
           ] === colorGBD.range()[legendElementSelectedIndex];
 
         return [isSelected ? "country--shadow" : "country--hide"];
+      },
+      showPopup: (d: CountryDataPoint) => {
+        const data = d.data as GBDCleanAirData;
+        if (!data) return false;
+
+        return (
+          data.initialInt + index === 5 &&
+          data.pop > 50000000 &&
+          index > prevIndex
+        );
       },
       color: colorGBD,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
@@ -788,7 +805,7 @@
     rerender();
 
   $: {
-    width = Math.max(clientWidth, 700);
+    width = data === "test" ? clientWidth - 50 : Math.max(clientWidth, 700);
   }
   $: height = width * (data === "pm25" ? 0.55 : 0.62);
 </script>
@@ -830,8 +847,7 @@
     </div>
   {/if}
 
-  <div class="margin-breakout-mobile cartogram-region" bind:clientWidth>
-    <slot name="range" />
+  <div class="margin-breakout-mobile" bind:clientWidth>
     <ScrollableX>
       <div
         style="width:{width}px; height:{height}px"
@@ -878,12 +894,5 @@
     background: #f9f9f9e0;
     border-radius: 4px;
     padding: 0 10px 5px;
-  }
-
-  .cartogram-region {
-    display: flex;
-    gap: 10px;
-    justify-items: center;
-    align-items: center;
   }
 </style>
