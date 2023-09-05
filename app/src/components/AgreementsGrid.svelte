@@ -23,7 +23,7 @@
   import { scale } from "svelte/transition";
   import { colorAgreementTypes } from "src/colors";
   import agreementsLookup from "../data/agreementsLookup.json";
-  import type { AgreementName } from "src/types";
+  import type { AgreementName, TextBlock } from "src/types";
   import { countriesWithArticle } from "src/data";
   import IntersectionObserver from "svelte-intersection-observer";
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
@@ -31,6 +31,7 @@
   import '@splidejs/splide/dist/css/themes/splide-default.min.css';
   
   export let head: string = null;
+  export var text: TextBlock[];
   export let searchVersion = false;
   export let countryData: CountryAgreementsData = null;
  
@@ -132,7 +133,7 @@
     focus: 'center'
   };
 
-  $: isGrid = ((innerWidth > 768) || (searchVersion && countryData.agreements.length <= 1));
+  $: isGrid = ((innerWidth > 768) || (searchVersion && countryData?.agreements.length <= 1));
   
 </script>
 
@@ -174,33 +175,33 @@
         {/each}
       </div>
     {:else}
-    <div class="caroussel-container" style="--card-height: {searchVersion ? 165 : 285}px;">
-      <Splide 
-        bind:this={splide}
-        on:move={(e) => (index = e.detail.index)}
-        aria-label="Agreements"
-        options={splideOptions}
-        hasTrack={true}
-      >
-          {#each agreementsData as a, i}
-            <SplideSlide>
-              <div class="card"
-                id={`agreement-card-${i}`} 
-                class:simple={searchVersion} 
-                style="--band-color: {colorBandFn(a.status)};"
-              >
-                <AgreementCard 
-                  title={a.title}
-                  tilegram={a.id} 
-                  selected={selectedAgreement === i}
-                  simple={searchVersion}
-                  on:agreementClicked={() => onAgreementCardClicked(i)}
-                />
-              </div>
-            </SplideSlide>
-          {/each}
-      </Splide>
-    </div>
+      <div class="caroussel-container" style="--card-height: {searchVersion ? 165 : 285}px;">
+        <Splide 
+          bind:this={splide}
+          on:move={(e) => (index = e.detail.index)}
+          aria-label="Agreements"
+          options={splideOptions}
+          hasTrack={true}
+        >
+            {#each agreementsData as a, i}
+              <SplideSlide>
+                <div class="card"
+                  id={`agreement-card-${i}`} 
+                  class:simple={searchVersion} 
+                  style="--band-color: {colorBandFn(a.status)};"
+                >
+                  <AgreementCard 
+                    title={a.title}
+                    tilegram={a.id} 
+                    selected={selectedAgreement === i}
+                    simple={searchVersion}
+                    on:agreementClicked={() => onAgreementCardClicked(i)}
+                  />
+                </div>
+              </SplideSlide>
+            {/each}
+        </Splide>
+      </div>
     {/if}
     {#if modalVisible}
       <div class="modal" transition:scale >
@@ -213,15 +214,25 @@
         />
       </div>
     {/if}
+    {#if text}
+      {#each text as t}
+        <p class="col-text">{@html t.p}</p>
+      {/each}
+    {/if}
   </section>
 </IntersectionObserver>
 
-<style lang="scss">
 
+<style lang="scss">
   .caroussel-container {
     width: 100%;
     position: relative;
     height: var(--card-height);
+  }
+
+  .grid,
+  .caroussel-container {
+    margin-bottom: 4rem;
   }
 
   .grid {
