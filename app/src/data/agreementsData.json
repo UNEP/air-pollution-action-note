@@ -1910,14 +1910,14 @@
     "rapap": 0,
     "kathmandu": 0,
     "clrtap": 1,
-    "eu-directive": 0,
+    "eu-directive": 1,
     "us-canada": 0,
     "lusaka": 0,
     "nairobi": 0,
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
-    "nAgreements": 1
+    "nAgreements": 2
   },
   {
     "id": "ESP",
@@ -1930,14 +1930,14 @@
     "rapap": 0,
     "kathmandu": 0,
     "clrtap": 1,
-    "eu-directive": 0,
+    "eu-directive": 1,
     "us-canada": 0,
     "lusaka": 0,
     "nairobi": 0,
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
-    "nAgreements": 1
+    "nAgreements": 2
   },
   {
     "id": "SWE",
@@ -1950,14 +1950,14 @@
     "rapap": 0,
     "kathmandu": 0,
     "clrtap": 1,
-    "eu-directive": 0,
+    "eu-directive": 1,
     "us-canada": 0,
     "lusaka": 0,
     "nairobi": 0,
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
-    "nAgreements": 2
+    "nAgreements": 3
   },
   {
     "id": "CHE",

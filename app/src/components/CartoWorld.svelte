@@ -180,7 +180,7 @@
     if(data["us-canada"] === AgreementsStatus.Participant) participantAgreement.push('us-canada');
     if(data["us-canada"] === AgreementsStatus.Observer) observerAgreement.push('us-canada');
 
-    let hoverText = `<strong>${data.name}</strong> ${data.nAgreements === 0 ? 'does not participate in any agreement' : 'participates in the '}`
+    let hoverText = `<strong>${data.name}</strong> ${data.nAgreements === 0 ? 'does not participate in any agreement' : `participates in <strong> ${data.nAgreements} agreements</strong>: `}`
     
     participantAgreement.forEach((agreement, i) => {
       let finalChar = ', ';
@@ -580,48 +580,20 @@
       colorFn: (d: CountryDataPoint) => {
         let agreementsData = d.data as AgreementsData;
         const colors = colorAgreements.range();
-        const gradients = [
-          {
-            color: agreementsData.nAgreements > 0 ? colors[0] : "#D9D9D9",
-            start: 0,
-            end: 20,
-          },
-          {
-            color: agreementsData.nAgreements > 1 ? colors[1] : "#D9D9D9",
-            start: 20,
-            end: 40,
-          },
-          {
-            color: agreementsData.nAgreements > 2 ? colors[2] : "#D9D9D9",
-            start: 40,
-            end: 60,
-          },
-          {
-            color: agreementsData.nAgreements > 3 ? colors[3] : "#D9D9D9",
-            start: 60,
-            end: 80,
-          },
-          {
-            color: agreementsData.nAgreements > 4 ? colors[4] : "#D9D9D9",
-            start: 80,
-            end: 100,
-          }
-        ];
-
-        const gradientStrs = gradients.map((g) => `${g.color} ${g.start}% ${g.end}%`);
-        return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
+        if (agreementsData.nAgreements <= 0) return colors[0];
+        return colors[1]
       },
       classesFn: (d: CountryDataPoint) => {
         let agreementsData = d.data as AgreementsData;
-        let agreementsCont = [1, 2, 3, 4, 5];
+        let agreementsCont = [false, true];
         const hasValue =
-          legendIsHovered && agreementsCont[legendElementSelectedIndex] === agreementsData.nAgreements;
+          legendIsHovered && agreementsCont[legendElementSelectedIndex] === (agreementsData.nAgreements > 0);
         return hasValue ? ["country--shadow"] : [];
       },
       color: colorAgreements,
-      legendTitle: `<strong>No. of agreements</strong>`,
+      legendTitle: `<strong>Agreement participation</strong>`,
       legendDomain: colorAgreements.domain(),
-      legendType: "sequential",
+      legendType: "categorical",
       domain: [1300, 1300 / (740 / 420)] as [number, number],
       linearDomain: null,
       internalLabels: null,
