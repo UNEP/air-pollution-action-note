@@ -36,6 +36,14 @@ export const colorDiseases = scaleOrdinal<number, string>()
   .domain([5, 15, 25, 35])
   .range(["#FFBEB3","#E094A7","#C16B9B","#A1408E","#800080"]);
 
-  export const colorAgreements = scaleThreshold<number, string>()
+export const colorAgreements = scaleThreshold<number, string>()
   .domain([1, 2, 3, 4])
-  .range(['#7CBFEF', '#64A1D3', '#4C83B7', '#34659B', '#1C477F']);
+  .range(['#2EA7F9', '#2383CE', '#1762A4', '#0B427C', '#002456']);
+
+export const colorAgreementTypes = scaleOrdinal<string>()
+  .domain(['Participant', 'Observer'])
+  .range(["#34659B", "#7CBFEF"])
+
+export const colorAgreementSimpleType = scaleOrdinal<string>()
+.domain(['Participant'])
+.range(["#34659B"])

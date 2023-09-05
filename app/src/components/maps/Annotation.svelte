@@ -10,6 +10,7 @@
   export var forceTopWherePossible: boolean = false;
   export var justText: boolean = false;
   export var topClamp: number = 0;
+  export var staticPosition: boolean = false;
 
   const noDims = !(canvasHeight > 0) || !(canvasWidth > 0);
   if (noDims) throw new Error('Annotation created with no canvas dims');
@@ -47,26 +48,26 @@
   $: textWidthPerc = canvasWidth && perc(textWidth, canvasHeight);
 
   $: {
-    if (forceTopWherePossible) {
-      if (yPerc < 15) {
-        pos = xPerc > 50 ? 'left' : 'right';
-      } else {
-        pos = 'above';
-      }
-    }
+    if (staticPosition) pos = 'right';
     else {
-      if (yPerc < 5) {
-        pos = 'below';
+      if (forceTopWherePossible) {
+        if (yPerc < 15) {
+          pos = xPerc > 50 ? 'left' : 'right';
+        } else {
+          pos = 'above';
+        }
       }
-      else if (xPerc > 65 || xPerc < 35) {
-        pos = xPerc > 50 ? 'left' : 'right';
-      } else {
-        pos = yPerc < 20 ? 'below' : 'above';
+      else {
+        if (yPerc < 5) {
+          pos = 'below';
+        }
+        else if (xPerc > 65 || xPerc < 35) {
+          pos = xPerc > 50 ? 'left' : 'right';
+        } else {
+          pos = yPerc < 20 ? 'below' : 'above';
+        }
       }
     }
-  }
-
-  $: {
     textShiftX = null;
     textShiftY = null;
     if (pos === 'left') {
@@ -133,10 +134,9 @@
     return dimStr + transformStr;
   }
 
-
   $: styleStr = style ? calcStyle(style) : '';
   var textStyleStr: string;
-  $: {
+  $: if (!staticPosition) {
     const translateX = textShiftX !== null ? `translateX(${textShiftX}%)` : '';
     const translateY = textShiftY !== null ? `translateY(${textShiftY}%)` : '';
     textStyleStr = (translateX || translateY) ? `transform: ${translateX} ${translateY};` : '';

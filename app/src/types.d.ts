@@ -14,6 +14,10 @@ type TextBlockType = "p";
 
 export type HealthDisease = "diabetes" | "ischemic" | "lungcancer" | "lri" | "stroke" | "nd" | "copd";
 
+export type AgreementName = "eanet" | "asean-trans" | "male" | "neaspec" 
+  | "rapap" | "clrtap" | "eu-directive" | "us-canada" 
+  | "lusaka" | "nairobi" | "abidjan" | "lat-caribbean" | "arctic";
+
 export type TextBlock = Record<TextBlockType, string>;
 
 export type DropdownOptionBlock = {

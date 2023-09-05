@@ -26,7 +26,6 @@
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
   import diseasesGlobal from "src/data/diseasesGlobal.json";
-  import { create } from "d3-selection";
 
   export var data: "pm25" | "health" | "policies" | "diseases";
   export var id: string;
@@ -76,7 +75,6 @@
     male: number;
     neaspec: number;
     rapap: number;
-    kathmandu: number;
     clrtap: number;
     "eu-directive": number;
     "us-canada": number;
@@ -160,9 +158,6 @@
 
     if(data["eu-directive"] === AgreementsStatus.Participant) participantAgreement.push('eu-directive');
     if(data["eu-directive"] === AgreementsStatus.Observer) observerAgreement.push('eu-directive');
-
-    if(data.kathmandu === AgreementsStatus.Participant) participantAgreement.push('kathmandu');
-    if(data.kathmandu === AgreementsStatus.Observer) observerAgreement.push('kathmandu');
 
     if(data["lat-caribbean"] === AgreementsStatus.Participant) participantAgreement.push('lat-caribbean');
     if(data["lat-caribbean"] === AgreementsStatus.Observer) observerAgreement.push('lat-caribbean');

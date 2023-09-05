@@ -1,15 +1,11 @@
 <script lang="ts">
   import TargetBars from "./TargetBars.svelte";
   import Legend from "./common/Legend.svelte";
+  import { countriesWithArticle } from "src/data";
 
   export let data: PoliciesData;
   export let desc: PoliciesDescription;
-
-  const countriesWithArticle = 
-    ["BHS", "CAF", "COM", "COD", "COG", "DOM", "GMB", 
-    "KOR", "PRK", "LAO", "MHL", "MDA", "NLD", "NER", 
-    "PHL", "RUS", "SYR", "TZA", "ARE", "GBR", "USA"];
-
+  
   interface PoliciesDescription {
     id: string,
     "ind-1": string,
