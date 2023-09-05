@@ -198,12 +198,6 @@
       ]
     },
     {
-      "type": "agreements-grid",
-      "anchor": "agreements",
-      "data": "agreementsGrid",
-      "head": "More governments are introducing policies to improve air quality but barriers to progress include slow implementation and capacity gaps."
-    },
-    {
       "type": "country-search",
       "menu": "By country",
       "icon": "search",
