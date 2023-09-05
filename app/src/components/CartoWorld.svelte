@@ -29,7 +29,7 @@
   import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
-  import cleanAir_data from "src/data/cleanAir_coords.json"
+  import cleanAir_data from "src/data/cleanAir_coords.json";
   import Legend from "src/components/common/Legend.svelte";
   import {
     colorPM25,
@@ -163,7 +163,6 @@
     4: "int4",
     5: "aqg",
   };
-
 
   let legendElementSelectedIndex: number = null;
   let clientWidth = 0;
@@ -724,16 +723,22 @@
       }),
       nodeSize: 45,
       helpText: {
-        code: "GEO",
-        text: () => `<strong>Each square is a country</strong>,
-        sized by the total number of <strong>deaths
-        caused by fine particle pollution</strong>.`,
+        code: "JPN",
+        text: () => {
+          if (innerWidth < 768) return '';
+          return `<strong>Each square is a country</strong>, sized by the <strong>number of people that would enjoy pollution-free air</strong> as the country reduces its air pollution levels.`;
+        },
       },
       hoverTextFn: (d: CountryDataPoint) => {
         const data = d.data as GBDCleanAirData;
-        const currentInt = d.data.initialInt + index > 5 ? 5 : d.data.initialInt + index;
+        const currentInt =
+          d.data.initialInt + index > 5 ? 5 : d.data.initialInt + index;
         const currentIntField = gbdIndexToField[currentInt];
-        return `If <strong>${countryNameDictionaryLookup[data.id]?.name}</strong> moved to ${currentIntField.toUpperCase()}, <strong>${data[currentIntField]}%</strong> of its population <strong>would breathe clean air</strong>.`;
+        return `If <strong>${
+          countryNameDictionaryLookup[data.id]?.name
+        }</strong> moved to ${currentIntField.toUpperCase()}, <strong>${
+          data[currentIntField]
+        }%</strong> of its population <strong>would breathe clean air</strong>.`;
       },
       classesFn: (d: CountryDataPoint) => {
         const data = d.data as GBDCleanAirData;
@@ -749,7 +754,11 @@
         const data = d.data as GBDCleanAirData;
         if (!data) return false;
 
-        return data.initialInt + index === 5 && data.pop > 50000000 && index > prevIndex;
+        return (
+          data.initialInt + index === 5 &&
+          data.pop > 50000000 &&
+          index > prevIndex
+        );
       },
       color: colorGBD,
       legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
@@ -796,7 +805,7 @@
     rerender();
 
   $: {
-    width = Math.max(clientWidth, 700);
+    width = data === "test" ? clientWidth - 50 : Math.max(clientWidth, 700);
   }
   $: height = width * (data === "pm25" ? 0.55 : 0.62);
 </script>
@@ -838,8 +847,7 @@
     </div>
   {/if}
 
-  <div class="margin-breakout-mobile cartogram-region" bind:clientWidth>
-   
+  <div class="margin-breakout-mobile" bind:clientWidth>
     <ScrollableX>
       <div
         style="width:{width}px; height:{height}px"
@@ -886,12 +894,5 @@
     background: #f9f9f9e0;
     border-radius: 4px;
     padding: 0 10px 5px;
-  }
-
-  .cartogram-region {
-    display: flex;
-    gap: 10px;
-    justify-items: center;
-    align-items: center;
   }
 </style>
