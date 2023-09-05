@@ -82,7 +82,7 @@
 <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
 
 <style>
-  section {
+  section .step {
     height: var(--section-height);
   }
 
