@@ -591,7 +591,7 @@
         return hasValue ? ["country--shadow"] : [];
       },
       color: colorAgreements,
-      legendTitle: `<strong>Countries that has/hasn't agreements</strong>`,
+      legendTitle: `<strong>Agreement participation</strong>`,
       legendDomain: colorAgreements.domain(),
       legendType: "categorical",
       domain: [1300, 1300 / (740 / 420)] as [number, number],

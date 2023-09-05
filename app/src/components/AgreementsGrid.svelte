@@ -36,7 +36,7 @@
   export let countryData: CountryAgreementsData = null;
  
   const legendOptions = {
-    title: "Agreement status",
+    title: "<strong>Agreement status</strong>",
     colors: colorAgreementTypes.range(),
     labels: colorAgreementTypes.domain(),
     type: "categorical"

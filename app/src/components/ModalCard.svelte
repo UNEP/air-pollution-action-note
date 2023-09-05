@@ -14,14 +14,14 @@
   const agreementsWithObservers = ["asean-trans", "rapap"];
 
   const legendOptionsWithObservers = {
-    title: "Agreement status",
+    title: "<strong>Agreement status</strong>",
     colors: colorAgreementTypes.range(),
     labels: colorAgreementTypes.domain(),
     type: "categorical"
   };
 
   const legendOptionsSimple = {
-    title: "Agreement status",
+    title: "<strong>Agreement status</strong>",
     colors: colorAgreementSimpleType.range(),
     labels: colorAgreementSimpleType.domain(),
     type: "categorical"
