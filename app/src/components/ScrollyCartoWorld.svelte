@@ -45,12 +45,11 @@
   };
 
   $: currentPopulation = gbdData.reduce((acc, current) => acc + current[gbdIndexToPop[current.initialInt + index > 5 ? 5 : current.initialInt + index]], 0);
-
-  $:  populationPercentage = Math.round(currentPopulation / totalPopulation * 100);
+  $: populationPercentage = Math.round(currentPopulation / totalPopulation * 100);
 </script>
 
-<div style="--section-height: {dataConf[data].sectionHeight};">
-  <Scroller bind:index bind:offset bind:progress threshold={0}>
+<section style="--section-height: {dataConf[data].sectionHeight};">
+  <Scroller bind:index bind:offset bind:progress threshold={0} top={0} bottom={1}>
     <div slot="background" id="scrolly-carto-background">
       <div class="background"> 
         <CartoWorld
@@ -65,20 +64,20 @@
         bind:cartogramAnnotation
         {index}
       />
-      <ProgressBar percentage={populationPercentage}/>
+        <ProgressBar percentage={populationPercentage}/>
       </div>
-
     </div>
     <div slot="foreground" id="scrolly-carto-foreground">
       {#each { length: dataConf[data].sections } as _, i}
-        <section id='scrolly-carto-section-{i}' style="{i === dataConf[data].sections - 1 ? `height: calc(${dataConf[data].sectionHeight} * 2);` : ''}">
-          SOME TEXT FLOATING
-          </section>
+        <section id='scrolly-carto-section-{i}' class="step">
+          <p class="scrolly-card">
+            If all countries moved one step closer, XX% of the world will breathe clean air.
+          </p>
+        </section>
       {/each}
     </div>
   </Scroller>
-  <Tooltip country={'India'}/>
-</div>
+</section>
 
 <Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
 
@@ -97,6 +96,27 @@
   .background {
     display: grid;
     grid-template-rows: 80% auto;
-    height: 100%;
+    height: 80vh;
+  }
+  .step { 
+    height: 80vh;
+    padding-top: 20vh;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+  }
+
+  .scrolly-card {
+    height: fit-content;
+    max-height: 7.8rem;
+    width: 22.5rem;
+    
+    padding: 2rem;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    filter: drop-shadow(0 0 5px rgb(0 0 0 / 20%));
   }
 </style>
