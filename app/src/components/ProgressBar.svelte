@@ -46,7 +46,7 @@
     position: relative;
     display: block;
     margin: 0.5rem;
-    transform: translateX(calc(var(--move) - 1rem));
+    transform: translateX(calc(var(--move) - 1.5rem));
     border-radius: 1rem;
     transition: 0.4s linear;
     animation: progress 5s infinite

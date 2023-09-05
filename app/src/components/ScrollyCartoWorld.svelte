@@ -4,9 +4,7 @@
   import type { Content, TextBlock } from "src/types";
   import gbdCleenAirData from "src/data/GBDCleanAirData.json";
   import CartoWorld from "./CartoWorld.svelte";
-  import Embed from "./Embed.svelte";
   import ProgressBar from "./ProgressBar.svelte";
-  import Tooltip from "./Tooltip.svelte";
   import type { GBDCleanAirData } from "./CartoWorld.svelte";
 
   export var data;
@@ -14,6 +12,7 @@
   export var block: Content;
   export var head: string;
   export var text: TextBlock[];
+  export var cards: TextBlock[];
   export var embed: string = "a";
   export var isEmbed: boolean;
 
@@ -68,10 +67,10 @@
       </div>
     </div>
     <div slot="foreground" id="scrolly-carto-foreground">
-      {#each { length: dataConf[data].sections } as _, i}
+      {#each cards as card, i}
         <section id='scrolly-carto-section-{i}' class="step">
           <p class="scrolly-card">
-            If all countries moved one step closer, XX% of the world will breathe clean air.
+            {@html card.p}
           </p>
         </section>
       {/each}
@@ -79,13 +78,7 @@
   </Scroller>
 </section>
 
-<Embed {isEmbed} {embed} {cartogramAnnotation} {text} />
-
 <style>
-  section .step {
-    height: var(--section-height);
-  }
-
   :global(svelte-scroller-foreground) {
     pointer-events: none;
   }
@@ -94,17 +87,17 @@
   }
 
   .background {
+    position: relative;
     display: grid;
     grid-template-rows: 80% auto;
-    height: 80vh;
+    height: 70rem;
+    margin-top: 5rem;
   }
+
   .step { 
-    height: 80vh;
-    padding-top: 20vh;
-    margin-top: 3rem;
-    margin-left: 1rem;
+    height: 80rem;
+    padding-top: 35rem;
     margin-right: 1rem;
-    
   }
 
   .scrolly-card {

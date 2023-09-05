@@ -23,7 +23,7 @@
   const components = {
     'carto-world': CartoWorld,
     'carto-region': CartoRegion,
-    'scrolly-carto-world': ScrollyCartoWorld,
+    'cleanair-scrolly': ScrollyCartoWorld,
     'intro': Intro,
     'text': Text,
     "menu": Menu,
