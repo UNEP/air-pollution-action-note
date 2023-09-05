@@ -116,7 +116,7 @@
   }
 
   .step { 
-    height: 80rem;
+    height: 70rem;
     padding-top: 35rem;
     margin-right: 1rem;
   }
@@ -132,5 +132,17 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     filter: drop-shadow(0 0 5px rgb(0 0 0 / 20%));
+  }
+
+  @media (max-width: 678px) {
+
+    .background, .step {
+      height: 70vh;
+    }
+
+    .scrolly-card {
+      padding: .5rem;
+      width: auto;
+    }
   }
 </style>
