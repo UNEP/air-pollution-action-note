@@ -14,7 +14,8 @@
     if(progressBar && percentageLabel) { 
       if (percentage === 0) progressBar.style.width = '0px';
       else progressBar.style.width = `${percentage}%`;
-      percentageLabel.style.setProperty('--move', percentage + '%');
+      percentageLabel.style.width = `${percentage}%`;
+      percentageLabel.style.marginLeft = percentage > 98 ? '0.5rem' : '1.5rem';
     };
   }
 
@@ -46,10 +47,11 @@
     position: relative;
     display: block;
     margin: 0.5rem;
-    transform: translateX(calc(var(--move) - 1rem));
+    margin-left: 1.5rem;
     border-radius: 1rem;
     transition: 0.4s linear;
-    animation: progress 5s infinite
+    animation: progress 5s infinite;
+    text-align: end;
   }
 
   .progress-moved, .progress-bar {
@@ -67,6 +69,16 @@
   .progress-bar {
     background-color: #00ABF1;
     animation: progress 5s infinite;
+  }
+
+  @media (max-width: 678px) {
+    .percentage-label {
+      width: 90vw;
+      margin-left: 1rem;
+    }
+    .progress-moved, .progress-bar {
+      height: 4px;
+    }
   }
 
 </style>
