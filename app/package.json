@@ -42,7 +42,7 @@
     "svelte": "^3.42.3",
     "svelte-add": "^0.0.1-beta-13",
     "svelte-check": "^1.0.0",
-    "svelte-intersection-observer": "^0.6.0",
+    "svelte-intersection-observer": "^0.6.1",
     "svelte-preprocess": "^4.8.0",
     "svelte-scrollto": "^0.2.0",
     "svelte-typeahead": "^3.0.0",
@@ -53,6 +53,8 @@
   "dependencies": {
     "@reuters-graphics/d3-locale": "^0.1.0",
     "@rollup/plugin-image": "^2.1.1",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/svelte-splide": "^0.2.9",
     "@sveltejs/svelte-scroller": "^2.0.6",
     "@types/d3-axis": "^3.0.1",
     "@types/d3-hierarchy": "^3.0.2",

@@ -35,3 +35,15 @@ export const colorPolices = scaleOrdinal<string>()
 export const colorDiseases = scaleOrdinal<number, string>()
   .domain([5, 15, 25, 35])
   .range(["#FFBEB3","#E094A7","#C16B9B","#A1408E","#800080"]);
+
+export const colorAgreements = scaleOrdinal<string>()
+.domain(['No agreements signed', 'Agreements signed'])
+.range(["#D9D9D9", "#004982"])
+
+export const colorAgreementTypes = scaleOrdinal<string>()
+  .domain(['Participant', 'Observer'])
+  .range(["#34659B", "#7CBFEF"])
+
+export const colorAgreementSimpleType = scaleOrdinal<string>()
+.domain(['Participant'])
+.range(["#34659B"])

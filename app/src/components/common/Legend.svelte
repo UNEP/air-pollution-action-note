@@ -16,6 +16,7 @@
   export let selected: number;
   export let linearDomain: number[] = null;
   export let internalLabels: InternalLabels[] = null;
+  export let interactive = true;
 
   let legendWidths = null;
 
@@ -58,8 +59,9 @@
         style="width: {legendWidths
           ? legendWidths[i]
           : 100 / colors.length}%; background-color: {c};"
-        class:selected-seq={selected === i}
+        class:selected-seq={selected === i && interactive}
         class:border={internalLabels ? internalLabels[i]?.border : false}
+        class:interactive
         on:mouseout={() => (selected = null)}
         on:blur={() => (selected = null)}
         on:mouseover={() => (selected = i)}
@@ -85,8 +87,9 @@
         aria-label={labels[i]}
         tabindex="0"
         class="cat-item note"
-        class:selected-cat={selected === i}
-        on:mouseout={() => (selected = null)}
+        class:selected-cat={selected === i && interactive}
+        class:interactive
+        on:mouseout={() => (selected = null )}
         on:blur={() => (selected = null)}
         on:mouseover={() => (selected = i)}
         on:focus={() => (selected = i)}
@@ -115,6 +118,9 @@
 {/if}
 
 <style lang="scss">
+  .interactive {
+    cursor: pointer;
+  }
   .border {
     border: 2px solid #000 !important;
   }
@@ -161,7 +167,6 @@
     position: relative;
     line-height: 1;
     padding: 0.3rem;
-    cursor: pointer;
     transition: all 0.3s;
   }
   .seq li {
