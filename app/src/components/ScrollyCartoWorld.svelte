@@ -70,8 +70,6 @@
 
   $: top = innerWidth > 768 ? 0 : 0.06;
   $: bottom = innerWidth > 768 ? 1 : 0.8;
-
-  $: console.log({currentIndex, prevIndex})
 </script>
 
 <svelte:window bind:innerWidth />
@@ -123,7 +121,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 70rem;
     max-width: 100vw;
   }
 

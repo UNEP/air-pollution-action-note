@@ -804,9 +804,9 @@
     rerender();
 
   $: {
-    width = data === "test" ? clientWidth : Math.max(clientWidth, 700);
+    width = data === "cleanair" ? clientWidth : Math.max(clientWidth, 700);
   }
-  $: height = width * (data === "pm25" ? 0.55 : 0.62);
+  $: height = width * (data === "pm25" || data === "cleanair" ? 0.55 : 0.62);
 </script>
 
 <section {id} class="viz wide">
