@@ -43,7 +43,6 @@
 
   import type { CountryDataPoint } from "src/components/maps/Cartogram.svelte";
   import ScrollableX from "./common/ScrollableX.svelte";
-  import EmbedFooter from "./EmbedFooter.svelte";
   import SectionTitle from "src/components/SectionTitle.svelte";
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
@@ -726,7 +725,7 @@
         code: "JPN",
         text: () => {
           if (innerWidth < 768) return null;
-          return `<strong>Each square is a country</strong>, sized by the <strong>number of people that would enjoy pollution-free air</strong> as the country reduces its air pollution levels.`;
+          return `<strong>Each square is a country</strong>, sized by the <strong>number of people</strong> that would <strong>enjoy pollution-free air</strong> as the country reduces its air pollution levels.`;
         },
       },
       hoverTextFn: (d: CountryDataPoint) => {
@@ -805,7 +804,7 @@
     rerender();
 
   $: {
-    width = data === "test" ? clientWidth - 50 : Math.max(clientWidth, 700);
+    width = data === "test" ? clientWidth : Math.max(clientWidth, 700);
   }
   $: height = width * (data === "pm25" ? 0.55 : 0.62);
 </script>

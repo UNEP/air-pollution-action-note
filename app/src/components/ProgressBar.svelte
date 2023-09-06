@@ -79,6 +79,10 @@
     .progress-moved, .progress-bar {
       height: 4px;
     }
+
+    .progress-moved {
+      margin-top: 0.5rem;
+    }
   }
 
 </style>

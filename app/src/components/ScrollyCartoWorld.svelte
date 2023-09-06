@@ -18,7 +18,7 @@
   export var isEmbed: boolean;
 
   let index: number;
-  let currentIdenx;
+  let currentIndex;
   let prevIndex: number;
   let offset: number;
   let progress: number;
@@ -26,6 +26,9 @@
   let totalPopulation: number;
   let currentPopulation: number;
   let gbdData = gbdCleenAirData as GBDCleanAirData[];
+  let top: number = 0;
+  let bottom: number = 1;
+  let innerWidth: number;
 
   const gbdIndexToPop = {
     0: "int0Pop",
@@ -62,23 +65,23 @@
   );
 
   $: {
-    prevIndex = currentIdenx;
-    currentIdenx = index;
+    prevIndex = currentIndex;
+    currentIndex = index;
   }
+
+  $: top = innerWidth > 768 ? 0 : 0.06;
+  $: bottom = innerWidth > 768 ? 1 : 0.8;
+
+  $: console.log({currentIndex, prevIndex})
 </script>
+
+<svelte:window bind:innerWidth />
 
 <section
   class="scrolly-carto-container"
   style="--section-height: {dataConf[data].sectionHeight};"
 >
-  <Scroller
-    bind:index
-    bind:offset
-    bind:progress
-    threshold={0}
-    top={0}
-    bottom={1}
-  >
+  <Scroller bind:index bind:offset bind:progress threshold={0} {top} {bottom}>
     <div slot="background" id="scrolly-carto-background">
       <div class="background">
         <CartoWorld
@@ -91,7 +94,8 @@
           {isEmbed}
           showEmbed={false}
           bind:cartogramAnnotation
-          {index}
+          index={currentIndex}
+          {prevIndex}
         />
         <ProgressBar percentage={populationPercentage} />
       </div>
@@ -118,8 +122,8 @@
 
   .background {
     position: relative;
-    display: grid;
-    grid-template-rows: 70% auto;
+    display: flex;
+    flex-direction: column;
     height: 70rem;
     max-width: 100vw;
   }
@@ -152,6 +156,10 @@
     .scrolly-card {
       padding: 0.5rem;
       width: auto;
+    }
+
+    .background {
+      padding: 0 10px 0 10px;
     }
   }
 </style>
