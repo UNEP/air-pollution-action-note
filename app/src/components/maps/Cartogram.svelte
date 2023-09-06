@@ -282,7 +282,7 @@
           </div>
           {#if showPopup && showPopup(d)}
           <div class="popup" style="left: {d.left}px; top: {d.top - 50}px;">
-            <Tooltip country={d.name}/>
+            <Tooltip country={d.name} mobileVersion={clientWidth < 768}/>
           </div>
           {/if}
         {/if}

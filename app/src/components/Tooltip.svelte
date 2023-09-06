@@ -4,6 +4,7 @@
   import { fade, fly } from "svelte/transition";
 
   export let country: string;
+  export let mobileVersion = false;
   export let interimTarget = 'AQG';
 
   let isVisible = true;
@@ -22,11 +23,14 @@
 
 <div class="tooltip-container" id="tooltip-{country}">
   <div class="label">
-    <span class="bold">{country}</span> meets 
-    <div class="text-target">
-      <div class="icon">{@html svg.whitecheck}</div> 
-      {interimTarget}
-    </div> 
+    <span class="country-text">{country}</span>
+    {#if !mobileVersion}
+      meets 
+      <div class="text-target">
+        <div class="icon">{@html svg.whitecheck}</div> 
+        {interimTarget}
+      </div> 
+    {/if}
   </div>
 </div>
 
@@ -61,7 +65,7 @@
     font-weight: 600;
   }
 
-  .bold {
+  .country-text {
     font-weight: 700;
   }
 
@@ -87,6 +91,17 @@
       display: none;
       opacity: 0;
       transform: translateY(-15px);
+    }
+  }
+
+  @media (max-width: 870px) {
+    .country-text {
+      color: #00ABF1 !important;
+      font-size: 0.9rem !important;
+    }
+
+    .tooltip-container {
+      padding: .1rem;
     }
   }
   
