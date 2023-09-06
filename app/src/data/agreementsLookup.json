@@ -11,17 +11,17 @@
     "url": "https://unece.org/environmental-policy-1/air#",
     "participants": 51
   },
+  "eu-directive": {
+    "name": "European Union Legislation",
+    "definition": "The European Union (EU) has several different policies affecting atmospheric emissions. These include the EU Air Quality Directive and the National Emissions Ceilings (NEC) Directive and numerous pieces of source-sector legislation such as Euro Standards for vehicles. The NEC Directive is a legally binding instrument, specifying emissions ceilings for pollutants. It came into force in 2001 and was revised in 2016.",
+    "url": "",
+    "participants": 27
+  },
   "lat-caribbean": {
     "name": "Intergovernmental Network on Atmospheric Pollution for Latin America and Caribbean (LAC)",
     "definition": "In 2022, the Intergovernmental Network on Atmospheric Pollution for Latin America and Caribbean (LAC) was re-launched with the aim of building a cooperation framework at the national and sub-national levels together with a new Regional Air Quality Action Plan for the LAC region (2022-2025). The new plan follows work undertaken on atmospheric pollution at the XXII Forum of Ministers of Environment of Latin America and the Caribbean.",
     "url": "https://rds.org.co/apc-aa-files/205ec78c9cca6d1850bdca24e20e50bf/vf_draft_regional-aq-action-plan_eng_june_2022.pdf",
     "participants": 25
-  },
-  "eu-directive": {
-    "name": "European Union Legislation",
-    "definition": "The European Union (EU) has several different policies affecting atmospheric emissions. These include the EU Air Quality Directive and the National Emissions Ceilings (NEC) Directive and numerous pieces of source-sector legislation such as Euro Standards for vehicles. The NEC Directive is a legally binding instrument, specifying emissions ceilings for pollutants. It came into force in 2001 and was revised in 2016.",
-    "url": "",
-    "participants": 24
   },
   "abidjan": {
     "name": "West and Central Africa Regional Framework Agreement on Air Pollution (Abidjan Agreement)",
