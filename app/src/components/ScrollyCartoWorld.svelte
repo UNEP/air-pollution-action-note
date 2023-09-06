@@ -109,9 +109,8 @@
   .background {
     position: relative;
     display: grid;
-    grid-template-rows: 80% auto;
+    grid-template-rows: 70% auto;
     height: 70rem;
-    margin-top: 5rem;
     max-width: 100vw;
   }
 
