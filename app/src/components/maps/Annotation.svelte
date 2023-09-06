@@ -6,13 +6,13 @@
   export var x: number;
   export var y: number;
   export var text: string;
-  export var radius: number | {x: number, y: number};
+  export var radius: number | { x: number; y: number };
   export var forceTopWherePossible: boolean = false;
   export var justText: boolean = false;
   export var topClamp: number = 0;
 
   const noDims = !(canvasHeight > 0) || !(canvasWidth > 0);
-  if (noDims) throw new Error('Annotation created with no canvas dims');
+  if (noDims) throw new Error("Annotation created with no canvas dims");
 
   var textEl: HTMLElement;
   var el: HTMLElement;
@@ -23,17 +23,17 @@
   const textWidth = 250;
 
   interface StyleCss {
-      left?: number;
-      top?: number;
-      bottom?: number;
-      right?: number;
-      width?: number;
-      height?: number;
-      transform?: string;
+    left?: number;
+    top?: number;
+    bottom?: number;
+    right?: number;
+    width?: number;
+    height?: number;
+    transform?: string;
   }
 
   $: limitedCanvasHeight = canvasHeight - topClamp;
-  const perc = (a,b) => 100 * (a / b);
+  const perc = (a, b) => 100 * (a / b);
   const topPaddingPx = 5;
   const leftPaddingPx = 5;
 
@@ -41,27 +41,31 @@
   $: topClampPerc = perc(topClamp, canvasHeight);
   $: xPerc = perc(x, canvasWidth);
   $: yPerc = perc(y - topClamp, limitedCanvasHeight);
-  $: radiusX = perc(typeof radius === 'number' ? radius : radius.x, canvasWidth);
-  $: radiusY = perc(typeof radius === 'number' ? radius : radius.y, limitedCanvasHeight);
+  $: radiusX = perc(
+    typeof radius === "number" ? radius : radius.x,
+    canvasWidth
+  );
+  $: radiusY = perc(
+    typeof radius === "number" ? radius : radius.y,
+    limitedCanvasHeight
+  );
   $: topMin = perc(topPaddingPx, limitedCanvasHeight);
   $: textWidthPerc = canvasWidth && perc(textWidth, canvasHeight);
 
   $: {
     if (forceTopWherePossible) {
       if (yPerc < 15) {
-        pos = xPerc > 50 ? 'left' : 'right';
+        pos = xPerc > 50 ? "left" : "right";
       } else {
-        pos = 'above';
+        pos = "above";
       }
-    }
-    else {
+    } else {
       if (yPerc < 5) {
-        pos = 'below';
-      }
-      else if (xPerc > 65 || xPerc < 35) {
-        pos = xPerc > 50 ? 'left' : 'right';
+        pos = "below";
+      } else if (xPerc > 65 || xPerc < 35) {
+        pos = xPerc > 50 ? "left" : "right";
       } else {
-        pos = yPerc < 20 ? 'below' : 'above';
+        pos = yPerc < 20 ? "below" : "above";
       }
     }
   }
@@ -69,100 +73,104 @@
   $: {
     textShiftX = null;
     textShiftY = null;
-    if (pos === 'left') {
+    if (pos === "left") {
       style = {
         right: 100 - (xPerc - radiusX),
         top: yPerc,
       };
-
-    }
-    else if (pos === 'right') {
+    } else if (pos === "right") {
       style = {
         left: xPerc + radiusX,
         top: yPerc,
       };
-    }
-    else if (pos === 'above') {
+    } else if (pos === "above") {
       style = {
         left: xPerc,
-        top: forceTopWherePossible ? topMin : Math.max(topMin, yPerc - radiusY - 40),
-        bottom: 100 - (yPerc - radiusY)
+        top: forceTopWherePossible
+          ? topMin
+          : Math.max(topMin, yPerc - radiusY - 40),
+        bottom: 100 - (yPerc - radiusY),
       };
-
-    }
-    else if (pos === 'below') {
+    } else if (pos === "below") {
       style = {
         left: xPerc,
         top: yPerc + radiusY,
-        bottom: Math.max(0, 100 - yPerc - 50)
+        bottom: Math.max(0, 100 - yPerc - 50),
       };
     }
 
-    if (pos === 'left' || pos === 'right') {
+    if (pos === "left" || pos === "right") {
       if (yPerc < 10) {
         textShiftY = 0;
-      }
-      else if (yPerc > 90) {
+      } else if (yPerc > 90) {
         textShiftY = -100;
-      }
-      else {
+      } else {
         textShiftY = -50;
       }
-    }
-    else if (pos === 'above' || pos === 'below') {
+    } else if (pos === "above" || pos === "below") {
       const _textShiftX = clamp(
         -(textWidthPerc / 3),
         -xPerc + leftPadding,
-        (100 - xPerc) - textWidthPerc
+        100 - xPerc - textWidthPerc
       );
-      textShiftX = 100 * _textShiftX / textWidthPerc;
+      textShiftX = (100 * _textShiftX) / textWidthPerc;
     }
   }
 
   var style: StyleCss;
 
   function calcStyle(style: StyleCss) {
-    const dimProps = ['left', 'top', 'bottom', 'right', 'width', 'height'];
+    const dimProps = ["left", "top", "bottom", "right", "width", "height"];
 
     const dimStr = dimProps
-      .filter(prop => style[prop] !== undefined)
-      .map(prop => `${prop}: ${style[prop]}%; `)
-      .join('');
+      .filter((prop) => style[prop] !== undefined)
+      .map((prop) => `${prop}: ${style[prop]}%; `)
+      .join("");
 
     const transformStr = `transform: ${style.transform};`;
     return dimStr + transformStr;
   }
 
-
-  $: styleStr = style ? calcStyle(style) : '';
+  $: styleStr = style ? calcStyle(style) : "";
   var textStyleStr: string;
   $: {
-    const translateX = textShiftX !== null ? `translateX(${textShiftX}%)` : '';
-    const translateY = textShiftY !== null ? `translateY(${textShiftY}%)` : '';
-    textStyleStr = (translateX || translateY) ? `transform: ${translateX} ${translateY};` : '';
+    const translateX = textShiftX !== null ? `translateX(${textShiftX}%)` : "";
+    const translateY = textShiftY !== null ? `translateY(${textShiftY}%)` : "";
+    textStyleStr =
+      translateX || translateY ? `transform: ${translateX} ${translateY};` : "";
   }
-
 </script>
 
-{#if !justText}
-<div class="canvas-limiter" style="top: {topClampPerc}%; height: {perc(limitedCanvasHeight, canvasHeight)}%">
-  <div class="annotation annotation--{pos}" style={styleStr}
-      bind:this={el}>
-      <div class="line line-before"></div>
-      <div class="text" style={textStyleStr} bind:this={textEl}>
+{#if text}
+  {#if !justText}
+    <div
+      class="canvas-limiter"
+      style="top: {topClampPerc}%; height: {perc(
+        limitedCanvasHeight,
+        canvasHeight
+      )}%"
+    >
+      <div class="annotation annotation--{pos}" style={styleStr} bind:this={el}>
+        <div class="line line-before" />
+        <div class="text" style={textStyleStr} bind:this={textEl}>
           {@html text}
+        </div>
+        <div class="line line-after" />
       </div>
-      <div class="line line-after"></div>
-  </div>
-</div>
-{:else}
-<div class="just-text"
-    bind:this={el}>
-    <div class="text" style="transform: translate({x}px, {y}px);" bind:this={textEl}>
-        {@html text}
     </div>
-</div>
+  {:else}
+    <div class="just-text" bind:this={el}>
+      <div
+        class="text"
+        style="transform: translate({x}px, {y}px);"
+        bind:this={textEl}
+      >
+        {@html text}
+      </div>
+    </div>
+  {/if}
 {/if}
+
 <style>
   .canvas-limiter {
     position: absolute;
@@ -171,7 +179,7 @@
     top: 0;
     pointer-events: none;
   }
-  .just-text{
+  .just-text {
     position: absolute;
     pointer-events: none;
     height: auto !important;
@@ -237,5 +245,4 @@
     z-index: 5;
     pointer-events: none;
   }
-
 </style>

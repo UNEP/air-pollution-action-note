@@ -725,7 +725,7 @@
       helpText: {
         code: "JPN",
         text: () => {
-          if (innerWidth < 768) return '';
+          if (innerWidth < 768) return null;
           return `<strong>Each square is a country</strong>, sized by the <strong>number of people that would enjoy pollution-free air</strong> as the country reduces its air pollution levels.`;
         },
       },
