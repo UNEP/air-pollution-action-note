@@ -135,7 +135,7 @@
     {
       "type": "cleanair-scrolly",
       "anchor": "cleanair",
-      "data": "test",
+      "data": "cleanair",
       "head": "What would happen if countries <strong>moved progressively closer</strong> to the strictest WHO air quality guideline?",
       "cards": [
         {
@@ -211,6 +211,9 @@
       "head": "About the data",
       "text": [
         {
+          "p": "The <strong>UNEP Pollution Action Note</strong> has been developed with the support of the <a href=\"https://www.ccacoalition.org/en\"><strong>Climate and Clean Air Coalition</strong></a> and with scientific oversight of the Scientific and Technical Advisory Panel (STAP) of the <a href=\"https://www.cleanairblueskies.org/\"><strong>International Day of Clean Air for blue skies</strong></a>."
+        },
+        {
           "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
         },
         {
@@ -220,13 +223,10 @@
           "p": "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
         },
         {
-          "p": "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
+          "p": "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. <strong>UNEP, 2021</strong></a>."
         },
         {
           "p": "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
-        },
-        {
-          "p": "The UNEP Pollution Action Note has been developed with the support of the <a href=\"https://www.ccacoalition.org/en\">Climate and Clean Air Coalition</a> and with scientific oversight of the Scientific and Technical Advisory Panel (STAP) of the International Day of Clean Air for blue skies."
         }
       ]
     }

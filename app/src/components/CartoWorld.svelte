@@ -50,7 +50,7 @@
   import Embed from "./Embed.svelte";
   import type { Content, HealthDisease, TextBlock } from "src/types";
 
-  export var data: "pm25" | "health" | "policies" | "diseases" | "test";
+  export var data: "pm25" | "health" | "policies" | "diseases" | "cleanair";
   export var id: string;
   export var block: Content;
   export var head: string;
@@ -708,7 +708,7 @@
       linearDomain: null,
       internalLabels: null,
     },
-    test: {
+    'cleanair': {
       data: cleanAir_data.map((d) => {
         return {
           name: countryNameDictionaryLookup[d.id]?.name,

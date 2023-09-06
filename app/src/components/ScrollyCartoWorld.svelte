@@ -6,7 +6,6 @@
   import CartoWorld from "./CartoWorld.svelte";
   import ProgressBar from "./ProgressBar.svelte";
   import type { GBDCleanAirData } from "./CartoWorld.svelte";
-  import type { NumberValue } from "d3-scale";
 
   export var data;
   export var id: string;
@@ -42,7 +41,7 @@
   totalPopulation = gbdData.reduce((acc, current) => acc + current.pop, 0);
 
   const dataConf = {
-    test: {
+    'cleanair': {
       sectionHeight: "70vh",
       sections: 6, //Need to specify
       rangeTexts: ["WHO", "IT1", "IT2", "IT3", "IT4", "IT5"],
