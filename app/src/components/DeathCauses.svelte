@@ -125,7 +125,7 @@
     <p class="col-text">{@html text}</p>
   {/if}
 
-  <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to fine particle outdoor air pollution</strong> in 2019.</h3>
+  <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to fine particle outdoor air pollution</strong> in 2021.</h3>
 
   <div class="flex-container">
     {#each serializedData as d}

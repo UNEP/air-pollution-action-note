@@ -369,7 +369,7 @@
       pollution caused <strong>${d.value.toLocaleString(
         "en-US"
       )} deaths</strong>
-      in 2019 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
+      in 2021 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];

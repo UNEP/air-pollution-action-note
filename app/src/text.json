@@ -41,7 +41,7 @@
       "icon": "pm25",
       "data": "pm25",
       "embed": "pm25",
-      "head": "In 2019, <strong>99% of the world population</strong> was living in places where the WHO’s strictest 2021 <strong>air quality guideline levels were not met</strong>.",
+      "head": "In 2021, <strong>99% of the world population</strong> was living in places where the WHO’s strictest 2021 <strong>air quality guideline levels were not met</strong>.",
       "text": [
         {
           "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot, soil dust, to sulfates, are <strong>fine particles 2.5 microns</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
@@ -77,10 +77,10 @@
       "icon": "deaths",
       "data": "health",
       "embed": "health",
-      "head": "Around <strong>four million people died in 2019</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in East Asia and Central Europe.",
+      "head": "Around <strong>seven hundred thousand people died in 2021</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in West Asia and Africa.",
       "text": [
         {
-          "p": "Air pollution is a major global health crisis and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year in 2019."
+          "p": "Air pollution is a major global health crisis and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year and eight months in 2021."
         },
         {
           "p": "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease, lower respiratory diseases (such as pneumonia), and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems."
@@ -95,7 +95,7 @@
       "anchor": "diseases",
       "data": "diseases",
       "embed": "diseases",
-      "head": "@dropdown<br/><span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2019.",
+      "head": "@dropdown<br/><span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2021.",
       "dropdown": [
         {
           "label": "ischemic heart disease",
@@ -128,7 +128,7 @@
       ],
       "text": [
         {
-          "p": "Exposure to fine particle outdoor air pollution is the <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, air pollution is linked to 20 percent of ischemic heart disease deaths globally but over 30 percent in the Middle East and North Africa regions. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
+          "p": "Exposure to fine particle outdoor air pollution is the <strong>second largest risk factor for premature death globally</strong> behind only blood pressure, and the single  <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, people living in low- and middle-income countries today are exposed to between one to four times higher levels of air pollution than those living in high-income countries. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
         }
       ]
     },
@@ -188,7 +188,7 @@
       "head": "About the data",
       "text": [
         {
-          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from <a href=\"https://vizhub.healthdata.org/gbd-results/\" target=\"_blank\" rel=\"noopener\">Global Burden of Disease Study 2019 (GBD 2019) Results</a>. Institute for Health Metrics and Evaluation (IHME), 2020."
+          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong>  and <strong>for the percent of deaths from each disease</strong> comes from Health Effects Institute. 2024. State of Global Air 2024. Special Report Boston, MA:Health Effects Institute; Global Burden of Disease Study 2021. IHEM, 2024."
         },
         {
           "p": "Data for <strong>sectors breakdown</strong> comes from McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"https://doi.org/10.1038/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM<sub>2.5</sub> and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
@@ -203,7 +203,7 @@
           "p": "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
         },
         {
-          "p": "The UNEP Pollution Action Note has been developed with the support of the <a href=\"https://www.ccacoalition.org/en\">Climate and Clean Air Coalition</a> and with scientific oversight of the Scientific and Technical Advisory Panel (STAP) of the International Day of Clean Air for blue skies."
+          "p": "The UNEP Pollution Action Note has been developed with the support of the <a href=\"https://www.ccacoalition.org/en\">Climate and Clean Air Coalition</a> and with scientific oversight of the  Science Group (SG) of the International Day of Clean Air for blue skies."
         }
       ]
     }
