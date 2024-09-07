@@ -25,7 +25,7 @@
       "update": "2023-09-06",
       "text": [
         {
-          "p": "Air pollution is the greatest environmental threat to public health globally and accounts for an estimated 7 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
+          "p": "Air pollution is the greatest environmental threat to public health globally and accounts for more than 8 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
         },
         {
           "p": "The UNEP Pollution Action Note displays the global state of air pollution, major sources, the impact on human health, and national efforts to tackle this critical issue."
@@ -77,7 +77,7 @@
       "icon": "deaths",
       "data": "health",
       "embed": "health",
-      "head": "Around <strong>seven hundred thousand people died in 2021</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in West Asia and Africa.",
+      "head": "Around <strong>four million seven hundred thousand people died in 2021</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in West Asia and Africa.",
       "text": [
         {
           "p": "Air pollution is a major global health crisis and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year and eight months in 2021."
@@ -128,7 +128,7 @@
       ],
       "text": [
         {
-          "p": "Exposure to fine particle outdoor air pollution is the <strong>second largest risk factor for premature death globally</strong> behind only blood pressure, and the single  <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, people living in low- and middle-income countries today are exposed to between one to four times higher levels of air pollution than those living in high-income countries. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 20 percent of newborn deaths globally are attributed to air pollution exposure."
+          "p": "Exposure to fine particle outdoor air pollution is the <strong>second largest risk factor for premature death globally</strong> behind only high blood pressure, and the single  <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, people living in low- and middle-income countries today are exposed to between one to four times higher levels of air pollution than those living in high-income countries. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 26 percent of newborn deaths globally are attributed to air pollution exposure."
         }
       ]
     },
