@@ -219,3 +219,22 @@ sup, sub { line-height: 0; }
     margin-right: auto;
   }
 }
+
+.publishing_info{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 0.6rem;
+    color: rgba(51, 51, 51, 0.3);
+    text-align: center;
+    width: 100% !important;
+    border: none;
+    max-width: none;
+}
+
+.publishing_info span.publishing_info_latest_update{
+    margin-left: 0.5rem;
+}
+.publishing_info span.publishing_info_latest_update:before {
+    content: "|";
+    margin-right: 0.5rem;
+}

@@ -16,7 +16,7 @@
   import AgreementsGrid from './components/AgreementsGrid.svelte';
 
   const content: Content[] = text.article;
-  
+
   export var embed: string;
   const embedBlock = embed && content.find(b => b.embed === embed);
 
@@ -64,4 +64,8 @@
     </article>
   </main>
   <Footer />
+  <div class="publishing_info">
+    <span class="publishing_info_original">Published: 06 July 2022</span>
+    <span class="publishing_info_latest_update">Last Updated: 07 September 2024</span>
+	</div>
 {/if}
