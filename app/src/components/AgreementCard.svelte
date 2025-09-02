@@ -43,9 +43,10 @@
     font: inherit;
     text-align: left;
     cursor: pointer;
-
+    height: 100%;
     .text {
-      height: 9.5rem;
+      min-height: 9.5rem;
+      height: 100%;
       line-height: 1.5rem !important;
     }
 

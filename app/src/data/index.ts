@@ -17,5 +17,5 @@ export const differentFuels = getMockData<CartoRegionData>('differentFuels');
 export const countriesWithArticle = [
   "BHS", "CAF", "COM", "COD", "COG", "DOM", "GMB", 
   "KOR", "PRK", "LAO", "MHL", "MDA", "NLD", "NER", 
-  "PHL", "RUS", "SYR", "TZA", "ARE", "GBR", "USA"
+  "PHL", "RUS", "SYR", "TZA", "ARE", "GBR", "USA", "YEM"
 ];

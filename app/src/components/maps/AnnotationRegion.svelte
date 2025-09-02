@@ -6,6 +6,7 @@
   export var x: number;
   export var y: number;
   export var text: string;
+  export var region: string;
   export var radius: number | {x: number, y: number};
   export var forceTopWherePossible: boolean = false;
   export var justText: boolean = false;
@@ -20,7 +21,15 @@
   var pos: string;
   var textShiftX: number;
   var textShiftY: number;
+  export let selectedRegion;
 
+  const clickHandler = (region) => {
+        if (region !== 0) {
+            selectedRegion = region;
+        } else {
+            selectedRegion = 0;
+        }
+  };
   const textWidth = 250;
 
   interface StyleCss {
@@ -145,24 +154,35 @@
 </script>
 
 {#if !justText}
-<div class="canvas-limiter" style="top: {topClampPerc}%; height: {perc(limitedCanvasHeight, canvasHeight)}%">
-  <div class="annotation annotation--{pos}" style={styleStr}
-      bind:this={el}>
-      <div class="line line-before"></div>
-      <div class="text" style={textStyleStr} bind:this={textEl}>
-          {@html text}
-      </div>
-      <div class="line line-after"></div>
-  </div>
-</div>
-{:else}
-<div class="just-text"
-    bind:this={el}>
-    <div class="text" style="transform: translate({x}px, {y}px);" bind:this={textEl}>
-        {@html text}
+    <div class="canvas-limiter" style="top: {topClampPerc}%; height: {perc(limitedCanvasHeight, canvasHeight)}%">
+        <div class="annotation annotation--{pos}" style={styleStr}
+            bind:this={el}>
+            <div class="line line-before"></div>
+            <div class="text" style={textStyleStr} bind:this={textEl}>
+                {@html text} 
+            </div>
+            <div class="line line-after"></div>
+        </div>
     </div>
-</div>
+{:else}
+    <div class="just-text"
+        bind:this={el}>
+        <div class="text" style="transform: translate({x}px, {y}px);" bind:this={textEl}>
+            <span>
+              {@html text} 
+            </span>
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <mask id="mask0_3078_115" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                <rect width="24" height="24" fill="#D9D9D9"/>
+              </mask>
+              <g mask="url(#mask0_3078_115)">
+                <path d="M7 17H10.5C10.6417 17 10.7604 17.048 10.8563 17.144C10.9521 17.24 11 17.3589 11 17.5008C11 17.6426 10.9521 17.7613 10.8563 17.8568C10.7604 17.9523 10.6417 18 10.5 18H6.80775C6.57892 18 6.38708 17.9226 6.23225 17.7678C6.07742 17.6129 6 17.4211 6 17.1923V13.5C6 13.3583 6.048 13.2396 6.144 13.1438C6.24 13.0479 6.35892 13 6.50075 13C6.64258 13 6.76125 13.0479 6.85675 13.1438C6.95225 13.2396 7 13.3583 7 13.5V17ZM17 7H13.5C13.3583 7 13.2396 6.952 13.1438 6.856C13.0479 6.76 13 6.64108 13 6.49925C13 6.35742 13.0479 6.23875 13.1438 6.14325C13.2396 6.04775 13.3583 6 13.5 6H17.1923C17.4211 6 17.6129 6.07742 17.7678 6.23225C17.9226 6.38708 18 6.57892 18 6.80775V10.5C18 10.6417 17.952 10.7604 17.856 10.8563C17.76 10.9521 17.6411 11 17.4992 11C17.3574 11 17.2387 10.9521 17.1432 10.8563C17.0477 10.7604 17 10.6417 17 10.5V7Z" fill="#1C1B1F"/>
+              </g>
+            </svg> -->
+        </div>
+    </div>
 {/if}
+
 <style>
   .canvas-limiter {
     position: absolute;
@@ -187,8 +207,20 @@
 
   .text {
     flex: 0 0;
+    /* cursor: pointer; */
+    display: flex;
+    align-items: center;
+    /* border-radius: 2px; */
+    /* background: #F9F9F9; */
+    gap: 4px;
+    /* padding: 2px; */
+    width: fit-content;
+    /* margin-top: -6px; */
   }
 
+  .text span {
+    white-space: nowrap;
+  }
   .prerender {
     visibility: hidden;
   }
@@ -233,7 +265,7 @@
   }
 
   .text {
-    width: 250px;
+    /* width: 250px; */
     z-index: 5;
     /* pointer-events: none; */
   }
