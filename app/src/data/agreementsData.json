@@ -2,7 +2,7 @@
   {
     "id": "AUS",
     "name": "Australia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -16,12 +16,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "AFG",
     "name": "Afghanistan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -35,12 +36,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ARM",
     "name": "Armenia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -54,12 +56,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "ASM",
     "name": "American Samoa",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -73,12 +76,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "AZE",
     "name": "Azerbaijan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -92,12 +96,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "BGD",
     "name": "Bangladesh",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -111,12 +116,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "BTN",
     "name": "Bhutan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -130,12 +136,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "BRN",
     "name": "Brunei Darussalam",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 1,
     "male": 0,
@@ -149,12 +156,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "KHM",
     "name": "Cambodia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -168,12 +176,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "CHN",
     "name": "China",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 0,
     "male": 0,
@@ -187,12 +196,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "COK",
     "name": "Cook Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -206,12 +216,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "IND",
     "name": "India",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -225,12 +236,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "IDN",
     "name": "Indonesia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -244,12 +256,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "IRN",
     "name": "Iran (Islamic Republic of)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -263,12 +276,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "FJI",
     "name": "Fiji",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -282,12 +296,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "FRA",
     "name": "France",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -301,12 +316,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "PYF",
     "name": "French Polynesia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -320,12 +336,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GEO",
     "name": "Georgia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -339,12 +356,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "GUM",
     "name": "Guam",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -358,12 +376,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "JPN",
     "name": "Japan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 0,
     "male": 0,
@@ -377,12 +396,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "KAZ",
     "name": "Kazakhstan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -396,12 +416,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "KIR",
     "name": "Kiribati",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -415,12 +436,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PRK",
     "name": "Democratic People's Republic of Korea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -434,12 +456,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "KOR",
     "name": "Republic of Korea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 0,
     "male": 0,
@@ -453,12 +476,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "KGZ",
     "name": "Kyrgyzstan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -472,12 +496,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "LAO",
     "name": "Lao People's Democratic Republic",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -491,12 +516,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "MYS",
     "name": "Malaysia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -510,12 +536,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "MDV",
     "name": "Maldives",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -529,12 +556,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "MHL",
     "name": "Marshall Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -548,12 +576,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "FSM",
     "name": "Micronesia (Federated States of)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -567,12 +596,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MNG",
     "name": "Mongolia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 0,
     "male": 0,
@@ -586,12 +616,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "MMR",
     "name": "Myanmar",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -605,12 +636,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "NRU",
     "name": "Nauru",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -624,12 +656,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NIU",
     "name": "Niue",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -643,12 +676,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NPL",
     "name": "Nepal",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -662,12 +696,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "NLD",
     "name": "Netherlands (Kingdom of the)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -681,12 +716,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "NCL",
     "name": "New Caledonia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -700,12 +736,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NZL",
     "name": "New Zealand",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -719,12 +756,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MNP",
     "name": "Northern Mariana Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -738,12 +776,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PAK",
     "name": "Pakistan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -757,12 +796,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "PLW",
     "name": "Palau",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -776,12 +816,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PNG",
     "name": "Papua New Guinea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -795,12 +836,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PHL",
     "name": "Philippines",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -814,12 +856,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "RUS",
     "name": "Russian Federation",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 0,
     "male": 0,
@@ -833,12 +876,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 5
   },
   {
     "id": "WSM",
     "name": "Samoa",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -852,12 +896,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SGP",
     "name": "Singapore",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 1,
     "male": 0,
@@ -871,12 +916,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "SLB",
     "name": "Solomon Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -890,12 +936,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "LKA",
     "name": "Sri Lanka",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 1,
@@ -909,12 +956,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "TJK",
     "name": "Tajikistan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -928,12 +976,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "TLS",
     "name": "Timor-Leste",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 2,
     "male": 0,
@@ -947,12 +996,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "THA",
     "name": "Thailand",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -966,12 +1016,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "TON",
     "name": "Tonga",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -985,12 +1036,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "TUR",
     "name": "Türkiye",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1004,12 +1056,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "TKM",
     "name": "Turkmenistan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1023,12 +1076,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "TUV",
     "name": "Tuvalu",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1042,12 +1096,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GBR",
     "name": "United Kingdom of Great Britain and Northern Ireland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1061,12 +1116,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "USA",
     "name": "United States of America",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1080,12 +1136,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 4
   },
   {
     "id": "UZB",
     "name": "Uzbekistan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1099,12 +1156,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "VUT",
     "name": "Vanuatu",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1118,12 +1176,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "VNM",
     "name": "Viet Nam",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 1,
     "asean-trans": 1,
     "male": 0,
@@ -1137,12 +1196,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "ALB",
     "name": "Albania",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1156,12 +1216,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "AUT",
     "name": "Austria",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1175,12 +1236,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "BLR",
     "name": "Belarus",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1194,12 +1256,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BEL",
     "name": "Belgium",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1213,12 +1276,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "BIH",
     "name": "Bosnia and Herzegovina",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1232,12 +1296,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BGR",
     "name": "Bulgaria",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1251,12 +1316,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "CAN",
     "name": "Canada",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1270,12 +1336,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "HRV",
     "name": "Croatia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1289,12 +1356,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "CYP",
     "name": "Cyprus",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1308,12 +1376,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "CZE",
     "name": "Czechia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1327,12 +1396,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "DNK",
     "name": "Denmark",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1346,12 +1416,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "EST",
     "name": "Estonia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1365,12 +1436,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "",
     "name": "European Union",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1384,12 +1456,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "FIN",
     "name": "Finland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1403,12 +1476,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "MKD",
     "name": "North Macedonia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1422,12 +1496,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "DEU",
     "name": "Germany",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1441,12 +1516,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "GRC",
     "name": "Greece",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1460,12 +1536,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "HUN",
     "name": "Hungary",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1479,12 +1556,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "ISL",
     "name": "Iceland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1498,12 +1576,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "IRL",
     "name": "Ireland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1517,12 +1596,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "ITA",
     "name": "Italy",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1536,12 +1616,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "LVA",
     "name": "Latvia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1555,12 +1636,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "LIE",
     "name": "Liechtenstein",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1574,12 +1656,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "LTU",
     "name": "Lithuania",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1593,12 +1676,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "LUX",
     "name": "Luxembourg",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1612,12 +1696,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "MLT",
     "name": "Malta",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1631,12 +1716,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "MCO",
     "name": "Monaco",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1650,12 +1736,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MNE",
     "name": "Montenegro",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1669,12 +1756,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NOR",
     "name": "Norway",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1688,12 +1776,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "POL",
     "name": "Poland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1707,12 +1796,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "PRT",
     "name": "Portugal",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1726,12 +1816,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "MDA",
     "name": "Republic of Moldova",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1745,12 +1836,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ROU",
     "name": "Romania",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1764,12 +1856,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "SRB",
     "name": "Serbia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1783,12 +1876,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SVK",
     "name": "Slovakia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1802,12 +1896,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "SVN",
     "name": "Slovenia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1821,12 +1916,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "ESP",
     "name": "Spain",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1840,12 +1936,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "SWE",
     "name": "Sweden",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1859,12 +1956,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 1,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "CHE",
     "name": "Switzerland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1878,12 +1976,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "UKR",
     "name": "Ukraine",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1897,12 +1996,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ALA",
     "name": "Åland Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1916,12 +2016,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "DZA",
     "name": "Algeria",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1935,12 +2036,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "AND",
     "name": "Andorra",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1954,12 +2056,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "AGO",
     "name": "Angola",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1973,12 +2076,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "AIA",
     "name": "Anguilla",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -1992,12 +2096,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ATA",
     "name": "Antarctica",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2011,12 +2116,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ATG",
     "name": "Antigua and Barbuda",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2030,12 +2136,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ARG",
     "name": "Argentina",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2049,12 +2156,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ABW",
     "name": "Aruba",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2068,12 +2176,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BHS",
     "name": "Bahamas",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2087,12 +2196,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BHR",
     "name": "Bahrain",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2106,12 +2216,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "BRB",
     "name": "Barbados",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2125,12 +2236,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BLZ",
     "name": "Belize",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2144,12 +2256,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BEN",
     "name": "Benin",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2163,12 +2276,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BMU",
     "name": "Bermuda",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2182,12 +2296,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BOL",
     "name": "Bolivia (Plurinational State of)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2201,12 +2316,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BES",
     "name": "Bonaire, Sint Eustatius and Saba",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2220,12 +2336,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BWA",
     "name": "Botswana",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2239,12 +2356,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BVT",
     "name": "Bouvet Island",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2258,12 +2376,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BRA",
     "name": "Brazil",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2277,12 +2396,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "IOT",
     "name": "British Indian Ocean Territory",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2296,12 +2416,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "VGB",
     "name": "British Virgin Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2315,12 +2436,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "BFA",
     "name": "Burkina Faso",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2334,12 +2456,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BDI",
     "name": "Burundi",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2353,12 +2476,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CPV",
     "name": "Cabo Verde",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2372,12 +2496,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CMR",
     "name": "Cameroon",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2391,12 +2516,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CYM",
     "name": "Cayman Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2410,12 +2536,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "CAF",
     "name": "Central African Republic",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2429,12 +2556,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "TCD",
     "name": "Chad",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2448,12 +2576,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CHL",
     "name": "Chile",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2467,12 +2596,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "HKG",
     "name": "China, Hong Kong Special Administrative Region",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2486,12 +2616,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MAC",
     "name": "China, Macao Special Administrative Region",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2505,12 +2636,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "CXR",
     "name": "Christmas Island",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2524,12 +2656,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "CCK",
     "name": "Cocos (Keeling) Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2543,12 +2676,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "COL",
     "name": "Colombia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2562,12 +2696,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "COM",
     "name": "Comoros",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2581,12 +2716,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "COG",
     "name": "Congo",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2600,12 +2736,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CRI",
     "name": "Costa Rica",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2619,12 +2756,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CIV",
     "name": "Côte d’Ivoire",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2638,12 +2776,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CUB",
     "name": "Cuba",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2657,12 +2796,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "CUW",
     "name": "Curaçao",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2676,12 +2816,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "COD",
     "name": "Democratic Republic of the Congo",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2695,12 +2836,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 3
   },
   {
     "id": "DJI",
     "name": "Djibouti",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2714,12 +2856,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "DMA",
     "name": "Dominica",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2733,12 +2876,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "DOM",
     "name": "Dominican Republic",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2752,12 +2896,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ECU",
     "name": "Ecuador",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2771,12 +2916,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "EGY",
     "name": "Egypt",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2790,12 +2936,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SLV",
     "name": "El Salvador",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2809,12 +2956,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GNQ",
     "name": "Equatorial Guinea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2828,12 +2976,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ERI",
     "name": "Eritrea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2847,12 +2996,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SWZ",
     "name": "Eswatini",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2866,12 +3016,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ETH",
     "name": "Ethiopia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2885,12 +3036,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "FLK",
     "name": "Falkland Islands (Malvinas)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2904,12 +3056,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "FRO",
     "name": "Faroe Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2923,12 +3076,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GUF",
     "name": "French Guiana",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2942,12 +3096,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ATF",
     "name": "French Southern Territories",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2961,12 +3116,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GAB",
     "name": "Gabon",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2980,12 +3136,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GMB",
     "name": "Gambia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -2999,12 +3156,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GHA",
     "name": "Ghana",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3018,12 +3176,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GIB",
     "name": "Gibraltar",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3037,12 +3196,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GRL",
     "name": "Greenland",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3056,12 +3216,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GRD",
     "name": "Grenada",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3075,12 +3236,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GLP",
     "name": "Guadeloupe",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3094,12 +3256,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GTM",
     "name": "Guatemala",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3113,12 +3276,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GGY",
     "name": "Guernsey",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3132,12 +3296,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "GIN",
     "name": "Guinea",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3151,12 +3316,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GNB",
     "name": "Guinea-Bissau",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3170,12 +3336,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "GUY",
     "name": "Guyana",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3189,12 +3356,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "HTI",
     "name": "Haiti",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3208,12 +3376,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "HMD",
     "name": "Heard Island and McDonald Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3227,12 +3396,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "VAT",
     "name": "Holy See",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3246,12 +3416,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "HND",
     "name": "Honduras",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3265,12 +3436,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "IRQ",
     "name": "Iraq",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3284,12 +3456,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "IMN",
     "name": "Isle of Man",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3303,12 +3476,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ISR",
     "name": "Israel",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3322,12 +3496,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "JAM",
     "name": "Jamaica",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3341,12 +3516,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "JEY",
     "name": "Jersey",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3360,12 +3536,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "JOR",
     "name": "Jordan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3379,12 +3556,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "KEN",
     "name": "Kenya",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3398,12 +3576,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "KWT",
     "name": "Kuwait",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3417,12 +3596,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "LBN",
     "name": "Lebanon",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3436,12 +3616,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "LSO",
     "name": "Lesotho",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3455,12 +3636,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "LBR",
     "name": "Liberia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3474,12 +3656,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "LBY",
     "name": "Libya",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3493,12 +3676,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MDG",
     "name": "Madagascar",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3512,12 +3696,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MWI",
     "name": "Malawi",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3531,12 +3716,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MLI",
     "name": "Mali",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3550,12 +3736,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MTQ",
     "name": "Martinique",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3569,12 +3756,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MRT",
     "name": "Mauritania",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3588,12 +3776,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MUS",
     "name": "Mauritius",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3607,12 +3796,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MYT",
     "name": "Mayotte",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3626,12 +3816,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MEX",
     "name": "Mexico",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3645,12 +3836,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "MSR",
     "name": "Montserrat",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3664,12 +3856,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MAR",
     "name": "Morocco",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3683,12 +3876,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MOZ",
     "name": "Mozambique",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3702,12 +3896,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NAM",
     "name": "Namibia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3721,12 +3916,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NIC",
     "name": "Nicaragua",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3740,12 +3936,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NER",
     "name": "Niger",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3759,12 +3956,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NGA",
     "name": "Nigeria",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3778,12 +3976,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "NFK",
     "name": "Norfolk Island",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3797,12 +3996,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "OMN",
     "name": "Oman",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3816,12 +4016,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "PAN",
     "name": "Panama",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3835,12 +4036,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PRY",
     "name": "Paraguay",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3854,12 +4056,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PER",
     "name": "Peru",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3873,12 +4076,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "PCN",
     "name": "Pitcairn",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3892,12 +4096,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "PRI",
     "name": "Puerto Rico",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3911,12 +4116,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "QAT",
     "name": "Qatar",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3930,12 +4136,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "REU",
     "name": "Réunion",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3949,12 +4156,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "RWA",
     "name": "Rwanda",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3968,12 +4176,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "BLM",
     "name": "Saint Barthélemy",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -3987,12 +4196,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SHN",
     "name": "Saint Helena",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4006,12 +4216,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "KNA",
     "name": "Saint Kitts and Nevis",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4025,12 +4236,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "LCA",
     "name": "Saint Lucia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4044,12 +4256,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "MAF",
     "name": "Saint Martin (French Part)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4063,12 +4276,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SPM",
     "name": "Saint Pierre and Miquelon",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4082,12 +4296,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "VCT",
     "name": "Saint Vincent and the Grenadines",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4101,12 +4316,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SMR",
     "name": "San Marino",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4120,12 +4336,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "STP",
     "name": "Sao Tome and Principe",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4139,12 +4356,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "",
     "name": "Sark",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4158,12 +4376,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SAU",
     "name": "Saudi Arabia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4177,12 +4396,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "SEN",
     "name": "Senegal",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4196,12 +4416,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SYC",
     "name": "Seychelles",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4215,12 +4436,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SLE",
     "name": "Sierra Leone",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4234,12 +4456,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SXM",
     "name": "Sint Maarten (Dutch part)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4253,12 +4476,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SOM",
     "name": "Somalia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4272,12 +4496,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ZAF",
     "name": "South Africa",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4291,12 +4516,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SGS",
     "name": "South Georgia and the South Sandwich Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4310,12 +4536,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SSD",
     "name": "South Sudan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4329,12 +4556,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "PSE",
     "name": "State of Palestine",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4348,12 +4576,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "SDN",
     "name": "Sudan",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4367,12 +4596,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SUR",
     "name": "Suriname",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4386,12 +4616,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "SJM",
     "name": "Svalbard and Jan Mayen Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4405,12 +4636,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "SYR",
     "name": "Syrian Arab Republic",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4424,12 +4656,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "TGO",
     "name": "Togo",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4443,12 +4676,13 @@
     "abidjan": 1,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "TKL",
     "name": "Tokelau",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4462,12 +4696,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "TTO",
     "name": "Trinidad and Tobago",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4481,12 +4716,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "TUN",
     "name": "Tunisia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4500,12 +4736,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "TCA",
     "name": "Turks and Caicos Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4519,12 +4756,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "UGA",
     "name": "Uganda",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4538,12 +4776,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ARE",
     "name": "United Arab Emirates",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4557,12 +4796,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "TZA",
     "name": "United Republic of Tanzania",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4576,12 +4816,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 2
   },
   {
     "id": "UMI",
     "name": "United States Minor Outlying Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4595,12 +4836,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "VIR",
     "name": "United States Virgin Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4614,12 +4856,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "URY",
     "name": "Uruguay",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4633,12 +4876,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "VEN",
     "name": "Venezuela (Bolivarian Republic of)",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4652,12 +4896,13 @@
     "abidjan": 0,
     "lat-caribbean": 1,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "WLF",
     "name": "Wallis and Futuna Islands",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4671,12 +4916,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "ESH",
     "name": "Western Sahara",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4690,12 +4936,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 0
   },
   {
     "id": "YEM",
     "name": "Yemen",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4709,12 +4956,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 3,
     "nAgreements": 0
   },
   {
     "id": "ZMB",
     "name": "Zambia",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4728,12 +4976,13 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   },
   {
     "id": "ZWE",
     "name": "Zimbabwe",
-    "unep-country": true,
+    "unep-country": "TRUE",
     "eanet": 0,
     "asean-trans": 0,
     "male": 0,
@@ -4747,6 +4996,7 @@
     "abidjan": 0,
     "lat-caribbean": 0,
     "arctic": 0,
+    "waaqn": 0,
     "nAgreements": 1
   }
 ]

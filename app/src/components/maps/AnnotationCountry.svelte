@@ -48,7 +48,7 @@
   $: textWidthPerc = canvasWidth && perc(textWidth, canvasHeight);
 
   $: {
-    if (staticPosition) pos = 'right';
+    if (staticPosition) pos = 'below';
     else {
       if (forceTopWherePossible) {
         if (yPerc < 15) {
@@ -95,7 +95,7 @@
       style = {
         left: xPerc,
         top: yPerc + radiusY,
-        bottom: Math.max(0, 100 - yPerc - 50)
+        // bottom: Math.max(0, 100 - yPerc - 50)
       };
     }
 
@@ -176,13 +176,14 @@
     /* pointer-events: none; */
     height: auto !important;
     width: 0;
-  }
-  .annotation {
+}
+.annotation {
     display: flex;
+    top: 105% !important;
     position: absolute;
     pointer-events: none;
     height: auto !important;
-    width: 0;
+    width: 100%;
   }
 
   .text {
@@ -225,15 +226,16 @@
     height: 200px;
   }
 
-  .annotation--above .line-before,
+  /* .annotation--above .line-before,
   .annotation--below .line-after,
   .annotation--left .line-before,
   .annotation--right .line-after {
     display: none;
-  }
+  } */
 
   .text {
-    width: 250px;
+    width: 100%;
+    background: none !important;
     z-index: 5;
     /* pointer-events: none; */
   }

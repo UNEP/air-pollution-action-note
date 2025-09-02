@@ -29,7 +29,7 @@
       <svelte:component this={causes[cause].component}/>
     </div>
   
-    <div class="waffle-container" role="graphics-object" aria-label="Chart displaying the percent of deaths from the disease attributable to air pollution">
+    <div class="waffle-container" role="graphics-object" aria-label="Chart displaying the percent of deaths from the disease attributable to air pollution (age-standardized)">
       {#each Array(100) as _, i}
         <div class="circle" class:highlight={i < Math.round(percentage * 100)}/>
       {/each}

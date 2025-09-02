@@ -362,14 +362,14 @@
         code: "GEO",
         text: () => `<strong>Each square is a country</strong>,
         sized by the total number of <strong>deaths
-        caused by fine particle pollution</strong>.`,
+        caused by fine particle pollution (age-standardized)</strong>.`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
         `In <strong>${d.name}</strong>, fine particle
       pollution caused <strong>${d.value.toLocaleString(
         "en-US"
       )} deaths</strong>
-      in 2021 — or <strong>${Math.round(d.rate)} per 100,000 people</strong>.`,
+      in 2021 — or <strong>${Math.round(d.rate)} per 100,000 people  (age-standardized)</strong>.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];
@@ -479,7 +479,7 @@
         text: () =>
           `<strong>Each square is a country</strong>, the filled area depicts the <strong>percentage of deaths</strong> from <b>${diseasesDictionary[
             selectedDisease
-          ].toLocaleLowerCase()}</b> attributable to fine particle outdoor air pollution.`,
+          ].toLocaleLowerCase()}</b> attributable to fine particle outdoor air pollution (age-standardized).`,
       },
       hoverTextFn: (d: CountryDataPoint) =>
         diseasesHoverText(d.data as DiseasesData),
@@ -581,7 +581,10 @@
         let agreementsData = d.data as AgreementsData;
         const colors = colorAgreements.range();
         if (agreementsData.nAgreements <= 0) return colors[0];
-        return colors[1]
+        if (agreementsData.nAgreements == 1) return colors[1];
+        if (agreementsData.nAgreements == 2) return colors[2];
+        if (agreementsData.nAgreements >= 3) return colors[3];
+        // return colors[1]
       },
       classesFn: (d: CountryDataPoint) => {
         let agreementsData = d.data as AgreementsData;

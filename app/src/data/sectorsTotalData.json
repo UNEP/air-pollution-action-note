@@ -1,0 +1,802 @@
+[
+    {
+      "id": "ARM",
+      "total": 31.9
+    },
+    {
+      "id": "AZE",
+      "total": 23.9
+    },
+    {
+      "id": "GEO",
+      "total": 17.8
+    },
+    {
+      "id": "KAZ",
+      "total": 19
+    },
+    {
+      "id": "KGZ",
+      "total": 22.9
+    },
+    {
+      "id": "MNG",
+      "total": 36.7
+    },
+    {
+      "id": "TJK",
+      "total": 35.9
+    },
+    {
+      "id": "TKM",
+      "total": 25.5
+    },
+    {
+      "id": "UZB",
+      "total": 32.5
+    },
+    {
+      "id": "ALB",
+      "total": 19.8
+    },
+    {
+      "id": "BIH",
+      "total": 29.8
+    },
+    {
+      "id": "BGR",
+      "total": 19.7
+    },
+    {
+      "id": "HRV",
+      "total": 18
+    },
+    {
+      "id": "CZE",
+      "total": 16.8
+    },
+    {
+      "id": "HUN",
+      "total": 16.5
+    },
+    {
+      "id": "MKD",
+      "total": 31.6
+    },
+    {
+      "id": "MNE",
+      "total": 21.6
+    },
+    {
+      "id": "POL",
+      "total": 22.7
+    },
+    {
+      "id": "ROU",
+      "total": 15.9
+    },
+    {
+      "id": "SRB",
+      "total": 26.5
+    },
+    {
+      "id": "SVK",
+      "total": 18.4
+    },
+    {
+      "id": "SVN",
+      "total": 16.9
+    },
+    {
+      "id": "BLR",
+      "total": 16.3
+    },
+    {
+      "id": "EST",
+      "total": 5.7
+    },
+    {
+      "id": "LVA",
+      "total": 11.7
+    },
+    {
+      "id": "LTU",
+      "total": 10.2
+    },
+    {
+      "id": "MDA",
+      "total": 13.1
+    },
+    {
+      "id": "RUS",
+      "total": 10.9
+    },
+    {
+      "id": "UKR",
+      "total": 14
+    },
+    {
+      "id": "AUS",
+      "total": 7
+    },
+    {
+      "id": "NZL",
+      "total": 6.6
+    },
+    {
+      "id": "BRN",
+      "total": 7.6
+    },
+    {
+      "id": "JPN",
+      "total": 13.5
+    },
+    {
+      "id": "KOR",
+      "total": 26.6
+    },
+    {
+      "id": "SGP",
+      "total": 18.5
+    },
+    {
+      "id": "CAN",
+      "total": 7.3
+    },
+    {
+      "id": "GRL",
+      "total": 5.3
+    },
+    {
+      "id": "USA",
+      "total": 7.8
+    },
+    {
+      "id": "ARG",
+      "total": 13
+    },
+    {
+      "id": "CHL",
+      "total": 21.9
+    },
+    {
+      "id": "URY",
+      "total": 9.8
+    },
+    {
+      "id": "AND",
+      "total": 8.8
+    },
+    {
+      "id": "AUT",
+      "total": 12.1
+    },
+    {
+      "id": "BEL",
+      "total": 12.8
+    },
+    {
+      "id": "CYP",
+      "total": 15.2
+    },
+    {
+      "id": "DNK",
+      "total": 10.2
+    },
+    {
+      "id": "FIN",
+      "total": 5.2
+    },
+    {
+      "id": "FRA",
+      "total": 11.6
+    },
+    {
+      "id": "DEU",
+      "total": 11.9
+    },
+    {
+      "id": "GRC",
+      "total": 14.6
+    },
+    {
+      "id": "ISL",
+      "total": 5.6
+    },
+    {
+      "id": "IRL",
+      "total": 7.7
+    },
+    {
+      "id": "ISR",
+      "total": 19.7
+    },
+    {
+      "id": "ITA",
+      "total": 15.6
+    },
+    {
+      "id": "LUX",
+      "total": 9.9
+    },
+    {
+      "id": "MLT",
+      "total": 12.4
+    },
+    {
+      "id": "NLD",
+      "total": 12.4
+    },
+    {
+      "id": "NOR",
+      "total": 6.5
+    },
+    {
+      "id": "PRT",
+      "total": 8.6
+    },
+    {
+      "id": "ESP",
+      "total": 9.9
+    },
+    {
+      "id": "SWE",
+      "total": 5.7
+    },
+    {
+      "id": "CHE",
+      "total": 10.2
+    },
+    {
+      "id": "GBR",
+      "total": 10.5
+    },
+    {
+      "id": "MCO",
+      "total": 11.4
+    },
+    {
+      "id": "SMR",
+      "total": 9.8
+    },
+    {
+      "id": "BOL",
+      "total": 26
+    },
+    {
+      "id": "ECU",
+      "total": 18.8
+    },
+    {
+      "id": "PER",
+      "total": 29.6
+    },
+    {
+      "id": "ATG",
+      "total": 16.2
+    },
+    {
+      "id": "BHS",
+      "total": 13.9
+    },
+    {
+      "id": "BRB",
+      "total": 19.6
+    },
+    {
+      "id": "BLZ",
+      "total": 19.3
+    },
+    {
+      "id": "BMU",
+      "total": 7
+    },
+    {
+      "id": "CUB",
+      "total": 17.5
+    },
+    {
+      "id": "DMA",
+      "total": 16.8
+    },
+    {
+      "id": "DOM",
+      "total": 16.8
+    },
+    {
+      "id": "GRD",
+      "total": 19.4
+    },
+    {
+      "id": "GUY",
+      "total": 20.5
+    },
+    {
+      "id": "HTI",
+      "total": 17.8
+    },
+    {
+      "id": "JAM",
+      "total": 15.2
+    },
+    {
+      "id": "#N/A",
+      "total": 7
+    },
+    {
+      "id": "LCA",
+      "total": 19.4
+    },
+    {
+      "id": "VCT",
+      "total": 19.4
+    },
+    {
+      "id": "SUR",
+      "total": 21.9
+    },
+    {
+      "id": "TTO",
+      "total": 19.5
+    },
+    {
+      "id": "VIR",
+      "total": 8.8
+    },
+    {
+      "id": "KNA",
+      "total": 8.4
+    },
+    {
+      "id": "COL",
+      "total": 21.3
+    },
+    {
+      "id": "CRI",
+      "total": 17.3
+    },
+    {
+      "id": "SLV",
+      "total": 22.6
+    },
+    {
+      "id": "GTM",
+      "total": 27.3
+    },
+    {
+      "id": "HND",
+      "total": 22.3
+    },
+    {
+      "id": "MEX",
+      "total": 20.1
+    },
+    {
+      "id": "NIC",
+      "total": 19.1
+    },
+    {
+      "id": "PAN",
+      "total": 13.7
+    },
+    {
+      "id": "VEN",
+      "total": 20.3
+    },
+    {
+      "id": "BRA",
+      "total": 11.8
+    },
+    {
+      "id": "PRY",
+      "total": 12.5
+    },
+    {
+      "id": "AFG",
+      "total": 50.8
+    },
+    {
+      "id": "DZA",
+      "total": 31.6
+    },
+    {
+      "id": "#N/A",
+      "total": 33.3
+    },
+    {
+      "id": "BHR",
+      "total": 60.8
+    },
+    {
+      "id": "EGY",
+      "total": 65.8
+    },
+    {
+      "id": "IRN",
+      "total": 38.3
+    },
+    {
+      "id": "IRQ",
+      "total": 48.6
+    },
+    {
+      "id": "JOR",
+      "total": 32.1
+    },
+    {
+      "id": "KWT",
+      "total": 63.1
+    },
+    {
+      "id": "LBN",
+      "total": 28.5
+    },
+    {
+      "id": "LBY",
+      "total": 36.2
+    },
+    {
+      "id": "MAR",
+      "total": 34
+    },
+    {
+      "id": "IRN",
+      "total": 32.6
+    },
+    {
+      "id": "OMN",
+      "total": 42.6
+    },
+    {
+      "id": "QAT",
+      "total": 71.6
+    },
+    {
+      "id": "SAU",
+      "total": 61.5
+    },
+    {
+      "id": "SDN",
+      "total": 50
+    },
+    {
+      "id": "SYR",
+      "total": 31.1
+    },
+    {
+      "id": "TUN",
+      "total": 29.3
+    },
+    {
+      "id": "TUR",
+      "total": 26.1
+    },
+    {
+      "id": "ARE",
+      "total": 42.7
+    },
+    {
+      "id": "YEM",
+      "total": 44.1
+    },
+    {
+      "id": "CHN",
+      "total": 49.8
+    },
+    {
+      "id": "PRK",
+      "total": 41.8
+    },
+    {
+      "id": "#N/A",
+      "total": 23.9
+    },
+    {
+      "id": "ASM",
+      "total": 6.1
+    },
+    {
+      "id": "FSM",
+      "total": 9.1
+    },
+    {
+      "id": "FJI",
+      "total": 9.8
+    },
+    {
+      "id": "GUM",
+      "total": 7.6
+    },
+    {
+      "id": "KIR",
+      "total": 7.6
+    },
+    {
+      "id": "MHL",
+      "total": 8.6
+    },
+    {
+      "id": "MNP",
+      "total": 7.8
+    },
+    {
+      "id": "PNG",
+      "total": 13.3
+    },
+    {
+      "id": "WSM",
+      "total": 9.6
+    },
+    {
+      "id": "SLB",
+      "total": 10.7
+    },
+    {
+      "id": "TON",
+      "total": 9.6
+    },
+    {
+      "id": "VUT",
+      "total": 11.1
+    },
+    {
+      "id": "NIU",
+      "total": 6.4
+    },
+    {
+      "id": "COK",
+      "total": 6.1
+    },
+    {
+      "id": "NRU",
+      "total": 5.6
+    },
+    {
+      "id": "PLW",
+      "total": 6.7
+    },
+    {
+      "id": "TKL",
+      "total": 7
+    },
+    {
+      "id": "TUV",
+      "total": 5.7
+    },
+    {
+      "id": "KHM",
+      "total": 21.2
+    },
+    {
+      "id": "IDN",
+      "total": 18
+    },
+    {
+      "id": "LAO",
+      "total": 18.5
+    },
+    {
+      "id": "MYS",
+      "total": 16.2
+    },
+    {
+      "id": "MDV",
+      "total": 9.9
+    },
+    {
+      "id": "MUS",
+      "total": 14.7
+    },
+    {
+      "id": "MMR",
+      "total": 28.5
+    },
+    {
+      "id": "PHL",
+      "total": 18.4
+    },
+    {
+      "id": "LKA",
+      "total": 19.6
+    },
+    {
+      "id": "SYC",
+      "total": 15.4
+    },
+    {
+      "id": "THA",
+      "total": 26.4
+    },
+    {
+      "id": "TLS",
+      "total": 15.3
+    },
+    {
+      "id": "VNM",
+      "total": 20
+    },
+    {
+      "id": "AGO",
+      "total": 27
+    },
+    {
+      "id": "CAF",
+      "total": 41.3
+    },
+    {
+      "id": "COG",
+      "total": 35.2
+    },
+    {
+      "id": "COD",
+      "total": 33
+    },
+    {
+      "id": "GNQ",
+      "total": 41.3
+    },
+    {
+      "id": "GAB",
+      "total": 33.3
+    },
+    {
+      "id": "BDI",
+      "total": 31.5
+    },
+    {
+      "id": "COM",
+      "total": 16.1
+    },
+    {
+      "id": "DJI",
+      "total": 41.1
+    },
+    {
+      "id": "ERI",
+      "total": 41.6
+    },
+    {
+      "id": "ETH",
+      "total": 32.6
+    },
+    {
+      "id": "KEN",
+      "total": 24.4
+    },
+    {
+      "id": "MDG",
+      "total": 17.5
+    },
+    {
+      "id": "MWI",
+      "total": 23.1
+    },
+    {
+      "id": "MOZ",
+      "total": 21.4
+    },
+    {
+      "id": "RWA",
+      "total": 33.8
+    },
+    {
+      "id": "SOM",
+      "total": 28.8
+    },
+    {
+      "id": "SSD",
+      "total": 36.4
+    },
+    {
+      "id": "TZA",
+      "total": 24.6
+    },
+    {
+      "id": "UGA",
+      "total": 36.7
+    },
+    {
+      "id": "ZMB",
+      "total": 24.9
+    },
+    {
+      "id": "BWA",
+      "total": 24.3
+    },
+    {
+      "id": "LSO",
+      "total": 29.4
+    },
+    {
+      "id": "NAM",
+      "total": 24.4
+    },
+    {
+      "id": "ZAF",
+      "total": 28.8
+    },
+    {
+      "id": "SWZ",
+      "total": 23.1
+    },
+    {
+      "id": "ZWE",
+      "total": 21.7
+    },
+    {
+      "id": "BEN",
+      "total": 42.6
+    },
+    {
+      "id": "BFA",
+      "total": 50.4
+    },
+    {
+      "id": "CMR",
+      "total": 58.9
+    },
+    {
+      "id": "CPV",
+      "total": 46.4
+    },
+    {
+      "id": "TCD",
+      "total": 55.3
+    },
+    {
+      "id": "CIV",
+      "total": 52.1
+    },
+    {
+      "id": "GMB",
+      "total": 58.6
+    },
+    {
+      "id": "GHA",
+      "total": 54
+    },
+    {
+      "id": "GIN",
+      "total": 50.4
+    },
+    {
+      "id": "GNB",
+      "total": 54.6
+    },
+    {
+      "id": "LBR",
+      "total": 46.5
+    },
+    {
+      "id": "MLI",
+      "total": 56.5
+    },
+    {
+      "id": "MRT",
+      "total": 64.3
+    },
+    {
+      "id": "NER",
+      "total": 70.9
+    },
+    {
+      "id": "NGA",
+      "total": 64.2
+    },
+    {
+      "id": "STP",
+      "total": 29.5
+    },
+    {
+      "id": "SEN",
+      "total": 60.5
+    },
+    {
+      "id": "SLE",
+      "total": 48.2
+    },
+    {
+      "id": "TGO",
+      "total": 44.4
+    }
+  ]

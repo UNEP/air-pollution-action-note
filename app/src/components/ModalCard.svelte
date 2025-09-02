@@ -4,7 +4,7 @@
   import svg from "src/svg";
   import type { AgreementName } from "src/types";
   import { createEventDispatcher } from 'svelte';
-  import { colorAgreementTypes, colorAgreementSimpleType} from "src/colors";
+  import { colorAgreementTypes, colorAgreementSimpleType, colorAgreementWest} from "src/colors";
 
   export let title: string;
   export let body: string;
@@ -27,6 +27,13 @@
     type: "categorical"
   };
 
+  const legendOptionsWest = {
+    title: "<strong>Agreement status</strong>",
+    colors: colorAgreementWest.range(),
+    labels: colorAgreementWest.domain(),
+    type: "categorical"
+  };
+
   const dispatch = createEventDispatcher();
 
   function onClickClose() {
@@ -38,10 +45,11 @@
 
   $: legendOptions = agreementsWithObservers.includes(tilegram) 
     ? legendOptionsWithObservers 
-    : legendOptionsSimple;
+    : (tilegram === 'waaqn') ? legendOptionsWest : legendOptionsSimple;
 
-  $: selectedCategory = (selected === 0) ? 1 : (selected === 1) ? 2 : undefined;
+  $: selectedCategory = ((tilegram === 'waaqn' && selected === 0) ? 3 : ((selected === 0) ? 1 : (selected === 1) ? 2 : undefined));
   
+  $: console.log(selectedCategory, selected, tilegram);
 </script>
 
 <div class="modal-card">
