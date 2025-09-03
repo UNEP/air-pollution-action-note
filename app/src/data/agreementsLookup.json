@@ -76,5 +76,11 @@
     "definition": "In 1991, the U.S. and Canada entered into an agreement to address transboundary air pollution, whereby pollutants released at one location can travel long distances, affecting air quality at their sources, as well as many miles away. The US-Canada Agreement led to reductions in acid rain in the 1990s and was expanded in 2000 to reduce transboundary smog missions under the Ozone Annex.",
     "url": "",
     "participants": 2
+  },
+  "waaqn": {
+    "name": "West Asia Air Quality Network (WAAQN)",
+    "definition": "The Regional Air Quality Network for West Asia was established in 2024 to support governments and stakeholders in improving air quality by facilitating the sharing of data, technical resources, experiences, and best practices across the region. The network is open to all the West Asian countries - Bahrain, Iraq, Jordan, Kuwait, Lebanon, Oman, Palestine, Qatar, Saudi Arabia, Syria, United Arab Emirates, and Yemen.",
+    "url": "",
+    "participants": 12
   }
 }

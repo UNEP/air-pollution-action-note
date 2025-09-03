@@ -1,0 +1,92 @@
+{
+    "International_shipping": {
+        "title": "International shipping",
+        "percentage": "0.7",
+        "x": 68.6,
+        "y": 45.0
+    },
+    "Energy": {
+        "title": "Energy",
+        "percentage": "10.2",
+        "x": 15.3,
+        "y": 17.3
+    },
+    "Industry": {
+        "title": "Industry",
+        "percentage": "11.7",
+        "x": 9.7,
+        "y": 48.2
+    },
+    "Solvent": {
+        "title": "Solvent",
+        "percentage": "0.2",
+        "x": 32.0,
+        "y": 43.0
+    },
+    "Waste": {
+        "title": "Waste",
+        "percentage": "4.8",
+        "x": 61.4,
+        "y": 78.6
+    },
+    "Agricultural_Waste_Burning": {
+        "title": "Agricultural waste burning",
+        "percentage": "0.7",
+        "x": 41.4,
+        "y": 59.7
+    },
+    "Agricultural": {
+        "title": "Agricultural",
+        "percentage": "8.3",
+        "x": 61.7,
+        "y": 64.3
+    },
+        "Landscape_Fire": {
+        "title": "Landscape fire",
+        "percentage": "3.4",
+        "x": 79.7,
+        "y": 21.7
+    },
+    "Other_combustion": {
+        "title": "Other combustion",
+        "percentage": "1.8",
+        "x": 94.1,
+        "y": 29.5
+    },
+    "Remaining_sources": {
+        "title": "Remaining sources",
+        "percentage": "5.2",
+        "x": 88.1,
+        "y": 35.4
+    },
+    "Antriphogenic": {
+        "title": "Anthropogenic fugitive, combustion and industrial Dust",
+        "percentage": "9.3",
+        "x": 36.0,
+        "y": 24.2
+    },
+    "Windblown_dust": {
+        "title": "Windblown dust",
+            "percentage": "16.1",
+        "x": 59.6,
+        "y": 23.9
+    },
+    "Residential": {
+        "title": "Residential",
+        "percentage": "19.2",
+        "x": 84.2,
+        "y": 67.4
+    },
+    "Transport": {
+        "title": "Transport",
+        "percentage": "6.9",
+        "x": 39.1,
+        "y": 80.6
+    },
+    "Commercial": {
+        "title": "Commercial",
+        "percentage": "1.5",
+        "x": 12.3,
+        "y": 71.6
+    }
+}

@@ -14,6 +14,7 @@
   import { strToId } from './util';
   import CountrySearch from './components/CountrySearch.svelte';
   import AgreementsGrid from './components/AgreementsGrid.svelte';
+  import SourceForSector from './components/sourceForSector/index.svelte';
 
   const content: Content[] = text.article;
 
@@ -29,7 +30,8 @@
     'methodology': MethodologySourcesText,
     "death-causes": DeathCauses,
     "country-search": CountrySearch,
-    "agreements-grid": AgreementsGrid
+    "agreements-grid": AgreementsGrid,
+    "source-for-sector": SourceForSector
   };
 </script>
 {#if embedBlock}

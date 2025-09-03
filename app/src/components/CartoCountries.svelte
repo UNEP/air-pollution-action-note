@@ -1,30 +1,23 @@
 <script lang="ts">
-  import TreemapSvg from 'src/components/charts/TreemapSVG.svelte';
-  import {sectoralBD, differentFuels} from 'src/data';
+  import TreemapCountriesSVG from 'src/components/charts/TreemapCountriesSVG.svelte';
+  import {sectoralBD} from 'src/data';
   import Legend from 'src/components/common/Legend.svelte';
   import { colorFuels, colorSectors } from "src/colors";
   import ScrollableX from './common/ScrollableX.svelte';
-  import EmbedFooter from './EmbedFooter.svelte';
-  import SectionTitle from "src/components/SectionTitle.svelte";
-  import type { Content } from 'src/types';
-  import RegionPopup from './regionPopup.svelte';
-  import SourceForSector from './sourceForSector/index.svelte';
+
   interface Text {
     p : string;
   }
   enum TreemapType{
     fuel = 0, sectors = 1
   }
-
-  let valueType = 'number';
-  export let data : string;
-  export let id: string;
-  export var block: Content;
-  export let head : string;
-  export let text : Text[];
-  export let textBottom : Text[];
-  export let embed: string;
-  export let isEmbed = false;
+  const data = 'sectors';
+//   export let id: string;
+//   export var block: Content;
+//   export let head : string;
+//   export let text : Text[];
+//   export let embed: string;
+//   export let isEmbed = false;
 
   let cartogramAnnotation: boolean;
 
@@ -73,7 +66,6 @@
     }
   };
 
-  
 
   const pairLabels: {[key: string]: string} = {};
   let cont = 0;
@@ -84,12 +76,15 @@
     cont++;
   });
 
-  const currentData = data === "sectors" ? sectoralBD : data === "fuel" ? differentFuels : null;
+  const currentData = sectoralBD;
   const scaleRate = currentData.scale_height / currentData.scale_width;
   let clientWidth: number = 0;
   let width: number;
   let height: number;
-  let selectedRegion = 0;
+
+  export let valueType;
+
+
   $: width = Math.max(clientWidth, 700);
 
   $: height = width * scaleRate;
@@ -107,143 +102,67 @@
     else legendElementSelected = "null";
   }
 </script>
-<section class='viz wide' style="position: relative;" {id}>
-
-  {#if !isEmbed}
-    <SectionTitle {block} />
-  {/if}
-  <div>    
-    <h2 class='narrow'>{@html head}</h2>
-  
-    <div class='right-narrow'>
-    </div>
-  </div>
-  <!-- <div class="btn-area">
-    <div class:active={ valueType === 'number' } on:click={() => valueType = 'number'}>Number (1,2,3)</div>
-    <div class:active={ valueType === 'percentage' } on:click={() => valueType = 'percentage'}>Percent (%)</div>
-  </div> -->
-  <div class="scroll-container margin-breakout-mobile" bind:clientWidth={clientWidth}>
-    <ScrollableX>
-      <SourceForSector />
-    </ScrollableX>
-  </div>
-
-  {#if !isEmbed}
-    {#each text as t}
-      <p class='col-text'>{@html t.p}</p>
-    {/each}
-  {/if}
-
-  {#if isEmbed}
-    <div class="embed-additional-text-desktop">
-      <p>
-        To explore more about the climate emergency and
-        the effects on the planet visit
-        <b><a href="https://www.unep.org/">unep.org</a></b>
-      </p>
-    </div>
-  {/if}
-  <div class="legend-container">
+<section class='viz' style="width: 100%;">
     <Legend
-      title = {legendOptions[data].title}
-      colors = {legendOptions[data].colors}
-      labels = {legendOptions[data].labels}
-      type = {'categorical'}
-      bind:selected = {legendElementSelectedIndex}
+        title = {legendOptions[data].title}
+        colors = {legendOptions[data].colors}
+        labels = {legendOptions[data].labels}
+        type = {'categorical'}
+    bind:selected = {legendElementSelectedIndex}
     />
-  </div>
-  <div class="scroll-container margin-breakout-mobile" bind:clientWidth={clientWidth}>
+
+  <div class="scroll-container scroll-countries margin-breakout-mobile" bind:clientWidth={clientWidth}>
     <ScrollableX>
-      <div class="treemap-container" style="width:{width}px; height:{height}px; "class:background={cartogramAnnotation}>
-        <TreemapSvg
+      <div class="treemap-container" class:background={cartogramAnnotation}>
+        <TreemapCountriesSVG
           data={currentData}
           {width}
           {height}
           source = {treemapParams[TreemapType[data]].help.text}
           legendElementSelected = {legendElementSelected}
           labels = {pairLabels}
-          bind:selectedRegion
-          bind:valueType
           bind:annotationShowing={cartogramAnnotation}
+          bind:valueType
         />
       </div>
     </ScrollableX>
   </div>
-  {#if selectedRegion !== 0}
-      <RegionPopup bind:selectedRegion bind:valueType />
-  {/if}
-
-  {#if !isEmbed}
-    <div class="footer">
-      <EmbedFooter {embed} />
-    </div>
-
-    {#each textBottom as t}
-      <p class='col-text'>{@html t.p}</p>
-    {/each}
-  {/if}
-
 
 </section>
 
 <style>
-  .scroll-container {
-    max-width: 929px;
-  }
-
+    .viz {
+        padding: 20px 0 0;
+    }
   .footer {
     margin-bottom: 30px;
-  }
-
-  .legend-container {
-    max-width: 929px; 
-    margin-top: 32px;
-    margin-bottom: 17px;
-  }
-
-  .btn-area {
-    display: inline-flex;
-    margin-top: 18px;
-    border: 1px solid #DCDCDC;
-    background: #F9F9F9;
-  }
-
-  .btn-area div {
-    cursor: pointer;
-    min-width: 150px;
-    color: #1E1E1E;
-    text-align: center;
-    height: 46px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* Body 14.4 - Light */
-    font-family: Roboto;
-    font-size: 14.4px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 14.4px; /* 100% */
-  }
-
-
-  .btn-area div:hover,
-  .btn-area div.active {
-    color: #E0E0E0;
-    background: #1E1E1E;
-    font-weight: 700;
   }
 
   .treemap-container {
     position: relative;
     overflow: hidden;
+    width: fit-content;
     transition: 300ms background-color 700ms;
   }
 
-  .background {
+    .scroll-countries :global(.overflow-right) {
+        transform: translateX(100%);
+        background: none;
+        width: 40px;
+        height: 340px;
+    }
+
+    .scroll-countries :global(.overflow-left) {
+        transform: translateX(-100%);
+        background: none;
+        width: 40px;
+        height: 340px;
+    }
+
+  /* .background {
     background-color: #f9f9f9;
     transition: 150ms background-color;
-  }
+  } */
 
   .treemap-container :global(.annotation .text) {
     background: #f9f9f9;

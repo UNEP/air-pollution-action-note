@@ -11,6 +11,17 @@ export const colorSectors = scaleOrdinal<string>()
     '#333333','#62b048','#1b6e29','#dcae89','#854f38','#ff8a18','url(#hash--windblown)'
   ]);
 
+export const colorSectorsDownloading = scaleOrdinal<string>()
+  .domain([
+    'residential','transport','intlshipping','industry','commercial','afciddust',
+    'othercombustion','remainingsources','otherfires','agrwasteburning','agriculture',
+    'waste','solvents','energy','windblowndust'
+  ])
+  .range([
+    '#007dc8','#811494','#9b7ccc','#ab4867','#ff9c9c','#b3b3b3','#8c8c8c','#666666',
+    '#333333','#62b048','#1b6e29','#dcae89','#854f38','#ff8a18','#FABA26'
+  ]);
+
 export const colorFuels = scaleOrdinal<string>()
   .domain(['process','liquid','solidbio','coal'])
   .range(['#407aa9','#faba26','#62b048','#333333']);
@@ -37,13 +48,17 @@ export const colorDiseases = scaleOrdinal<number, string>()
   .range(["#FFBEB3","#E094A7","#C16B9B","#A1408E","#800080"]);
 
 export const colorAgreements = scaleOrdinal<string>()
-.domain(['No agreements signed', 'Agreements signed'])
-.range(["#D9D9D9", "#004982"])
+.domain(['0', '1', '2', '3 or more'])
+.range(["#EAEAEA", "#C2DEF1", "#7CBFEF", "#34659B"])
 
 export const colorAgreementTypes = scaleOrdinal<string>()
-  .domain(['Participant', 'Observer'])
-  .range(["#34659B", "#7CBFEF"])
+  .domain(['Participant', 'Observer', 'Open to countries'])
+  .range(["#34659B", "#7CBFEF", "#7CBFEF"])
 
 export const colorAgreementSimpleType = scaleOrdinal<string>()
 .domain(['Participant'])
 .range(["#34659B"])
+
+export const colorAgreementWest = scaleOrdinal<string>()
+.domain(['Open to countries'])
+.range(["#7CBFEF"])

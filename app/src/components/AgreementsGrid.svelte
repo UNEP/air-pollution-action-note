@@ -11,7 +11,7 @@
   export const agreementList = [
     "eanet", "asean-trans", "male", "neaspec",
     "rapap", "clrtap", "eu-directive", "us-canada", "lusaka",
-    "nairobi", "abidjan", "lat-caribbean", "arctic"
+    "nairobi", "abidjan", "lat-caribbean", "arctic", "waaqn"
   ];
 </script>
 
@@ -34,7 +34,8 @@
   export var text: TextBlock[];
   export let searchVersion = false;
   export let countryData: CountryAgreementsData = null;
- 
+  
+  
   const legendOptions = {
     title: "<strong>Agreement status</strong>",
     colors: colorAgreementTypes.range(),
@@ -105,6 +106,8 @@
 
   $: countrySentence = searchVersion ? getCountryDescription(countryData.id) : null;
 
+  $: console.log(countryData);
+
   $: agreementsData = !countryData 
     ? Object.entries(agreementsLookup).map(a => ({
       id: a[0] as AgreementName,
@@ -150,8 +153,8 @@
       <div class="right-narrow">
         <Legend
           title={legendOptions.title}
-          colors={legendOptions.colors}
-          labels={legendOptions.labels}
+          colors={countryData && countryData.agreements[0].status === 3 ? legendOptions.colors.slice(2, 3) : legendOptions.colors.slice(0, 2)}
+          labels={countryData && countryData.agreements[0].status === 3 ? legendOptions.labels.slice(2, 3) : legendOptions.labels.slice(0, 2)}
           type={legendOptions.type}
           interactive={false}
           bind:selected={selectedAgreementType}
@@ -239,6 +242,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 916px;
   }
 
   .modal {
