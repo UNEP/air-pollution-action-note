@@ -278,8 +278,7 @@
     ` times WHO's guideline.`;
 
   $: PMtimesCommentary =
-    ` deaths per 100,000 people <br>attributable to fine particle 
-    pollution in 2021 <br>(` +
+    ` deaths per 100,000 people <br>attributable to fine particulate outdoor air pollution in 2021   (` +
     currentCountry.totalDeaths.toLocaleString("en-US") +
     ` in total in the country) (age-standardized).`;
 
@@ -421,6 +420,12 @@
 </section>
 
 <style>
+  .distribution {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 385px;
+  }
   .downloading {
     position: absolute;
     top: 0;

@@ -380,7 +380,7 @@
         }
       },
       color: colorHealth,
-      legendTitle: `<strong>Deaths per 100,000 people</strong> caused by fine particle pollution`,
+      legendTitle: `<strong>Deaths per 100,000 people</strong> caused by fine particulate outdoor air pollution (age-standardized)`,
       legendDomain: ["20", "40", "60", "80", "100"],
       legendType: "sequential",
       domain: [700, 400] as [number, number],
