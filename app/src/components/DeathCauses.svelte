@@ -15,15 +15,27 @@
 
 <script lang="ts">
   import WaffleChart from "./WaffleChart.svelte";
-  import WorldMeanDeaths from "../data/diseasesGlobal.json"
+  import CartoWorld from "./CartoWorld.svelte";
+  import WorldMeanDeaths from "../data/diseasesGlobal.json";
+  import WorldMeanDeathsOzone from "../data/diseasesGlobalOzone.json";
+  import type { Content } from "src/types";
 
   export let data: DeathsData = WorldMeanDeaths;
+  export let block: Content = null;
+  export let id: string = null;
+  export let isEmbed = false;
 
+  let dataWaffle = WorldMeanDeaths;
+  let isOzone = false;
   const sentences = {
     ">20": "Fine particle pollution is a major cause of death from",
     ">5": "Fine particle pollution is an important factor in deaths from",
     "top3": "Fine particle pollution contributes to deaths by",
     "rest": " It is also a contributing factor on"
+  }
+
+  $: {
+    isOzone = dataWaffle === WorldMeanDeathsOzone;
   }
 
   const names = {
@@ -38,9 +50,15 @@
 
   let serializedData = [];
   let firstSentenceDiseases: string[];
+  let dropdown = block?.dropdown;
+  let dataCarto = "diseases";
+  let embed = "diseases";
 
+  $: dropdownData = isOzone ? block?.dropdownOzone : block?.dropdown;
+  $: dataCarto = isOzone ? "diseasesOzone" : "diseases";
+  $: embed = isOzone ? "diseasesOzone" : "diseases";
   $: {
-    serializedData = Object.entries(data);
+    serializedData = Object.entries(dataWaffle);
     serializedData.sort((a, b) => (b[1] - a[1]));
   }
 
@@ -125,14 +143,35 @@
     <p class="col-text">{@html text}</p>
   {/if}
 
-  <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to fine particle outdoor air pollution</strong> in 2021 (age-standardized).</h3>
+  <div class="ozone-options">
+    <button on:click={() => dataWaffle = WorldMeanDeaths} class:active={dataWaffle === WorldMeanDeaths}>PM2.5</button>
+    <button on:click={() => dataWaffle = WorldMeanDeathsOzone} class:active={dataWaffle === WorldMeanDeathsOzone}>Ozone</button>
+  </div>
+  <h3 class="note col-text"><strong>Percent of deaths</strong> from each disease <strong>attributable to {isOzone ? "long-term exposure to outdoor ground-level ozone air pollution" : "fine particle outdoor air pollution"}</strong> in {isOzone ? "2020" : "2023"} (age-standardized).   {#if isOzone}
+     <strong>COPD</strong> is the only disease for which the burden of disease attributable to ozone exposure can be quantified.
+  {/if}</h3>
 
   <div class="flex-container">
     {#each serializedData as d}
-      <WaffleChart percentage={d[1]} cause={d[0]}/>
+      <WaffleChart percentage={d[1]} cause={d[0]} isOzone={isOzone}/>
     {/each}
   </div>
-  
+  {#key dataCarto}
+    {#if block?.head && dropdownData}
+      <CartoWorld
+        {block}
+        id={id || "diseases"}
+        data={dataCarto}
+        dataOzone="ozone"
+        hasOzone={false}
+        head={dataCarto === "diseases" ? block.head : block.headOzone}
+        text={block.text || []}
+        embed={block.embed || "diseases"}
+        {isEmbed}
+      />
+    {/if}
+  {/key}
+
   <style>
   
     .flex-container {

@@ -5,10 +5,10 @@
   let selectedSector: string = '';
 
   $: isActive = selectedSector !== '';
-  $: {
-    console.log('selectedSector', selectedSector);
-    console.log('isActive', isActive);
-  };
+  // $: {
+  //   console.log('selectedSector', selectedSector);
+  //   console.log('isActive', isActive);
+  // };
 </script>
 
 <div class="source-for-sector" class:active={isActive}>

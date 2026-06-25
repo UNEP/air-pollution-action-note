@@ -2,13 +2,16 @@
   import { onMount } from "svelte/internal";
   import Typeahead from "svelte-typeahead";
   import LinearDistribution from "./charts/LinearDistribution.svelte";
-  import DeathCauses from "./DeathCauses.svelte";
+  import DeathCauses from "./DeathCausesSingle.svelte";
   import countries from "src/data/countryDictionary.json";
   import deathsdata from "src/data/deathDatabase.json";
+  import deathsdataOzone from "src/data/deathDatabaseOzone.json";
   import sectorCountriesData from "src/data/sectors_updated.json";
   import sectorsTotalData from "src/data/sectorsTotalData.json";
   import pm25data from "src/data/pm25_coords.json";
+  import ozoneData from "src/data/ozone_coords.json";
   import healthData from "src/data/deaths.json";
+  import healthOzoneData from "src/data/death_ozone_coords.json";
   import policiesData from "src/data/policiesData.json";
   import policiesDescriptions from "src/data/policiesDescriptions.json";
   import countryDictionary from "src/data/countryDictionary.json";
@@ -32,7 +35,7 @@
   export var block: Content;
 
   const MAX_RESULTS = 5;
-
+  let isOzone = false;
   const geolocationOptions = {
     enableHighAccuracy: false,
     timeout: 5000,
@@ -46,8 +49,7 @@
   function geolocationError(err) {
     getRandomCountry();
   }
-  
-
+      
   const getCountryFromCoordinates = async (lat: number, long: number) => {
     fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${long}`)
       .then((response) => response.json())
@@ -148,7 +150,15 @@
     return { id: d.id, value: d.pm25 };
   });
 
+  const countryOzoneData: CountryDataSquare[] = ozoneData.map((d) => {
+    return { id: d.id, value: d.ozone };
+  });
+
   const countryHealthData: CountryDataSquare[] = healthData.map((d) => {
+    return { id: d.id, value: d.rate };
+  });
+
+  const countryHealthOzoneData: CountryDataSquare[] = healthOzoneData.map((d) => {
     return { id: d.id, value: d.rate };
   });
 
@@ -167,13 +177,32 @@
     (p) => p.id,
     (p) => p
   );
+
+  const ozoneLookUp = createLookup(
+    ozoneData,
+    (o) => o.id,
+    (o) => o
+  );
+
   const healthLookUp = createLookup(
     healthData,
     (h) => h.id,
     (h) => h
   );
+
+  const healthOzoneLookUp = createLookup(
+    healthOzoneData,
+    (h) => h.id,
+    (h) => h
+  );
+
   const deathsLookUp = createLookup(
     deathsdata,
+    (d) => d.id,
+    (d) => d
+  );
+  const deathsOzoneLookUp = createLookup(
+    deathsdataOzone,
     (d) => d.id,
     (d) => d
   );
@@ -206,15 +235,19 @@
   let currentCountry = {
     id: "",
     PM25country: 0,
+    Ozonecountry: 0,
     timesPM25: 0,
+    timesOzone: 0,
     totalDeaths: 0,
+    totalDeathsOzone: 0,
     deathRatio: 0,
+    deathRatioOzone: 0,
   };
 
   let countrySelected = false;
 
-  const generateDeathsData = (countryID: string) => {
-    let countryInfo = deathsLookUp[countryID];
+  const generateDeathsData = (countryID: string, isOzone: boolean) => {
+    let countryInfo = isOzone ? deathsOzoneLookUp[countryID] : deathsLookUp[countryID];
     if (countryInfo) {
       let deathsData: DeathsData = {
         copd: countryInfo.copd,
@@ -248,21 +281,31 @@
 
   const selectCountry = (newID: string) => {
     currentCountry.id = newID;
-    currentCountry.PM25country = pm25LookUp[newID].pm25;
+    currentCountry.PM25country = parseFloat(pm25LookUp[newID].pm25);
+    currentCountry.Ozonecountry = parseFloat(ozoneLookUp[newID].ozone);
     currentCountry.timesPM25 = parseFloat(
       (currentCountry.PM25country / 5).toFixed(1)
     );
-    currentCountry.totalDeaths = healthLookUp[newID].deaths;
-    currentCountry.deathRatio = healthLookUp[newID].rate;
+    currentCountry.timesOzone = parseFloat(
+      (currentCountry.Ozonecountry / 0.05).toFixed(1)
+    );
+    currentCountry.totalDeaths = parseFloat(healthLookUp[newID].deaths);
+    currentCountry.deathRatio = parseFloat(healthLookUp[newID].rate);
+    currentCountry.totalDeathsOzone = parseFloat(healthOzoneLookUp[newID].deaths);
+    currentCountry.deathRatioOzone = parseFloat(healthOzoneLookUp[newID].rate);
     countrySelected = true;
   };
 
   const clearCountry = () => {
     currentCountry.id = "";
     currentCountry.PM25country = 0;
+    currentCountry.Ozonecountry = 0;
     currentCountry.timesPM25 = 0;
+    currentCountry.timesOzone = 0;
     currentCountry.totalDeaths = 0;
+    currentCountry.totalDeathsOzone = 0;
     currentCountry.deathRatio = 0;
+    currentCountry.deathRatioOzone = 0;
     countrySelected = false;
   };
 
@@ -270,16 +313,28 @@
   const maxDistributionSize = 385;
   let linearDistributionsWidth = maxDistributionSize;
 
-  $: countryDeathsData = generateDeathsData(currentCountry.id);
+  $: countryDeathsData = generateDeathsData(currentCountry.id, false);
+  $: countryDeathsDataOzone = generateDeathsData(currentCountry.id, true);
+
 
   $: PM25commentary =
     ` µg/m<sup>3</sup> <br>each person's annual mean exposure <br>—` +
-    currentCountry.timesPM25 +
+    currentCountry.timesPM25.toFixed(0) +
     ` times WHO's guideline.`;
 
+  $: OzoneCommentary =
+    ` µg/m<sup>3</sup> <br>each person's annual mean exposure`;
+    //  <br>—` +
+    // currentCountry.timesOzone.toFixed(0) + ' times.';
+  
   $: PMtimesCommentary =
-    ` deaths per 100,000 people <br>attributable to fine particulate outdoor air pollution in 2021   (` +
+    ` deaths per 100,000 people <br>attributable to fine particulate outdoor air pollution in 2023 (` +
     currentCountry.totalDeaths.toLocaleString("en-US") +
+    ` in total in the country) (age-standardized).`;
+
+  $: OzoneTimesCommentary =
+    ` deaths per 100,000 people <br>attributable to ozone pollution in 2020 (` +
+    currentCountry.totalDeathsOzone.toLocaleString("en-US") +
     ` in total in the country) (age-standardized).`;
 
   $: numResults = showDropdown ? MAX_RESULTS : 0;
@@ -289,7 +344,7 @@
   })();
   $: totalCountrySectorsData = countrySectorsData.reduce((sum, item) => sum + item.value, 0);
   $: totalSectorsData = sectorsTotalData.find((d) => d.id === currentCountry.id)?.total || 0;
-  $: console.log(currentCountry.id, countrySectorsData, totalSectorsData);
+  // $: console.log(currentCountry.id, countrySectorsData, totalSectorsData);
   $: countryAgreementsData = {
     id: currentCountry.id,
     name: countryNameLookUp[currentCountry.id],
@@ -300,6 +355,10 @@
 </script>
 
 <section {id} class="viz wide country-search">
+  <!-- <div class="ozone-options">
+    <button on:click={() => isOzone = false} class:active={!isOzone}>PM2.5</button>
+    <button on:click={() => isOzone = true} class:active={isOzone}>Ozone</button>
+  </div> -->
   <div class="downloading" class:active={isDownloading}>Downloading...<br />Please wait...</div>
   <div id="countrySearch">
     <SectionTitle {block} />
@@ -342,6 +401,7 @@
   
     {#if countrySelected}
       <div id="countryData">
+        <h3>PM 2.5</h3>
         <div
           class="distributions-container"
           bind:clientWidth={linearDistributionsWidth}
@@ -355,7 +415,7 @@
               data={countryPM25Data}
               value={pm25LookUp[currentCountry.id].pm25}
               country={currentCountry.id}
-              type="pm25"
+              type={isOzone ? "ozone" : "pm25"}
               width={clamp(
                 linearDistributionsWidth,
                 minDistributionSize,
@@ -384,7 +444,53 @@
         </div>
   
         <div class="death-causes-container">
-          <DeathCauses data={countryDeathsData} />
+          <DeathCauses data={countryDeathsData} isOzone={false} />
+        </div>
+
+        <h3>Ozone</h3>
+        <div
+          class="distributions-container"
+          bind:clientWidth={linearDistributionsWidth}
+        >
+          <div class="distribution">
+            <p class="primary-text">
+              <span class="bigger-text">{currentCountry.Ozonecountry.toFixed(1)}</span
+              >{@html OzoneCommentary}
+            </p>
+            <LinearDistribution
+              data={countryOzoneData}
+              value={ozoneLookUp[currentCountry.id].ozone}
+              country={currentCountry.id}
+              type="ozone"
+              width={clamp(
+                linearDistributionsWidth,
+                minDistributionSize,
+                maxDistributionSize
+              )}
+            />
+          </div>
+          <div class="distribution">
+            <p class="primary-text">
+              <span class="bigger-text"
+                >{Math.round(currentCountry.deathRatioOzone)}</span
+              >{@html OzoneTimesCommentary}
+            </p>
+            <LinearDistribution
+              data={countryHealthOzoneData}
+              value={healthOzoneLookUp[currentCountry.id].rate}
+              country={currentCountry.id}
+              type="healthOzone"
+              width={clamp(
+                linearDistributionsWidth,
+                minDistributionSize,
+                maxDistributionSize
+              )}
+            />
+          </div>
+        </div>
+  
+        <div class="death-causes-container">
+          <DeathCauses data={countryDeathsDataOzone} isOzone={true} />
         </div>
   
         <!-- <div class="policy-grid-container">
@@ -425,6 +531,12 @@
     flex-direction: column;
     justify-content: space-between;
     width: 385px;
+  }
+
+  h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    font-weight: bold;
   }
   .downloading {
     position: absolute;
@@ -480,7 +592,7 @@
     flex-direction: row;
     column-gap: 3rem;
     flex-wrap: wrap;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
   }
 
   .bigger-text {

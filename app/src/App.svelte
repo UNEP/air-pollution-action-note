@@ -2,6 +2,7 @@
   import type { Content } from 'src/types';
   import CartoWorld from 'src/components/CartoWorld.svelte';
   import CartoRegion from 'src/components/CartoRegion.svelte';
+  import CartoTrends from 'src/components/CartoTrends.svelte';
   import Intro from 'src/components/text/Intro.svelte';
   import Text from 'src/components/text/Text.svelte';
   import TopNav from 'src/components/nav/TopNav.svelte';
@@ -17,13 +18,14 @@
   import SourceForSector from './components/sourceForSector/index.svelte';
 
   const content: Content[] = text.article;
-
+  
   export var embed: string;
   const embedBlock = embed && content.find(b => b.embed === embed);
 
   const components = {
     'carto-world': CartoWorld,
     'carto-region': CartoRegion,
+    'carto-trends': CartoTrends,
     'intro': Intro,
     'text': Text,
     "menu": Menu,
@@ -66,8 +68,4 @@
     </article>
   </main>
   <Footer />
-  <div class="publishing_info">
-    <span class="publishing_info_original">Published: 06 July 2022</span>
-    <span class="publishing_info_latest_update">Last Updated: 07 September 2024</span>
-	</div>
 {/if}

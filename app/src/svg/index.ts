@@ -12,6 +12,7 @@ import pm25 from './icons_pm25.svg';
 import sectors from './icons_sectors.svg';
 import policies from './icons_policies.svg';
 import search from './icons_search-table.svg';
+import trends from './icons_trends.svg';
 
 import nd from './disease_icons/small/icons_nd.svg';
 import stroke from './disease_icons/small/icons_stroke.svg';
@@ -47,7 +48,8 @@ export default {
     fuels,
     pm25,
     sectors,
-    policies
+    policies,
+    trends
   },
   diseases: {
     nd,

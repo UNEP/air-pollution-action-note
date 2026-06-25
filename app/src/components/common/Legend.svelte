@@ -18,28 +18,29 @@
   export let internalLabels: InternalLabels[] = null;
   export let interactive = true;
 
-  let legendWidths = null;
-
-
-  const calcLinearLabels = (labels: string[]) => {
+  const calcLinearLabels = (labels: string[], linearDomain: number[]) => {
     let ret = [];
     let normalizedLabels = labels.map(label => Number(label.match(/(\d+)/)[0]));
     let globalDistance = linearDomain[1] - linearDomain[0];
-    
+
+    // Leading segment: from domain start to the first boundary label.
     ret.push((normalizedLabels[0] - linearDomain[0]) / globalDistance * 100);
 
-    normalizedLabels.reduce((acc, curr) => {
-      let distance = curr - acc;
-      ret.push((distance / globalDistance) * 100);
-      return curr;
-    }, linearDomain[0]);
+    // Middle segments: width = distance between consecutive boundary labels.
+    for (let i = 1; i < normalizedLabels.length; i++) {
+      ret.push((normalizedLabels[i] - normalizedLabels[i - 1]) / globalDistance * 100);
+    }
 
+    // Trailing segment: from the last boundary label to the domain end.
     ret.push((linearDomain[1] - normalizedLabels[normalizedLabels.length - 1]) / globalDistance * 100);
 
-    return ret
+    return ret;
   };
 
-  if(linearDomain) legendWidths = calcLinearLabels(labels);
+  $: legendWidths = linearDomain && labels?.length
+    ? calcLinearLabels(labels, linearDomain)
+    : null;
+
 </script>
 
 <h3 class="note title">{@html title}</h3>
@@ -71,7 +72,7 @@
         {#if internalLabels[i]?.icon}
           <div class="icon">{@html svg[internalLabels[i]?.icon]}</div>
         {/if}
-          <div class="note internal-label">{internalLabels[i] ? internalLabels[i].label : ""}</div>
+          <div class="note internal-label" class:light={internalLabels[i]?.isLight} class:empty={internalLabels[i]?.label === null}>{internalLabels[i] ? internalLabels[i].label : ""}</div>
         {/if}
         {#if labels[i] !== undefined}
           <p class="note">{labels[i]}</p>
@@ -143,6 +144,12 @@
         height: -webkit-fill-available, -moz-available;
         justify-content: center;
         font-weight: 300;
+        &.light {
+          color: #fff;
+        }
+        &.empty {
+          opacity: 0;
+        }
       }
       & p {
         margin: 0.3rem 0 0 0;

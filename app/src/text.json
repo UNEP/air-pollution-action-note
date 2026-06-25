@@ -22,7 +22,7 @@
       ],
       "head": "Pollution Action Note – Data you need to know",
       "pub": "2021-09-07",
-      "update": "2025-09-05",
+      "update": "2026-06-20",
       "text": [
         {
           "p": "Air pollution is the greatest environmental threat to public health globally and accounts for more than 8 million premature deaths every year. Air pollution and climate change are closely linked as all major pollutants have an impact on the climate and most share common sources with greenhouse gases. Improving our air quality will bring health, development, and environmental benefits."
@@ -40,8 +40,11 @@
       "menu": "Current state",
       "icon": "pm25",
       "data": "pm25",
+      "dataOzone": "ozone",
       "embed": "pm25",
-      "head": "In 2021, <strong>99% of the world population</strong> was living in places where the WHO’s strictest 2021 <strong>air quality guideline levels were not met</strong>.",
+      "hasOzone": true,
+      "head": "In 2023, <strong>99% of the world population</strong> was living in places where the WHO strictest <strong>air quality guideline levels were not met</strong>.",
+      "headOzone": "In 2020, <strong>93% of the world population</strong> was living in places where the 8-hour average ozone levels during the peak seasons <strong>exceeded</strong> the WHO’s strictest 2021 air quality guideline level",
       "text": [
         {
           "p": "With every breath we take, we suck in tiny particles that can damage our lungs, hearts, and brains and cause a host of other health problems. The most dangerous of these particles, which can include anything from soot, soil dust, to sulfates, are <strong>fine particles 2.5 microns (µ)</strong> or less in diameter —shortened as <strong>PM<sub>2.5</sub></strong>."
@@ -50,7 +53,30 @@
           "p": "In 2021, in response to increases in quality and quantity of evidence of air pollution impacts, the WHO updated the PM<sub>2.5</sub> annual mean <strong>air quality guideline to 5µg/m<sup>3</sup></strong>, which represents clean air as few impacts have been observed below these levels. The update halves the previous 2005 guideline level of 10µg/m<sup>3</sup></strong>. On the way to that level, the agency also sets a series of interim targets, air pollutant concentrations that serve as steppingstones. They are meant for areas where air pollution is high, so governments in those areas can develop policies to reduce air pollution that are achievable within realistic time frames."
         },
         {
+          "p": "When the air is polluted, we also breathe in harmful gases. <strong>Ground-level ozone </strong>(tropospheric ozone), a major component of smog, harms human health and damages crops and ecosystems. Unlike other greenhouse gases and many air pollutants, ozone is not emitted directly into the air. Instead, it forms through complex chemical reactions between precursor pollutants in the atmosphere in the presence of sunlight. Its precursors – nitrogen oxides (NOx), methane, carbon monoxide (CO) and non-methane volatile organic compounds (NMVOCs) – have both natural and anthropogenic sources."
+        },
+        {
           "p": "Even though air pollution is a global problem, it disproportionately affects those living in developing nations and particularly the most vulnerable, such as women, children and the elderly."
+        }
+      ]
+    },
+    {
+      "type": "carto-trends",
+      "anchor": "trends",
+      "menu": "Concentration trends",
+      "icon": "trends",
+      "data": "trendsPM25",
+      "dataOzone": "trendsOzone",
+      "hasOzone": true,
+      "embed": "trendsPM25",
+      "head": "<strong>Air pollution has no boundaries</strong>. PM<sub>2.5</sub> can travel over hundreds or thousands of kilometres, causing regional and continental impacts.",
+      "headOzone": "<strong>Ground-level ozone concentrations normally peak during summer months</strong>, typically from May to September in the Northern Hemisphere. High temperatures, intense sunlight, and stagnant air, conditions often associated with heatwaves, lead to the formation of ground-level ozone and the development of the ozone season.",
+      "text": [
+        {
+          "p": "Air pollution has been associated with humans for millennia, starting with the use of fire for cooking and warmth. It intensified during the Industrial Revolution, when widespread coal use caused severe urban pollution, and grew further with the 20th-century industrialization. Air pollution significantly impacts places near its sources, but it can also travel long distances. Atmospheric conditions, such as wind, affect air pollution dispersion and can vary widely. Strong winds enable long-distance transport, and stagnant conditions can lead to a build-up of air pollution."
+        },
+        {
+          "p": "Due to increasing anthropogenic emissions of its precursors, global concentrations of tropospheric ozone have increased by around 40% since the 1990s. This increase is a threat to global agriculture and ecosystems, causing crop damage, reducing productivity, and jeopardizing food security. Although ozone is often more concentrated around urban areas where emissions of its precursor chemicals tend to be highest, it can also travel long distances across national borders."
         }
       ]
     },
@@ -60,7 +86,7 @@
       "icon": "sectors",
       "data": "sectors",
       "embed": "sectors",
-      "head": "<strong>Residential</strong> pollution, mostly from cooking and heating using biomass, and generating electricity from fossil fuels for our homes, and transport, are the main <strong>human-made sources</strong> of fine particles globally.",
+      "head": "<strong>Residential</strong> pollution, mostly from cooking and heating using biomass, charcoal, coal, etc., generating electricity from fossil fuels for homes, industry, and transport, are the main <strong>human-made sources</strong> of fine particles globally.",
       "text": [
         {
           "p": "<strong>PM<sub>2.5</sub></strong> is emitted through multiple sources. These fine particles that pollute our air mostly come from human activities such as burning fossil fuels to generate electricity, transportation, waste burning, agriculture — a major source of methane and ammonia -- and the chemical and mining industries. Natural sources include volcanic eruptions, sea spray, soil dust, and lightning."
@@ -84,26 +110,28 @@
       "menu": "Impact",
       "icon": "deaths",
       "data": "health",
+      "dataOzone": "healthOzone",
+      "hasOzone": true,
       "embed": "health",
-      "head": "Over <strong>four million seven hundred thousand people died in 2021</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in West Asia and Africa. Around 2.4 billion people use polluting fuels for cooking and heating, and around 3.2 million people die early each year from household air pollution.",
+      "head": "Around <strong>four million seven hundred thousand people died in 2021</strong> from exposure to fine particulate outdoor air pollution, with the highest death rates occurring in West Asia and Africa. Around 2.4 billion people use polluting fuels for cooking and heating, and around 3.2 million people die early each year from household air pollution.",
+      "headOzone": "Over <strong>three hundred seventy thousand people died in 2020</strong> due to exposure to ground-level ozone, with the highest death rates occurring in Southeast Asia.",
       "text": [
         {
           "p": "Air pollution is a major global health crisis and causes one in nine deaths worldwide. Exposure to PM<sub>2.5</sub> reduced average global life expectancy by approximately one year and eight months in 2021."
         },
         {
           "p": "The deadliest illnesses linked to PM<sub>2.5</sub> air pollution are stroke, heart disease, lung disease, lower respiratory diseases (such as pneumonia), and cancer. High levels of fine particles also contribute to other illnesses, like diabetes, can hinder cognitive development in children and also cause mental health problems."
+        },
+        {
+          "p": "Breathing in ground-level ozone can irritate the lungs and cause a range of health problems. Most of the harm linked to ozone is connected to <strong>chronic obstructive pulmonary disease (COPD)</strong>, a serious lung condition. Short-term exposure, such as during a few days of high pollution, can lead to respiratory infections, reduced lung function, flare-ups of COPD, and worsening asthma symptoms. Long-term exposure, over months or years, can cause lasting damage like emphysema, increase risk of developing asthma, trigger breathing problems in children with asthma, and raise the chances of COPD and even death from lung disease."
         }
       ]
     },
     {
-      "type": "death-causes"
-    },
-    {
-      "type": "carto-world",
+      "type": "death-causes",
       "anchor": "diseases",
-      "data": "diseases",
-      "embed": "diseases",
-      "head": "@dropdown<br/><span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2021.",
+      "head": "@dropdown<span>@number</span>% of deaths<br/>were attributable to fine particle <br/>outdoor air pollution in 2023.",
+      "headOzone": "@dropdown<span>@number</span>% of deaths<br/> were attributable to long-term exposure to outdoor ground-level ozone air pollution in 2020 (age standardized).",
       "dropdown": [
         {
           "label": "ischemic heart disease",
@@ -134,7 +162,16 @@
           "value": "copd"
         }
       ],
+      "dropdownOzone": [
+        {
+          "label": "COPD",
+          "value": "copd"
+        }
+      ],
       "text": [
+        {
+          "p": "Long-term exposure to ozone air pollution is estimated to cause around 500,000 premature deaths each year from respiratory diseases. The health risks are especially serious for children, the elderly, and people who already have mung lung or heart conditions, as they are more vulnerable to the harmful effects of ozone."
+        },
         {
           "p": "Exposure to fine particle outdoor air pollution is the <strong>second largest risk factor for premature death globally</strong> behind only high blood pressure, and the single  <strong>largest environmental risk factor for premature death</strong> globally. Air pollution exposure contributes to a number of key illnesses globally but its contribution is not borne equally across the world. For example, people living in low- and middle-income countries today are exposed to between one to four times higher levels of air pollution than those living in high-income countries. Children are particularly vulnerable to the damaging health effects of air pollution due to their unique susceptibility and exposure. 26 percent of newborn deaths globally are attributed to air pollution exposure."
         }
@@ -181,7 +218,7 @@
       "head": "About the data",
       "text": [
         {
-          "p": "Data for <strong>PM<sub>2.5</sub> exposure</strong> and <strong>for the percent of deaths from each disease</strong> comes from Health Effects Institute. 2024. State of Global Air 2024. Special Report Boston, MA:Health Effects Institute; Global Burden of Disease Study 2021. IHEM, 2024."
+          "p": "Data for <strong>PM<sub>2.5</sub> and ground-level ozone exposure, </strong> and <strong>for the percent of deaths from each disease</strong> comes from Health Effects Institute. 2025. State of Global Air 2025. Available: <a href=\"http://www.stateofglobalair.org\" target=\"_blank\" rel=\"noopener\">www.stateofglobalair.org</a>. Data source: Global Burden of Disease Study 2023. IHME, 2025."
         },
         {
           "p": "Data for <strong>sector breakdown</strong> comes from <a href=\"https://www.healtheffects.org/publication/global-burden-disease-major-air-pollution-sources-gbd-maps-global-approach\" target=\"_blank\" rel=\"noopener\">McDuffie et al., Global Burden of Disease from Major Air Pollution Sources (GBD MAPS): A Global Approach</a>. HEI Research Report 210, (2021); McDuffie, E.E., Martin, R.V., Spadaro, J.V. et al. <a href=\"https://doi.org/10.1038/s41467-021-23853-y\" target=\"_blank\" rel=\"noopener\">Source sector and fuel contributions to ambient PM2.5 and attributable mortality across multiple spatial scales</a>. <em>Nat Commun</em> <strong>12</strong>, 3594 (2021)"
@@ -190,13 +227,13 @@
           "p": "The data for the <strong>sector section</strong> was reaggregated from country data into UNEP regions, which are different from the ones used in the study."
         },
         {
-          "p": "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
+          "p": "Data for policy implementations comes from <a href=\"https://www.unep.org/resources/report/actions-air-quality-global-summary-policies-and-programmes-reduce-air-pollution\" target=\"_blank\" rel=\"noopener\">Actions on Air Quality: A Global Summary of Policies and Programmes to Reduce Air Pollution. UNEP, 2021</a>."
         },
         {
           "p": "<em>The boundaries and names shown, and the designations used on these maps, do not imply official endorsement or acceptance by the United Nations.</em>"
         },
         {
-          "p": "The UNEP Pollution Action Note has been developed with the support of the <a href=\"https://www.ccacoalition.org/en\">Climate and Clean Air Coalition</a> and with scientific oversight of the  Science Group (SG) of the International Day of Clean Air for blue skies."
+          "p": "The UNEP Pollution Action Note has been developed and funded by the <a href=\"https://www.ccacoalition.org/en\" target=\"_blank\" rel=\"noopener\">Climate and Clean Air Coalition</a> and with scientific oversight of the Science Group (SG) of the International Day of Clean Air for Blue Skies."
         }
       ]
     }

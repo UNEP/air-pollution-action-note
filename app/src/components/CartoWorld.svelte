@@ -1,19 +1,25 @@
 <script lang="ts">
   import Cartogram from "src/components/maps/Cartogram.svelte";
   import pm25data from "src/data/pm25_coords.json";
+  import ozoneData from "src/data/ozone_coords.json";
   import countries from "src/data/countries.json";
   import policies from "src/data/policiesData.json";
   import diseases from "src/data/diseases.json";
+  import diseasesOzone from "src/data/diseases_ozone.json";
   import agreements from "src/data/agreementsData.json";
   import agreementsDefinitionLookup from "src/data/agreementsLookup.json";
   import countryNameDictionary from "src/data/countryDictionary.json";
   import deaths_data from "src/data/death_coords.json";
+  import deaths_data_ozone from "src/data/death_ozone_coords.json";
   import Legend from "src/components/common/Legend.svelte";
   import {
     colorPM25,
+    colorOzone,
     colorHealth,
+    colorHealthOzone,
     colorPolices,
     colorDiseases,
+    colorDiseasesOzone,
     colorAgreements,
   } from "src/colors";
   import { createLookup } from "src/util";
@@ -26,16 +32,23 @@
   import Head from "./Head.svelte";
   import diseasesDictionary from "src/data/diseasesDictionary.json";
   import diseasesGlobal from "src/data/diseasesGlobal.json";
+  import diseasesGlobalOzone from "src/data/diseasesGlobalOzone.json";
 
-  export var data: "pm25" | "health" | "policies" | "diseases";
+  export var data: "pm25" | "ozone" | "health" | "policies" | "diseases" | "diseasesOzone";
+  export var dataOzone: "ozone" | "healthOzone" | "diseasesOzone";
+  export var hasOzone: boolean;
   export var id: string;
   export var block: Content;
   export var head: string;
+  export var headOzone: string;
   export var text: TextBlock[];
   export var embed: string;
   export var isEmbed = false;
 
-  let selectedDisease: HealthDisease = "ischemic";
+  let initialData = data;
+  let selectedDisease: HealthDisease = data === "diseasesOzone" ? "copd" : "ischemic";
+  let diseasesGlobalData = data === "diseasesOzone" ? diseasesGlobalOzone : diseasesGlobal;
+  $: embedForFooter = initialData as never;
 
   interface PoliciesData {
     name: string;
@@ -64,6 +77,13 @@
     lri: number;
     stroke: number;
     nd: number;
+  }
+
+  interface DiseasesDataOzone {
+    name: string;
+    id: string;
+    short: string;
+    copd: number;
   }
 
   interface AgreementsData {
@@ -109,6 +129,12 @@
     (d) => d
   );
 
+  const diseasesLookupOzone = createLookup(
+    diseasesOzone,
+    (d) => d.id,
+    (d) => d
+  );
+
   const agreementsLookup = createLookup(
     agreements,
     (d) => d.id,
@@ -132,10 +158,17 @@
 
   const diseasesHoverText = (data: DiseasesData) => {
     return `In <b>${data.name}</b>, <b>${Math.round(
-      data[selectedDisease] * 100
+      data[selectedDisease]
     )}% of deaths</b> from <b>${diseasesDictionary[
       selectedDisease
     ].toLocaleLowerCase()}</b> are attributable to outdoor fine particles.`;
+  };
+  const diseasesHoverTextOzone = (data: DiseasesDataOzone) => {
+    return `In <b>${data.name}</b>, <b>${Math.round(
+      data[selectedDisease]
+    )}% of deaths</b> from <b>${diseasesDictionary[
+      selectedDisease
+    ].toLocaleLowerCase()}</b> are attributable to long-term exposure to outdoor ground-level ozone air pollution.`;
   };
   const agreementsHoverText = (data: AgreementsData): string => {
     const participantAgreement = [];
@@ -301,7 +334,8 @@
           x: d.x,
           y: d.y,
           value: d.pm25,
-          color: colorPM25(d.pm25),
+          comparisonValue: d.comparison,
+          color: colorPM25(Number(d.pm25)),
         };
       }),
       nodeSize: 11,
@@ -314,7 +348,7 @@
       hoverTextFn: (d: CountryDataPoint) =>
         `In <strong>${d.name}</strong>, people are exposed to an average of
         <strong>${d.value} μg/m<sup>3</sup></strong> a year —
-        <strong>${(d.value / 5).toFixed(1)}</strong> times the WHO guideline.`,
+        <strong>${d.comparisonValue}</strong> times the WHO guideline.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];
@@ -325,7 +359,7 @@
         }
       },
       color: colorPM25,
-      legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>)`,
+      legendTitle: `As a multiple of the <strong>WHO's guideline</strong> (5 µg/m<sup>3</sup>).<br /> IT: Interim Target`,
       legendDomain: ["x1", "2", "3", "5", "7"],
       legendType: "sequential",
       domain: [700, 400] as [number, number],
@@ -343,7 +377,52 @@
         { label: "" },
       ],
     },
-
+    ozone: {
+      data: ozoneData.map((d) => {
+        return {
+          name: countryNameDictionaryLookup[d.id].name,
+          short: countryNameDictionaryLookup[d.id].short,
+          code: d.id,
+          x: d.x,
+          y: d.y,
+          value: d.ozone,
+          color: colorOzone(Number(d.ozone)),
+        };
+      }),
+      nodeSize: 9,
+      helpText: {
+        code: "JPN",
+        text: () => `<strong>Each square is a country</strong>, sized 
+        by the annual mean levels of <strong>ozone</strong>, measured in µg/m<sup>3</sup>.`,
+      },
+      hoverTextFn: (d: CountryDataPoint) =>
+        `In <strong>${d.name}</strong>, people are exposed to an average of
+        <strong>${parseFloat(d.value.toString()).toFixed(2)} µg/m<sup>3</sup></strong> of ground-level ozone during the peak season.`,
+      classesFn: (d: CountryDataPoint) => {
+        if (!legendIsHovered) {
+          return [];
+        } else {
+          const isSelected =
+            colorOzone.range().indexOf(d.color) === legendElementSelectedIndex;
+          return [isSelected ? "country--shadow" : "country--hide"];
+        }
+      },
+      color: colorOzone,
+      legendTitle: `8-hour average ground-level ozone concentration during peak seasons (6 months of a year) (ug/m3). IT: Interim Target`,
+      legendDomain: ["60", "70", "100"],
+      legendType: "sequential",
+      domain: [700, 400] as [number, number],
+      linearDomain: [40, 120],
+      internalLabels: [
+        { label: 'AQG', border: true, icon: "check" },
+        { label: "IT2", isLight: true },
+        { label: "IT1", isLight: true },
+        { label: " " },
+      ],
+      hoverText: (d: CountryDataPoint) =>
+        `In <strong>${d.name}</strong>, people are exposed to an average of
+        <strong>${d.value.toFixed(2)} ppb</strong> a year.`,
+    },
     health: {
       data: deaths_data.map((d) => {
         return {
@@ -354,7 +433,7 @@
           y: d.y,
           value: d.deaths,
           rate: d.rate,
-          color: colorHealth(d.rate),
+          color: colorHealth(Number(d.rate)),
         };
       }),
       nodeSize: 80,
@@ -366,10 +445,8 @@
       },
       hoverTextFn: (d: CountryDataPoint) =>
         `In <strong>${d.name}</strong>, fine particle
-      pollution caused <strong>${d.value.toLocaleString(
-        "en-US"
-      )} deaths</strong>
-      in 2021 — or <strong>${Math.round(d.rate)} per 100,000 people  (age-standardized)</strong>.`,
+      pollution caused <strong>${Number(d.value).toLocaleString("en-US", { maximumFractionDigits: 0 })} deaths</strong>
+      in 2023 — or <strong>${Math.round(d.rate)} per 100,000 people  (age-standardized)</strong>.`,
       classesFn: (d: CountryDataPoint) => {
         if (!legendIsHovered) {
           return [];
@@ -387,7 +464,45 @@
       linearDomain: null,
       internalLabels: null,
     },
-
+    healthOzone: {
+      data: deaths_data_ozone.map((d) => {
+        return {
+          name: countryNameDictionaryLookup[d.id].name,
+          short: countryNameDictionaryLookup[d.id].short,
+          code: d.id,
+          x: d.x,
+          y: d.y,
+          value: d.deaths,
+          rate: d.rate,
+          color: colorHealthOzone(Number(d.rate)),
+        };
+      }),
+      nodeSize: 60,
+      helpText: {
+        code: "GEO",
+        text: () => `<strong>Each square is a country</strong>,
+        sized by the total number of <strong>deaths
+        caused by outdoor ground-level ozone air pollution.`,
+      },
+      hoverTextFn: (d: CountryDataPoint) =>
+        `In <strong>${d.name}</strong>, ozone pollution caused <strong>${Number(d.value).toLocaleString("en-US", { maximumFractionDigits: 0 })} deaths</strong> in 2020 — or <strong>${Number(d.rate) !== 0 ? Number(d.rate).toFixed(0) : '0'} per 100,000 people  (age-standardized)</strong>.`,
+      classesFn: (d: CountryDataPoint) => {
+        if (!legendIsHovered) {
+          return [];  
+        } else {
+          const isSelected =
+            colorHealthOzone.range().indexOf(d.color) === legendElementSelectedIndex;
+          return [isSelected ? "country--shadow" : "country--hide"];
+        }
+      },
+      color: colorHealthOzone,
+      legendTitle: `<strong>Deaths per 100,000 people</strong> caused by ground-level ozone pollution`,
+      legendDomain: ["10", "15", "20", "25", "30"],
+      legendType: "sequential",
+      domain: [700, 400] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
+    },
     policies: {
       data: countries
         .filter((d) => policiesLookup[d.code])
@@ -458,8 +573,7 @@
       linearDomain: null,
       internalLabels: null,
     },
-
-    diseases: {
+    diseases: { 
       data: countries
         .filter((d) => diseasesLookup[d.code])
         .map((d) => {
@@ -492,7 +606,7 @@
         const domain = colorDiseases.domain();
         while (i < domain.length && currentColor === null) {
           if (
-            diseaseData[selectedDisease] * 100 <= domain[i] &&
+            diseaseData[selectedDisease] <= domain[i] &&
             !currentColor
           ) {
             currentColor = colors[i];
@@ -505,11 +619,11 @@
           {
             color: currentColor,
             start: 0,
-            end: diseaseData[selectedDisease] * 100 * 2,
+            end: diseaseData[selectedDisease] * 2,
           },
           {
             color: "#D9D9D9",
-            start: diseaseData[selectedDisease] * 100 * 2,
+            start: diseaseData[selectedDisease] * 2,
             end: 100,
           },
         ];
@@ -542,8 +656,8 @@
           else selectedRange = [domain[legendElementSelectedIndex - 1], 100];
 
           const isSelected =
-            diseaseData[selectedDisease] * 100 >= selectedRange[0] &&
-            diseaseData[selectedDisease] * 100 <= selectedRange[1];
+            diseaseData[selectedDisease] >= selectedRange[0] &&
+            diseaseData[selectedDisease] <= selectedRange[1];
 
           return [isSelected ? "country--shadow" : ""];
         }
@@ -553,6 +667,103 @@
       legendDomain: colorDiseases.domain().map((e) => e + "%"),
       legendType: "sequential",
       domain: [1300, 1300 / (740 / 420)] as [number, number],
+      linearDomain: null,
+      internalLabels: null,
+    },
+    diseasesOzone: { 
+      data: countries
+        .filter((d) => diseasesLookupOzone[d.code])
+        .map((d) => {
+          return {
+            name: countryNameDictionaryLookup[d.code].name,
+            short: countryNameDictionaryLookup[d.code].short,
+            code: d.code,
+            x: d.x,
+            y: d.y,
+            value: 5,
+            data: diseasesLookupOzone[d.code],
+          };
+        }),
+      nodeSize: 16,
+      helpText: {
+        code: "JPN",
+        text: () =>
+          `<strong>Each square is a country</strong>, the filled area depicts the <strong>percentage of deaths</strong> from <b>${diseasesDictionary[
+            selectedDisease
+          ].toLocaleLowerCase()}</b> attributable to outdoor ground-level ozone air pollution (age-standardized).`,
+      },
+      hoverTextFn: (d: CountryDataPoint) =>
+        diseasesHoverTextOzone(d.data as DiseasesDataOzone),
+      colorFn: (d: CountryDataPoint) => {
+        let diseaseData = d.data as DiseasesDataOzone;
+        const colors = colorDiseasesOzone.range();
+        let currentColor = null;
+
+        let i = 0;
+        const domain = colorDiseasesOzone.domain();
+        while (i < domain.length && currentColor === null) {
+          if (
+            diseaseData[selectedDisease] <= domain[i] &&
+            !currentColor
+          ) {
+            currentColor = colors[i];
+          }
+          i++;
+        }
+        if (currentColor === null) currentColor = colors[colors.length - 1];
+
+        const gradients = [
+          {
+            color: currentColor,
+            start: 0,
+            end: diseaseData[selectedDisease] * 2,
+          },
+          {
+            color: "#D9D9D9",
+            start: diseaseData[selectedDisease] * 2,
+            end: 100,
+          },
+        ];
+
+        const gradientStrs = gradients.map((g, i) => {
+          const hide =
+            legendIsHovered &&
+            colorDiseasesOzone.range().indexOf(currentColor) !==
+              legendElementSelectedIndex;
+          return `${g.color}${hide ? "50" : "ff"} ${g.start}% ${g.end}%`;
+        });
+        return `linear-gradient(to bottom, ${gradientStrs.join(", ")})`;
+      },
+      classesFn: (d: CountryDataPoint) => {
+        if (!legendIsHovered) {
+          return [];
+        } else {
+          const diseaseData = d.data as DiseasesData;
+          const domain = colorDiseases.domain();
+
+          let selectedRange = null;
+
+          if (legendElementSelectedIndex === 0)
+            selectedRange = [0, domain[legendElementSelectedIndex]];
+          else if (legendElementSelectedIndex < domain.length)
+            selectedRange = [
+              domain[legendElementSelectedIndex - 1],
+              domain[legendElementSelectedIndex],
+            ];
+          else selectedRange = [domain[legendElementSelectedIndex - 1], 100];
+
+          const isSelected =
+            diseaseData[selectedDisease] >= selectedRange[0] &&
+            diseaseData[selectedDisease] <= selectedRange[1];
+
+          return [isSelected ? "country--shadow" : ""];
+        }
+      },
+      color: colorDiseasesOzone,
+      legendTitle: `<strong>Percent of deaths</strong> from each disease attributable to long-term exposure to outdoor ground-level ozone air pollution`,
+      legendDomain: colorDiseasesOzone.domain().map((e) => e + "%"),
+      legendType: "sequential",
+      domain: [1300, 1300 / (740 / 420)] as [number, number], 
       linearDomain: null,
       internalLabels: null,
     },
@@ -618,25 +829,35 @@
     <!-- if block has no menu there's no section title -->
     <SectionTitle {block} />
   {/if}
+  {#if hasOzone}
+    <div class="ozone-options">
+      <button on:click={() => initialData = data} class:active={initialData === data}>PM2.5</button>
+      <button on:click={() => initialData = dataOzone} class:active={initialData === dataOzone}>Ozone</button>
+    </div>
+  {/if}
 
+  {#key initialData}
   <Head
-    title={head}
-    dropdown={block.dropdown}
+    title={initialData === dataOzone ? headOzone : head}
+    isDiseasesOzone={data === "diseasesOzone"}
+    dropdown={data === "diseasesOzone" ? block.dropdownOzone : block.dropdown}
     bind:selectedElement={selectedDisease}
-    number={diseasesGlobal[selectedDisease] * 100}
-    smaller={data === "diseases"}
+    number={diseasesGlobalData[selectedDisease]}
+    smaller={data === "diseases" || data === "diseasesOzone"}
   />
-
-  <div class="right-narrow">
-    <Legend
-      title={datasetParams[data].legendTitle}
-      colors={datasetParams[data].color.range()}
-      labels={datasetParams[data].legendDomain}
-      type={datasetParams[data].legendType}
-      linearDomain={datasetParams[data].linearDomain}
-      internalLabels={datasetParams[data].internalLabels}
-      bind:selected={legendElementSelectedIndex}
-    />
+  {/key}
+  <div class="right-narrow" class:legend-full-width={initialData === dataOzone}>
+    {#key initialData}
+      <Legend
+        title={datasetParams[initialData].legendTitle}
+        colors={datasetParams[initialData].color.range()}
+        labels={datasetParams[initialData].legendDomain}
+        type={datasetParams[initialData].legendType}
+        linearDomain={datasetParams[initialData].linearDomain}
+        internalLabels={datasetParams[initialData].internalLabels}
+        bind:selected={legendElementSelectedIndex}
+      />
+    {/key}
   </div>
 
   {#if isEmbed && embed !== "policies"}
@@ -648,7 +869,6 @@
       </p>
     </div>
   {/if}
-
   <div class="margin-breakout-mobile" bind:clientWidth>
     <ScrollableX>
       <div
@@ -656,7 +876,7 @@
         class="cartogram-container"
       >
         <Cartogram
-          {...datasetParams[data]}
+          {...datasetParams[initialData]}
           slug={data}
           bind:rerenderFn={rerender}
           bind:annotationShowing={cartogramAnnotation}
@@ -680,7 +900,7 @@
 
   {#if !isEmbed}
     <div class="footer">
-      <EmbedFooter {embed} />
+      <EmbedFooter embed={embedForFooter} />
     </div>
 
     {#each text as t}
@@ -708,6 +928,17 @@
 
   .cartogram-container {
     overflow: hidden;
+  }
+  
+  /* Ozone legend uses full width of the section */
+  :global(.legend-full-width) {
+    width: 100%;
+    max-width: none;
+  }
+  @media screen and (min-width: 58rem) {
+    :global(.legend-full-width) {
+      width: 100%;
+    }
   }
 
   :global(.annotation .text) {
