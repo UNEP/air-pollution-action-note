@@ -28,7 +28,9 @@ export type DropdownOptionBlock = {
 export interface Content {
   type: string;
   head?: string;
+  headOzone?: string;
   dropdown?: DropdownOptionBlock[]; //Allows you to put a dropdown in the title of the page
+  dropdownOzone?: DropdownOptionBlock[];
   text?: TextBlock[];
   menu?: string;
   icon?: string;

@@ -1,977 +1,957 @@
 [
-    {
-        "id": "LAO",
-        "deaths": "2400",
-        "rate": "59"
-    },
-    {
-        "id": "KHM",
-        "deaths": "3500",
-        "rate": "34"
-    },
-    {
-        "id": "CHN",
-        "deaths": "1900000",
-        "rate": "100"
-    },
-    {
-        "id": "IDN",
-        "deaths": "130000",
-        "rate": "68"
-    },
-    {
-        "id": "PRK",
-        "deaths": "8800",
-        "rate": "30"
-    },
-    {
-        "id": "MDV",
-        "deaths": "69",
-        "rate": "25"
-    },
-    {
-        "id": "THA",
-        "deaths": "53000",
-        "rate": "50"
-    },
-    {
-        "id": "PHL",
-        "deaths": "43000",
-        "rate": "59"
-    },
-    {
-        "id": "MMR",
-        "deaths": "31000",
-        "rate": "75"
-    },
-    {
-        "id": "MYS",
-        "deaths": "15000",
-        "rate": "61"
-    },
-    {
-        "id": "TLS",
-        "deaths": "360",
-        "rate": "46"
-    },
-    {
-        "id": "LKA",
-        "deaths": "11000",
-        "rate": "48"
-    },
-    {
-        "id": "VNM",
-        "deaths": "41000",
-        "rate": "49"
-    },
-    {
-        "id": "KIR",
-        "deaths": "11",
-        "rate": "18"
-    },
-    {
-        "id": "FSM",
-        "deaths": "24",
-        "rate": "38"
-    },
-    {
-        "id": "FJI",
-        "deaths": "460",
-        "rate": "71"
-    },
-    {
-        "id": "MHL",
-        "deaths": "11",
-        "rate": "38"
-    },
-    {
-        "id": "PNG",
-        "deaths": "1500",
-        "rate": "34"
-    },
-    {
-        "id": "WSM",
-        "deaths": "49",
-        "rate": "38"
-    },
-    {
-        "id": "TON",
-        "deaths": "25",
-        "rate": "32"
-    },
-    {
-        "id": "ARM",
-        "deaths": "4000",
-        "rate": "94"
-    },
-    {
-        "id": "GEO",
-        "deaths": "3100",
-        "rate": "50"
-    },
-    {
-        "id": "VUT",
-        "deaths": "39",
-        "rate": "26"
-    },
-    {
-        "id": "SLB",
-        "deaths": "68",
-        "rate": "23"
-    },
-    {
-        "id": "AZE",
-        "deaths": "7600",
-        "rate": "96"
-    },
-    {
-        "id": "KAZ",
-        "deaths": "13000",
-        "rate": "89"
-    },
-    {
-        "id": "TKM",
-        "deaths": "3600",
-        "rate": "100"
-    },
-    {
-        "id": "MNG",
-        "deaths": "1700",
-        "rate": "94"
-    },
-    {
-        "id": "TJK",
-        "deaths": "3300",
-        "rate": "67"
-    },
-    {
-        "id": "KGZ",
-        "deaths": "2200",
-        "rate": "56"
-    },
-    {
-        "id": "UZB",
-        "deaths": "27000",
-        "rate": "130"
-    },
-    {
-        "id": "BIH",
-        "deaths": "4200",
-        "rate": "67"
-    },
-    {
-        "id": "HRV",
-        "deaths": "3700",
-        "rate": "38"
-    },
-    {
-        "id": "HUN",
-        "deaths": "8100",
-        "rate": "39"
-    },
-    {
-        "id": "ALB",
-        "deaths": "1900",
-        "rate": "48"
-    },
-    {
-        "id": "BGR",
-        "deaths": "10000",
-        "rate": "71"
-    },
-    {
-        "id": "MNE",
-        "deaths": "680",
-        "rate": "79"
-    },
-    {
-        "id": "ROU",
-        "deaths": "18000",
-        "rate": "46"
-    },
-    {
-        "id": "CZE",
-        "deaths": "7200",
-        "rate": "31"
-    },
-    {
-        "id": "MKD",
-        "deaths": "2800",
-        "rate": "120"
-    },
-    {
-        "id": "POL",
-        "deaths": "32000",
-        "rate": "42"
-    },
-    {
-        "id": "SRB",
-        "deaths": "14000",
-        "rate": "79"
-    },
-    {
-        "id": "SVN",
-        "deaths": "820",
-        "rate": "16"
-    },
-    {
-        "id": "BLR",
-        "deaths": "11000",
-        "rate": "68"
-    },
-    {
-        "id": "LVA",
-        "deaths": "1500",
-        "rate": "33"
-    },
-    {
-        "id": "MDA",
-        "deaths": "2300",
-        "rate": "39"
-    },
-    {
-        "id": "EST",
-        "deaths": "210",
-        "rate": "6.8"
-    },
-    {
-        "id": "UKR",
-        "deaths": "56000",
-        "rate": "72"
-    },
-    {
-        "id": "JPN",
-        "deaths": "49000",
-        "rate": "9.9"
-    },
-    {
-        "id": "LTU",
-        "deaths": "1700",
-        "rate": "26"
-    },
-    {
-        "id": "RUS",
-        "deaths": "92000",
-        "rate": "38"
-    },
-    {
-        "id": "BRN",
-        "deaths": "40",
-        "rate": "16"
-    },
-    {
-        "id": "KOR",
-        "deaths": "25000",
-        "rate": "28"
-    },
-    {
-        "id": "AUS",
-        "deaths": "4200",
-        "rate": "8.3"
-    },
-    {
-        "id": "NZL",
-        "deaths": "610",
-        "rate": "6.8"
-    },
-    {
-        "id": "SGP",
-        "deaths": "1500",
-        "rate": "19"
-    },
-    {
-        "id": "AND",
-        "deaths": "13",
-        "rate": "7.4"
-    },
-    {
-        "id": "BEL",
-        "deaths": "3300",
-        "rate": "12"
-    },
-    {
-        "id": "DNK",
-        "deaths": "1500",
-        "rate": "12"
-    },
-    {
-        "id": "AUT",
-        "deaths": "2900",
-        "rate": "14"
-    },
-    {
-        "id": "FRA",
-        "deaths": "13000",
-        "rate": "7.7"
-    },
-    {
-        "id": "CYP",
-        "deaths": "500",
-        "rate": "29"
-    },
-    {
-        "id": "IRL",
-        "deaths": "600",
-        "rate": "7.1"
-    },
-    {
-        "id": "FIN",
-        "deaths": "440",
-        "rate": "2.9"
-    },
-    {
-        "id": "DEU",
-        "deaths": "29000",
-        "rate": "13"
-    },
-    {
-        "id": "ISL",
-        "deaths": "19",
-        "rate": "2.9"
-    },
-    {
-        "id": "ISR",
-        "deaths": "2600",
-        "rate": "19"
-    },
-    {
-        "id": "LUX",
-        "deaths": "87",
-        "rate": "7.4"
-    },
-    {
-        "id": "NLD",
-        "deaths": "5100",
-        "rate": "13"
-    },
-    {
-        "id": "ITA",
-        "deaths": "29000",
-        "rate": "16"
-    },
-    {
-        "id": "PRT",
-        "deaths": "2300",
-        "rate": "7.6"
-    },
-    {
-        "id": "SWE",
-        "deaths": "910",
-        "rate": "3.4"
-    },
-    {
-        "id": "MLT",
-        "deaths": "180",
-        "rate": "17"
-    },
-    {
-        "id": "NOR",
-        "deaths": "460",
-        "rate": "3.9"
-    },
-    {
-        "id": "ARG",
-        "deaths": "15000",
-        "rate": "27"
-    },
-    {
-        "id": "ESP",
-        "deaths": "9900",
-        "rate": "8.2"
-    },
-    {
-        "id": "URY",
-        "deaths": "1000",
-        "rate": "17"
-    },
-    {
-        "id": "CHL",
-        "deaths": "6700",
-        "rate": "26"
-    },
-    {
-        "id": "USA",
-        "deaths": "50000",
-        "rate": "8.2"
-    },
-    {
-        "id": "BHS",
-        "deaths": "130",
-        "rate": "35"
-    },
-    {
-        "id": "BLZ",
-        "deaths": "130",
-        "rate": "46"
-    },
-    {
-        "id": "CAN",
-        "deaths": "3300",
-        "rate": "4.2"
-    },
-    {
-        "id": "ATG",
-        "deaths": "38",
-        "rate": "41"
-    },
-    {
-        "id": "BRB",
-        "deaths": "230",
-        "rate": "47"
-    },
-    {
-        "id": "DMA",
-        "deaths": "41",
-        "rate": "55"
-    },
-    {
-        "id": "GRD",
-        "deaths": "65",
-        "rate": "67"
-    },
-    {
-        "id": "HTI",
-        "deaths": "1500",
-        "rate": "23"
-    },
-    {
-        "id": "CUB",
-        "deaths": "9200",
-        "rate": "44"
-    },
-    {
-        "id": "DOM",
-        "deaths": "5000",
-        "rate": "51"
-    },
-    {
-        "id": "LCA",
-        "deaths": "110",
-        "rate": "49"
-    },
-    {
-        "id": "GUY",
-        "deaths": "490",
-        "rate": "85"
-    },
-    {
-        "id": "JAM",
-        "deaths": "1100",
-        "rate": "35"
-    },
-    {
-        "id": "VCT",
-        "deaths": "76",
-        "rate": "60"
-    },
-    {
-        "id": "TTO",
-        "deaths": "1200",
-        "rate": "63"
-    },
-    {
-        "id": "BOL",
-        "deaths": "3900",
-        "rate": "49"
-    },
-    {
-        "id": "SUR",
-        "deaths": "390",
-        "rate": "66"
-    },
-    {
-        "id": "PER",
-        "deaths": "13000",
-        "rate": "39"
-    },
-    {
-        "id": "COL",
-        "deaths": "13000",
-        "rate": "23"
-    },
-    {
-        "id": "SLV",
-        "deaths": "2100",
-        "rate": "32"
-    },
-    {
-        "id": "ECU",
-        "deaths": "4800",
-        "rate": "32"
-    },
-    {
-        "id": "HND",
-        "deaths": "1900",
-        "rate": "36"
-    },
-    {
-        "id": "CRI",
-        "deaths": "930",
-        "rate": "17"
-    },
-    {
-        "id": "GTM",
-        "deaths": "3400",
-        "rate": "35"
-    },
-    {
-        "id": "NIC",
-        "deaths": "610",
-        "rate": "14"
-    },
-    {
-        "id": "PAN",
-        "deaths": "760",
-        "rate": "17"
-    },
-    {
-        "id": "MEX",
-        "deaths": "42000",
-        "rate": "36"
-    },
-    {
-        "id": "PRY",
-        "deaths": "1200",
-        "rate": "22"
-    },
-    {
-        "id": "VEN",
-        "deaths": "12000",
-        "rate": "42"
-    },
-    {
-        "id": "BHR",
-        "deaths": "750",
-        "rate": "150"
-    },
-    {
-        "id": "BRA",
-        "deaths": "53000",
-        "rate": "22"
-    },
-    {
-        "id": "IRN",
-        "deaths": "49000",
-        "rate": "74"
-    },
-    {
-        "id": "JOR",
-        "deaths": "3600",
-        "rate": "62"
-    },
-    {
-        "id": "DZA",
-        "deaths": "22000",
-        "rate": "84"
-    },
-    {
-        "id": "EGY",
-        "deaths": "120000",
-        "rate": "250"
-    },
-    {
-        "id": "LBN",
-        "deaths": "2800",
-        "rate": "44"
-    },
-    {
-        "id": "MAR",
-        "deaths": "26000",
-        "rate": "88"
-    },
-    {
-        "id": "IRQ",
-        "deaths": "29000",
-        "rate": "150"
-    },
-    {
-        "id": "KWT",
-        "deaths": "1800",
-        "rate": "71"
-    },
-    {
-        "id": "LBY",
-        "deaths": "4400",
-        "rate": "99"
-    },
-    {
-        "id": "PSE",
-        "deaths": "1900",
-        "rate": "97"
-    },
-    {
-        "id": "QAT",
-        "deaths": "560",
-        "rate": "110"
-    },
-    {
-        "id": "SYR",
-        "deaths": "13000",
-        "rate": "130"
-    },
-    {
-        "id": "OMN",
-        "deaths": "1600",
-        "rate": "110"
-    },
-    {
-        "id": "TUR",
-        "deaths": "57000",
-        "rate": "68"
-    },
-    {
-        "id": "SAU",
-        "deaths": "21000",
-        "rate": "140"
-    },
-    {
-        "id": "YEM",
-        "deaths": "12000",
-        "rate": "95"
-    },
-    {
-        "id": "TUN",
-        "deaths": "7800",
-        "rate": "66"
-    },
-    {
-        "id": "BGD",
-        "deaths": "42000",
-        "rate": "35"
-    },
-    {
-        "id": "ARE",
-        "deaths": "1900",
-        "rate": "110"
-    },
-    {
-        "id": "IND",
-        "deaths": "950000",
-        "rate": "91"
-    },
-    {
-        "id": "AFG",
-        "deaths": "4500",
-        "rate": "44"
-    },
-    {
-        "id": "BTN",
-        "deaths": "430",
-        "rate": "78"
-    },
-    {
-        "id": "NPL",
-        "deaths": "13000",
-        "rate": "63"
-    },
-    {
-        "id": "AGO",
-        "deaths": "8300",
-        "rate": "68"
-    },
-    {
-        "id": "COG",
-        "deaths": "1500",
-        "rate": "70"
-    },
-    {
-        "id": "GNQ",
-        "deaths": "520",
-        "rate": "110"
-    },
-    {
-        "id": "PAK",
-        "deaths": "100000",
-        "rate": "87"
-    },
-    {
-        "id": "CAF",
-        "deaths": "680",
-        "rate": "28"
-    },
-    {
-        "id": "COD",
-        "deaths": "6300",
-        "rate": "19"
-    },
-    {
-        "id": "COM",
-        "deaths": "40",
-        "rate": "8.9"
-    },
-    {
-        "id": "GAB",
-        "deaths": "890",
-        "rate": "99"
-    },
-    {
-        "id": "BDI",
-        "deaths": "770",
-        "rate": "15"
-    },
-    {
-        "id": "ERI",
-        "deaths": "900",
-        "rate": "34"
-    },
-    {
-        "id": "KEN",
-        "deaths": "3600",
-        "rate": "17"
-    },
-    {
-        "id": "DJI",
-        "deaths": "410",
-        "rate": "76"
-    },
-    {
-        "id": "ETH",
-        "deaths": "7500",
-        "rate": "15"
-    },
-    {
-        "id": "MDG",
-        "deaths": "1200",
-        "rate": "11"
-    },
-    {
-        "id": "MUS",
-        "deaths": "410",
-        "rate": "24"
-    },
-    {
-        "id": "MWI",
-        "deaths": "1100",
-        "rate": "14"
-    },
-    {
-        "id": "RWA",
-        "deaths": "770",
-        "rate": "13"
-    },
-    {
-        "id": "SOM",
-        "deaths": "1300",
-        "rate": "14"
-    },
-    {
-        "id": "UGA",
-        "deaths": "3400",
-        "rate": "20"
-    },
-    {
-        "id": "SYC",
-        "deaths": "21",
-        "rate": "21"
-    },
-    {
-        "id": "MOZ",
-        "deaths": "1800",
-        "rate": "15"
-    },
-    {
-        "id": "TZA",
-        "deaths": "4700",
-        "rate": "17"
-    },
-    {
-        "id": "ZMB",
-        "deaths": "2200",
-        "rate": "32"
-    },
-    {
-        "id": "LSO",
-        "deaths": "380",
-        "rate": "36"
-    },
-    {
-        "id": "ZAF",
-        "deaths": "27000",
-        "rate": "66"
-    },
-    {
-        "id": "BWA",
-        "deaths": "800",
-        "rate": "62"
-    },
-    {
-        "id": "NAM",
-        "deaths": "850",
-        "rate": "69"
-    },
-    {
-        "id": "SWZ",
-        "deaths": "400",
-        "rate": "75"
-    },
-    {
-        "id": "BFA",
-        "deaths": "3700",
-        "rate": "31"
-    },
-    {
-        "id": "ZWE",
-        "deaths": "1500",
-        "rate": "22"
-    },
-    {
-        "id": "CPV",
-        "deaths": "360",
-        "rate": "87"
-    },
-    {
-        "id": "BEN",
-        "deaths": "2200",
-        "rate": "34"
-    },
-    {
-        "id": "CMR",
-        "deaths": "5900",
-        "rate": "45"
-    },
-    {
-        "id": "GHA",
-        "deaths": "11000",
-        "rate": "71"
-    },
-    {
-        "id": "GNB",
-        "deaths": "370",
-        "rate": "49"
-    },
-    {
-        "id": "TCD",
-        "deaths": "4000",
-        "rate": "44"
-    },
-    {
-        "id": "GMB",
-        "deaths": "470",
-        "rate": "47"
-    },
-    {
-        "id": "GIN",
-        "deaths": "2500",
-        "rate": "37"
-    },
-    {
-        "id": "MLI",
-        "deaths": "4800",
-        "rate": "36"
-    },
-    {
-        "id": "NER",
-        "deaths": "3900",
-        "rate": "33"
-    },
-    {
-        "id": "LBR",
-        "deaths": "540",
-        "rate": "25"
-    },
-    {
-        "id": "NGA",
-        "deaths": "75000",
-        "rate": "62"
-    },
-    {
-        "id": "MRT",
-        "deaths": "1700",
-        "rate": "81"
-    },
-    {
-        "id": "SEN",
-        "deaths": "2600",
-        "rate": "34"
-    },
-    {
-        "id": "ASM",
-        "deaths": "9",
-        "rate": "22"
-    },
-    {
-        "id": "SLE",
-        "deaths": "1200",
-        "rate": "29"
-    },
-    {
-        "id": "BMU",
-        "deaths": "10",
-        "rate": "6.9"
-    },
-    {
-        "id": "GRL",
-        "deaths": "5",
-        "rate": "9.2"
-    },
-    {
-        "id": "MCO",
-        "deaths": "14",
-        "rate": "13"
-    },
-    {
-        "id": "COK",
-        "deaths": "4",
-        "rate": "14"
-    },
-    {
-        "id": "GUM",
-        "deaths": "39",
-        "rate": "19"
-    },
-    {
-        "id": "NIU",
-        "deaths": "1",
-        "rate": "27"
-    },
-    {
-        "id": "PLW",
-        "deaths": "6",
-        "rate": "33"
-    },
-    {
-        "id": "KNA",
-        "deaths": "9",
-        "rate": "17"
-    },
-    {
-        "id": "NRU",
-        "deaths": "2",
-        "rate": "34"
-    },
-    {
-        "id": "MNP",
-        "deaths": "14",
-        "rate": "33"
-    },
-    {
-        "id": "TKL",
-        "deaths": "0",
-        "rate": "20"
-    },
-    {
-        "id": "SMR",
-        "deaths": "6",
-        "rate": "5.9"
-    },
-    {
-        "id": "TUV",
-        "deaths": "1",
-        "rate": "12"
-    },
-    {
-        "id": "SSD",
-        "deaths": "1500",
-        "rate": "29"
-    },
-    {
-        "id": "SDN",
-        "deaths": "17000",
-        "rate": "95"
-    },
-    {
-        "id": "VIR",
-        "deaths": "18",
-        "rate": "11"
-    }
+  {
+    "id": "LAO",
+    "deaths": "3056",
+    "rate": "66"
+  },
+  {
+    "id": "KHM",
+    "deaths": "3227",
+    "rate": "26"
+  },
+  {
+    "id": "CHN",
+    "deaths": "1778639",
+    "rate": "82"
+  },
+  {
+    "id": "IDN",
+    "deaths": "147126",
+    "rate": "62"
+  },
+  {
+    "id": "PRK",
+    "deaths": "6874",
+    "rate": "24"
+  },
+  {
+    "id": "MDV",
+    "deaths": "88",
+    "rate": "39"
+  },
+  {
+    "id": "THA",
+    "deaths": "50947",
+    "rate": "45"
+  },
+  {
+    "id": "PHL",
+    "deaths": "43951",
+    "rate": "59"
+  },
+  {
+    "id": "MMR",
+    "deaths": "36470",
+    "rate": "82"
+  },
+  {
+    "id": "MYS",
+    "deaths": "15905",
+    "rate": "57"
+  },
+  {
+    "id": "TLS",
+    "deaths": "126",
+    "rate": "14"
+  },
+  {
+    "id": "LKA",
+    "deaths": "16675",
+    "rate": "58"
+  },
+  {
+    "id": "VNM",
+    "deaths": "57575",
+    "rate": "54"
+  },
+  {
+    "id": "KIR",
+    "deaths": "3",
+    "rate": "4"
+  },
+  {
+    "id": "FSM",
+    "deaths": "6",
+    "rate": "10"
+  },
+  {
+    "id": "FJI",
+    "deaths": "230",
+    "rate": "33"
+  },
+  {
+    "id": "MHL",
+    "deaths": "4",
+    "rate": "19"
+  },
+  {
+    "id": "PNG",
+    "deaths": "1260",
+    "rate": "27"
+  },
+  {
+    "id": "WSM",
+    "deaths": "18",
+    "rate": "10"
+  },
+  {
+    "id": "TON",
+    "deaths": "9",
+    "rate": "11"
+  },
+  {
+    "id": "ARM",
+    "deaths": "3704",
+    "rate": "72"
+  },
+  {
+    "id": "GEO",
+    "deaths": "4175",
+    "rate": "68"
+  },
+  {
+    "id": "VUT",
+    "deaths": "20",
+    "rate": "11"
+  },
+  {
+    "id": "SLB",
+    "deaths": "88",
+    "rate": "22"
+  },
+  {
+    "id": "AZE",
+    "deaths": "8872",
+    "rate": "103"
+  },
+  {
+    "id": "KAZ",
+    "deaths": "12045",
+    "rate": "71"
+  },
+  {
+    "id": "TKM",
+    "deaths": "5258",
+    "rate": "140"
+  },
+  {
+    "id": "MNG",
+    "deaths": "1908",
+    "rate": "97"
+  },
+  {
+    "id": "TJK",
+    "deaths": "3473",
+    "rate": "76"
+  },
+  {
+    "id": "KGZ",
+    "deaths": "1593",
+    "rate": "41"
+  },
+  {
+    "id": "UZB",
+    "deaths": "31691",
+    "rate": "144"
+  },
+  {
+    "id": "BIH",
+    "deaths": "4714",
+    "rate": "75"
+  },
+  {
+    "id": "HRV",
+    "deaths": "4030",
+    "rate": "43"
+  },
+  {
+    "id": "HUN",
+    "deaths": "8329",
+    "rate": "41"
+  },
+  {
+    "id": "ALB",
+    "deaths": "1836",
+    "rate": "44"
+  },
+  {
+    "id": "BGR",
+    "deaths": "10510",
+    "rate": "72"
+  },
+  {
+    "id": "MNE",
+    "deaths": "702",
+    "rate": "65"
+  },
+  {
+    "id": "ROU",
+    "deaths": "19898",
+    "rate": "52"
+  },
+  {
+    "id": "CZE",
+    "deaths": "6259",
+    "rate": "27"
+  },
+  {
+    "id": "MKD",
+    "deaths": "2516",
+    "rate": "82"
+  },
+  {
+    "id": "POL",
+    "deaths": "28638",
+    "rate": "36"
+  },
+  {
+    "id": "SRB",
+    "deaths": "12012",
+    "rate": "82"
+  },
+  {
+    "id": "SVN",
+    "deaths": "1058",
+    "rate": "20"
+  },
+  {
+    "id": "BLR",
+    "deaths": "7902",
+    "rate": "47"
+  },
+  {
+    "id": "LVA",
+    "deaths": "1785",
+    "rate": "39"
+  },
+  {
+    "id": "MDA",
+    "deaths": "2599",
+    "rate": "41"
+  },
+  {
+    "id": "EST",
+    "deaths": "191",
+    "rate": "6"
+  },
+  {
+    "id": "UKR",
+    "deaths": "46884",
+    "rate": "61"
+  },
+  {
+    "id": "JPN",
+    "deaths": "93771",
+    "rate": "16"
+  },
+  {
+    "id": "LTU",
+    "deaths": "1894",
+    "rate": "29"
+  },
+  {
+    "id": "RUS",
+    "deaths": "89748",
+    "rate": "37"
+  },
+  {
+    "id": "BRN",
+    "deaths": "67",
+    "rate": "21"
+  },
+  {
+    "id": "KOR",
+    "deaths": "34835",
+    "rate": "35"
+  },
+  {
+    "id": "AUS",
+    "deaths": "3932",
+    "rate": "7"
+  },
+  {
+    "id": "NZL",
+    "deaths": "877",
+    "rate": "9"
+  },
+  {
+    "id": "SGP",
+    "deaths": "2240",
+    "rate": "24"
+  },
+  {
+    "id": "AND",
+    "deaths": "23",
+    "rate": "10"
+  },
+  {
+    "id": "BEL",
+    "deaths": "3259",
+    "rate": "11"
+  },
+  {
+    "id": "DNK",
+    "deaths": "1240",
+    "rate": "9"
+  },
+  {
+    "id": "AUT",
+    "deaths": "3267",
+    "rate": "15"
+  },
+  {
+    "id": "FRA",
+    "deaths": "16618",
+    "rate": "9"
+  },
+  {
+    "id": "CYP",
+    "deaths": "717",
+    "rate": "39"
+  },
+  {
+    "id": "IRL",
+    "deaths": "870",
+    "rate": "10"
+  },
+  {
+    "id": "FIN",
+    "deaths": "406",
+    "rate": "3"
+  },
+  {
+    "id": "DEU",
+    "deaths": "32077",
+    "rate": "13"
+  },
+  {
+    "id": "ISL",
+    "deaths": "21",
+    "rate": "3"
+  },
+  {
+    "id": "ISR",
+    "deaths": "4305",
+    "rate": "29"
+  },
+  {
+    "id": "LUX",
+    "deaths": "89",
+    "rate": "8"
+  },
+  {
+    "id": "NLD",
+    "deaths": "4649",
+    "rate": "11"
+  },
+  {
+    "id": "ITA",
+    "deaths": "47216",
+    "rate": "24"
+  },
+  {
+    "id": "PRT",
+    "deaths": "4379",
+    "rate": "14"
+  },
+  {
+    "id": "SWE",
+    "deaths": "919",
+    "rate": "3"
+  },
+  {
+    "id": "MLT",
+    "deaths": "206",
+    "rate": "19"
+  },
+  {
+    "id": "NOR",
+    "deaths": "408",
+    "rate": "3"
+  },
+  {
+    "id": "ARG",
+    "deaths": "23191",
+    "rate": "36"
+  },
+  {
+    "id": "ESP",
+    "deaths": "18995",
+    "rate": "14"
+  },
+  {
+    "id": "URY",
+    "deaths": "1593",
+    "rate": "25"
+  },
+  {
+    "id": "CHL",
+    "deaths": "9205",
+    "rate": "33"
+  },
+  {
+    "id": "USA",
+    "deaths": "69744",
+    "rate": "11"
+  },
+  {
+    "id": "BHS",
+    "deaths": "26",
+    "rate": "8"
+  },
+  {
+    "id": "BLZ",
+    "deaths": "115",
+    "rate": "42"
+  },
+  {
+    "id": "CAN",
+    "deaths": "6273",
+    "rate": "7"
+  },
+  {
+    "id": "ATG",
+    "deaths": "16",
+    "rate": "15"
+  },
+  {
+    "id": "BRB",
+    "deaths": "140",
+    "rate": "27"
+  },
+  {
+    "id": "DMA",
+    "deaths": "27",
+    "rate": "26"
+  },
+  {
+    "id": "GRD",
+    "deaths": "43",
+    "rate": "29"
+  },
+  {
+    "id": "HTI",
+    "deaths": "1623",
+    "rate": "24"
+  },
+  {
+    "id": "CUB",
+    "deaths": "4695",
+    "rate": "22"
+  },
+  {
+    "id": "DOM",
+    "deaths": "4524",
+    "rate": "48"
+  },
+  {
+    "id": "LCA",
+    "deaths": "46",
+    "rate": "20"
+  },
+  {
+    "id": "GUY",
+    "deaths": "399",
+    "rate": "61"
+  },
+  {
+    "id": "JAM",
+    "deaths": "1400",
+    "rate": "42"
+  },
+  {
+    "id": "VCT",
+    "deaths": "42",
+    "rate": "26"
+  },
+  {
+    "id": "TTO",
+    "deaths": "877",
+    "rate": "56"
+  },
+  {
+    "id": "BOL",
+    "deaths": "4827",
+    "rate": "56"
+  },
+  {
+    "id": "SUR",
+    "deaths": "294",
+    "rate": "49"
+  },
+  {
+    "id": "PER",
+    "deaths": "14531",
+    "rate": "41"
+  },
+  {
+    "id": "COL",
+    "deaths": "20638",
+    "rate": "35"
+  },
+  {
+    "id": "SLV",
+    "deaths": "4038",
+    "rate": "68"
+  },
+  {
+    "id": "ECU",
+    "deaths": "6492",
+    "rate": "39"
+  },
+  {
+    "id": "HND",
+    "deaths": "2920",
+    "rate": "52"
+  },
+  {
+    "id": "CRI",
+    "deaths": "1877",
+    "rate": "33"
+  },
+  {
+    "id": "GTM",
+    "deaths": "4521",
+    "rate": "46"
+  },
+  {
+    "id": "NIC",
+    "deaths": "1094",
+    "rate": "28"
+  },
+  {
+    "id": "PAN",
+    "deaths": "1550",
+    "rate": "34"
+  },
+  {
+    "id": "MEX",
+    "deaths": "54070",
+    "rate": "42"
+  },
+  {
+    "id": "PRY",
+    "deaths": "2571",
+    "rate": "53"
+  },
+  {
+    "id": "VEN",
+    "deaths": "17634",
+    "rate": "74"
+  },
+  {
+    "id": "BHR",
+    "deaths": "679",
+    "rate": "115"
+  },
+  {
+    "id": "BRA",
+    "deaths": "78040",
+    "rate": "31"
+  },
+  {
+    "id": "IRN",
+    "deaths": "51870",
+    "rate": "83"
+  },
+  {
+    "id": "JOR",
+    "deaths": "5075",
+    "rate": "74"
+  },
+  {
+    "id": "DZA",
+    "deaths": "19774",
+    "rate": "60"
+  },
+  {
+    "id": "EGY",
+    "deaths": "111303",
+    "rate": "221"
+  },
+  {
+    "id": "LBN",
+    "deaths": "3288",
+    "rate": "53"
+  },
+  {
+    "id": "MAR",
+    "deaths": "27390",
+    "rate": "95"
+  },
+  {
+    "id": "IRQ",
+    "deaths": "35720",
+    "rate": "178"
+  },
+  {
+    "id": "KWT",
+    "deaths": "1546",
+    "rate": "82"
+  },
+  {
+    "id": "LBY",
+    "deaths": "3186",
+    "rate": "68"
+  },
+  {
+    "id": "PSE",
+    "deaths": "1617",
+    "rate": "72"
+  },
+  {
+    "id": "QAT",
+    "deaths": "513",
+    "rate": "89"
+  },
+  {
+    "id": "SYR",
+    "deaths": "14157",
+    "rate": "145"
+  },
+  {
+    "id": "OMN",
+    "deaths": "1624",
+    "rate": "106"
+  },
+  {
+    "id": "TUR",
+    "deaths": "70953",
+    "rate": "81"
+  },
+  {
+    "id": "SAU",
+    "deaths": "14648",
+    "rate": "151"
+  },
+  {
+    "id": "YEM",
+    "deaths": "6923",
+    "rate": "51"
+  },
+  {
+    "id": "TUN",
+    "deaths": "6422",
+    "rate": "58"
+  },
+  {
+    "id": "BGD",
+    "deaths": "63347",
+    "rate": "61"
+  },
+  {
+    "id": "ARE",
+    "deaths": "2275",
+    "rate": "116"
+  },
+  {
+    "id": "IND",
+    "deaths": "969726",
+    "rate": "90"
+  },
+  {
+    "id": "AFG",
+    "deaths": "3198",
+    "rate": "27"
+  },
+  {
+    "id": "BTN",
+    "deaths": "473",
+    "rate": "78"
+  },
+  {
+    "id": "NPL",
+    "deaths": "11006",
+    "rate": "47"
+  },
+  {
+    "id": "AGO",
+    "deaths": "6725",
+    "rate": "48"
+  },
+  {
+    "id": "COG",
+    "deaths": "1750",
+    "rate": "69"
+  },
+  {
+    "id": "GNQ",
+    "deaths": "703",
+    "rate": "127"
+  },
+  {
+    "id": "PAK",
+    "deaths": "99098",
+    "rate": "71"
+  },
+  {
+    "id": "CAF",
+    "deaths": "941",
+    "rate": "27"
+  },
+  {
+    "id": "COD",
+    "deaths": "11405",
+    "rate": "28"
+  },
+  {
+    "id": "COM",
+    "deaths": "39",
+    "rate": "5"
+  },
+  {
+    "id": "GAB",
+    "deaths": "1068",
+    "rate": "89"
+  },
+  {
+    "id": "BDI",
+    "deaths": "1144",
+    "rate": "17"
+  },
+  {
+    "id": "ERI",
+    "deaths": "954",
+    "rate": "24"
+  },
+  {
+    "id": "KEN",
+    "deaths": "3920",
+    "rate": "14"
+  },
+  {
+    "id": "DJI",
+    "deaths": "414",
+    "rate": "56"
+  },
+  {
+    "id": "ETH",
+    "deaths": "8488",
+    "rate": "16"
+  },
+  {
+    "id": "MDG",
+    "deaths": "1301",
+    "rate": "10"
+  },
+  {
+    "id": "MUS",
+    "deaths": "942",
+    "rate": "55"
+  },
+  {
+    "id": "MWI",
+    "deaths": "964",
+    "rate": "10"
+  },
+  {
+    "id": "RWA",
+    "deaths": "1704",
+    "rate": "24"
+  },
+  {
+    "id": "SOM",
+    "deaths": "1087",
+    "rate": "8"
+  },
+  {
+    "id": "UGA",
+    "deaths": "3404",
+    "rate": "17"
+  },
+  {
+    "id": "SYC",
+    "deaths": "21",
+    "rate": "19"
+  },
+  {
+    "id": "MOZ",
+    "deaths": "1244",
+    "rate": "7"
+  },
+  {
+    "id": "TZA",
+    "deaths": "4746",
+    "rate": "14"
+  },
+  {
+    "id": "ZMB",
+    "deaths": "1998",
+    "rate": "26"
+  },
+  {
+    "id": "LSO",
+    "deaths": "397",
+    "rate": "31"
+  },
+  {
+    "id": "ZAF",
+    "deaths": "27773",
+    "rate": "58"
+  },
+  {
+    "id": "BWA",
+    "deaths": "590",
+    "rate": "33"
+  },
+  {
+    "id": "NAM",
+    "deaths": "570",
+    "rate": "33"
+  },
+  {
+    "id": "SWZ",
+    "deaths": "283",
+    "rate": "36"
+  },
+  {
+    "id": "BFA",
+    "deaths": "2922",
+    "rate": "21"
+  },
+  {
+    "id": "ZWE",
+    "deaths": "1123",
+    "rate": "11"
+  },
+  {
+    "id": "CPV",
+    "deaths": "165",
+    "rate": "37"
+  },
+  {
+    "id": "BEN",
+    "deaths": "2124",
+    "rate": "29"
+  },
+  {
+    "id": "CMR",
+    "deaths": "7768",
+    "rate": "55"
+  },
+  {
+    "id": "GHA",
+    "deaths": "9440",
+    "rate": "52"
+  },
+  {
+    "id": "GNB",
+    "deaths": "334",
+    "rate": "33"
+  },
+  {
+    "id": "TCD",
+    "deaths": "3995",
+    "rate": "44"
+  },
+  {
+    "id": "GMB",
+    "deaths": "441",
+    "rate": "31"
+  },
+  {
+    "id": "GIN",
+    "deaths": "2119",
+    "rate": "26"
+  },
+  {
+    "id": "MLI",
+    "deaths": "4110",
+    "rate": "26"
+  },
+  {
+    "id": "NER",
+    "deaths": "5722",
+    "rate": "41"
+  },
+  {
+    "id": "LBR",
+    "deaths": "571",
+    "rate": "18"
+  },
+  {
+    "id": "NGA",
+    "deaths": "81606",
+    "rate": "65"
+  },
+  {
+    "id": "MRT",
+    "deaths": "1614",
+    "rate": "68"
+  },
+  {
+    "id": "SEN",
+    "deaths": "2310",
+    "rate": "21"
+  },
+  {
+    "id": "ASM",
+    "deaths": "6",
+    "rate": "16"
+  },
+  {
+    "id": "SLE",
+    "deaths": "988",
+    "rate": "22"
+  },
+  {
+    "id": "BMU",
+    "deaths": "6",
+    "rate": "4"
+  },
+  {
+    "id": "GRL",
+    "deaths": "0",
+    "rate": "1"
+  },
+  {
+    "id": "GUM",
+    "deaths": "11",
+    "rate": "6"
+  },
+  {
+    "id": "NIU",
+    "deaths": "0",
+    "rate": "11"
+  },
+  {
+    "id": "PLW",
+    "deaths": "4",
+    "rate": "22"
+  },
+  {
+    "id": "KNA",
+    "deaths": "11",
+    "rate": "21"
+  },
+  {
+    "id": "NRU",
+    "deaths": "2",
+    "rate": "34"
+  },
+  {
+    "id": "TKL",
+    "deaths": "0",
+    "rate": "10"
+  },
+  {
+    "id": "TUV",
+    "deaths": "1",
+    "rate": "14"
+  },
+  {
+    "id": "SSD",
+    "deaths": "846",
+    "rate": "16"
+  },
+  {
+    "id": "SDN",
+    "deaths": "18584",
+    "rate": "100"
+  },
+  {
+    "id": "VIR",
+    "deaths": "19",
+    "rate": "9"
+  }
 ]

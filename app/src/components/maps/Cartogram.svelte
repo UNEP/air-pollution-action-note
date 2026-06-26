@@ -7,6 +7,7 @@
     x: number;
     y: number;
     value: number;
+    comparisonValue?: number;
     rate?: number;
     color?: string;
     // waiting for svelte to add support for generics

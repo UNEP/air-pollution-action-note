@@ -76,9 +76,10 @@
 
   .mainnavbuttons {
     position: sticky;
-    top:0;
+    top:28.77px;
     left: 100%;
     z-index: 6;
+    margin-top: 28.77px;
     width: 210px;
     border-top: 1px solid #DCDCDC;
   }

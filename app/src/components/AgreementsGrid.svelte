@@ -106,7 +106,7 @@
 
   $: countrySentence = searchVersion ? getCountryDescription(countryData.id) : null;
 
-  $: console.log(countryData);
+  // $: console.log(countryData);
 
   $: agreementsData = !countryData 
     ? Object.entries(agreementsLookup).map(a => ({

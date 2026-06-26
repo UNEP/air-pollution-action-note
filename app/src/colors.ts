@@ -30,6 +30,11 @@ export const colorPM25 = scaleThreshold<number, string>()
   .domain([...new Array(8)].map((d,i) => (i + 1) * 5))
   .range(['#D9D9D9', '#ffbbb0', '#F18EA7', '#D3609E', '#C14291', '#8D0085']);
 
+export const colorOzone = scaleThreshold<number, string>()
+  .domain([60, 70, 100])
+  // .domain([...new Array(6)].map((d,i) => (i + 1) * 5))
+  .range(['#83CB83', '#6DB3D1', '#3D6CAA', '#E5A524']);
+
 export const colorPM25distribution = scaleThreshold<number, string>()
   .domain([...new Array(8)].map((d,i) => (i + 1) * 10))
   .range(['#ffbeb3', '#f0a9ad', '#e094a7', '#d07fa1', '#c16b9b', '#b15694', '#a1408e','#912787', '#800080']);
@@ -38,6 +43,17 @@ export const colorHealth = scaleThreshold<number, string>()
   .domain([20,40,60,80,100,120])
   .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
 
+export const colorTrendsPM25 = scaleThreshold<number, string>()
+  .domain([20,40,60,80,100,120])
+  .range(['#ffcb5b', '#e8a768', '#d08371', '#b86078', '#9d3a7d', '#800080']);
+
+export const colorTrendsOzone = scaleThreshold<number, string>()
+  .domain([20,40,60,80,100,120])
+  .range(['#BDEAB2', '#83CB83', '#6DB2D0', '#4C83BD', '#E5A524', '#E58124']);
+
+  export const colorHealthOzone = scaleThreshold<number, string>()
+  .domain([10,15,20,25,30])
+  .range(['#BDEAB2', '#83CB83', '#6DB2D0', '#4C83BD', '#E5A524', '#E58124']);
 
 export const colorPolices = scaleOrdinal<string>()
   .domain(['Target met', 'On track', 'Not met', 'No data'])
@@ -46,6 +62,10 @@ export const colorPolices = scaleOrdinal<string>()
 export const colorDiseases = scaleOrdinal<number, string>()
   .domain([5, 15, 25, 35])
   .range(["#FFBEB3","#E094A7","#C16B9B","#A1408E","#800080"]);
+  
+export const colorDiseasesOzone = scaleOrdinal<number, string>()
+  .domain([5, 10, 15, 20])
+  .range(['#83CB83', '#6DB3D1', '#3D6CAA', '#E5A524', '#E58124']);
 
 export const colorAgreements = scaleOrdinal<string>()
 .domain(['0', '1', '2', '3 or more'])

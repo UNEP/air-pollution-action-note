@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { colorPM25distribution as colorPM25, colorHealth } from "src/colors";
+  import { colorPM25distribution as colorPM25, colorHealth, colorOzone, colorHealthOzone } from "src/colors";
 
   const height = 100;
   const normalTileWidth = 3;
@@ -24,7 +24,7 @@
   export let width: number = 385;
   export let value: number;
 
-  const colorFunction = (d: number) => type === "pm25" ? colorPM25(d) : colorHealth(d);
+  const colorFunction = (d: number) => type === "pm25" ? colorPM25(d) : type === "ozone" ? colorOzone(d) : type === "healthOzone" ? colorHealthOzone(d) : colorHealth(d);
 
   const xLocation = (countryValue: number, width: number) => (((countryValue - minValue) * (width - relevantTileWidth))/(maxValue - minValue));
 

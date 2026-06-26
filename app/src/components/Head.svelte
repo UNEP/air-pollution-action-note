@@ -8,6 +8,7 @@
   export let selectedElement: HealthDisease;
   export let number: number = 0;
   export let smaller: boolean = false;
+  export let isDiseasesOzone: boolean = false;
 
   let blocks: HeadBlock[] = [];
 
@@ -19,7 +20,7 @@
   const createBlocks = (number: number, dropdown: DropdownOptionBlock[]): HeadBlock[] => {
     let ret: HeadBlock[] = [];
     let auxTitle = title;
-    if (title.includes("@number")) auxTitle = title.replace("@number", Math.round(number).toString());
+    if (title.includes("@number")) auxTitle = title.replace("@number", isDiseasesOzone ? number.toFixed(0) : Math.round(number).toString());
 
     if (title.includes("@dropdown") && dropdown.length > 0) {
       let titleBlocks = auxTitle.split("@dropdown");
@@ -27,10 +28,12 @@
         type: "title",
         title: titleBlocks[0],
       });
-      ret.push({
-        type: "dropdown",
-        dropdown: dropdown,
-      });
+      if(dropdown.length > 1) {
+        ret.push({
+          type: "dropdown",
+          dropdown: dropdown,
+        });
+      }
       ret.push({
         type: "title",
         title: titleBlocks[1],

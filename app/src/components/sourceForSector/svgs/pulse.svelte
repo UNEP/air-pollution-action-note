@@ -109,7 +109,7 @@
 <div class="pulse-container" class:active={selectedSector !== ''}>
     {#each Object.keys(dataSectors) as sector}
         <div id={sector} class:active={selectedSector === sector} on:mouseenter={() => handleMouseEnter(sector)} on:mouseleave={handleMouseLeave} class="pulse-item {sector}" style="left: {dataSectors[sector].x}%; top: {dataSectors[sector].y}%;">
-            <div class="annotation-text"><strong>{dataSectors[sector].title}</strong> accounts for <strong>{dataSectors[sector].percentage}%</strong> of global PM<sub>2.5</sub> emissions on average.</div>
+            <div class="annotation-text"><strong>{dataSectors[sector].title}</strong> accounts for <strong>{dataSectors[sector].percentage}%</strong> of global PM<sub>2.5</sub> concentration on average.</div>
         </div>
     {/each}
 </div>

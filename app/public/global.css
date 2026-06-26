@@ -221,21 +221,28 @@ sup, sub { line-height: 0; }
   }
 }
 
-.publishing_info{
-    margin-top: 2em;
-    margin-bottom: 2em;
-    font-size: 0.6rem;
-    color: rgba(51, 51, 51, 0.3);
-    text-align: center;
-    width: 100% !important;
-    border: none;
-    max-width: none;
+.ozone-options {
+  display: flex;
+  padding: 24px 0;
 }
 
-.publishing_info span.publishing_info_latest_update{
-    margin-left: 0.5rem;
+.ozone-options button {
+  padding: 10px 20px;
+  width: 100px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #DCDCDC;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 19px;
+  background-color: #F9F9F9;
+  cursor: pointer;
 }
-.publishing_info span.publishing_info_latest_update:before {
-    content: "|";
-    margin-right: 0.5rem;
+
+.ozone-options button.active {
+  font-weight: 700;
+  background-color: #000;
+  color: #F9F9F9;
 }

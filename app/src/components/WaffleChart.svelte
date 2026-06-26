@@ -10,6 +10,8 @@
   
     export let percentage: number;
     export let cause: string;
+    export let isOzone: boolean = false;
+    export let isSingle: boolean = false;
   
     const causes = {
       'stroke': {component: IconsStroke, name: 'Stroke'},
@@ -20,25 +22,36 @@
       'diabetes': {component: IconsDmt2, name: 'Type 2 diabetes'},
       'nd': {component: IconsNd, name: 'Neonatal disorders'},
     };
-  
+    $: notAvailable = isOzone && cause !== 'copd';
+    $: causeInfo = causes[cause];
+    
+    $: percentText = isOzone && !isSingle ? percentage.toFixed(0) : isOzone && Math.round(percentage) < 1 && percentage > 0 ? Number(percentage).toFixed(0) : Math.round(percentage);
+    $: (isSingle) && console.log(percentage, percentText);
   </script>
   
   
-  <div class="container" role="graphics-document">
-    <div class="top-icons" role="graphics-object" aria-label="Icon for {causes[cause].name}">
-      <svelte:component this={causes[cause].component}/>
+  {#if causeInfo}
+  <div class="container" role="graphics-document" class:disabled={notAvailable}>
+    <div class="top-icons" role="graphics-object" aria-label="Icon for {causeInfo.name}">
+      <svelte:component this={causeInfo.component}/>
     </div>
-  
+
     <div class="waffle-container" role="graphics-object" aria-label="Chart displaying the percent of deaths from the disease attributable to air pollution (age-standardized)">
       {#each Array(100) as _, i}
-        <div class="circle" class:highlight={i < Math.round(percentage * 100)}/>
+        <div class="circle" class:highlight={i < Math.round(percentage)} class:highlight-ozone={isOzone && i < Math.round(percentage)} class:highlight-half-ozone={isOzone  && !isSingle && Number(percentage.toFixed(0))-i < 1 && Number(percentage.toFixed(0))-i > 0} />
       {/each}
     </div>
-  
-    <div class="percent-text">{Math.round(percentage * 100)}<span class="symbol">%</span></div>
-  
-    <div class="cause-text">{causes[cause].name}</div>
+
+    <div class="percent-text">{notAvailable ? 'N/A' : percentText}<span class="symbol">{notAvailable ? '' : '%'}</span></div>
+
+    <div class="cause-text">{causeInfo.name}</div>
   </div>
+  {:else}
+  <div class="container" role="graphics-document">
+    <div class="cause-text">{cause}</div>
+    <div class="percent-text">{notAvailable ? 'N/A' : percentText}<span class="symbol">{notAvailable ? '' : '%'}</span></div>
+  </div>
+  {/if}
   
   <style>
   
@@ -87,5 +100,30 @@
     .highlight {
       background-color: #800080;
     }
+
+    .highlight-ozone {
+      background-color: #E58124;
+    }
+
+    .highlight-half-ozone {
+      background: linear-gradient(to right, #E58124 50%, #D9D9D9 50%);
+    }
   
+    :global(.disabled) {
+      /* opacity: 0.5; */
+      pointer-events: none;
+    }
+
+    :global(.disabled .top-icons svg path) {
+      stroke: #D9D9D9;
+    }
+    :global(.disabled .waffle-container .circle) {
+      background-color: #E9E9E9;
+    }
+    :global(.disabled .percent-text) {
+      color: #BDBDBD;
+    }
+    :global(.disabled .cause-text) {
+      color: #BDBDBD;
+    }
   </style>
